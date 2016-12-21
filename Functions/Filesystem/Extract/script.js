@@ -24,6 +24,7 @@ var Extractor = function() {
 			if(!this.progressMessage) {
 				this.progressMessage = "Please wait while {0} is extracted ...".format(this.archive);
 			}
+			
 			var progressBar = this.wizard.progressBar(this.progressMessage);
 			
 			mkdir(this.destination);

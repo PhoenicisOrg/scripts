@@ -16,5 +16,6 @@ Wine()
 	.wizard(setupWizard)
 	.prefix("photofiltre")
 	.version("1.7.12")
-	.create()
 	.run("/tmp/test.exe")
+	
+wizard.close()

@@ -3,19 +3,26 @@ include(["Functions", "Filesystem", "Extract"])
 include(["Functions", "Net", "Download"]) 
 
 var Wine = function() {
+	var that = this;
 	var PropertyReader = Bean("propertyReader");
 	var ArchitectureFetcher = Bean("architectureFetcher");
 	var OperatingSystemFetcher = Bean("operatingSystemFetcher");
 
 	var wineWebServiceUrl = PropertyReader.getProperty("webservice.wine.url");
 	var wineEnginesDirectory = PropertyReader.getProperty("application.user.engines.wine");
-	var architecture = ArchitectureFetcher.fetchCurrentArchitecture();
-	var distribution = "staging";
+	var winePrefixesDirectory = PropertyReader.getProperty("application.user.wineprefix");
+
+	that.architecture = ArchitectureFetcher.fetchCurrentArchitecture();
+	that.distribution = "staging";
+	that.version = null;
+	
+	var fetchLocalDirectory = function() {
+		return wineEnginesDirectory + "/" + fetchFullDistributionName() + "/" + that.version;
+	};
 	
 	var fetchFullDistributionName = function() {
 		var operatingSystem = OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
-		
-		return distribution + "-" + operatingSystem + "-" + architecture.getNameForWinePackages();
+		return that.distribution + "-" + operatingSystem + "-" + that.architecture.getNameForWinePackages();
 	};
 	
 	var installWinePackage = function(setupWizard, winePackage, localDirectory) {
@@ -37,39 +44,55 @@ var Wine = function() {
 	
 	return {
 		"wizard" : function(wizard) {
-			this.wizard = wizard;
+			that.wizard = wizard;
 			return this;
 		},
 		"architecture" : function(architecture) {
-			architecture = architecture;
+			that.architecture = architecture;
 			return this;
 		},		
 		
 		"distribution" : function(distribution) {
-			distribution = distribution
+			that.distribution = distribution
 			return this;
 		},		
 		
 		"prefix" : function(prefix) {
-			this.prefix = prefix;
+			that.prefix = prefix;
 			return this;
 		},
 		
-		"create" : function() {
+		"workingDirectory": function(directory) {
+			that.directory = directory;
 			return this;
 		},
-		"run" : function() {
+		
+		"run" : function(executable, args) {
+			that.wizard.wait("Please wait...");
+			
+			var prefixDirectory = winePrefixesDirectory + "/" + prefix;
+			var wineBinary = fetchLocalDirectory() + "/bin/wine";
+			var processBuilder = new java.lang.ProcessBuilder(Java.to([wineBinary, executable].concat(args), "java.lang.String[]"));
+			
+			if(that.directory) {
+				processBuilder.directory(directory);
+			}
+			
+			processBuilder.environment().put("WINEPREFIX", prefixDirectory);
+			processBuilder.start().waitFor();
+			
 			return this;
 		},
+		
 		"version" : function(version) {
+			that.version = version;
 			var fullDistributionName = fetchFullDistributionName();
 
-			var localDirectory = wineEnginesDirectory + "/" + fullDistributionName + "/" + version;
-			var wizard = this.wizard; 
+			var localDirectory = fetchLocalDirectory();
 			
 			if(!fileExists(localDirectory)) {
 				var wineJson = JSON.parse(Downloader()
-					.wizard(this.wizard)
+					.wizard(that.wizard)
 					.url(wineWebServiceUrl)
 					.get()) 
 				
@@ -77,7 +100,7 @@ var Wine = function() {
 					if(distribution.name == fullDistributionName) {
 						distribution.packages.forEach(function(winePackage) {
 							if(winePackage.version == version) {
-								installWinePackage(wizard, winePackage, localDirectory)
+								installWinePackage(that.wizard, winePackage, localDirectory)
 							}
 						});
 					}
