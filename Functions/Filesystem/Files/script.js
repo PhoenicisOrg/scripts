@@ -9,6 +9,10 @@ var fileExists = function(filePath) {
 	return new java.io.File(filePath).exists();
 }
 
+var createTempFile = function(extension) {
+	return java.io.File.createTempFile("playonlinux", "." + extension).getAbsolutePath();
+}
+
 var Checksum = function() {	
 	var algorithm = "SHA";
 	var checksumCalculator = Bean("checksumCalculator");
