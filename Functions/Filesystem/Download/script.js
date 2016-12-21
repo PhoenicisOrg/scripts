@@ -1,3 +1,5 @@
+include(["Functions", "Filesystem", "Files"]) 
+
 var Downloader = function() {	
 	var downloader = Bean("downloader");
 	
@@ -23,10 +25,20 @@ var Downloader = function() {
 			return this;
 		},
 		"get" : function() {
-			var progressBar = this.wizard.progressBar("Please wait while " + fetchFileNameFromUrl(this.url) + " is downloaded ...")
+			var progressBar = this.wizard.progressBar("Please wait while {0} is downloaded ...".format(fetchFileNameFromUrl(this.url)))
 			downloader.get(this.url, this.localFile, function(progressEntity) { 
 				progressBar.accept(progressEntity);
 			});
+			
+			if(this.checksum) {
+				var fileChecksum = Checksum().wizard(this.wizard).of(this.localFile).get();
+				if(fileChecksum != this.checksum) {
+					this.wizard.message(
+						"Error while calculating checksum. \n\nExpected: {0}\nActual: {1}"
+						.format(this.checksum, fileChecksum)
+					)
+				}
+			}
 		}
 	}
 }
