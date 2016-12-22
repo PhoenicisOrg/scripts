@@ -9,6 +9,10 @@ var fileExists = function (filePath) {
     return new java.io.File(filePath).exists();
 };
 
+var cat = function(filePath) {
+    return Bean("fileUtilities").getFileContent(new java.io.File(filePath));
+};
+
 var createTempFile = function (extension) {
     return java.io.File.createTempFile("playonlinux", "." + extension).getAbsolutePath();
 };
