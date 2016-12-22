@@ -20,7 +20,8 @@ new Wine()
     .wizard(setupWizard)
     .version("1.7.12")
     .prefix("photofiltre")
-    .run(tempFile);
+    .run(tempFile)
+    .wait();
 
 new WineShortcut()
     .name("Test")

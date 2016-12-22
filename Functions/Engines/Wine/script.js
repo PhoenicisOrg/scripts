@@ -10,6 +10,8 @@ var Wine = function () {
     that._configFactory = Bean("compatibleConfigFileFormatFactory");
     that._distribution = "staging";
     that._OperatingSystemFetcher = Bean("operatingSystemFetcher");
+    that._wineDebug = "-all";
+
     that._installWinePackage = function (setupWizard, winePackage, localDirectory) {
         var tmpFile = createTempFile("tar.gz");
 
@@ -35,6 +37,10 @@ var Wine = function () {
     };
     that.wizard = function (wizard) {
         that._wizard = wizard;
+        return that;
+    };
+    that.debug = function (debug) {
+        that._wineDebug = debug;
         return that;
     };
     that.architecture = function (architecture) {
@@ -91,8 +97,17 @@ var Wine = function () {
             processBuilder.directory(that._directory);
         }
 
-        processBuilder.environment().put("WINEPREFIX", that._prefixDirectory);
-        processBuilder.start().waitFor();
+        var environment = processBuilder.environment();
+        environment.put("WINEPREFIX", that._prefixDirectory);
+        environment.put("WINEDEBUG", that._wineDebug);
+
+        that._process = processBuilder.start();
+
+        return that;
+    };
+
+    that.wait = function () {
+        that._process.waitFor();
 
         return that;
     };
