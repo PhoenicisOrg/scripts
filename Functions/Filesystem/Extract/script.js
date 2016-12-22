@@ -1,7 +1,7 @@
 include(["Functions", "Filesystem", "Files"]);
 
 var Extractor = function () {
-    var that = that;
+    var that = this;
     that._extractor = Bean("extractor");
     that.wizard = function (wizard) {
         that._wizard = wizard;
