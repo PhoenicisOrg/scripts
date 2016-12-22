@@ -28,7 +28,7 @@ var Wine = {
 
     _fetchFullDistributionName: function () {
         var operatingSystem = this._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
-        return that.distribution + "-" + operatingSystem + "-" + that.architecture.getNameForWinePackages();
+        return this._distribution + "-" + operatingSystem + "-" + this._architecture.getNameForWinePackages();
     },
 
     _fetchLocalDirectory: function () {
