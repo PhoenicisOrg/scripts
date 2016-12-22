@@ -7,9 +7,9 @@ var Downloader = function() {
 	var fetchFileNameFromUrl = function(url) {
 		return url.substring(url.lastIndexOf('/')+1);
 	};
-	
-	var message; 
-	
+
+    that.checksum = null;
+
 	return {
 		"wizard" : function(wizard) {
             that.wizard = wizard;
