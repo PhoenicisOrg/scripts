@@ -18,8 +18,8 @@ new Downloader()
 
 new Wine()
     .wizard(setupWizard)
-    .prefix("photofiltre")
     .version("1.7.12")
+    .prefix("photofiltre")
     .run(tempFile);
 
 new WineShortcut()
