@@ -19,6 +19,8 @@ var WineShortcut = function () {
               that._miniature = application.miniatures[0];
           }
       }
+
+        return that;
     };
     that.create = function () {
         var builder = new com.phoenicis.library.dto.ShortcutDTO.Builder()
