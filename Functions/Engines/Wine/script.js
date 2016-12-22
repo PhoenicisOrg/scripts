@@ -3,11 +3,10 @@ include(["Functions", "Filesystem", "Extract"]);
 include(["Functions", "Net", "Download"]);
 
 var Wine = {
-    _PropertyReader: Bean("propertyReader"),
     _ArchitectureFetcher: Bean("architectureFetcher"),
-    _wineWebServiceUrl: this._PropertyReader.getProperty("webservice.wine.url"),
-    _wineEnginesDirectory: this._PropertyReader.getProperty("application.user.engines.wine"),
-    _winePrefixesDirectory: this._PropertyReader.getProperty("application.user.wineprefix"),
+    _wineWebServiceUrl: Bean("propertyReader").getProperty("webservice.wine.url"),
+    _wineEnginesDirectory: Bean("propertyReader").getProperty("application.user.engines.wine"),
+    _winePrefixesDirectory: Bean("propertyReader").getProperty("application.user.wineprefix"),
     _architecture: this._ArchitectureFetcher.fetchCurrentArchitecture(),
     _distribution: "staging",
     _OperatingSystemFetcher: Bean("operatingSystemFetcher"),
