@@ -53,19 +53,19 @@ var Wine = function () {
 
         that._prefixConfiguration = that._configFactory.open(that._prefixDirectory + "/playonlinux.cfg");
 
-        if(!that._version) {
+        if (!that._version) {
             that._version = that._prefixConfiguration.readValue("wineVersion");
         } else {
             that._prefixConfiguration.writeValue("wineVersion", that._version);
         }
 
-        if(!that._distribution) {
+        if (!that._distribution) {
             that._distribution = that._prefixConfiguration.readValue("wineDistribution");
         } else {
             that._prefixConfiguration.writeValue("wineDistribution", that._distribution);
         }
 
-        if(!that._architecture) {
+        if (!that._architecture) {
             var defaultArchitecture = Bean("architectureFetcher").fetchCurrentArchitecture().getNameForWinePackages();
             that._architecture = that._prefixConfiguration.readValue("wineArchitecture", defaultArchitecture);
         }
@@ -75,6 +75,7 @@ var Wine = function () {
 
         return that;
     };
+
     that.workingDirectory = function (directory) {
         that._directory = directory;
         return that;
@@ -96,6 +97,13 @@ var Wine = function () {
         return that;
     };
 
+    that.getAvailableVersions = function () {
+        return new Downloader()
+            .wizard(that._wizard)
+            .url(that._wineWebServiceUrl)
+            .get()
+    };
+
     that.version = function (version) {
         that._version = version;
         var fullDistributionName = that._fetchFullDistributionName();
@@ -103,12 +111,7 @@ var Wine = function () {
         var wizard = that._wizard;
 
         if (!fileExists(localDirectory)) {
-            var wineJson = JSON.parse(
-                new Downloader()
-                    .wizard(that._wizard)
-                    .url(that._wineWebServiceUrl)
-                    .get()
-            );
+            var wineJson = JSON.parse(that.getAvailableVersions());
 
             wineJson.forEach(function (distribution) {
                 if (distribution.name == fullDistributionName) {
