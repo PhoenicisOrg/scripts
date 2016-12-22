@@ -51,22 +51,22 @@ var Wine = function () {
         that._prefixConfiguration = that._configFactory.open(that._prefixDirectory);
 
         if(!that._version) {
-            that._version = _prefixConfiguration.readValue("wineVersion");
+            that._version = that._prefixConfiguration.readValue("wineVersion");
         } else {
-            _prefixConfiguration.writeValue("wineVersion", that._version);
+            that._prefixConfiguration.writeValue("wineVersion", that._version);
         }
 
         if(!that._distribution) {
-            that._distribution = _prefixConfiguration.readValue("wineDistribution");
+            that._distribution = that._prefixConfiguration.readValue("wineDistribution");
         } else {
-            _prefixConfiguration.writeValue("wineDistribution", that._distribution);
+            that._prefixConfiguration.writeValue("wineDistribution", that._distribution);
         }
 
         if(!that._architecture) {
             var defaultArchitecture = Bean("architectureFetcher").fetchCurrentArchitecture();
-            that._architecture = _prefixConfiguration.readValue("wineArchitecture", defaultArchitecture);
+            that._architecture = that._prefixConfiguration.readValue("wineArchitecture", defaultArchitecture);
         } else {
-            _prefixConfiguration.writeValue("wineArchitecture", that._architecture);
+            that._prefixConfiguration.writeValue("wineArchitecture", that._architecture);
         }
 
         return that;
