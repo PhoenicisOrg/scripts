@@ -19,7 +19,6 @@ var WineShortcut = function() {
                     .withName(that.name)
                     .withDescription(that.description)
                     .build()
-                )
             );
         }
     }
