@@ -88,7 +88,9 @@ var Wine = function () {
     };
 
     that.run = function (executable, args) {
-        that._wizard.wait("Please wait...");
+        if(that._wizard) {
+            that._wizard.wait("Please wait...");
+        }
 
         var wineBinary = that._fetchLocalDirectory() + "/bin/wine";
         var processBuilder = new java.lang.ProcessBuilder(Java.to([wineBinary, executable].concat(args), "java.lang.String[]"));
