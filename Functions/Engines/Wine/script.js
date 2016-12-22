@@ -7,7 +7,7 @@ var Wine = function () {
     that._wineWebServiceUrl = Bean("propertyReader").getProperty("webservice.wine.url");
     that._wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines.wine");
     that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
-    that._architecture = Bean("architectureFetcher").fetchCurrentArchitecture();
+    that._configFactory = Bean("compatibleConfigFileFormatFactory");
     that._distribution = "staging";
     that._OperatingSystemFetcher = Bean("operatingSystemFetcher");
     that._installWinePackage = function (setupWizard, winePackage, localDirectory) {
@@ -47,16 +47,38 @@ var Wine = function () {
     };
     that.prefix = function (prefix) {
         that._prefix = prefix;
+        that._prefixDirectory = that._winePrefixesDirectory + "/" + that._prefix;
+        that._prefixConfiguration = _configFactory.open(that._prefixDirectory);
+
+        if(!that._version) {
+            that._version = _prefixConfiguration.readValue("wineVersion");
+        } else {
+            _prefixConfiguration.writeValue("wineVersion", that._version);
+        }
+
+        if(!that._distribution) {
+            that._distribution = _prefixConfiguration.readValue("wineDistribution");
+        } else {
+            _prefixConfiguration.writeValue("wineDistribution", that._distribution);
+        }
+
+        if(!that._architecture) {
+            var defaultArchitecture = Bean("architectureFetcher").fetchCurrentArchitecture();
+            that._architecture = _prefixConfiguration.readValue("wineArchitecture", defaultArchitecture);
+        } else {
+            _prefixConfiguration.writeValue("wineArchitecture", that._architecture);
+        }
+
         return that;
     };
     that.workingDirectory = function (directory) {
         that._directory = directory;
         return that;
     };
+
     that.run = function (executable, args) {
         that._wizard.wait("Please wait...");
 
-        var prefixDirectory = that._winePrefixesDirectory + "/" + that._prefix;
         var wineBinary = that._fetchLocalDirectory() + "/bin/wine";
         var processBuilder = new java.lang.ProcessBuilder(Java.to([wineBinary, executable].concat(args), "java.lang.String[]"));
 
@@ -64,11 +86,12 @@ var Wine = function () {
             processBuilder.directory(that._directory);
         }
 
-        processBuilder.environment().put("WINEPREFIX", prefixDirectory);
+        processBuilder.environment().put("WINEPREFIX", that._prefixDirectory);
         processBuilder.start().waitFor();
 
         return that;
     };
+
     that.version = function (version) {
         that._version = version;
         var fullDistributionName = that._fetchFullDistributionName();

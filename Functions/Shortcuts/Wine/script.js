@@ -12,6 +12,14 @@ var WineShortcut = function () {
         that._description = description;
         return that;
     };
+    that.search = function(search) {
+        that._search = search;
+        return that;
+    };
+    that.prefix = function(prefix) {
+        that._prefix = prefix;
+        return that;
+    };
     that.miniature = function(miniature) {
       if(isArray(miniature)) {
           var application = that._appsManager.getApplication(miniature);
