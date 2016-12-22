@@ -1,34 +1,35 @@
 include(["Functions", "Filesystem", "Files"]) 
 
-var Extractor = function() {	
+var Extractor = function() {
+	var that = this;
 	var extractor = Bean("extractor");
 	
 	return {
 		"wizard" : function(wizard) {
-			this.wizard = wizard;
+			that.wizard = wizard;
 			return this;
 		},
 		"archive" : function(archive) {
-			this.archive = archive;
+			that.archive = archive;
 			return this;
 		},
 		"message": function(progressMessage) {
-			this.progressMessage = progressMessage;
+			that.progressMessage = progressMessage;
 			return this;
 		},
 		"to": function(destination) {
-			this.destination = destination;
+			that.destination = destination;
 			return this;
 		},
 		"extract": function() {
-			if(!this.progressMessage) {
-				this.progressMessage = "Please wait while {0} is extracted ...".format(this.archive);
+			if(!that.progressMessage) {
+				that.progressMessage = "Please wait while {0} is extracted ...".format(that.archive);
 			}
 			
-			var progressBar = this.wizard.progressBar(this.progressMessage);
+			var progressBar = that.wizard.progressBar(that.progressMessage);
 			
-			mkdir(this.destination);
-			extractor.uncompress(this.archive, this.destination, function(progress) {
+			mkdir(that.destination);
+			extractor.uncompress(that.archive, that.destination, function(progress) {
 				progressBar.accept(progress);
 			});
 		}
