@@ -7,7 +7,7 @@ var setupWizard = SetupWizard("Photofiltre");
 setupWizard.presentation("Photofiltre", "Antonio Da Cruz", "http://photofiltre.free.fr", "Quentin PÂRIS");
 
 var tempFile = createTempFile("exe");
-
+print(tmpFile);
 Downloader()
     .wizard(setupWizard)
     .url("http://photofiltre.free.fr/utils/pf-setup-fr-652.exe")

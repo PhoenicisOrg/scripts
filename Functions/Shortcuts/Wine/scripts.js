@@ -15,14 +15,12 @@ var WineShortcut = function() {
         },
         "create": function() {
             shortcutCreator.createShortcut(
-                new com.phoenicis.library.dto.ShortcutDTO(
-                    that.name,
-                    that.description,
-                    null,
-                    null,
-                    ""
+                new com.phoenicis.library.dto.ShortcutDTO.Builder()
+                    .withName(that.name)
+                    .withDescription(that.description)
+                    .build()
                 )
-            )
+            );
         }
     }
 };
