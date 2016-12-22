@@ -15,12 +15,12 @@ var createTempFile = function (extension) {
 
 var Checksum = function () {
     var that = this;
-    that._method = "SHA",
-        that._checksumCalculator = Bean("checksumCalculator"),
-        that.wizard = function (wizard) {
-            that._wizard = wizard;
-            return that;
-        };
+    that._method = "SHA";
+    that._checksumCalculator = Bean("checksumCalculator");
+    that.wizard = function (wizard) {
+        that._wizard = wizard;
+        return that;
+    };
     that.method = function (algorithm) {
         that._method = algorithm;
         return that;
@@ -30,10 +30,14 @@ var Checksum = function () {
         return that;
     };
     that.get = function () {
-        var progressBar = that._wizard.progressBar("Checking file consistency...");
+        if(that._wizard) {
+            var progressBar = that._wizard.progressBar("Checking file consistency...");
+        }
 
         return that._checksumCalculator.calculate(that._file, that._method, function (progressEntity) {
-            progressBar.accept(progressEntity);
+            if(progressBar) {
+                progressBar.accept(progressEntity);
+            }
         });
     }
 };

@@ -30,8 +30,10 @@ var Downloader = function () {
         if (!that._message) {
             that._message = "Please wait while {0} is downloaded ...".format(that._fetchFileNameFromUrl(that._url));
         }
-        var progressBar = that._wizard.progressBar(that._message);
 
+        if(that._wizard) {
+            var progressBar = that._wizard.progressBar(that._message);
+        }
         if (that._localFile) {
             that._downloader.get(that._url, that._localFile, function (progressEntity) {
                 progressBar.accept(progressEntity);
@@ -52,7 +54,9 @@ var Downloader = function () {
             }
         } else {
             return that._downloader.get(that._url, function (progressEntity) {
-                progressBar.accept(progressEntity);
+                if(progressBar) {
+                    progressBar.accept(progressEntity);
+                }
             });
         }
     }
