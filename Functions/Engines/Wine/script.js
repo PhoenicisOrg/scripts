@@ -48,7 +48,7 @@ var Wine = function () {
     that.prefix = function (prefix) {
         that._prefix = prefix;
         that._prefixDirectory = that._winePrefixesDirectory + "/" + that._prefix;
-        that._prefixConfiguration = _configFactory.open(that._prefixDirectory);
+        that._prefixConfiguration = that._configFactory.open(that._prefixDirectory);
 
         if(!that._version) {
             that._version = _prefixConfiguration.readValue("wineVersion");
