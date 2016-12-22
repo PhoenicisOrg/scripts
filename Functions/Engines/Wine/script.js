@@ -28,7 +28,7 @@ var Wine = function () {
     };
     that._fetchFullDistributionName = function () {
         var operatingSystem = that._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
-        return that._distribution + "-" + operatingSystem + "-" + that._architecture.getNameForWinePackages();
+        return that._distribution + "-" + operatingSystem + "-" + that._architecture;
     };
     that._fetchLocalDirectory = function () {
         return that._wineEnginesDirectory + "/" + that._fetchFullDistributionName() + "/" + that._version;
@@ -66,7 +66,7 @@ var Wine = function () {
         }
 
         if(!that._architecture) {
-            var defaultArchitecture = Bean("architectureFetcher").fetchCurrentArchitecture();
+            var defaultArchitecture = Bean("architectureFetcher").fetchCurrentArchitecture().getNameForWinePackages();
             that._architecture = that._prefixConfiguration.readValue("wineArchitecture", defaultArchitecture);
         } else {
             that._prefixConfiguration.writeValue("wineArchitecture", that._architecture);
