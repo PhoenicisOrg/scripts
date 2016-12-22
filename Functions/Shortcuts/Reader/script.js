@@ -20,7 +20,7 @@ var ShortcutReader = function(shortcutContent) {
 
         var runner;
         if(shortcutContent.type == "WINE") {
-            runner = new _WineShortcutReader(shortcutContent);
+            runner = new _WineShortcutReader(this.shortcutContent);
         }
 
         runner.run();
