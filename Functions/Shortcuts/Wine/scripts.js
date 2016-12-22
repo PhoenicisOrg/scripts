@@ -1,25 +1,19 @@
-var WineShortcut = function() {
-    var that = this;
-    var shortcutCreator = Bean("shortcutCreator");
-
-    that.description = "";
-
-    return {
-        "name": function(name) {
-            that.name = name;
+var WineShortcut = {
+        _shortcutCreator: Bean("shortcutCreator"),
+        name: function(name) {
+            this._name = name;
             return this;
         },
-        "description": function(description) {
-            that.name = description;
+        description: function(description) {
+            this._name = description;
             return this;
         },
-        "create": function() {
-            shortcutCreator.createShortcut(
+        create: function() {
+            this._shortcutCreator.createShortcut(
                 new com.phoenicis.library.dto.ShortcutDTO.Builder()
-                    .withName(that.name)
-                    .withDescription(that.description)
+                    .withName(this._name)
+                    .withDescription(this_description)
                     .build()
             );
         }
-    }
 };

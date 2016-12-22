@@ -8,20 +8,20 @@ setupWizard.presentation("Photofiltre", "Antonio Da Cruz", "http://photofiltre.f
 
 var tempFile = createTempFile("exe");
 print(tempFile);
-Downloader()
+Downloader
     .wizard(setupWizard)
     .url("http://photofiltre.free.fr/utils/pf-setup-fr-652.exe")
     .checksum("dc965875d698cd3f528423846f837d0dcf39616d")
     .to(tempFile)
     .get();
 
-Wine()
+Wine
     .wizard(setupWizard)
     .prefix("photofiltre")
     .version("1.7.12")
     .run(tempFile);
 
-WineShortcut()
+WineShortcut
     .name("Test")
     .create();
 

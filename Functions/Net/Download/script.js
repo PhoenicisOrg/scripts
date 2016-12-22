@@ -1,61 +1,54 @@
 include(["Functions", "Filesystem", "Files"]);
 
-var Downloader = function() {	
-	var downloader = Bean("downloader");
-	var that = this;
-
-	var fetchFileNameFromUrl = function(url) {
-		return url.substring(url.lastIndexOf('/')+1);
-	};
-
-    that.checksum = null;
-
-	return {
-		"wizard" : function(wizard) {
-            that.wizard = wizard;
+var Downloader = {
+        _downloader: Bean("downloader"),
+        _fetchFileNameFromUrl: function(url) {
+            return url.substring(url.lastIndexOf('/')+1);
+        },
+		wizard : function(wizard) {
+            this._wizard = wizard;
 			return this;
 		},
-		"url" : function(url) {
-            that.url = url;
+		url : function(url) {
+            this._url = url;
 			return this;
 		},
-		"checksum": function(checksum) {
-            that.checksum = checksum;
+		checksum: function(checksum) {
+            this._checksum = checksum;
 			return this;
 		},
-		"message": function(message) {
-            that.message = message;
+		message: function(message) {
+            this._message = message;
 			return this;
 		},
-		"to": function(localFile) {
-            that.localFile = localFile;
+		to: function(localFile) {
+            this._localFile = localFile;
 			return this;
 		},
-		"get" : function() {
-			if(!that.message) {
-                that.message = "Please wait while {0} is downloaded ...".format(fetchFileNameFromUrl(that.url));
+		get: function() {
+			if(!this._message) {
+                this._message = "Please wait while {0} is downloaded ...".format(this._fetchFileNameFromUrl(this._url));
 			}
-			var progressBar = that.wizard.progressBar(that.message);
+			var progressBar = this._wizard.progressBar(this._message);
 			
-			if(that.localFile) {
-				downloader.get(that.url, that.localFile, function(progressEntity) {
+			if(this._localFile) {
+				this._downloader.get(this._url, this._localFile, function(progressEntity) {
 					progressBar.accept(progressEntity);
 				});
 			
-				if(that.checksum) {
-					var fileChecksum = Checksum().wizard(that.wizard).of(that.localFile).get();
-					if(fileChecksum != that.checksum) {
-                        that.wizard.message(
+				if(this._checksum) {
+					var fileChecksum = Checksum.wizard(this._wizard).of(this._localFile).get();
+					if(fileChecksum != this._checksum) {
+                        this._wizard.message(
 							"Error while calculating checksum. \n\nExpected: {0}\nActual: {1}"
-							.format(that.checksum, fileChecksum)
+							.format(this._checksum, fileChecksum)
 						)
 					}
 				}
 			} else {
-				return downloader.get(that.url, function(progressEntity) {
+				return this._downloader.get(this._url, function(progressEntity) {
 					progressBar.accept(progressEntity);
 				});
 			}
 		}
-	}
-};
+	};
