@@ -13,8 +13,11 @@ var _WineShortcutReader = function(shortcutContent) {
     }
 };
 
-var ShortcutReader = function(shortcutContent) {
-    this.shortcutContent = shortcutContent;
+var ShortcutReader = function() {
+    this.of = function(shortcutContent) {
+        this.shortcutContent = shortcutContent;
+    };
+
     this.run = function() {
         var shortcutContent = JSON.parse(this.shortcutContent);
 
