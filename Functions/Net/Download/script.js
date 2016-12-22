@@ -1,54 +1,59 @@
 include(["Functions", "Filesystem", "Files"]);
 
-var Downloader = {
-        _downloader: Bean("downloader"),
-        _fetchFileNameFromUrl: function(url) {
-            return url.substring(url.lastIndexOf('/')+1);
-        },
-		wizard : function(wizard) {
-            this._wizard = wizard;
-			return this;
-		},
-		url : function(url) {
-            this._url = url;
-			return this;
-		},
-		checksum: function(checksum) {
-            this._checksum = checksum;
-			return this;
-		},
-		message: function(message) {
-            this._message = message;
-			return this;
-		},
-		to: function(localFile) {
-            this._localFile = localFile;
-			return this;
-		},
-		get: function() {
-			if(!this._message) {
-                this._message = "Please wait while {0} is downloaded ...".format(this._fetchFileNameFromUrl(this._url));
-			}
-			var progressBar = this._wizard.progressBar(this._message);
-			
-			if(this._localFile) {
-				this._downloader.get(this._url, this._localFile, function(progressEntity) {
-					progressBar.accept(progressEntity);
-				});
-			
-				if(this._checksum) {
-					var fileChecksum = Checksum.wizard(this._wizard).of(this._localFile).get();
-					if(fileChecksum != this._checksum) {
-                        this._wizard.message(
-							"Error while calculating checksum. \n\nExpected: {0}\nActual: {1}"
-							.format(this._checksum, fileChecksum)
-						)
-					}
-				}
-			} else {
-				return this._downloader.get(this._url, function(progressEntity) {
-					progressBar.accept(progressEntity);
-				});
-			}
-		}
-	};
+var Downloader = function () {
+    var that = this;
+    that._downloader = Bean("downloader");
+    that._fetchFileNameFromUrl = function (url) {
+        return url.substring(url.lastIndexOf('/') + 1);
+    };
+    that.wizard = function (wizard) {
+        that._wizard = wizard;
+        return that;
+    };
+    that.url = function (url) {
+        that._url = url;
+        return that;
+    };
+    that.checksum = function (checksum) {
+        that._checksum = checksum;
+        return that;
+    };
+    that.message = function (message) {
+        that._message = message;
+        return that;
+    };
+    that.to = function (localFile) {
+        that._localFile = localFile;
+        return that;
+    };
+    that.get = function () {
+        if (!that._message) {
+            that._message = "Please wait while {0} is downloaded ...".format(that._fetchFileNameFromUrl(that._url));
+        }
+        var progressBar = that._wizard.progressBar(that._message);
+
+        if (that._localFile) {
+            that._downloader.get(that._url, that._localFile, function (progressEntity) {
+                progressBar.accept(progressEntity);
+            });
+
+            if (that._checksum) {
+                var fileChecksum = new Checksum()
+                    .wizard(that._wizard)
+                    .of(that._localFile)
+                    .get();
+
+                if (fileChecksum != that._checksum) {
+                    that._wizard.message(
+                        "Error while calculating checksum. \n\nExpected = {0}\nActual = {1}"
+                            .format(that._checksum, fileChecksum)
+                    )
+                }
+            }
+        } else {
+            return that._downloader.get(that._url, function (progressEntity) {
+                progressBar.accept(progressEntity);
+            });
+        }
+    }
+};

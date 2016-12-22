@@ -2,87 +2,84 @@ include(["Functions", "Filesystem", "Files"]);
 include(["Functions", "Filesystem", "Extract"]);
 include(["Functions", "Net", "Download"]);
 
-var Wine = {
-    _wineWebServiceUrl: Bean("propertyReader").getProperty("webservice.wine.url"),
-    _wineEnginesDirectory: Bean("propertyReader").getProperty("application.user.engines.wine"),
-    _winePrefixesDirectory: Bean("propertyReader").getProperty("application.user.wineprefix"),
-    _architecture: Bean("architectureFetcher").fetchCurrentArchitecture(),
-    _distribution: "staging",
-    _OperatingSystemFetcher: Bean("operatingSystemFetcher"),
-    _installWinePackage: function (setupWizard, winePackage, localDirectory) {
+var Wine = function () {
+    var that = this;
+    that._wineWebServiceUrl = Bean("propertyReader").getProperty("webservice.wine.url");
+    that._wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines.wine");
+    that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
+    that._architecture = Bean("architectureFetcher").fetchCurrentArchitecture();
+    that._distribution = "staging";
+    that._OperatingSystemFetcher = Bean("operatingSystemFetcher");
+    that._installWinePackage = function (setupWizard, winePackage, localDirectory) {
         var tmpFile = createTempFile("tar.gz");
 
-        Downloader
+        new Downloader()
             .wizard(setupWizard)
             .url(winePackage.url)
             .checksum(winePackage.sha1sum)
             .to(tmpFile)
             .get();
 
-        Extractor
+        new Extractor()
             .wizard(setupWizard)
             .archive(tmpFile)
             .to(localDirectory)
             .extract();
-    },
+    };
+    that._fetchFullDistributionName = function () {
+        var operatingSystem = that._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+        return that._distribution + "-" + operatingSystem + "-" + that._architecture.getNameForWinePackages();
+    };
+    that._fetchLocalDirectory = function () {
+        return that._wineEnginesDirectory + "/" + that._fetchFullDistributionName() + "/" + that._version;
+    };
+    that.wizard = function (wizard) {
+        that._wizard = wizard;
+        return that;
+    };
+    that.architecture = function (architecture) {
+        that._architecture = architecture;
+        return that;
+    };
+    that.distribution = function (distribution) {
+        that._distribution = distribution;
+        return that;
+    };
+    that.prefix = function (prefix) {
+        that._prefix = prefix;
+        return that;
+    };
+    that.workingDirectory = function (directory) {
+        that._directory = directory;
+        return that;
+    };
+    that.run = function (executable, args) {
+        that._wizard.wait("Please wait...");
 
-    _fetchFullDistributionName: function () {
-        var operatingSystem = this._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
-        return this._distribution + "-" + operatingSystem + "-" + this._architecture.getNameForWinePackages();
-    },
-
-    _fetchLocalDirectory: function () {
-        return this._wineEnginesDirectory + "/" + this._fetchFullDistributionName() + "/" + this._version;
-    },
-
-    wizard: function (wizard) {
-        this._wizard = wizard;
-        return this;
-    },
-    architecture: function (architecture) {
-        this._architecture = architecture;
-        return this;
-    },
-    distribution: function (distribution) {
-        this._distribution = distribution;
-        return this;
-    },
-    prefix: function (prefix) {
-        this._prefix = prefix;
-        return this;
-    },
-    workingDirectory: function (directory) {
-        this._directory = directory;
-        return this;
-    },
-    run: function (executable, args) {
-        this._wizard.wait("Please wait...");
-
-        var prefixDirectory = this._winePrefixesDirectory + "/" + this._prefix;
-        var wineBinary = this._fetchLocalDirectory() + "/bin/wine";
+        var prefixDirectory = that._winePrefixesDirectory + "/" + that._prefix;
+        var wineBinary = that._fetchLocalDirectory() + "/bin/wine";
         var processBuilder = new java.lang.ProcessBuilder(Java.to([wineBinary, executable].concat(args), "java.lang.String[]"));
 
-        if (this._directory) {
-            processBuilder.directory(this._directory);
+        if (that._directory) {
+            processBuilder.directory(that._directory);
         }
 
         processBuilder.environment().put("WINEPREFIX", prefixDirectory);
         processBuilder.start().waitFor();
 
-        return this;
-    },
-
-    "version": function (version) {
-        this._version = version;
-        var fullDistributionName = this._fetchFullDistributionName();
-        var localDirectory = this._fetchLocalDirectory();
-        var wizard = this._wizard;
+        return that;
+    };
+    that.version = function (version) {
+        that._version = version;
+        var fullDistributionName = that._fetchFullDistributionName();
+        var localDirectory = that._fetchLocalDirectory();
+        var wizard = that._wizard;
 
         if (!fileExists(localDirectory)) {
             var wineJson = JSON.parse(
-                Downloader
-                    .wizard(this._wizard)
-                    .url(this._wineWebServiceUrl)
+                new Downloader()
+                    .wizard(that._wizard)
+                    .url(that._wineWebServiceUrl)
                     .get()
             );
 
@@ -90,7 +87,7 @@ var Wine = {
                 if (distribution.name == fullDistributionName) {
                     distribution.packages.forEach(function (winePackage) {
                         if (winePackage.version == version) {
-                            this._installWinePackage(wizard, winePackage, localDirectory)
+                            that._installWinePackage(wizard, winePackage, localDirectory)
                         }
                     });
                 }
@@ -98,6 +95,6 @@ var Wine = {
 
         }
 
-        return this;
+        return that;
     }
 };
