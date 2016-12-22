@@ -1,6 +1,7 @@
 include(["Functions", "Net", "Download"]);
 include(["Functions", "Engines", "Wine"]);
 include(["Functions", "Filesystem", "Files"]);
+include(["Functions", "Shortcuts", "Wine"]);
 
 var setupWizard = SetupWizard("Photofiltre");
 
