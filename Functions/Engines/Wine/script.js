@@ -51,7 +51,7 @@ var Wine = function () {
 
         mkdir(that._prefixDirectory);
 
-        that._prefixConfiguration = that._configFactory.open(that._prefixDirectory);
+        that._prefixConfiguration = that._configFactory.open(that._prefixDirectory + "/playonlinux.cfg");
 
         if(!that._version) {
             that._version = that._prefixConfiguration.readValue("wineVersion");
