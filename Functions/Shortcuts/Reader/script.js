@@ -4,7 +4,7 @@ var _WineShortcutReader = function(shortcutContent) {
     this.shortcutContent = shortcutContent;
 
     this.run = function() {
-        var shortcutContent = JSON.parse(cat(filePath));
+        var shortcutContent = JSON.parse(this.shortcutContent);
 
         new Wine()
             .prefix(shortcutContent.winePrefix)
@@ -20,7 +20,7 @@ var ShortcutReader = function(shortcutContent) {
 
         var runner;
         if(shortcutContent.type == "WINE") {
-            runner = new _WineShortcutReader(filePath);
+            runner = new _WineShortcutReader(shortcutContent);
         }
 
         runner.run();
