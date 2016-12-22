@@ -24,7 +24,7 @@ new Wine()
 
 new WineShortcut()
     .name("Test")
-    .miniature(["Accessories", "Photofiltre"])
+    .miniature(["Graphics", "Photofiltre"])
     .create();
 
 setupWizard.close();
