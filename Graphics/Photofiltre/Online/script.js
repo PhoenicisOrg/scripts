@@ -24,7 +24,7 @@ new Wine()
     .wait();
 
 new WineShortcut()
-    .name("Test")
+    .name("Photofiltre")
     .search("PhotoFiltre.exe")
     .miniature(["Graphics", "Photofiltre"])
     .create();
