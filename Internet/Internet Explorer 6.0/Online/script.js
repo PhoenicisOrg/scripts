@@ -17,8 +17,8 @@ var setupFile = new Resource()
 
 new Wine()
     .wizard(setupWizard)
-    //.version(LATEST_STABLE_VERSION)
-    .version("1.7.12") // FIXME: Fix winebuild on Mac
+    .version(LATEST_STABLE_VERSION)
+    .distribution("upstream")
     .architecture("x86")
     .debug()
     .prefix("InternetExplorer6")
