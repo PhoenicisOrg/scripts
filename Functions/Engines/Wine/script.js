@@ -164,6 +164,7 @@ var Wine = function () {
     };
 
     that._installVersion = function() {
+        var version = that._version;
         print("Selected version: " + that._version);
 
         var fullDistributionName = that._fetchFullDistributionName();
@@ -175,9 +176,6 @@ var Wine = function () {
 
             var wineJson = JSON.parse(that.getAvailableVersions());
 
-            print(that.getAvailableVersions());
-            print(fullDistributionName);
-            print(version);
             wineJson.forEach(function (distribution) {
                 if (distribution.name == fullDistributionName) {
                     distribution.packages.forEach(function (winePackage) {
