@@ -10,7 +10,7 @@ var _WineShortcutReader = function(shortcutContent) {
             .prefix(shortcutContent.winePrefix)
             .debug(shortcutContent.wineDebug)
             .workingDirectory(shortcutContent.workingDirectory)
-            .run(shortcutContent.executable, shortcutContent.arguments)
+            .run(shortcutContent.executable, shortcutContent.arguments ? shortcutContent.arguments : [])
     }
 };
 
