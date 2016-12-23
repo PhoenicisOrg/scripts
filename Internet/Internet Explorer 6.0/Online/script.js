@@ -15,18 +15,24 @@ var setupFile = new Resource()
     .get();
 
 
-new Wine()
+var wine = new Wine()
     .wizard(setupWizard)
     .version(LATEST_STABLE_VERSION)
     .distribution("upstream")
     .architecture("x86")
     .debug()
     .prefix("InternetExplorer6")
-    .run(setupFile)
-    .wait()
-    .runInsidePrefix("IE\ 6.0\ Full/IE6SETUP.EXE")
-    .wait()
-    .run("iexplore", ["-unregserver"])
+    .run(setupFile).wait()
+    .run("iexplore", ["-unregserver"]);
+
+remove(wine.prefixDirectory + "/drive_c/windows/system32/browseui.dll");
+remove(wine.prefixDirectory + "/drive_c/windows/system32/inseng.dll");
+remove(wine.prefixDirectory + "/drive_c/windows/system32/inetcpl.dll");
+
+wine.overrideDLL()
+        .set("native", ["inseng"])
+        .do()
+    .runInsidePrefix("IE\ 6.0\ Full/IE6SETUP.EXE").wait()
     .overrideDLL()
         .set("native,builtin", [
                 "inetcpl.cpl",

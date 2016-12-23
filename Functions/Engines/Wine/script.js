@@ -49,7 +49,7 @@ var Wine = function () {
     that._wineServer = function(parameter) {
         var processBuilder = new java.lang.ProcessBuilder(Java.to([that._fetchWineServerBinary(), parameter], "java.lang.String[]"));
         var environment = processBuilder.environment();
-        environment.put("WINEPREFIX", that._prefixDirectory);
+        environment.put("WINEPREFIX", that.prefixDirectory);
         processBuilder.inheritIO();
         var wineServerProcess = processBuilder.start();
         wineServerProcess.waitFor();
@@ -74,13 +74,14 @@ var Wine = function () {
         that._distribution = distribution;
         return that;
     };
+
     that.prefix = function (prefix) {
         that._prefix = prefix;
-        that._prefixDirectory = that._winePrefixesDirectory + "/" + that._prefix;
+        that.prefixDirectory = that._winePrefixesDirectory + "/" + that._prefix;
 
-        mkdir(that._prefixDirectory);
+        mkdir(that.prefixDirectory);
 
-        that._prefixConfiguration = that._configFactory.open(that._prefixDirectory + "/playonlinux.cfg");
+        that._prefixConfiguration = that._configFactory.open(that.prefixDirectory + "/playonlinux.cfg");
 
         if (!that._version) {
             that._version = that._prefixConfiguration.readValue("wineVersion");
@@ -111,7 +112,7 @@ var Wine = function () {
     };
 
     that.runInsidePrefix = function(executable, args) {
-        return that.run(that._prefixDirectory + "/" + executable, args);
+        return that.run(that.prefixDirectory + "/" + executable, args);
     };
 
     that.run = function (executable, args) {
@@ -130,13 +131,13 @@ var Wine = function () {
         if (that._directory) {
             processBuilder.directory(new java.io.File(that._directory));
         } else {
-            processBuilder.directory(new java.io.File(that._prefixDirectory, "drive_c"));
+            processBuilder.directory(new java.io.File(that.prefixDirectory, "drive_c"));
         }
 
         processBuilder.inheritIO();
 
         var environment = processBuilder.environment();
-        environment.put("WINEPREFIX", that._prefixDirectory);
+        environment.put("WINEPREFIX", that.prefixDirectory);
 
         if(that._wineDebug) {
             environment.put("WINEDEBUG", that._wineDebug);

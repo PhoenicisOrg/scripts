@@ -13,6 +13,10 @@ var cat = function(filePath) {
     return Bean("fileUtilities").getFileContent(new java.io.File(filePath));
 };
 
+var remove = function(filePath) {
+    return Bean("fileUtilities").remove(new java.io.File(filePath));
+};
+
 var writeToFile = function(filePath, content) {
     Bean("fileUtilities").writeToFile(new java.io.File(filePath), content);
 };
