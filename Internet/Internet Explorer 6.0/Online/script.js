@@ -22,6 +22,7 @@ var wine = new Wine()
     .prefix("InternetExplorer6")
     .create().wait();
 
+remove(wine.prefixDirectory + "/drive_c/IE 6.0 Full/");
 remove(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Internet Explorer/iexplore.exe");
 remove(wine.prefixDirectory + "/drive_c/windows/system32/browseui.dll");
 remove(wine.prefixDirectory + "/drive_c/windows/system32/inseng.dll");
