@@ -1,4 +1,4 @@
-include(["Functions", "Net", "Download"]);
+include(["Functions", "Net", "Resource"]);
 include(["Functions", "Engines", "Wine"]);
 include(["Functions", "Filesystem", "Files"]);
 include(["Functions", "Shortcuts", "Wine"]);
