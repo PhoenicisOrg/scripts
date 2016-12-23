@@ -81,7 +81,7 @@ new WineShortcut()
     .miniature(["Internet", "Internet Explorer 6.0"])
     .create();
 
-var registrySettings = new AppResource().application("Internet Explorer 6.0").get("ie6.reg");
+var registrySettings = new AppResource().application(["Internet", "Internet Explorer 6.0"]).get("ie6.reg");
 wine.regedit().patch(registrySettings);
 
 setupWizard.close();
