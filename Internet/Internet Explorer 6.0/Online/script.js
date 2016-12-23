@@ -24,9 +24,12 @@ var wine = new Wine()
 
 remove(wine.prefixDirectory + "/drive_c/IE 6.0 Full/");
 remove(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Internet Explorer/iexplore.exe");
-remove(wine.prefixDirectory + "/drive_c/windows/system32/browseui.dll");
-remove(wine.prefixDirectory + "/drive_c/windows/system32/inseng.dll");
-remove(wine.prefixDirectory + "/drive_c/windows/system32/inetcpl.dll");
+
+["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon", "browseui", "iseng", "inetcpl"]
+    .forEach(function(dll) {
+            remove(wine.prefixDirectory + "/drive_c/windows/system32/" + dll + ".dll");
+    });
+
 
 wine.run(setupFile).wait()
     .run("iexplore", ["-unregserver"])
