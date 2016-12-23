@@ -111,6 +111,8 @@ var Wine = function () {
     };
 
     that.run = function (executable, args) {
+        that._installVersion();
+
         if(that._wizard) {
             that._wizard.wait("Please wait...");
         }
@@ -158,6 +160,10 @@ var Wine = function () {
 
     that.version = function (version) {
         that._version = version;
+        return that;
+    };
+
+    that._installVersion = function() {
         print("Selected version: " + that._version);
 
         var fullDistributionName = that._fetchFullDistributionName();
@@ -185,8 +191,6 @@ var Wine = function () {
             // FIXME : Not found case!
 
         }
-
-        return that;
     }
 };
 
