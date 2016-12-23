@@ -227,8 +227,6 @@ var Wine = function () {
 
     that._installVersion = function() {
         var version = that._version;
-        print("Selected version: " + that._version);
-
         var fullDistributionName = that._fetchFullDistributionName();
         var localDirectory = that._fetchLocalDirectory();
         var wizard = that._wizard;
@@ -324,6 +322,9 @@ Wine.prototype.regedit = function() {
     };
 
     this.patch = function(patchContent) {
+        if(patchContent.getClass().getCanonicalName() == "byte[]") {
+            patchContent = new java.lang.String(patchContent);
+        }
         var tmpFile = createTempFile("reg");
         writeToFile(tmpFile, patchContent);
         _wine.run("regedit", [tmpFile])._silentWait();
