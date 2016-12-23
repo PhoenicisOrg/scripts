@@ -137,10 +137,6 @@ var Wine = function () {
 
         that._installVersion();
 
-        if(that._wizard) {
-            that._wizard.wait("Please wait...");
-        }
-
         var wineBinary = that._fetchLocalDirectory() + "/bin/wine";
         var processBuilder = new java.lang.ProcessBuilder(Java.to([wineBinary, executable].concat(args), "java.lang.String[]"));
 
@@ -189,8 +185,11 @@ var Wine = function () {
      * @returns {Wine}
      */
     that.wait = function () {
-        that._wineServer("-w");
-        return that;
+        if(that._wizard) {
+            that._wizard.wait("Please wait...");
+        }
+
+        return that._silentWait();
     };
 
     /**
@@ -271,10 +270,17 @@ var Wine = function () {
             .to(localDirectory)
             .extract();
     };
+
+    that._silentWait = function() {
+        that._wineServer("-w");
+        return that;
+    };
+
     that._fetchFullDistributionName = function () {
         var operatingSystem = that._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
         return that._distribution + "-" + operatingSystem + "-" + that._architecture;
     };
+
     that._fetchLocalDirectory = function () {
         return that._wineEnginesDirectory + "/" + that._fetchFullDistributionName() + "/" + that._version;
     };
@@ -297,7 +303,7 @@ Wine.prototype.regsvr32 = function() {
     var _wine = this;
 
     this.install = function(dll) {
-        _wine.run("regsvr32", ["/i", dll]).wait();
+        _wine.run("regsvr32", ["/i", dll])._silentWait();
         return _wine;
     };
 
@@ -310,9 +316,10 @@ Wine.prototype.regsvr32 = function() {
  * @returns {Wine}
  */
 Wine.prototype.regedit = function(args) {
-    this.run("regedit", args);
+    this.run("regedit", args)._silentWait();
     return this;
 };
+
 
 var OverrideDLL = function() {
     var that = this;
