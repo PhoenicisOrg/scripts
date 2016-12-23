@@ -71,6 +71,8 @@ librairiesToRegister.forEach(function(dll) {
     i++;
 });
 
+remove(wine.prefixDirectory + "/drive_c/windows/system32/iexplore.exe");
+
 new WineShortcut()
     .name("Internet Explorer 6.0")
     .prefix("InternetExplorer6")
