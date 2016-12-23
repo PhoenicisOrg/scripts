@@ -163,6 +163,9 @@ var Wine = function () {
         }
     };
 
+    that.create = function() {
+        that.run("wineboot");
+    };
 
     that.getProgramFiles = function() {
         var programFilesName = that.run("cmd", ["/c", "echo", "%ProgramFiles%"], true);
