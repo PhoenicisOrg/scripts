@@ -52,6 +52,7 @@ var WineShortcut = function () {
             .withName(that._name)
             .withDescription(that._description)
             .withScript(JSON.stringify({
+                type: "WINE",
                 wineDebug: "-all",
                 winePrefix: that._prefix,
                 arguments: that._arguments,
