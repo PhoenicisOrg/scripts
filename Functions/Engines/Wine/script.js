@@ -113,7 +113,7 @@ var Wine = function () {
      * @param args
      */
     that.runInsidePrefix = function(executable, args) {
-        return that.run(that.prefixDirectory + "/" + executable, args);
+        return that.run(that.prefixDirectory + "/drive_c/" + executable, args);
     };
 
     /**
