@@ -45,6 +45,8 @@ var WineShortcut = function () {
 
     that.create = function () {
         var _shortcutPrefixDirectory = that._winePrefixesDirectory + "/" + that._prefix;
+        print(_shortcutPrefixDirectory);
+        print(that._search);
         var executables = that._fileSearcher.search(_shortcutPrefixDirectory, that._search);
 
         var builder = new com.phoenicis.library.dto.ShortcutDTO.Builder()
