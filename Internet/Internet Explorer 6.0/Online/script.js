@@ -24,6 +24,8 @@ new Wine()
     .prefix("InternetExplorer6")
     .run(setupFile)
     .wait()
+    .runInsidePrefix("IE\ 6.0\ Full/IE6SETUP.EXE")
+    .wait()
     .run("iexplore", ["-unregserver"])
     .overrideDLL()
         .set("native,builtin", [

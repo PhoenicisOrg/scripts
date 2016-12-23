@@ -110,6 +110,10 @@ var Wine = function () {
         return that;
     };
 
+    that.runInsidePrefix = function(executable, args) {
+        return that.run(that._prefixDirectory + "/" + executable, args);
+    };
+
     that.run = function (executable, args) {
         if(!args) {
             args = [];
@@ -126,7 +130,7 @@ var Wine = function () {
         if (that._directory) {
             processBuilder.directory(new java.io.File(that._directory));
         } else {
-            processBuilder.directory(new java.io.File(that._prefixDirectory));
+            processBuilder.directory(new java.io.File(that._prefixDirectory, "drive_c"));
         }
 
         processBuilder.inheritIO();
