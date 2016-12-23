@@ -44,7 +44,7 @@ var WineShortcut = function () {
     };
 
     that.create = function () {
-        var executable = _fileSearcher.search(that._search);
+        var executable = that._fileSearcher.search(that._search);
 
         var builder = new com.phoenicis.library.dto.ShortcutDTO.Builder()
             .withName(that._name)
