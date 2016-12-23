@@ -96,7 +96,7 @@ var Wine = function () {
         var processBuilder = new java.lang.ProcessBuilder(Java.to([wineBinary, executable].concat(args), "java.lang.String[]"));
 
         if (that._directory) {
-            processBuilder.directory(that._directory);
+            processBuilder.directory(new java.io.File(that._directory));
         }
 
         var environment = processBuilder.environment();
