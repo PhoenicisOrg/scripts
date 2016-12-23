@@ -47,6 +47,10 @@ var Wine = function () {
      * @returns {Wine}
      */
     that.architecture = function (architecture) {
+        if(that._prefixConfiguration) {
+            that._prefixConfiguration.writeValue("wineArchitecture", architecture);
+        }
+
         that._architecture = architecture;
         return that;
     };
@@ -57,6 +61,10 @@ var Wine = function () {
      * @returns {Wine}
      */
     that.distribution = function (distribution) {
+        if(that._prefixConfiguration) {
+            that._prefixConfiguration.writeValue("wineDistribution", distribution);
+        }
+
         that._distribution = distribution;
         return that;
     };
@@ -211,6 +219,10 @@ var Wine = function () {
      * @returns {Wine}
      */
     that.version = function (version) {
+        if(that._prefixConfiguration) {
+            that._prefixConfiguration.writeValue("wineVersion", version);
+        }
+
         that._version = version;
         return that;
     };
@@ -241,8 +253,7 @@ var Wine = function () {
             // FIXME : Not found case!
 
         }
-    }
-
+    };
 
 
     that._installWinePackage = function (setupWizard, winePackage, localDirectory) {
