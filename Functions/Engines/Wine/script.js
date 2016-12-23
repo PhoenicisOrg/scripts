@@ -128,15 +128,15 @@ var Wine = function () {
     };
 
     that.version = function (version) {
-        print("Selected version: " + that.version);
-
         that._version = version;
+        print("Selected version: " + that._version);
+
         var fullDistributionName = that._fetchFullDistributionName();
         var localDirectory = that._fetchLocalDirectory();
         var wizard = that._wizard;
 
         if (!fileExists(localDirectory)) {
-            print("Installing version: " + that.version);
+            print("Installing version: " + that._version);
 
             var wineJson = JSON.parse(that.getAvailableVersions());
 
