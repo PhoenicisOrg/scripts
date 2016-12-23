@@ -295,11 +295,15 @@ var Wine = function () {
 
 Wine.prototype.regsvr32 = function() {
     var _wine = this;
+
     this.install = function(dll) {
         _wine.run("regsvr32", ["/i", dll]);
         return _wine;
-    }
+    };
+
+    return this;
 };
+
 /**
  * Regedit support
  * @param args
