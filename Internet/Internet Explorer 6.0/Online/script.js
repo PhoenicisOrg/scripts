@@ -32,9 +32,15 @@ remove(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Internet 
             remove(wine.prefixDirectory + "/drive_c/windows/system32/" + dll + ".dll");
     });
 
+wine.run(setupFile).wait();
 
-wine.run(setupFile).wait()
-    .run("iexplore", ["-unregserver"])
+new CabExtract()
+    .wizard(setupWizard)
+    .archive(wine.prefixDirectory + "/drive_c/IE 6.0 Full/ACTSETUP.CAB")
+    .to(wine.prefixDirectory + "/drive_c/windows/system32/")
+    .extract(["-F", "inseng.dll"]);
+
+wine.run("iexplore", ["-unregserver"])
     .overrideDLL()
         .set("native", ["inseng"])
         .do()
