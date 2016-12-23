@@ -128,7 +128,10 @@ var Wine = function () {
 
         var environment = processBuilder.environment();
         environment.put("WINEPREFIX", that._prefixDirectory);
-        environment.put("WINEDEBUG", that._wineDebug);
+
+        if(that._wineDebug) {
+            environment.put("WINEDEBUG", that._wineDebug);
+        }
 
         that._process = processBuilder.start();
 
