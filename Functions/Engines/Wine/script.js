@@ -18,6 +18,224 @@ var Wine = function () {
     that._OperatingSystemFetcher = Bean("operatingSystemFetcher");
     that._wineDebug = "-all";
 
+    /**
+     *
+     * @param wizard
+     * @returns {Wine}
+     */
+    that.wizard = function (wizard) {
+        that._wizard = wizard;
+        return that;
+    };
+
+    /**
+     *
+     * @param debug
+     * @returns {Wine}
+     */
+    that.debug = function (debug) {
+        if(!debug) {
+            that._wineDebug = "";
+        }
+        that._wineDebug = debug;
+        return that;
+    };
+
+    /**
+     *
+     * @param architecture
+     * @returns {Wine}
+     */
+    that.architecture = function (architecture) {
+        that._architecture = architecture;
+        return that;
+    };
+
+    /**
+     *
+     * @param distribution
+     * @returns {Wine}
+     */
+    that.distribution = function (distribution) {
+        that._distribution = distribution;
+        return that;
+    };
+
+    /**
+     *
+     * @param prefix
+     * @returns {Wine}
+     */
+    that.prefix = function (prefix) {
+        that._prefix = prefix;
+        that.prefixDirectory = that._winePrefixesDirectory + "/" + that._prefix;
+
+        mkdir(that.prefixDirectory);
+
+        that._prefixConfiguration = that._configFactory.open(that.prefixDirectory + "/playonlinux.cfg");
+
+        if (!that._version) {
+            that._version = that._prefixConfiguration.readValue("wineVersion");
+        } else {
+            that._prefixConfiguration.writeValue("wineVersion", that._version);
+        }
+
+        if (!that._distribution) {
+            that._distribution = that._prefixConfiguration.readValue("wineDistribution");
+        } else {
+            that._prefixConfiguration.writeValue("wineDistribution", that._distribution);
+        }
+
+        if (!that._architecture) {
+            var defaultArchitecture = Bean("architectureFetcher").fetchCurrentArchitecture().getNameForWinePackages();
+            that._architecture = that._prefixConfiguration.readValue("wineArchitecture", defaultArchitecture);
+        }
+
+        that._prefixConfiguration.writeValue("wineArchitecture", that._architecture);
+
+
+        return that;
+    };
+
+    /**
+     *
+     * @param directory
+     * @returns {Wine}
+     */
+    that.workingDirectory = function (directory) {
+        that._directory = directory;
+        return that;
+    };
+
+    /**
+     *
+     * @param executable
+     * @param args
+     */
+    that.runInsidePrefix = function(executable, args) {
+        return that.run(that.prefixDirectory + "/" + executable, args);
+    };
+
+    /**
+     *
+     * @param executable
+     * @param args
+     * @param captureOutput
+     * @returns {Wine}
+     */
+    that.run = function (executable, args, captureOutput) {
+        if(!args) {
+            args = [];
+        }
+
+        that._installVersion();
+
+        if(that._wizard) {
+            that._wizard.wait("Please wait...");
+        }
+
+        var wineBinary = that._fetchLocalDirectory() + "/bin/wine";
+        var processBuilder = new java.lang.ProcessBuilder(Java.to([wineBinary, executable].concat(args), "java.lang.String[]"));
+
+        if (that._directory) {
+            processBuilder.directory(new java.io.File(that._directory));
+        } else {
+            processBuilder.directory(new java.io.File(that.prefixDirectory, "drive_c"));
+        }
+
+        if(!captureOutput) {
+            processBuilder.inheritIO();
+        }
+
+        var environment = processBuilder.environment();
+        environment.put("WINEPREFIX", that.prefixDirectory);
+
+        if(that._wineDebug) {
+            environment.put("WINEDEBUG", that._wineDebug);
+        }
+
+        that._process = processBuilder.start();
+
+        if(captureOutput) {
+            return org.apache.commons.io.IOUtils.toString(that._process.getInputStream());
+        } else {
+            return that;
+        }
+    };
+
+
+    that.getProgramFiles = function() {
+        return run("cmd", ["/c", "echo", "%ProgramFiles%"], true);
+    };
+
+    /**
+     *
+     * @returns {Wine}
+     */
+    that.wait = function () {
+        that._wineServer("-w");
+        return that;
+    };
+
+    /**
+     *
+     * @returns {Wine}
+     */
+    that.kill = function() {
+        that._wineServer("-k");
+        return that;
+    };
+
+    /**
+     *
+     */
+    that.getAvailableVersions = function () {
+        return new Downloader()
+            .wizard(that._wizard)
+            .url(that._wineWebServiceUrl)
+            .get()
+    };
+
+    /**
+     *
+     * @param version
+     * @returns {Wine}
+     */
+    that.version = function (version) {
+        that._version = version;
+        return that;
+    };
+
+    that._installVersion = function() {
+        var version = that._version;
+        print("Selected version: " + that._version);
+
+        var fullDistributionName = that._fetchFullDistributionName();
+        var localDirectory = that._fetchLocalDirectory();
+        var wizard = that._wizard;
+
+        if (!fileExists(localDirectory)) {
+            print("Installing version: " + that._version);
+
+            var wineJson = JSON.parse(that.getAvailableVersions());
+
+            wineJson.forEach(function (distribution) {
+                if (distribution.name == fullDistributionName) {
+                    distribution.packages.forEach(function (winePackage) {
+                        if (winePackage.version == version) {
+                            that._installWinePackage(wizard, winePackage, localDirectory)
+                        }
+                    });
+                }
+            });
+
+            // FIXME : Not found case!
+
+        }
+    }
+
+
+
     that._installWinePackage = function (setupWizard, winePackage, localDirectory) {
         var tmpFile = createTempFile("tar.gz");
 
@@ -54,150 +272,6 @@ var Wine = function () {
         var wineServerProcess = processBuilder.start();
         wineServerProcess.waitFor();
     };
-
-    that.wizard = function (wizard) {
-        that._wizard = wizard;
-        return that;
-    };
-    that.debug = function (debug) {
-        if(!debug) {
-            that._wineDebug = "";
-        }
-        that._wineDebug = debug;
-        return that;
-    };
-    that.architecture = function (architecture) {
-        that._architecture = architecture;
-        return that;
-    };
-    that.distribution = function (distribution) {
-        that._distribution = distribution;
-        return that;
-    };
-
-    that.prefix = function (prefix) {
-        that._prefix = prefix;
-        that.prefixDirectory = that._winePrefixesDirectory + "/" + that._prefix;
-
-        mkdir(that.prefixDirectory);
-
-        that._prefixConfiguration = that._configFactory.open(that.prefixDirectory + "/playonlinux.cfg");
-
-        if (!that._version) {
-            that._version = that._prefixConfiguration.readValue("wineVersion");
-        } else {
-            that._prefixConfiguration.writeValue("wineVersion", that._version);
-        }
-
-        if (!that._distribution) {
-            that._distribution = that._prefixConfiguration.readValue("wineDistribution");
-        } else {
-            that._prefixConfiguration.writeValue("wineDistribution", that._distribution);
-        }
-
-        if (!that._architecture) {
-            var defaultArchitecture = Bean("architectureFetcher").fetchCurrentArchitecture().getNameForWinePackages();
-            that._architecture = that._prefixConfiguration.readValue("wineArchitecture", defaultArchitecture);
-        }
-
-        that._prefixConfiguration.writeValue("wineArchitecture", that._architecture);
-
-
-        return that;
-    };
-
-    that.workingDirectory = function (directory) {
-        that._directory = directory;
-        return that;
-    };
-
-    that.runInsidePrefix = function(executable, args) {
-        return that.run(that.prefixDirectory + "/" + executable, args);
-    };
-
-    that.run = function (executable, args) {
-        if(!args) {
-            args = [];
-        }
-        that._installVersion();
-
-        if(that._wizard) {
-            that._wizard.wait("Please wait...");
-        }
-
-        var wineBinary = that._fetchLocalDirectory() + "/bin/wine";
-        var processBuilder = new java.lang.ProcessBuilder(Java.to([wineBinary, executable].concat(args), "java.lang.String[]"));
-
-        if (that._directory) {
-            processBuilder.directory(new java.io.File(that._directory));
-        } else {
-            processBuilder.directory(new java.io.File(that.prefixDirectory, "drive_c"));
-        }
-
-        processBuilder.inheritIO();
-
-        var environment = processBuilder.environment();
-        environment.put("WINEPREFIX", that.prefixDirectory);
-
-        if(that._wineDebug) {
-            environment.put("WINEDEBUG", that._wineDebug);
-        }
-
-        that._process = processBuilder.start();
-
-        return that;
-    };
-
-
-    that.wait = function () {
-        that._wineServer("-w");
-        return that;
-    };
-
-    that.kill = function() {
-        that._wineServer("-k");
-        return that;
-    };
-
-    that.getAvailableVersions = function () {
-        return new Downloader()
-            .wizard(that._wizard)
-            .url(that._wineWebServiceUrl)
-            .get()
-    };
-
-    that.version = function (version) {
-        that._version = version;
-        return that;
-    };
-
-    that._installVersion = function() {
-        var version = that._version;
-        print("Selected version: " + that._version);
-
-        var fullDistributionName = that._fetchFullDistributionName();
-        var localDirectory = that._fetchLocalDirectory();
-        var wizard = that._wizard;
-
-        if (!fileExists(localDirectory)) {
-            print("Installing version: " + that._version);
-
-            var wineJson = JSON.parse(that.getAvailableVersions());
-
-            wineJson.forEach(function (distribution) {
-                if (distribution.name == fullDistributionName) {
-                    distribution.packages.forEach(function (winePackage) {
-                        if (winePackage.version == version) {
-                            that._installWinePackage(wizard, winePackage, localDirectory)
-                        }
-                    });
-                }
-            });
-
-            // FIXME : Not found case!
-
-        }
-    }
 };
 
 /**

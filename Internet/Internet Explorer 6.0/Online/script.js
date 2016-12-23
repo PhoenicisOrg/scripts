@@ -14,7 +14,6 @@ var setupFile = new Resource()
     .name("ie60.exe")
     .get();
 
-
 var wine = new Wine()
     .wizard(setupWizard)
     .version(LATEST_STABLE_VERSION)
