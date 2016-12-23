@@ -45,7 +45,7 @@ var WineShortcut = function () {
 
     that.create = function () {
         var _shortcutPrefixDirectory = that._winePrefixesDirectory + "/" + that._prefix;
-        var executable = that._fileSearcher.search(_shortcutPrefixDirectory, that._search);
+        var executables = that._fileSearcher.search(_shortcutPrefixDirectory, that._search);
 
         var builder = new com.phoenicis.library.dto.ShortcutDTO.Builder()
             .withName(that._name)
@@ -54,8 +54,8 @@ var WineShortcut = function () {
                 wineDebug: "-all",
                 winePrefix: that._prefix,
                 arguments: that._arguments,
-                workingDirectory:executable.getParentFile().getAbsolutePath(),
-                executable: executable.getAbsolutePath()
+                workingDirectory:executables[0].getParentFile().getAbsolutePath(),
+                executable: executables[0].getAbsolutePath()
             }));
 
         if(that._miniature) {
