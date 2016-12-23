@@ -2,6 +2,7 @@ include(["Functions", "Net", "Resource"]);
 include(["Functions", "Engines", "Wine"]);
 include(["Functions", "Filesystem", "Files"]);
 include(["Functions", "Shortcuts", "Wine"]);
+include(["Functions", "Libs", "msls31"]);
 
 var setupWizard = SetupWizard("Internet Explorer 6.0");
 
@@ -20,6 +21,7 @@ var wine = new Wine()
     .distribution("upstream")
     .architecture("x86")
     .prefix("InternetExplorer6")
+    .msls31()
     .create().wait();
 
 remove(wine.prefixDirectory + "/drive_c/IE 6.0 Full/");
