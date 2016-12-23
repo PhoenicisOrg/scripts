@@ -165,6 +165,7 @@ var Wine = function () {
 
     that.create = function() {
         that.run("wineboot");
+        return that;
     };
 
     that.getProgramFiles = function() {
