@@ -1,8 +1,14 @@
 include(["Functions", "Net", "Download"]);
+include(["Functions", "Filesystem", "Files"]);
 
 var Resource = function () {
     var that = this;
     this._resourcesPath = Bean("propertyReader").getProperty("application.user.resources");
+
+    that.wizard = function(wizard) {
+        that._wizard = wizard;
+        return that;
+    };
 
     that.name = function (name) {
         that._name = name;
@@ -24,6 +30,7 @@ var Resource = function () {
             that._message = "Please wait while {0} is downloaded...".format(that._name);
         }
 
+        mkdir(that._resourcesPath);
         var resourcePath = that._resourcesPath + "/" + that._name;
 
         if (fileExists(resourcePath)) {
