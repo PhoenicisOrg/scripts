@@ -51,17 +51,24 @@ wine.run("iexplore", ["-unregserver"])
                 "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"
         ]).do();
 
-["actxprxy.dll", "browseui.dll", "browsewm.dll", "cdfview.dll", "ddraw.dll",
-"dispex.dll", "dsound.dll", "iedkcs32.dll", "iepeers.dll", "iesetup.dll", "imgutil.dll",
-"inetcomm.dll", "inetcpl.cpl", "inseng.dll", "isetup.dll", "jscript.dll", "laprxy.dll",
-"mlang.dll", "mshtml.dll", "mshtmled.dll", "msi.dll", "msident.dll",
-"msoeacct.dll", "msrating.dll", "mstime.dll", "msxml3.dll", "occache.dll",
-"ole32.dll", "oleaut32.dll", "olepro32.dll", "pngfilt.dll", "quartz.dll",
-"rpcrt4.dll", "rsabase.dll", "rsaenh.dll", "scrobj.dll", "scrrun.dll",
-"shdocvw.dll", "shell32.dll", "urlmon.dll", "vbscript.dll", "webcheck.dll",
-"wshcon.dll", "wshext.dll", "asctrls.ocx", "hhctrl.ocx", "mscomct2.ocx",
-"plugin.ocx", "proctexe.ocx", "tdc.ocx", "webcheck.dll", "wshom.ocx"].forEach(function(dll) {
-    wine.regsvr32().install(dll)
+var librairiesToRegister = ["actxprxy.dll", "browseui.dll", "browsewm.dll", "cdfview.dll", "ddraw.dll",
+    "dispex.dll", "dsound.dll", "iedkcs32.dll", "iepeers.dll", "iesetup.dll", "imgutil.dll",
+    "inetcomm.dll", "inetcpl.cpl", "inseng.dll", "isetup.dll", "jscript.dll", "laprxy.dll",
+    "mlang.dll", "mshtml.dll", "mshtmled.dll", "msi.dll", "msident.dll",
+    "msoeacct.dll", "msrating.dll", "mstime.dll", "msxml3.dll", "occache.dll",
+    "ole32.dll", "oleaut32.dll", "olepro32.dll", "pngfilt.dll", "quartz.dll",
+    "rpcrt4.dll", "rsabase.dll", "rsaenh.dll", "scrobj.dll", "scrrun.dll",
+    "shdocvw.dll", "shell32.dll", "urlmon.dll", "vbscript.dll", "webcheck.dll",
+    "wshcon.dll", "wshext.dll", "asctrls.ocx", "hhctrl.ocx", "mscomct2.ocx",
+    "plugin.ocx", "proctexe.ocx", "tdc.ocx", "webcheck.dll", "wshom.ocx"];
+
+var progressBar = setupWizard.progressBar("Please wait...");
+var i = 1;
+librairiesToRegister.forEach(function(dll) {
+    progressBar.setProgressPercentage(i * 100 / librairiesToRegister.length);
+    progressBar.setText("Installing " + dll);
+    wine.regsvr32().install(dll);
+    i++;
 });
 
 new WineShortcut()

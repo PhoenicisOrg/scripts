@@ -34,6 +34,7 @@ var Downloader = function () {
         if(that._wizard) {
             var progressBar = that._wizard.progressBar(that._message);
         }
+
         if (that._localFile) {
             that._downloader.get(that._url, that._localFile, function (progressEntity) {
                 progressBar.accept(progressEntity);
