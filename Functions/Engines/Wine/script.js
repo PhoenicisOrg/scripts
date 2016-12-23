@@ -2,6 +2,12 @@ include(["Functions", "Filesystem", "Files"]);
 include(["Functions", "Filesystem", "Extract"]);
 include(["Functions", "Net", "Download"]);
 
+LATEST_STABLE_VERSION = "1.8.6";
+
+/**
+ * Wine main prototype
+ * @constructor
+ */
 var Wine = function () {
     var that = this;
     that._wineWebServiceUrl = Bean("propertyReader").getProperty("webservice.wine.url");
@@ -144,4 +150,47 @@ var Wine = function () {
 
         return that;
     }
+};
+
+/**
+ * Regedit support
+ * @param args
+ * @returns {Wine}
+ */
+Wine.prototype.regedit = function(args) {
+    this.run("regedit", args);
+    return this;
+};
+
+var OverrideDLL = function() {
+    var that = this;
+    that._regeditFileContent =
+        "REGEDIT4\n" +
+        "\n"+
+        "[HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides]\n";
+
+    that.wine = function(wine) {
+        that._wine = wine;
+        return that;
+    };
+
+    that.set = function(mode, libraries) {
+        libraries.forEach(function(library) {
+            that._regeditFileContent += "\"*"+library+"\"=\""+mode+"\"\n";
+        });
+
+        return that;
+    };
+
+    that.do =  function() {
+        var tmpFile = createTempFile("reg");
+        writeToFile(tmpFile, that._regeditFileContent);
+        that._wine.regedit(tmpFile);
+        return that._wine;
+    }
+};
+
+Wine.prototype.overrideDLL = function() {
+    return new OverrideDLL()
+        .wine(this)
 };

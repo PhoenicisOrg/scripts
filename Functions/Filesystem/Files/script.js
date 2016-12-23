@@ -13,8 +13,14 @@ var cat = function(filePath) {
     return Bean("fileUtilities").getFileContent(new java.io.File(filePath));
 };
 
+var writeToFile = function(filePath, content) {
+    Bean("fileUtilities").writeToFile(new java.io.File(filePath), content);
+};
+
 var createTempFile = function (extension) {
-    return java.io.File.createTempFile("playonlinux", "." + extension).getAbsolutePath();
+    var tmpFile = java.io.File.createTempFile("playonlinux", "." + extension);
+    tmpFile.deleteOnExit();
+    return tmpFile.getAbsolutePath();
 };
 
 var Checksum = function () {
