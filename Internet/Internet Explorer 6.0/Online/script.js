@@ -19,11 +19,11 @@ var wine = new Wine()
     .version(LATEST_STABLE_VERSION)
     .distribution("upstream")
     .architecture("x86")
-    .debug()
     .prefix("InternetExplorer6")
     .run(setupFile).wait()
     .run("iexplore", ["-unregserver"]);
 
+remove(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Internet Explorer/iexplore.exe");
 remove(wine.prefixDirectory + "/drive_c/windows/system32/browseui.dll");
 remove(wine.prefixDirectory + "/drive_c/windows/system32/inseng.dll");
 remove(wine.prefixDirectory + "/drive_c/windows/system32/inetcpl.dll");

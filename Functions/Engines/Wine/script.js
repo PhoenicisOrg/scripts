@@ -165,7 +165,12 @@ var Wine = function () {
 
 
     that.getProgramFiles = function() {
-        return run("cmd", ["/c", "echo", "%ProgramFiles%"], true);
+        var programFilesName = that.run("cmd", ["/c", "echo", "%ProgramFiles%"], true);
+        if(programFilesName == "%ProgramFiles%") {
+            return "Program Files"
+        } else {
+            return org.apache.commons.io.FilenameUtils.getBaseName(programFilesName);
+        }
     };
 
     /**
