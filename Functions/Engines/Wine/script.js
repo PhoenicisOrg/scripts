@@ -41,6 +41,19 @@ var Wine = function () {
     that._fetchLocalDirectory = function () {
         return that._wineEnginesDirectory + "/" + that._fetchFullDistributionName() + "/" + that._version;
     };
+
+    that._fetchWineServerBinary = function() {
+        return that._fetchLocalDirectory() + "/bin/wineserver";
+    };
+
+    that._wineServer = function(parameter) {
+        var processBuilder = new java.lang.ProcessBuilder(Java.to([that._fetchWineServerBinary(), parameter], "java.lang.String[]"));
+        var environment = processBuilder.environment();
+        environment.put("WINEPREFIX", that._prefixDirectory);
+        var wineServerProcess = processBuilder.start();
+        wineServerProcess.waitFor();
+    };
+
     that.wizard = function (wizard) {
         that._wizard = wizard;
         return that;
@@ -114,9 +127,14 @@ var Wine = function () {
         return that;
     };
 
-    that.wait = function () {
-        that._process.waitFor();
 
+    that.wait = function () {
+        that._wineServer("-w");
+        return that;
+    };
+
+    that.kill = function() {
+        that._wineServer("-k");
         return that;
     };
 
