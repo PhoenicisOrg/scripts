@@ -169,6 +169,9 @@ var Wine = function () {
 
             var wineJson = JSON.parse(that.getAvailableVersions());
 
+            print(that.getAvailableVersions());
+            print(distribution);
+            print(version);
             wineJson.forEach(function (distribution) {
                 if (distribution.name == fullDistributionName) {
                     distribution.packages.forEach(function (winePackage) {
