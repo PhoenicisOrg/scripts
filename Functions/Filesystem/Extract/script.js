@@ -41,8 +41,7 @@ var CabExtract = function() {
         var processBuilder = new java.lang.ProcessBuilder(Java.to(processArguments, "java.lang.String[]"));
         processBuilder.directory(new java.io.File(that._destination));
         processBuilder.inheritIO();
-        processBuilder.start();
-        processBuilder.waitFor();
+        processBuilder.start().waitFor();
     }
 
 };
