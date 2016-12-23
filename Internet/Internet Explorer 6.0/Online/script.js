@@ -22,8 +22,9 @@ var wine = new Wine()
     .distribution("upstream")
     .architecture("x86")
     .prefix("InternetExplorer6")
+    .create()
     .msls31()
-    .create().wait();
+    .wait();
 
 remove(wine.prefixDirectory + "/drive_c/IE 6.0 Full/");
 remove(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Internet Explorer/iexplore.exe");

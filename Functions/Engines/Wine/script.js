@@ -16,6 +16,7 @@ var Wine = function () {
     that._configFactory = Bean("compatibleConfigFileFormatFactory");
     that._OperatingSystemFetcher = Bean("operatingSystemFetcher");
     that._wineDebug = "-all";
+    that._ldPath = Bean("propertyReader").getProperty("application.environment.ld");
 
     /**
      *
@@ -155,6 +156,10 @@ var Wine = function () {
 
         if(that._wineDebug) {
             environment.put("WINEDEBUG", that._wineDebug);
+        }
+
+        if(that._ldPath) {
+            environment.put("LD_LIBRARY_PATH", that._ldPath);
         }
 
         that._process = processBuilder.start();
