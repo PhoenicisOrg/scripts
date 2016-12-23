@@ -60,6 +60,9 @@ var Wine = function () {
         return that;
     };
     that.debug = function (debug) {
+        if(!debug) {
+            that._wineDebug = "";
+        }
         that._wineDebug = debug;
         return that;
     };
