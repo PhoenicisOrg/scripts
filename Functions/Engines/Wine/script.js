@@ -326,7 +326,7 @@ Wine.prototype.regedit = function() {
     this.patch = function(patchContent) {
         var tmpFile = createTempFile("reg");
         writeToFile(tmpFile, patchContent);
-        _wine.run("regedit", tmpFile)._silentWait();
+        _wine.run("regedit", [tmpFile])._silentWait();
         return _wine;
     };
 
@@ -355,9 +355,7 @@ var OverrideDLL = function() {
     };
 
     that.do =  function() {
-        var tmpFile = createTempFile("reg");
-        writeToFile(tmpFile, that._regeditFileContent);
-        that._wine.regedit().open(tmpFile);
+        that._wine.regedit().patch(that._regeditFileContent);
         return that._wine;
     }
 };
