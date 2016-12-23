@@ -111,6 +111,9 @@ var Wine = function () {
     };
 
     that.run = function (executable, args) {
+        if(!args) {
+            args = [];
+        }
         that._installVersion();
 
         if(that._wizard) {
