@@ -50,6 +50,7 @@ var Wine = function () {
         var processBuilder = new java.lang.ProcessBuilder(Java.to([that._fetchWineServerBinary(), parameter], "java.lang.String[]"));
         var environment = processBuilder.environment();
         environment.put("WINEPREFIX", that._prefixDirectory);
+        processBuilder.inheritIO();
         var wineServerProcess = processBuilder.start();
         wineServerProcess.waitFor();
     };
@@ -117,6 +118,8 @@ var Wine = function () {
         if (that._directory) {
             processBuilder.directory(new java.io.File(that._directory));
         }
+
+        processBuilder.inheritIO();
 
         var environment = processBuilder.environment();
         environment.put("WINEPREFIX", that._prefixDirectory);
