@@ -18,7 +18,7 @@ new Wine()
     .wizard(setupWizard)
     //.version(LATEST_STABLE_VERSION)
     .version("1.7.12") // FIXME: Fix winebuild on Mac
-    .architecture("i386")
+    .architecture("x86")
     .prefix("InternetExplorer6")
     .run(setupFile)
     .wait()
