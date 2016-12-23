@@ -14,7 +14,6 @@ var Wine = function () {
     that._wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines.wine");
     that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
     that._configFactory = Bean("compatibleConfigFileFormatFactory");
-    that._distribution = "staging";
     that._OperatingSystemFetcher = Bean("operatingSystemFetcher");
     that._wineDebug = "-all";
 
@@ -89,10 +88,10 @@ var Wine = function () {
         }
 
         if (!that._distribution) {
-            that._distribution = that._prefixConfiguration.readValue("wineDistribution");
-        } else {
-            that._prefixConfiguration.writeValue("wineDistribution", that._distribution);
+            that._distribution = that._prefixConfiguration.readValue("wineDistribution", "staging");
         }
+
+        that._prefixConfiguration.writeValue("wineDistribution", that._distribution);
 
         if (!that._architecture) {
             var defaultArchitecture = Bean("architectureFetcher").fetchCurrentArchitecture().getNameForWinePackages();
