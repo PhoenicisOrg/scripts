@@ -315,8 +315,21 @@ Wine.prototype.regsvr32 = function() {
  * @param args
  * @returns {Wine}
  */
-Wine.prototype.regedit = function(args) {
-    this.run("regedit", args)._silentWait();
+Wine.prototype.regedit = function() {
+    var _wine = this;
+
+    this.run = function(args) {
+        _wine.run("regedit", args)._silentWait();
+        return _wine;
+    };
+
+    this.patch = function(patchContent) {
+        var tmpFile = createTempFile("reg");
+        writeToFile(tmpFile, patchContent);
+        _wine.run("regedit", tmpFile)._silentWait();
+        return _wine;
+    };
+
     return this;
 };
 
@@ -344,7 +357,7 @@ var OverrideDLL = function() {
     that.do =  function() {
         var tmpFile = createTempFile("reg");
         writeToFile(tmpFile, that._regeditFileContent);
-        that._wine.regedit(tmpFile);
+        that._wine.regedit().run(tmpFile);
         return that._wine;
     }
 };

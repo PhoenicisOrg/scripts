@@ -2,6 +2,7 @@ include(["Functions", "Net", "Resource"]);
 include(["Functions", "Engines", "Wine"]);
 include(["Functions", "Filesystem", "Files"]);
 include(["Functions", "Shortcuts", "Wine"]);
+include(["Functions", "Apps", "Resources"]);
 include(["Functions", "Libs", "msls31"]);
 
 var setupWizard = SetupWizard("Internet Explorer 6.0");
@@ -79,5 +80,8 @@ new WineShortcut()
     .search("iexplore.exe")
     .miniature(["Internet", "Internet Explorer 6.0"])
     .create();
+
+var registrySettings = new AppResource().application("Internet Explorer 6.0").get("ie6.reg");
+wine.regedit().patch(registrySettings);
 
 setupWizard.close();
