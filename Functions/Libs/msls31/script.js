@@ -13,4 +13,6 @@ Wine.prototype.msls31 = function() {
         .wizard(this._wizard)
         .to(this.prefixDirectory + "drive_c/windows/system32")
         .extract(["-F", "msls31.dll"]);
+
+    return this;
 };
