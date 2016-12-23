@@ -18,8 +18,7 @@ var writeToFile = function(filePath, content) {
 };
 
 var createTempFile = function (extension) {
-    var tmpFile = java.io.File.createTempFile("playonlinux", "." + extension);
-    tmpFile.deleteOnExit();
+    var tmpFile = Bean("fileUtilities").createTmpFile();
     return tmpFile.getAbsolutePath();
 };
 
