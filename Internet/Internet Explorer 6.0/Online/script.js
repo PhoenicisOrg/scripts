@@ -47,18 +47,22 @@ wine.run("iexplore", ["-unregserver"])
     .runInsidePrefix("IE 6.0 Full/IE6SETUP.EXE").wait()
     .overrideDLL()
         .set("native,builtin", [
-                "inetcpl.cpl",
-                "itircl",
-                "itss",
-                "jscript",
-                "mlang",
-                "mshtml",
-                "msimtf",
-                "shdoclc",
-                "shdocvw",
-                "shlwapi",
-                "urlmon"
+                "inetcpl.cpl", "itircl", "itss", "jscript", "mlang",
+                "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"
         ]).do();
+
+["actxprxy.dll", "browseui.dll", "browsewm.dll", "cdfview.dll", "ddraw.dll",
+"dispex.dll", "dsound.dll", "iedkcs32.dll", "iepeers.dll", "iesetup.dll", "imgutil.dll",
+"inetcomm.dll", "inetcpl.cpl", "inseng.dll", "isetup.dll", "jscript.dll", "laprxy.dll",
+"mlang.dll", "mshtml.dll", "mshtmled.dll", "msi.dll", "msident.dll",
+"msoeacct.dll", "msrating.dll", "mstime.dll", "msxml3.dll", "occache.dll",
+"ole32.dll", "oleaut32.dll", "olepro32.dll", "pngfilt.dll", "quartz.dll",
+"rpcrt4.dll", "rsabase.dll", "rsaenh.dll", "scrobj.dll", "scrrun.dll",
+"shdocvw.dll", "shell32.dll", "urlmon.dll", "vbscript.dll", "webcheck.dll",
+"wshcon.dll", "wshext.dll", "asctrls.ocx", "hhctrl.ocx", "mscomct2.ocx",
+"plugin.ocx", "proctexe.ocx", "tdc.ocx", "webcheck.dll", "wshom.ocx"].forEach(function(dll) {
+    wine.regsvr32().install(dll)
+});
 
 new WineShortcut()
     .name("Internet Explorer 6.0")
