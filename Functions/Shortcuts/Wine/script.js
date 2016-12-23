@@ -44,14 +44,15 @@ var WineShortcut = function () {
     };
 
     that.create = function () {
-        var executable = that._fileSearcher.search(that._search);
+        var _shortcutPrefixDirectory = that._winePrefixesDirectory + "/" + that._prefix;
+        var executable = that._fileSearcher.search(_shortcutPrefixDirectory, that._search);
 
         var builder = new com.phoenicis.library.dto.ShortcutDTO.Builder()
             .withName(that._name)
             .withDescription(that._description)
             .withScript(JSON.stringify({
                 wineDebug: "-all",
-                winePrefix: that._winePrefixesDirectory + "/" + that._prefix,
+                winePrefix: that._prefix,
                 arguments: that._arguments,
                 workingDirectory:executable.getParentFile().getAbsolutePath(),
                 executable: executable.getAbsolutePath()
