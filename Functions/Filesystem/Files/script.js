@@ -18,7 +18,7 @@ var writeToFile = function(filePath, content) {
 };
 
 var createTempFile = function (extension) {
-    var tmpFile = Bean("fileUtilities").createTmpFile();
+    var tmpFile = Bean("fileUtilities").createTmpFile(extension);
     return tmpFile.getAbsolutePath();
 };
 
