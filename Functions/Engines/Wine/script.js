@@ -118,7 +118,7 @@ var Wine = function () {
         if (that._directory) {
             processBuilder.directory(new java.io.File(that._directory));
         } else {
-            processBuilder.directory(that._prefixDirectory);
+            processBuilder.directory(new java.io.File(that._prefixDirectory));
         }
 
         processBuilder.inheritIO();
