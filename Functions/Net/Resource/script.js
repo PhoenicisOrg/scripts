@@ -11,7 +11,7 @@ var Resource = function () {
         return that;
     };
 
-    that.algorithm = function(alorigthm) {
+    that.algorithm = function(algorithm) {
         that._algorithm = algorithm;
         return that;
     };
