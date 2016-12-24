@@ -10,8 +10,7 @@ var _WineShortcutReader = function(shortcutContent) {
             userArguments = [];
         }
 
-        var arguments = (shortcutContent.arguments ? shortcutContent.arguments : []).concat(userArguments);
-        print(arguments);
+        var arguments = (shortcutContent.arguments ? shortcutContent.arguments : []).concat(Java.from(userArguments));
 
         new Wine()
             .prefix(shortcutContent.winePrefix)
