@@ -14,6 +14,10 @@ var Downloader = function () {
         that._url = url;
         return that;
     };
+    that.algorithm = function(algorithm) {
+        that._algorithm = algorithm;
+        return that;
+    };
     that.checksum = function (checksum) {
         that._checksum = checksum;
         return that;
@@ -44,6 +48,7 @@ var Downloader = function () {
                 var fileChecksum = new Checksum()
                     .wizard(that._wizard)
                     .of(that._localFile)
+                    .algorithm(that._algorithm)
                     .get();
 
                 if (fileChecksum != that._checksum) {
