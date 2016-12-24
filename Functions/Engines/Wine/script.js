@@ -275,6 +275,9 @@ var Wine = function () {
     };
 
     that._silentWait = function() {
+        if(that._process) {
+            that._process.waitFor();
+        }
         that._wineServer("-w");
         return that;
     };
