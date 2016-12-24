@@ -56,6 +56,7 @@ var Resource = function () {
             .wizard(that._wizard)
             .message(that._message)
             .checksum(that._checksum)
+            .algorithm(that._algorithm)
             .to(resourcePath)
             .get();
 
