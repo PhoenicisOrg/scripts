@@ -76,7 +76,7 @@ var Wine = function () {
      */
     that.prefix = function (prefix) {
         that._prefix = prefix;
-        that.prefixDirectory = that._winePrefixesDirectory + "/" + that._prefix;
+        that.prefixDirectory = that._winePrefixesDirectory + "/" + that._prefix + "/";
 
         mkdir(that.prefixDirectory);
 

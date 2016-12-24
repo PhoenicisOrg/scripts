@@ -1,7 +1,7 @@
 include(["Functions", "QuickScript", "InstallerScript"]);
 
 new InstallerScript()
-    .name("Photofiltre")
+    .name("Notepad++")
     .editor("Notepad++")
     .editorUrl("https://notepad-plus-plus.org/")
     .author("Quentin PÂRIS")
