@@ -54,10 +54,12 @@ var Downloader = function () {
                     .get();
 
                 if (fileChecksum != that._checksum) {
-                    that._wizard.message(
-                        "Error while calculating checksum. \n\nExpected = {0}\nActual = {1}"
-                            .format(that._checksum, fileChecksum)
-                    )
+                    var checksumErrorMessage = "Error while calculating checksum. \n\nExpected = {0}\nActual = {1}"
+                        .format(that._checksum, fileChecksum);
+
+                    that._wizard.message(checksumErrorMessage);
+
+                    throw checksumErrorMessage;
                 }
             }
         } else {
