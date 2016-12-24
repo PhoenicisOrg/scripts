@@ -1,4 +1,5 @@
 include(["Functions", "Engines", "Wine"]);
+include(["Functions", "Net", "Resource"]);
 
 Wine.prototype.msls31 = function() {
     var setupFile = new Resource()

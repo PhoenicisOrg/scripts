@@ -1,4 +1,5 @@
 include(["Functions", "Engines", "Wine"]);
+include(["Functions", "Net", "Resource"]);
 
 Wine.prototype.sandbox = function() {
     var tmp = Bean("propertyReader").getProperty("application.user.tmp");

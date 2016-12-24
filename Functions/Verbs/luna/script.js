@@ -1,5 +1,6 @@
 include(["Functions", "Engines", "Wine"]);
 include(["Functions", "Filesystem", "Files"]);
+include(["Functions", "Net", "Resource"]);
 
 Wine.prototype.luna = function() {
     var lunaStyle = new Resource()
