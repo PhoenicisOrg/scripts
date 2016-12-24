@@ -3,6 +3,8 @@ include(["Functions", "Filesystem", "Files"]);
 var Downloader = function () {
     var that = this;
     that._downloader = Bean("downloader");
+    that._algorithm = "SHA";
+
     that._fetchFileNameFromUrl = function (url) {
         return url.substring(url.lastIndexOf('/') + 1);
     };
@@ -48,7 +50,7 @@ var Downloader = function () {
                 var fileChecksum = new Checksum()
                     .wizard(that._wizard)
                     .of(that._localFile)
-                    .algorithm(that._algorithm)
+                    .method(that._algorithm)
                     .get();
 
                 if (fileChecksum != that._checksum) {
