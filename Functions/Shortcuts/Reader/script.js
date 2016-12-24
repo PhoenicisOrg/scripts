@@ -6,9 +6,11 @@ var _WineShortcutReader = function(shortcutContent) {
     this.run = function(userArguments) {
         var shortcutContent = JSON.parse(this.shortcutContent);
 
+        print(userArguments);
         if(!userArguments) {
             userArguments = [];
         }
+        print(userArguments);
 
         new Wine()
             .prefix(shortcutContent.winePrefix)
