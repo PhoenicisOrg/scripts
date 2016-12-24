@@ -10,11 +10,14 @@ var _WineShortcutReader = function(shortcutContent) {
             userArguments = [];
         }
 
+        var arguments = (shortcutContent.arguments ? shortcutContent.arguments : []).concat(userArguments);
+        print(arguments);
+
         new Wine()
             .prefix(shortcutContent.winePrefix)
             .debug(shortcutContent.wineDebug)
             .workingDirectory(shortcutContent.workingDirectory)
-            .run(shortcutContent.executable, (shortcutContent.arguments ? shortcutContent.arguments : []).concat(userArguments))
+            .run(shortcutContent.executable, arguments)
     }
 };
 
@@ -24,8 +27,6 @@ var ShortcutReader = function() {
     };
 
     this.run = function(userArguments) {
-        print(typeof  userArguments);
-
         var shortcutContent = JSON.parse(this.shortcutContent);
 
         var runner;
