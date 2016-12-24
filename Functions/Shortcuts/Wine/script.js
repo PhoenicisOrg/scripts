@@ -1,6 +1,6 @@
 var WineShortcut = function () {
     var that = this;
-    that._shortcutCreator = Bean("shortcutCreator");
+    that._shortcutManager = Bean("shortcutManager");
     that._appsManager = Bean("appsManager");
     that._fileSearcher = Bean("fileSearcher");
     that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
@@ -64,7 +64,7 @@ var WineShortcut = function () {
             builder.withMiniature(that._miniature);
         }
 
-        that._shortcutCreator.createShortcut(
+        that._shortcutManager.createShortcut(
             builder.build()
         );
     }
