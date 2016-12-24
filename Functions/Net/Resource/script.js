@@ -3,10 +3,16 @@ include(["Functions", "Filesystem", "Files"]);
 
 var Resource = function () {
     var that = this;
+    this._algorithm = "SHA";
     this._resourcesPath = Bean("propertyReader").getProperty("application.user.resources");
 
     that.wizard = function(wizard) {
         that._wizard = wizard;
+        return that;
+    };
+
+    that.algorithm = function(alorigthm) {
+        that._algorithm = algorithm;
         return that;
     };
 
@@ -37,6 +43,7 @@ var Resource = function () {
             var fileChecksum = new Checksum()
                 .wizard(that._wizard)
                 .of(resourcePath)
+                .method(that._algorithm)
                 .get();
 
             if(fileChecksum == that._checksum) {

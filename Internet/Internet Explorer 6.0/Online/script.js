@@ -3,7 +3,7 @@ include(["Functions", "Engines", "Wine"]);
 include(["Functions", "Filesystem", "Files"]);
 include(["Functions", "Shortcuts", "Wine"]);
 include(["Functions", "Apps", "Resources"]);
-include(["Functions", "Libs", "msls31"]);
+include(["Functions", "Verbs", "msls31"]);
 
 var setupWizard = SetupWizard("Internet Explorer 6.0");
 
