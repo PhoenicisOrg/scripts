@@ -1,6 +1,6 @@
 include(["Functions", "QuickScript", "InstallerScript"]);
 
-new ZipScript()
+new InstallerScript()
     .name("Photofiltre")
     .editor("Antonio Da Cruz")
     .editorUrl("http://photofiltre.free.fr")
