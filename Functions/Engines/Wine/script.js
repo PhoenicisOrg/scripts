@@ -89,7 +89,7 @@ var Wine = function () {
         }
 
         if (!that._distribution) {
-            that._distribution = that._prefixConfiguration.readValue("wineDistribution", "staging");
+            that._distribution = that._prefixConfiguration.readValue("wineDistribution", "upstream");
         }
 
         that._prefixConfiguration.writeValue("wineDistribution", that._distribution);

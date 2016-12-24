@@ -1,0 +1,7 @@
+{
+	"scriptName": "v7.46",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresNoCD": false
+}
