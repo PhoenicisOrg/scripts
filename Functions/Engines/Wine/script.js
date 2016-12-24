@@ -144,7 +144,9 @@ var Wine = function () {
         if (that._directory) {
             processBuilder.directory(new java.io.File(that._directory));
         } else {
-            processBuilder.directory(new java.io.File(that.prefixDirectory, "drive_c"));
+            var driveC = that.prefixDirectory + "/drive_c";
+            mkdir(driveC);
+            processBuilder.directory(new java.io.File(driveC));
         }
 
         if(!captureOutput) {
