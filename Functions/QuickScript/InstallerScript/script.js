@@ -65,6 +65,7 @@ var InstallerScript = function() {
             .wizard(setupWizard)
             .version(LATEST_STABLE_VERSION)
             .prefix(that._name)
+            .luna()
             .run(tempFile)
             .wait();
 

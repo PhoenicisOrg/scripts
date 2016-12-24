@@ -13,6 +13,10 @@ var cat = function(filePath) {
     return Bean("fileUtilities").getFileContent(new java.io.File(filePath));
 };
 
+var cp = function(source, target) {
+    return Bean("fileUtilities").copy(new java.io.File(source), new java.io.File(target));
+};
+
 var lns = function(target, destination) {
     return Bean("fileUtilities").createSymbolicLink(new java.io.File(destination), new java.io.File(target));
 };
