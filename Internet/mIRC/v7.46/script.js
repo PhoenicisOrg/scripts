@@ -1,6 +1,6 @@
 include(["Functions", "QuickScript", "InstallerScript"]);
 
-new ZipScript()
+new InstallerScript()
     .name("mIRC")
     .editor("mIRC")
     .editorUrl("http://www.mirc.com/")
