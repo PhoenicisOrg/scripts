@@ -2,6 +2,7 @@ include(["Functions", "Net", "Download"]);
 include(["Functions", "Engines", "Wine"]);
 include(["Functions", "Filesystem", "Extract"]);
 include(["Functions", "Shortcuts", "Wine"]);
+include(["Functions", "Verbs", "luna"]);
 
 
 var InstallerScript = function() {

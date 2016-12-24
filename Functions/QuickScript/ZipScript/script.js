@@ -2,6 +2,7 @@ include(["Functions", "Net", "Download"]);
 include(["Functions", "Engines", "Wine"]);
 include(["Functions", "Filesystem", "Extract"]);
 include(["Functions", "Shortcuts", "Wine"]);
+include(["Functions", "Verbs", "luna"]);
 
 
 var ZipScript = function() {
@@ -58,6 +59,7 @@ var ZipScript = function() {
             .prefix(that._name)
             .distribution("upstream")
             .create()
+            .luna()
             .wait();
 
         new Downloader()
