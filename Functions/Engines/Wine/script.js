@@ -357,7 +357,7 @@ Wine.prototype.regedit = function() {
 
         keyPath.shift();
 
-        var registryValue = Bean("registryParser").parseFile(new java.io.File(this.prefixDirectory + "/" + registryFile), root).getComputedStyle(keyPath);
+        var registryValue = Bean("registryParser").parseFile(new java.io.File(this.prefixDirectory + "/" + registryFile), root).getChild(keyPath);
 
         return registryValue.getText();
     };
