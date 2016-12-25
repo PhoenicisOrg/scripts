@@ -341,8 +341,31 @@ Wine.prototype.regedit = function() {
         return _wine;
     };
 
+    this.fetchValue = function(keyPath) {
+        var root = keyPath[0];
+        var registryFile;
+        switch(root) {
+            case "HKEY_CURRENT_USER":
+                registryFile = "user.reg";
+                break;
+            case "HKEY_LOCAL_MACHINE":
+                registryFile = "system.reg";
+                break;
+            default:
+                throw "Illegal registry root exception";
+        }
+
+        keyPath.shift();
+
+        var registryValue = Bean("registryParser").parseFile(this.prefixDirectory + "/" + registryFile, root).getComputedStyle(keyPath);
+
+        return registryValue.getText();
+    };
+
     return this;
 };
+
+Wine.prototype.registry = Wine.prototype.regedit;
 
 
 var OverrideDLL = function() {
