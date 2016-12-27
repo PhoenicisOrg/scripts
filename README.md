@@ -9,8 +9,8 @@
 2. Create a new folder for your script inside that category. The folder structure should be:
 ```
 category
-└── script-name
-    ├── Online
+└── application-name
+    ├── script-name
     │   ├── script.js
     │   └── script.json
     ├── miniatures
