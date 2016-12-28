@@ -19,8 +19,8 @@ category
 ```
 
 3. Fill the files:
-  * [script.js](https://github.com/plata/Scripts/wiki/script.js): actual installation script
-  * [script.json](https://github.com/plata/Scripts/wiki/script.json): describes the installation script
+  * [script.js](https://github.com/PlayOnLinux/Scripts/wiki/script.js): actual installation script
+  * [script.json](https://github.com/PlayOnLinux/Scripts/wiki/script.json): describes the installation script
   ```json
   {
 		"scriptName": "Online",
@@ -31,7 +31,7 @@ category
   }
   ```
   * main.png: application icon (400px x 300px)
-  * [application.json](https://github.com/plata/Scripts/wiki/application.json): describes the application
+  * [application.json](https://github.com/PlayOnLinux/Scripts/wiki/application.json): describes the application
   ```json
   {
 		"name":	"Steam",
