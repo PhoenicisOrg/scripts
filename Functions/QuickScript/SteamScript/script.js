@@ -56,9 +56,6 @@ var SteamScript = function() {
             .run(tempFile)
             .wait();
 
-        wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", "steam://install/" + that._appId)
-            .wait();
-
         new WineShortcut()
             .name(that._name)
             .prefix(that._name)
@@ -66,6 +63,8 @@ var SteamScript = function() {
             .arguments("steam://rungameid/" + that._appId)
             .miniature([that._category, that._name])
             .create();
+
+        wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", "steam://install/" + that._appId);
 
         setupWizard.close();
     }
