@@ -179,7 +179,7 @@ var Wine = function () {
     };
 
     that.getProgramFiles = function() {
-        var programFilesName = that.run("cmd", ["/c", "echo", "%ProgramFiles%"], true);
+        var programFilesName = that.run("cmd", ["/c", "echo", "%ProgramFiles%"], true).trim();
         if(programFilesName == "%ProgramFiles%") {
             return "Program Files"
         } else {
