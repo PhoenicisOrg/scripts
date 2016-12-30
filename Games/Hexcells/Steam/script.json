@@ -1,5 +1,5 @@
 {
-	"scriptName": "Online",
+	"scriptName": "Steam",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": ["LINUX"],
 	"free": false,
