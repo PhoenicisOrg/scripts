@@ -1,9 +1,9 @@
 include(["Functions", "QuickScript", "SteamScript"]);
 
 new SteamScript()
-    .name("Hexcells Infinite")
-    .editor("Matthew Brown")
-    .author("Plata")
-    .appId(304410)
+    .name("Hexcells")
+    .editor("Microsoft Studios")
+    .author("Quentin PARIS")
+    .appId(221380)
     .category("Games")
     .go();
