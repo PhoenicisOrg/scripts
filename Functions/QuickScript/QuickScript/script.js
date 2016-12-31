@@ -30,6 +30,11 @@ QuickScript.prototype.category = function(category) {
     return this;
 };
 
+/**
+ * set executable
+ * @param executable executable without path (e.g. "Steam.exe")
+ * @param arguments use array (e.g. ["-applaunch", 409160])
+ */
 QuickScript.prototype.executable = function(executable, arguments) {
     this._executable = executable;
     this._executableArgs = typeof arguments !== 'undefined' ? arguments : "";
