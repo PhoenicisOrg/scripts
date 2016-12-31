@@ -10,6 +10,7 @@ function SteamScript() {
     QuickScript.call(this);
 
     this._executable = "Steam.exe"
+    this._category = "Games"
 };
 
 SteamScript.prototype = Object.create(QuickScript.prototype);
