@@ -40,7 +40,8 @@ InstallerScript.prototype.go = function() {
 
     new Wine()
         .wizard(setupWizard)
-        .version(LATEST_STABLE_VERSION)
+        .architecture(this._wineArchitecture)
+        .version(this._wineVersion)
         .prefix(this._name)
         .luna()
         .run(tempFile)
@@ -50,7 +51,7 @@ InstallerScript.prototype.go = function() {
         .name(this._name)
         .prefix(this._name)
         .search(this._executable)
-        .arguments((this._executableArgs)
+        .arguments(this._executableArgs)
         .miniature([this._category, this._name])
         .create();
 

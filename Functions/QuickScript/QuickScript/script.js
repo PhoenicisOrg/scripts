@@ -1,4 +1,6 @@
 function QuickScript() {
+    this._wineArchitecture = "x86"
+    this._wineVersion = LATEST_STABLE_VERSION;
 };
 
 QuickScript.prototype.name = function(name) {
@@ -26,8 +28,18 @@ QuickScript.prototype.category = function(category) {
     return this;
 };
 
-QuickScript.prototype.executable = function(executable, arguments = "") {
+QuickScript.prototype.executable = function(executable, arguments) {
     this._executable = executable;
-    this._executableArgs = arguments;
+    this._executableArgs = typeof arguments !== 'undefined' ? arguments : "";
+    return this;
+};
+
+QuickScript.prototype.wineArchitecture = function(wineArchitecture) {
+    this._wineArchitecture = wineArchitecture;
+    return this;
+};
+
+QuickScript.prototype.wineVersion = function(wineVersion) {
+    this._wineVersion = wineVersion;
     return this;
 };
