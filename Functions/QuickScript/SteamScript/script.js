@@ -56,5 +56,7 @@ SteamScript.prototype.go = function() {
 
     wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", "steam://install/" + this._appId);
 
+    this._postInstall();
+
     setupWizard.close();
 };

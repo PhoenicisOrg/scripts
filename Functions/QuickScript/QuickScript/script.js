@@ -43,3 +43,8 @@ QuickScript.prototype.wineVersion = function(wineVersion) {
     this._wineVersion = wineVersion;
     return this;
 };
+
+QuickScript.prototype.postInstall = function(postInstall) {
+    this._postInstall = postInstall;
+    return this;
+};

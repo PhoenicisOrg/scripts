@@ -60,5 +60,7 @@ ZipScript.prototype.go = function() {
         .miniature([this._category, this._name])
         .create();
 
+    this._postInstall();
+
     setupWizard.close();
 };
