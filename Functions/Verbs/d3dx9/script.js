@@ -4,7 +4,7 @@ include(["Functions", "Net", "Resource"]);
 Wine.prototype.d3dx9 = function () {
     var that = this;
 
-    var extractDirectXtoSystemDirectory = function(filesToExtract, destination) {
+    var extractDirectXtoSystemDirectory = function(filesToExtract, destination, pattern) {
         var numberOfExtractedFiles = 0;
         filesToExtract.forEach(function(cabFile) {
             progressBar.setText("Extracting DirectX 9...");
