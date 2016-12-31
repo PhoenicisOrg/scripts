@@ -38,7 +38,7 @@ InstallerScript.prototype.go = function() {
         .to(tempFile)
         .get();
 
-    new Wine()
+    var wine = new Wine()
         .wizard(setupWizard)
         .architecture(this._wineArchitecture)
         .version(this._wineVersion)
@@ -55,7 +55,7 @@ InstallerScript.prototype.go = function() {
         .miniature([this._category, this._name])
         .create();
 
-    this._postInstall();
+    this._postInstall(wine);
 
     setupWizard.close();
-}
+};

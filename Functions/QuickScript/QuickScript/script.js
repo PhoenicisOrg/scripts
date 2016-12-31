@@ -3,7 +3,7 @@ function QuickScript() {
 
     // by default do nothing in post install
     this._postInstall = function() {}
-};
+}
 
 QuickScript.prototype.name = function(name) {
     this._name = name;
