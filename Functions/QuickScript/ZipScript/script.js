@@ -24,11 +24,6 @@ ZipScript.prototype.checksum = function(checksum) {
     return this;
 };
 
-ZipScript.prototype.executable = function(executable) {
-    this._executable = executable;
-    return this;
-};
-
 ZipScript.prototype.go = function() {
     var setupWizard = SetupWizard(this._name);
 
@@ -60,6 +55,7 @@ ZipScript.prototype.go = function() {
         .name(this._name)
         .prefix(this._name)
         .search(this._executable)
+        .arguments((this._executableArgs)
         .miniature([this._category, this._name])
         .create();
 

@@ -25,3 +25,9 @@ QuickScript.prototype.category = function(category) {
     this._category = category;
     return this;
 };
+
+QuickScript.prototype.executable = function(executable, arguments = "") {
+    this._executable = executable;
+    this._executableArgs = arguments;
+    return this;
+};

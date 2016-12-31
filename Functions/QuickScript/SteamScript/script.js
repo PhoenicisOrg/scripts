@@ -8,6 +8,8 @@ include(["Functions", "Verbs", "luna"]);
 
 function SteamScript() {
     QuickScript.call(this);
+
+    this._executable = "Steam.exe"
 };
 
 SteamScript.prototype = Object.create(QuickScript.prototype);
@@ -17,6 +19,7 @@ SteamScript.prototype.constructor = SteamScript;
 SteamScript.prototype.appId = function(appId) {
     this._appId = appId;
     this._editorUrl = "http://store.steampowered.com/app/" + appId;
+    this._executableArgs = "steam://rungameid/" + this._appId
     return this;
 };
 
@@ -45,8 +48,8 @@ SteamScript.prototype.go = function() {
     new WineShortcut()
         .name(this._name)
         .prefix(this._name)
-        .search("Steam.exe")
-        .arguments("steam://rungameid/" + this._appId)
+        .search(this._executable)
+        .arguments((this._executableArgs)
         .miniature([this._category, this._name])
         .create();
 

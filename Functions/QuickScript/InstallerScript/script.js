@@ -24,11 +24,6 @@ InstallerScript.prototype.checksum = function(checksum) {
     return this;
 };
 
-InstallerScript.prototype.executable = function(executable) {
-    this._executable = executable;
-    return this;
-};
-
 InstallerScript.prototype.go = function() {
     var setupWizard = SetupWizard(this._name);
 
@@ -55,6 +50,7 @@ InstallerScript.prototype.go = function() {
         .name(this._name)
         .prefix(this._name)
         .search(this._executable)
+        .arguments((this._executableArgs)
         .miniature([this._category, this._name])
         .create();
 
