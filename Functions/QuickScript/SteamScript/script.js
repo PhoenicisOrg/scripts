@@ -9,9 +9,9 @@ include(["Functions", "Verbs", "luna"]);
 function SteamScript() {
     QuickScript.call(this);
 
-    this._executable = "Steam.exe"
+    this._executable = "Steam.exe";
     this._category = "Games"
-};
+}
 
 SteamScript.prototype = Object.create(QuickScript.prototype);
 
@@ -20,7 +20,7 @@ SteamScript.prototype.constructor = SteamScript;
 SteamScript.prototype.appId = function(appId) {
     this._appId = appId;
     this._editorUrl = "http://store.steampowered.com/app/" + appId;
-    this._executableArgs = "steam://rungameid/" + this._appId
+    this._executableArgs = "steam://rungameid/" + this._appId;
     return this;
 };
 
