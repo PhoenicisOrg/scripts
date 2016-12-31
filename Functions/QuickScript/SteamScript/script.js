@@ -55,9 +55,9 @@ SteamScript.prototype.go = function() {
         .miniature([this._category, this._name])
         .create();
 
-    wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", "steam://install/" + this._appId);
-
     this._postInstall(wine);
+
+    wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", "steam://install/" + this._appId);
 
     setupWizard.close();
 };
