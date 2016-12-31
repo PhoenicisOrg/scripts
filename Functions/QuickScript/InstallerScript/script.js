@@ -27,7 +27,7 @@ InstallerScript.prototype.checksum = function(checksum) {
 InstallerScript.prototype.go = function() {
     var setupWizard = SetupWizard(this._name);
 
-    setupWizard.presentation(this._name, this._editor, this._editorUrl, this._author);
+    setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
     var tempFile = createTempFile("exe");
 

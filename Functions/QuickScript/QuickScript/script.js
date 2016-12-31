@@ -15,8 +15,8 @@ QuickScript.prototype.editor = function(editor) {
     return this;
 };
 
-QuickScript.prototype.editorUrl = function(editorUrl) {
-    this._editorUrl = editorUrl;
+QuickScript.prototype.applicationHomepage = function(applicationHomepage) {
+    this._applicationHomepage = applicationHomepage;
     return this;
 };
 
