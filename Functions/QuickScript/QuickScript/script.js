@@ -1,6 +1,9 @@
 function QuickScript() {
     this._wineArchitecture = "x86"
     this._wineVersion = LATEST_STABLE_VERSION;
+
+    // by default do nothing in post install
+    this._postInstall = function() {}
 };
 
 QuickScript.prototype.name = function(name) {
