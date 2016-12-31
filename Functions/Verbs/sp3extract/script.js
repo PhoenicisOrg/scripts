@@ -3,7 +3,7 @@ include(["Functions", "Net", "Resource"]);
 
 Wine.prototype.sp3extract = function(fileToExtract) {
     var that = this;
-    that._targetDirectory = this.prefixDirectory + "/drive_c/windows/system32/";
+    that._targetDirectory = this.system32directory();
 
     this.targetDirectory = function(targetDirectory) {
         that._targetDirectory = targetDirectory;

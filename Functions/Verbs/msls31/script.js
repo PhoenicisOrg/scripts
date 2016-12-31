@@ -9,12 +9,12 @@ Wine.prototype.msls31 = function() {
         .name("InstMsiW.exe")
         .get();
 
-    remove(this.prefixDirectory + "/drive_c/windows/system32/msls31.dll");
+    remove(this.system32directory() + "/msls31.dll");
 
     new CabExtract()
         .archive(setupFile)
         .wizard(this._wizard)
-        .to(this.prefixDirectory + "/drive_c/windows/system32")
+        .to(this.system32directory())
         .extract(["-F", "msls31.dll"]);
 
     return this;

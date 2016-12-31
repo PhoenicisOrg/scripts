@@ -47,6 +47,10 @@ var Wine = function () {
      * @returns {Wine}
      */
     that.architecture = function (architecture) {
+        if(!architecture) {
+            return that._architecture;
+        }
+
         if(that._prefixConfiguration) {
             that._prefixConfiguration.writeValue("wineArchitecture", architecture);
         }
@@ -230,6 +234,21 @@ var Wine = function () {
 
         that._version = version;
         return that;
+    };
+
+    that.system32directory = function() {
+        if(fileExists(that.prefixDirectory + "/drive_c/windows/syswow64")) {
+            return that.prefixDirectory + "/drive_c/windows/syswow64";
+        } else {
+            return that.prefixDirectory + "/drive_c/windows/system32";
+        }
+    };
+
+    that.system64directory = function() {
+        if(fileExists(that.prefixDirectory + "/drive_c/windows/syswow64")) {
+            return that.prefixDirectory + "/drive_c/windows/system32";
+        }
+        throw "Prefix seems to be 32bits";
     };
 
     that._installVersion = function() {
