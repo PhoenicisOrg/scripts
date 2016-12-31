@@ -21,19 +21,19 @@ Wine.prototype.d3dx9 = function () {
     };
 
     var setupFile = new Resource()
-        .wizard(this.wizard)
+        .wizard(this._wizard)
         .url("http://download.microsoft.com/download/8/4/A/84A35BF1-DAFE-4AE8-82AF-AD2AE20B6B14/directx_Jun2010_redist.exe")
         .checksum("f8f1217f666bf2f6863631a7d5e5fb3a8d1542df")
         .name("directx_Jun2010_redist.exe")
         .get();
 
-    var progressBar = this.wizard.progressBar("Please wait...");
+    var progressBar = this._wizard.progressBar("Please wait...");
     progressBar.setText("Extracting DirectX 9...");
     progressBar.setProgressPercentage(0.);
 
     new CabExtract()
         .archive(setupFile)
-        .wizard(this.wizard)
+        .wizard(this._wizard)
         .to(this.prefixDirectory + "/drive_c/d3dx9/")
         .extract(["-L", "-F", "*d3dx9*x86*"]);
 
@@ -44,13 +44,14 @@ Wine.prototype.d3dx9 = function () {
         "Feb2005_d3dx9_24_x86.cab", "Feb2006_d3dx9_29_x86.cab", "JUN2007_d3dx9_34_x86.cab",
         "JUN2008_d3dx9_38_x86.cab", "Jun2005_d3dx9_26_x86.cab", "Jun2010_d3dx9_43_x86.cab",
         "Mar2008_d3dx9_37_x86.cab", "Mar2009_d3dx9_41_x86.cab", "Nov2007_d3dx9_36_x86.cab",
-        "Nov2008_d3dx9_40_x86.cab", "OCT2006_d3dx9_31_x86.cab"];
+        "Nov2008_d3dx9_40_x86.cab", "OCT2006_d3dx9_31_x86.cab"
+    ];
     extractDirectXtoSystemDirectory(filesToExtract, that.system32directory(), "d3dx9*.dll");
 
     if (this.architecture() == "amd64") {
         new CabExtract()
             .archive(setupFile)
-            .wizard(this.wizard)
+            .wizard(this._wizard)
             .to(this.prefixDirectory + "/drive_c/d3dx9/")
             .extract(["-L", "-F", "*d3dx9*x64*"]);
 
