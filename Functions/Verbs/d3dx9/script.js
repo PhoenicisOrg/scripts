@@ -4,7 +4,7 @@ include(["Functions", "Net", "Resource"]);
 Wine.prototype.d3dx9 = function () {
     var that = this;
 
-    var extractDirectXtoSystemDirectory = function(filesToExtract, destination, pattern) {
+    var extractDirectXtoSystemDirectory = function(progressBar, filesToExtract, destination, pattern) {
         var numberOfExtractedFiles = 0;
         filesToExtract.forEach(function(cabFile) {
             progressBar.setText("Extracting DirectX 9...");
@@ -46,7 +46,7 @@ Wine.prototype.d3dx9 = function () {
         "Mar2008_d3dx9_37_x86.cab", "Mar2009_d3dx9_41_x86.cab", "Nov2007_d3dx9_36_x86.cab",
         "Nov2008_d3dx9_40_x86.cab", "OCT2006_d3dx9_31_x86.cab"
     ];
-    extractDirectXtoSystemDirectory(filesToExtract, that.system32directory(), "d3dx9*.dll");
+    extractDirectXtoSystemDirectory(progressBar, filesToExtract, that.system32directory(), "d3dx9*.dll");
 
     if (this.architecture() == "amd64") {
         new CabExtract()
@@ -55,7 +55,7 @@ Wine.prototype.d3dx9 = function () {
             .to(this.prefixDirectory + "/drive_c/d3dx9/")
             .extract(["-L", "-F", "*d3dx9*x64*"]);
 
-        var fileToExtract = [
+        var filesToExtract = [
             "APR2007_d3dx9_33_x64.cab", "AUG2007_d3dx9_35_x64.cab", "Apr2005_d3dx9_25_x64.cab",
             "Apr2006_d3dx9_30_x64.cab", "Aug2005_d3dx9_27_x64.cab", "Aug2008_d3dx9_39_x64.cab",
             "Aug2009_d3dx9_42_x64.cab", "DEC2006_d3dx9_32_x64.cab", "Dec2005_d3dx9_28_x64.cab",
@@ -64,7 +64,7 @@ Wine.prototype.d3dx9 = function () {
             "Mar2008_d3dx9_37_x64.cab", "Mar2009_d3dx9_41_x64.cab", "Nov2007_d3dx9_36_x64.cab",
             "Nov2008_d3dx9_40_x64.cab", "OCT2006_d3dx9_31_x64.cab"];
 
-        extractDirectXtoSystemDirectory(filesToExtract, that.system64directory(), "d3dx9*.dll");
+        extractDirectXtoSystemDirectory(progressBar, filesToExtract, that.system64directory(), "d3dx9*.dll");
     }
 
     this.overrideDLL()
@@ -72,6 +72,7 @@ Wine.prototype.d3dx9 = function () {
             "d3dx9_24", "d3dx9_25", "d3dx9_26", "d3dx9_27", "d3dx9_28", "d3dx9_29", "d3dx9_30",
             "d3dx9_31", "d3dx9_32", "d3dx9_33", "d3dx9_34", "d3dx9_35", "d3dx9_36", "d3dx9_37",
             "d3dx9_38", "d3dx9_39", "d3dx9_40", "d3dx9_41", "d3dx9_42", "d3dx9_43"
-        ]);
+        ])
+        .do();
     return this;
 };
