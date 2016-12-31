@@ -13,7 +13,7 @@ Wine.prototype.sp3extract = function(fileToExtract) {
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("http://freeware.epsc.wustl.edu/Win/XP_SP3/WindowsXP-KB936929-SP3-x86-ENU.exe")// Just a test, the URL needs to be fixed
-        .checksum("c81472f7eeea2eca421e116cd4c03e2300ebfde4.exe")
+        .checksum("c81472f7eeea2eca421e116cd4c03e2300ebfde4")
         .name("WindowsXP-KB936929-SP3-x86-ENU.exe")
         .get();
 
