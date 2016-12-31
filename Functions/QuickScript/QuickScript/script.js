@@ -3,6 +3,7 @@ function QuickScript() {
 
     // by default do nothing in post install
     this._postInstall = function() {}
+    this._preInstall = function() {}
 }
 
 QuickScript.prototype.name = function(name) {
@@ -53,5 +54,10 @@ QuickScript.prototype.wineVersion = function(wineVersion) {
 
 QuickScript.prototype.postInstall = function(postInstall) {
     this._postInstall = postInstall;
+    return this;
+};
+
+QuickScript.prototype.preInstall = function(preInstall) {
+    this._preInstall = preInstall;
     return this;
 };

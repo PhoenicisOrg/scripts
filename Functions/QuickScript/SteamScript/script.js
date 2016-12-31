@@ -47,6 +47,8 @@ SteamScript.prototype.go = function() {
         .run(tempFile)
         .wait();
 
+    this._preInstall(wine);
+
     new WineShortcut()
         .name(this._name)
         .prefix(this._name)
@@ -55,9 +57,8 @@ SteamScript.prototype.go = function() {
         .miniature([this._category, this._name])
         .create();
 
-    this._postInstall(wine);
-
     wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", "steam://install/" + this._appId);
+    this._postInstall(wine);
 
     setupWizard.close();
 };
