@@ -1,3 +1,4 @@
+include(["Functions", "QuickScript", "QuickScript"]);
 include(["Functions", "Net", "Download"]);
 include(["Functions", "Engines", "Wine"]);
 include(["Functions", "Filesystem", "Extract"]);
@@ -5,67 +6,58 @@ include(["Functions", "Shortcuts", "Wine"]);
 include(["Functions", "Verbs", "luna"]);
 
 
-var SteamScript = function() {
-    var that = this;
+function SteamScript() {
+    QuickScript.call(this);
 
-    that.name = function(name) {
-        that._name = name;
-        return that;
-    };
+    this._executable = "Steam.exe"
+    this._category = "Games"
+};
 
-    that.editor = function(editor) {
-        that._editor = editor;
-        return that;
-    };
+SteamScript.prototype = Object.create(QuickScript.prototype);
 
-    that.author = function(author) {
-        that._author = author;
-        return that;
-    };
+SteamScript.prototype.constructor = SteamScript;
 
-    that.appId = function(appId) {
-        that._appId = appId;
-        that._editorUrl = "http://store.steampowered.com/app/" + appId;
-        return that;
-    };
+SteamScript.prototype.appId = function(appId) {
+    this._appId = appId;
+    this._editorUrl = "http://store.steampowered.com/app/" + appId;
+    this._executableArgs = "steam://rungameid/" + this._appId
+    return this;
+};
 
-    that.category = function(category) {
-        that._category = category;
-        return that;
-    };
+SteamScript.prototype.go = function() {
+    var setupWizard = SetupWizard(this._name);
 
-    that.go = function() {
-        var setupWizard = SetupWizard(that._name);
+    setupWizard.presentation(this._name, this._editor, this._editorUrl, this._author);
 
-        setupWizard.presentation(that._name, that._editor, that._editorUrl, that._author);
+    var tempFile = createTempFile("exe");
 
-        var tempFile = createTempFile("exe");
+    new Downloader()
+        .wizard(setupWizard)
+        .url("http://media.steampowered.com/client/installer/SteamSetup.exe")
+        .checksum("e930dbdb3bc638f772a8fcd92dbcd0919c924318")
+        .to(tempFile)
+        .get();
 
-        new Downloader()
-            .wizard(setupWizard)
-            .url("http://media.steampowered.com/client/installer/SteamSetup.exe")
-            .checksum("e930dbdb3bc638f772a8fcd92dbcd0919c924318")
-            .to(tempFile)
-            .get();
+    var wine = new Wine()
+        .wizard(setupWizard)
+        .architecture(this._wineArchitecture)
+        .version(this._wineVersion)
+        .prefix(this._name)
+        .luna()
+        .run(tempFile)
+        .wait();
 
-        var wine = new Wine()
-            .wizard(setupWizard)
-            .version(LATEST_STABLE_VERSION)
-            .prefix(that._name)
-            .luna()
-            .run(tempFile)
-            .wait();
+    new WineShortcut()
+        .name(this._name)
+        .prefix(this._name)
+        .search(this._executable)
+        .arguments(this._executableArgs)
+        .miniature([this._category, this._name])
+        .create();
 
-        new WineShortcut()
-            .name(that._name)
-            .prefix(that._name)
-            .search("Steam.exe")
-            .arguments("steam://rungameid/" + that._appId)
-            .miniature([that._category, that._name])
-            .create();
+    wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", "steam://install/" + this._appId);
 
-        wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", "steam://install/" + that._appId);
+    this._postInstall();
 
-        setupWizard.close();
-    }
+    setupWizard.close();
 };
