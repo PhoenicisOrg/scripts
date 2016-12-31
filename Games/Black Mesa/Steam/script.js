@@ -5,5 +5,4 @@ new SteamScript()
     .editor("Crowbar Collective")
     .author("Quentin PARIS")
     .appId(362890)
-    .category("Games")
     .go();

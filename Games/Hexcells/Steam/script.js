@@ -5,5 +5,4 @@ new SteamScript()
     .editor("Matthew Brown")
     .author("Plata")
     .appId(265890)
-    .category("Games")
     .go();
