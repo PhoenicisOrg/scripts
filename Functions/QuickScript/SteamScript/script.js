@@ -19,7 +19,7 @@ SteamScript.prototype.constructor = SteamScript;
 
 SteamScript.prototype.appId = function(appId) {
     this._appId = appId;
-    this._editorUrl = "http://store.steampowered.com/app/" + appId;
+    this._applicationHomepage = "http://store.steampowered.com/app/" + appId;
     this._executableArgs = "steam://rungameid/" + this._appId
     return this;
 };
@@ -27,7 +27,7 @@ SteamScript.prototype.appId = function(appId) {
 SteamScript.prototype.go = function() {
     var setupWizard = SetupWizard(this._name);
 
-    setupWizard.presentation(this._name, this._editor, this._editorUrl, this._author);
+    setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
     var tempFile = createTempFile("exe");
 
