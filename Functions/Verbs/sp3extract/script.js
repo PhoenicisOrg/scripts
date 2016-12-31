@@ -23,10 +23,10 @@ Wine.prototype.sp3extract = function(fileToExtract) {
         .to(this.prefixDirectory + "/drive_c/sp3/")
         .extract(["-F", "i386/" + fileToExtract.slice(0, -1) + "_"]);
 
-    remove(that._targetDirectory + "/" + fileToExtract.slice(0, -1) + "_");
+    remove(that._targetDirectory + "/" + fileToExtract);
 
     new CabExtract()
-        .archive(this.prefixDirectory + "/drive_c/sp3/i386/" + fileToExtract)
+        .archive(this.prefixDirectory + "/drive_c/sp3/i386/" + fileToExtract.slice(0, -1) + "_")
         .wizard(this._wizard)
         .to(that._targetDirectory)
         .extract();
