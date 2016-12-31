@@ -21,7 +21,7 @@ Wine.prototype.sp3extract = function(fileToExtract) {
         .archive(setupFile)
         .wizard(this._wizard)
         .to(this.prefixDirectory + "/drive_c/sp3/")
-        .extract(["-F", "i386/" + fileToExtract]);
+        .extract(["-F", "i386/" + fileToExtract.slice(0, -1) + "_"]);
 
     remove(that._targetDirectory + "/" + fileToExtract);
 
