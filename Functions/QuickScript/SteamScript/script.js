@@ -18,11 +18,6 @@ var SteamScript = function() {
         return that;
     };
 
-    that.editorUrl = function(editorUrl) {
-        that._editorUrl = editorUrl;
-        return that;
-    };
-
     that.author = function(author) {
         that._author = author;
         return that;
@@ -30,6 +25,7 @@ var SteamScript = function() {
 
     that.appId = function(appId) {
         that._appId = appId;
+        that._editorUrl = "http://store.steampowered.com/app/" + appId;
         return that;
     };
 
@@ -58,9 +54,6 @@ var SteamScript = function() {
             .prefix(that._name)
             .luna()
             .run(tempFile)
-            .wait()
-
-        wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", "steam://install/" + that._appId)
             .wait();
 
         new WineShortcut()
@@ -70,6 +63,8 @@ var SteamScript = function() {
             .arguments("steam://rungameid/" + that._appId)
             .miniature([that._category, that._name])
             .create();
+
+        wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", "steam://install/" + that._appId);
 
         setupWizard.close();
     }

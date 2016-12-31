@@ -1,9 +1,9 @@
 include(["Functions", "QuickScript", "SteamScript"]);
 
 new SteamScript()
-    .name("Hexcells")
-    .editor("Matthew Brown")
-    .author("Plata")
-    .appId(265890)
+    .name("Black Mesa")
+    .editor("Crowbar Collective")
+    .author("Quentin PARIS")
+    .appId(362890)
     .category("Games")
     .go();
