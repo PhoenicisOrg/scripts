@@ -1,3 +1,4 @@
+include(["Functions", "QuickScript", "QuickScript"]);
 include(["Functions", "Net", "Download"]);
 include(["Functions", "Engines", "Wine"]);
 include(["Functions", "Filesystem", "Extract"]);
@@ -5,78 +6,57 @@ include(["Functions", "Shortcuts", "Wine"]);
 include(["Functions", "Verbs", "luna"]);
 
 
-var InstallerScript = function() {
-    var that = this;
-
-    that.name = function(name) {
-        that._name = name;
-        return that;
-    };
-
-    that.editor = function(editor) {
-        that._editor = editor;
-        return that;
-    };
-
-    that.editorUrl = function(editorUrl) {
-        that._editorUrl = editorUrl;
-        return that;
-    };
-
-    that.author = function(author) {
-        that._author = author;
-        return that;
-    };
-
-    that.url = function(url) {
-        that._url = url;
-        return that;
-    };
-
-    that.checksum = function(checksum) {
-        that._checksum = checksum;
-        return that;
-    };
-
-    that.executable = function(executable) {
-        that._executable = executable;
-        return that;
-    };
-
-    that.category = function(category) {
-        that._category = category;
-        return that;
-    };
-
-    that.go = function() {
-        var setupWizard = SetupWizard(that._name);
-
-        setupWizard.presentation(that._name, that._editor, that._editorUrl, that._author);
-
-        var tempFile = createTempFile("exe");
-
-        new Downloader()
-            .wizard(setupWizard)
-            .url(that._url)
-            .checksum(that._checksum)
-            .to(tempFile)
-            .get();
-
-        new Wine()
-            .wizard(setupWizard)
-            .version(LATEST_STABLE_VERSION)
-            .prefix(that._name)
-            .luna()
-            .run(tempFile)
-            .wait();
-
-        new WineShortcut()
-            .name(that._name)
-            .prefix(that._name)
-            .search(that._executable)
-            .miniature([that._category, that._name])
-            .create();
-
-        setupWizard.close();
-    }
+function InstallerScript() {
+    QuickScript.call(this);
 };
+
+InstallerScript.prototype = Object.create(QuickScript.prototype);
+
+InstallerScript.prototype.constructor = InstallerScript;
+
+InstallerScript.prototype.url = function(url) {
+    this._url = url;
+    return this;
+};
+
+InstallerScript.prototype.checksum = function(checksum) {
+    this._checksum = checksum;
+    return this;
+};
+
+InstallerScript.prototype.executable = function(executable) {
+    this._executable = executable;
+    return this;
+};
+
+InstallerScript.prototype.go = function() {
+    var setupWizard = SetupWizard(this._name);
+
+    setupWizard.presentation(this._name, this._editor, this._editorUrl, this._author);
+
+    var tempFile = createTempFile("exe");
+
+    new Downloader()
+        .wizard(setupWizard)
+        .url(this._url)
+        .checksum(this._checksum)
+        .to(tempFile)
+        .get();
+
+    new Wine()
+        .wizard(setupWizard)
+        .version(LATEST_STABLE_VERSION)
+        .prefix(this._name)
+        .luna()
+        .run(tempFile)
+        .wait();
+
+    new WineShortcut()
+        .name(this._name)
+        .prefix(this._name)
+        .search(this._executable)
+        .miniature([this._category, this._name])
+        .create();
+
+    setupWizard.close();
+}
