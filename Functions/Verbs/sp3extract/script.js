@@ -11,7 +11,7 @@ Wine.prototype.sp3extract = function(fileToExtract) {
     };
 
     var setupFile = new Resource()
-        .wizard(setupWizard)
+        .wizard(this._wizard)
         .url("http://download.windowsupdate.com/msdownload/update/software/svpk/2008/04/windowsxp-kb936929-sp3-x86-enu_c81472f7eeea2eca421e116cd4c03e2300ebfde4.exe")
         .checksum("4fc3bf0dc96b5cf5ab26430fac1c33c5c50bd142")
         .name("windowsxp-kb936929-sp3-x86-enu_c81472f7eeea2eca421e116cd4c03e2300ebfde4.exe")
