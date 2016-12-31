@@ -1,3 +1,4 @@
+include(["Functions", "QuickScript", "QuickScript"]);
 include(["Functions", "Net", "Download"]);
 include(["Functions", "Engines", "Wine"]);
 include(["Functions", "Filesystem", "Extract"]);
@@ -5,83 +6,62 @@ include(["Functions", "Shortcuts", "Wine"]);
 include(["Functions", "Verbs", "luna"]);
 
 
-var ZipScript = function() {
-    var that = this;
+function ZipScript() {
+    QuickScript.call(this);
+};
 
-    that.name = function(name) {
-        that._name = name;
-        return that;
-    };
+ZipScript.prototype = Object.create(QuickScript.prototype);
 
-    that.editor = function(editor) {
-        that._editor = editor;
-        return that;
-    };
+ZipScript.prototype.constructor = ZipScript;   
 
-    that.editorUrl = function(editorUrl) {
-        that._editorUrl = editorUrl;
-        return that;
-    };
+ZipScript.prototype.url = function(url) {
+    this._url = url;
+    return this;
+};
 
-    that.author = function(author) {
-        that._author = author;
-        return that;
-    };
+ZipScript.prototype.checksum = function(checksum) {
+    this._checksum = checksum;
+    return this;
+};
 
-    that.url = function(url) {
-        that._url = url;
-        return that;
-    };
+ZipScript.prototype.executable = function(executable) {
+    this._executable = executable;
+    return this;
+};
 
-    that.checksum = function(checksum) {
-        that._checksum = checksum;
-        return that;
-    };
+ZipScript.prototype.go = function() {
+    var setupWizard = SetupWizard(this._name);
 
-    that.executable = function(executable) {
-        that._executable = executable;
-        return that;
-    };
+    setupWizard.presentation(this._name, this._editor, this._editorUrl, this._author);
 
-    that.category = function(category) {
-        that._category = category;
-        return that;
-    };
+    var wine = new Wine()
+        .wizard(setupWizard)
+        .version(LATEST_STABLE_VERSION)
+        .prefix(this._name)
+        .distribution("upstream")
+        .create()
+        .luna()
+        .wait();
 
-    that.go = function() {
-        var setupWizard = SetupWizard(that._name);
+    new Downloader()
+        .wizard(setupWizard)
+        .url(this._url)
+        .checksum(this._checksum)
+        .to(wine.prefixDirectory + "/drive_c/archive.zip")
+        .get();
 
-        setupWizard.presentation(that._name, that._editor, that._editorUrl, that._author);
+    new Extractor()
+        .wizard(setupWizard)
+        .archive(wine.prefixDirectory + "/drive_c/archive.zip")
+        .to(wine.prefixDirectory + "/drive_c/" + this._name)
+        .extract();
 
-        var wine = new Wine()
-            .wizard(setupWizard)
-            .version(LATEST_STABLE_VERSION)
-            .prefix(that._name)
-            .distribution("upstream")
-            .create()
-            .luna()
-            .wait();
+    new WineShortcut()
+        .name(this._name)
+        .prefix(this._name)
+        .search(this._executable)
+        .miniature([this._category, this._name])
+        .create();
 
-        new Downloader()
-            .wizard(setupWizard)
-            .url(that._url)
-            .checksum(that._checksum)
-            .to(wine.prefixDirectory + "/drive_c/archive.zip")
-            .get();
-
-        new Extractor()
-            .wizard(setupWizard)
-            .archive(wine.prefixDirectory + "/drive_c/archive.zip")
-            .to(wine.prefixDirectory + "/drive_c/" + that._name)
-            .extract();
-
-        new WineShortcut()
-            .name(that._name)
-            .prefix(that._name)
-            .search(that._executable)
-            .miniature([that._category, that._name])
-            .create();
-
-        setupWizard.close();
-    }
+    setupWizard.close();
 };
