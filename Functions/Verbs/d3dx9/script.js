@@ -7,12 +7,12 @@ Wine.prototype.d3dx9 = function () {
     var extractDirectXtoSystemDirectory = function(progressBar, filesToExtract, destination, pattern) {
         var numberOfExtractedFiles = 0;
         filesToExtract.forEach(function(cabFile) {
+            print("Extracting: " + cabFile);
             progressBar.setText("Extracting DirectX 9...");
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
 
             new CabExtract()
                 .archive(that.prefixDirectory + "/drive_c/d3dx9/" + cabFile)
-                .wizard(that.wizard)
                 .to(destination)
                 .extract(["-L", "-F", pattern]);
 
@@ -33,7 +33,6 @@ Wine.prototype.d3dx9 = function () {
 
     new CabExtract()
         .archive(setupFile)
-        .wizard(this._wizard)
         .to(this.prefixDirectory + "/drive_c/d3dx9/")
         .extract(["-L", "-F", "*d3dx9*x86*"]);
 
@@ -51,7 +50,6 @@ Wine.prototype.d3dx9 = function () {
     if (this.architecture() == "amd64") {
         new CabExtract()
             .archive(setupFile)
-            .wizard(this._wizard)
             .to(this.prefixDirectory + "/drive_c/d3dx9/")
             .extract(["-L", "-F", "*d3dx9*x64*"]);
 
@@ -62,7 +60,8 @@ Wine.prototype.d3dx9 = function () {
             "Feb2005_d3dx9_24_x64.cab", "Feb2006_d3dx9_29_x64.cab", "JUN2007_d3dx9_34_x64.cab",
             "JUN2008_d3dx9_38_x64.cab", "Jun2005_d3dx9_26_x64.cab", "Jun2010_d3dx9_43_x64.cab",
             "Mar2008_d3dx9_37_x64.cab", "Mar2009_d3dx9_41_x64.cab", "Nov2007_d3dx9_36_x64.cab",
-            "Nov2008_d3dx9_40_x64.cab", "OCT2006_d3dx9_31_x64.cab"];
+            "Nov2008_d3dx9_40_x64.cab", "OCT2006_d3dx9_31_x64.cab"
+        ];
 
         extractDirectXtoSystemDirectory(progressBar, filesToExtract, that.system64directory(), "d3dx9*.dll");
     }
