@@ -31,16 +31,12 @@ SteamScript.prototype.getBytesToDownload = function(wine) {
     {
     }
 
-    var processBuilder = new java.lang.ProcessBuilder(["bash", "-c", "cat appmanifest_" + this._appId + ".acf | grep BytesToDownload | egrep -o '[0-9]+'"]);
-
-    processBuilder.directory(new java.io.File(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps"));
-
     // make sure that BytesToDownload is set
     var bytesToDownload = 0;
     while (bytesToDownload == 0)
     {
-        var process = processBuilder.start();
-        bytesToDownload = Number(org.apache.commons.io.IOUtils.toString(process.getInputStream()).trim());
+        var manifest = cat(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf");
+        bytesToDownload = Number(manifest.match(/\"BytesToDownload\"\s+\"(\d+)\"/)[1]);
     }
     return bytesToDownload;
 };
@@ -53,12 +49,8 @@ SteamScript.prototype.getBytesDownloaded = function(wine) {
         // check if download already finished (download folder has been deleted)
         if (fileExists(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf"))
         {
-            var processBuilder = new java.lang.ProcessBuilder(["bash", "-c", "cat appmanifest_" + this._appId + ".acf | grep BytesDownloaded | egrep -o '[0-9]+'"]);
-
-            processBuilder.directory(new java.io.File(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps"));
-
-            var process = processBuilder.start();
-            return Number(org.apache.commons.io.IOUtils.toString(process.getInputStream()).trim());
+            var manifest = cat(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf");
+            return Number(manifest.match(/\"BytesDownloaded\"\s+\"(\d+)\"/)[1]);
         }
         else
         {
