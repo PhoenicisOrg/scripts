@@ -4,7 +4,7 @@ include(["Functions", "Verbs", "crypt32"]);
 
 new SteamScript()
     .name("Assassin’s Creed® Brotherhood")
-    .editor("UbiSoft")
+    .editor("Ubisoft")
     .author("Quentin PARIS")
     .appId(48190)
     .preInstall(function(wine) {

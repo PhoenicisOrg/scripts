@@ -18,22 +18,35 @@ var _WineShortcutReader = function(shortcutContent) {
             .workingDirectory(shortcutContent.workingDirectory)
             .run(shortcutContent.executable, arguments)
             .wait()
+    };
+
+
+    this.stop = function() {
+        var shortcutContent = JSON.parse(this.shortcutContent);
+
+        new Wine()
+            .prefix(shortcutContent.winePrefix)
+            .kill()
     }
 };
 
 var ShortcutReader = function() {
+    var that = this;
+
     this.of = function(shortcutContent) {
         this.shortcutContent = shortcutContent;
+        var shortcutContentParsed = JSON.parse(this.shortcutContent);
+
+        if(shortcutContentParsed.type == "WINE") {
+            that._runner = new _WineShortcutReader(this.shortcutContent);
+        }
     };
 
     this.run = function(userArguments) {
-        var shortcutContent = JSON.parse(this.shortcutContent);
+        that._runner.run(userArguments);
+    };
 
-        var runner;
-        if(shortcutContent.type == "WINE") {
-            runner = new _WineShortcutReader(this.shortcutContent);
-        }
-
-        runner.run(userArguments);
-    }
+    this.stop = function() {
+        that._runner.stop();
+    };
 };
