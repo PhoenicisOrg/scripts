@@ -8,7 +8,7 @@ include(["Functions", "Verbs", "luna"]);
 
 function InstallerScript() {
     QuickScript.call(this);
-};
+}
 
 InstallerScript.prototype = Object.create(QuickScript.prototype);
 

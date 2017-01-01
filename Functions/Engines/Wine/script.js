@@ -47,7 +47,7 @@ var Wine = function () {
      * @returns {Wine}
      */
     that.architecture = function (architecture) {
-        if(!architecture) {
+        if(arguments.length == 0) {
             return that._architecture;
         }
 
