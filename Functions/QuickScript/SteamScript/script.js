@@ -21,7 +21,7 @@ SteamScript.prototype.constructor = SteamScript;
 SteamScript.prototype.appId = function(appId) {
     this._appId = appId;
     this._applicationHomepage = "http://store.steampowered.com/app/" + appId;
-    this._executableArgs = ["-silent", "steam://rungameid/" + this._appId];
+    this._executableArgs = ["-silent", "-applaunch", this._appId];
     return this;
 };
 
@@ -99,7 +99,7 @@ SteamScript.prototype.go = function() {
         .miniature([this._category, this._name])
         .create();
 
-    wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", ["-silent", "steam://install/" + this._appId]);
+    wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", ["-silent", "-applaunch", this._appId]);
     var bytesToDownload = this.getBytesToDownload(wine);
     var bytesDownloaded = 0;
     var progressBar = setupWizard.progressBar("Please wait until Steam has finished the download...");
