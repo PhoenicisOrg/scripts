@@ -44,7 +44,10 @@ SteamScript.prototype.getBytesToDownload = function(wine) {
 };
 
 SteamScript.prototype.getBytesDownloaded = function(wine) {
-    var downloadFolder = wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/downloading/" + this._appId;
+    var manifest = cat(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf");
+    var installDir = manifest.match(/\"installdir\"\s+\"(.+)\"/)[1];
+
+    var downloadFolder = wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/downloading/" + this._appId + "/" + installDir + "_Data";
     // download folder is not yet/no more available
     if (!fileExists(downloadFolder))
     {
@@ -60,12 +63,7 @@ SteamScript.prototype.getBytesDownloaded = function(wine) {
         }
     }
 
-    var processBuilder = new java.lang.ProcessBuilder(["bash", "-c", "du -sb *_Data | egrep -o '[0-9]+'"]);
-
-    processBuilder.directory(new java.io.File(downloadFolder));
-    var process = processBuilder.start();
-
-    return Number(org.apache.commons.io.IOUtils.toString(process.getInputStream()).trim());
+    return getFileSize(downloadFolder);
 };
 
 SteamScript.prototype.go = function() {
