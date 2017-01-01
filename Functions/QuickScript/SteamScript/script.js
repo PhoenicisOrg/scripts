@@ -29,6 +29,7 @@ SteamScript.prototype.getBytesToDownload = function(wine) {
     // wait until download started
     while (!fileExists(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf"))
     {
+        java.lang.Thread.sleep(100);
     }
 
     // make sure that BytesToDownload is set
@@ -37,6 +38,7 @@ SteamScript.prototype.getBytesToDownload = function(wine) {
     {
         var manifest = cat(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf");
         bytesToDownload = Number(manifest.match(/\"BytesToDownload\"\s+\"(\d+)\"/)[1]);
+        java.lang.Thread.sleep(100);
     }
     return bytesToDownload;
 };
@@ -108,6 +110,7 @@ SteamScript.prototype.go = function() {
         bytesDownloaded = this.getBytesDownloaded(wine);
         progressBar.setProgressPercentage((bytesDownloaded / bytesToDownload) * 100);
         progressBar.setText("Downloaded " + bytesDownloaded + " of " + bytesToDownload + " bytes");
+        java.lang.Thread.sleep(100);
     }
 
     // make sure download is really finished (download folder file size is not exact)
@@ -115,6 +118,7 @@ SteamScript.prototype.go = function() {
     do {
         bytesToDownload = this.getBytesToDownload(wine);
         bytesDownloaded = this.getBytesDownloaded(wine);
+        java.lang.Thread.sleep(100);
     } while (bytesDownloaded != bytesToDownload);
 
     // close Steam
