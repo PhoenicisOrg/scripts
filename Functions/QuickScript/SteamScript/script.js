@@ -126,7 +126,7 @@ SteamScript.prototype.go = function() {
     } while (bytesDownloaded != bytesToDownload);
 
     // close Steam
-    wine.kill();
+    wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", "-shutdown");
 
     this._postInstall(wine);
 
