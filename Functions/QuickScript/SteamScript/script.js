@@ -125,6 +125,9 @@ SteamScript.prototype.go = function() {
         bytesDownloaded = this.getBytesDownloaded(wine);
     } while (bytesDownloaded != bytesToDownload);
 
+    // close Steam
+    wine.kill();
+
     this._postInstall(wine);
 
     setupWizard.close();
