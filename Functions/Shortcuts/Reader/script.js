@@ -1,10 +1,16 @@
 include(["Functions", "Engines", "Wine"]);
 
 var _WineShortcutReader = function(shortcutContent) {
-    this.shortcutContent = shortcutContent;
+    var that = this;
+    that._shortcutManager = Bean("shortcutManager");
+    that._libraryManager = Bean("libraryManager");
+    that._uiQuestionFactory = Bean("uiQuestionFactory");
+    that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
+
+    this.shortcut = shortcut;
 
     this.run = function(userArguments) {
-        var shortcutContent = JSON.parse(this.shortcutContent);
+        var shortcutContent = JSON.parse(this.shortcut.script);
 
         if(!userArguments) {
             userArguments = [];
@@ -22,23 +28,46 @@ var _WineShortcutReader = function(shortcutContent) {
 
 
     this.stop = function() {
-        var shortcutContent = JSON.parse(this.shortcutContent);
+        var shortcutContent = JSON.parse(this.shortcut.script);
 
         new Wine()
             .prefix(shortcutContent.winePrefix)
             .kill()
+    };
+
+    this.uninstall = function() {
+        var shortcutContent = JSON.parse(this.shortcut.script);
+        var _winePrefix = shortcutContent.winePrefix;
+
+        var _found = false;
+        this._libraryManager.fetchShortcuts().forEach(function(shorcut) {
+            var _otherShortcutContent = JSON.parse(shorcut.shortcutContent);
+
+            if(_otherShortcutContent.winePrefix == _winePrefix) {
+                _found = true;
+            }
+        });
+
+        this._shortcutManager.deleteShortcut(this.shortcut);
+
+        if(!_found) {
+            this._uiQuestionFactory.create("The container " + winePrefix + " is no longer used. Do you want to delete it?",
+            function() {
+                remove(that._winePrefixesDirectory + _winePrefix);
+            });
+        }
     }
 };
 
 var ShortcutReader = function() {
     var that = this;
 
-    this.of = function(shortcutContent) {
-        this.shortcutContent = shortcutContent;
-        var shortcutContentParsed = JSON.parse(this.shortcutContent);
+    this.of = function(shortcut) {
+        this.shortcut = shortcut;
+        var shortcutContentParsed = JSON.parse(this.shortcut.script);
 
         if(shortcutContentParsed.type == "WINE") {
-            that._runner = new _WineShortcutReader(this.shortcutContent);
+            that._runner = new _WineShortcutReader(this.shortcut);
         }
     };
 
@@ -49,4 +78,8 @@ var ShortcutReader = function() {
     this.stop = function() {
         that._runner.stop();
     };
+
+    this.uninstall = function() {
+        that._runner.uninstall();
+    }
 };

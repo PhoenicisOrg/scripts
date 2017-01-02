@@ -8,7 +8,7 @@ include(["Functions", "Verbs", "luna"]);
 
 function ZipScript() {
     QuickScript.call(this);
-};
+}
 
 ZipScript.prototype = Object.create(QuickScript.prototype);
 
