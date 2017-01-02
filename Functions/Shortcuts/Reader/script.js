@@ -43,7 +43,7 @@ var _WineShortcutReader = function(shortcut) {
         this._libraryManager.fetchShortcuts().forEach(function(shortcut) {
             var _otherShortcutContent = JSON.parse(shortcut.script);
 
-            if(_otherShortcutContent.winePrefix == _winePrefix && shortcut != that.shortcut) {
+            if(_otherShortcutContent.winePrefix == _winePrefix && shortcut.name != that.shortcut.name) {
                 _found = true;
             }
         });
