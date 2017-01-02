@@ -44,10 +44,7 @@ SteamScript.prototype.getBytesToDownload = function(wine) {
 };
 
 SteamScript.prototype.getBytesDownloaded = function(wine) {
-    var manifest = cat(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf");
-    var installDir = manifest.match(/\"installdir\"\s+\"(.+)\"/)[1];
-
-    var downloadFolder = wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/downloading/" + this._appId + "/" + installDir + "_Data";
+    var downloadFolder = wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/downloading/" + this._appId;
     // download folder is not yet/no more available
     if (!fileExists(downloadFolder))
     {
