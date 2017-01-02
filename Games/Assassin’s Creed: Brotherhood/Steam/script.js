@@ -7,7 +7,7 @@ new SteamScript()
     .editor("Ubisoft")
     .author("Quentin PARIS")
     .appId(48190)
-    .preInstall(function(wine) {
+    .preInstall(function(wine, wizard) {
         wine.crypt32();
         wine.d3dx9();
     })
