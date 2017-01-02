@@ -39,6 +39,8 @@ ZipScript.prototype.go = function() {
         .luna()
         .wait();
 
+    this._preInstall(wine, setupWizard);
+
     new Downloader()
         .wizard(setupWizard)
         .url(this._url)

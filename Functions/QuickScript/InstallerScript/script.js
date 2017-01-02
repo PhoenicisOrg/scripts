@@ -47,6 +47,8 @@ InstallerScript.prototype.go = function() {
         .run(tempFile)
         .wait();
 
+    this._preInstall(wine, setupWizard);
+
     new WineShortcut()
         .name(this._name)
         .prefix(this._name)
