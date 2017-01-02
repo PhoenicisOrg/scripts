@@ -1,6 +1,6 @@
 include(["Functions", "Engines", "Wine"]);
 
-var _WineShortcutReader = function(shortcutContent) {
+var _WineShortcutReader = function(shortcut) {
     var that = this;
     that._shortcutManager = Bean("shortcutManager");
     that._libraryManager = Bean("libraryManager");
@@ -40,8 +40,8 @@ var _WineShortcutReader = function(shortcutContent) {
         var _winePrefix = shortcutContent.winePrefix;
 
         var _found = false;
-        this._libraryManager.fetchShortcuts().forEach(function(shorcut) {
-            var _otherShortcutContent = JSON.parse(shorcut.shortcutContent);
+        this._libraryManager.fetchShortcuts().forEach(function(shortcut) {
+            var _otherShortcutContent = JSON.parse(shortcut.shortcutContent);
 
             if(_otherShortcutContent.winePrefix == _winePrefix) {
                 _found = true;
