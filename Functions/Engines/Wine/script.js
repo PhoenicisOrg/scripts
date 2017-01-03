@@ -193,11 +193,12 @@ var Wine = function () {
 
     /**
      *
+     * @param wait message
      * @returns {Wine}
      */
-    that.wait = function () {
+    that.wait = function (message) {
         if(that._wizard) {
-            that._wizard.wait("Please wait...");
+            that._wizard.wait(typeof message !== 'undefined' ? message : "Please wait...");
         }
 
         return that._silentWait();
