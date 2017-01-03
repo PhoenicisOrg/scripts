@@ -44,10 +44,12 @@ InstallerScript.prototype.go = function() {
         .version(this._wineVersion)
         .prefix(this._name)
         .luna()
-        .run(tempFile)
         .wait();
 
     this._preInstall(wine, setupWizard);
+
+    wine.run(tempFile)
+        .wait();
 
     new WineShortcut()
         .name(this._name)
