@@ -96,7 +96,9 @@ SteamScript.prototype.go = function() {
         .miniature([this._category, this._name])
         .create();
 
-    wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", ["-silent", "-applaunch", this._appId]);
+    // TODO enable "-silent" when progress bar works
+    // disabled it for now so the users can see the download progress
+    wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", [/*"-silent", */"-applaunch", this._appId]);
     var bytesToDownload = this.getBytesToDownload(wine);
     var bytesDownloaded = 0;
     var progressBar = setupWizard.progressBar("Please wait until Steam has finished the download...");
