@@ -425,3 +425,32 @@ Wine.prototype.overrideDLL = function() {
     return new OverrideDLL()
         .wine(this)
 };
+
+var SetOsForApplication = function() {
+    var that = this;
+    that._regeditFileContent =
+        "REGEDIT4\n" +
+        "\n"+
+        "[HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\";
+
+    that.wine = function(wine) {
+        that._wine = wine;
+        return that;
+    };
+
+    that.set = function(application, os) {
+        that._regeditFileContent += application + "]\n\"Version\"=\"" + os + "\"\n";
+
+        return that;
+    };
+
+    that.do =  function() {
+        that._wine.regedit().patch(that._regeditFileContent);
+        return that._wine;
+    }
+};
+
+Wine.prototype.setOsForApplication = function() {
+    return new SetOsForApplication()
+        .wine(this)
+};
