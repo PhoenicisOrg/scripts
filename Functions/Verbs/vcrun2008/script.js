@@ -1,0 +1,38 @@
+include(["Functions", "Engines", "Wine"]);
+include(["Functions", "Net", "Resource"]);
+include(["Functions", "Verbs", "luna"]);
+
+Wine.prototype.vcrun2008 = function() {
+    var setupFile32 = new Resource()
+        .wizard(this._wizard)
+        .url("http://download.microsoft.com/download/5/D/8/5D8C65CB-C849-4025-8E95-C3966CAFD8AE/vcredist_x86.exe")
+        .checksum("470640aa4bb7db8e69196b5edb0010933569e98d")
+        .name("vcredist_x86.exe")
+        .get();
+
+    var setupFile64 = new Resource()
+        .wizard(this._wizard)
+        .url("https://download.microsoft.com/download/5/D/8/5D8C65CB-C849-4025-8E95-C3966CAFD8AE/vcredist_x64.exe")
+        .checksum("027d0c2749ec5eb21b031f46aee14c905206f482")
+        .name("vcredist_x64.exe")
+        .get();
+
+    this.run(setupFile32, "/q")
+        .wait("Please wait while {0} is installed ...".format("Microsoft Visual C++ 2008 Redistributable (x86)"));
+
+    this.run(setupFile64, "/q")
+        .wait("Please wait while {0} is installed ...".format("Microsoft Visual C++ 2008 Redistributable (x86)"));
+
+    var dlls = [
+        "atl90.dll",
+        "msvcm90.dll",
+        "msvcp90.dll",
+        "msvcr90.dll",
+        "vcomp90.dll",
+    ];
+    this.overrideDLL()
+        .set("native, builtin", dlls)
+        .do();
+
+    return this;
+};
