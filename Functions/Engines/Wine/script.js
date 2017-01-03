@@ -252,6 +252,10 @@ var Wine = function () {
         throw "Prefix seems to be 32bits";
     };
 
+    that.fontDirectory = function() {
+        return that.prefixDirectory + "/drive_c/windows/Fonts";
+    };
+
     that._installVersion = function() {
         var version = that._version;
         var fullDistributionName = that._fetchFullDistributionName();
@@ -441,6 +445,7 @@ Wine.prototype.overrideDLL = function() {
         .wine(this)
 };
 
+
 var SetOsForApplication = function() {
     var that = this;
     that._regeditFileContent =
@@ -469,3 +474,41 @@ Wine.prototype.setOsForApplication = function() {
     return new SetOsForApplication()
         .wine(this)
 };
+
+
+var RegisterFont = function() {
+    var that = this;
+    that._regeditFileContentNT =
+        "REGEDIT4\n" +
+        "\n"+
+        "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Fonts]\n";
+
+    that._regeditFileContent =
+        "REGEDIT4\n" +
+        "\n"+
+        "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Fonts]\n";
+
+    that.wine = function(wine) {
+        that._wine = wine;
+        return that;
+    };
+
+    that.set = function(font, file) {
+        that._regeditFileContentNT += "\"*"+font+"\"=\""+file+"\"\n";
+        that._regeditFileContent += "\"*"+font+"\"=\""+file+"\"\n";
+
+        return that;
+    };
+
+    that.do =  function() {
+        that._wine.regedit().patch(that._regeditFileContentNT);
+        that._wine.regedit().patch(that._regeditFileContent);
+        return that._wine;
+    }
+};
+
+Wine.prototype.registerFont = function() {
+    return new RegisterFont()
+        .wine(this)
+};
+
