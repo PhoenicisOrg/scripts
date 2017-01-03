@@ -10,18 +10,20 @@ Wine.prototype.vcrun2010 = function() {
         .name("vcredist_x86.exe")
         .get();
 
-    var setupFile64 = new Resource()
-        .wizard(this._wizard)
-        .url("http://download.microsoft.com/download/A/8/0/A80747C3-41BD-45DF-B505-E9710D2744E0/vcredist_x64.exe")
-        .checksum("027d0c2749ec5eb21b031f46aee14c905206f482")
-        .name("vcredist_x64.exe")
-        .get();
-
     this.run(setupFile32, "/q")
         .wait("Please wait while {0} is installed ...".format("Microsoft Visual C++ 2010 Redistributable (x86)"));
 
-    this.run(setupFile64, "/q")
-        .wait("Please wait while {0} is installed ...".format("Microsoft Visual C++ 2010 Redistributable (x86)"));
+    if (this.architecture() == "amd64") {
+        var setupFile64 = new Resource()
+            .wizard(this._wizard)
+            .url("http://download.microsoft.com/download/A/8/0/A80747C3-41BD-45DF-B505-E9710D2744E0/vcredist_x64.exe")
+            .checksum("027d0c2749ec5eb21b031f46aee14c905206f482")
+            .name("vcredist_x64.exe")
+            .get();
+
+        this.run(setupFile64, "/q")
+            .wait("Please wait while {0} is installed ...".format("Microsoft Visual C++ 2010 Redistributable (x86)"));
+    }
 
     var dlls = [
         "atl100.dll",
