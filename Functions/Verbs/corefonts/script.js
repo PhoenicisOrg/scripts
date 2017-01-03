@@ -87,89 +87,33 @@ Wine.prototype.corefonts = function() {
 
     this.registerFont()
         .set("Arial", "Arial.TTF")
-        .do();
-    this.registerFont()
         .set("Arial Bold", "Arialbd.TTF")
-        .do();
-    this.registerFont()
         .set("Arial Bold Italic", "Arialbi.TTF")
-        .do();
-    this.registerFont()
         .set("Arial Italic", "Ariali.TTF")
-        .do();
-    this.registerFont()
         .set("Arial Black", "AriBlk.TTF")
-        .do();
-    this.registerFont()
         .set("Comic Sans MS", "Comic.TTF")
-        .do();
-    this.registerFont()
         .set("Comic Sans MS Bold", "Comicbd.TTF")
-        .do();
-    this.registerFont()
         .set("Courier New", "Cour.TTF")
-        .do();
-    this.registerFont()
         .set("Courier New Bold", "CourBD.TTF")
-        .do();
-    this.registerFont()
         .set("Courier New Bold Italic", "CourBI.TTF")
-        .do();
-    this.registerFont()
         .set("Courier New Italic", "Couri.TTF")
-        .do();
-    this.registerFont()
         .set("Georgia", "Georgia.TTF")
-        .do();
-    this.registerFont()
         .set("Georgia Bold", "Georgiab.TTF")
-        .do();
-    this.registerFont()
         .set("Georgia Bold Italic", "Georgiaz.TTF")
-        .do();
-    this.registerFont()
         .set("Georgia Italic", "Georgiai.TTF")
-        .do();
-    this.registerFont()
         .set("Impact", "Impact.TTF")
-        .do();
-    this.registerFont()
         .set("Times New Roman", "Times.TTF")
-        .do();
-    this.registerFont()
         .set("Times New Roman Bold", "Timesbd.TTF")
-        .do();
-    this.registerFont()
         .set("Times New Roman Bold Italic", "Timesbi.TTF")
-        .do();
-    this.registerFont()
         .set("Times New Roman Italic", "Timesi.TTF")
-        .do();
-    this.registerFont()
         .set("Trebucet MS", "Trebuc.TTF")
-        .do();
-    this.registerFont()
         .set("Trebucet MS Bold", "Trebucbd.TTF")
-        .do();
-    this.registerFont()
         .set("Trebucet MS Bold Italic", "Trebucbi.TTF")
-        .do();
-    this.registerFont()
         .set("Trebucet MS Italic", "Trebucit.TTF")
-        .do();
-    this.registerFont()
         .set("Verdana", "Verdana.TTF")
-        .do();
-    this.registerFont()
         .set("Verdana Bold", "Verdanab.TTF")
-        .do();
-    this.registerFont()
         .set("Verdana Bold Italic", "Verdanaz.TTF")
-        .do();
-    this.registerFont()
         .set("Verdana Italic", "Verdanai.TTF")
-        .do();
-    this.registerFont()
         .set("Webdings", "Webdings.TTF")
         .do();
     return this;
