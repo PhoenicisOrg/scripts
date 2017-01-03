@@ -193,11 +193,12 @@ var Wine = function () {
 
     /**
      *
+     * @param wait message
      * @returns {Wine}
      */
-    that.wait = function () {
+    that.wait = function (message) {
         if(that._wizard) {
-            that._wizard.wait("Please wait...");
+            that._wizard.wait(typeof message !== 'undefined' ? message : "Please wait...");
         }
 
         return that._silentWait();
@@ -398,6 +399,20 @@ Wine.prototype.regedit = function() {
 
 Wine.prototype.registry = Wine.prototype.regedit;
 
+/**
+ * set sound driver
+ * @param driver (alsa, pulse)
+ * @returns {Wine}
+ */
+Wine.prototype.setSoundDriver = function(driver) {
+    var regeditFileContent =
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\Drivers]\n" +
+        "\"Audio\"=\"" + driver + "\"\n";
+    this.regedit().patch(regeditFileContent);
+    return this;
+};
 
 var OverrideDLL = function() {
     var that = this;
@@ -429,6 +444,37 @@ Wine.prototype.overrideDLL = function() {
     return new OverrideDLL()
         .wine(this)
 };
+
+
+var SetOsForApplication = function() {
+    var that = this;
+    that._regeditFileContent =
+        "REGEDIT4\n" +
+        "\n";
+
+    that.wine = function(wine) {
+        that._wine = wine;
+        return that;
+    };
+
+    that.set = function(application, os) {
+        that._regeditFileContent += "[HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\" + application + "]\n";
+        that._regeditFileContent += "\"Version\"=\"" + os + "\"\n";
+
+        return that;
+    };
+
+    that.do =  function() {
+        that._wine.regedit().patch(that._regeditFileContent);
+        return that._wine;
+    }
+};
+
+Wine.prototype.setOsForApplication = function() {
+    return new SetOsForApplication()
+        .wine(this)
+};
+
 
 var RegisterFont = function() {
     var that = this;
@@ -465,3 +511,4 @@ Wine.prototype.registerFont = function() {
     return new RegisterFont()
         .wine(this)
 };
+

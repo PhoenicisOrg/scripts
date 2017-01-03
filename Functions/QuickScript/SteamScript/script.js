@@ -84,7 +84,10 @@ SteamScript.prototype.go = function() {
         .prefix(this._name)
         .luna()
         .run(tempFile)
-        .wait();
+        .wait("Please follow the steps of the Steam setup.\n\nUncheck \"Run Steam\" or close Steam completely after the setup so that the installation of \"" + this._name + "\" can continue.");
+
+    // Steam installation has finished
+    setupWizard.wait("Please wait...");
 
     this._preInstall(wine, setupWizard);
 
@@ -96,7 +99,11 @@ SteamScript.prototype.go = function() {
         .miniature([this._category, this._name])
         .create();
 
-    wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", ["-silent", "-applaunch", this._appId]);
+    // TODO enable "-silent" when progress bar works
+    // disabled it for now so the users can see the download progress
+    //wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", ["-silent", "-applaunch", this._appId]);
+    wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", ["steam://install/" + this._appId]);
+
     var bytesToDownload = this.getBytesToDownload(wine);
     var bytesDownloaded = 0;
     var progressBar = setupWizard.progressBar("Please wait until Steam has finished the download...");
@@ -109,7 +116,7 @@ SteamScript.prototype.go = function() {
     }
 
     // make sure download is really finished (download folder file size is not exact)
-    setupWizard.wait("Please wait...");
+    setupWizard.wait("Please wait until Steam has finished the download...");
     do {
         bytesToDownload = this.getBytesToDownload(wine);
         bytesDownloaded = this.getBytesDownloaded(wine);
