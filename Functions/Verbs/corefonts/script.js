@@ -76,14 +76,22 @@ Wine.prototype.corefonts = function() {
         .get()
     ];
 
-    var numFonts = myStringArray.length;
-    for (var i = 0; i < numFonts; i++) {
+    var progressBar = this._wizard.progressBar("Please wait...");
+    progressBar.setText("Installing fonts...");
+    progressBar.setProgressPercentage(0.);
+    var numInstalledFonts = 0;
+    fontResources.forEach(function(fontResource) {
+        progressBar.setText("Installing fonts...");
+        progressBar.setProgressPercentage(numInstalledFonts * 100 / fontResources.length);
+
         new CabExtract()
-            .archive(fontResources[i])
+            .archive(fontResource)
             .wizard(this._wizard)
             .to(this.fontDirectory())
             .extract();
-    }
+
+        numInstalledFonts++;
+    });
 
     this.registerFont()
         .set("Arial", "Arial.TTF")
