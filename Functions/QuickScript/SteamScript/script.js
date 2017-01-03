@@ -109,7 +109,7 @@ SteamScript.prototype.go = function() {
     }
 
     // make sure download is really finished (download folder file size is not exact)
-    setupWizard.wait("Please wait...");
+    setupWizard.wait("Please wait until Steam has finished the download...");
     do {
         bytesToDownload = this.getBytesToDownload(wine);
         bytesDownloaded = this.getBytesDownloaded(wine);
