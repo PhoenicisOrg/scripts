@@ -430,8 +430,7 @@ var SetOsForApplication = function() {
     var that = this;
     that._regeditFileContent =
         "REGEDIT4\n" +
-        "\n"+
-        "[HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\";
+        "\n";
 
     that.wine = function(wine) {
         that._wine = wine;
@@ -439,7 +438,8 @@ var SetOsForApplication = function() {
     };
 
     that.set = function(application, os) {
-        that._regeditFileContent += application + "]\n\"Version\"=\"" + os + "\"\n";
+        that._regeditFileContent += "[HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\" + application + "]\n";
+        that._regeditFileContent += "\"Version\"=\"" + os + "\"\n";
 
         return that;
     };
