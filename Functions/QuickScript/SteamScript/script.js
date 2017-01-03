@@ -83,8 +83,14 @@ SteamScript.prototype.go = function() {
         .version(this._wineVersion)
         .prefix(this._name)
         .luna()
-        .run(tempFile)
-        .wait();
+        .run(tempFile);
+
+    setupWizard.wait("Please follow the steps of the Steam setup.\n\nUncheck \"Run Steam\" or close Steam completely after the setup so that the installation of \"" + this._name + "\" can continue.");
+
+    wine._silentWait();
+
+    // Steam installation has finished
+    setupWizard.wait("Please wait...");
 
     this._preInstall(wine, setupWizard);
 
