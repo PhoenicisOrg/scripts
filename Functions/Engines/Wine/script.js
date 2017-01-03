@@ -395,6 +395,20 @@ Wine.prototype.regedit = function() {
 
 Wine.prototype.registry = Wine.prototype.regedit;
 
+/**
+ * set sound driver
+ * @param driver (alsa, pulse)
+ * @returns {Wine}
+ */
+Wine.prototype.setSoundDriver = function(driver) {
+    var regeditFileContent =
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\Drivers]\n" +
+        "\"Audio\"=\"" + driver + "\"\n";
+    this.regedit().patch(regeditFileContent);
+    return this;
+};
 
 var OverrideDLL = function() {
     var that = this;
