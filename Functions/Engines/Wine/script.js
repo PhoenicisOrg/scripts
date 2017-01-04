@@ -445,6 +445,26 @@ Wine.prototype.overrideDLL = function() {
         .wine(this)
 };
 
+/**
+ * default windows version
+ * @param {string} [version (vista, win2003, winxp, win2k, winnt, winme, win98, win95, win31)]
+ * @returns {string|Wine}
+ */
+Wine.prototype.windowsVersion = function (version) {
+    // get
+    if (arguments.length == 0) {
+        return this.regedit().fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Version"]);
+    }
+
+    // set
+    var regeditFileContent =
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine]\n" +
+        "\"Version\"=\"" + version + "\"\n";
+    this.regedit().patch(regeditFileContent);
+    return this;
+};
 
 var SetOsForApplication = function() {
     var that = this;
