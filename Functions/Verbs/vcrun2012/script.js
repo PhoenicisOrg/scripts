@@ -22,7 +22,7 @@ Wine.prototype.vcrun2012 = function() {
             .get();
 
         this.run(setupFile64, "/q")
-            .wait("Please wait while {0} is installed ...".format("Microsoft Visual C++ 2012 Redistributable (x86)"));
+            .wait("Please wait while {0} is installed ...".format("Microsoft Visual C++ 2012 Redistributable (x64)"));
     }
 
     var dlls = [
