@@ -20,14 +20,12 @@ SteamScript.prototype.constructor = SteamScript;
 
 SteamScript.prototype.appId = function(appId) {
     this._appId = appId;
-    this._applicationHomepage = "http://store.steampowered.com/app/" + appId;
-    this._executableArgs = ["-silent", "-applaunch", this._appId];
     return this;
 };
 
 SteamScript.prototype.getBytesToDownload = function(wine) {
     // wait until download started
-    while (!fileExists(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf"))
+    while (!fileExists(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf"))
     {
         java.lang.Thread.sleep(100);
     }
@@ -36,7 +34,7 @@ SteamScript.prototype.getBytesToDownload = function(wine) {
     var bytesToDownload = 0;
     while (bytesToDownload == 0)
     {
-        var manifest = cat(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf");
+        var manifest = cat(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf");
         bytesToDownload = Number(manifest.match(/\"BytesToDownload\"\s+\"(\d+)\"/)[1]);
         java.lang.Thread.sleep(100);
     }
@@ -44,14 +42,14 @@ SteamScript.prototype.getBytesToDownload = function(wine) {
 };
 
 SteamScript.prototype.getBytesDownloaded = function(wine) {
-    var downloadFolder = wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/downloading/" + this._appId;
+    var downloadFolder = wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/downloading/" + this._appId;
     // download folder is not yet/no more available
     if (!fileExists(downloadFolder))
     {
         // check if download already finished (download folder has been deleted)
-        if (fileExists(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf"))
+        if (fileExists(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf"))
         {
-            var manifest = cat(wine.prefixDirectory + "/drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf");
+            var manifest = cat(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf");
             return Number(manifest.match(/\"BytesDownloaded\"\s+\"(\d+)\"/)[1]);
         }
         else
@@ -64,6 +62,16 @@ SteamScript.prototype.getBytesDownloaded = function(wine) {
 };
 
 SteamScript.prototype.go = function() {
+    // default application homepage if not specified
+    if (!this._applicationHomepage) {
+        this._applicationHomepage = "http://store.steampowered.com/app/" + appId;
+    }
+
+    // default executable args if not specified
+    if (!this._executableArgs) {
+        this._executableArgs = ["-silent", "-applaunch", this._appId];
+    }
+
     var setupWizard = SetupWizard(this._name);
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
@@ -91,6 +99,9 @@ SteamScript.prototype.go = function() {
 
     this._preInstall(wine, setupWizard);
 
+    // back to generic wait (might have been changed in preInstall)
+    setupWizard.wait("Please wait...");
+
     new WineShortcut()
         .name(this._name)
         .prefix(this._name)
@@ -101,8 +112,8 @@ SteamScript.prototype.go = function() {
 
     // TODO enable "-silent" when progress bar works
     // disabled it for now so the users can see the download progress
-    //wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", ["-silent", "-applaunch", this._appId]);
-    wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", ["steam://install/" + this._appId]);
+    //wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", ["-silent", "-applaunch", this._appId]);
+    wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", ["steam://install/" + this._appId]);
 
     var bytesToDownload = this.getBytesToDownload(wine);
     var bytesDownloaded = 0;
@@ -124,9 +135,12 @@ SteamScript.prototype.go = function() {
     } while (bytesDownloaded != bytesToDownload);
 
     // close Steam
-    wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", "-shutdown");
+    wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", "-shutdown");
 
     this._postInstall(wine, setupWizard);
+
+    // back to generic wait (might have been changed in postInstall)
+    setupWizard.wait("Please wait...");
 
     setupWizard.close();
 };

@@ -41,6 +41,9 @@ ZipScript.prototype.go = function() {
 
     this._preInstall(wine, setupWizard);
 
+    // back to generic wait (might have been changed in preInstall)
+    setupWizard.wait("Please wait...");
+
     new Downloader()
         .wizard(setupWizard)
         .url(this._url)
@@ -63,6 +66,9 @@ ZipScript.prototype.go = function() {
         .create();
 
     this._postInstall(wine, setupWizard);
+
+    // back to generic wait (might have been changed in postInstall)
+    setupWizard.wait("Please wait...");
 
     setupWizard.close();
 };
