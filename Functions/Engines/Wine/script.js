@@ -219,7 +219,7 @@ Wine.prototype.create = function () {
 *
 * @returns {string} name of "Program Files"
 */
-Wine.prototype.getProgramFiles = function () {
+Wine.prototype.programFiles = function () {
     var programFilesName = this.run("cmd", ["/c", "echo", "%ProgramFiles%"], true).trim();
     if(programFilesName == "%ProgramFiles%") {
         return "Program Files"
