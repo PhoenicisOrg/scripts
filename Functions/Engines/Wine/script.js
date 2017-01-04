@@ -414,6 +414,29 @@ Wine.prototype.setSoundDriver = function(driver) {
     return this;
 };
 
+/**
+*
+* @param {boolean} [managed]
+* @returns {boolean|Wine}
+*/
+Wine.prototype.managed = function (managed) {
+    // get
+    if (arguments.length == 0) {
+        return (this.regedit().fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "X11 Driver", "Managed"]) == "Y");
+    }
+
+    // set
+    var managedYn = managed ? "Y" : "N";
+
+    var regeditFileContent =
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver]\n" +
+        "\"Managed\"=\"" + managedYn + "\"\n";
+    this.regedit().patch(regeditFileContent);
+    return this;
+};
+
 var OverrideDLL = function() {
     var that = this;
     that._regeditFileContent =
