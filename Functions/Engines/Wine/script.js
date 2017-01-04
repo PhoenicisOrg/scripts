@@ -20,8 +20,8 @@ function Wine() {
 
 /**
 *
-* @param wizard
-* @returns {Wine}
+* @param {SetupWizard} [wizard]
+* @returns {SetupWizard|Wine}
 */
 Wine.prototype.wizard = function (wizard) {
     // get
@@ -36,8 +36,8 @@ Wine.prototype.wizard = function (wizard) {
 
 /**
 *
-* @param debug
-* @returns {Wine}
+* @param {string} [debug]
+* @returns {string|Wine}
 */
 Wine.prototype.debug = function (debug) {
     // get
@@ -53,8 +53,8 @@ Wine.prototype.debug = function (debug) {
 
 /**
 *
-* @param architecture
-* @returns {Wine}
+* @param {string} [architecture]
+* @returns {string|Wine}
 */
 Wine.prototype.architecture = function (architecture) {
     // get
@@ -73,8 +73,8 @@ Wine.prototype.architecture = function (architecture) {
 
 /**
 *
-* @param distribution
-* @returns {Wine}
+* @param {string} [distribution]
+* @returns {string|Wine}
 */
 Wine.prototype.distribution = function (distribution) {
     // get
@@ -93,8 +93,8 @@ Wine.prototype.distribution = function (distribution) {
 
 /**
 *
-* @param prefix
-* @returns {Wine}
+* @param {string} [prefix]
+* @returns {string|Wine}
 */
 Wine.prototype.prefix = function (prefix) {
     // get
@@ -135,8 +135,8 @@ Wine.prototype.prefix = function (prefix) {
 
 /**
 *
-* @param directory
-* @returns {Wine}
+* @param {string} [directory]
+* @returns {string|Wine}
 */
 Wine.prototype.workingDirectory = function (directory) {
     // get
@@ -161,8 +161,8 @@ Wine.prototype.runInsidePrefix = function(executable, args) {
 /**
 *
 * @param executable
-* @param args
-* @param captureOutput
+* @param {array} [args = []]
+* @param {boolean} [captureOutput=false]
 * @returns {Wine}
 */
 Wine.prototype.run = function (executable, args, captureOutput) {
@@ -207,11 +207,18 @@ Wine.prototype.run = function (executable, args, captureOutput) {
     }
 };
 
+/**
+* runs "wineboot"
+*/
 Wine.prototype.create = function() {
     this.run("wineboot");
     return this;
 };
 
+/**
+*
+* @returns {string} name of "Program Files"
+*/
 Wine.prototype.getProgramFiles = function() {
     var programFilesName = this.run("cmd", ["/c", "echo", "%ProgramFiles%"], true).trim();
     if(programFilesName == "%ProgramFiles%") {
@@ -223,7 +230,7 @@ Wine.prototype.getProgramFiles = function() {
 
 /**
 *
-* @param wait message
+* @param {string} [wait message = "Please wait..."]
 * @returns {Wine}
 */
 Wine.prototype.wait = function (message) {
@@ -235,7 +242,7 @@ Wine.prototype.wait = function (message) {
 };
 
 /**
-*
+* kill wine server
 * @returns {Wine}
 */
 Wine.prototype.kill = function() {
@@ -245,6 +252,7 @@ Wine.prototype.kill = function() {
 
 /**
 *
+* @returns {Downloader}
 */
 Wine.prototype.getAvailableVersions = function () {
     return new Downloader()
@@ -255,8 +263,8 @@ Wine.prototype.getAvailableVersions = function () {
 
 /**
 *
-* @param version
-* @returns {Wine}
+* @param {string} [version = LATEST_STABLE_VERSION]
+* @returns {string|Wine}
 */
 Wine.prototype.version = function (version) {
     // get
@@ -273,6 +281,10 @@ Wine.prototype.version = function (version) {
     return this;
 };
 
+/**
+*
+* @returns {string} system32 directory
+*/
 Wine.prototype.system32directory = function() {
     if(fileExists(this.prefixDirectory + "/drive_c/windows/syswow64")) {
         return this.prefixDirectory + "/drive_c/windows/syswow64";
@@ -281,6 +293,10 @@ Wine.prototype.system32directory = function() {
     }
 };
 
+/**
+*
+* @returns {string} system64 directory
+*/
 Wine.prototype.system64directory = function() {
     if(fileExists(this.prefixDirectory + "/drive_c/windows/syswow64")) {
         return this.prefixDirectory + "/drive_c/windows/system32";
@@ -288,6 +304,10 @@ Wine.prototype.system64directory = function() {
     throw "Prefix seems to be 32bits";
 };
 
+/**
+*
+* @returns {string} font directory
+*/
 Wine.prototype.fontDirectory = function() {
     return this.prefixDirectory + "/drive_c/windows/Fonts";
 };
@@ -366,6 +386,10 @@ Wine.prototype._wineServer = function(parameter) {
     wineServerProcess.waitFor();
 };
 
+/**
+* runs "regsvr32"
+* @returns {Wine}
+*/
 Wine.prototype.regsvr32 = function() {
     var _wine = this;
 
@@ -435,7 +459,7 @@ Wine.prototype.regedit = function() {
 Wine.prototype.registry = Wine.prototype.regedit;
 
 /**
- * set sound driver
+ * sets sound driver
  * @param driver (alsa, pulse)
  * @returns {Wine}
  */
