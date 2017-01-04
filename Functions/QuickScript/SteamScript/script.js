@@ -91,6 +91,9 @@ SteamScript.prototype.go = function() {
 
     this._preInstall(wine, setupWizard);
 
+    // back to generic wait (might have been changed in preInstall)
+    setupWizard.wait("Please wait...");
+
     new WineShortcut()
         .name(this._name)
         .prefix(this._name)
@@ -127,6 +130,9 @@ SteamScript.prototype.go = function() {
     wine.runInsidePrefix(wine.getProgramFiles() + "/Steam/Steam.exe", "-shutdown");
 
     this._postInstall(wine, setupWizard);
+
+    // back to generic wait (might have been changed in postInstall)
+    setupWizard.wait("Please wait...");
 
     setupWizard.close();
 };
