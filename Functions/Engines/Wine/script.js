@@ -24,6 +24,12 @@ function Wine() {
 * @returns {Wine}
 */
 Wine.prototype.wizard = function (wizard) {
+    // get
+    if(arguments.length == 0) {
+        return this._wizard;
+    }
+    
+    // set
     this._wizard = wizard;
     return this;
 };
@@ -34,9 +40,13 @@ Wine.prototype.wizard = function (wizard) {
 * @returns {Wine}
 */
 Wine.prototype.debug = function (debug) {
-    if(!debug) {
+    // get
+    if(arguments.length == 0) {
         this._wineDebug = "";
+        return this._wineDebug;
     }
+    
+    // set
     this._wineDebug = debug;
     return this;
 };
@@ -47,10 +57,12 @@ Wine.prototype.debug = function (debug) {
 * @returns {Wine}
 */
 Wine.prototype.architecture = function (architecture) {
+    // get
     if(arguments.length == 0) {
         return this._architecture;
     }
-
+    
+    // set
     if(this._prefixConfiguration) {
         this._prefixConfiguration.writeValue("wineArchitecture", architecture);
     }
@@ -65,6 +77,12 @@ Wine.prototype.architecture = function (architecture) {
 * @returns {Wine}
 */
 Wine.prototype.distribution = function (distribution) {
+    // get
+    if(arguments.length == 0) {
+        return this._distribution;
+    }
+    
+    // set
     if(this._prefixConfiguration) {
         this._prefixConfiguration.writeValue("wineDistribution", distribution);
     }
@@ -79,6 +97,12 @@ Wine.prototype.distribution = function (distribution) {
 * @returns {Wine}
 */
 Wine.prototype.prefix = function (prefix) {
+    // get
+    if(arguments.length == 0) {
+        return this._prefix;
+    }
+    
+    // set
     this._prefix = prefix;
     this.prefixDirectory = this._winePrefixesDirectory + "/" + this._prefix + "/";
 
@@ -111,18 +135,16 @@ Wine.prototype.prefix = function (prefix) {
 
 /**
 *
-* @returns prefix
-*/
-Wine.prototype.getPrefix = function () {
-    return this._prefix;
-}
-
-/**
-*
 * @param directory
 * @returns {Wine}
 */
 Wine.prototype.workingDirectory = function (directory) {
+    // get
+    if(arguments.length == 0) {
+        return this._directory;
+    }
+    
+    // set
     this._directory = directory;
     return this;
 };
@@ -237,6 +259,12 @@ Wine.prototype.getAvailableVersions = function () {
 * @returns {Wine}
 */
 Wine.prototype.version = function (version) {
+    // get
+    if(arguments.length == 0) {
+        return this._version;
+    }
+    
+    // set
     if(this._prefixConfiguration) {
         this._prefixConfiguration.writeValue("wineVersion", version);
     }
