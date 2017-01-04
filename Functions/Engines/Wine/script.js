@@ -427,7 +427,7 @@ Wine.prototype.regedit = function () {
     this.fetchValue = function (keyPath) {
         var root = keyPath[0];
         var registryFile;
-        switch(root) {
+        switch (root) {
             case "HKEY_CURRENT_USER":
                 registryFile = "user.reg";
                 break;
@@ -477,7 +477,7 @@ var OverrideDLL = function () {
     var that = this;
     that._regeditFileContent =
         "REGEDIT4\n" +
-        "\n"+
+        "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides]\n";
 
     that.wine = function (wine) {
@@ -539,12 +539,12 @@ var RegisterFont = function () {
     var that = this;
     that._regeditFileContentNT =
         "REGEDIT4\n" +
-        "\n"+
+        "\n" +
         "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Fonts]\n";
 
     that._regeditFileContent =
         "REGEDIT4\n" +
-        "\n"+
+        "\n" +
         "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Fonts]\n";
 
     that.wine = function (wine) {
