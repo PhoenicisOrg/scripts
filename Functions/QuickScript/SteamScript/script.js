@@ -20,8 +20,6 @@ SteamScript.prototype.constructor = SteamScript;
 
 SteamScript.prototype.appId = function(appId) {
     this._appId = appId;
-    this._applicationHomepage = "http://store.steampowered.com/app/" + appId;
-    this._executableArgs = ["-silent", "-applaunch", this._appId];
     return this;
 };
 
@@ -64,6 +62,16 @@ SteamScript.prototype.getBytesDownloaded = function(wine) {
 };
 
 SteamScript.prototype.go = function() {
+    // default application homepage if not specified
+    if (!this._applicationHomepage) {
+        this._applicationHomepage = "http://store.steampowered.com/app/" + appId;
+    }
+
+    // default executable args if not specified
+    if (!this._executableArgs) {
+        this._executableArgs = ["-silent", "-applaunch", this._appId];
+    }
+
     var setupWizard = SetupWizard(this._name);
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
