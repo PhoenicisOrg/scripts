@@ -437,6 +437,37 @@ Wine.prototype.managed = function (managed) {
     return this;
 };
 
+var SetManagedForApplication = function () {
+    var that = this;
+    that._regeditFileContent =
+        "REGEDIT4\n" +
+        "\n";
+
+    that.wine = function(wine) {
+        that._wine = wine;
+        return that;
+    };
+
+    that.set = function(application, managed) {
+        var managedYn = managed ? "Y" : "N";
+
+        that._regeditFileContent += "[HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\" + application + "\\X11 Driver]\n";
+        that._regeditFileContent += "\"Managed\"=\"" + managedYn + "\"\n";
+
+        return that;
+    };
+
+    that.do =  function() {
+        that._wine.regedit().patch(that._regeditFileContent);
+        return that._wine;
+    }
+};
+
+Wine.prototype.setManagedForApplication = function() {
+    return new SetManagedForApplication()
+        .wine(this)
+};
+
 var OverrideDLL = function() {
     var that = this;
     that._regeditFileContent =
