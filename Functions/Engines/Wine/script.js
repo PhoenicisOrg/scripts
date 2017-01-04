@@ -8,333 +8,392 @@ LATEST_STABLE_VERSION = "1.8.6";
  * Wine main prototype
  * @constructor
  */
-var Wine = function () {
-    var that = this;
-    that._wineWebServiceUrl = Bean("propertyReader").getProperty("webservice.wine.url");
-    that._wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines.wine");
-    that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
-    that._configFactory = Bean("compatibleConfigFileFormatFactory");
-    that._OperatingSystemFetcher = Bean("operatingSystemFetcher");
-    that._wineDebug = "-all";
-    that._ldPath = Bean("propertyReader").getProperty("application.environment.ld");
+function Wine() {
+    this._wineWebServiceUrl = Bean("propertyReader").getProperty("webservice.wine.url");
+    this._wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines.wine");
+    this._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
+    this._configFactory = Bean("compatibleConfigFileFormatFactory");
+    this._OperatingSystemFetcher = Bean("operatingSystemFetcher");
+    this._wineDebug = "-all";
+    this._ldPath = Bean("propertyReader").getProperty("application.environment.ld");
+}
 
-    /**
-     *
-     * @param wizard
-     * @returns {Wine}
-     */
-    that.wizard = function (wizard) {
-        that._wizard = wizard;
-        return that;
-    };
+/**
+*
+* @param {SetupWizard} [wizard]
+* @returns {SetupWizard|Wine}
+*/
+Wine.prototype.wizard = function (wizard) {
+    // get
+    if (arguments.length == 0) {
+        return this._wizard;
+    }
 
-    /**
-     *
-     * @param debug
-     * @returns {Wine}
-     */
-    that.debug = function (debug) {
-        if(!debug) {
-            that._wineDebug = "";
-        }
-        that._wineDebug = debug;
-        return that;
-    };
-
-    /**
-     *
-     * @param architecture
-     * @returns {Wine}
-     */
-    that.architecture = function (architecture) {
-        if(arguments.length == 0) {
-            return that._architecture;
-        }
-
-        if(that._prefixConfiguration) {
-            that._prefixConfiguration.writeValue("wineArchitecture", architecture);
-        }
-
-        that._architecture = architecture;
-        return that;
-    };
-
-    /**
-     *
-     * @param distribution
-     * @returns {Wine}
-     */
-    that.distribution = function (distribution) {
-        if(that._prefixConfiguration) {
-            that._prefixConfiguration.writeValue("wineDistribution", distribution);
-        }
-
-        that._distribution = distribution;
-        return that;
-    };
-
-    /**
-     *
-     * @param prefix
-     * @returns {Wine}
-     */
-    that.prefix = function (prefix) {
-        that._prefix = prefix;
-        that.prefixDirectory = that._winePrefixesDirectory + "/" + that._prefix + "/";
-
-        mkdir(that.prefixDirectory);
-
-        that._prefixConfiguration = that._configFactory.open(that.prefixDirectory + "/playonlinux.cfg");
-
-        if (!that._version) {
-            that._version = that._prefixConfiguration.readValue("wineVersion");
-        } else {
-            that._prefixConfiguration.writeValue("wineVersion", that._version);
-        }
-
-        if (!that._distribution) {
-            that._distribution = that._prefixConfiguration.readValue("wineDistribution", "upstream");
-        }
-
-        that._prefixConfiguration.writeValue("wineDistribution", that._distribution);
-
-        if (!that._architecture) {
-            var defaultArchitecture = Bean("architectureFetcher").fetchCurrentArchitecture().getNameForWinePackages();
-            that._architecture = that._prefixConfiguration.readValue("wineArchitecture", defaultArchitecture);
-        }
-
-        that._prefixConfiguration.writeValue("wineArchitecture", that._architecture);
-
-
-        return that;
-    };
-
-    /**
-     *
-     * @param directory
-     * @returns {Wine}
-     */
-    that.workingDirectory = function (directory) {
-        that._directory = directory;
-        return that;
-    };
-
-    /**
-     *
-     * @param executable
-     * @param args
-     */
-    that.runInsidePrefix = function(executable, args) {
-        return that.run(that.prefixDirectory + "/drive_c/" + executable, args);
-    };
-
-    /**
-     *
-     * @param executable
-     * @param args
-     * @param captureOutput
-     * @returns {Wine}
-     */
-    that.run = function (executable, args, captureOutput) {
-        if(!args) {
-            args = [];
-        }
-
-        that._installVersion();
-
-        var wineBinary = that._fetchLocalDirectory() + "/bin/wine";
-        var processBuilder = new java.lang.ProcessBuilder(Java.to([wineBinary, executable].concat(args), "java.lang.String[]"));
-
-        if (that._directory) {
-            processBuilder.directory(new java.io.File(that._directory));
-        } else {
-            var driveC = that.prefixDirectory + "/drive_c";
-            mkdir(driveC);
-            processBuilder.directory(new java.io.File(driveC));
-        }
-
-        if(!captureOutput) {
-            processBuilder.inheritIO();
-        }
-
-        var environment = processBuilder.environment();
-        environment.put("WINEPREFIX", that.prefixDirectory);
-
-        if(that._wineDebug) {
-            environment.put("WINEDEBUG", that._wineDebug);
-        }
-
-        if(that._ldPath) {
-            environment.put("LD_LIBRARY_PATH", that._ldPath);
-        }
-
-        that._process = processBuilder.start();
-
-        if(captureOutput) {
-            return org.apache.commons.io.IOUtils.toString(that._process.getInputStream());
-        } else {
-            return that;
-        }
-    };
-
-    that.create = function() {
-        that.run("wineboot");
-        return that;
-    };
-
-    that.getProgramFiles = function() {
-        var programFilesName = that.run("cmd", ["/c", "echo", "%ProgramFiles%"], true).trim();
-        if(programFilesName == "%ProgramFiles%") {
-            return "Program Files"
-        } else {
-            return org.apache.commons.io.FilenameUtils.getBaseName(programFilesName);
-        }
-    };
-
-    /**
-     *
-     * @param wait message
-     * @returns {Wine}
-     */
-    that.wait = function (message) {
-        if(that._wizard) {
-            that._wizard.wait(typeof message !== 'undefined' ? message : "Please wait...");
-        }
-
-        return that._silentWait();
-    };
-
-    /**
-     *
-     * @returns {Wine}
-     */
-    that.kill = function() {
-        that._wineServer("-k");
-        return that;
-    };
-
-    /**
-     *
-     */
-    that.getAvailableVersions = function () {
-        return new Downloader()
-            .wizard(that._wizard)
-            .url(that._wineWebServiceUrl)
-            .get()
-    };
-
-    /**
-     *
-     * @param version
-     * @returns {Wine}
-     */
-    that.version = function (version) {
-        if(that._prefixConfiguration) {
-            that._prefixConfiguration.writeValue("wineVersion", version);
-        }
-
-        that._version = version;
-        return that;
-    };
-
-    that.system32directory = function() {
-        if(fileExists(that.prefixDirectory + "/drive_c/windows/syswow64")) {
-            return that.prefixDirectory + "/drive_c/windows/syswow64";
-        } else {
-            return that.prefixDirectory + "/drive_c/windows/system32";
-        }
-    };
-
-    that.system64directory = function() {
-        if(fileExists(that.prefixDirectory + "/drive_c/windows/syswow64")) {
-            return that.prefixDirectory + "/drive_c/windows/system32";
-        }
-        throw "Prefix seems to be 32bits";
-    };
-
-    that.fontDirectory = function() {
-        return that.prefixDirectory + "/drive_c/windows/Fonts";
-    };
-
-    that._installVersion = function() {
-        var version = that._version;
-        var fullDistributionName = that._fetchFullDistributionName();
-        var localDirectory = that._fetchLocalDirectory();
-        var wizard = that._wizard;
-
-        if (!fileExists(localDirectory)) {
-            print("Installing version: " + that._version);
-
-            var wineJson = JSON.parse(that.getAvailableVersions());
-
-            wineJson.forEach(function (distribution) {
-                if (distribution.name == fullDistributionName) {
-                    distribution.packages.forEach(function (winePackage) {
-                        if (winePackage.version == version) {
-                            that._installWinePackage(wizard, winePackage, localDirectory)
-                        }
-                    });
-                }
-            });
-
-            // FIXME : Not found case!
-
-        }
-    };
-
-
-    that._installWinePackage = function (setupWizard, winePackage, localDirectory) {
-        var tmpFile = createTempFile("tar.gz");
-
-        new Downloader()
-            .wizard(setupWizard)
-            .url(winePackage.url)
-            .checksum(winePackage.sha1sum)
-            .to(tmpFile)
-            .get();
-
-        new Extractor()
-            .wizard(setupWizard)
-            .archive(tmpFile)
-            .to(localDirectory)
-            .extract();
-    };
-
-    that._silentWait = function() {
-        if(that._process) {
-            that._process.waitFor();
-        }
-        that._wineServer("-w");
-        return that;
-    };
-
-    that._fetchFullDistributionName = function () {
-        var operatingSystem = that._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
-        return that._distribution + "-" + operatingSystem + "-" + that._architecture;
-    };
-
-    that._fetchLocalDirectory = function () {
-        return that._wineEnginesDirectory + "/" + that._fetchFullDistributionName() + "/" + that._version;
-    };
-
-    that._fetchWineServerBinary = function() {
-        return that._fetchLocalDirectory() + "/bin/wineserver";
-    };
-
-    that._wineServer = function(parameter) {
-        var processBuilder = new java.lang.ProcessBuilder(Java.to([that._fetchWineServerBinary(), parameter], "java.lang.String[]"));
-        var environment = processBuilder.environment();
-        environment.put("WINEPREFIX", that.prefixDirectory);
-        processBuilder.inheritIO();
-        var wineServerProcess = processBuilder.start();
-        wineServerProcess.waitFor();
-    };
+    // set
+    this._wizard = wizard;
+    return this;
 };
 
-Wine.prototype.regsvr32 = function() {
+/**
+*
+* @param {string} [debug]
+* @returns {string|Wine}
+*/
+Wine.prototype.debug = function (debug) {
+    // get
+    if (arguments.length == 0) {
+        this._wineDebug = "";
+        return this._wineDebug;
+    }
+
+    // set
+    this._wineDebug = debug;
+    return this;
+};
+
+/**
+*
+* @param {string} [architecture]
+* @returns {string|Wine}
+*/
+Wine.prototype.architecture = function (architecture) {
+    // get
+    if (arguments.length == 0) {
+        return this._architecture;
+    }
+
+    // set
+    if (this._prefixConfiguration) {
+        this._prefixConfiguration.writeValue("wineArchitecture", architecture);
+    }
+
+    this._architecture = architecture;
+    return this;
+};
+
+/**
+*
+* @param {string} [distribution]
+* @returns {string|Wine}
+*/
+Wine.prototype.distribution = function (distribution) {
+    // get
+    if (arguments.length == 0) {
+        return this._distribution;
+    }
+
+    // set
+    if (this._prefixConfiguration) {
+        this._prefixConfiguration.writeValue("wineDistribution", distribution);
+    }
+
+    this._distribution = distribution;
+    return this;
+};
+
+/**
+*
+* @param {string} [prefix]
+* @returns {string|Wine}
+*/
+Wine.prototype.prefix = function (prefix) {
+    // get
+    if (arguments.length == 0) {
+        return this._prefix;
+    }
+
+    // set
+    this._prefix = prefix;
+    this.prefixDirectory = this._winePrefixesDirectory + "/" + this._prefix + "/";
+
+    mkdir(this.prefixDirectory);
+
+    this._prefixConfiguration = this._configFactory.open(this.prefixDirectory + "/playonlinux.cfg");
+
+    if (!this._version) {
+        this._version = this._prefixConfiguration.readValue("wineVersion");
+    } else {
+        this._prefixConfiguration.writeValue("wineVersion", this._version);
+    }
+
+    if (!this._distribution) {
+        this._distribution = this._prefixConfiguration.readValue("wineDistribution", "upstream");
+    }
+
+    this._prefixConfiguration.writeValue("wineDistribution", this._distribution);
+
+    if (!this._architecture) {
+        var defaultArchitecture = Bean("architectureFetcher").fetchCurrentArchitecture().getNameForWinePackages();
+        this._architecture = this._prefixConfiguration.readValue("wineArchitecture", defaultArchitecture);
+    }
+
+    this._prefixConfiguration.writeValue("wineArchitecture", this._architecture);
+
+
+    return this;
+};
+
+/**
+*
+* @param {string} [directory]
+* @returns {string|Wine}
+*/
+Wine.prototype.workingDirectory = function (directory) {
+    // get
+    if (arguments.length == 0) {
+        return this._directory;
+    }
+
+    // set
+    this._directory = directory;
+    return this;
+};
+
+/**
+*
+* @param executable
+* @param args
+*/
+Wine.prototype.runInsidePrefix = function (executable, args) {
+    return this.run(this.prefixDirectory + "/drive_c/" + executable, args);
+};
+
+/**
+*
+* @param executable
+* @param {array} [args = []]
+* @param {boolean} [captureOutput=false]
+* @returns {Wine}
+*/
+Wine.prototype.run = function (executable, args, captureOutput) {
+    if (!args) {
+        args = [];
+    }
+
+    this._installVersion();
+
+    var wineBinary = this._fetchLocalDirectory() + "/bin/wine";
+    var processBuilder = new java.lang.ProcessBuilder(Java.to([wineBinary, executable].concat(args), "java.lang.String[]"));
+
+    if (this._directory) {
+        processBuilder.directory(new java.io.File(this._directory));
+    } else {
+        var driveC = this.prefixDirectory + "/drive_c";
+        mkdir(driveC);
+        processBuilder.directory(new java.io.File(driveC));
+    }
+
+    if (!captureOutput) {
+        processBuilder.inheritIO();
+    }
+
+    var environment = processBuilder.environment();
+    environment.put("WINEPREFIX", this.prefixDirectory);
+
+    if (this._wineDebug) {
+        environment.put("WINEDEBUG", this._wineDebug);
+    }
+
+    if (this._ldPath) {
+        environment.put("LD_LIBRARY_PATH", this._ldPath);
+    }
+
+    this._process = processBuilder.start();
+
+    if (captureOutput) {
+        return org.apache.commons.io.IOUtils.toString(this._process.getInputStream());
+    } else {
+        return this;
+    }
+};
+
+/**
+* runs "wineboot"
+*/
+Wine.prototype.create = function () {
+    this.run("wineboot");
+    return this;
+};
+
+/**
+*
+* @returns {string} name of "Program Files"
+*/
+Wine.prototype.programFiles = function () {
+    var programFilesName = this.run("cmd", ["/c", "echo", "%ProgramFiles%"], true).trim();
+    if (programFilesName == "%ProgramFiles%") {
+        return "Program Files"
+    } else {
+        return org.apache.commons.io.FilenameUtils.getBaseName(programFilesName);
+    }
+};
+
+/**
+*
+* @param {string} [wait message = "Please wait..."]
+* @returns {Wine}
+*/
+Wine.prototype.wait = function (message) {
+    if (this._wizard) {
+        this._wizard.wait(typeof message !== 'undefined' ? message : "Please wait...");
+    }
+
+    return this._silentWait();
+};
+
+/**
+* kill wine server
+* @returns {Wine}
+*/
+Wine.prototype.kill = function () {
+    this._wineServer("-k");
+    return this;
+};
+
+/**
+*
+* @returns {Downloader}
+*/
+Wine.prototype.getAvailableVersions = function () {
+    return new Downloader()
+        .wizard(this._wizard)
+        .url(this._wineWebServiceUrl)
+        .get()
+};
+
+/**
+*
+* @param {string} [version = LATEST_STABLE_VERSION]
+* @returns {string|Wine}
+*/
+Wine.prototype.version = function (version) {
+    // get
+    if (arguments.length == 0) {
+        return this._version;
+    }
+
+    // set
+    if (this._prefixConfiguration) {
+        this._prefixConfiguration.writeValue("wineVersion", version);
+    }
+
+    this._version = version;
+    return this;
+};
+
+/**
+*
+* @returns {string} system32 directory
+*/
+Wine.prototype.system32directory = function () {
+    if (fileExists(this.prefixDirectory + "/drive_c/windows/syswow64")) {
+        return this.prefixDirectory + "/drive_c/windows/syswow64";
+    } else {
+        return this.prefixDirectory + "/drive_c/windows/system32";
+    }
+};
+
+/**
+*
+* @returns {string} system64 directory
+*/
+Wine.prototype.system64directory = function () {
+    if (fileExists(this.prefixDirectory + "/drive_c/windows/syswow64")) {
+        return this.prefixDirectory + "/drive_c/windows/system32";
+    }
+    throw "Prefix seems to be 32bits";
+};
+
+/**
+*
+* @returns {string} font directory
+*/
+Wine.prototype.fontDirectory = function () {
+    return this.prefixDirectory + "/drive_c/windows/Fonts";
+};
+
+Wine.prototype._installVersion = function () {
+    var version = this._version;
+    var fullDistributionName = this._fetchFullDistributionName();
+    var localDirectory = this._fetchLocalDirectory();
+    var wizard = this._wizard;
+
+    if (!fileExists(localDirectory)) {
+        print("Installing version: " + this._version);
+
+        var wineJson = JSON.parse(this.getAvailableVersions());
+
+        wineJson.forEach(function (distribution) {
+            if (distribution.name == fullDistributionName) {
+                distribution.packages.forEach(function (winePackage) {
+                    if (winePackage.version == version) {
+                        this._installWinePackage(wizard, winePackage, localDirectory)
+                    }
+                });
+            }
+        });
+
+        // FIXME : Not found case!
+
+    }
+};
+
+
+Wine.prototype._installWinePackage = function (setupWizard, winePackage, localDirectory) {
+    var tmpFile = createTempFile("tar.gz");
+
+    new Downloader()
+        .wizard(setupWizard)
+        .url(winePackage.url)
+        .checksum(winePackage.sha1sum)
+        .to(tmpFile)
+        .get();
+
+    new Extractor()
+        .wizard(setupWizard)
+        .archive(tmpFile)
+        .to(localDirectory)
+        .extract();
+};
+
+Wine.prototype._silentWait = function () {
+    if (this._process) {
+        this._process.waitFor();
+    }
+    this._wineServer("-w");
+    return this;
+};
+
+Wine.prototype._fetchFullDistributionName = function () {
+    var operatingSystem = this._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+    return this._distribution + "-" + operatingSystem + "-" + this._architecture;
+};
+
+Wine.prototype._fetchLocalDirectory = function () {
+    return this._wineEnginesDirectory + "/" + this._fetchFullDistributionName() + "/" + this._version;
+};
+
+Wine.prototype._fetchWineServerBinary = function () {
+    return this._fetchLocalDirectory() + "/bin/wineserver";
+};
+
+Wine.prototype._wineServer = function (parameter) {
+    var processBuilder = new java.lang.ProcessBuilder(Java.to([this._fetchWineServerBinary(), parameter], "java.lang.String[]"));
+    var environment = processBuilder.environment();
+    environment.put("WINEPREFIX", this.prefixDirectory);
+    processBuilder.inheritIO();
+    var wineServerProcess = processBuilder.start();
+    wineServerProcess.waitFor();
+};
+
+/**
+* runs "regsvr32"
+* @returns {Wine}
+*/
+Wine.prototype.regsvr32 = function () {
     var _wine = this;
 
-    this.install = function(dll) {
+    this.install = function (dll) {
         _wine.run("regsvr32", ["/i", dll])._silentWait();
         return _wine;
     };
@@ -347,16 +406,16 @@ Wine.prototype.regsvr32 = function() {
  * @param args
  * @returns {Wine}
  */
-Wine.prototype.regedit = function() {
+Wine.prototype.regedit = function () {
     var _wine = this;
 
-    this.open = function(args) {
+    this.open = function (args) {
         _wine.run("regedit", args)._silentWait();
         return _wine;
     };
 
-    this.patch = function(patchContent) {
-        if(patchContent.getClass().getCanonicalName() == "byte[]") {
+    this.patch = function (patchContent) {
+        if (patchContent.getClass().getCanonicalName() == "byte[]") {
             patchContent = new java.lang.String(patchContent);
         }
         var tmpFile = createTempFile("reg");
@@ -365,10 +424,10 @@ Wine.prototype.regedit = function() {
         return _wine;
     };
 
-    this.fetchValue = function(keyPath) {
+    this.fetchValue = function (keyPath) {
         var root = keyPath[0];
         var registryFile;
-        switch(root) {
+        switch (root) {
             case "HKEY_CURRENT_USER":
                 registryFile = "user.reg";
                 break;
@@ -383,11 +442,11 @@ Wine.prototype.regedit = function() {
 
         var registryValue = Bean("registryParser").parseFile(new java.io.File(this.prefixDirectory + "/" + registryFile), root).getChild(keyPath);
 
-        if(registryValue == null) {
+        if (registryValue == null) {
             return null;
         }
 
-        if(registryValue.getText) {
+        if (registryValue.getText) {
             return registryValue.getText();
         } else {
             return registryValue;
@@ -400,11 +459,11 @@ Wine.prototype.regedit = function() {
 Wine.prototype.registry = Wine.prototype.regedit;
 
 /**
- * set sound driver
+ * sets sound driver
  * @param driver (alsa, pulse)
  * @returns {Wine}
  */
-Wine.prototype.setSoundDriver = function(driver) {
+Wine.prototype.setSoundDriver = function (driver) {
     var regeditFileContent =
         "REGEDIT4\n" +
         "\n" +
@@ -414,33 +473,33 @@ Wine.prototype.setSoundDriver = function(driver) {
     return this;
 };
 
-var OverrideDLL = function() {
+var OverrideDLL = function () {
     var that = this;
     that._regeditFileContent =
         "REGEDIT4\n" +
-        "\n"+
+        "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides]\n";
 
-    that.wine = function(wine) {
+    that.wine = function (wine) {
         that._wine = wine;
         return that;
     };
 
-    that.set = function(mode, libraries) {
-        libraries.forEach(function(library) {
-            that._regeditFileContent += "\"*"+library+"\"=\""+mode+"\"\n";
+    that.set = function (mode, libraries) {
+        libraries.forEach(function (library) {
+            that._regeditFileContent += "\"*" + library + "\"=\"" + mode + "\"\n";
         });
 
         return that;
     };
 
-    that.do =  function() {
+    that.do =  function () {
         that._wine.regedit().patch(that._regeditFileContent);
         return that._wine;
     }
 };
 
-Wine.prototype.overrideDLL = function() {
+Wine.prototype.overrideDLL = function () {
     return new OverrideDLL()
         .wine(this)
 };
@@ -466,68 +525,68 @@ Wine.prototype.windowsVersion = function (version) {
     return this;
 };
 
-var SetOsForApplication = function() {
+var SetOsForApplication = function () {
     var that = this;
     that._regeditFileContent =
         "REGEDIT4\n" +
         "\n";
 
-    that.wine = function(wine) {
+    that.wine = function (wine) {
         that._wine = wine;
         return that;
     };
 
-    that.set = function(application, os) {
+    that.set = function (application, os) {
         that._regeditFileContent += "[HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\" + application + "]\n";
         that._regeditFileContent += "\"Version\"=\"" + os + "\"\n";
 
         return that;
     };
 
-    that.do =  function() {
+    that.do =  function () {
         that._wine.regedit().patch(that._regeditFileContent);
         return that._wine;
     }
 };
 
-Wine.prototype.setOsForApplication = function() {
+Wine.prototype.setOsForApplication = function () {
     return new SetOsForApplication()
         .wine(this)
 };
 
 
-var RegisterFont = function() {
+var RegisterFont = function () {
     var that = this;
     that._regeditFileContentNT =
         "REGEDIT4\n" +
-        "\n"+
+        "\n" +
         "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Fonts]\n";
 
     that._regeditFileContent =
         "REGEDIT4\n" +
-        "\n"+
+        "\n" +
         "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Fonts]\n";
 
-    that.wine = function(wine) {
+    that.wine = function (wine) {
         that._wine = wine;
         return that;
     };
 
-    that.set = function(font, file) {
-        that._regeditFileContentNT += "\"*"+font+"\"=\""+file+"\"\n";
-        that._regeditFileContent += "\"*"+font+"\"=\""+file+"\"\n";
+    that.set = function (font, file) {
+        that._regeditFileContentNT += "\"*" + font + "\"=\"" + file + "\"\n";
+        that._regeditFileContent += "\"*" + font + "\"=\"" + file + "\"\n";
 
         return that;
     };
 
-    that.do =  function() {
+    that.do =  function () {
         that._wine.regedit().patch(that._regeditFileContentNT);
         that._wine.regedit().patch(that._regeditFileContent);
         return that._wine;
     }
 };
 
-Wine.prototype.registerFont = function() {
+Wine.prototype.registerFont = function () {
     return new RegisterFont()
         .wine(this)
 };
