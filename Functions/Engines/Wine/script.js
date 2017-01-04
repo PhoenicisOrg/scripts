@@ -154,7 +154,7 @@ Wine.prototype.workingDirectory = function (directory) {
 * @param executable
 * @param args
 */
-Wine.prototype.runInsidePrefix = function(executable, args) {
+Wine.prototype.runInsidePrefix = function (executable, args) {
     return this.run(this.prefixDirectory + "/drive_c/" + executable, args);
 };
 
@@ -210,7 +210,7 @@ Wine.prototype.run = function (executable, args, captureOutput) {
 /**
 * runs "wineboot"
 */
-Wine.prototype.create = function() {
+Wine.prototype.create = function () {
     this.run("wineboot");
     return this;
 };
@@ -219,7 +219,7 @@ Wine.prototype.create = function() {
 *
 * @returns {string} name of "Program Files"
 */
-Wine.prototype.getProgramFiles = function() {
+Wine.prototype.getProgramFiles = function () {
     var programFilesName = this.run("cmd", ["/c", "echo", "%ProgramFiles%"], true).trim();
     if(programFilesName == "%ProgramFiles%") {
         return "Program Files"
@@ -245,7 +245,7 @@ Wine.prototype.wait = function (message) {
 * kill wine server
 * @returns {Wine}
 */
-Wine.prototype.kill = function() {
+Wine.prototype.kill = function () {
     this._wineServer("-k");
     return this;
 };
@@ -285,7 +285,7 @@ Wine.prototype.version = function (version) {
 *
 * @returns {string} system32 directory
 */
-Wine.prototype.system32directory = function() {
+Wine.prototype.system32directory = function () {
     if(fileExists(this.prefixDirectory + "/drive_c/windows/syswow64")) {
         return this.prefixDirectory + "/drive_c/windows/syswow64";
     } else {
@@ -297,7 +297,7 @@ Wine.prototype.system32directory = function() {
 *
 * @returns {string} system64 directory
 */
-Wine.prototype.system64directory = function() {
+Wine.prototype.system64directory = function () {
     if(fileExists(this.prefixDirectory + "/drive_c/windows/syswow64")) {
         return this.prefixDirectory + "/drive_c/windows/system32";
     }
@@ -308,11 +308,11 @@ Wine.prototype.system64directory = function() {
 *
 * @returns {string} font directory
 */
-Wine.prototype.fontDirectory = function() {
+Wine.prototype.fontDirectory = function () {
     return this.prefixDirectory + "/drive_c/windows/Fonts";
 };
 
-Wine.prototype._installVersion = function() {
+Wine.prototype._installVersion = function () {
     var version = this._version;
     var fullDistributionName = this._fetchFullDistributionName();
     var localDirectory = this._fetchLocalDirectory();
@@ -356,7 +356,7 @@ Wine.prototype._installWinePackage = function (setupWizard, winePackage, localDi
         .extract();
 };
 
-Wine.prototype._silentWait = function() {
+Wine.prototype._silentWait = function () {
     if(this._process) {
         this._process.waitFor();
     }
@@ -373,11 +373,11 @@ Wine.prototype._fetchLocalDirectory = function () {
     return this._wineEnginesDirectory + "/" + this._fetchFullDistributionName() + "/" + this._version;
 };
 
-Wine.prototype._fetchWineServerBinary = function() {
+Wine.prototype._fetchWineServerBinary = function () {
     return this._fetchLocalDirectory() + "/bin/wineserver";
 };
 
-Wine.prototype._wineServer = function(parameter) {
+Wine.prototype._wineServer = function (parameter) {
     var processBuilder = new java.lang.ProcessBuilder(Java.to([this._fetchWineServerBinary(), parameter], "java.lang.String[]"));
     var environment = processBuilder.environment();
     environment.put("WINEPREFIX", this.prefixDirectory);
@@ -390,10 +390,10 @@ Wine.prototype._wineServer = function(parameter) {
 * runs "regsvr32"
 * @returns {Wine}
 */
-Wine.prototype.regsvr32 = function() {
+Wine.prototype.regsvr32 = function () {
     var _wine = this;
 
-    this.install = function(dll) {
+    this.install = function (dll) {
         _wine.run("regsvr32", ["/i", dll])._silentWait();
         return _wine;
     };
@@ -406,15 +406,15 @@ Wine.prototype.regsvr32 = function() {
  * @param args
  * @returns {Wine}
  */
-Wine.prototype.regedit = function() {
+Wine.prototype.regedit = function () {
     var _wine = this;
 
-    this.open = function(args) {
+    this.open = function (args) {
         _wine.run("regedit", args)._silentWait();
         return _wine;
     };
 
-    this.patch = function(patchContent) {
+    this.patch = function (patchContent) {
         if(patchContent.getClass().getCanonicalName() == "byte[]") {
             patchContent = new java.lang.String(patchContent);
         }
@@ -424,7 +424,7 @@ Wine.prototype.regedit = function() {
         return _wine;
     };
 
-    this.fetchValue = function(keyPath) {
+    this.fetchValue = function (keyPath) {
         var root = keyPath[0];
         var registryFile;
         switch(root) {
@@ -463,7 +463,7 @@ Wine.prototype.registry = Wine.prototype.regedit;
  * @param driver (alsa, pulse)
  * @returns {Wine}
  */
-Wine.prototype.setSoundDriver = function(driver) {
+Wine.prototype.setSoundDriver = function (driver) {
     var regeditFileContent =
         "REGEDIT4\n" +
         "\n" +
@@ -473,69 +473,69 @@ Wine.prototype.setSoundDriver = function(driver) {
     return this;
 };
 
-var OverrideDLL = function() {
+var OverrideDLL = function () {
     var that = this;
     that._regeditFileContent =
         "REGEDIT4\n" +
         "\n"+
         "[HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides]\n";
 
-    that.wine = function(wine) {
+    that.wine = function (wine) {
         that._wine = wine;
         return that;
     };
 
-    that.set = function(mode, libraries) {
-        libraries.forEach(function(library) {
-            that._regeditFileContent += "\"*"+library+"\"=\""+mode+"\"\n";
+    that.set = function (mode, libraries) {
+        libraries.forEach(function (library) {
+            that._regeditFileContent += "\"*" + library + "\"=\"" + mode + "\"\n";
         });
 
         return that;
     };
 
-    that.do =  function() {
+    that.do =  function () {
         that._wine.regedit().patch(that._regeditFileContent);
         return that._wine;
     }
 };
 
-Wine.prototype.overrideDLL = function() {
+Wine.prototype.overrideDLL = function () {
     return new OverrideDLL()
         .wine(this)
 };
 
 
-var SetOsForApplication = function() {
+var SetOsForApplication = function () {
     var that = this;
     that._regeditFileContent =
         "REGEDIT4\n" +
         "\n";
 
-    that.wine = function(wine) {
+    that.wine = function (wine) {
         that._wine = wine;
         return that;
     };
 
-    that.set = function(application, os) {
+    that.set = function (application, os) {
         that._regeditFileContent += "[HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\" + application + "]\n";
         that._regeditFileContent += "\"Version\"=\"" + os + "\"\n";
 
         return that;
     };
 
-    that.do =  function() {
+    that.do =  function () {
         that._wine.regedit().patch(that._regeditFileContent);
         return that._wine;
     }
 };
 
-Wine.prototype.setOsForApplication = function() {
+Wine.prototype.setOsForApplication = function () {
     return new SetOsForApplication()
         .wine(this)
 };
 
 
-var RegisterFont = function() {
+var RegisterFont = function () {
     var that = this;
     that._regeditFileContentNT =
         "REGEDIT4\n" +
@@ -547,26 +547,26 @@ var RegisterFont = function() {
         "\n"+
         "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Fonts]\n";
 
-    that.wine = function(wine) {
+    that.wine = function (wine) {
         that._wine = wine;
         return that;
     };
 
-    that.set = function(font, file) {
-        that._regeditFileContentNT += "\"*"+font+"\"=\""+file+"\"\n";
-        that._regeditFileContent += "\"*"+font+"\"=\""+file+"\"\n";
+    that.set = function (font, file) {
+        that._regeditFileContentNT += "\"*" + font + "\"=\"" + file + "\"\n";
+        that._regeditFileContent += "\"*" + font + "\"=\"" + file + "\"\n";
 
         return that;
     };
 
-    that.do =  function() {
+    that.do =  function () {
         that._wine.regedit().patch(that._regeditFileContentNT);
         that._wine.regedit().patch(that._regeditFileContent);
         return that._wine;
     }
 };
 
-Wine.prototype.registerFont = function() {
+Wine.prototype.registerFont = function () {
     return new RegisterFont()
         .wine(this)
 };
