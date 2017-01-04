@@ -25,10 +25,10 @@ function Wine() {
 */
 Wine.prototype.wizard = function (wizard) {
     // get
-    if(arguments.length == 0) {
+    if (arguments.length == 0) {
         return this._wizard;
     }
-    
+
     // set
     this._wizard = wizard;
     return this;
@@ -41,11 +41,11 @@ Wine.prototype.wizard = function (wizard) {
 */
 Wine.prototype.debug = function (debug) {
     // get
-    if(arguments.length == 0) {
+    if (arguments.length == 0) {
         this._wineDebug = "";
         return this._wineDebug;
     }
-    
+
     // set
     this._wineDebug = debug;
     return this;
@@ -58,12 +58,12 @@ Wine.prototype.debug = function (debug) {
 */
 Wine.prototype.architecture = function (architecture) {
     // get
-    if(arguments.length == 0) {
+    if (arguments.length == 0) {
         return this._architecture;
     }
-    
+
     // set
-    if(this._prefixConfiguration) {
+    if (this._prefixConfiguration) {
         this._prefixConfiguration.writeValue("wineArchitecture", architecture);
     }
 
@@ -78,12 +78,12 @@ Wine.prototype.architecture = function (architecture) {
 */
 Wine.prototype.distribution = function (distribution) {
     // get
-    if(arguments.length == 0) {
+    if (arguments.length == 0) {
         return this._distribution;
     }
-    
+
     // set
-    if(this._prefixConfiguration) {
+    if (this._prefixConfiguration) {
         this._prefixConfiguration.writeValue("wineDistribution", distribution);
     }
 
@@ -98,10 +98,10 @@ Wine.prototype.distribution = function (distribution) {
 */
 Wine.prototype.prefix = function (prefix) {
     // get
-    if(arguments.length == 0) {
+    if (arguments.length == 0) {
         return this._prefix;
     }
-    
+
     // set
     this._prefix = prefix;
     this.prefixDirectory = this._winePrefixesDirectory + "/" + this._prefix + "/";
@@ -140,10 +140,10 @@ Wine.prototype.prefix = function (prefix) {
 */
 Wine.prototype.workingDirectory = function (directory) {
     // get
-    if(arguments.length == 0) {
+    if (arguments.length == 0) {
         return this._directory;
     }
-    
+
     // set
     this._directory = directory;
     return this;
@@ -166,7 +166,7 @@ Wine.prototype.runInsidePrefix = function (executable, args) {
 * @returns {Wine}
 */
 Wine.prototype.run = function (executable, args, captureOutput) {
-    if(!args) {
+    if (!args) {
         args = [];
     }
 
@@ -183,24 +183,24 @@ Wine.prototype.run = function (executable, args, captureOutput) {
         processBuilder.directory(new java.io.File(driveC));
     }
 
-    if(!captureOutput) {
+    if (!captureOutput) {
         processBuilder.inheritIO();
     }
 
     var environment = processBuilder.environment();
     environment.put("WINEPREFIX", this.prefixDirectory);
 
-    if(this._wineDebug) {
+    if (this._wineDebug) {
         environment.put("WINEDEBUG", this._wineDebug);
     }
 
-    if(this._ldPath) {
+    if (this._ldPath) {
         environment.put("LD_LIBRARY_PATH", this._ldPath);
     }
 
     this._process = processBuilder.start();
 
-    if(captureOutput) {
+    if (captureOutput) {
         return org.apache.commons.io.IOUtils.toString(this._process.getInputStream());
     } else {
         return this;
@@ -221,7 +221,7 @@ Wine.prototype.create = function () {
 */
 Wine.prototype.programFiles = function () {
     var programFilesName = this.run("cmd", ["/c", "echo", "%ProgramFiles%"], true).trim();
-    if(programFilesName == "%ProgramFiles%") {
+    if (programFilesName == "%ProgramFiles%") {
         return "Program Files"
     } else {
         return org.apache.commons.io.FilenameUtils.getBaseName(programFilesName);
@@ -234,7 +234,7 @@ Wine.prototype.programFiles = function () {
 * @returns {Wine}
 */
 Wine.prototype.wait = function (message) {
-    if(this._wizard) {
+    if (this._wizard) {
         this._wizard.wait(typeof message !== 'undefined' ? message : "Please wait...");
     }
 
@@ -268,12 +268,12 @@ Wine.prototype.getAvailableVersions = function () {
 */
 Wine.prototype.version = function (version) {
     // get
-    if(arguments.length == 0) {
+    if (arguments.length == 0) {
         return this._version;
     }
-    
+
     // set
-    if(this._prefixConfiguration) {
+    if (this._prefixConfiguration) {
         this._prefixConfiguration.writeValue("wineVersion", version);
     }
 
@@ -286,7 +286,7 @@ Wine.prototype.version = function (version) {
 * @returns {string} system32 directory
 */
 Wine.prototype.system32directory = function () {
-    if(fileExists(this.prefixDirectory + "/drive_c/windows/syswow64")) {
+    if (fileExists(this.prefixDirectory + "/drive_c/windows/syswow64")) {
         return this.prefixDirectory + "/drive_c/windows/syswow64";
     } else {
         return this.prefixDirectory + "/drive_c/windows/system32";
@@ -298,7 +298,7 @@ Wine.prototype.system32directory = function () {
 * @returns {string} system64 directory
 */
 Wine.prototype.system64directory = function () {
-    if(fileExists(this.prefixDirectory + "/drive_c/windows/syswow64")) {
+    if (fileExists(this.prefixDirectory + "/drive_c/windows/syswow64")) {
         return this.prefixDirectory + "/drive_c/windows/system32";
     }
     throw "Prefix seems to be 32bits";
@@ -357,7 +357,7 @@ Wine.prototype._installWinePackage = function (setupWizard, winePackage, localDi
 };
 
 Wine.prototype._silentWait = function () {
-    if(this._process) {
+    if (this._process) {
         this._process.waitFor();
     }
     this._wineServer("-w");
@@ -415,7 +415,7 @@ Wine.prototype.regedit = function () {
     };
 
     this.patch = function (patchContent) {
-        if(patchContent.getClass().getCanonicalName() == "byte[]") {
+        if (patchContent.getClass().getCanonicalName() == "byte[]") {
             patchContent = new java.lang.String(patchContent);
         }
         var tmpFile = createTempFile("reg");
@@ -442,11 +442,11 @@ Wine.prototype.regedit = function () {
 
         var registryValue = Bean("registryParser").parseFile(new java.io.File(this.prefixDirectory + "/" + registryFile), root).getChild(keyPath);
 
-        if(registryValue == null) {
+        if (registryValue == null) {
             return null;
         }
 
-        if(registryValue.getText) {
+        if (registryValue.getText) {
             return registryValue.getText();
         } else {
             return registryValue;
