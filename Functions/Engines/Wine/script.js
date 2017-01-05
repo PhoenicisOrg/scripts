@@ -16,6 +16,7 @@ function Wine() {
     this._OperatingSystemFetcher = Bean("operatingSystemFetcher");
     this._wineDebug = "-all";
     this._ldPath = Bean("propertyReader").getProperty("application.environment.ld");
+    this._architecture = "x86";
 }
 
 /**
