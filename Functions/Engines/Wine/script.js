@@ -323,11 +323,12 @@ Wine.prototype._installVersion = function () {
 
         var wineJson = JSON.parse(this.getAvailableVersions());
 
+        var that = this;
         wineJson.forEach(function (distribution) {
             if (distribution.name == fullDistributionName) {
                 distribution.packages.forEach(function (winePackage) {
                     if (winePackage.version == version) {
-                        this._installWinePackage(wizard, winePackage, localDirectory)
+                        that._installWinePackage(wizard, winePackage, localDirectory)
                     }
                 });
             }
