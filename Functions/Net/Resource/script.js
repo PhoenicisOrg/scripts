@@ -5,6 +5,7 @@ var Resource = function () {
     var that = this;
     this._algorithm = "SHA";
     this._resourcesPath = Bean("propertyReader").getProperty("application.user.resources");
+    this._directory = "";
 
     that.wizard = function(wizard) {
         that._wizard = wizard;
@@ -31,13 +32,25 @@ var Resource = function () {
         return that;
     };
 
+    /**
+     * directory inside the resource directory where the Resource is stored
+     * @param {string} directory
+     * @returns {Resource}
+     */
+    that.directory = function(directory) {
+        that._directory = directory;
+        return that;
+    };
+
     that.get = function () {
         if (!that._message) {
             that._message = "Please wait while {0} is downloaded...".format(that._name);
         }
 
-        mkdir(that._resourcesPath);
-        var resourcePath = that._resourcesPath + "/" + that._name;
+        var resourcesPath = that._resourcesPath + "/" + that._directory;
+        mkdir(resourcesPath);
+
+        var resourcePath = resourcesPath + "/" + that._name;
 
         if (fileExists(resourcePath)) {
             var fileChecksum = new Checksum()
