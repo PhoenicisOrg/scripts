@@ -1,6 +1,6 @@
-include(["Functions", "QuickScript", "InstallerScript"]);
+include(["Functions", "QuickScript", "OnlineInstallerScript"]);
 
-new InstallerScript()
+new OnlineInstallerScript()
     .name("TeamSpeak 3")
     .editor("TeamSpeak")
     .applicationHomepage("http://teamspeak.com/")
