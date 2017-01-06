@@ -8,7 +8,7 @@ include(["Functions", "Verbs", "luna"]);
 
 function InstallerScript() {
     QuickScript.call(this);
-};
+}
 
 InstallerScript.prototype = Object.create(QuickScript.prototype);
 
@@ -44,7 +44,14 @@ InstallerScript.prototype.go = function() {
         .version(this._wineVersion)
         .prefix(this._name)
         .luna()
-        .run(tempFile)
+        .wait();
+
+    this._preInstall(wine, setupWizard);
+
+    // back to generic wait (might have been changed in preInstall)
+    setupWizard.wait("Please wait...");
+
+    wine.run(tempFile)
         .wait();
 
     new WineShortcut()
@@ -55,7 +62,10 @@ InstallerScript.prototype.go = function() {
         .miniature([this._category, this._name])
         .create();
 
-    this._postInstall(wine);
+    this._postInstall(wine, setupWizard);
+
+    // back to generic wait (might have been changed in postInstall)
+    setupWizard.wait("Please wait...");
 
     setupWizard.close();
 };

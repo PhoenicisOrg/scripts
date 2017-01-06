@@ -8,7 +8,7 @@ include(["Functions", "Verbs", "luna"]);
 
 function ZipScript() {
     QuickScript.call(this);
-};
+}
 
 ZipScript.prototype = Object.create(QuickScript.prototype);
 
@@ -39,6 +39,11 @@ ZipScript.prototype.go = function() {
         .luna()
         .wait();
 
+    this._preInstall(wine, setupWizard);
+
+    // back to generic wait (might have been changed in preInstall)
+    setupWizard.wait("Please wait...");
+
     new Downloader()
         .wizard(setupWizard)
         .url(this._url)
@@ -60,7 +65,10 @@ ZipScript.prototype.go = function() {
         .miniature([this._category, this._name])
         .create();
 
-    this._postInstall(wine);
+    this._postInstall(wine, setupWizard);
+
+    // back to generic wait (might have been changed in postInstall)
+    setupWizard.wait("Please wait...");
 
     setupWizard.close();
 };
