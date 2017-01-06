@@ -361,35 +361,35 @@ Wine.prototype._installWinePackage = function (setupWizard, winePackage, localDi
 };
 
 Wine.prototype._installGecko = function (setupWizard, winePackage, localDirectory) {
-    if (!fileExists(winePackage.geckoFile)) {
-        var gecko = new Resource()
-            .wizard(setupWizard)
-            .url(winePackage.geckoUrl)
-            .checksum(winePackage.geckoMd5)
-            .algorithm("md5")
-            .name(winePackage.geckoFile)
-            .get();
-    }
-    var geckoDir = localDirectory + "/share/wine/gecko";
-    mkdir(geckoDir);
+    var gecko = new Resource()
+        .wizard(setupWizard)
+        .url(winePackage.geckoUrl)
+        .checksum(winePackage.geckoMd5)
+        .algorithm("md5")
+        .name(winePackage.geckoFile)
+        .directory("gecko")
+        .get();
 
-    lns(gecko, geckoDir + "/" + winePackage.geckoFile);
+    var wineGeckoDir = localDirectory + "/share/wine/gecko";
+    mkdir(wineGeckoDir);
+
+    lns(gecko, wineGeckoDir + "/" + winePackage.geckoFile);
 };
 
 Wine.prototype._installMono = function (setupWizard, winePackage, localDirectory) {
-    if (!fileExists(winePackage.monoFile)) {
-        var mono = new Resource()
-            .wizard(setupWizard)
-            .url(winePackage.monoUrl)
-            .checksum(winePackage.monoMd5)
-            .algorithm("md5")
-            .name(winePackage.monoFile)
-            .get();
-    }
-    var monoDir = localDirectory + "/share/wine/mono";
-    mkdir(monoDir);
+    var mono = new Resource()
+        .wizard(setupWizard)
+        .url(winePackage.monoUrl)
+        .checksum(winePackage.monoMd5)
+        .algorithm("md5")
+        .name(winePackage.monoFile)
+        .directory("mono")
+        .get();
 
-    lns(mono, monoDir + "/" + winePackage.monoFile);
+    var wineMonoDir = localDirectory + "/share/wine/mono";
+    mkdir(wineMonoDir);
+
+    lns(mono, wineMonoDir + "/" + winePackage.monoFile);
 };
 
 Wine.prototype._silentWait = function () {
