@@ -1,6 +1,6 @@
-include(["Functions", "QuickScript", "InstallerScript"]);
+include(["Functions", "QuickScript", "RemoteInstallerScript"]);
 
-new InstallerScript()
+new RemoteInstallerScript()
     .name("Steam")
     .editor("Valve")
     .applicationHomepage("http://www.steampowered.com")

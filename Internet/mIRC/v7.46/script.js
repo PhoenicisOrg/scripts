@@ -1,6 +1,6 @@
-include(["Functions", "QuickScript", "InstallerScript"]);
+include(["Functions", "QuickScript", "RemoteInstallerScript"]);
 
-new InstallerScript()
+new RemoteInstallerScript()
     .name("mIRC")
     .editor("mIRC")
     .applicationHomepage("http://www.mirc.com/")
