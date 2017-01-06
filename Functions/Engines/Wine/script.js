@@ -371,9 +371,8 @@ Wine.prototype._installGecko = function (setupWizard, winePackage, localDirector
         .get();
 
     var wineGeckoDir = localDirectory + "/share/wine/gecko";
-    mkdir(wineGeckoDir);
 
-    lns(gecko, wineGeckoDir + "/" + winePackage.geckoFile);
+    lns(new java.io.File(gecko).getParent(), wineGeckoDir);
 };
 
 Wine.prototype._installMono = function (setupWizard, winePackage, localDirectory) {
@@ -387,9 +386,8 @@ Wine.prototype._installMono = function (setupWizard, winePackage, localDirectory
         .get();
 
     var wineMonoDir = localDirectory + "/share/wine/mono";
-    mkdir(wineMonoDir);
 
-    lns(mono, wineMonoDir + "/" + winePackage.monoFile);
+    lns(new java.io.File(mono).getParent(), wineMonoDir);
 };
 
 Wine.prototype._silentWait = function () {
