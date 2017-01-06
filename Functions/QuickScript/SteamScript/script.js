@@ -64,7 +64,7 @@ SteamScript.prototype.getBytesDownloaded = function(wine) {
 SteamScript.prototype.go = function() {
     // default application homepage if not specified
     if (!this._applicationHomepage) {
-        this._applicationHomepage = "http://store.steampowered.com/app/" + appId;
+        this._applicationHomepage = "http://store.steampowered.com/app/" + this._appId;
     }
 
     // default executable args if not specified
