@@ -2,25 +2,25 @@ include(["Functions", "QuickScript", "InstallerScript"]);
 include(["Functions", "Net", "Download"]);
 
 
-function RemoteInstallerScript() {
+function OnlineInstallerScript() {
     InstallerScript.call(this);
 }
 
-RemoteInstallerScript.prototype = Object.create(InstallerScript.prototype);
+OnlineInstallerScript.prototype = Object.create(InstallerScript.prototype);
 
-RemoteInstallerScript.prototype.constructor = RemoteInstallerScript;
+OnlineInstallerScript.prototype.constructor = OnlineInstallerScript;
 
-RemoteInstallerScript.prototype.url = function(url) {
+OnlineInstallerScript.prototype.url = function(url) {
     this._url = url;
     return this;
 };
 
-RemoteInstallerScript.prototype.checksum = function(checksum) {
+OnlineInstallerScript.prototype.checksum = function(checksum) {
     this._checksum = checksum;
     return this;
 };
 
-RemoteInstallerScript.prototype._installationFile = function(wizard) {
+OnlineInstallerScript.prototype._installationFile = function(wizard) {
     var installationFile = createTempFile("exe");
 
     new Downloader()

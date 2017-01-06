@@ -1,6 +1,6 @@
-include(["Functions", "QuickScript", "RemoteInstallerScript"]);
+include(["Functions", "QuickScript", "OnlineInstallerScript"]);
 
-new RemoteInstallerScript()
+new OnlineInstallerScript()
     .name("Photofiltre")
     .editor("Antonio Da Cruz")
     .applicationHomepage("http://photofiltre.free.fr")

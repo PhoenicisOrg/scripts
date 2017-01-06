@@ -1,6 +1,6 @@
-include(["Functions", "QuickScript", "RemoteInstallerScript"]);
+include(["Functions", "QuickScript", "OnlineInstallerScript"]);
 
-new RemoteInstallerScript()
+new OnlineInstallerScript()
     .name("Notepad++")
     .editor("Notepad++")
     .applicationHomepage("https://notepad-plus-plus.org/")
