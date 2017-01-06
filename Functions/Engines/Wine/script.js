@@ -329,7 +329,9 @@ Wine.prototype._installVersion = function () {
             if (distribution.name == fullDistributionName) {
                 distribution.packages.forEach(function (winePackage) {
                     if (winePackage.version == version) {
-                        that._installWinePackage(wizard, winePackage, localDirectory)
+                        that._installWinePackage(wizard, winePackage, localDirectory);
+                        that._installGecko(wizard, winePackage, localDirectory);
+                        that._installMono(wizard, winePackage, localDirectory);
                     }
                 });
             }
@@ -356,6 +358,38 @@ Wine.prototype._installWinePackage = function (setupWizard, winePackage, localDi
         .archive(tmpFile)
         .to(localDirectory)
         .extract();
+};
+
+Wine.prototype._installGecko = function (setupWizard, winePackage, localDirectory) {
+    if (!fileExists(winePackage.geckoFile)) {
+        var gecko = new Resource()
+            .wizard(setupWizard)
+            .url(winePackage.geckoUrl)
+            .checksum(winePackage.geckoMd5)
+            .algorithm("md5")
+            .name(winePackage.geckoFile)
+            .get();
+    }
+    var geckoDir = localDirectory + "/share/wine/gecko";
+    mkdir(geckoDir);
+
+    lns(gecko, geckoDir + "/" + winePackage.geckoFile);
+};
+
+Wine.prototype._installMono = function (setupWizard, winePackage, localDirectory) {
+    if (!fileExists(winePackage.monoFile)) {
+        var mono = new Resource()
+            .wizard(setupWizard)
+            .url(winePackage.monoUrl)
+            .checksum(winePackage.monoMd5)
+            .algorithm("md5")
+            .name(winePackage.monoFile)
+            .get();
+    }
+    var monoDir = localDirectory + "/share/wine/mono";
+    mkdir(monoDir);
+
+    lns(mono, monoDir + "/" + winePackage.monoFile);
 };
 
 Wine.prototype._silentWait = function () {
