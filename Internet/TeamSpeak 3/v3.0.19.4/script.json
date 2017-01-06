@@ -1,0 +1,7 @@
+{
+	"scriptName": "v3.0.19.4",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresNoCD": false
+}
