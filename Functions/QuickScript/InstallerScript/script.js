@@ -1,5 +1,4 @@
 include(["Functions", "QuickScript", "QuickScript"]);
-include(["Functions", "Net", "Download"]);
 include(["Functions", "Engines", "Wine"]);
 include(["Functions", "Filesystem", "Extract"]);
 include(["Functions", "Shortcuts", "Wine"]);
@@ -14,29 +13,13 @@ InstallerScript.prototype = Object.create(QuickScript.prototype);
 
 InstallerScript.prototype.constructor = InstallerScript;
 
-InstallerScript.prototype.url = function(url) {
-    this._url = url;
-    return this;
-};
-
-InstallerScript.prototype.checksum = function(checksum) {
-    this._checksum = checksum;
-    return this;
-};
-
 InstallerScript.prototype.go = function() {
     var setupWizard = SetupWizard(this._name);
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
-    var tempFile = createTempFile("exe");
-
-    new Downloader()
-        .wizard(setupWizard)
-        .url(this._url)
-        .checksum(this._checksum)
-        .to(tempFile)
-        .get();
+    // get installation file from concrete InstallerScript implementation
+    var installationFile = this._installationFile(setupWizard);
 
     var wine = new Wine()
         .wizard(setupWizard)
@@ -51,7 +34,7 @@ InstallerScript.prototype.go = function() {
     // back to generic wait (might have been changed in preInstall)
     setupWizard.wait("Please wait...");
 
-    wine.run(tempFile)
+    wine.run(installationFile)
         .wait();
 
     new WineShortcut()
