@@ -216,11 +216,11 @@ Wine.prototype.run = function (executable, args, captureOutput) {
 Wine.prototype.uninstall = function (application) {
     var list = this.run("uninstaller", ["--list"], true);
     var appEscaped = application.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
-    var re = new RegExp("^(.*)\\|\\|\\|.*" + appEscaped);
+    var re = new RegExp("(.*)\\|\\|\\|.*" + appEscaped);
     var uuid = list.match(re);
     if (uuid) {
         this.run("uninstaller", ["--remove", uuid[1]])
-            .wait("Please wait while {0} is uninstalled.".format(application));
+            .wait("Please wait while {0} is uninstalled ...".format(application));
     } else {
         print("Could not uninstall {0}!".format(application));
     }
