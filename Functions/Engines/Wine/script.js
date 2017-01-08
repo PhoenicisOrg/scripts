@@ -615,7 +615,7 @@ Wine.prototype.overrideDLL = function () {
  * @param {string} [version (vista, win2003, winxp, win2k, winnt, winme, win98, win95, win31)]
  * @returns {string|Wine}
  */
-Wine.prototype.windowsVersion = function (version) {
+Wine.prototype.windowsVersion = function (version, servicePack) {
     // get
     if (arguments.length == 0) {
         return this.regedit().fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Version"]);
@@ -627,6 +627,15 @@ Wine.prototype.windowsVersion = function (version) {
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine]\n" +
         "\"Version\"=\"" + version + "\"\n";
+
+    if(servicePack) {
+        var servicePackNumber = servicePack.replace("sp", "");
+        that._regeditFileContent += "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion]";
+        that._regeditFileContent += "\"CSDVersion\"=\"Service Pack "+ servicePackNumber +"\"";
+        that._regeditFileContent += "[HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Windows]";
+        that._regeditFileContent += "\"CSDVersion\"=dword:00000"+servicePackNumber+"00";
+    }
+
     this.regedit().patch(regeditFileContent);
     return this;
 };
@@ -697,49 +706,6 @@ Wine.prototype.setOsForApplication = function () {
     return new SetOsForApplication()
         .wine(this)
 };
-
-
-
-var SetOs = function () {
-    var that = this;
-    that._regeditFileContent =
-        "REGEDIT4\n" +
-        "\n";
-
-    that.wine = function (wine) {
-        that._wine = wine;
-        return that;
-    };
-
-    that.set = function (os, servicePack) {
-        that._regeditFileContent += "[HKEY_CURRENT_USER\\Software\\Wine]\n";
-        that._regeditFileContent += "\"Version\"=\"" + os + "\"\n";
-
-        if(servicePack) {
-            var servicePackNumber = servicePack.replace("sp", "");
-            that._regeditFileContent += "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion]";
-            that._regeditFileContent += "\"CSDVersion\"=\"Service Pack "+ servicePackNumber +"\"";
-            that._regeditFileContent += "[HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Windows]";
-            that._regeditFileContent += "\"CSDVersion\"=dword:00000"+servicePackNumber+"00";
-        }
-        return that;
-    };
-
-    that.do =  function () {
-        that._wine.regedit().patch(that._regeditFileContent);
-        return that._wine;
-    }
-};
-
-Wine.prototype.setOs = function () {
-    return new SetOs()
-        .wine(this)
-};
-
-
-
-
-
 
 var RegisterFont = function () {
     var that = this;
