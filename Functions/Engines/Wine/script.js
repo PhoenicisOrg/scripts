@@ -209,6 +209,25 @@ Wine.prototype.run = function (executable, args, captureOutput) {
 };
 
 /**
+* uninstall application
+* @param {string} name of the application which shall be uninstalled
+* @returns {Wine}
+*/
+Wine.prototype.uninstall = function (application) {
+    var list = this.run("uninstaller", ["--list"], true);
+    var appEscaped = application.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+    var re = new RegExp("^(.*)\\|\\|\\|.*" + appEscaped);
+    var uuid = list.match(re);
+    if (uuid) {
+        this.run("uninstaller", ["--remove", uuid[1]])
+            .wait("Please wait while {0} is uninstalled.".format(application));
+    } else {
+        print("Could not uninstall {0}!".format(application));
+    }
+    return this;
+};
+
+/**
 * runs "wineboot"
 */
 Wine.prototype.create = function () {
