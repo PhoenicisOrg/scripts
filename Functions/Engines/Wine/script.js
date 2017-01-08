@@ -699,7 +699,7 @@ Wine.prototype.setOsForApplication = function () {
 };
 
 
-var SetOs = function () {
+
 var SetOs = function () {
     var that = this;
     that._regeditFileContent =
