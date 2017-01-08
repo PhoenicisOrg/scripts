@@ -43,7 +43,6 @@ Wine.prototype.wizard = function (wizard) {
 Wine.prototype.debug = function (debug) {
     // get
     if (arguments.length == 0) {
-        this._wineDebug = "";
         return this._wineDebug;
     }
 
