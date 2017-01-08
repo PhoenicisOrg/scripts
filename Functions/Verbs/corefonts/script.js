@@ -88,7 +88,7 @@ Wine.prototype.corefonts = function() {
 
         new CabExtract()
             .archive(fontResource)
-            .wizard(that._wizard)
+            .wizard(null)
             .to(that.fontDirectory())
             .extract();
 
