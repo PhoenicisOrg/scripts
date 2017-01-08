@@ -80,14 +80,16 @@ Wine.prototype.corefonts = function() {
     progressBar.setText("Installing fonts...");
     progressBar.setProgressPercentage(0.);
     var numInstalledFonts = 0;
+
+    var that = this;
     fontResources.forEach(function(fontResource) {
         progressBar.setText("Installing fonts...");
         progressBar.setProgressPercentage(numInstalledFonts * 100 / fontResources.length);
 
         new CabExtract()
             .archive(fontResource)
-            .wizard(this._wizard)
-            .to(this.fontDirectory())
+            .wizard(that._wizard)
+            .to(that.fontDirectory())
             .extract();
 
         numInstalledFonts++;
