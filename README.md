@@ -1,11 +1,15 @@
 # How to add a script
 1. Select the right category
+  * Accessories
   * Development
-  * Functions
   * Games
   * Graphics
   * Internet
-  
+  * Multimedia
+  * Office
+  * Other
+  * Science
+
 2. Create a new folder for your script inside that category. The folder structure should be:
 ```
 category
