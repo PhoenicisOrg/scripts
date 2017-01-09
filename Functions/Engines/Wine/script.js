@@ -122,8 +122,7 @@ Wine.prototype.prefix = function (prefix) {
 
     this._prefixConfiguration.writeValue("wineDistribution", this._distribution);
 
-    var defaultArchitecture = Bean("architectureFetcher").fetchCurrentArchitecture().getNameForWinePackages();
-    this._architecture = this._prefixConfiguration.readValue("wineArchitecture", defaultArchitecture);
+    this._architecture = this._prefixConfiguration.readValue("wineArchitecture", "x86");
 
     this._prefixConfiguration.writeValue("wineArchitecture", this._architecture);
 
