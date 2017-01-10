@@ -37,13 +37,13 @@ Wine.prototype.d3dx9 = function () {
         .extract(["-L", "-F", "*d3dx9*x86*"]);
 
     var filesToExtract = [
-        "APR2007_d3dx9_33_x86.cab", "AUG2007_d3dx9_35_x86.cab", "Apr2005_d3dx9_25_x86.cab",
-        "Apr2006_d3dx9_30_x86.cab", "Aug2005_d3dx9_27_x86.cab", "Aug2008_d3dx9_39_x86.cab",
-        "Aug2009_d3dx9_42_x86.cab", "DEC2006_d3dx9_32_x86.cab", "Dec2005_d3dx9_28_x86.cab",
-        "Feb2005_d3dx9_24_x86.cab", "Feb2006_d3dx9_29_x86.cab", "JUN2007_d3dx9_34_x86.cab",
-        "JUN2008_d3dx9_38_x86.cab", "Jun2005_d3dx9_26_x86.cab", "Jun2010_d3dx9_43_x86.cab",
-        "Mar2008_d3dx9_37_x86.cab", "Mar2009_d3dx9_41_x86.cab", "Nov2007_d3dx9_36_x86.cab",
-        "Nov2008_d3dx9_40_x86.cab", "OCT2006_d3dx9_31_x86.cab"
+        "apr2007_d3dx9_33_x86.cab", "aug2007_d3dx9_35_x86.cab", "apr2005_d3dx9_25_x86.cab",
+        "apr2006_d3dx9_30_x86.cab", "aug2005_d3dx9_27_x86.cab", "aug2008_d3dx9_39_x86.cab",
+        "aug2009_d3dx9_42_x86.cab", "dec2006_d3dx9_32_x86.cab", "dec2005_d3dx9_28_x86.cab",
+        "feb2005_d3dx9_24_x86.cab", "feb2006_d3dx9_29_x86.cab", "jun2007_d3dx9_34_x86.cab",
+        "jun2008_d3dx9_38_x86.cab", "jun2005_d3dx9_26_x86.cab", "jun2010_d3dx9_43_x86.cab",
+        "mar2008_d3dx9_37_x86.cab", "mar2009_d3dx9_41_x86.cab", "nov2007_d3dx9_36_x86.cab",
+        "nov2008_d3dx9_40_x86.cab", "oct2006_d3dx9_31_x86.cab"
     ];
     extractDirectXtoSystemDirectory(progressBar, filesToExtract, that.system32directory(), "d3dx9*.dll");
 
