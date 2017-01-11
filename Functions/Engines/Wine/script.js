@@ -122,7 +122,7 @@ Wine.prototype.prefix = function (prefix) {
 
     this._prefixConfiguration.writeValue("wineDistribution", this._distribution);
 
-    this._architecture = this._prefixConfiguration.readValue("wineArchitecture", "x86");
+    this._architecture = this._prefixConfiguration.readValue("wineArchitecture", this._architecture);
 
     this._prefixConfiguration.writeValue("wineArchitecture", this._architecture);
 
