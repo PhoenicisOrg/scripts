@@ -48,6 +48,11 @@ QuickScript.prototype.wineArchitecture = function(wineArchitecture) {
     return this;
 };
 
+QuickScript.prototype.wineDistribution = function(wineDistribution) {
+    this._wineDistribution = wineDistribution;
+    return this;
+};
+
 QuickScript.prototype.wineVersion = function(wineVersion) {
     this._wineVersion = wineVersion;
     return this;
