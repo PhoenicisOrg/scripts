@@ -16,7 +16,6 @@ function Wine() {
     this._OperatingSystemFetcher = Bean("operatingSystemFetcher");
     this._wineDebug = "-all";
     this._ldPath = Bean("propertyReader").getProperty("application.environment.ld");
-    this._architecture = "x86";
 }
 
 /**
@@ -122,7 +121,9 @@ Wine.prototype.prefix = function (prefix) {
 
     this._prefixConfiguration.writeValue("wineDistribution", this._distribution);
 
-    this._architecture = this._prefixConfiguration.readValue("wineArchitecture", "x86");
+    if (!this._architecture) {
+        this._architecture = this._prefixConfiguration.readValue("wineArchitecture", "x86");
+    }
 
     this._prefixConfiguration.writeValue("wineArchitecture", this._architecture);
 
