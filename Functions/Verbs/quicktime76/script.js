@@ -1,7 +1,3 @@
-include(["Functions", "Engines", "Wine"]);
-include(["Functions", "Net", "Resource"]);
-include(["Functions", "Verbs", "luna"]);
-
 Wine.prototype.quicktime76 = function() {
     var setupFile = new Resource()
         .wizard(this._wizard)
