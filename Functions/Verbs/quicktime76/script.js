@@ -6,7 +6,7 @@ Wine.prototype.quicktime76 = function() {
         .name("QuickTimeInstaller.exe")
         .get();
 
-    this.run(setupFile, ["ALLUSERS=1", "DESKTOP_SHORTCUTS=0", "QTTaskRunFlags=0", "QTINFO.BISQTPRO=1", "SCHEDULE_ASUW=0", "REBOOT_REQUIRED=No", "/qn"])
+    this.run(setupFile, ["ALLUSERS=1", "DESKTOP_SHORTCUTS=0", "QTTaskRunFlags=0", "QTINFO.BISQTPRO=1", "SCHEDULE_ASUW=0", "REBOOT_REQUIRED=No"])
         .wait("Please wait while {0} is installed ...".format("QuickTime"));
 
     return this;
