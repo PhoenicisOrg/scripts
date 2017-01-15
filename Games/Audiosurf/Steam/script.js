@@ -10,7 +10,7 @@ new SteamScript()
     .appId(12900)
     .preInstall(function(wine, wizard) {
         wine.quicktime76();
-	wine.corefonts();
-	wine.tahoma();
+        wine.corefonts();
+        wine.tahoma();
     })
     .go();
