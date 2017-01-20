@@ -23,9 +23,13 @@ SteamScript.prototype.appId = function(appId) {
     return this;
 };
 
+SteamScript.prototype.manifest = function(wine) {
+    return wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf";
+};
+
 SteamScript.prototype.getBytesToDownload = function(wine) {
     // wait until download started
-    while (!fileExists(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf"))
+    while (!fileExists(this.manifest(wine)))
     {
         java.lang.Thread.sleep(100);
     }
@@ -34,7 +38,7 @@ SteamScript.prototype.getBytesToDownload = function(wine) {
     var bytesToDownload = 0;
     while (bytesToDownload == 0)
     {
-        var manifest = cat(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf");
+        var manifest = cat(this.manifest(wine));
         bytesToDownload = Number(manifest.match(/\"BytesToDownload\"\s+\"(\d+)\"/)[1]);
         java.lang.Thread.sleep(100);
     }
@@ -47,9 +51,9 @@ SteamScript.prototype.getBytesDownloaded = function(wine) {
     if (!fileExists(downloadFolder))
     {
         // check if download already finished (download folder has been deleted)
-        if (fileExists(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf"))
+        if (fileExists(this.manifest(wine)))
         {
-            var manifest = cat(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf");
+            var manifest = cat(this.manifest(wine));
             return Number(manifest.match(/\"BytesDownloaded\"\s+\"(\d+)\"/)[1]);
         }
         else
@@ -59,6 +63,20 @@ SteamScript.prototype.getBytesDownloaded = function(wine) {
     }
 
     return getFileSize(downloadFolder);
+};
+
+SteamScript.prototype.downloadFinished = function(wine) {
+    // check if download already finished (download folder has been deleted)
+    if (fileExists(this.manifest(wine)))
+    {
+        var manifest = cat(this.manifest(wine));
+        var state = Number(manifest.match(/\"StateFlags\"\s+\"(\d+)\"/)[1]);
+        return state != 1026 && state != 1042 && state != 1062 && state != 1030;
+    }
+    else
+    {
+        return false;
+    }
 };
 
 SteamScript.prototype.go = function() {
@@ -128,11 +146,9 @@ SteamScript.prototype.go = function() {
 
     // make sure download is really finished (download folder file size is not exact)
     setupWizard.wait("Please wait until Steam has finished the download...");
-    do {
-        bytesToDownload = this.getBytesToDownload(wine);
-        bytesDownloaded = this.getBytesDownloaded(wine);
-        java.lang.Thread.sleep(100);
-    } while (bytesDownloaded != bytesToDownload);
+    while (!this.downloadFinished(wine)) {
+        java.lang.Thread.sleep(1000);
+    }
 
     // close Steam
     wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", "-shutdown");
