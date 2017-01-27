@@ -5,5 +5,4 @@ new SteamScript()
     .editor("Skybox Labs, Hidden Path Entertainment, Ensemble Studios")
     .author("Plata")
     .appId(221380)
-    .wineVersion("2.0-rc5")
     .go();
