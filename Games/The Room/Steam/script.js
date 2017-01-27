@@ -5,5 +5,4 @@ new SteamScript()
     .editor("Fireproof Games")
     .author("Plata")
     .appId(288160)
-    .wineVersion("2.0-rc5")
     .go();
