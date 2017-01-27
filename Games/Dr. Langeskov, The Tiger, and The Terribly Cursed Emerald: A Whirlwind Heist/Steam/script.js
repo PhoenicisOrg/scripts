@@ -5,6 +5,5 @@ new SteamScript()
     .editor("Crows Crows Crows")
     .author("Plata")
     .appId(409160)
-    .wineVersion("1.9.23")
     .executable("Steam.exe", ["-applaunch", 409160, "-force-d3d9"])
     .go();
