@@ -6,7 +6,6 @@ new SteamScript()
     .editor("Square Enix")
     .author("Plata")
     .appId(200010)
-    .wineVersion("1.9.23")
     .preInstall(function(wine, wizard) {
         wine.vcrun2008();
     })
