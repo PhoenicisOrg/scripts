@@ -24,6 +24,7 @@ InstallerScript.prototype.go = function() {
     var wine = new Wine()
         .wizard(setupWizard)
         .architecture(this._wineArchitecture)
+        .distribution(this._wineDistribution)
         .version(this._wineVersion)
         .prefix(this._name)
         .luna()
