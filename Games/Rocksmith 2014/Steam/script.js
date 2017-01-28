@@ -38,10 +38,9 @@ new SteamScript()
     .editor("Ubisoft - San Francisco")
     .author("Plata")
     .appId(221680)
-    .wineVersion("1.9.23")
     .postInstall(function(wine, wizard) {
         wine.setSoundDriver("alsa");
         wine.setOsForApplication().set("Rocksmith2014.exe", "win7").do();
-        fixIni(wine.prefixDirectory + "drive_c/" + wine.getProgramFiles() + "/Steam/steamapps/common/Rocksmith2014/Rocksmith.ini");
+        fixIni(wine.prefixDirectory + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Rocksmith2014/Rocksmith.ini");
     })
     .go();
