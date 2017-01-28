@@ -11,7 +11,8 @@ function SteamScript() {
     QuickScript.call(this);
 
     this._executable = "Steam.exe";
-    this._category = "Games"
+    this._category = "Games";
+    this._gameOverlay = true;
 }
 
 SteamScript.prototype = Object.create(QuickScript.prototype);
@@ -20,6 +21,17 @@ SteamScript.prototype.constructor = SteamScript;
 
 SteamScript.prototype.appId = function(appId) {
     this._appId = appId;
+    return this;
+};
+
+SteamScript.prototype.gameOverlay = function(gameOverlay) {
+    // get
+    if (arguments.length == 0) {
+        return this._gameOverlay;
+    }
+
+    // set
+    this._gameOverlay = gameOverlay;
     return this;
 };
 
@@ -154,6 +166,13 @@ SteamScript.prototype.go = function() {
     wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", "-shutdown");
 
     this._postInstall(wine, setupWizard);
+
+    // deactivate game overlay if desired
+    if (!this._gameOverlay) {
+        wine.overrideDLL()
+            .set("", ["gameoverlayrenderer"])
+            .do();
+    }
 
     // back to generic wait (might have been changed in postInstall)
     setupWizard.wait("Please wait...");
