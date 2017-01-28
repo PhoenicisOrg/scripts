@@ -26,7 +26,6 @@ new SteamScript()
     .editor("Ubisoft - San Francisco")
     .author("Plata")
     .appId(205190)
-    .wineVersion("1.9.23")
     .postInstall(function(wine, wizard) {
         wine.setSoundDriver("alsa");
         wine.setOsForApplication().set("Rocksmith.exe", "win7").do();
