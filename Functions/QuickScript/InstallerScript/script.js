@@ -1,6 +1,7 @@
 include(["Functions", "QuickScript", "QuickScript"]);
 include(["Functions", "Engines", "Wine"]);
 include(["Functions", "Filesystem", "Extract"]);
+include(["Functions", "Filesystem", "Files"]);
 include(["Functions", "Shortcuts", "Wine"]);
 include(["Functions", "Verbs", "luna"]);
 
@@ -14,7 +15,13 @@ InstallerScript.prototype = Object.create(QuickScript.prototype);
 InstallerScript.prototype.constructor = InstallerScript;
 
 InstallerScript.prototype.go = function() {
+    this._name = this._name || "Custom Installer";
     var setupWizard = SetupWizard(this._name);
+
+    // if no name given, ask user
+    if (this._name == "Custom Installer") {
+        this._name = setupWizard.textbox("Please enter the name of your application.");
+    }
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
@@ -36,6 +43,11 @@ InstallerScript.prototype.go = function() {
 
     wine.run(installationFile)
         .wait();
+
+    // if no executable given, ask user
+    if (!this._executable) {
+        this._executable = fileName(setupWizard.browse("Please select the executable.", wine.prefixDirectory, ["exe"]));
+    }
 
     new WineShortcut()
         .name(this._name)
