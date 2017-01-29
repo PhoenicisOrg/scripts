@@ -23,6 +23,11 @@ OnlineInstallerScript.prototype.checksum = function(checksum) {
 OnlineInstallerScript.prototype._installationFile = function(wizard) {
     var installationFile = createTempFile("exe");
 
+    // if no URL given, ask user
+    if (!this._url) {
+        this._url = wizard.textbox("Please select the download URL.");
+    }
+
     new Downloader()
         .wizard(wizard)
         .url(this._url)

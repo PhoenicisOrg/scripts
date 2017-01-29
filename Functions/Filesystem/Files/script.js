@@ -21,6 +21,10 @@ var getFileSize = function(filePath) {
     return Bean("fileUtilities").getSize(new java.io.File(filePath));
 };
 
+var fileName = function(filePath) {
+    return new java.io.File(filePath).getName();
+};
+
 var lns = function(target, destination) {
     return Bean("fileUtilities").createSymbolicLink(new java.io.File(destination), new java.io.File(target));
 };
