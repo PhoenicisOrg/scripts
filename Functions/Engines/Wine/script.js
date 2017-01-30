@@ -280,6 +280,47 @@ Wine.prototype.getAvailableVersions = function () {
 
 /**
 *
+* @param {string} [architecture = current architecture]
+* @returns {string[]}
+*/
+Wine.prototype.availableDistributions = function (architectureName) {
+    var distributions = [];
+    var wineJson = JSON.parse(this.getAvailableVersions());
+    var architecture = architectureName || this._architecture;
+    var architectureRegExp = new RegExp(architecture);
+    wineJson.forEach(function (distribution) {
+        // only with the right architecture
+        if (architectureRegExp.test(distribution.name)) {
+            distributions.push(distribution.name.match(/([a-z]+)-/)[1]);
+        }
+    });
+    distributions.sort();
+    return distributions;
+}
+
+/**
+*
+* @param {string} [distribution name = current distribution]
+* @returns {string[]}
+*/
+Wine.prototype.availableVersions = function (distributionName) {
+    var versions = [];
+    var fullDistributionName = distributionName || this._fetchFullDistributionName();
+    var wineJson = JSON.parse(this.getAvailableVersions());
+    wineJson.forEach(function (distribution) {
+        if (distribution.name == fullDistributionName) {
+            distribution.packages.forEach(function (winePackage) {
+                versions.push(winePackage.version);
+            });
+        }
+    });
+    versions.sort();
+    versions.reverse();
+    return versions;
+}
+
+/**
+*
 * @param {string} [version = LATEST_STABLE_VERSION]
 * @returns {string|Wine}
 */
