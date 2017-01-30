@@ -5,4 +5,5 @@ new OnlineInstallerScript()
     .applicationHomepage("https://www.playonlinux.com/en/")
     .author("Plata")
     .category("Custom")
+    .wineUserSettings(true)
     .go();

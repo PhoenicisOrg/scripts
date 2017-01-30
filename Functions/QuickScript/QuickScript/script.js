@@ -1,10 +1,12 @@
 function QuickScript() {
     this._wineVersion = LATEST_STABLE_VERSION;
     this._wineArchitecture = "x86";
+    this._wineDistribution = "upstream";
 
     // by default do nothing in post install
     this._postInstall = function() {};
     this._preInstall = function() {};
+    this._wineUserSettings = false;
 }
 
 QuickScript.prototype.name = function(name) {
@@ -55,6 +57,17 @@ QuickScript.prototype.wineDistribution = function(wineDistribution) {
 
 QuickScript.prototype.wineVersion = function(wineVersion) {
     this._wineVersion = wineVersion;
+    return this;
+};
+
+QuickScript.prototype.wineUserSettings = function(wineUserSettings) {
+    // get
+    if (arguments.length == 0) {
+        return this._wineUserSettings;
+    }
+
+    // set
+    this._wineUserSettings = wineUserSettings;
     return this;
 };
 
