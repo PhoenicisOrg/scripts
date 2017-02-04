@@ -43,6 +43,10 @@ InstallerScript.prototype.go = function() {
 
     // setup the prefix
     wine.prefix(this._name)
+        .architecture(this._wineArchitecture)
+        .distribution(this._wineDistribution)
+        .version(this._wineVersion)
+        .prefix(this._name)
         .luna()
         .wait();
 
