@@ -107,7 +107,7 @@ Wine.prototype.prefix = function (prefix) {
 
     mkdir(this.prefixDirectory);
 
-    this._prefixConfiguration = this._configFactory.open(this.prefixDirectory + "/playonlinux.cfg");
+    this._prefixConfiguration = this._configFactory.open(this.prefixDirectory + "/phoenicis.cfg");
 
     if (!this._version) {
         this._version = this._prefixConfiguration.readValue("wineVersion");
