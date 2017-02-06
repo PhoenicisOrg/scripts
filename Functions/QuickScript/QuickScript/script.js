@@ -2,6 +2,7 @@ function QuickScript() {
     this._wineVersion = LATEST_STABLE_VERSION;
     this._wineArchitecture = "x86";
     this._wineDistribution = "upstream";
+    this._wineWindowsVersion = "winxp";
 
     // by default do nothing in post install
     this._postInstall = function() {};
@@ -57,6 +58,11 @@ QuickScript.prototype.wineDistribution = function(wineDistribution) {
 
 QuickScript.prototype.wineVersion = function(wineVersion) {
     this._wineVersion = wineVersion;
+    return this;
+};
+
+QuickScript.prototype.wineWindowsVersion = function(wineWindowsVersion) {
+    this._wineWindowsVersion = wineWindowsVersion;
     return this;
 };
 
