@@ -38,7 +38,6 @@ InstallerScript.prototype.go = function() {
         this._wineDistribution = setupWizard.menu("Please select the wine distribution.", wine.availableDistributions());
         wine.distribution(this._wineDistribution); // do this here to show correct values for version
         this._wineVersion = setupWizard.menu("Please select the wine version.", wine.availableVersions());
-        this._wineWindowsVersion = setupWizard.menu("Please select the wine windows version.", ["win7", "vista", "win2003", "winxp", "win2k", "winnt", "winme", "win98", "win95", "win31"]);
     }
 
     // setup the prefix
@@ -46,7 +45,6 @@ InstallerScript.prototype.go = function() {
         .distribution(this._wineDistribution)
         .version(this._wineVersion)
         .prefix(this._name) // important that architecture, distribution and version are before this!
-        .windowsVersion(this._wineWindowsVersion) // must be done after prefix()
         .luna()
         .wait();
 
