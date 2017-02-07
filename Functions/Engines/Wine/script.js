@@ -651,7 +651,7 @@ Wine.prototype.overrideDLL = function () {
 
 /**
  * default windows version
- * @param {string} [version (vista, win2003, winxp, win2k, winnt, winme, win98, win95, win31)]
+ * @param {string} [version (win7, vista, win2003, winxp, win2k, winnt, winme, win98, win95, win31)]
  * @returns {string|Wine}
  */
 Wine.prototype.windowsVersion = function (version, servicePack) {

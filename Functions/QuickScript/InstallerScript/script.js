@@ -34,19 +34,17 @@ InstallerScript.prototype.go = function() {
     // let user select wine settings if desired
     if (this._wineUserSettings) {
         this._wineArchitecture = setupWizard.menu("Please select the wine architecture.", ["x86", "amd64"]);
-        wine.architecture(this._wineArchitecture);
+        wine.architecture(this._wineArchitecture); // do this here to show correct values for distribution
         this._wineDistribution = setupWizard.menu("Please select the wine distribution.", wine.availableDistributions());
-        wine.distribution(this._wineDistribution);
+        wine.distribution(this._wineDistribution); // do this here to show correct values for version
         this._wineVersion = setupWizard.menu("Please select the wine version.", wine.availableVersions());
-        wine.version(this._wineVersion);
     }
 
     // setup the prefix
-    wine.prefix(this._name)
-        .architecture(this._wineArchitecture)
+    wine.architecture(this._wineArchitecture)
         .distribution(this._wineDistribution)
         .version(this._wineVersion)
-        .prefix(this._name)
+        .prefix(this._name) // important that architecture, distribution and version are before this!
         .luna()
         .wait();
 
