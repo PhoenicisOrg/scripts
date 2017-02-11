@@ -33,11 +33,11 @@ InstallerScript.prototype.go = function() {
 
     // let user select wine settings if desired
     if (this._wineUserSettings) {
-        this._wineArchitecture = setupWizard.menu("Please select the wine architecture.", ["x86", "amd64"]);
+        this._wineArchitecture = setupWizard.menu("Please select the wine architecture.", ["x86", "amd64"], "x86");
         wine.architecture(this._wineArchitecture); // do this here to show correct values for distribution
-        this._wineDistribution = setupWizard.menu("Please select the wine distribution.", wine.availableDistributions());
+        this._wineDistribution = setupWizard.menu("Please select the wine distribution.", wine.availableDistributions(), "upstream");
         wine.distribution(this._wineDistribution); // do this here to show correct values for version
-        this._wineVersion = setupWizard.menu("Please select the wine version.", wine.availableVersions());
+        this._wineVersion = setupWizard.menu("Please select the wine version.", wine.availableVersions(), LATEST_STABLE_VERSION);
     }
 
     // setup the prefix
