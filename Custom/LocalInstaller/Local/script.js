@@ -7,7 +7,9 @@ new LocalInstallerScript()
     .category("Custom")
     .wineUserSettings(true)
     .preInstall(function(wine, wizard) {
-        var windowsVersion = wizard.menu("Please select the wine windows version.", ["win7", "vista", "win2003", "winxp", "win2k", "winnt", "winme", "win98", "win95", "win31"]);
-        wine.windowsVersion(windowsVersion)
+        var versions = ["win7", "vista", "win2003", "winxp", "win2k", "winnt", "winme", "win98", "win95", "win31"];
+        var shownVersions = ["win7", "vista", "win2003", "winxp (recommended)", "win2k", "winnt", "winme", "win98", "win95", "win31"];
+        var windowsVersionIdx = wizard.menu("Please select the wine windows version.", shownVersions, "winxp (recommended)");
+        wine.windowsVersion(versions[windowsVersionIdx]);
     })
     .go();

@@ -32,12 +32,39 @@ InstallerScript.prototype.go = function() {
         .wizard(setupWizard);
 
     // let user select wine settings if desired
-    if (this._wineUserSettings) {
-        this._wineArchitecture = setupWizard.menu("Please select the wine architecture.", ["x86", "amd64"]);
+    if (this._wineUserSettings) {        
+        var architectures = ["x86", "amd64"];
+        var shownArchitectures = ["x86 (recommended)", "amd64"];
+        var architectureIdx = setupWizard.menu("Please select the wine architecture.", shownArchitectures, "x86 (recommended)");
+        this._wineArchitecture = architectures[architectureIdx];
         wine.architecture(this._wineArchitecture); // do this here to show correct values for distribution
-        this._wineDistribution = setupWizard.menu("Please select the wine distribution.", wine.availableDistributions());
+        
+        var distributions = wine.availableDistributions();
+        var shownDistributions = [];
+        for (var i in distributions) {
+            if (distributions[i] == "upstream") {
+                shownDistributions.push("upstream (recommended)");
+            }
+            else {
+                shownDistributions.push(distributions[i]);
+            }
+        }
+        var distributionIdx = setupWizard.menu("Please select the wine distribution.", shownDistributions, "upstream (recommended)");
+        this._wineDistribution = distributions[distributionIdx];
         wine.distribution(this._wineDistribution); // do this here to show correct values for version
-        this._wineVersion = setupWizard.menu("Please select the wine version.", wine.availableVersions());
+        
+        var versions = wine.availableVersions();
+        var shownVersions = [];
+        for (var i in versions) {
+            if (versions[i] == LATEST_STABLE_VERSION) {
+                shownVersions.push(versions[i] + " (recommended)");
+            }
+            else {
+                shownVersions.push(versions[i]);
+            }
+        }
+        var versionIdx = setupWizard.menu("Please select the wine version.", shownVersions, LATEST_STABLE_VERSION + " (recommended)");
+        this._wineVersion = versions[versionIdx];
     }
 
     // setup the prefix
