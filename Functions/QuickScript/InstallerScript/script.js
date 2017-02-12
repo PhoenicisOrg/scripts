@@ -35,8 +35,8 @@ InstallerScript.prototype.go = function() {
     if (this._wineUserSettings) {        
         var architectures = ["x86", "amd64"];
         var shownArchitectures = ["x86 (recommended)", "amd64"];
-        var architectureIdx = setupWizard.menu("Please select the wine architecture.", shownArchitectures, "x86 (recommended)");
-        this._wineArchitecture = architectures[architectureIdx];
+        var selectedArchitecture = setupWizard.menu("Please select the wine architecture.", shownArchitectures, "x86 (recommended)");
+        this._wineArchitecture = architectures[selectedArchitecture.index()];
         wine.architecture(this._wineArchitecture); // do this here to show correct values for distribution
         
         var distributions = wine.availableDistributions();
@@ -49,8 +49,8 @@ InstallerScript.prototype.go = function() {
                 shownDistributions.push(distributions[i]);
             }
         }
-        var distributionIdx = setupWizard.menu("Please select the wine distribution.", shownDistributions, "upstream (recommended)");
-        this._wineDistribution = distributions[distributionIdx];
+        var selectedDistribution = setupWizard.menu("Please select the wine distribution.", shownDistributions, "upstream (recommended)");
+        this._wineDistribution = distributions[selectedDistribution.index()];
         wine.distribution(this._wineDistribution); // do this here to show correct values for version
         
         var versions = wine.availableVersions();
@@ -63,8 +63,8 @@ InstallerScript.prototype.go = function() {
                 shownVersions.push(versions[i]);
             }
         }
-        var versionIdx = setupWizard.menu("Please select the wine version.", shownVersions, LATEST_STABLE_VERSION + " (recommended)");
-        this._wineVersion = versions[versionIdx];
+        var selectedVersion = setupWizard.menu("Please select the wine version.", shownVersions, LATEST_STABLE_VERSION + " (recommended)");
+        this._wineVersion = versions[selectedVersion.index()];
     }
 
     // setup the prefix

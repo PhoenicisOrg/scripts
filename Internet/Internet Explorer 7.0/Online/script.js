@@ -57,8 +57,8 @@ var languages = [
     'Swedish',
     'Turkish'
 ];
-var languageIdx = setupWizard.menu('Which language version would you like to install?', languages);
-var setupLanguage = languages[languageIdx];
+var selectedLanguage = setupWizard.menu('Which language version would you like to install?', languages);
+var setupLanguage = languages[selectedLanguage.text()];
 
 var ie7link, ie7installer, ie7md5;
 
