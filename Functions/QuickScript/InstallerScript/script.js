@@ -36,7 +36,7 @@ InstallerScript.prototype.go = function() {
         var architectures = ["x86", "amd64"];
         var shownArchitectures = ["x86 (recommended)", "amd64"];
         var selectedArchitecture = setupWizard.menu("Please select the wine architecture.", shownArchitectures, "x86 (recommended)");
-        this._wineArchitecture = architectures[selectedArchitecture.index()];
+        this._wineArchitecture = architectures[selectedArchitecture.index];
         wine.architecture(this._wineArchitecture); // do this here to show correct values for distribution
         
         var distributions = wine.availableDistributions();
@@ -50,7 +50,7 @@ InstallerScript.prototype.go = function() {
             }
         }
         var selectedDistribution = setupWizard.menu("Please select the wine distribution.", shownDistributions, "upstream (recommended)");
-        this._wineDistribution = distributions[selectedDistribution.index()];
+        this._wineDistribution = distributions[selectedDistribution.index];
         wine.distribution(this._wineDistribution); // do this here to show correct values for version
         
         var versions = wine.availableVersions();
@@ -64,7 +64,7 @@ InstallerScript.prototype.go = function() {
             }
         }
         var selectedVersion = setupWizard.menu("Please select the wine version.", shownVersions, LATEST_STABLE_VERSION + " (recommended)");
-        this._wineVersion = versions[selectedVersion.index()];
+        this._wineVersion = versions[selectedVersion.index];
     }
 
     // setup the prefix
