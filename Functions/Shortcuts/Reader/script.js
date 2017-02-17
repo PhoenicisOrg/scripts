@@ -91,6 +91,6 @@ var ShortcutReader = function() {
     };
 
     this.container = function() {
-        that._runner.container();
+        return that._runner.container();
     };
 };
