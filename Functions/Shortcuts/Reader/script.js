@@ -9,6 +9,13 @@ var _WineShortcutReader = function(shortcut) {
 
     this.shortcut = shortcut;
 
+    this.wineprefix = function() {
+        var shortcutContent = JSON.parse(this.shortcut.script);
+        return shortcutContent.winePrefix;
+    };
+
+    this.container = this.wineprefix;
+
     this.run = function(userArguments) {
         var shortcutContent = JSON.parse(this.shortcut.script);
 
@@ -81,5 +88,9 @@ var ShortcutReader = function() {
 
     this.uninstall = function() {
         that._runner.uninstall();
-    }
+    };
+
+    this.container = function() {
+        that._runner.container();
+    };
 };
