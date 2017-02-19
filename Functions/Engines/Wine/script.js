@@ -148,6 +148,14 @@ Wine.prototype.workingDirectory = function (directory) {
 };
 
 /**
+* checks if the Wine version is installed
+* @returns {boolean}
+*/
+Wine.prototype.installed = function () {
+    return fileExists(this._fetchLocalDirectory());
+};
+
+/**
 *
 * @param executable
 * @param args
