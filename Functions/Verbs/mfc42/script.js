@@ -25,7 +25,7 @@ Wine.prototype.mfc42 = function() {
         .extract(['-F', 'mfc42*.dll']);
 
     this.overrideDLL()
-        .set("native, builtin", ["mfc42.dll", "mfc42u.dll"])
+        .set("native, builtin", ["mfc42", "mfc42u"])
         .do();
     return this;
 };
