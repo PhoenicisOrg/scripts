@@ -8,7 +8,7 @@ new CustomInstallerScript()
     .applicationHomepage("http://euw.leagueoflegends.com/")
     .author("Plata")
     .installationFile(function(wizard) {
-        return {cmd: "msiexec", args: ["/i", "C://LoL/Lol.EUW.msi","APPDIR=C:\\LoL","/q"]};
+        return {command: "msiexec", args: ["/i", "C://LoL/Lol.EUW.msi","APPDIR=C:\\LoL","/q"]};
     })
     .category("Games")
     .wineDistribution("staging")
