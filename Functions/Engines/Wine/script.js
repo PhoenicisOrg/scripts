@@ -640,6 +640,8 @@ var OverrideDLL = function () {
 
     that.set = function (mode, libraries) {
         libraries.forEach(function (library) {
+            // make sure library does not end with ".dll"
+            library = library.replace(".dll", "");
             that._regeditFileContent += "\"*" + library + "\"=\"" + mode + "\"\n";
         });
 
