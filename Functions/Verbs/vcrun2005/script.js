@@ -14,11 +14,11 @@ Wine.prototype.vcrun2005 = function() {
         .wait("Please wait while {0} is installed ...".format("Microsoft Visual C++ 2005 Redistributable (x86)"));
 
     var dlls = [
-        "atl80.dll",
-        "msvcm80.dll",
-        "msvcp80.dll",
-        "msvcr80.dll",
-        "vcomp.dll"
+        "atl80",
+        "msvcm80",
+        "msvcp80",
+        "msvcr80",
+        "vcomp"
     ];
     this.overrideDLL()
         .set("native, builtin", dlls)

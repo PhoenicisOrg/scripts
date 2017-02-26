@@ -15,8 +15,8 @@ Wine.prototype.vcrun2003 = function() {
         .wait("Please wait while {0} is installed ...".format("Microsoft Visual C++ 2003 Redistributable (x86)"));
 
     var dlls = [
-        "msvcp71.dll",
-        "mfc71.dll"
+        "msvcp71",
+        "mfc71"
     ];
     dlls.forEach(function (dll) {
         cp(wine.programFiles() + "/BZEdit1.6.5/" + dll, this.system32directory());
