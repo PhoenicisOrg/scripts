@@ -20,7 +20,7 @@ OnlineInstallerScript.prototype.checksum = function(checksum) {
     return this;
 };
 
-OnlineInstallerScript.prototype._installationFile = function(wizard) {
+OnlineInstallerScript.prototype._installationCommand = function(wizard) {
     var installationFile = createTempFile("exe");
 
     // if no URL given, ask user

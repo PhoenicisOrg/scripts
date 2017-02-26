@@ -8,7 +8,7 @@ CustomInstallerScript.prototype = Object.create(InstallerScript.prototype);
 
 CustomInstallerScript.prototype.constructor = CustomInstallerScript;
 
-CustomInstallerScript.prototype.installationFile = function(installationFile) {
-    this._installationFile = installationFile;
+CustomInstallerScript.prototype.installationCommand = function(installationCommand) {
+    this._installationCommand = installationCommand;
     return this;
 };
