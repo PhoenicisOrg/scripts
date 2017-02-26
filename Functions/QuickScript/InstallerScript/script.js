@@ -80,7 +80,7 @@ InstallerScript.prototype.go = function() {
     // back to generic wait (might have been changed in preInstall)
     setupWizard.wait("Please wait...");
 
-    wine.run(installationFile)
+    wine.run(installationFile.cmd, installationFile.args)
         .wait();
 
     // if no executable given, ask user
