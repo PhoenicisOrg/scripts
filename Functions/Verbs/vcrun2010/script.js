@@ -26,10 +26,10 @@ Wine.prototype.vcrun2010 = function() {
     }
 
     var dlls = [
-        "atl100.dll",
-        "msvcp100.dll",
-        "msvcr100.dll",
-        "vcomp100.dll",
+        "atl100",
+        "msvcp100",
+        "msvcr100",
+        "vcomp100",
     ];
     this.overrideDLL()
         .set("native, builtin", dlls)

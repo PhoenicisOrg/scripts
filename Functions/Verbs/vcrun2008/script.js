@@ -26,11 +26,11 @@ Wine.prototype.vcrun2008 = function() {
     }
 
     var dlls = [
-        "atl90.dll",
-        "msvcm90.dll",
-        "msvcp90.dll",
-        "msvcr90.dll",
-        "vcomp90.dll",
+        "atl90",
+        "msvcm90",
+        "msvcp90",
+        "msvcr90",
+        "vcomp90",
     ];
     this.overrideDLL()
         .set("native, builtin", dlls)
