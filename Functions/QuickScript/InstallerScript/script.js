@@ -26,7 +26,7 @@ InstallerScript.prototype.go = function() {
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
     // get installation file from concrete InstallerScript implementation
-    var installationFile = this._installationFile(setupWizard);
+    var installationCommand = this._installationCommand(setupWizard);
 
     var wine = new Wine()
         .wizard(setupWizard);
@@ -80,7 +80,7 @@ InstallerScript.prototype.go = function() {
     // back to generic wait (might have been changed in preInstall)
     setupWizard.wait("Please wait...");
 
-    wine.run(installationFile)
+    wine.run(installationCommand.command, installationCommand.args)
         .wait();
 
     // if no executable given, ask user
