@@ -35,5 +35,5 @@ OnlineInstallerScript.prototype._installationFile = function(wizard) {
         .to(installationFile)
         .get();
 
-    return {cmd: installationFile, args: []};
+    return {command: installationFile, args: []};
 };

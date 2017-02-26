@@ -16,5 +16,5 @@ LocalInstallerScript.prototype.browseMessage = function(browseMessage) {
 LocalInstallerScript.prototype._installationFile = function(wizard) {
     var browseMessage = this._browseMessage || "Please select the installation file.";
     var installationFile = wizard.browse(browseMessage);
-    return {cmd: installationFile, args: []};
+    return {command: installationFile, args: []};
 };
