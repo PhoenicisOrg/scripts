@@ -23,14 +23,14 @@ Wine.prototype.dotnet40 = function() {
     remove(this.system32directory() + "/mscoree.dll");
 
     this.overrideDLL()
-        .set("builtin", ["fusion.dll"])
+        .set("builtin", ["fusion"])
         .do();
 
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""])
         .wait("Please wait while {0} is installed ...".format(".NET Framework 4.0"));
 
     this.overrideDLL()
-        .set("native", ["mscoree.dll"])
+        .set("native", ["mscoree"])
         .do();
 
     this.run("reg", ["add", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4\Full", "/v", "Install", "/t", "REG_DWORD", "/d", "0001", "/f"])
