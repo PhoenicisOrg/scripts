@@ -7,7 +7,7 @@ new CustomInstallerScript()
     .editor("Riot Games")
     .applicationHomepage("http://euw.leagueoflegends.com/")
     .author("Plata")
-    .installationFile(function(wizard) {
+    .installationCommand(function(wizard) {
         return {command: "msiexec", args: ["/i", "C://LoL/Lol.EUW.msi","APPDIR=C:\\LoL","/q"]};
     })
     .category("Games")
