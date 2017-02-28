@@ -138,7 +138,7 @@ SteamScript.prototype.go = function() {
         .prefix(this._name)
         .search(this._executable)
         .arguments(this._executableArgs)
-        .miniature([this._category, this._name])
+        .miniature(["Apps", this._category, this._name])
         .create();
 
     // TODO enable "-silent" when progress bar works

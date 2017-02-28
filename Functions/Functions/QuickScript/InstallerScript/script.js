@@ -93,7 +93,7 @@ InstallerScript.prototype.go = function() {
         .prefix(this._name)
         .search(this._executable)
         .arguments(this._executableArgs)
-        .miniature([this._category, this._name])
+        .miniature(["Apps", this._category, this._name])
         .create();
 
     this._postInstall(wine, setupWizard);
