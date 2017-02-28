@@ -1,6 +1,6 @@
-include(["Functions", "QuickScript", "SteamScript"]);
-include(["Functions", "Verbs", "d3dx9"]);
-include(["Functions", "Verbs", "crypt32"]);
+include(["Functions", "Functions", "QuickScript", "SteamScript"]);
+include(["Functions", "Functions", "Verbs", "d3dx9"]);
+include(["Functions", "Functions", "Verbs", "crypt32"]);
 
 new SteamScript()
     .name("Assassin’s Creed® Brotherhood")

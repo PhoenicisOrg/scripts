@@ -1,9 +1,9 @@
-include(["Functions", "Net", "Resource"]);
-include(["Functions", "Engines", "Wine"]);
-include(["Functions", "Filesystem", "Files"]);
-include(["Functions", "Shortcuts", "Wine"]);
-include(["Functions", "Apps", "Resources"]);
-include(["Functions", "Verbs", "sandbox"]);
+include(["Functions", "Functions", "Net", "Resource"]);
+include(["Functions", "Functions", "Engines", "Wine"]);
+include(["Functions", "Functions", "Filesystem", "Files"]);
+include(["Functions", "Functions", "Shortcuts", "Wine"]);
+include(["Functions", "Functions", "Apps", "Resources"]);
+include(["Functions", "Functions", "Verbs", "sandbox"]);
 
 var setupWizard = SetupWizard("Internet Explorer 7.0");
 

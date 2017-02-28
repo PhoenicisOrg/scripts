@@ -1,5 +1,5 @@
-include(["Functions", "QuickScript", "SteamScript"]);
-include(["Functions", "Verbs", "vcrun2008"]);
+include(["Functions", "Functions", "QuickScript", "SteamScript"]);
+include(["Functions", "Functions", "Verbs", "vcrun2008"]);
 
 new SteamScript()
     .name("Quantum Conundrum")

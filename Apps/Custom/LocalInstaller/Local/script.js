@@ -1,4 +1,4 @@
-include(["Functions", "QuickScript", "LocalInstallerScript"]);
+include(["Functions", "Functions", "QuickScript", "LocalInstallerScript"]);
 
 new LocalInstallerScript()
     .editor("PlayOnLinux")

@@ -1,4 +1,4 @@
-include(["Functions", "QuickScript", "ZipScript"]);
+include(["Functions", "Functions", "QuickScript", "ZipScript"]);
 
 new ZipScript()
     .name("Crayon Physics")

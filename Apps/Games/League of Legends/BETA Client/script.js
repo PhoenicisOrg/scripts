@@ -1,6 +1,6 @@
-include(["Functions", "QuickScript", "CustomInstallerScript"]);
-include(["Functions", "Verbs", "sandbox"]);
-include(["Functions", "Verbs", "vcrun2015"]);
+include(["Functions", "Functions", "QuickScript", "CustomInstallerScript"]);
+include(["Functions", "Functions", "Verbs", "sandbox"]);
+include(["Functions", "Functions", "Verbs", "vcrun2015"]);
 
 new CustomInstallerScript()
     .name("League of Legends BETA Client")

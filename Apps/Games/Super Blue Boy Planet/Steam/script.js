@@ -1,4 +1,4 @@
-include(["Functions", "QuickScript", "SteamScript"]);
+include(["Functions", "Functions", "QuickScript", "SteamScript"]);
 
 new SteamScript()
     .name("Super Blue Boy Planet")

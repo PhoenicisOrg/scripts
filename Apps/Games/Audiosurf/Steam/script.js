@@ -1,7 +1,7 @@
-include(["Functions", "QuickScript", "SteamScript"]);
-include(["Functions", "Verbs", "quicktime76"]);
-include(["Functions", "Verbs", "corefonts"]);
-include(["Functions", "Verbs", "tahoma"]);
+include(["Functions", "Functions", "QuickScript", "SteamScript"]);
+include(["Functions", "Functions", "Verbs", "quicktime76"]);
+include(["Functions", "Functions", "Verbs", "corefonts"]);
+include(["Functions", "Functions", "Verbs", "tahoma"]);
 
 new SteamScript()
     .name("Audiosurf")
