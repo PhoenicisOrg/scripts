@@ -37,9 +37,8 @@ new CustomInstallerScript()
         //Create the installation directory
         mkdir(wine.prefixDirectory+"drive_c/LoL");
         //Create the early LeagueClient.exe for shortcut-creation
-        var launcher = wine.prefixDirectory+"drive_c/LoL/lol.launcher.admin.exe"
-        var client = wine.prefixDirectory+"drive_c/LoL/LeagueClient.exe"
-        lns(launcher,client)  
+        var client = wine.prefixDirectory+"drive_c/LoL/LeagueClient.exe";
+        writeToFile(client,"");  
         //Create the shortcut for the beta client
         new WineShortcut()
             .name("BETA Client")
@@ -54,9 +53,9 @@ new CustomInstallerScript()
     })
     .postInstall(function(wine,wizard) {
         //Remove the temporary directory
-        remove(wine.prefixDirectory+"drive_c/LoL_tmp")
+        remove(wine.prefixDirectory+"drive_c/LoL_tmp");
         //Remove the fake BETA Client, because it wont update otherwise
-        remove(wine.prefixDirectory+"drive_c/LoL/LeagueClient.exe")
+        remove(wine.prefixDirectory+"drive_c/LoL/LeagueClient.exe");
     })
     .executable("lol.launcher.admin.exe")
     .go();
