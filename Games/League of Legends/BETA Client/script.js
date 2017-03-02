@@ -39,11 +39,11 @@ new CustomInstallerScript()
                        "North America",
                        "Russia"];
         var selectedRegion = wizard.menu("Select your region:", regions);
-        var reguionID, url, sha1;
+        var regionID, url, sha1;
         var baseUrl = "https://riotgamespatcher-a.akamaihd.net/ShellInstaller/";
         switch(selectedRegion.text){
             case "EU West":
-                reguionID = "EUW";
+                regionID = "EUW";
                 url = baseUrl+"EUW/LeagueofLegends_EUW_Installer_2016_11_10.exe";
                 sha1 = "cbbf9883a59d2dada87e6aa8cc4484b07ea797da";
                 break;
