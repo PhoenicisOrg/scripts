@@ -22,6 +22,8 @@ category
     └── application.json
 ```
 
+Even if the application name contains ®, ™ or the like, you should not use it in the folder name.
+
 3. Fill the files:
   * [script.js](https://github.com/PlayOnLinux/Scripts/wiki/script.js): actual installation script
   * [script.json](https://github.com/PlayOnLinux/Scripts/wiki/script.json): describes the installation script
