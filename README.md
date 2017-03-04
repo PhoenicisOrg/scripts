@@ -9,20 +9,20 @@
   * Office
   * Other
   * Science
-
+  
 2. Create a new folder for your script inside that category. The folder structure should be:
-```
-category
-└── application-name
-    ├── script-name
-    │   ├── script.js
-    │   └── script.json
-    ├── miniatures
-    │   └── main.png
-    └── application.json
-```
+    ```
+    category
+    └── application-name
+        ├── script-name
+        │   ├── script.js
+        │   └── script.json
+        ├── miniatures
+        │   └── main.png
+        └── application.json
+    ```
 
-Even if the application name contains ®, ™ or the like, you should not use it in the folder name.
+    Even if the application name contains ®, ™ or the like, you should not use it in the folder name.
 
 3. Fill the files:
   * [script.js](https://github.com/PlayOnLinux/Scripts/wiki/script.js): actual installation script
