@@ -180,11 +180,11 @@ Wine.prototype.run = function (executable, args, captureOutput) {
     var extensionFile = executable.split(".").pop();
 
     if(extensionFile == "msi") {
-        return this.run("msiexec", ["/i", executable], captureOutput);
+        return this.run("msiexec", ["/i", executable].concat(args), captureOutput);
     }
 
     if(extensionFile == "bat") {
-        return this.run("start", [executable], captureOutput);
+        return this.run("start", [executable].concat(args), captureOutput);
     }
 
     this._installVersion();
