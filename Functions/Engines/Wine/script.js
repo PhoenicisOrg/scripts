@@ -177,6 +177,16 @@ Wine.prototype.run = function (executable, args, captureOutput) {
         args = [];
     }
 
+    var extensionFile = executable.split(".").pop();
+
+    if(extensionFile == "msi") {
+        return this.run("msiexec", ["/i", executable], captureOutput);
+    }
+
+    if(extensionFile == "bat") {
+        return this.run("start", [executable], captureOutput);
+    }
+
     this._installVersion();
 
     var wineBinary = this._fetchLocalDirectory() + "/bin/wine";
