@@ -192,7 +192,7 @@ Wine.prototype.run = function (executable, args, captureOutput) {
     }
 
     if(extensionFile == "bat") {
-        return this.run("start", [executable].concat(args), captureOutput);
+        return this.run("start", ["/Unix",executable].concat(args), captureOutput);
     }
 
     this._installVersion();
