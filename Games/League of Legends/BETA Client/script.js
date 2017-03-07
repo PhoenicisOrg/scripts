@@ -103,19 +103,14 @@ new CustomInstallerScript()
         mkdir(wine.prefixDirectory+"drive_c/LoL_tmp");
         mkdir(wine.prefixDirectory+"drive_c/LoL");
         
-        // Create a shortcut for LeagueClient.exe
+        // Create run script
         /////////////////////////////////////////
-        // Create temporary exe
-        var client = wine.prefixDirectory+"drive_c/LoL/LeagueClient.exe";
-        writeToFile(client, "");  
-        new WineShortcut()
-            .name("BETA Client")
-            .prefix(wine._prefix)
-            .search(fileName(client))
-            .miniature([this._category, this._name])
-            .create();
-        // Remove the fake exe, because it wont update otherwise
-        remove(client);
+        var client = wine.prefixDirectory+"drive_c/LoL/run.bat";
+        var batContent = "IF EXIST \"C:\\LoL\\LeagueClient.exe\" (\n"+
+                         "start C:\\LoL\\LeagueClient.exe \n"+
+                         ") ELSE ( start C:\\LoL\\lol.launcher.admin.exe )";
+        writeToFile(client, batContent);  
+
 
         // Extract the msi file and create a link to it
         ///////////////////////////////////////////////
@@ -129,6 +124,11 @@ new CustomInstallerScript()
     })
     .postInstall(function(wine, wizard) {
         remove(wine.prefixDirectory+"drive_c/LoL_tmp");
+
+        // Enable BETA
+        //////////////
+        var userConfPath = wine.prefixDirectory+"drive_c/LoL/RADS/system/user.cfg";
+        writeToFile(userConfPath,"leagueClientOptIn = yes\nreplayPopUpShown = yes");
     })
-    .executable("lol.launcher.admin.exe")
+    .executable("run.bat")
     .go();
