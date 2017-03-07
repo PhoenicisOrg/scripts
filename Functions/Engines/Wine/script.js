@@ -40,7 +40,7 @@ Wine.prototype.wizard = function (wizard) {
  * @returns {String}
  */
 Wine.prototype.winepath = function (path) {
-    return this.run("winepath",["-w",path],true)
+    return this.run("winepath", ["-w", path], true);
 }
 
 /**
