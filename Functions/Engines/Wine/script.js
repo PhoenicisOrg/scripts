@@ -40,7 +40,7 @@ Wine.prototype.wizard = function (wizard) {
  * @returns {String}
  */
 Wine.prototype.winepath = function (path) {
-    return this.run("winepath",["-w",path],true)
+    return this.run("winepath", ["-w", path], true);
 }
 
 /**
@@ -192,7 +192,7 @@ Wine.prototype.run = function (executable, args, captureOutput) {
     }
 
     if(extensionFile == "bat") {
-        return this.run("start", ["/Unix",executable].concat(args), captureOutput);
+        return this.run("start", ["/Unix", executable].concat(args), captureOutput);
     }
 
     this._installVersion();
