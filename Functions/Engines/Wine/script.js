@@ -1,6 +1,7 @@
 include(["Functions", "Filesystem", "Files"]);
 include(["Functions", "Filesystem", "Extract"]);
 include(["Functions", "Net", "Download"]);
+include(["Functions", "Net", "Resource"]);
 
 LATEST_STABLE_VERSION = "2.0";
 
@@ -184,6 +185,16 @@ Wine.prototype.run = function (executable, args, captureOutput) {
         args = [];
     }
 
+    var extensionFile = executable.split(".").pop();
+
+    if(extensionFile == "msi") {
+        return this.run("msiexec", ["/i", executable].concat(args), captureOutput);
+    }
+
+    if(extensionFile == "bat") {
+        return this.run("start", [executable].concat(args), captureOutput);
+    }
+
     this._installVersion();
 
     var wineBinary = this._fetchLocalDirectory() + "/bin/wine";
@@ -292,6 +303,47 @@ Wine.prototype.getAvailableVersions = function () {
         .wizard(this._wizard)
         .url(this._wineWebServiceUrl)
         .get()
+};
+
+/**
+* install
+* @param {string} category
+* @param {string} subCategory
+* @param {string} version
+* @param {json} userData
+*/
+Wine.prototype.install = function (category, subCategory, version, userData) {
+    var parts = subCategory.split("-");
+    var distribution = parts[0];
+    var architecture = parts[2];
+    this.distribution(distribution);
+    this.architecture(architecture);
+    this.version(version);
+    if (!this.installed()) {
+        var wizard = EngineProgressUi("Wine");
+        this.wizard(wizard);
+        this._installVersion();
+        wizard.close();
+    }
+};
+
+/**
+* delete
+* @param {string} category
+* @param {string} subCategory
+* @param {string} version
+* @param {json} userData
+*/
+Wine.prototype.delete = function (category, subCategory, version, userData) {
+    var parts = subCategory.split("-");
+    var distribution = parts[0];
+    var architecture = parts[2];
+    this.distribution(distribution);
+    this.architecture(architecture);
+    this.version(version);
+    if (this.installed()) {
+        remove(this._fetchLocalDirectory());
+    }
 };
 
 /**
