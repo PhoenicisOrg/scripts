@@ -36,6 +36,14 @@ Wine.prototype.wizard = function (wizard) {
 };
 
 /**
+ * @param {String} [path]
+ * @returns {String}
+ */
+Wine.prototype.winepath = function (path) {
+    return this.run("winepath", ["-w", path], true);
+}
+
+/**
 *
 * @param {string} [debug]
 * @returns {string|Wine}
