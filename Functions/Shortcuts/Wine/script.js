@@ -34,7 +34,7 @@ var WineShortcut = function () {
 
     that.miniature = function(miniature) {
       if(isArray(miniature)) {
-          var application = that._appsManager.cachedRepository().getApplication(miniature);
+          var application = that._appsManager.getApplication(miniature);
           if(application != null && application.miniatures != null && application.miniatures[0] != null) {
               that._miniature = application.miniatures[0];
           }
