@@ -1,7 +1,7 @@
 var WineShortcut = function () {
     var that = this;
     that._shortcutManager = Bean("shortcutManager");
-    that._appsManager = Bean("repository");
+    that._appsManager = Bean("repositoryManager");
     that._fileSearcher = Bean("fileSearcher");
     that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
 
