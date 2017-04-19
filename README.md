@@ -40,7 +40,7 @@
   * [application.json](https://github.com/PlayOnLinux/Scripts/wiki/application.json): describes the application
   ```json
   {
-		"name":	"Steam",
-        "description": "Application description"
+ 		"name":	"Steam",
+		"description": "Application description"
   }
   ```
