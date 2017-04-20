@@ -26,18 +26,20 @@ Wine.prototype.vcrun2015 = function() {
     }
 
     var dlls = [
-        "api-ms-win-crt-conio-l1-1-0.dll",
-        "api-ms-win-crt-heap-l1-1-0.dll",
-        "api-ms-win-crt-locale-l1-1-0.dll",
-        "api-ms-win-crt-math-l1-1-0.dll",
-        "api-ms-win-crt-runtime-l1-1-0.dll",
-        "api-ms-win-crt-stdio-l1-1-0.dll",
-        "atl140.dll",
-        "msvcp140.dll",
-        "msvcr140.dll",
-        "ucrtbase.dll",
-        "vcomp140.dll",
-        "vcruntime140.dll"
+        "api-ms-win-crt-conio-l1-1-0",
+        "api-ms-win-crt-heap-l1-1-0",
+        "api-ms-win-crt-locale-l1-1-0",
+        "api-ms-win-crt-math-l1-1-0",
+        "api-ms-win-crt-runtime-l1-1-0",
+        "api-ms-win-crt-stdio-l1-1-0",
+        "api-ms-win-crt-time-l1-1-0",
+        "atl140",
+        "concrt140",
+        "msvcp140",
+        "msvcr140",
+        "ucrtbase",
+        "vcomp140",
+        "vcruntime140"
     ];
     this.overrideDLL()
         .set("native, builtin", dlls)

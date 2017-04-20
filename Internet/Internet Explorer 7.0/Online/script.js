@@ -31,7 +31,7 @@ var wine = new Wine()
         remove(wine.prefixDirectory + "/drive_c/windows/system32/" + dll + ".dll");
     });
 
-var setupLanguage = setupWizard.menu('Which language version would you like to install?', [
+var languages = [
     'Arabic',
     'Chinese (Simplified)',
     'Chinese (Traditional, Taiwan)',
@@ -56,7 +56,9 @@ var setupLanguage = setupWizard.menu('Which language version would you like to i
     'Spanish',
     'Swedish',
     'Turkish'
-]);
+];
+var selectedLanguage = setupWizard.menu('Which language version would you like to install?', languages);
+var setupLanguage = languages[selectedLanguage.index];
 
 var ie7link, ie7installer, ie7md5;
 

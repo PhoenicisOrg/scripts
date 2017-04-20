@@ -26,6 +26,8 @@ var wine = new Wine()
     .msls31()
     .wait();
 
+wine.windowsVersion("win2k");
+
 remove(wine.prefixDirectory + "/drive_c/IE 6.0 Full/");
 remove(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Internet Explorer/iexplore.exe");
 

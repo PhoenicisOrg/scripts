@@ -1,8 +1,9 @@
 include(["Functions", "Filesystem", "Files"]);
 include(["Functions", "Filesystem", "Extract"]);
 include(["Functions", "Net", "Download"]);
+include(["Functions", "Net", "Resource"]);
 
-LATEST_STABLE_VERSION = "1.8.6";
+LATEST_STABLE_VERSION = "2.0";
 
 /**
  * Wine main prototype
@@ -16,7 +17,6 @@ function Wine() {
     this._OperatingSystemFetcher = Bean("operatingSystemFetcher");
     this._wineDebug = "-all";
     this._ldPath = Bean("propertyReader").getProperty("application.environment.ld");
-    this._architecture = "x86";
 }
 
 /**
@@ -34,6 +34,14 @@ Wine.prototype.wizard = function (wizard) {
     this._wizard = wizard;
     return this;
 };
+
+/**
+ * @param {String} [path]
+ * @returns {String}
+ */
+Wine.prototype.winepath = function (path) {
+    return this.run("winepath", ["-w", path], true);
+}
 
 /**
 *
@@ -108,7 +116,7 @@ Wine.prototype.prefix = function (prefix) {
 
     mkdir(this.prefixDirectory);
 
-    this._prefixConfiguration = this._configFactory.open(this.prefixDirectory + "/playonlinux.cfg");
+    this._prefixConfiguration = this._configFactory.open(this.prefixDirectory + "/phoenicis.cfg");
 
     if (!this._version) {
         this._version = this._prefixConfiguration.readValue("wineVersion");
@@ -122,7 +130,9 @@ Wine.prototype.prefix = function (prefix) {
 
     this._prefixConfiguration.writeValue("wineDistribution", this._distribution);
 
-    this._architecture = this._prefixConfiguration.readValue("wineArchitecture", "x86");
+    if (!this._architecture) {
+        this._architecture = this._prefixConfiguration.readValue("wineArchitecture", "x86");
+    }
 
     this._prefixConfiguration.writeValue("wineArchitecture", this._architecture);
 
@@ -147,6 +157,14 @@ Wine.prototype.workingDirectory = function (directory) {
 };
 
 /**
+* checks if the Wine version is installed
+* @returns {boolean}
+*/
+Wine.prototype.installed = function () {
+    return fileExists(this._fetchLocalDirectory());
+};
+
+/**
 *
 * @param executable
 * @param args
@@ -165,6 +183,16 @@ Wine.prototype.runInsidePrefix = function (executable, args) {
 Wine.prototype.run = function (executable, args, captureOutput) {
     if (!args) {
         args = [];
+    }
+
+    var extensionFile = executable.split(".").pop();
+
+    if(extensionFile == "msi") {
+        return this.run("msiexec", ["/i", executable].concat(args), captureOutput);
+    }
+
+    if(extensionFile == "bat") {
+        return this.run("start", ["/Unix", executable].concat(args), captureOutput);
     }
 
     this._installVersion();
@@ -276,6 +304,88 @@ Wine.prototype.getAvailableVersions = function () {
         .url(this._wineWebServiceUrl)
         .get()
 };
+
+/**
+* install
+* @param {string} category
+* @param {string} subCategory
+* @param {string} version
+* @param {json} userData
+*/
+Wine.prototype.install = function (category, subCategory, version, userData) {
+    var parts = subCategory.split("-");
+    var distribution = parts[0];
+    var architecture = parts[2];
+    this.distribution(distribution);
+    this.architecture(architecture);
+    this.version(version);
+    if (!this.installed()) {
+        var wizard = EngineProgressUi("Wine");
+        this.wizard(wizard);
+        this._installVersion();
+        wizard.close();
+    }
+};
+
+/**
+* delete
+* @param {string} category
+* @param {string} subCategory
+* @param {string} version
+* @param {json} userData
+*/
+Wine.prototype.delete = function (category, subCategory, version, userData) {
+    var parts = subCategory.split("-");
+    var distribution = parts[0];
+    var architecture = parts[2];
+    this.distribution(distribution);
+    this.architecture(architecture);
+    this.version(version);
+    if (this.installed()) {
+        remove(this._fetchLocalDirectory());
+    }
+};
+
+/**
+*
+* @param {string} [architecture = current architecture]
+* @returns {string[]}
+*/
+Wine.prototype.availableDistributions = function (architectureName) {
+    var distributions = [];
+    var wineJson = JSON.parse(this.getAvailableVersions());
+    var architecture = architectureName || this._architecture;
+    var architectureRegExp = new RegExp(architecture);
+    wineJson.forEach(function (distribution) {
+        // only with the right architecture
+        if (architectureRegExp.test(distribution.name)) {
+            distributions.push(distribution.name.match(/([a-z]+)-/)[1]);
+        }
+    });
+    distributions.sort();
+    return distributions;
+}
+
+/**
+*
+* @param {string} [distribution name = current distribution]
+* @returns {string[]}
+*/
+Wine.prototype.availableVersions = function (distributionName) {
+    var versions = [];
+    var fullDistributionName = distributionName || this._fetchFullDistributionName();
+    var wineJson = JSON.parse(this.getAvailableVersions());
+    wineJson.forEach(function (distribution) {
+        if (distribution.name == fullDistributionName) {
+            distribution.packages.forEach(function (winePackage) {
+                versions.push(winePackage.version);
+            });
+        }
+    });
+    versions.sort();
+    versions.reverse();
+    return versions;
+}
 
 /**
 *
@@ -590,6 +700,8 @@ var OverrideDLL = function () {
 
     that.set = function (mode, libraries) {
         libraries.forEach(function (library) {
+            // make sure library does not end with ".dll"
+            library = library.replace(".dll", "");
             that._regeditFileContent += "\"*" + library + "\"=\"" + mode + "\"\n";
         });
 
@@ -609,7 +721,7 @@ Wine.prototype.overrideDLL = function () {
 
 /**
  * default windows version
- * @param {string} [version (vista, win2003, winxp, win2k, winnt, winme, win98, win95, win31)]
+ * @param {string} [version (win7, vista, win2003, winxp, win2k, winnt, winme, win98, win95, win31)]
  * @returns {string|Wine}
  */
 Wine.prototype.windowsVersion = function (version, servicePack) {

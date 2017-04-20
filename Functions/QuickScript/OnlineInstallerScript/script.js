@@ -20,8 +20,13 @@ OnlineInstallerScript.prototype.checksum = function(checksum) {
     return this;
 };
 
-OnlineInstallerScript.prototype._installationFile = function(wizard) {
+OnlineInstallerScript.prototype._installationCommand = function(wizard) {
     var installationFile = createTempFile("exe");
+
+    // if no URL given, ask user
+    if (!this._url) {
+        this._url = wizard.textbox("Please select the download URL.");
+    }
 
     new Downloader()
         .wizard(wizard)
@@ -30,5 +35,5 @@ OnlineInstallerScript.prototype._installationFile = function(wizard) {
         .to(installationFile)
         .get();
 
-    return installationFile;
+    return {command: installationFile, args: []};
 };

@@ -26,7 +26,7 @@ Wine.prototype.vcrun2013 = function() {
     }
 
     this.overrideDLL()
-        .set("native, builtin", ["atl120.dll", "msvcp120.dll", "msvcr120.dll", "vcomp120.dll"])
+        .set("native, builtin", ["atl120", "msvcp120", "msvcr120", "vcomp120"])
         .do();
 
     return this;

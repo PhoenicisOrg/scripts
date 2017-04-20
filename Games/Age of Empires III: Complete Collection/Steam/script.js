@@ -9,7 +9,7 @@ new SteamScript()
     .postInstall(function(wine, wizard) {
         wine.mfc42();
         wine.overrideDLL()
-            .set("native, builtin", ["pidgen.dll"])
+            .set("native, builtin", ["pidgen"])
             .do();
     })
     .go();

@@ -9,18 +9,22 @@
   * Office
   * Other
   * Science
-
+  
 2. Create a new folder for your script inside that category. The folder structure should be:
-```
-category
-└── application-name
-    ├── script-name
-    │   ├── script.js
-    │   └── script.json
-    ├── miniatures
-    │   └── main.png
-    └── application.json
-```
+    ```
+    category
+    └── application-name
+        ├── script-name
+        │   ├── script.js
+        │   └── script.json
+        ├── miniatures
+        │   └── main.png
+        └── application.json
+    ```
+
+    Typically, `script-name` will be something like "Steam", "Online" or "v1.2".
+    
+    Even if the application name contains ®, ™ or the like, you should not use it in the folder name.
 
 3. Fill the files:
   * [script.js](https://github.com/PlayOnLinux/Scripts/wiki/script.js): actual installation script
@@ -38,7 +42,10 @@ category
   * [application.json](https://github.com/PlayOnLinux/Scripts/wiki/application.json): describes the application
   ```json
   {
-		"name":	"Steam",
-        "description": "Application description"
+ 		"name":	"Steam",
+		"description": "Application description"
   }
   ```
+  
+  4. Create a pull request
+  * Please create one pull request per script if you want to commit multiple scripts.

@@ -1,7 +1,7 @@
 var WineShortcut = function () {
     var that = this;
     that._shortcutManager = Bean("shortcutManager");
-    that._appsManager = Bean("appsSource");
+    that._appsManager = Bean("repositoryManager");
     that._fileSearcher = Bean("fileSearcher");
     that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
 
@@ -48,7 +48,11 @@ var WineShortcut = function () {
 
         var executables = that._fileSearcher.search(_shortcutPrefixDirectory, that._search);
 
-        var builder = new com.phoenicis.library.dto.ShortcutDTO.Builder()
+        if (executables.length == 0) {
+            throw "Executable " + that._search + " not found!"
+        }
+
+        var builder = new org.phoenicis.library.dto.ShortcutDTO.Builder()
             .withName(that._name)
             .withDescription(that._description)
             .withScript(JSON.stringify({

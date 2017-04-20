@@ -1,6 +1,6 @@
 var AppResource = function() {
     var that = this;
-    that._appsManager = Bean("appsSource");
+    that._appsManager = Bean("repositoryManager");
 
     this.application = function(application) {
         that._application = application;
