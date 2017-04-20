@@ -48,6 +48,10 @@ var WineShortcut = function () {
 
         var executables = that._fileSearcher.search(_shortcutPrefixDirectory, that._search);
 
+        if (executables.length == 0) {
+            throw "Executable " + that._search + " not found!"
+        }
+
         var builder = new org.phoenicis.library.dto.ShortcutDTO.Builder()
             .withName(that._name)
             .withDescription(that._description)
