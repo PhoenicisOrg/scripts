@@ -5,5 +5,9 @@ new SteamScript()
     .editor("Ubisoft Montreal")
     .author("Plata")
     .appId(33230)
-    .wineVersion("1.9.23")
+    .wineVersion("2.5")
+    .wineDistribution("staging")
+    .postInstall(function(wine, wizard) {
+        wine.setOsForApplication().set("UbisoftGameLauncher.exe", "vista").do();
+    })
     .go();
