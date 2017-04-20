@@ -22,6 +22,8 @@
         └── application.json
     ```
 
+    Typically, `script-name` will be something like "Steam", "Online" or "v1.2".
+    
     Even if the application name contains ®, ™ or the like, you should not use it in the folder name.
 
 3. Fill the files:
