@@ -1,0 +1,7 @@
+{
+  	"scriptName": "v1.5",
+  	"compatibleOperatingSystems": ["LINUX"],
+  	"testingOperatingSystems": [],
+  	"free": true,
+  	"requiresNoCD": false
+}
