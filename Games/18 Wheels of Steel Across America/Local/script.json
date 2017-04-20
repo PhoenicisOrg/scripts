@@ -1,5 +1,5 @@
 {
-  	"scriptName": "Offline",
+  	"scriptName": "Local",
   	"compatibleOperatingSystems": ["LINUX"],
   	"testingOperatingSystems": [],
   	"free": false,
