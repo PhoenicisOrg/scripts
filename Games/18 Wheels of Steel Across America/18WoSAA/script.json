@@ -1,0 +1,7 @@
+{
+  	"scriptName": "Offline",
+  	"compatibleOperatingSystems": ["LINUX"],
+  	"testingOperatingSystems": [],
+  	"free": false,
+  	"requiresNoCD": false
+}
