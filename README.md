@@ -44,3 +44,6 @@
 		"description": "Application description"
   }
   ```
+  
+  4. Create a pull request
+  * Please create one pull request per script if you want to commit multiple scripts.
