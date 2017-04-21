@@ -1,0 +1,7 @@
+{
+	"scriptName": "Uplay",
+	"compatibleOperatingSystems": ["LINUX"],
+	"testingOperatingSystems": [],
+	"free": false,
+	"requiresNoCD": false
+}
