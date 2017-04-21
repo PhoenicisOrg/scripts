@@ -633,7 +633,7 @@ Wine.prototype.setSoundDriver = function (driver) {
 };
 
 /**
- * sets Virtual Desktop
+ * sets Virtual Desktop with resolution
  * @param width {string}, height {string}
  * @returns {Wine}
  */
