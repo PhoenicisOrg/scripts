@@ -13,9 +13,10 @@ var wine = new Wine()
     .prefix("Stronghold HD")
     .create()
     .wait()
+    .setSoundDriver("alsa")
     .setVirtualDesktop("1366", "768")
     .wait()
-.do();
+    .do();
 
 
 new SteamScript()
