@@ -14,7 +14,7 @@ var wine = new Wine()
     .create()
     .wait()
     .setSoundDriver("alsa")
-    .setVirtualDesktop("1366", "768")
+    /*.setVirtualDesktop("1366", "768")*/
     .wait()
     .do();
 
