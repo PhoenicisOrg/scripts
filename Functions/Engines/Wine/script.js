@@ -633,6 +633,24 @@ Wine.prototype.setSoundDriver = function (driver) {
 };
 
 /**
+ * sets Virtual Desktop with window resolution
+ * @param width {string}, height {string}
+ * @returns {Wine}
+ */
+
+Wine.prototype.setVirtualDesktop = function (width, height) {
+    var regeditFileContent =
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\Explorer\\Desktops]\n" +
+        "\"Default\"=\"" + width + "x" + height + "\"\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\Explorer]\n" +
+        "\"Desktop\"=\"" + "Default" + "\"\n";
+    this.regedit().patch(regeditFileContent);
+    return this;
+};
+
+/**
 *
 * @param {boolean} [managed]
 * @returns {boolean|Wine}
