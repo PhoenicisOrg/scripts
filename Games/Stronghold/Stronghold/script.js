@@ -7,5 +7,5 @@ new SteamScript()
     .editor("FireFly Studios")
     .author("odziom91")
     .appId(40950)
-    .setVirtualDesktop = (1366, 768)
+    .setVirtualDesktop(1366, 768)
     .go();
