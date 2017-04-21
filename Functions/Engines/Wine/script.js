@@ -632,6 +632,16 @@ Wine.prototype.setSoundDriver = function (driver) {
     return this;
 };
 
+Wine.prototype.setVirtualDesktop = function (width, height) {
+    var regeditFileContent =
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D\\Explorer]\n" +
+        "\"Desktops\"=\"" + width + "x" + height + "\"\n";
+    this.regedit().patch(regeditFileContent);
+    return this;
+};
+
 /**
 *
 * @param {boolean} [managed]
