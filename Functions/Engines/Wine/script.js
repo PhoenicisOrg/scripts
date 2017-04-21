@@ -643,7 +643,9 @@ Wine.prototype.setVirtualDesktop = function (width, height) {
         "REGEDIT4\n" +
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\Explorer\\Desktops]\n" +
-        "\"Default\"=\"" + width + "x" + height + "\"\n";
+        "\"Default\"=\"" + width + "x" + height + "\"\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\Explorer]\n" +
+        "\"Desktop\"=\"" + "Default" + "\"\n";
     this.regedit().patch(regeditFileContent);
     return this;
 };
