@@ -632,6 +632,12 @@ Wine.prototype.setSoundDriver = function (driver) {
     return this;
 };
 
+/**
+ * sets Virtual Desktop
+ * @param width {string}, height {string}
+ * @returns {Wine}
+ */
+
 Wine.prototype.setVirtualDesktop = function (width, height) {
     var regeditFileContent =
         "REGEDIT4\n" +
