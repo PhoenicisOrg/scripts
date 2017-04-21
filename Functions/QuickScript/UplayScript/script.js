@@ -61,6 +61,7 @@ UplayScript.prototype.go = function() {
         .wait("Please follow the steps of the Uplay setup.\n\nUncheck \"Run Uplay\" or close Uplay completely after the setup so that the installation of \"" + this._name + "\" can continue.");
 
     wine.setOsForApplication().set("UbisoftGameLauncher.exe", "vista").do();
+    wine.setOsForApplication().set("Uplay.exe", "win7").do();
 
     // Uplay installation has finished
     setupWizard.wait("Please wait...");
