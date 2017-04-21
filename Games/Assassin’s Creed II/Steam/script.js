@@ -9,5 +9,6 @@ new SteamScript()
     .wineDistribution("staging")
     .postInstall(function(wine, wizard) {
         wine.setOsForApplication().set("UbisoftGameLauncher.exe", "vista").do();
+        wine.setOsForApplication().set("Uplay.exe", "win7").do();
     })
     .go();
