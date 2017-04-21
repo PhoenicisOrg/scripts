@@ -7,14 +7,19 @@ setupWizard.presentation("Stronghold HD", "FireFly Studios", "http://#", "odziom
 
 var wine = new Wine()
     .wizard(setupWizard)
-    .prefix("Stronghold")
+    .version(LATEST_STABLE_VERSION)
+    .distribution("upstream")
+    .architecture("x86")
+    .prefix("Stronghold HD")
     .create()
+    .wait()
     .setVirtualDesktop("1366", "768")
+    .wait()
 .do();
 
 
 new SteamScript()
-    .name("Stronghold")
+    .name("Stronghold HD")
     .editor("FireFly Studios")
     .author("odziom91")
     .appId(40950)
