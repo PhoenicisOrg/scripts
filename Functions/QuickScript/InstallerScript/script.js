@@ -90,7 +90,7 @@ InstallerScript.prototype.go = function() {
 
     new WineShortcut()
         .name(this._name)
-        .prefix(this._name)
+        .prefix(wine.prefix())
         .search(this._executable)
         .arguments(this._executableArgs)
         .miniature([this._category, this._name])

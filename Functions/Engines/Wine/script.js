@@ -111,7 +111,7 @@ Wine.prototype.prefix = function (prefix) {
     }
 
     // set
-    this._prefix = prefix;
+    this._prefix = prefix.replace(/[^a-z0-9_\-\ ]/gi, '');
     this.prefixDirectory = this._winePrefixesDirectory + "/" + this._prefix + "/";
 
     mkdir(this.prefixDirectory);
