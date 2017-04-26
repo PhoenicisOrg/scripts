@@ -1,0 +1,7 @@
+{
+  	"scriptName": "Local",
+  	"compatibleOperatingSystems": [],
+  	"testingOperatingSystems": ["LINUX"],
+  	"free": false,
+  	"requiresNoCD": false
+}
