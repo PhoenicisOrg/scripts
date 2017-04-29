@@ -11,7 +11,7 @@ LATEST_STABLE_VERSION = "2.0";
  */
 function Wine() {
     this._wineWebServiceUrl = Bean("propertyReader").getProperty("webservice.wine.url");
-    this._wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines.wine");
+    this._wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines") + "/wine";
     this._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
     this._configFactory = Bean("compatibleConfigFileFormatFactory");
     this._OperatingSystemFetcher = Bean("operatingSystemFetcher");
