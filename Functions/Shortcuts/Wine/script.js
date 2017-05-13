@@ -5,10 +5,16 @@ var WineShortcut = function () {
     that._fileSearcher = Bean("fileSearcher");
     that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
 
+    that._category = "default";
     that._description = "";
 
     that.name = function (name) {
         that._name = name;
+        return that;
+    };
+
+    that.category = function (category) {
+        that._category = category;
         return that;
     };
 
@@ -53,6 +59,7 @@ var WineShortcut = function () {
         }
 
         var builder = new org.phoenicis.library.dto.ShortcutDTO.Builder()
+            .withCategory(that._category)
             .withName(that._name)
             .withDescription(that._description)
             .withScript(JSON.stringify({

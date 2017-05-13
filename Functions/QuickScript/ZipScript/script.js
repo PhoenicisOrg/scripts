@@ -59,6 +59,7 @@ ZipScript.prototype.go = function() {
 
     new WineShortcut()
         .name(this._name)
+        .category(this._category)
         .prefix(this._name)
         .search(this._executable)
         .arguments(this._executableArgs)
