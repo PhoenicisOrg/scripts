@@ -5,7 +5,7 @@ var WineShortcut = function () {
     that._fileSearcher = Bean("fileSearcher");
     that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
 
-    that._category = "default";
+    that._category = "Other";
     that._description = "";
 
     that.name = function (name) {
