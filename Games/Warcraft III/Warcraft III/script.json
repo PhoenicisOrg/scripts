@@ -1,0 +1,7 @@
+{
+	"scriptName": "Warcraft III",
+	"compatibleOperatingSystems": ["LINUX"],
+	"testingOperatingSystems": ["LINUX"],
+	"free": true,
+	"requiresNoCD": false
+}
