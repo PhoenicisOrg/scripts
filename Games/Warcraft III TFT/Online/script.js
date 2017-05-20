@@ -1,4 +1,5 @@
 include(["Functions", "QuickScript", "OnlineInstallerScript"]);
+include(["Functions", "Shortcuts", "Wine"]);
 
 new OnlineInstallerScript()
     .name("Warcraft III TFT")
@@ -10,5 +11,12 @@ new OnlineInstallerScript()
     .preInstall(function (wine, wizard) {
         wine.prefix("Warcraft III")
     })
-    .executable("Frozen Throne.exe")
+    .postInstall(function (wine, wizard){
+        new WineShortcut()
+        .name("Warcraft III TFT")
+        .prefix("Warcraft III")
+        .search("Frozen Throne.exe")
+        .miniature(["Games", "Warcraft III TFT"])
+        .create();
+    })
     .go();
