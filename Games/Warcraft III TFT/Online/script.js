@@ -7,8 +7,8 @@ new OnlineInstallerScript()
     .author("FalseCAM")
     .url("https://www.battle.net/download/getLegacy?product=W3XP&locale=en-US&os=WIN")
     .category("Games")
-    .executable("Frozen Throne.exe")
     .preInstall(function (wine, wizard) {
         wine.prefix("Warcraft III")
     })
+    .executable("Frozen Throne.exe")
     .go();
