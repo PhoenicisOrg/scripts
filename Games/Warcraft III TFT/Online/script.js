@@ -1,10 +1,9 @@
 include(["Functions", "QuickScript", "OnlineInstallerScript"]);
-include(["Functions", "Shortcuts", "Wine"]);
 
 new OnlineInstallerScript()
     .name("Warcraft III")
     .editor("Blizzard")
-    .applicationHomepage("http://eu.blizzard.com/en-gb/games/war3/")
+    .applicationHomepage("https://eu.battle.net/shop/en/product/warcraft-iii-the-frozen-throne")
     .author("FalseCAM")
     .url("https://www.battle.net/download/getLegacy?product=W3XP&locale=en-US&os=WIN")
     .category("Games")
