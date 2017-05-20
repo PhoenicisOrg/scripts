@@ -3,7 +3,7 @@ include(["Functions", "Verbs", "corefonts"]);
 include(["Functions", "Verbs", "vcrun2015"]);
 
 new OnlineInstallerScript()
-    .name("Warcraft III")
+    .name("Warcraft III TFT")
     .editor("Blizzard")
     .applicationHomepage("http://eu.battle.net/en/")
     .author("FalseCAM")
