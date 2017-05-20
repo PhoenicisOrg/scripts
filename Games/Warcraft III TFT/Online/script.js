@@ -2,7 +2,7 @@ include(["Functions", "QuickScript", "OnlineInstallerScript"]);
 include(["Functions", "Shortcuts", "Wine"]);
 
 new OnlineInstallerScript()
-    .name("Warcraft III TFT")
+    .name("Warcraft III")
     .editor("Blizzard")
     .applicationHomepage("http://eu.blizzard.com/en-gb/games/war3/")
     .author("FalseCAM")
