@@ -1,5 +1,5 @@
 {
-	"scriptName": "Warcraft III",
+	"scriptName": "Online",
 	"compatibleOperatingSystems": ["LINUX"],
 	"testingOperatingSystems": ["LINUX"],
 	"free": true,
