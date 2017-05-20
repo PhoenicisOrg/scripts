@@ -5,7 +5,7 @@ include(["Functions", "Verbs", "vcrun2015"]);
 new OnlineInstallerScript()
     .name("Warcraft III")
     .editor("Blizzard")
-    .applicationHomepage("http://eu.battle.net/en/")
+    .applicationHomepage("http://eu.blizzard.com/en-gb/games/war3/")
     .author("FalseCAM")
     .url("https://www.battle.net/download/getLegacy?product=WAR3&locale=en-US&os=WIN")
     .category("Games")
