@@ -213,6 +213,8 @@ Wine.prototype.run = function (executable, args, captureOutput) {
     }
 
     var environment = processBuilder.environment();
+    // disable winemenubuilder (we manage our own shortcuts)
+    environment.put("WINEDLLOVERRIDES", "winemenubuilder.exe=d");
     environment.put("WINEPREFIX", this.prefixDirectory);
 
     if (this._wineDebug) {
