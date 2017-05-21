@@ -47,12 +47,14 @@ var _WineShortcutReader = function(shortcut) {
         var _winePrefix = shortcutContent.winePrefix;
 
         var _found = false;
-        this._libraryManager.fetchShortcuts().forEach(function(shortcut) {
-            var _otherShortcutContent = JSON.parse(shortcut.script);
+        this._libraryManager.fetchShortcuts().forEach(function(shortcutCategory) {
+            shortcutCategory.getShortcuts().forEach(function(shortcut) {
+                var _otherShortcutContent = JSON.parse(shortcut.script);
 
-            if(_otherShortcutContent.winePrefix == _winePrefix && shortcut.name != that.shortcut.name) {
-                _found = true;
-            }
+                if(_otherShortcutContent.winePrefix == _winePrefix && shortcut.name != that.shortcut.name) {
+                    _found = true;
+                }
+            });
         });
 
         this._shortcutManager.deleteShortcut(this.shortcut);
