@@ -9,6 +9,8 @@ new OnlineInstallerScript()
     .category("Games")
     .executable("Frozen Throne.exe")
     .preInstall(function (wine, wizard) {
-        wizard.message("Please install Warcraft III before installing The Frozen Throne.");
+        if (!fileExists(wine.prefixDirectory + "drive_c/" + wine.programFiles() + "/Warcraft III/Warcraft III.exe")) {
+            wizard.message("Please install Warcraft III before installing The Frozen Throne.");
+        }
     })
     .go();
