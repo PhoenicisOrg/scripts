@@ -11,7 +11,7 @@ LATEST_STABLE_VERSION = "2.0";
  */
 function Wine() {
     this._wineWebServiceUrl = Bean("propertyReader").getProperty("webservice.wine.url");
-    this._wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines.wine");
+    this._wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines") + "/wine";
     this._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
     this._configFactory = Bean("compatibleConfigFileFormatFactory");
     this._OperatingSystemFetcher = Bean("operatingSystemFetcher");
@@ -111,7 +111,7 @@ Wine.prototype.prefix = function (prefix) {
     }
 
     // set
-    this._prefix = prefix;
+    this._prefix = prefix.replace(/[^a-z0-9_\-\ ]/gi, '');
     this.prefixDirectory = this._winePrefixesDirectory + "/" + this._prefix + "/";
 
     mkdir(this.prefixDirectory);
@@ -213,6 +213,8 @@ Wine.prototype.run = function (executable, args, captureOutput) {
     }
 
     var environment = processBuilder.environment();
+    // disable winemenubuilder (we manage our own shortcuts)
+    environment.put("WINEDLLOVERRIDES", "winemenubuilder.exe=d");
     environment.put("WINEPREFIX", this.prefixDirectory);
 
     if (this._wineDebug) {

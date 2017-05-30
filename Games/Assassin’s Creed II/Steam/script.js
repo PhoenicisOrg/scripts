@@ -1,14 +1,13 @@
 include(["Functions", "QuickScript", "SteamScript"]);
-include(["Functions", "Verbs", "uplay"]);
 
 new SteamScript()
-    .name("Assassin’s Creed® Brotherhood")
-    .editor("Ubisoft")
+    .name("Assassin’s Creed II")
+    .editor("Ubisoft Montreal")
     .author("Plata")
-    .appId(48190)
+    .appId(33230)
     .wineVersion("2.5")
     .wineDistribution("staging")
     .postInstall(function(wine, wizard) {
-        wine.uplay();
+        wine.setOsForApplication().set("upc.exe", "winxp").do();
     })
     .go();
