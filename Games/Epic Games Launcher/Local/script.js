@@ -7,6 +7,6 @@ new LocalInstallerScript()
     .author("Plata")
     .category("Games")
     .executable("EpicGamesLauncher.exe")
-    .wineVersion("2.5")
+    .wineVersion("2.9")
     .wineDistribution("staging")
     .go();
