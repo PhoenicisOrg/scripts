@@ -13,8 +13,8 @@ LocalInstallerScript.prototype.browseMessage = function(browseMessage) {
     return this;
 };
 
-LocalInstallerScript.prototype._installationCommand = function(wizard) {
+LocalInstallerScript.prototype._installationFile = function(wizard) {
     var browseMessage = this._browseMessage || "Please select the installation file.";
     var installationFile = wizard.browse(browseMessage);
-    return {command: installationFile, args: []};
+    return installationFile;
 };
