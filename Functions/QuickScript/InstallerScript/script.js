@@ -8,11 +8,17 @@ include(["Functions", "Verbs", "luna"]);
 
 function InstallerScript() {
     QuickScript.call(this);
+    this._installationArgs = [];
 }
 
 InstallerScript.prototype = Object.create(QuickScript.prototype);
 
 InstallerScript.prototype.constructor = InstallerScript;
+
+InstallerScript.prototype.installationArgs = function(installationArgs) {
+    this._installationArgs = installationArgs;
+    return this;
+};
 
 InstallerScript.prototype.go = function() {
     this._name = this._name || "Custom Installer";
@@ -26,7 +32,7 @@ InstallerScript.prototype.go = function() {
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
     // get installation file from concrete InstallerScript implementation
-    var installationCommand = this._installationCommand(setupWizard);
+    var installationFile = this._installationFile(setupWizard);
 
     var wine = new Wine()
         .wizard(setupWizard);
@@ -80,7 +86,7 @@ InstallerScript.prototype.go = function() {
     // back to generic wait (might have been changed in preInstall)
     setupWizard.wait("Please wait...");
 
-    wine.run(installationCommand.command, installationCommand.args)
+    wine.run(installationFile, this._installationArgs)
         .wait();
 
     // if no executable given, ask user
