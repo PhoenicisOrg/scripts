@@ -8,7 +8,7 @@ new OnlineInstallerScript()
     .url("https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi")
     .checksum("efd4fddbf14f1c449f9868f3f47608794ed6acd4")
     .category("Games")
-    .executable("EpicGamesLauncher.exe")
+    .executable("EpicGamesLauncher.exe", ["-SkipBuildPatchPrereq"])
     .wineVersion("2.9")
     .wineDistribution("staging")
     .go();

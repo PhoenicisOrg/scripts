@@ -6,7 +6,7 @@ new LocalInstallerScript()
     .applicationHomepage("https://www.unrealengine.com/download")
     .author("Plata")
     .category("Games")
-    .executable("EpicGamesLauncher.exe")
+    .executable("EpicGamesLauncher.exe", ["-SkipBuildPatchPrereq"])
     .wineVersion("2.9")
     .wineDistribution("staging")
     .go();
