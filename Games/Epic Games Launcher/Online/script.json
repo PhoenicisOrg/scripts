@@ -1,7 +1,7 @@
 {
   	"scriptName": "Online",
-  	"compatibleOperatingSystems": [],
-  	"testingOperatingSystems": ["LINUX"],
+  	"compatibleOperatingSystems": ["LINUX"],
+  	"testingOperatingSystems": [],
   	"free": false,
   	"requiresNoCD": false
 }

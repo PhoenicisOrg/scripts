@@ -1,7 +1,7 @@
 {
   	"scriptName": "Local",
-  	"compatibleOperatingSystems": [],
-  	"testingOperatingSystems": ["LINUX"],
+  	"compatibleOperatingSystems": ["LINUX"],
+  	"testingOperatingSystems": [],
   	"free": false,
   	"requiresNoCD": false
 }
