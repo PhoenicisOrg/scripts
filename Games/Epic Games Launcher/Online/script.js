@@ -12,4 +12,5 @@ new OnlineInstallerScript()
     .executable("EpicGamesLauncher.exe", ["-SkipBuildPatchPrereq"])
     .wineVersion("2.9")
     .wineDistribution("staging")
+    .wineArchitecture("amd64")
     .go();
