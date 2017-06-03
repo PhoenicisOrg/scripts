@@ -20,7 +20,7 @@ new CustomInstallerScript()
     .applicationHomepage("http://leagueoflegends.com/")
     .author("Plata, feanor12")
     .installationCommand(function(wizard) {
-        return {command: "msiexec", args: ["/i", "C://LoL_tmp/LoL.msi", "APPDIR=C:\\LoL", "/q"]};
+        return {command: "msiexec", args: ["/i", "C://LoL_tmp/LoL.msi", "APPDIR=C:\\LoL"]};
     })
     .category("Games")
     .wineDistribution("staging")
