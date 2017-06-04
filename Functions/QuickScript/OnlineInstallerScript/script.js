@@ -4,6 +4,7 @@ include(["Functions", "Net", "Download"]);
 
 function OnlineInstallerScript() {
     InstallerScript.call(this);
+    this._installationArgs = [];
 }
 
 OnlineInstallerScript.prototype = Object.create(InstallerScript.prototype);
@@ -17,6 +18,11 @@ OnlineInstallerScript.prototype.url = function(url) {
 
 OnlineInstallerScript.prototype.checksum = function(checksum) {
     this._checksum = checksum;
+    return this;
+};
+
+OnlineInstallerScript.prototype.installationArgs = function(installationArgs) {
+    this._installationArgs = installationArgs;
     return this;
 };
 
@@ -35,5 +41,5 @@ OnlineInstallerScript.prototype._installationCommand = function(wizard) {
         .to(installationFile)
         .get();
 
-    return {command: installationFile, args: []};
+    return {command: installationFile, args: [this._installationArgs]};
 };
