@@ -35,7 +35,7 @@
 		"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 		"testingOperatingSystems": [],
 		"free": true,
-		"requiresNoCD": false
+		"requiresPatch": false
   }
   ```
   * main.png: application icon (400px x 300px)
