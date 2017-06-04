@@ -4,6 +4,7 @@ include(["Functions", "Net", "Download"]);
 
 function OnlineInstallerScript() {
     InstallerScript.call(this);
+    this._installationArgs = [];
 }
 
 OnlineInstallerScript.prototype = Object.create(InstallerScript.prototype);
@@ -20,7 +21,12 @@ OnlineInstallerScript.prototype.checksum = function(checksum) {
     return this;
 };
 
-OnlineInstallerScript.prototype._installationFile = function(wizard) {
+OnlineInstallerScript.prototype.installationArgs = function(installationArgs) {
+    this._installationArgs = installationArgs;
+    return this;
+};
+
+OnlineInstallerScript.prototype._installationCommand = function(wizard) {
     // if no URL given, ask user
     if (!this._url) {
         this._url = wizard.textbox("Please select the download URL.");
@@ -37,5 +43,5 @@ OnlineInstallerScript.prototype._installationFile = function(wizard) {
         .to(installationFile)
         .get();
 
-    return installationFile;
+    return {command: installationFile, args: [this._installationArgs]};
 };
