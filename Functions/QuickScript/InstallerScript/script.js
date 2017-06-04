@@ -5,6 +5,8 @@ include(["Functions", "Filesystem", "Files"]);
 include(["Functions", "Shortcuts", "Wine"]);
 include(["Functions", "Verbs", "luna"]);
 
+include(["Functions", "i18n", "i18next"]);
+include(["i18n", "i18next", "init"]);
 
 function InstallerScript() {
     QuickScript.call(this);
@@ -20,7 +22,7 @@ InstallerScript.prototype.go = function() {
 
     // if no name given, ask user
     if (this._name == "Custom Installer") {
-        this._name = setupWizard.textbox("Please enter the name of your application.");
+        this._name = setupWizard.textbox(i18next.t("Please enter the name of your application"));
     }
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
