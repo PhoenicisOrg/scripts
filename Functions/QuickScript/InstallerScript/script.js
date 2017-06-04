@@ -5,9 +5,6 @@ include(["Functions", "Filesystem", "Files"]);
 include(["Functions", "Shortcuts", "Wine"]);
 include(["Functions", "Verbs", "luna"]);
 
-include(["Functions", "i18n", "i18next"]);
-include(["i18n", "i18next", "init"]);
-
 function InstallerScript() {
     QuickScript.call(this);
 }
