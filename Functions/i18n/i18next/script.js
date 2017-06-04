@@ -1,9 +1,3 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.i18next = factory());
-}(this, (function () { 'use strict';
-
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
   return typeof obj;
 } : function (obj) {
@@ -161,10 +155,7 @@ var consoleLogger = {
     this.output('error', args);
   },
   output: function output(type, args) {
-    var _console;
-
-    /* eslint no-console: 0 */
-    if (console && console[type]) (_console = console)[type].apply(_console, toConsumableArray(args));
+    print(type + ': ' + args);
   }
 };
 
@@ -2197,7 +2188,3 @@ var I18n = function (_EventEmitter) {
 }(EventEmitter);
 
 var i18next = new I18n();
-
-return i18next;
-
-})));
