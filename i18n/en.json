@@ -1,3 +1,8 @@
 {
-    "Please enter the name of your application": "Bitte geben Sie den Namen Ihrer Anwendung ein."
+    "Please enter the name of your application": "Bitte geben Sie den Namen Ihrer Anwendung ein.",
+    "Please select the wine architecture": "Please select the wine architecture.",
+    "Please select the wine distribution": "Please select the wine distribution.",
+    "Please select the wine version": "Please select the wine version.",
+    "Please select the executable": "Please select the executable.",
+    "Please wait": "Please wait..."
 }
