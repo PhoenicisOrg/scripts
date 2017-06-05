@@ -20,7 +20,7 @@ InstallerScript.prototype.go = function() {
 
     // if no name given, ask user
     if (this._name == "Custom Installer") {
-        this._name = setupWizard.textbox("Please enter the name of your application.");
+        this._name = setupWizard.textbox(i18next.t("Please enter the name of your application"));
     }
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
@@ -35,7 +35,7 @@ InstallerScript.prototype.go = function() {
     if (this._wineUserSettings) {        
         var architectures = ["x86", "amd64"];
         var shownArchitectures = ["x86 (recommended)", "amd64"];
-        var selectedArchitecture = setupWizard.menu("Please select the wine architecture.", shownArchitectures, "x86 (recommended)");
+        var selectedArchitecture = setupWizard.menu(i18next.t("Please select the wine architecture"), shownArchitectures, "x86 (recommended)");
         this._wineArchitecture = architectures[selectedArchitecture.index];
         wine.architecture(this._wineArchitecture); // do this here to show correct values for distribution
         
@@ -49,7 +49,7 @@ InstallerScript.prototype.go = function() {
                 shownDistributions.push(distributions[i]);
             }
         }
-        var selectedDistribution = setupWizard.menu("Please select the wine distribution.", shownDistributions, "upstream (recommended)");
+        var selectedDistribution = setupWizard.menu(i18next.t("Please select the wine distribution"), shownDistributions, "upstream (recommended)");
         this._wineDistribution = distributions[selectedDistribution.index];
         wine.distribution(this._wineDistribution); // do this here to show correct values for version
         
@@ -63,7 +63,7 @@ InstallerScript.prototype.go = function() {
                 shownVersions.push(versions[i]);
             }
         }
-        var selectedVersion = setupWizard.menu("Please select the wine version.", shownVersions, LATEST_STABLE_VERSION + " (recommended)");
+        var selectedVersion = setupWizard.menu(i18next.t("Please select the wine version"), shownVersions, LATEST_STABLE_VERSION + " (recommended)");
         this._wineVersion = versions[selectedVersion.index];
     }
 
@@ -78,14 +78,14 @@ InstallerScript.prototype.go = function() {
     this._preInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in preInstall)
-    setupWizard.wait("Please wait...");
+    setupWizard.wait(i18next.t("Please wait"));
 
     wine.run(installationCommand.command, installationCommand.args)
         .wait();
 
     // if no executable given, ask user
     if (!this._executable) {
-        this._executable = fileName(setupWizard.browse("Please select the executable.", wine.prefixDirectory, ["exe"]));
+        this._executable = fileName(setupWizard.browse(i18next.t("Please select the executable."), wine.prefixDirectory, ["exe"]));
     }
 
     new WineShortcut()
@@ -100,7 +100,7 @@ InstallerScript.prototype.go = function() {
     this._postInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in postInstall)
-    setupWizard.wait("Please wait...");
+    setupWizard.wait(i18next.t("Please wait"));
 
     setupWizard.close();
 };
