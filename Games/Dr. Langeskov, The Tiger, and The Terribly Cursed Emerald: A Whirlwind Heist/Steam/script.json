@@ -3,5 +3,5 @@
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": ["LINUX"],
 	"free": true,
-	"requiresNoCD": false
+	"requiresPatch": false
 }
