@@ -20,7 +20,7 @@ InstallerScript.prototype.go = function() {
 
     // if no name given, ask user
     if (this._name == "Custom Installer") {
-        this._name = setupWizard.textbox("Please enter the name of your application.");
+        this._name = setupWizard.textbox(tr("Please enter the name of your application."));
     }
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
