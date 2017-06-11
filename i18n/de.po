@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-09 22:34+0200\n"
-"PO-Revision-Date: 2017-06-09 22:41+0200\n"
+"POT-Creation-Date: 2017-06-11 12:57+0200\n"
+"PO-Revision-Date: 2017-06-11 13:24+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -18,6 +18,1047 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.7.1\n"
+
+#: i18n/json_string.js:1
+msgid "Beyond Good and Evil™"
+msgstr "Beyond Good and Evil™"
+
+#: i18n/json_string.js:2
+msgid ""
+"For centuries, the planet Hyllis has been bombarded by a relentless alien "
+"race. Skeptical of her government's inability to repel the invaders, a "
+"rebellious action reporter named Jade sets out to capture the truth."
+msgstr ""
+"Über Jahrhunderte wurde der Planet Hyllis von einer unbarmherzigen "
+"Alienrasse angegriffen. Skeptisch über die Unfähigkeit der Regierung die "
+"Angreifer abzuwehren, versucht die rebellische Reporterin Jade jetzt die "
+"Wahrheit heraus zu finden."
+
+#: i18n/json_string.js:3
+msgid "Office"
+msgstr "Büroprogramme"
+
+#: i18n/json_string.js:4 i18n/json_string.js:121
+msgid "Games"
+msgstr "Spiele"
+
+#: i18n/json_string.js:5
+msgid "The Room"
+msgstr "The Room"
+
+#: i18n/json_string.js:6
+msgid ""
+"A mysterious invitation leads to the attic of an abandoned house. In the "
+"room is a cast-iron safe laced with strange carvings and on top, a note from "
+"your distant companion. It promises something ancient and astonishing "
+"concealed in the iron chamber - you need only find a way in."
+msgstr ""
+"Eine rätselhafte Einladung führt auf den Dachboden eines verlassenen Hauses. "
+"Dort befindet sich ein eiserner Safe mit seltsamen Gravuren – und einer "
+"Notiz deines fernen Gefährten. Sie verspricht etwas Uraltes und "
+"Erstaunliches, eingeschlossen in der Eisenkammer. Du musst nur einen Weg "
+"hinein finden."
+
+#: i18n/json_string.js:7
+msgid "Age of Empires II HD"
+msgstr "Age of Empires II HD"
+
+#: i18n/json_string.js:8
+msgid ""
+"Age of Empires II has been re-imagined in high definition with new features, "
+"trading cards, improved AI, workshop support, multiplayer, Steamworks "
+"integration and more!"
+msgstr ""
+"Age of Empires II wurde in High Definition neu aufgelegt und mit neuen "
+"Features, Sammelkarten, verbesserter KI, Steam-Workshop-Unterstützung, "
+"überarbeitetem Multiplayermodus, Steamworks-Integration und vielem mehr "
+"versehen!"
+
+#: i18n/json_string.js:9
+msgid "STAR WARS™ Jedi Knight II - Jedi Outcast™"
+msgstr "STAR WARS™ Jedi Knight II - Jedi Outcast™"
+
+#: i18n/json_string.js:10
+msgid ""
+"The Legacy of Star Wars Dark Forces™ and Star Wars® Jedi Knight lives on in "
+"the intense first-person action of Jedi Outcast. "
+msgstr ""
+"Das Vermächtnis von Star Wars Dark Forces™ und Star Wars® Jedi Knight lebt "
+"in diesem FPS-Actionspiel namens Jedi Outcast weiter."
+
+#: i18n/json_string.js:11
+msgid "Graphics"
+msgstr "Grafik"
+
+#: i18n/json_string.js:12
+msgid "Niko: Through The Dream"
+msgstr "Niko: Through The Dream"
+
+#: i18n/json_string.js:13
+msgid ""
+"Niko is a spiritual journey through the dreams, where adventure, puzzles and "
+"mysteries come together in an oneiric and minimalist world. Dare to dream!"
+msgstr ""
+"Niko ist eine spirituelle Reise durch die Träume, in dem Abenteuer, Rätsel "
+"und Geheimnisse in einer onirisch-minimalistischen Welt zusammenkommen. "
+"Stelle dich der Herausforderung des Traums!"
+
+#: i18n/json_string.js:14
+msgid "Burnout™ Paradise: The Ultimate Box"
+msgstr "Burnout™ Paradise: The Ultimate Box"
+
+#: i18n/json_string.js:15
+msgid ""
+"Paradise City is the largest and most dangerous setting yet for the best-"
+"selling Burnout series. The massive setting gives players an open-ended "
+"world to explore, as they race their vehicles through hundreds of miles of "
+"roads and underground passages with more than 70 different cars. Speed "
+"through the streets from event to event, racking up points that are saved to "
+"your Paradise City driver’s license. Earn the vaunted “Burnout” license by "
+"smashing through billboards, jumping ramps, and sustaining crashes with the "
+"improved damage system."
+msgstr ""
+"Burnout Paradise The Ultimate Box bringt Ihnen das beste Konosolen Rennspiel "
+"von 2008, Burnout Paradise auf den PC, mit vielen großartigen Änderungen und "
+"Verbesserungen, wie zum Beispiel Motorräder und aufregenden neuen Onlinemodi "
+"und Herausforderungen."
+
+#: i18n/json_string.js:16
+msgid "STAR WARS™: Dark Forces"
+msgstr "STAR WARS™: Dark Forces"
+
+#: i18n/json_string.js:17
+msgid ""
+"Behind a veil of secrecy the evil Empire is creating a doomsday army - one "
+"that, if finished, will become the final cog in the Empire's arsenal of "
+"terror and domination. Your Mission? Join the Rebel Alliance's covert "
+"operations division, infiltrate the Empire."
+msgstr ""
+"Hinter einem Schleier aus Geheimnissen erschafft das böse Empire eine Armee "
+"des jüngsten Gerichts - eine Armee, die, einmal aufgestellt, das letzte Rad "
+"im Arsenal des Terrors und der Unterdrückung des Empires sein wird. Ihre "
+"Mission? Schließen Sie sich der Einheit für verdeckte Operationen der "
+"Rebellenallianz an und infiltrieren Sie das Empire."
+
+#: i18n/json_string.js:18
+msgid "Scribblenauts Unlimited"
+msgstr "Scribblenauts Unlimited"
+
+#: i18n/json_string.js:19
+msgid ""
+"Venture into a wide-open world where the most powerful tool is your "
+"imagination. Help Maxwell solve robust puzzles in seamless, free-roaming "
+"levels by summoning any object you can think of. Create your own original "
+"objects, assign unique properties, and share them with friends online using "
+"Steam Workshop – to be used in game or further modified as you like!"
+msgstr ""
+"Erleben Sie eine weite und offene Welt, in der Ihre Vorstellungskraft das "
+"stärkste Werkzeug ist. Helfen Sie Maxwell beim Lösen kniffliger Puzzles in "
+"zahlreichen Leveln, in denen er sich frei bewegen kann, indem Sie jedes "
+"Objekt, das Ihnen einfällt, herbeirufen. Erstellen Sie Ihre eigenen "
+"originellen Objekte, verleihen Sie ihnen einzigartige Eigenschaften und "
+"teilen Sie sie online mit Freunden - damit sie diese im Spiel verwenden oder "
+"ganz nach Wunsch weiter anpassen können.<br><br>Und erfahren Sie zum ersten "
+"Mal die Hintergrundgeschichte zu Maxwells Eltern, 41 Geschwistern (und "
+"seiner Zwillingsschwester Lily) und wie er seinen Zauberblock bekommen hat."
+
+#: i18n/json_string.js:20
+msgid "Super Blue Boy Planet"
+msgstr "Super Blue Boy Planet"
+
+#: i18n/json_string.js:21
+msgid ""
+"SBBP is a 2D platformer with pixel graphics. Blue boy’s girlfriend is "
+"kidnapped by aliens so he goes through 21 levels to save her and he also "
+"fight bosses along the way."
+msgstr ""
+"SBBP ist ein 2D Platformer mit Pixelgrafik. Blue boy’s Freundin wurde von "
+"Aliens entführt, weshalb er in 21 Leveln versucht, sie zu retten, und auf "
+"dem Weg Gegner bekämpft."
+
+#: i18n/json_string.js:22
+msgid "Online Installer"
+msgstr "Online Installer"
+
+#: i18n/json_string.js:23
+msgid ""
+"The Online Installer allows you to install custom applications from the "
+"Internet."
+msgstr ""
+"Mit dem Online Installer können Sie eigene Anwendungen aus dem Internet "
+"installieren."
+
+#: i18n/json_string.js:24
+msgid "Multimedia"
+msgstr "Multimedia"
+
+#: i18n/json_string.js:25
+msgid "Civilization V"
+msgstr "Civilization V"
+
+#: i18n/json_string.js:26
+msgid ""
+"In Civilization V, the player leads a civilization from prehistoric times "
+"into the future on a procedurally generated map, achieving one of a number "
+"of different victory conditions through research, exploration, diplomacy, "
+"expansion, economic development, government and military conquest."
+msgstr ""
+"Werden Sie Herrscher über die Welt, indem Sie Ihre Zivilisation von der "
+"Geburt bis in das Weltraumzeitalter begleiten: Führen Sie Kriege, schließen "
+"Sie diplomatische Abkommen, erforschen Sie neue Technologien, legen Sie sich "
+"mit den größten Herrschern der Geschichte an und erschaffen Sie das "
+"mächtigste Reich, das die Welt je gesehen hat."
+
+#: i18n/json_string.js:27
+msgid "Photofiltre"
+msgstr "Photofiltre"
+
+#: i18n/json_string.js:28
+msgid ""
+"<b>Presentation</b><br />PhotoFiltre est un logiciel de retouche d’images "
+"très complet. Il permet d’effectuer des réglages simples ou avancés sur une "
+"image et de lui appliquer un large éventail de filtres. Son utilisation "
+"simple et intuitive offre une prise en main rapide.  La barre d’outils, "
+"proposant l’accès aux filtres standards par simple clique de souris, lui "
+"donne un côté convivial.<br /><br /><b>Les filtres</b><br />Sa large palette "
+"de filtres permet aux personnes qui débutent de se familiariser avec le "
+"monde du graphisme. On y retrouve les fonctions standards de réglage "
+"(luminosité, contraste, teinte,  saturation, correction gamma) et des "
+"filtres artistiques (aquarelle, pastels, encre de chine, pointillisme, effet "
+"puzzle).<br />En tout c’est plus de 100 filtres à découvrir !<br /><br /"
+"><b>Les sélections vectorielles</b><br />PhotoFiltre gère deux types de "
+"sélections vectorielles. Le premier type regroupe les formes automatiques "
+"(rectangle, ellipse, triangle, losange, coins arrondis). Le second type "
+"correspond aux modes lasso et polygone. Ils permettent tous deux de définir "
+"une forme personnalisée en dessinant le contour à main levée ou par une "
+"succession de lignes. Chaque sélection peut être sauvegardée dans un fichier "
+"pour être réutilisée ultérieurement. <br /><br /><b>La palette d'outils</"
+"b><br />Elle est composée essentiellement des outils de dessin tels que la "
+"pipette, le curseur de déplacement, le traçage de ligne, la fonction de "
+"remplissage, l'aérographe, le pinceau, la goutte d'eau, le tampon de clonage "
+"(ou duplicateur), le doigt (mélangeur) et la baguette magique.<br /"
+">PhotoFiltre propose des formes de pinceau standards (cercles et carrés de "
+"différentes tailles) mais également des formes plus variées (ligne oblique, "
+"feuille, étoile, ...).<br /><br /><b>Le module PhotoMasque</b><br /"
+">PhotoMasque permet de réaliser des effets de contour et de transparence "
+"avancés sur vos images à l'aide de masques prédéfinis. Les masques sont des "
+"images en niveau de gris. Le blanc est la couleur de transparence et les "
+"niveaux de gris représentent l'opacité. Plus le gris est sombre plus la "
+"couleur appliquée sera opaque. PhotoMasque est livré avec plusieurs masques "
+"de bases, essayez de vous en inspirer pour créer vos propres masques.<br /"
+"><br /><b>Le module d’automatisation</b><br />Ce module intègre les "
+"fonctions de bases (conversion, taille de l’image, encadrement, réglages, …) "
+"et permet de traiter toutes les images d’un répertoire de façon automatique."
+"<br /><br /><b>Les autres fonctions</b><br /><ul><li>Explorateur d'images</"
+"li><li>Gestion des modules externes (plugins)</li><li>Gestion du scanneur "
+"(norme TWAIN)</li><li>Gestion de la transparence (format GIF) et exportation "
+"en icône (16, 256 ou 16 millions de couleurs)</li><li>Effets de texte "
+"avancés (rotation, ombrage, biseau externe)</li><li>Plusieurs types de "
+"contours et de textures</li><li>Fondu et assemblage d'images</li></ul><br /"
+"><br /><b>Enregistrement</b><br />PhotoFiltre est gratuit pour une "
+"utilisation privée ou éducative.<br />Toute utilisation commerciale ou "
+"professionnelle nécessite l'achat d'une licence."
+msgstr ""
+"PhotoFiltre ist ein Bildbearbeitungsprogramm, welches Ebenen, Filter und "
+"Effekte unterstützt."
+
+#: i18n/json_string.js:29
+msgid "Icy Tower 1.5"
+msgstr "Icy Tower 1.5"
+
+#: i18n/json_string.js:30
+msgid ""
+"Icy Tower is a platform game set in a tower, where the player's goal is to "
+"jump from one floor to the next and go as high as possible without falling "
+"and plunging off the screen."
+msgstr ""
+"Icy Tower ist ein Tower Platformer, bei dem das Ziel des Spielers ist, von "
+"Ebene zu Ebene zu springen und dabei so hoch wie möglich zu kommen ohne "
+"abzustürzen."
+
+#: i18n/json_string.js:31
+msgid "Internet Explorer 7.0"
+msgstr "Internet Explorer 7.0"
+
+#: i18n/json_string.js:32 i18n/json_string.js:36
+msgid ""
+"Internet Explorer is an old web browser.<br />You may need it if you want to "
+"test a website compatibility, you should not use it to navigate. "
+msgstr ""
+"Internet Explorer ist ein alter Webbrowser.<br/>Sie sollten ihn nur "
+"verwenden, um eine Website auf ihre Kompatibilität zu testen. Nutzen Sie ihn "
+"nicht, um im Internet zu surfen."
+
+#: i18n/json_string.js:33
+msgid "Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad"
+msgstr "Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad"
+
+#: i18n/json_string.js:34
+msgid ""
+"'Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad?' is "
+"a fast paced shower-simulation where you shower with your 8-bit dad. It's "
+"good, clean fun!"
+msgstr ""
+"'Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad?' "
+"ist eine schnelle Duschsimulation, bei der Sie mit Ihrem 8-bit Vater "
+"duschen. Ein guter, sauberer Spaß!"
+
+#: i18n/json_string.js:35
+msgid "Internet Explorer 6.0"
+msgstr "Internet Explorer 6.0"
+
+#: i18n/json_string.js:37
+msgid "Clicker Heroes"
+msgstr "Clicker Heroes"
+
+#: i18n/json_string.js:38
+msgid ""
+"Ever wondered what one quadrillion damage per second feels like? Wonder no "
+"more! Embark on your quest to attain it today! Start out by clicking on the "
+"monster to kill them, and get their gold. Spend that gold on hiring new "
+"heroes and get more damage. The more damage you deal, the more gold you will "
+"get."
+msgstr ""
+"Hast du dich schon mal gefragt, wie es sich wohl anfühlt, eine Quadrillion "
+"Schaden pro Sekunde zu verursachen? Jetzt kannst du es herausfinden! Begib "
+"dich auf deine Mission, um mal richtig viel Schaden anzurichten!"
+
+#: i18n/json_string.js:39
+msgid "18 Wheels of Steel: Across America"
+msgstr "18 Wheels of Steel: Across America"
+
+#: i18n/json_string.js:40
+msgid ""
+"Heed the call of the open road, throw the gears in motion and take off in a "
+"tractor trailer. Drive faster than your competition, haul your cargo across "
+"the entire United States and feel the wind in your face as you control your "
+"own destiny. Blast the horn and build a career in the fast-paced world of "
+"trucking."
+msgstr ""
+"Liefern Sie mit Ihrem Truck Waren in ganz Amerika aus und machen Sie so aus "
+"Ihrer kleinen Firma eine riesige Spedition."
+
+#: i18n/json_string.js:41
+msgid "Quantum Conundrum"
+msgstr "Quantum Conundrum"
+
+#: i18n/json_string.js:42
+msgid ""
+"Find and rescue your uncle by using his newest invention to work your way "
+"through a crazy complex mansion as you switch between dimensions and solve "
+"puzzles!"
+msgstr ""
+"Finden und retten Sie Ihren Onkel, indem Sie seine neueste Erfindung nutzen "
+"und sich Ihren Weg durch eine unglaublich verzwickte Villa bahnen während "
+"Sie zwischen den Dimensionen hin und herwechseln und dabei Puzzle lösen!"
+
+#: i18n/json_string.js:43
+msgid "Rocksmith® 2014"
+msgstr "Rocksmith® 2014"
+
+#: i18n/json_string.js:44
+msgid ""
+"The fastest way to learn guitar is now better than ever. Join over three "
+"million people who have learned to play guitar with the award-winning "
+"Rocksmith® method. Plug any real guitar or bass with a 1/4 inch jack "
+"directly into your PC or Mac and you’ll learn to play in just 60 days."
+msgstr ""
+"Die brandneue Rocksmith 2014 Edition ist größer, besser und schneller denn "
+"je. Von Grund auf erneuert, erlebst du stark verbesserte Features, ein neues "
+"Aussehen, flexiblere und tiefergehende Übungswerkzeuge, neue Techniken und "
+"Stimmungen, über 50 neue Hits und vieles mehr."
+
+#: i18n/json_string.js:45
+msgid "Hexcells Plus"
+msgstr "Hexcells Plus"
+
+#: i18n/json_string.js:46
+msgid ""
+"Hexcells Plus is a standalone expansion to Hexcells that contains 36 new and "
+"more challenging puzzles."
+msgstr ""
+"Hexcells Plus ist eine eigenständige Erweiterung für Hexcells mit 36 neuen "
+"und anspruchsvolleren Puzzles."
+
+#: i18n/json_string.js:47
+msgid "Tropico 3"
+msgstr "Tropico 3"
+
+#: i18n/json_string.js:48
+msgid ""
+"Engage in a tropical power trip! Become the dictator of a remote island "
+"during the Cold War. Charm, persuade, intimidate, oppress, or cheat your "
+"people to stay in power! Are you a kind and generous leader? A corrupt and "
+"ruthless tyrant ruling with an iron fist? Turn your island into a tourist "
+"paradise or an industrial power. Make promises to the electorate or slander "
+"political adversaries to get the crucial votes for the upcoming elections. "
+"Send your avatar to congratulate the people, visit the island of another "
+"player, or just sun-bathe on the Caribbean beach."
+msgstr ""
+"Machen Sie sich bereit für einen tropischen Powertrip! Werden Sie zu einem "
+"Diktator auf einer fernen Insel während des Kalten Kriegs. Verführen, "
+"überzeugen, verschüchtern, unterdrücken oder betrügen Sie Ihre Untergebenen, "
+"um an der Macht zu bleiben! Werden Sie ein großzügiger Anführer sein?"
+
+#: i18n/json_string.js:49
+msgid "Assassin’s Creed® Brotherhood"
+msgstr "Assassin’s Creed® Brotherhood"
+
+#: i18n/json_string.js:50
+msgid ""
+"Live and breathe as Ezio, a legendary Master Assassin, in his enduring "
+"struggle against the powerful Templar order.<br><br>He must journey into "
+"Italy’s greatest city, Rome, center of power, greed and corruption to strike "
+"at the heart of the enemy. Defeating the corrupt tyrants entrenched there "
+"will require not only strength, but leadership, as Ezio commands an entire "
+"brotherhood of assassins who will rally to his side. Only by working "
+"together can the assassins defeat their mortal enemies and prevent the "
+"extinction of their order."
+msgstr ""
+"Ezios erbitterter Kampf gegen den mächtigen Templer-Orden geht in die "
+"nächste Runde. Diesmal führt es den legendären Meister-Assassinen nach Rom. "
+"Dort plant Ezio, das Übel direkt an seiner Wurzel zu bekämpfen.<br><br>Doch "
+"Gier und Korruption haben die Herrschaft über die gewaltige Metropole an "
+"sich gerissen. Um die korrupten Tyrannen der Hauptstadt zu besiegen, braucht "
+"Ezio mehr als nur Stärke. Auch seine Führungsqualitäten sind gefragt. Die "
+"gesamte Bruderschaft der Assassinen steht Ezio treu zur Seite und erwartet "
+"seine Befehle. Nur wenn die Assassinen wie ein Mann zusammenarbeiten, können "
+"sie ihre Todfeinde bezwingen.<br><br>Erstmals bietet ein Spiel der "
+"Assassin’s Creed-Reihe einen Mehrspieler-Modus. Hier kann der Spieler aus "
+"zahlreichen Charakteren seinen persönlichen Favoriten wählen. Jede dieser "
+"Figuren verfügt über individuelle Waffenkenntnisse und Assassinen-"
+"Fertigkeiten.<br><br>Es ist Zeit, der Bruderschaft beizutreten."
+
+#: i18n/json_string.js:51
+msgid "Notepad++"
+msgstr "Notepad++"
+
+#: i18n/json_string.js:52
+msgid "Notepad++ is a free (as in "
+msgstr ""
+"Notepad++ ist ein freier Editor, der verschiedene Programmiersprachen "
+"unterstützt."
+
+#: i18n/json_string.js:53
+msgid "Druid Soccer"
+msgstr "Druid Soccer"
+
+#: i18n/json_string.js:54
+msgid "Enderal"
+msgstr "Enderal"
+
+#: i18n/json_string.js:55
+msgid ""
+"Enderal is a total conversion for TES V: Skyrim: a game modification that is "
+"set in its own world with its own landscape, lore and story. It offers an "
+"immersive open world, all for the player to explore, overhauled skill "
+"systems and gameplay mechanics and a dark, psychological storyline with "
+"believable characters."
+msgstr ""
+"Enderal ist eine Komplettumwandlung für &quot;The Elder Scrolls V: "
+"Skyrim&quot; -- eine Mod, die in ihrer eigenen Spielwelt angesiedelt ist, "
+"mit eigener Landschaft, Tradition und Story. Sie ist ein immersives Open-"
+"World-Abenteuer mit einem komplett veränderten Skillsystem, rundum "
+"erneuerten Spielmechaniken und einer düsteren, psychologischen Story mit "
+"glaubwürdigen Charakteren. Enderal ist kostenlos und benötigt nur eine "
+"(legale) Version von TES V: Skyrim (die DLCs sind nicht notwendig). Die Mod "
+"ist ein unkommerzielles Projekt von SureAI, dem Entwicklerteam hinter der "
+"Oblivion-Mod &quot;Nehrim: Am Rande des Schicksals&quot; und der Morrowind-"
+"Mod &quot;Arktwend - Das vergessene Reich&quot;."
+
+#: i18n/json_string.js:56
+msgid "Assassin's Creed® Revelations"
+msgstr "Assassin's Creed® Revelations"
+
+#: i18n/json_string.js:57
+msgid ""
+"Ezio Auditore walks in the footsteps of the legendary mentor Altair, on a "
+"dangerous journey of discovery and revelation. "
+msgstr ""
+"Ezio Auditore folgt den Schritten des legendären Mentors Altair, auf einer "
+"gefährlichen Reise voller Entdeckungen und Wendungen."
+
+#: i18n/json_string.js:58
+msgid "Steam"
+msgstr "Steam"
+
+#: i18n/json_string.js:59
+msgid "Application description"
+msgstr ""
+
+#: i18n/json_string.js:60
+msgid "Audiosurf"
+msgstr "Audiosurf"
+
+#: i18n/json_string.js:61
+msgid ""
+"Ride your music. Audiosurf is a music-adapting puzzle racer where you use "
+"your own music to create your own experience. The shape, the speed, and the "
+"mood of each ride is determined by the song you choose."
+msgstr ""
+"Ride your music.<br><br>Audiosurf ist ein Puzzel-Rennspiel, in dem Sie Ihre "
+"eigene Muskisammlung &quot;absurfen&quot; können. Die Streckenführung, die "
+"Geschwindigkeit und die Stimmung jeder Rennstrecke spiegeln die "
+"Charakteristika des jeweiligen Songs dar. Sie erhalten Punkte, indem Sie "
+"gleichfarbige Blöcke auf der Strecke zusammenfügen. Spielen Sie gegen andere "
+"Online, um für Ihren Lieblingssong die höchste Punktzahl zu erreichen."
+
+#: i18n/json_string.js:62
+msgid "Tom Clancy's Splinter Cell®"
+msgstr "Tom Clancy's Splinter Cell®"
+
+#: i18n/json_string.js:63
+msgid ""
+"Infiltrate terrorists' positions, acquire critical intelligence by any means "
+"necessary, execute with extreme prejudice, and exit without a trace! You are "
+"Sam Fisher, a highly trained secret operative of the NSA's secret arm: Third "
+"Echelon."
+msgstr ""
+"Infiltrieren Sie Posten von Terroristen, besorgen Sie entscheidende "
+"Informationen mit allen Ihnen zur Verfügung stehenden Mitteln und "
+"verschwinden Sie spurlos!<br><br>Sie sind Sam Fisher, ein hochqualifizierter "
+"Angestellter des geheimen Ablegers der NSA: Third Echelon. Das Gleichgewicht "
+"der Welt liegt in Ihren Händen!"
+
+#: i18n/json_string.js:64
+msgid "Epic Games Launcher"
+msgstr "Epic Games Launcher"
+
+#: i18n/json_string.js:65
+msgid "Launcher for Unreal Engine, Unreal Tournament, Paragon etc."
+msgstr "Launcher für die Unreal Engine, Unreal Tournament, Paragon etc."
+
+#: i18n/json_string.js:66
+msgid "Worms™ Reloaded"
+msgstr "Worms™ Reloaded"
+
+#: i18n/json_string.js:67
+msgid ""
+"Worms™ Reloaded is a turn-based computer games developed by Team17 Software. "
+"Players control a small platoon of earthworms across a deformable landscape, "
+"battling other computer- or player-controlled teams. The games feature "
+"bright and humorous cartoon-style animation and a varied arsenal of bizarre "
+"weapons."
+msgstr ""
+"Zehn Jahre nach Worms™ Armageddon setzt sich das auf Runden basierte Comic-"
+"Chaos im Spiel Worms™ Reloaded fort. Die brandneue Edition ist für Ihren PC "
+"jetzt über Steam verfügbar. Worms™ Reloaded bietet ein Online- und Offline "
+"Mehrspielererlebnis für bis zu vier Spieler, Voice Chat, eine Unmenge an "
+"verrückten neuen Waffen (sowie die Rückkehr mancher ikonischer Waffen des "
+"beliebten Vorgängers), Errungenschaften, Ranglisten, neue Landschaften in "
+"hoher Bildauflösung, ein Spektrum an brillanten Festungen für den neuen "
+"Fortmodus, einen neuen Landschaftseditor, neue Spielmodi, Hüte, Skins und "
+"verschiedene Stimmen."
+
+#: i18n/json_string.js:68
+msgid "Assassin’s Creed II"
+msgstr "Assassin’s Creed II"
+
+#: i18n/json_string.js:69
+msgid ""
+"An epic story of family, vengeance and conspiracy set in the pristine, yet "
+"brutal, backdrop of a Renaissance Italy."
+msgstr ""
+"Eine epische Geschichte um Familie, Rache und Verschwörungen zur "
+"wunderschönen, jedoch brutalen Zeit der Renaissance in Italien."
+
+#: i18n/json_string.js:70
+msgid "Rayman® Origins"
+msgstr "Rayman® Origins"
+
+#: i18n/json_string.js:71
+msgid ""
+"Experience the magical universe of Rayman with legendary 2D gameplay that "
+"has captured the hearts of millions of fans!"
+msgstr ""
+"Michel Ancel, gefeierter Schöpfer von Rayman®, Beyond Good & Evil® und den "
+"Raving Rabbids®, kehrt mit seinem neuesten Titel zu den Wurzeln zurück "
+"Rayman Origins ist ein HD-, 2D-Side-Scrolling-, Jump ‘n‘ Run-Adventure für "
+"bis zu vier Spieler im Team!<br><br>In Rayman Origins entdeckt man erneut "
+"Raymans magische Welt mit ihrem legendären 2D-Gameplay, das die Herzen von "
+"Millionen Fans erobert hat...<br><br>Als die Lichtung der Träume von "
+"„widerborstigen“ Darktoons überfallen wird, ruft der Feenrat in aller Eile "
+"Rayman zu Hilfe. Doch der Held des Lichts scheint nicht ganz auf der Höhe zu "
+"sein ... Also schließt er sich für diese Aufgabe mit seinem besten Freund "
+"Globox und zwei cleveren Zauberern, den Kleinlingen, zusammen. Gemeinsam "
+"bilden sie das fröhlichste Heldengespann der Welt. Sie ziehen aus, den "
+"Frieden auf der Lichtung der Träume wiederherzustellen, und zu verhindern, "
+"dass sich die geliebte Heimat wie in einem bösen Traum in Nichts auflöst..."
+
+#: i18n/json_string.js:72
+msgid "QUBE: Director's Cut"
+msgstr "QUBE: Director's Cut"
+
+#: i18n/json_string.js:73
+msgid ""
+"Q.U.B.E: Director's Cut is the definitive version of the brain-twisting "
+"first-person puzzler. Using special high-tech gloves to manipulate cubes in "
+"the environment, the player solves an array of conundrums - from physics-"
+"based challenges; to 3D jigsaws; to platform-based trials. "
+msgstr ""
+"Q.U.B.E: Director's Cut ist ein First-Person Puzzler, bei dem Sie mit "
+"speziellen Hightech Handschuhen Würfel in der Umgebung manipulieren."
+
+#: i18n/json_string.js:74
+msgid "Far Cry 3 - Blood Dragon"
+msgstr "Far Cry 3 - Blood Dragon"
+
+#: i18n/json_string.js:75
+msgid ""
+"Far Cry® 3: Blood Dragon is THE Kick-Ass Cyber Shooter.Welcome to an 80’s "
+"vision of the future. The year is 2007 and you are Sargent Rex Colt, a Mark "
+"IV Cyber Commando. Your mission: get the girl, kill the baddies, and save "
+"the world."
+msgstr ""
+"Far Cry® 3: Blood Dragon ist DER wahnsinnige Cyber-Shooter. Far Cry® 3: "
+"Blood Dragon ist angesiedelt auf einer bizarren Open World-Insel, wo das "
+"Böse allgegenwärtig ist. Willkommen in einer Vision der Zukunft aus Sicht "
+"der 80er. Wir schreiben das Jahr 2007 und Sie sind Sergeant Rex Colt, ein "
+"Mark IV Cyber Commando. Ihre Mission: Schnappen Sie sich das Mädchen, töten "
+"Sie die Bösewichte und retten Sie die Welt!"
+
+#: i18n/json_string.js:76
+msgid "Mirror's Edge™"
+msgstr "Mirror's Edge™"
+
+#: i18n/json_string.js:77
+msgid ""
+"In a city where information is heavily monitored, agile couriers called "
+"Runners transport sensitive data away from prying eyes. In this seemingly "
+"utopian paradise, a crime has been committed, your sister has been framed "
+"and now you are being hunted."
+msgstr ""
+"In einer Stadt, in der Informationen streng überwacht sind, können nur agile "
+"Kuriere, genannt 'Runner', sensitive Daten transportieren und vor wachsamen "
+"Augen schützen. In diesem scheinbar utopischen Paradies wurde ein Verbrechen "
+"begangen - Ihre Schwester wurde als Sündenbock missbraucht und nun ist man "
+"auch Ihnen auf den Fersen. Sie sind ein Runner namens Faith und dieses "
+"innovative FPS-Abenteuer erzählt Ihre Geschichte."
+
+#: i18n/json_string.js:78
+msgid "Uplay"
+msgstr "Uplay"
+
+#: i18n/json_string.js:79
+msgid "Uplay PC is Ubisoft's PC games portal."
+msgstr "Uplay ist Ubisoft's Portal für PC-Spiele."
+
+#: i18n/json_string.js:80
+msgid "Local Installer"
+msgstr "Local Installer"
+
+#: i18n/json_string.js:81
+msgid ""
+"The Local Installer allows you to install custom applications from your "
+"local computer."
+msgstr ""
+"Mit dem Local Installer können Sie eigene Anwendungen von Ihrem lokalen "
+"Computer installieren."
+
+#: i18n/json_string.js:82
+msgid "Resident Evil 3"
+msgstr "Resident Evil 3"
+
+#: i18n/json_string.js:83
+msgid ""
+"Resident Evil 3: Nemesis, known in Japan as Biohazard 3: Last Escape (バイオ"
+"ハザード3　ラストエスケープ), is a survival horror video game and the sequel "
+"to Resident Evil 2, developed and published by Capcom. The game was released "
+"for the PlayStation, and was subsequently ported to the Dreamcast, Microsoft "
+"Windows and Nintendo GameCube. A Windows PC version was released first in "
+"Japan in June 2000 and later in other regions, which features enhanced 3D "
+"character model graphics and higher resolutions."
+msgstr ""
+"Resident Evil 3: Nemesis (jap. バイオハザード3 LAST ESCAPE, trans. "
+"Baiohazādo 3: Last Escape, Biohazard 3: Last Escape) ist ein 1999 "
+"erschienenes Computerspiel von Capcom. Es ist der dritte Teil der "
+"gleichnamigen Serie und wie seine Vorgänger dem Survival-Horror-Genre "
+"zuzuordnen. Resident Evil 3: Nemesis erschien zuerst für PlayStation, danach "
+"folgten Umsetzungen für Dreamcast, PC und GameCube."
+
+#: i18n/json_string.js:84
+msgid "Worms Armageddon"
+msgstr "Worms Armageddon"
+
+#: i18n/json_string.js:85
+msgid ""
+"Those intrepid invertebrates return with a vengeance in the much-loved "
+"Worms™ Armageddon. It’s a whole new can of worms! It’s hilarious fun that "
+"you can enjoy on your own or with all your friends."
+msgstr ""
+"Die unerschrockenen Kriecher kehren zurück und ihnen dürstet nach Rache im "
+"allseits beliebten Worms™ Armageddon. Hier ist einfach der Wurm drin! "
+"Genießen Sie einen grandiosen Spielspaß alleine oder mit all Ihren Freunden."
+
+#: i18n/json_string.js:86
+msgid "STAR WARS™ Jedi Knight: Dark Forces II"
+msgstr "STAR WARS™ Jedi Knight: Dark Forces II"
+
+#: i18n/json_string.js:87
+msgid ""
+"Jedi Knight: Dark Forces II picks up where the award-winning Dark Forces™ "
+"game left off...with even more features and firepower in dazzling 3D "
+"graphics. As Kyle Katarn, you must acquire a lightsaber and learn the ways "
+"of the Force to become a Jedi Knight."
+msgstr ""
+"Dark Forces™ setzte den Industriestandard für FPS-Action im Star Wars® "
+"Universum. Jetzt setzt Jedi Knight: Dark Forces II dieses glorreichen Erfolg "
+"fort...mit mehr Feuerkraft und Spielfunktionen den jemals zuvor in "
+"verblüffender 3D Grafik. Als Kyle Katarn müssen Sie ein Lichtschwert "
+"erlangen und die Wege der Macht erlernen, um ein Jedi Ritter zu werden. "
+"Konfrontieren Sie alte Feinde... Greedo, Boosk, Sturmtruppen. Und neue "
+"Bösewichter... sieben dunkle Jedi, die versuchen die Kraft einer uralten "
+"Beerdigunsstätte für Ihre teuflischen Pläne zu nutzen. Ergreifen Sie die "
+"Initiative, wählen Sie 10 Waffen in Ihrem Arsenal und über 12 Kräfte der "
+"Macht und durchkreuzen Sie diese dunklen Pläne."
+
+#: i18n/json_string.js:88
+msgid "Prince of Persia®: The Sands of Time"
+msgstr "Prince of Persia®: The Sands of Time"
+
+#: i18n/json_string.js:89
+msgid ""
+"Amidst the scorched sands of ancient Persia, there is a legend spun in an "
+"ancient tongue. It speaks of a time borne by blood and ruled by deceit. "
+"Drawn to the dark powers of a magic dagger, a young Prince is led to unleash "
+"a deadly evil upon a beautiful kingdom."
+msgstr ""
+"Inmitten des heißen Sandes des alten Persiens wird eine Legende in einer "
+"alten Sprache erzählt. Sie handelt von einer von Gräueltaten geprägten Zeit, "
+"die von Verrat beherrscht wurde. Von den dunklen Mächten eines magischen "
+"Dolches angezogen wird ein junger Prinz dazu gebracht, ein tödliches Übel "
+"auf ein wunderbares Königreich loszulassen. Von den Listen einer "
+"verführerischen Prinzessin und der Macht des Sandes der Zeit getrieben führt "
+"der Prinz einen grausamen Kampf, um die verwunschenen Gemächer des Palastes "
+"zurückzuerobern und den Frieden in seinem Königreich wiederherzustellen."
+
+#: i18n/json_string.js:90
+msgid "Crayon Physics"
+msgstr "Crayon Physics"
+
+#: i18n/json_string.js:91
+msgid ""
+"Crayon Physics is a mouse arcade game. You will have to draw lines and "
+"squares to move a ball. The aim is to catch the stars in the level. "
+msgstr ""
+"Crayon Physics ist ein Arcade Spiel, bei dem Sie mit der Maus Linien und "
+"Vierecke zeichnen müssen, um mit einem Ball den Stern am Ende des Levels zu "
+"erreichen."
+
+#: i18n/json_string.js:92
+msgid "STAR WARS™ Jedi Knight - Mysteries of the Sith™"
+msgstr "STAR WARS™ Jedi Knight - Mysteries of the Sith™"
+
+#: i18n/json_string.js:93
+msgid ""
+"It is five years after Kyle's victory over the seven dark Jedi. Invading "
+"Imperial forces advance upon a quiet Rebel outpost, interrupting Kyle's "
+"training of a brave new Jedi, Mara Jade. First introduced in Timothy Zahn's "
+"award-winning Star Wars novel, Heir to the Empire, Mara Jade blends her past "
+"experiences as a one time smuggler and Emperor's Hand with her "
+"apprenticeship as a Jedi Knight."
+msgstr ""
+"&quot;Ich wählte mein Schicksal, und es hat mich hierher geführt...&quot; - "
+"Kyle Katarn<br><br>Fünf Jahre sind vergangen, nachdem Kyle seinen Sieg über "
+"die sieben dunklen Jedi feiern konnte. Einfallende Truppen des Imperiums "
+"schreiten auf einen einsamen Außenposten der Rebellen vor und unterbrechen "
+"Kyles Ausbidung von Mara Jade, einer neuen Jedi-Hoffnung. Wir begegneten "
+"Mara zuerst in Timothy Zahns preisgekrönten Star Wars Novelle, dort "
+"verwischte Mara Jade ihre vergangenen Erfahrungen als Schmuggler mit ihrer "
+"Anwärterschaft zur Jedi-Ausbildung. Gerüstet mit vier neuen Waffen und fünf "
+"neuen Kräften der Macht muss Mara die für die Neue Republik bestimmten "
+"Vorräte schützen während Kyle, im Glauben es sei teil seines Schicksals, die "
+"geheimen Schätze in den antiken Tempeln der Sith auffinden will.<br>Kann die "
+"Neue Republik durch diese tapfere Frau geschützt werden? Kann die "
+"Rebellenbasis gerettet werden und sind Verhandlungen mit Ka'Pa the Hutt "
+"aussichtsreich, um danach die Phalanx der Feinde abzuwehren?<br>Werden die "
+"antiken Geheimnisse der Sith neue Kräfte entfesseln?<br>Sind Kyle und Mara "
+"stark genug, um den Versuchungen der Dunklen Seite der Macht zu widerstehen? "
+"Oder werden neue Verheisungen sie zur dunklen Seite verführen?"
+
+#: i18n/json_string.js:94
+msgid "Other"
+msgstr "Nicht zuzuordnen"
+
+#: i18n/json_string.js:95
+msgid "Functions"
+msgstr "Functions"
+
+#: i18n/json_string.js:96
+msgid "League of Legends BETA Client"
+msgstr "League of Legends BETA Client"
+
+#: i18n/json_string.js:97
+msgid ""
+"League of Legends is a fast-paced, competitive online game that blends the "
+"speed and intensity of an RTS with RPG elements. Two teams of powerful "
+"champions, each with a unique design and playstyle, battle head-to-head "
+"across multiple battlefields and game modes. With an ever-expanding roster "
+"of champions, frequent updates and a thriving tournament scene, League of "
+"Legends offers endless replayability for players of every skill level."
+msgstr ""
+"League of Legends ist ein schnelles, kompetitives Onlinespiel, das die "
+"Geschwindigkeit und Intensität von Echtzeitstrategie mit "
+"Rollenspielelementen verknüpft. Zwei Teams mächtiger Champions, jeder mit "
+"einem einzigartigen Design und Spielstil, treten Kopf an Kopf in mehreren "
+"Schlachtfeldern und Spielmodi gegeneinander an. League of Legends bietet mit "
+"einer ständig wachsenden Anzahl an Champions, häufigen Aktualisierungen und "
+"einer blühenden Wettkampfszene unbegrenzte Wiederspielbarkeit für Spieler "
+"jeden Niveaus."
+
+#: i18n/json_string.js:98
+msgid "Blizzard app"
+msgstr "Blizzard App"
+
+#: i18n/json_string.js:99
+msgid ""
+"The Blizzard desktop app is designed to improve your gaming experience. "
+"It’ll streamline your login and make it even easier to keep up with your "
+"friends!"
+msgstr ""
+"Die Blizzard Desktop app soll Ihre Spielerfahrung verbessern. Sie "
+"vereinheitlicht die Logins und vereinfacht es, in Kontakt mit Ihren Freunden "
+"zu bleiben!"
+
+#: i18n/json_string.js:100
+msgid "Hexcells"
+msgstr "Hexcells"
+
+#: i18n/json_string.js:101
+msgid "Hexcells is an ambient logic puzzle game for PC, Mac and Linux."
+msgstr "Hexcells ist ein logisches Puzzle Spiel für PC, Mac und Linux."
+
+#: i18n/json_string.js:102
+msgid "Custom"
+msgstr "Eigene"
+
+#: i18n/json_string.js:103
+msgid "Rocksmith™"
+msgstr "Rocksmith™"
+
+#: i18n/json_string.js:104
+msgid ""
+"Rocksmith’s innovative game design makes playing music visually intuitive "
+"and will engage experienced musicians as well as those who have never picked "
+"up a guitar in their lives."
+msgstr ""
+"Rocksmith™ ist das erste und einzige Spiel, das Sie mit einen 1/4&quot;-"
+"Stecker an jede echte Gitarre oder Bass anschließen können.<br><br>Kein "
+"Plastik, nichts Unechtes, nur die authentischste und kompletteste "
+"Gitarrenerfahrung unter den Musikspielen. Indem Sie mit Ihrem PC verbunden "
+"sind, werden Sie echtes Können und Style entwickeln, während Sie absolut "
+"echte Musik machen. Mit Gameplay, dass sich automatisch Ihren persönlichen "
+"Fähigkeiten anpasst, wird Rocksmiths innovatives Spieldesign Musik spielen "
+"visuell intuitiv machen und sowohl erfahrene Musiker als auch die, die noch "
+"nie in ihrem Leben eine Gitarre angefasst haben, begeistern.<br><br>Schalten "
+"Sie Mini-Games frei, um bestimmte Fähigkeiten zu verbessern. Sie werden aus "
+"einem großen Katalog von Liedern verschiedener Art wählen können. Sie "
+"erleben all das mit einer waschechten Gitarre. Nichts ist vergleichbar "
+"damit, ein echtes Instrument zu spielen."
+
+#: i18n/json_string.js:105
+msgid "STAR WARS™ Battlefront™ II"
+msgstr "STAR WARS™ Battlefront™ II"
+
+#: i18n/json_string.js:106
+msgid ""
+"Join the rise of Darth Vader’s elite 501st Legion of Stormtroopers as you "
+"fight through an all new story-based saga where every action you take "
+"impacts the battlefront and, ultimately, the fate of the Star Wars galaxy."
+msgstr ""
+"Mit brandneuen Weltraumkämpfen, spielbaren Jedi Charakteren und über 16 "
+"neuen Schlachtfeldern bietet Ihnen Star Wars Battlefront II mehr "
+"Möglichkleiten als jemals zuvor das orignale Star Wars auf verschiedenste "
+"Weisen zu spielen."
+
+#: i18n/json_string.js:107
+msgid "mIRC"
+msgstr "mIRC"
+
+#: i18n/json_string.js:108
+msgid ""
+"<p>mIRC is a <b>popular Internet Relay Chat client</b> used by millions of "
+"people, and thousands of organizations, to communicate, share, play and work "
+"with each other on IRC networks around the world. Serving the <b>Internet "
+"community</b> for over a decade, mIRC has evolved into a powerful, reliable "
+"and fun piece of technology.<br></p>"
+msgstr ""
+"mIRC ist ein beliebter Internet Relay Chat client, der von Millionen "
+"Menschen und Tausenden Firmen genutzt wird um miteinander über globale IRC "
+"Netzwerke zu kommunizieren, zu teilen, zu spielen und zu arbeiten."
+
+#: i18n/json_string.js:109
+msgid "PAYDAY™ The Heist"
+msgstr "PAYDAY™ The Heist"
+
+#: i18n/json_string.js:110
+msgid ""
+"Take on the role of a hardened career criminal executing intense, dynamic "
+"heists in constant pursuit of the next “big score”"
+msgstr ""
+"Schlüpfen Sie in die Rolle eines hartgesottenen Kriminellen und führen Sie "
+"turbulente Raubzüge auf der Jagd nach dem nächsten &quot;großen Fang&quot; "
+"durch."
+
+#: i18n/json_string.js:111
+msgid "Warcraft III"
+msgstr "Warcraft III"
+
+#: i18n/json_string.js:112
+msgid "Warcraft® III: Reign of Chaos®"
+msgstr "Warcraft® III: Reign of Chaos®"
+
+#: i18n/json_string.js:113
+msgid "STAR WARS™ Jedi Knight - Jedi Academy™"
+msgstr "STAR WARS™ Jedi Knight - Jedi Academy™"
+
+#: i18n/json_string.js:114
+msgid ""
+"Forge your weapon and follow the path of the Jedi Jedi Knight: Jedi Academy "
+"is the latest installment of the highly acclaimed Jedi Knight series. Take "
+"on the role of a new student eager to learn the ways of the Force from Jedi "
+"Master Luke Skywalker."
+msgstr ""
+"Greifen Sie zur Waffe und folgen Sie den Pfaden eines echten Jediritters."
+"<br>Jedi Knight: Jedi Academy ist der neueste Teil der hoch gefeierten Jedi "
+"Knight Serie. Sie begeben sich in die Rolle eines neuen Schülers, der "
+"unbedingt die Kampftechniken vom Jedimaster Luke Skywalker erlernen möchte. "
+"Kommunizieren Sie mit den berühmten Star Wars Charakteren in vielen "
+"klassischen Star Wars Stätten. Es liegt ganz allein an Ihnen: entscheiden "
+"Sie sich letztendlich für das Gute und dafür, auf der Seite des Lichts zu "
+"kämpfen oder wählen Sie die Macht und das Böse der dunklen Seite?"
+
+#: i18n/json_string.js:115
+msgid "ElsterFormular"
+msgstr "ElsterFormular"
+
+#: i18n/json_string.js:116
+msgid "ElsterFormular is the official german software to file a tax return."
+msgstr ""
+"ElsterFormular ist die offizielle Software für die deutsche Steuererklärung."
+
+#: i18n/json_string.js:117
+msgid "The Vanishing of Ethan Carter"
+msgstr "The Vanishing of Ethan Carter"
+
+#: i18n/json_string.js:118 i18n/json_string.js:125
+msgid "The Vanishing of Ethan Carter is a first-person story-driven mystery."
+msgstr ""
+"The Vanishing of Ethan Carter ist ein geheimnisvolles, storybasiertes First-"
+"Person Spiel."
+
+#: i18n/json_string.js:119
+msgid "Accessories"
+msgstr "Dienstprogramme"
+
+#: i18n/json_string.js:120
+msgid "Age of Empires® III: Complete Collection"
+msgstr "Age of Empires® III: Complete Collection"
+
+#: i18n/json_string.js:122
+msgid "Warcraft III TFT"
+msgstr "Warcraft III TFT"
+
+#: i18n/json_string.js:123
+msgid "Warcraft® III: The Frozen Throne® <br> Install Warcraft III first."
+msgstr ""
+
+#: i18n/json_string.js:124
+msgid "The Vanishing of Ethan Carter Redux"
+msgstr "The Vanishing of Ethan Carter Redux"
+
+#: i18n/json_string.js:126
+msgid "Black Mesa"
+msgstr "Black Mesa"
+
+#: i18n/json_string.js:127
+msgid "Relive Half-Life in this highly acclaimed, fan-made recreation"
+msgstr ""
+"Erleben Sie Half-Life neu in dieser vielgepriesenen Neugestaltung durch Fans."
+
+#: i18n/json_string.js:128
+msgid "The Elder Scrolls V: Skyrim"
+msgstr "The Elder Scrolls V: Skyrim"
+
+#: i18n/json_string.js:129
+msgid "Ether One Redux"
+msgstr "Ether One Redux"
+
+#: i18n/json_string.js:130
+msgid ""
+"Ether One is a first person adventure that deals with the fragility of the "
+"human mind. There are two paths in the world you can choose from. At its "
+"core is a story exploration path free from puzzles where you can unfold the "
+"story at your own pace."
+msgstr ""
+"Ether One ist ein First Person Adventure, das sich mit der Zerbrechlichkeit "
+"des menschlichen Verstands beschäftigt."
+
+#: i18n/json_string.js:131
+msgid ""
+"Dr. Langeskov, The Tiger, and The Terribly Cursed Emerald: A Whirlwind Heist"
+msgstr ""
+"Dr. Langeskov, The Tiger, and The Terribly Cursed Emerald: A Whirlwind Heist"
+
+#: i18n/json_string.js:132
+msgid ""
+"A 15 minute heist game by Crows Crows Crows & Directed by William Pugh (The "
+"Stanley Parable). "
+msgstr ""
+"Ein 15-minütiges Heist-Game von Crows Crows Crows unter Leitung von William "
+"Pugh (The Stanley Parable)."
+
+#: i18n/json_string.js:133
+msgid "Development"
+msgstr "Entwicklung"
+
+#: i18n/json_string.js:134
+msgid "Science"
+msgstr "Lernprogramme"
+
+#: i18n/json_string.js:135
+msgid "Hexcells Infinite"
+msgstr "Hexcells Infinite"
+
+#: i18n/json_string.js:136
+msgid ""
+"Hexcells Infinite is the third game in the series of ambient logic puzzle "
+"games.<br><br>It includes a new set of 36 puzzles as well as a random puzzle "
+"generator and now supports mid-level saving and cross platform cloud saves."
+"<br><br>The level generator uses an 8 digit seed number to generate each "
+"puzzle so they can easily be shared."
+msgstr ""
+"Hexcells Infinite ist das dritte Spiel der Serie von logischen Puzzle "
+"Spielen."
+
+#: i18n/json_string.js:137
+msgid "CONSORTIUM"
+msgstr "CONSORTIUM"
+
+#: i18n/json_string.js:138
+msgid ""
+"A murder mystery, on a plane, in the future. You are Consortium Bishop Six, "
+"a global peacekeeper in the year 2042. Your actions define and inform the "
+"ongoing narrative."
+msgstr ""
+"Ein mysteriöser Mord, in einem Flugzeug, in der Zukunft. Sie sind Consortium "
+"Bishop Six, ein globaler Friedenswächter im Jahr 2042. Ihre Handlungen "
+"bestimmen den Verlauf der Geschichte."
+
+#: i18n/json_string.js:139
+msgid "TeamSpeak 3"
+msgstr "TeamSpeak 3"
+
+#: i18n/json_string.js:140
+msgid ""
+"TeamSpeak 3 offers the ideal voice communication tool for online gaming, "
+"education and training, internal business communication, and staying in "
+"touch with friends and family."
+msgstr ""
+"TeamSpeak ist eine proprietäre Sprachkonferenzsoftware, die den Benutzern "
+"ermöglicht, über das Internet oder ein LAN per Sprache und Text miteinander "
+"zu kommunizieren sowie Dateien auszutauschen. TeamSpeak ist für die Nutzung "
+"parallel zu Online-Spielen optimiert."
 
 #: Functions/QuickScript/InstallerScript/script.js:23
 msgid "Please enter the name of your application."
