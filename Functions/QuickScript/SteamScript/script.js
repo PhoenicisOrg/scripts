@@ -154,7 +154,7 @@ SteamScript.prototype.go = function() {
     {
         bytesDownloaded = this.getBytesDownloaded(wine);
         progressBar.setProgressPercentage((bytesDownloaded / bytesToDownload) * 100);
-        progressBar.setText(tr("Downloaded {0} of {1} bytes", bytesDownloaded, bytesToDownload);
+        progressBar.setText(tr("Downloaded {0} of {1} bytes", bytesDownloaded, bytesToDownload));
         java.lang.Thread.sleep(100);
     }
 
