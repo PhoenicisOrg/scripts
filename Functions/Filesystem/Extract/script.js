@@ -25,7 +25,7 @@ var CabExtract = function() {
 
     that.extract = function(arguments) {
         if (!that._progressMessage) {
-            that._progressMessage = "Please wait while {0} is extracted ...".format(that._archive);
+            that._progressMessage = tr("Please wait while {0} is extracted ...", that._archive);
         }
 
         if(that._wizard) {
@@ -70,7 +70,7 @@ var Extractor = function () {
     };
     that.extract = function () {
         if (!that._progressMessage) {
-            that._progressMessage = "Please wait while {0} is extracted ...".format(that._archive);
+            that._progressMessage = tr("Please wait while {0} is extracted ...", that._archive);
         }
 
         var progressBar = that._wizard.progressBar(that._progressMessage);

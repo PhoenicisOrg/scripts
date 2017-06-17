@@ -123,15 +123,15 @@ SteamScript.prototype.go = function() {
         .prefix(this._name)
         .luna()
         .run(tempFile)
-        .wait("Please follow the steps of the Steam setup.\n\nUncheck \"Run Steam\" or close Steam completely after the setup so that the installation of \"" + this._name + "\" can continue.");
+        .wait(tr("Please follow the steps of the Steam setup.\n\nUncheck \"Run Steam\" or close Steam completely after the setup so that the installation of \"{0}\" can continue.", this._name));
 
     // Steam installation has finished
-    setupWizard.wait("Please wait...");
+    setupWizard.wait(tr("Please wait..."));
 
     this._preInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in preInstall)
-    setupWizard.wait("Please wait...");
+    setupWizard.wait(tr("Please wait..."));
 
     new WineShortcut()
         .name(this._name)
@@ -149,17 +149,17 @@ SteamScript.prototype.go = function() {
 
     var bytesToDownload = this.getBytesToDownload(wine);
     var bytesDownloaded = 0;
-    var progressBar = setupWizard.progressBar("Please wait until Steam has finished the download...");
+    var progressBar = setupWizard.progressBar(tr("Please wait until Steam has finished the download..."));
     while (bytesDownloaded < bytesToDownload)
     {
         bytesDownloaded = this.getBytesDownloaded(wine);
         progressBar.setProgressPercentage((bytesDownloaded / bytesToDownload) * 100);
-        progressBar.setText("Downloaded " + bytesDownloaded + " of " + bytesToDownload + " bytes");
+        progressBar.setText(tr("Downloaded {0} of {1} bytes", bytesDownloaded, bytesToDownload);
         java.lang.Thread.sleep(100);
     }
 
     // make sure download is really finished (download folder file size is not exact)
-    setupWizard.wait("Please wait until Steam has finished the download...");
+    setupWizard.wait(tr("Please wait until Steam has finished the download..."));
     while (!this.downloadFinished(wine)) {
         java.lang.Thread.sleep(1000);
     }
@@ -177,7 +177,7 @@ SteamScript.prototype.go = function() {
     }
 
     // back to generic wait (might have been changed in postInstall)
-    setupWizard.wait("Please wait...");
+    setupWizard.wait(tr("Please wait..."));
 
     setupWizard.close();
 };

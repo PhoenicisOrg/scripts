@@ -11,7 +11,7 @@ Wine.prototype.vcrun2005 = function() {
         .get();
 
     this.run(setupFile, "/q")
-        .wait("Please wait while {0} is installed ...".format("Microsoft Visual C++ 2005 Redistributable (x86)"));
+        .wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2005 Redistributable (x86)"));
 
     var dlls = [
         "atl80",

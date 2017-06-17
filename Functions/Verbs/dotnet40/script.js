@@ -18,7 +18,7 @@ Wine.prototype.dotnet40 = function() {
     this.uninstall("Mono");
 
     this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"])
-        .wait("Please wait ...");
+        .wait(tr("Please wait ..."));
 
     remove(this.system32directory() + "/mscoree.dll");
 
@@ -27,16 +27,16 @@ Wine.prototype.dotnet40 = function() {
         .do();
 
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""])
-        .wait("Please wait while {0} is installed ...".format(".NET Framework 4.0"));
+        .wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.0"));
 
     this.overrideDLL()
         .set("native", ["mscoree"])
         .do();
 
     this.run("reg", ["add", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4\Full", "/v", "Install", "/t", "REG_DWORD", "/d", "0001", "/f"])
-        .wait("Please wait ...");
+        .wait(tr("Please wait ..."));
     this.run("reg", ["add", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4\Full", "/v", "Version", "/t", "REG_SZ", "/d", "4.0.30319", "/f"])
-        .wait("Please wait ...");
+        .wait(tr("Please wait ..."));
 
     return this;
 };
