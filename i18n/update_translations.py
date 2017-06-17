@@ -29,6 +29,8 @@ for key, value in data.iteritems():
     elif basename == 'category.json':
         messages.append(data[key]['name'])
 
+messages.sort()
+
 # write messages to file
 with open(out_file_name, 'w') as out_file:
     for message in messages:
