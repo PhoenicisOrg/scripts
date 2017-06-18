@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-17 11:29+0200\n"
+"POT-Creation-Date: 2017-06-18 13:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,35 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: Internet/Internet Explorer 6.0/Online/script.js:69
+#: Functions/QuickScript/UplayScript/script.js:66
+#: Functions/QuickScript/UplayScript/script.js:71
+#: Functions/QuickScript/UplayScript/script.js:98
+#: Functions/QuickScript/ZipScript/script.js:45
+#: Functions/QuickScript/ZipScript/script.js:72
+#: Functions/QuickScript/InstallerScript/script.js:103
+#: Functions/QuickScript/SteamScript/script.js:129
+#: Functions/QuickScript/SteamScript/script.js:134
+#: Functions/QuickScript/SteamScript/script.js:180
+#: Functions/Verbs/corefonts/script.js:79 Functions/Engines/Wine/script.js:284
+msgid "Please wait..."
+msgstr ""
+
+#: Internet/Internet Explorer 6.0/Online/script.js:73
+#: Internet/Internet Explorer 7.0/Online/script.js:213
+msgid "Installing {0}"
+msgstr ""
+
+#: Internet/Internet Explorer 7.0/Online/script.js:60
+msgid "Which language version would you like to install?"
+msgstr ""
+
+#: Office/ElsterFormular/Online/script.js:8
+msgid ""
+"Please select the installation file.\n"
+"You can download it from https://www.elster.de/elfo_down.php."
+msgstr ""
 
 #: i18n/json_string.js:1
 msgid ""
@@ -810,6 +839,168 @@ msgstr ""
 msgid "mIRC"
 msgstr ""
 
+#: Games/League of Legends/BETA Client/script.js:41
+msgid "Select your region:"
+msgstr ""
+
+#: Games/Warcraft III TFT/Online/script.js:13
+msgid "Please install Warcraft III before installing The Frozen Throne."
+msgstr ""
+
+#: Functions/QuickScript/OnlineInstallerScript/script.js:32
+msgid "Please select the download URL."
+msgstr ""
+
+#: Functions/QuickScript/UplayScript/script.js:61
+msgid ""
+"Please follow the steps of the Uplay setup.\n"
+"\n"
+"Uncheck \"Run Uplay\" or close Uplay completely after the setup so that the "
+"installation of \"{0}\" can continue."
+msgstr ""
+
+#: Functions/QuickScript/UplayScript/script.js:85
+msgid "Please wait until Uplay has finished the download..."
+msgstr ""
+
+#: Functions/QuickScript/UplayScript/script.js:93
+msgid "Please close Uplay."
+msgstr ""
+
 #: Functions/QuickScript/InstallerScript/script.js:23
 msgid "Please enter the name of your application."
+msgstr ""
+
+#: Functions/QuickScript/InstallerScript/script.js:38
+msgid "Please select the wine architecture."
+msgstr ""
+
+#: Functions/QuickScript/InstallerScript/script.js:52
+msgid "Please select the wine distribution."
+msgstr ""
+
+#: Functions/QuickScript/InstallerScript/script.js:66
+msgid "Please select the wine version."
+msgstr ""
+
+#: Functions/QuickScript/InstallerScript/script.js:88
+msgid "Please select the executable."
+msgstr ""
+
+#: Functions/QuickScript/LocalInstallerScript/script.js:23
+msgid "Please select the installation file."
+msgstr ""
+
+#: Functions/QuickScript/SteamScript/script.js:126
+msgid ""
+"Please follow the steps of the Steam setup.\n"
+"\n"
+"Uncheck \"Run Steam\" or close Steam completely after the setup so that the "
+"installation of \"{0}\" can continue."
+msgstr ""
+
+#: Functions/QuickScript/SteamScript/script.js:152
+#: Functions/QuickScript/SteamScript/script.js:162
+msgid "Please wait until Steam has finished the download..."
+msgstr ""
+
+#: Functions/QuickScript/SteamScript/script.js:157
+msgid "Downloaded {0} of {1} bytes"
+msgstr ""
+
+#: Functions/Verbs/vcrun2003/script.js:15
+#: Functions/Verbs/vcrun2013/script.js:14
+#: Functions/Verbs/vcrun2013/script.js:25
+#: Functions/Verbs/vcrun2012/script.js:14
+#: Functions/Verbs/vcrun2012/script.js:25
+#: Functions/Verbs/vcrun2008/script.js:14
+#: Functions/Verbs/vcrun2008/script.js:25
+#: Functions/Verbs/vcrun2005/script.js:14
+#: Functions/Verbs/vcrun2015/script.js:14
+#: Functions/Verbs/vcrun2015/script.js:25
+#: Functions/Verbs/vcrun2010/script.js:14
+#: Functions/Verbs/vcrun2010/script.js:25 Functions/Verbs/dotnet40/script.js:30
+#: Functions/Verbs/physx/script.js:14 Functions/Verbs/quicktime76/script.js:10
+msgid "Please wait while {0} is installed ..."
+msgstr ""
+
+#: Functions/Verbs/d3dx9/script.js:10
+msgid "Extracting: {0}"
+msgstr ""
+
+#: Functions/Verbs/d3dx9/script.js:11
+msgid "Extracting DirectX 9..."
+msgstr ""
+
+#: Functions/Verbs/corefonts/script.js:80
+#: Functions/Verbs/corefonts/script.js:86
+msgid "Installing fonts..."
+msgstr ""
+
+#: Functions/Verbs/dotnet40/script.js:21 Functions/Verbs/dotnet40/script.js:37
+#: Functions/Verbs/dotnet40/script.js:39
+msgid "Please wait ..."
+msgstr ""
+
+#: Functions/Verbs/uplay/script.js:11
+msgid ""
+"Please follow the steps of the Uplay setup.\n"
+"\n"
+"Uncheck \"Run Uplay\" or close Uplay completely after the setup so that the "
+"installation can continue."
+msgstr ""
+
+#: Functions/Shortcuts/Reader/script.js:63
+msgid ""
+"The container {0} is no longer used.\n"
+"Do you want to delete it?"
+msgstr ""
+
+#: Functions/Shortcuts/Wine/script.js:58
+msgid "Executable {0} not found!"
+msgstr ""
+
+#: Functions/Engines/Wine/script.js:249
+msgid "Please wait while {0} is uninstalled ..."
+msgstr ""
+
+#: Functions/Engines/Wine/script.js:251
+msgid "Could not uninstall {0}!"
+msgstr ""
+
+#: Functions/Engines/Wine/script.js:432
+msgid "Prefix seems to be 32bits"
+msgstr ""
+
+#: Functions/Engines/Wine/script.js:450
+msgid "Installing version: "
+msgstr ""
+
+#: Functions/Engines/Wine/script.js:797
+msgid "Could not determine mimetype for file extension \"{0}\""
+msgstr ""
+
+#: Functions/Filesystem/Extract/script.js:28
+#: Functions/Filesystem/Extract/script.js:73
+msgid "Please wait while {0} is extracted ..."
+msgstr ""
+
+#: Functions/Filesystem/Files/script.js:63
+msgid "Checking file consistency..."
+msgstr ""
+
+#: Functions/Net/Resource/script.js:47
+msgid "Please wait while {0} is downloaded..."
+msgstr ""
+
+#: Functions/Net/Download/script.js:37
+msgid "Please wait while {0} is downloaded ..."
+msgstr ""
+
+#: Functions/Net/Download/script.js:57
+msgid ""
+"Error while calculating checksum. \n"
+"\n"
+"Expected = {0}\n"
+"Actual = {1}"
 msgstr ""
