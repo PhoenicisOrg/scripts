@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-18 13:47+0200\n"
-"PO-Revision-Date: 2017-06-18 14:03+0200\n"
+"PO-Revision-Date: 2017-06-18 18:13+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -252,7 +252,7 @@ msgstr ""
 
 #: i18n/json_string.js:29
 msgid "Custom"
-msgstr "Eigene"
+msgstr "Angepasst"
 
 #: i18n/json_string.js:30
 msgid "Development"
