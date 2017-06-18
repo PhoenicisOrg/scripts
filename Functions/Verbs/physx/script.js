@@ -11,7 +11,7 @@ Wine.prototype.physx = function() {
         .get();
 
     this.run("msiexec", ["/i", setupFile, "/q"])
-        .wait("Please wait while {0} is installed ...".format("PhysX"));
+        .wait(tr("Please wait while {0} is installed ...", "PhysX"));
 
     return this;
 };

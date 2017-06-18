@@ -38,7 +38,7 @@ new CustomInstallerScript()
                        "EU Nordic & East",
                        "North America",
                        "Russia"];
-        var selectedRegion = wizard.menu("Select your region:", regions);
+        var selectedRegion = wizard.menu(tr("Select your region:"), regions);
         var regionID, url, sha1;
         var baseUrl = "https://riotgamespatcher-a.akamaihd.net/ShellInstaller/";
         switch(selectedRegion.text){

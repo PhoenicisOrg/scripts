@@ -12,7 +12,7 @@ Wine.prototype.vcrun2003 = function() {
         .get();
 
     this.run(setupFile, "/S")
-        .wait("Please wait while {0} is installed ...".format("Microsoft Visual C++ 2003 Redistributable (x86)"));
+        .wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2003 Redistributable (x86)"));
 
     var dlls = [
         "msvcp71",

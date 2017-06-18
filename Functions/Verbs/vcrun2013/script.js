@@ -11,7 +11,7 @@ Wine.prototype.vcrun2013 = function() {
         .get();
 
     this.run(setupFile32, "/q")
-        .wait("Please wait while {0} is installed ...".format("Microsoft Visual C++ 2013 Redistributable (x86)"));
+        .wait(tr("Please wait while {0} is installed ...","Microsoft Visual C++ 2013 Redistributable (x86)"));
 
     if (this.architecture() == "amd64") {
         var setupFile64 = new Resource()
@@ -22,7 +22,7 @@ Wine.prototype.vcrun2013 = function() {
             .get();
 
         this.run(setupFile64, "/q")
-            .wait("Please wait while {0} is installed ...".format("Microsoft Visual C++ 2013 Redistributable (x64)"));
+            .wait(tr("Please wait while {0} is installed ...","Microsoft Visual C++ 2013 Redistributable (x64)"));
     }
 
     this.overrideDLL()

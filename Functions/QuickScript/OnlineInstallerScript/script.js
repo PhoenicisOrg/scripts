@@ -29,7 +29,7 @@ OnlineInstallerScript.prototype.installationArgs = function(installationArgs) {
 OnlineInstallerScript.prototype._installationCommand = function(wizard) {
     // if no URL given, ask user
     if (!this._url) {
-        this._url = wizard.textbox("Please select the download URL.");
+        this._url = wizard.textbox(tr("Please select the download URL."));
     }
 
     // get correct extension depending on URL

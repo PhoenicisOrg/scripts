@@ -57,7 +57,7 @@ var languages = [
     'Swedish',
     'Turkish'
 ];
-var selectedLanguage = setupWizard.menu('Which language version would you like to install?', languages);
+var selectedLanguage = setupWizard.menu(tr("Which language version would you like to install?"), languages);
 var setupLanguage = languages[selectedLanguage.index];
 
 var ie7link, ie7installer, ie7md5;
@@ -210,7 +210,7 @@ var progressBar = setupWizard.progressBar("Please wait...");
 var i = 1;
 librairiesToRegister.forEach(function (dll) {
     progressBar.setProgressPercentage(i * 100 / librairiesToRegister.length);
-    progressBar.setText("Installing " + dll);
+    progressBar.setText(tr("Installing {0}", dll));
     wine.regsvr32().install(dll);
     i++;
 });

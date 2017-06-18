@@ -34,7 +34,7 @@ var Downloader = function () {
     };
     that.get = function () {
         if (!that._message) {
-            that._message = "Please wait while {0} is downloaded ...".format(that._fetchFileNameFromUrl(that._url));
+            that._message = tr("Please wait while {0} is downloaded ...", that._fetchFileNameFromUrl(that._url));
         }
 
         if(that._wizard) {
@@ -54,8 +54,8 @@ var Downloader = function () {
                     .get();
 
                 if (fileChecksum != that._checksum) {
-                    var checksumErrorMessage = "Error while calculating checksum. \n\nExpected = {0}\nActual = {1}"
-                        .format(that._checksum, fileChecksum);
+                    var checksumErrorMessage = tr("Error while calculating checksum. \n\nExpected = {0}\nActual = {1}",
+                        that._checksum, fileChecksum);
 
                     that._wizard.message(checksumErrorMessage);
 
