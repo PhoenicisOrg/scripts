@@ -8,7 +8,7 @@ Wine.prototype.uplay = function() {
         .get();
 
     this.run(setupFile)
-        .wait("Please follow the steps of the Uplay setup.\n\nUncheck \"Run Uplay\" or close Uplay completely after the setup so that the installation can continue.");
+        .wait(tr("Please follow the steps of the Uplay setup.\n\nUncheck \"Run Uplay\" or close Uplay completely after the setup so that the installation can continue."));
 
     this.setOsForApplication().set("upc.exe", "winxp").do();
 

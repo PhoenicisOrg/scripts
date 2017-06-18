@@ -60,7 +60,7 @@ var _WineShortcutReader = function(shortcut) {
         this._shortcutManager.deleteShortcut(this.shortcut);
 
         if(!_found) {
-            this._uiQuestionFactory.create("The container " + _winePrefix + " is no longer used.\nDo you want to delete it?",
+            this._uiQuestionFactory.create(tr("The container {0} is no longer used.\nDo you want to delete it?", _winePrefix),
             function() {
                 remove(that._winePrefixesDirectory + _winePrefix);
             });

@@ -246,9 +246,9 @@ Wine.prototype.uninstall = function (application) {
     var uuid = list.match(re);
     if (uuid) {
         this.run("uninstaller", ["--remove", uuid[1]])
-            .wait("Please wait while {0} is uninstalled ...".format(application));
+            .wait(tr("Please wait while {0} is uninstalled ...", application));
     } else {
-        print("Could not uninstall {0}!".format(application));
+        print(tr("Could not uninstall {0}!", application));
     }
     return this;
 };
@@ -281,7 +281,7 @@ Wine.prototype.programFiles = function () {
 */
 Wine.prototype.wait = function (message) {
     if (this._wizard) {
-        this._wizard.wait(typeof message !== 'undefined' ? message : "Please wait...");
+        this._wizard.wait(typeof message !== 'undefined' ? message : tr("Please wait..."));
     }
 
     return this._silentWait();
@@ -429,7 +429,7 @@ Wine.prototype.system64directory = function () {
     if (fileExists(this.prefixDirectory + "/drive_c/windows/syswow64")) {
         return this.prefixDirectory + "/drive_c/windows/system32";
     }
-    throw "Prefix seems to be 32bits";
+    throw tr("Prefix seems to be 32bits");
 };
 
 /**
@@ -447,7 +447,7 @@ Wine.prototype._installVersion = function () {
     var wizard = this._wizard;
 
     if (!fileExists(localDirectory)) {
-        print("Installing version: " + this._version);
+        print(tr("Installing version: ", this._version));
 
         var wineJson = JSON.parse(this.getAvailableVersions());
 
@@ -794,7 +794,7 @@ Wine.prototype.nativeApplication = function (extension) {
             mimetype = "application/rtf";
             break;
         default:
-            throw "Could not determine mimetype for file extension \"" + extension +"\"";
+            throw tr("Could not determine mimetype for file extension \"{0}\"", extension);
     }
     var regeditFileContent =
         "REGEDIT4\n" +

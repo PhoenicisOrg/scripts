@@ -66,11 +66,11 @@ var librairiesToRegister = ["actxprxy.dll", "browseui.dll", "browsewm.dll", "cdf
     "wshcon.dll", "wshext.dll", "asctrls.ocx", "hhctrl.ocx", "mscomct2.ocx",
     "plugin.ocx", "proctexe.ocx", "tdc.ocx", "webcheck.dll", "wshom.ocx"];
 
-var progressBar = setupWizard.progressBar("Please wait...");
+var progressBar = setupWizard.progressBar(tr("Please wait..."));
 var i = 1;
 librairiesToRegister.forEach(function(dll) {
     progressBar.setProgressPercentage(i * 100 / librairiesToRegister.length);
-    progressBar.setText("Installing " + dll);
+    progressBar.setText(tr("Installing {0}", dll));
     wine.regsvr32().install(dll);
     i++;
 });
