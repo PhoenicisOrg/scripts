@@ -33,8 +33,7 @@ msgstr ""
 msgid "Please wait ..."
 msgstr ""
 
-#: Internet/Internet Explorer 6.0/Online/script.js:73
-#: Internet/Internet Explorer 7.0/Online/script.js:213
+#: Internet/Internet Explorer 6.0/Online/script.js:73 7.0/Online/script.js:213
 #: Functions/Verbs/corefonts/script.js:80
 #: Functions/Verbs/corefonts/script.js:86
 msgid "Installing {0} ..."
@@ -859,8 +858,8 @@ msgstr ""
 msgid "Please install Warcraft III before installing The Frozen Throne."
 msgstr ""
 
-#: Games/Origin/Local (Legacy)/script.js:14
-#: Games/Origin/Online (Legacy)/script.js:13
+#: Games/Origin/Local (Legacy)/script.js:14 Games/Origin/Online
+#: (Legacy)/script.js:13
 msgid ""
 "When Origin launches, you will get an error message (\"Your update could not "
 "be completed.\"). This is ok. Just close the popup."
