@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-18 13:47+0200\n"
+"POT-Creation-Date: 2017-06-18 18:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -537,14 +537,22 @@ msgid "Online Installer"
 msgstr ""
 
 #: i18n/json_string.js:86
-msgid "Other"
+msgid "Origin"
 msgstr ""
 
 #: i18n/json_string.js:87
-msgid "PAYDAY™ The Heist"
+msgid "Origin is EA's PC games portal."
 msgstr ""
 
 #: i18n/json_string.js:88
+msgid "Other"
+msgstr ""
+
+#: i18n/json_string.js:89
+msgid "PAYDAY™ The Heist"
+msgstr ""
+
+#: i18n/json_string.js:90
 msgid ""
 "Paradise City is the largest and most dangerous setting yet for the best-"
 "selling Burnout series. The massive setting gives players an open-ended "
@@ -556,19 +564,19 @@ msgid ""
 "improved damage system."
 msgstr ""
 
-#: i18n/json_string.js:89
+#: i18n/json_string.js:91
 msgid "Photofiltre"
 msgstr ""
 
-#: i18n/json_string.js:90
+#: i18n/json_string.js:92
 msgid "Prince of Persia®: The Sands of Time"
 msgstr ""
 
-#: i18n/json_string.js:91
+#: i18n/json_string.js:93
 msgid "Q.U.B.E: Director's Cut"
 msgstr ""
 
-#: i18n/json_string.js:92
+#: i18n/json_string.js:94
 msgid ""
 "Q.U.B.E: Director's Cut is the definitive version of the brain-twisting "
 "first-person puzzler. Using special high-tech gloves to manipulate cubes in "
@@ -576,23 +584,23 @@ msgid ""
 "based challenges; to 3D jigsaws; to platform-based trials. "
 msgstr ""
 
-#: i18n/json_string.js:93
+#: i18n/json_string.js:95
 msgid "Quantum Conundrum"
 msgstr ""
 
-#: i18n/json_string.js:94
+#: i18n/json_string.js:96
 msgid "Rayman® Origins"
 msgstr ""
 
-#: i18n/json_string.js:95
+#: i18n/json_string.js:97
 msgid "Relive Half-Life in this highly acclaimed, fan-made recreation"
 msgstr ""
 
-#: i18n/json_string.js:96
+#: i18n/json_string.js:98
 msgid "Resident Evil 3"
 msgstr ""
 
-#: i18n/json_string.js:97
+#: i18n/json_string.js:99
 msgid ""
 "Resident Evil 3: Nemesis, known in Japan as Biohazard 3: Last Escape (バイオ"
 "ハザード3　ラストエスケープ), is a survival horror video game and the sequel "
@@ -603,149 +611,149 @@ msgid ""
 "character model graphics and higher resolutions."
 msgstr ""
 
-#: i18n/json_string.js:98
+#: i18n/json_string.js:100
 msgid ""
 "Ride your music. Audiosurf is a music-adapting puzzle racer where you use "
 "your own music to create your own experience. The shape, the speed, and the "
 "mood of each ride is determined by the song you choose."
 msgstr ""
 
-#: i18n/json_string.js:99
+#: i18n/json_string.js:101
 msgid "Rocksmith® 2014"
 msgstr ""
 
-#: i18n/json_string.js:100
+#: i18n/json_string.js:102
 msgid ""
 "Rocksmith’s innovative game design makes playing music visually intuitive "
 "and will engage experienced musicians as well as those who have never picked "
 "up a guitar in their lives."
 msgstr ""
 
-#: i18n/json_string.js:101
+#: i18n/json_string.js:103
 msgid "Rocksmith™"
 msgstr ""
 
-#: i18n/json_string.js:102
+#: i18n/json_string.js:104
 msgid ""
 "SBBP is a 2D platformer with pixel graphics. Blue boy’s girlfriend is "
 "kidnapped by aliens so he goes through 21 levels to save her and he also "
 "fight bosses along the way."
 msgstr ""
 
-#: i18n/json_string.js:103
+#: i18n/json_string.js:105
 msgid "STAR WARS™ Battlefront™ II"
 msgstr ""
 
-#: i18n/json_string.js:104
+#: i18n/json_string.js:106
 msgid "STAR WARS™ Jedi Knight - Jedi Academy™"
 msgstr ""
 
-#: i18n/json_string.js:105
+#: i18n/json_string.js:107
 msgid "STAR WARS™ Jedi Knight - Mysteries of the Sith™"
 msgstr ""
 
-#: i18n/json_string.js:106
+#: i18n/json_string.js:108
 msgid "STAR WARS™ Jedi Knight II - Jedi Outcast™"
 msgstr ""
 
-#: i18n/json_string.js:107
+#: i18n/json_string.js:109
 msgid "STAR WARS™ Jedi Knight: Dark Forces II"
 msgstr ""
 
-#: i18n/json_string.js:108
+#: i18n/json_string.js:110
 msgid "STAR WARS™: Dark Forces"
 msgstr ""
 
-#: i18n/json_string.js:109
+#: i18n/json_string.js:111
 msgid "Science"
 msgstr ""
 
-#: i18n/json_string.js:110
+#: i18n/json_string.js:112
 msgid "Scribblenauts Unlimited"
 msgstr ""
 
-#: i18n/json_string.js:111
+#: i18n/json_string.js:113
 msgid "Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad"
 msgstr ""
 
-#: i18n/json_string.js:112
+#: i18n/json_string.js:114
 msgid "Steam"
 msgstr ""
 
-#: i18n/json_string.js:113
+#: i18n/json_string.js:115
 msgid ""
 "Steam is a digital distribution platform developed by Valve Corporation, "
 "which offers digital rights management (DRM), multiplayer gaming, video "
 "streaming and social networking services."
 msgstr ""
 
-#: i18n/json_string.js:114
+#: i18n/json_string.js:116
 msgid "Super Blue Boy Planet"
 msgstr ""
 
-#: i18n/json_string.js:115
+#: i18n/json_string.js:117
 msgid ""
 "Take on the role of a hardened career criminal executing intense, dynamic "
 "heists in constant pursuit of the next “big score”"
 msgstr ""
 
-#: i18n/json_string.js:116
+#: i18n/json_string.js:118
 msgid "TeamSpeak 3"
 msgstr ""
 
-#: i18n/json_string.js:117
+#: i18n/json_string.js:119
 msgid ""
 "TeamSpeak 3 offers the ideal voice communication tool for online gaming, "
 "education and training, internal business communication, and staying in "
 "touch with friends and family."
 msgstr ""
 
-#: i18n/json_string.js:118
+#: i18n/json_string.js:120
 msgid ""
 "The Blizzard desktop app is designed to improve your gaming experience. "
 "It’ll streamline your login and make it even easier to keep up with your "
 "friends!"
 msgstr ""
 
-#: i18n/json_string.js:119
+#: i18n/json_string.js:121
 msgid "The Elder Scrolls V: Skyrim"
 msgstr ""
 
-#: i18n/json_string.js:120
+#: i18n/json_string.js:122
 msgid ""
 "The Legacy of Star Wars Dark Forces™ and Star Wars® Jedi Knight lives on in "
 "the intense first-person action of Jedi Outcast. "
 msgstr ""
 
-#: i18n/json_string.js:121
+#: i18n/json_string.js:123
 msgid ""
 "The Local Installer allows you to install custom applications from your "
 "local computer."
 msgstr ""
 
-#: i18n/json_string.js:122
+#: i18n/json_string.js:124
 msgid ""
 "The Online Installer allows you to install custom applications from the "
 "Internet."
 msgstr ""
 
-#: i18n/json_string.js:123
+#: i18n/json_string.js:125
 msgid "The Room"
 msgstr ""
 
-#: i18n/json_string.js:124
+#: i18n/json_string.js:126
 msgid "The Vanishing of Ethan Carter"
 msgstr ""
 
-#: i18n/json_string.js:125
+#: i18n/json_string.js:127
 msgid "The Vanishing of Ethan Carter Redux"
 msgstr ""
 
-#: i18n/json_string.js:126 i18n/json_string.js:127
+#: i18n/json_string.js:128 i18n/json_string.js:129
 msgid "The Vanishing of Ethan Carter is a first-person story-driven mystery."
 msgstr ""
 
-#: i18n/json_string.js:128
+#: i18n/json_string.js:130
 msgid ""
 "The fastest way to learn guitar is now better than ever. Join over three "
 "million people who have learned to play guitar with the award-winning "
@@ -753,30 +761,30 @@ msgid ""
 "directly into your PC or Mac and you’ll learn to play in just 60 days."
 msgstr ""
 
-#: i18n/json_string.js:129
+#: i18n/json_string.js:131
 msgid ""
 "Those intrepid invertebrates return with a vengeance in the much-loved "
 "Worms™ Armageddon. It’s a whole new can of worms! It’s hilarious fun that "
 "you can enjoy on your own or with all your friends."
 msgstr ""
 
-#: i18n/json_string.js:130
+#: i18n/json_string.js:132
 msgid "Tom Clancy's Splinter Cell®"
 msgstr ""
 
-#: i18n/json_string.js:131
+#: i18n/json_string.js:133
 msgid "Tropico 3"
 msgstr ""
 
-#: i18n/json_string.js:132
+#: i18n/json_string.js:134
 msgid "Uplay"
 msgstr ""
 
-#: i18n/json_string.js:133
+#: i18n/json_string.js:135
 msgid "Uplay is Ubisoft's PC games portal."
 msgstr ""
 
-#: i18n/json_string.js:134
+#: i18n/json_string.js:136
 msgid ""
 "Venture into a wide-open world where the most powerful tool is your "
 "imagination. Help Maxwell solve robust puzzles in seamless, free-roaming "
@@ -785,7 +793,7 @@ msgid ""
 "Steam Workshop – to be used in game or further modified as you like!"
 msgstr ""
 
-#: i18n/json_string.js:135
+#: i18n/json_string.js:137
 msgid ""
 "Warcraft III: The Frozen Throne adds a host of new features to the game, "
 "including four new campaigns that take you across the frozen continent of "
@@ -794,15 +802,15 @@ msgid ""
 "<br><br>Install Warcraft III first."
 msgstr ""
 
-#: i18n/json_string.js:136
+#: i18n/json_string.js:138
 msgid "Warcraft® III: Reign of Chaos®"
 msgstr ""
 
-#: i18n/json_string.js:137
+#: i18n/json_string.js:139
 msgid "Warcraft® III: The Frozen Throne®"
 msgstr ""
 
-#: i18n/json_string.js:138
+#: i18n/json_string.js:140
 msgid ""
 "Winner of more than 200 Game of the Year Awards, Skyrim Special Edition "
 "brings the epic fantasy to life in stunning detail. The Special Edition "
@@ -814,15 +822,15 @@ msgid ""
 "there are no limits to what you can experience."
 msgstr ""
 
-#: i18n/json_string.js:139
+#: i18n/json_string.js:141
 msgid "Worms Armageddon"
 msgstr ""
 
-#: i18n/json_string.js:140
+#: i18n/json_string.js:142
 msgid "Worms™ Reloaded"
 msgstr ""
 
-#: i18n/json_string.js:141
+#: i18n/json_string.js:143
 msgid ""
 "Worms™ Reloaded is a turn-based computer games developed by Team17 Software. "
 "Players control a small platoon of earthworms across a deformable landscape, "
@@ -831,11 +839,11 @@ msgid ""
 "weapons."
 msgstr ""
 
-#: i18n/json_string.js:142
+#: i18n/json_string.js:144
 msgid "You take part in the ancient traditional game of Druid Soccer."
 msgstr ""
 
-#: i18n/json_string.js:143
+#: i18n/json_string.js:145
 msgid "mIRC"
 msgstr ""
 
@@ -845,6 +853,13 @@ msgstr ""
 
 #: Games/Warcraft III TFT/Online/script.js:13
 msgid "Please install Warcraft III before installing The Frozen Throne."
+msgstr ""
+
+#: Games/Origin/Local (Legacy)/script.js:14
+#: Games/Origin/Online (Legacy)/script.js:13
+msgid ""
+"When Origin launches, you will get an error message (\"Your update could not "
+"be completed.\"). This is ok. Just close the popup."
 msgstr ""
 
 #: Functions/QuickScript/OnlineInstallerScript/script.js:32
