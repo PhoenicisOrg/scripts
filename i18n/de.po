@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-18 18:34+0200\n"
-"PO-Revision-Date: 2017-06-18 18:38+0200\n"
+"POT-Creation-Date: 2017-06-19 19:03+0200\n"
+"PO-Revision-Date: 2017-06-19 19:05+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -29,13 +29,17 @@ msgstr ""
 #: Functions/QuickScript/SteamScript/script.js:129
 #: Functions/QuickScript/SteamScript/script.js:134
 #: Functions/QuickScript/SteamScript/script.js:180
-#: Functions/Verbs/corefonts/script.js:79 Functions/Engines/Wine/script.js:284
-msgid "Please wait..."
+#: Functions/Verbs/d3dx9/script.js:30 Functions/Verbs/corefonts/script.js:79
+#: Functions/Verbs/dotnet40/script.js:21 Functions/Verbs/dotnet40/script.js:37
+#: Functions/Verbs/dotnet40/script.js:39 Functions/Engines/Wine/script.js:284
+msgid "Please wait ..."
 msgstr "Bitte warten..."
 
 #: Internet/Internet Explorer 6.0/Online/script.js:73 7.0/Online/script.js:213
-msgid "Installing {0}"
-msgstr "Installiere {0}"
+#: Functions/Verbs/corefonts/script.js:80
+#: Functions/Verbs/corefonts/script.js:86
+msgid "Installing {0} ..."
+msgstr "Installiere {0} ..."
 
 #: Internet/Internet Explorer 7.0/Online/script.js:60
 msgid "Which language version would you like to install?"
@@ -1178,8 +1182,8 @@ msgstr ""
 "kann."
 
 #: Functions/QuickScript/UplayScript/script.js:85
-msgid "Please wait until Uplay has finished the download..."
-msgstr "Bitte warten Sie bis Uplay den Download beendet hat..."
+msgid "Please wait until Uplay has finished the download ..."
+msgstr "Bitte warten Sie bis Uplay den Download beendet hat ..."
 
 #: Functions/QuickScript/UplayScript/script.js:93
 msgid "Please close Uplay."
@@ -1224,8 +1228,8 @@ msgstr ""
 
 #: Functions/QuickScript/SteamScript/script.js:152
 #: Functions/QuickScript/SteamScript/script.js:162
-msgid "Please wait until Steam has finished the download..."
-msgstr "Bitte warten Sie bis Steam den Download beendet hat..."
+msgid "Please wait until Steam has finished the download ..."
+msgstr "Bitte warten Sie bis Steam den Download beendet hat ..."
 
 #: Functions/QuickScript/SteamScript/script.js:157
 msgid "Downloaded {0} of {1} bytes"
@@ -1247,23 +1251,15 @@ msgstr "{0} von {1} Bytes heruntergeladen"
 msgid "Please wait while {0} is installed ..."
 msgstr "Bitte warten Sie während {0} installiert wird..."
 
-#: Functions/Verbs/d3dx9/script.js:10
-msgid "Extracting: {0}"
-msgstr "Extrahiere: {0}"
-
-#: Functions/Verbs/d3dx9/script.js:11
-msgid "Extracting DirectX 9..."
-msgstr "Extrahiere DirectX 9..."
+#: Functions/Verbs/d3dx9/script.js:10 Functions/Verbs/d3dx9/script.js:11
+#: Functions/Verbs/d3dx9/script.js:31
+msgid "Extracting {0} ..."
+msgstr "Extrahiere {0} ..."
 
 #: Functions/Verbs/corefonts/script.js:80
 #: Functions/Verbs/corefonts/script.js:86
-msgid "Installing fonts..."
-msgstr "Installiere Schriftarten..."
-
-#: Functions/Verbs/dotnet40/script.js:21 Functions/Verbs/dotnet40/script.js:37
-#: Functions/Verbs/dotnet40/script.js:39
-msgid "Please wait ..."
-msgstr "Bitte warten ..."
+msgid "fonts"
+msgstr "Schriftarten"
 
 #: Functions/Verbs/uplay/script.js:11
 msgid ""
@@ -1316,14 +1312,10 @@ msgid "Please wait while {0} is extracted ..."
 msgstr "Bitte warten Sie während {0} extrahiert wird ..."
 
 #: Functions/Filesystem/Files/script.js:63
-msgid "Checking file consistency..."
-msgstr "Dateikonsistenz wird geprüft..."
+msgid "Checking file consistency ..."
+msgstr "Dateikonsistenz wird geprüft ..."
 
-#: Functions/Net/Resource/script.js:47
-msgid "Please wait while {0} is downloaded..."
-msgstr "Bitte warten Sie während {0} heruntergeladen wird..."
-
-#: Functions/Net/Download/script.js:37
+#: Functions/Net/Resource/script.js:47 Functions/Net/Download/script.js:37
 msgid "Please wait while {0} is downloaded ..."
 msgstr "Bitte warten Sie während {0} heruntergeladen wird ..."
 
@@ -1338,6 +1330,15 @@ msgstr ""
 "\n"
 "Erwartet = {0}\n"
 "Tatsächlich = {1}"
+
+#~ msgid "Extracting DirectX 9..."
+#~ msgstr "Extrahiere DirectX 9..."
+
+#~ msgid "Installing fonts..."
+#~ msgstr "Installiere Schriftarten..."
+
+#~ msgid "Please wait while {0} is downloaded..."
+#~ msgstr "Bitte warten Sie während {0} heruntergeladen wird..."
 
 #~ msgid "Notepad++ is a free (as in "
 #~ msgstr ""

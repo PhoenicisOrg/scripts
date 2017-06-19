@@ -63,12 +63,12 @@ UplayScript.prototype.go = function() {
     wine.setOsForApplication().set("upc.exe", "winxp").do();
 
     // Uplay installation has finished
-    setupWizard.wait(tr("Please wait..."));
+    setupWizard.wait(tr("Please wait ..."));
 
     this._preInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in preInstall)
-    setupWizard.wait(tr("Please wait..."));
+    setupWizard.wait(tr("Please wait ..."));
 
     new WineShortcut()
         .name(this._name)
@@ -82,7 +82,7 @@ UplayScript.prototype.go = function() {
     wine.runInsidePrefix(wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/Uplay.exe", ["uplay://launch/" + this._appId + "/0"]);
 
     // wait until download is finished
-    setupWizard.wait(tr("Please wait until Uplay has finished the download..."));
+    setupWizard.wait(tr("Please wait until Uplay has finished the download ..."));
     while (!this.downloadStarted(wine)) {
         java.lang.Thread.sleep(100);
     }
@@ -95,7 +95,7 @@ UplayScript.prototype.go = function() {
     this._postInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in postInstall)
-    setupWizard.wait(tr("Please wait..."));
+    setupWizard.wait(tr("Please wait ..."));
 
     setupWizard.close();
 };

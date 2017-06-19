@@ -44,7 +44,7 @@ var Resource = function () {
 
     that.get = function () {
         if (!that._message) {
-            that._message = tr("Please wait while {0} is downloaded...", that._name);
+            that._message = tr("Please wait while {0} is downloaded ...", that._name);
         }
 
         var resourcesPath = that._resourcesPath + "/" + that._directory;

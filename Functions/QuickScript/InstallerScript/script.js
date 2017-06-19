@@ -78,7 +78,7 @@ InstallerScript.prototype.go = function() {
     this._preInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in preInstall)
-    setupWizard.wait("Please wait...");
+    setupWizard.wait("Please wait ...");
 
     wine.run(installationCommand.command, installationCommand.args)
         .wait();
@@ -100,7 +100,7 @@ InstallerScript.prototype.go = function() {
     this._postInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in postInstall)
-    setupWizard.wait(tr("Please wait..."));
+    setupWizard.wait(tr("Please wait ..."));
 
     setupWizard.close();
 };

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-18 18:34+0200\n"
+"POT-Creation-Date: 2017-06-19 19:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,13 +27,17 @@ msgstr ""
 #: Functions/QuickScript/SteamScript/script.js:129
 #: Functions/QuickScript/SteamScript/script.js:134
 #: Functions/QuickScript/SteamScript/script.js:180
-#: Functions/Verbs/corefonts/script.js:79 Functions/Engines/Wine/script.js:284
-msgid "Please wait..."
+#: Functions/Verbs/d3dx9/script.js:30 Functions/Verbs/corefonts/script.js:79
+#: Functions/Verbs/dotnet40/script.js:21 Functions/Verbs/dotnet40/script.js:37
+#: Functions/Verbs/dotnet40/script.js:39 Functions/Engines/Wine/script.js:284
+msgid "Please wait ..."
 msgstr ""
 
 #: Internet/Internet Explorer 6.0/Online/script.js:73
 #: Internet/Internet Explorer 7.0/Online/script.js:213
-msgid "Installing {0}"
+#: Functions/Verbs/corefonts/script.js:80
+#: Functions/Verbs/corefonts/script.js:86
+msgid "Installing {0} ..."
 msgstr ""
 
 #: Internet/Internet Explorer 7.0/Online/script.js:60
@@ -875,7 +879,7 @@ msgid ""
 msgstr ""
 
 #: Functions/QuickScript/UplayScript/script.js:85
-msgid "Please wait until Uplay has finished the download..."
+msgid "Please wait until Uplay has finished the download ..."
 msgstr ""
 
 #: Functions/QuickScript/UplayScript/script.js:93
@@ -916,7 +920,7 @@ msgstr ""
 
 #: Functions/QuickScript/SteamScript/script.js:152
 #: Functions/QuickScript/SteamScript/script.js:162
-msgid "Please wait until Steam has finished the download..."
+msgid "Please wait until Steam has finished the download ..."
 msgstr ""
 
 #: Functions/QuickScript/SteamScript/script.js:157
@@ -939,22 +943,14 @@ msgstr ""
 msgid "Please wait while {0} is installed ..."
 msgstr ""
 
-#: Functions/Verbs/d3dx9/script.js:10
-msgid "Extracting: {0}"
-msgstr ""
-
-#: Functions/Verbs/d3dx9/script.js:11
-msgid "Extracting DirectX 9..."
+#: Functions/Verbs/d3dx9/script.js:10 Functions/Verbs/d3dx9/script.js:11
+#: Functions/Verbs/d3dx9/script.js:31
+msgid "Extracting {0} ..."
 msgstr ""
 
 #: Functions/Verbs/corefonts/script.js:80
 #: Functions/Verbs/corefonts/script.js:86
-msgid "Installing fonts..."
-msgstr ""
-
-#: Functions/Verbs/dotnet40/script.js:21 Functions/Verbs/dotnet40/script.js:37
-#: Functions/Verbs/dotnet40/script.js:39
-msgid "Please wait ..."
+msgid "fonts"
 msgstr ""
 
 #: Functions/Verbs/uplay/script.js:11
@@ -1001,14 +997,10 @@ msgid "Please wait while {0} is extracted ..."
 msgstr ""
 
 #: Functions/Filesystem/Files/script.js:63
-msgid "Checking file consistency..."
+msgid "Checking file consistency ..."
 msgstr ""
 
-#: Functions/Net/Resource/script.js:47
-msgid "Please wait while {0} is downloaded..."
-msgstr ""
-
-#: Functions/Net/Download/script.js:37
+#: Functions/Net/Resource/script.js:47 Functions/Net/Download/script.js:37
 msgid "Please wait while {0} is downloaded ..."
 msgstr ""
 

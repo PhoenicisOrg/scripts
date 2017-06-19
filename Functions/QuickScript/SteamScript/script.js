@@ -126,12 +126,12 @@ SteamScript.prototype.go = function() {
         .wait(tr("Please follow the steps of the Steam setup.\n\nUncheck \"Run Steam\" or close Steam completely after the setup so that the installation of \"{0}\" can continue.", this._name));
 
     // Steam installation has finished
-    setupWizard.wait(tr("Please wait..."));
+    setupWizard.wait(tr("Please wait ..."));
 
     this._preInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in preInstall)
-    setupWizard.wait(tr("Please wait..."));
+    setupWizard.wait(tr("Please wait ..."));
 
     new WineShortcut()
         .name(this._name)
@@ -149,7 +149,7 @@ SteamScript.prototype.go = function() {
 
     var bytesToDownload = this.getBytesToDownload(wine);
     var bytesDownloaded = 0;
-    var progressBar = setupWizard.progressBar(tr("Please wait until Steam has finished the download..."));
+    var progressBar = setupWizard.progressBar(tr("Please wait until Steam has finished the download ..."));
     while (bytesDownloaded < bytesToDownload)
     {
         bytesDownloaded = this.getBytesDownloaded(wine);
@@ -159,7 +159,7 @@ SteamScript.prototype.go = function() {
     }
 
     // make sure download is really finished (download folder file size is not exact)
-    setupWizard.wait(tr("Please wait until Steam has finished the download..."));
+    setupWizard.wait(tr("Please wait until Steam has finished the download ..."));
     while (!this.downloadFinished(wine)) {
         java.lang.Thread.sleep(1000);
     }
@@ -177,7 +177,7 @@ SteamScript.prototype.go = function() {
     }
 
     // back to generic wait (might have been changed in postInstall)
-    setupWizard.wait(tr("Please wait..."));
+    setupWizard.wait(tr("Please wait ..."));
 
     setupWizard.close();
 };
