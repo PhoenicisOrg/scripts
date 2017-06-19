@@ -60,7 +60,7 @@ var Checksum = function () {
     };
     that.get = function () {
         if(that._wizard) {
-            var progressBar = that._wizard.progressBar(tr("Checking file consistency..."));
+            var progressBar = that._wizard.progressBar(tr("Checking file consistency ..."));
         }
 
         return that._checksumCalculator.calculate(that._file, that._method, function (progressEntity) {
