@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-19 19:49+0200\n"
-"PO-Revision-Date: 2017-06-19 19:05+0200\n"
+"POT-Creation-Date: 2017-06-23 16:43+0200\n"
+"PO-Revision-Date: 2017-06-23 16:44+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -202,6 +202,21 @@ msgstr ""
 "einer ständig wachsenden Anzahl an Champions, häufigen Aktualisierungen und "
 "einer blühenden Wettkampfszene unbegrenzte Wiederspielbarkeit für Spieler "
 "jeden Niveaus."
+
+#: i18n/tmp/Games/The Room Two/application.js:1
+msgid "The Room Two"
+msgstr "The Room Two"
+
+#: i18n/tmp/Games/The Room Two/application.js:2
+msgid ""
+"Unique events transport you to the halls of a long-forgotten crypt. The only "
+"means of escape lies locked within a stone pedestal, along with a note from "
+"your mysterious ally. His words promise assistance, but only serve to entice "
+"you into a compelling world of mystery and exploration."
+msgstr ""
+"Einzigartige Ereignisse bringen dich in die Hallen einer lange vergessenen "
+"Gruft. Das einzige Fluchtmittel ist in einem Steinsockel eingeschlossen und "
+"anbei findest du eine Notiz von deinem geheimnisvollen Verbündeten."
 
 #: i18n/tmp/Games/Tom Clancy's Splinter Cell/application.js:1
 msgid "Tom Clancy's Splinter Cell®"

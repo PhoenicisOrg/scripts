@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-19 19:49+0200\n"
+"POT-Creation-Date: 2017-06-23 16:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -173,6 +173,18 @@ msgid ""
 "across multiple battlefields and game modes. With an ever-expanding roster "
 "of champions, frequent updates and a thriving tournament scene, League of "
 "Legends offers endless replayability for players of every skill level."
+msgstr ""
+
+#: i18n/tmp/Games/The Room Two/application.js:1
+msgid "The Room Two"
+msgstr ""
+
+#: i18n/tmp/Games/The Room Two/application.js:2
+msgid ""
+"Unique events transport you to the halls of a long-forgotten crypt. The only "
+"means of escape lies locked within a stone pedestal, along with a note from "
+"your mysterious ally. His words promise assistance, but only serve to entice "
+"you into a compelling world of mystery and exploration."
 msgstr ""
 
 #: i18n/tmp/Games/Tom Clancy's Splinter Cell/application.js:1
