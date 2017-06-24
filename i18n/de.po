@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-19 19:49+0200\n"
-"PO-Revision-Date: 2017-06-19 19:05+0200\n"
+"POT-Creation-Date: 2017-06-23 19:31+0200\n"
+"PO-Revision-Date: 2017-06-23 19:32+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -376,6 +376,26 @@ msgstr "Origin"
 #: i18n/tmp/Games/Origin/application.js:2
 msgid "Origin is EA's PC games portal."
 msgstr "Origin ist EA's Portal für PC-Spiele."
+
+#: i18n/tmp/Games/Mafia II/application.js:1
+msgid "Mafia II"
+msgstr "Mafia II"
+
+#: i18n/tmp/Games/Mafia II/application.js:2
+msgid ""
+"Vito Scaletta has started to make a name for himself on the streets of "
+"Empire Bay as someone who can be trusted to get a job done. Together with "
+"his buddy Joe, he is working to prove himself to the Mafia, quickly "
+"escalating up the family ladder with crimes of larger reward, status and "
+"consequence… the life as a wise guy isn’t quite as untouchable as it seems."
+msgstr ""
+"Vito Scaletta hat sich auf den Straßen von Empire Bay einen Namen gemacht "
+"als jemand, der Angelegenheiten vertraulich regeln kann. Zusammen mit seinem "
+"Freund Joe arbeitet er daran sich in den Rängen der Mafia zu beweisen und "
+"zielstrebig die Karriereleiter der Familie zu erklimmen und sich für "
+"Machenschaften mit größerem Gewinn, mehr Ansehen und schlimmeren "
+"Konsequenzen zu empfehlen… aber das Leben als Mafioso ist weit gefährlicher, "
+"als es scheint."
 
 #: i18n/tmp/Games/Druid Soccer/application.js:1
 msgid "Druid Soccer"
