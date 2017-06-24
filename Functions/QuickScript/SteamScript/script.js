@@ -133,15 +133,6 @@ SteamScript.prototype.go = function() {
     // back to generic wait (might have been changed in preInstall)
     setupWizard.wait(tr("Please wait ..."));
 
-    new WineShortcut()
-        .name(this._name)
-        .category(this._category)
-        .prefix(wine.prefix())
-        .search(this._executable)
-        .arguments(this._executableArgs)
-        .miniature([this._category, this._name])
-        .create();
-
     // TODO enable "-silent" when progress bar works
     // disabled it for now so the users can see the download progress
     //wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", ["-silent", "-applaunch", this._appId]);
@@ -166,6 +157,19 @@ SteamScript.prototype.go = function() {
 
     // close Steam
     wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", "-shutdown");
+
+    // back to generic wait
+    setupWizard.wait(tr("Please wait ..."));
+
+    // create shortcut after installation (if executable is specified, it does not exist earlier)
+    new WineShortcut()
+        .name(this._name)
+        .category(this._category)
+        .prefix(wine.prefix())
+        .search(this._executable)
+        .arguments(this._executableArgs)
+        .miniature([this._category, this._name])
+        .create();
 
     this._postInstall(wine, setupWizard);
 
