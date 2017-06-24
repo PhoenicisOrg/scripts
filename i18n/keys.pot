@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 16:43+0200\n"
+"POT-Creation-Date: 2017-06-23 19:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -318,6 +318,19 @@ msgstr ""
 
 #: i18n/tmp/Games/Origin/application.js:2
 msgid "Origin is EA's PC games portal."
+msgstr ""
+
+#: i18n/tmp/Games/Mafia II/application.js:1
+msgid "Mafia II"
+msgstr ""
+
+#: i18n/tmp/Games/Mafia II/application.js:2
+msgid ""
+"Vito Scaletta has started to make a name for himself on the streets of "
+"Empire Bay as someone who can be trusted to get a job done. Together with "
+"his buddy Joe, he is working to prove himself to the Mafia, quickly "
+"escalating up the family ladder with crimes of larger reward, status and "
+"consequence… the life as a wise guy isn’t quite as untouchable as it seems."
 msgstr ""
 
 #: i18n/tmp/Games/Druid Soccer/application.js:1

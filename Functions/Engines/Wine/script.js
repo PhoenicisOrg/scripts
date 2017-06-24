@@ -3,7 +3,7 @@ include(["Functions", "Filesystem", "Extract"]);
 include(["Functions", "Net", "Download"]);
 include(["Functions", "Net", "Resource"]);
 
-LATEST_STABLE_VERSION = "2.0";
+LATEST_STABLE_VERSION = "2.0.1";
 
 /**
  * Wine main prototype
