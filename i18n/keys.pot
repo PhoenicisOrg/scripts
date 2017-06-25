@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-24 16:50+0200\n"
+"POT-Creation-Date: 2017-06-25 19:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,115 +17,199 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Internet/Internet Explorer 6.0/Online/script.js:69
-#: Functions/QuickScript/UplayScript/script.js:66
-#: Functions/QuickScript/UplayScript/script.js:71
-#: Functions/QuickScript/UplayScript/script.js:98
-#: Functions/QuickScript/ZipScript/script.js:45
-#: Functions/QuickScript/ZipScript/script.js:72
+#: Functions/Engines/Wine/script.js:249
+msgid "Please wait while {0} is uninstalled ..."
+msgstr ""
+
+#: Functions/Engines/Wine/script.js:251
+msgid "Could not uninstall {0}!"
+msgstr ""
+
+#: Functions/Engines/Wine/script.js:284
 #: Functions/QuickScript/InstallerScript/script.js:103
 #: Functions/QuickScript/SteamScript/script.js:129
 #: Functions/QuickScript/SteamScript/script.js:134
 #: Functions/QuickScript/SteamScript/script.js:162
 #: Functions/QuickScript/SteamScript/script.js:184
-#: Functions/Verbs/d3dx9/script.js:30 Functions/Verbs/corefonts/script.js:79
+#: Functions/QuickScript/UplayScript/script.js:66
+#: Functions/QuickScript/UplayScript/script.js:71
+#: Functions/QuickScript/UplayScript/script.js:98
+#: Functions/QuickScript/ZipScript/script.js:45
+#: Functions/QuickScript/ZipScript/script.js:72
+#: Functions/Verbs/corefonts/script.js:79 Functions/Verbs/d3dx9/script.js:30
 #: Functions/Verbs/dotnet40/script.js:21 Functions/Verbs/dotnet40/script.js:37
-#: Functions/Verbs/dotnet40/script.js:39 Functions/Engines/Wine/script.js:284
+#: Functions/Verbs/dotnet40/script.js:39
+#: Internet/Internet Explorer 6.0/Online/script.js:69
 msgid "Please wait ..."
 msgstr ""
 
-#: Internet/Internet Explorer 6.0/Online/script.js:73
-#: Internet/Internet Explorer 7.0/Online/script.js:213
+#: Functions/Engines/Wine/script.js:432
+msgid "Prefix seems to be 32bits"
+msgstr ""
+
+#: Functions/Engines/Wine/script.js:450
+msgid "Installing version: "
+msgstr ""
+
+#: Functions/Engines/Wine/script.js:797
+msgid "Could not determine mimetype for file extension \"{0}\""
+msgstr ""
+
+#: Functions/Filesystem/Extract/script.js:28
+#: Functions/Filesystem/Extract/script.js:73
+msgid "Please wait while {0} is extracted ..."
+msgstr ""
+
+#: Functions/Filesystem/Files/script.js:63
+msgid "Checking file consistency ..."
+msgstr ""
+
+#: Functions/Net/Download/script.js:37 Functions/Net/Resource/script.js:47
+msgid "Please wait while {0} is downloaded ..."
+msgstr ""
+
+#: Functions/Net/Download/script.js:57
+msgid ""
+"Error while calculating checksum. \n"
+"\n"
+"Expected = {0}\n"
+"Actual = {1}"
+msgstr ""
+
+#: Functions/QuickScript/InstallerScript/script.js:23
+msgid "Please enter the name of your application."
+msgstr ""
+
+#: Functions/QuickScript/InstallerScript/script.js:38
+msgid "Please select the wine architecture."
+msgstr ""
+
+#: Functions/QuickScript/InstallerScript/script.js:52
+msgid "Please select the wine distribution."
+msgstr ""
+
+#: Functions/QuickScript/InstallerScript/script.js:66
+msgid "Please select the wine version."
+msgstr ""
+
+#: Functions/QuickScript/InstallerScript/script.js:88
+msgid "Please select the executable."
+msgstr ""
+
+#: Functions/QuickScript/LocalInstallerScript/script.js:23
+msgid "Please select the installation file."
+msgstr ""
+
+#: Functions/QuickScript/OnlineInstallerScript/script.js:32
+msgid "Please select the download URL."
+msgstr ""
+
+#: Functions/QuickScript/SteamScript/script.js:126
+msgid ""
+"Please follow the steps of the Steam setup.\n"
+"\n"
+"Uncheck \"Run Steam\" or close Steam completely after the setup so that the "
+"installation of \"{0}\" can continue."
+msgstr ""
+
+#: Functions/QuickScript/SteamScript/script.js:143
+#: Functions/QuickScript/SteamScript/script.js:153
+msgid "Please wait until Steam has finished the download ..."
+msgstr ""
+
+#: Functions/QuickScript/SteamScript/script.js:148
+msgid "Downloaded {0} of {1} bytes"
+msgstr ""
+
+#: Functions/QuickScript/UplayScript/script.js:61
+msgid ""
+"Please follow the steps of the Uplay setup.\n"
+"\n"
+"Uncheck \"Run Uplay\" or close Uplay completely after the setup so that the "
+"installation of \"{0}\" can continue."
+msgstr ""
+
+#: Functions/QuickScript/UplayScript/script.js:85
+msgid "Please wait until Uplay has finished the download ..."
+msgstr ""
+
+#: Functions/QuickScript/UplayScript/script.js:93
+msgid "Please close Uplay."
+msgstr ""
+
+#: Functions/Shortcuts/Reader/script.js:63
+msgid ""
+"The container {0} is no longer used.\n"
+"Do you want to delete it?"
+msgstr ""
+
+#: Functions/Shortcuts/Wine/script.js:58
+msgid "Executable {0} not found!"
+msgstr ""
+
 #: Functions/Verbs/corefonts/script.js:80
 #: Functions/Verbs/corefonts/script.js:86
+msgid "fonts"
+msgstr ""
+
+#: Functions/Verbs/corefonts/script.js:80
+#: Functions/Verbs/corefonts/script.js:86
+#: Internet/Internet Explorer 6.0/Online/script.js:73
+#: Internet/Internet Explorer 7.0/Online/script.js:213
 msgid "Installing {0} ..."
 msgstr ""
 
-#: Internet/Internet Explorer 7.0/Online/script.js:60
-msgid "Which language version would you like to install?"
+#: Functions/Verbs/d3dx9/script.js:10 Functions/Verbs/d3dx9/script.js:11
+#: Functions/Verbs/d3dx9/script.js:31
+msgid "Extracting {0} ..."
 msgstr ""
 
-#: Office/ElsterFormular/Online/script.js:8
+#: Functions/Verbs/dotnet40/script.js:30 Functions/Verbs/physx/script.js:14
+#: Functions/Verbs/quicktime76/script.js:10
+#: Functions/Verbs/vcrun2003/script.js:15
+#: Functions/Verbs/vcrun2005/script.js:14
+#: Functions/Verbs/vcrun2008/script.js:14
+#: Functions/Verbs/vcrun2008/script.js:25
+#: Functions/Verbs/vcrun2010/script.js:14
+#: Functions/Verbs/vcrun2010/script.js:25
+#: Functions/Verbs/vcrun2012/script.js:14
+#: Functions/Verbs/vcrun2012/script.js:25
+#: Functions/Verbs/vcrun2013/script.js:14
+#: Functions/Verbs/vcrun2013/script.js:25
+#: Functions/Verbs/vcrun2015/script.js:14
+#: Functions/Verbs/vcrun2015/script.js:25
+msgid "Please wait while {0} is installed ..."
+msgstr ""
+
+#: Functions/Verbs/uplay/script.js:11
 msgid ""
-"Please select the installation file.\n"
-"You can download it from https://www.elster.de/elfo_down.php."
+"Please follow the steps of the Uplay setup.\n"
+"\n"
+"Uncheck \"Run Uplay\" or close Uplay completely after the setup so that the "
+"installation can continue."
+msgstr ""
+
+#: Games/League of Legends/BETA Client/script.js:41
+msgid "Select your region:"
+msgstr ""
+
+#: Games/Origin/Local (Legacy)/script.js:14
+#: Games/Origin/Online (Legacy)/script.js:13
+msgid ""
+"When Origin launches, you will get an error message (\"Your update could not "
+"be completed.\"). This is ok. Just close the popup."
+msgstr ""
+
+#: Games/Warcraft III TFT/Online/script.js:13
+msgid "Please install Warcraft III before installing The Frozen Throne."
 msgstr ""
 
 #: i18n/tmp/Accessories/category.js:1
 msgid "Accessories"
 msgstr ""
 
-#: i18n/tmp/Graphics/Photofiltre/application.js:1
-msgid "Photofiltre"
-msgstr ""
-
-#: i18n/tmp/Graphics/Photofiltre/application.js:2
-msgid ""
-"<b>Introduction</b><br/>PhotoFiltre Studio is a complete image retouching "
-"program. It allows you to do simple or advanced adjustments to an image and "
-"apply a vast range of filters on it. It is simple and intuitive to use, and "
-"has an easy learning curve. The toolbar, giving you access to the standard "
-"filters with just a few clicks, gives PhotoFiltre Studio a robust look. "
-"PhotoFiltre Studio also has layer manager (with Alpha channel), advanced "
-"brushes, nozzles (or tubes), red eye corrector, batch module and lot of "
-"other powerful tools."
-msgstr ""
-
-#: i18n/tmp/Graphics/category.js:1
-msgid "Graphics"
-msgstr ""
-
-#: i18n/tmp/Internet/Internet Explorer 6.0/application.js:1
-msgid "Internet Explorer 6.0"
-msgstr ""
-
-#: i18n/tmp/Internet/Internet Explorer 6.0/application.js:2
-#: i18n/tmp/Internet/Internet Explorer 7.0/application.js:2
-msgid ""
-"Internet Explorer is an old web browser.<br />You may need it if you want to "
-"test a website compatibility, you should not use it to navigate. "
-msgstr ""
-
-#: i18n/tmp/Internet/TeamSpeak 3/application.js:1
-msgid "TeamSpeak 3"
-msgstr ""
-
-#: i18n/tmp/Internet/TeamSpeak 3/application.js:2
-msgid ""
-"TeamSpeak 3 offers the ideal voice communication tool for online gaming, "
-"education and training, internal business communication, and staying in "
-"touch with friends and family."
-msgstr ""
-
-#: i18n/tmp/Internet/mIRC/application.js:1
-msgid "mIRC"
-msgstr ""
-
-#: i18n/tmp/Internet/mIRC/application.js:2
-msgid ""
-"<p>mIRC is a <b>popular Internet Relay Chat client</b> used by millions of "
-"people, and thousands of organizations, to communicate, share, play and work "
-"with each other on IRC networks around the world. Serving the <b>Internet "
-"community</b> for over a decade, mIRC has evolved into a powerful, reliable "
-"and fun piece of technology.<br></p>"
-msgstr ""
-
-#: i18n/tmp/Internet/Internet Explorer 7.0/application.js:1
-msgid "Internet Explorer 7.0"
-msgstr ""
-
-#: i18n/tmp/Internet/category.js:1 i18n/tmp/Games/category.js:1
-msgid "Games"
-msgstr ""
-
-#: i18n/tmp/Custom/OnlineInstaller/application.js:1
-msgid "Online Installer"
-msgstr ""
-
-#: i18n/tmp/Custom/OnlineInstaller/application.js:2
-msgid ""
-"The Online Installer allows you to install custom applications from the "
-"Internet."
+#: i18n/tmp/Custom/category.js:1
+msgid "Custom"
 msgstr ""
 
 #: i18n/tmp/Custom/LocalInstaller/application.js:1
@@ -138,28 +222,383 @@ msgid ""
 "local computer."
 msgstr ""
 
-#: i18n/tmp/Custom/category.js:1
-msgid "Custom"
+#: i18n/tmp/Custom/OnlineInstaller/application.js:1
+msgid "Online Installer"
 msgstr ""
 
-#: i18n/tmp/Multimedia/category.js:1
-msgid "Multimedia"
+#: i18n/tmp/Custom/OnlineInstaller/application.js:2
+msgid ""
+"The Online Installer allows you to install custom applications from the "
+"Internet."
 msgstr ""
 
-#: i18n/tmp/Office/ElsterFormular/application.js:1
-msgid "ElsterFormular"
+#: i18n/tmp/Development/category.js:1
+msgid "Development"
 msgstr ""
 
-#: i18n/tmp/Office/ElsterFormular/application.js:2
-msgid "ElsterFormular is the official german software to file a tax return."
+#: i18n/tmp/Development/Notepad++/application.js:1
+msgid "Notepad++"
 msgstr ""
 
-#: i18n/tmp/Office/category.js:1
-msgid "Office"
+#: i18n/tmp/Development/Notepad++/application.js:2
+msgid ""
+"Notepad++ is a free (as in &quot;free speech&quot; and also as in &quot;free "
+"beer&quot;) source code editor and Notepad replacement that supports several "
+"languages. Running in the MS Windows environment, its use is governed by GPL "
+"License.<br><br>Based on a powerful editing component Scintilla, Notepad++ "
+"is written in C++ and uses pure Win32 API and STL which ensures a higher "
+"execution speed and smaller program size. By optimizing as many routines as "
+"possible without losing user friendliness, Notepad++ is trying to reduce the "
+"world carbon dioxide emissions. When using less CPU power, the PC can "
+"throttle down and reduce power consumption, resulting in a greener "
+"environment.<br><br>Source: http://notepad-plus.sourceforge.net/uk/site.htm"
 msgstr ""
 
-#: i18n/tmp/Science/category.js:1
-msgid "Science"
+#: i18n/tmp/Functions/category.js:1
+msgid "Functions"
+msgstr ""
+
+#: i18n/tmp/Games/18 Wheels of Steel Across America/application.js:1
+msgid "18 Wheels of Steel: Across America"
+msgstr ""
+
+#: i18n/tmp/Games/18 Wheels of Steel Across America/application.js:2
+msgid ""
+"Heed the call of the open road, throw the gears in motion and take off in a "
+"tractor trailer. Drive faster than your competition, haul your cargo across "
+"the entire United States and feel the wind in your face as you control your "
+"own destiny. Blast the horn and build a career in the fast-paced world of "
+"trucking."
+msgstr ""
+
+#: i18n/tmp/Games/Age of Empires II HD/application.js:1
+msgid "Age of Empires II HD"
+msgstr ""
+
+#: i18n/tmp/Games/Age of Empires II HD/application.js:2
+msgid ""
+"Age of Empires II has been re-imagined in high definition with new features, "
+"trading cards, improved AI, workshop support, multiplayer, Steamworks "
+"integration and more!"
+msgstr ""
+
+#: i18n/tmp/Games/Age of Empires III: Complete Collection/application.js:1
+msgid "Age of Empires® III: Complete Collection"
+msgstr ""
+
+#: i18n/tmp/Games/Age of Empires III: Complete Collection/application.js:2
+msgid ""
+"Immerse yourself in the award-winning strategy experience. Microsoft Studios "
+"brings you three epic Age of Empires III games in one monumental collection "
+"for the first time. Command mighty European powers looking to explore new "
+"lands in the New World; or jump eastward to Asia and determine the outcome "
+"of its struggles for power."
+msgstr ""
+
+#: i18n/tmp/Games/Assassin’s Creed: Brotherhood/application.js:1
+msgid "Assassin’s Creed® Brotherhood"
+msgstr ""
+
+#: i18n/tmp/Games/Assassin’s Creed: Brotherhood/application.js:2
+msgid ""
+"Live and breathe as Ezio, a legendary Master Assassin, in his enduring "
+"struggle against the powerful Templar order.<br><br>He must journey into "
+"Italy’s greatest city, Rome, center of power, greed and corruption to strike "
+"at the heart of the enemy. Defeating the corrupt tyrants entrenched there "
+"will require not only strength, but leadership, as Ezio commands an entire "
+"brotherhood of assassins who will rally to his side. Only by working "
+"together can the assassins defeat their mortal enemies and prevent the "
+"extinction of their order."
+msgstr ""
+
+#: i18n/tmp/Games/Assassin’s Creed II/application.js:1
+msgid "Assassin’s Creed II"
+msgstr ""
+
+#: i18n/tmp/Games/Assassin’s Creed II/application.js:2
+msgid ""
+"An epic story of family, vengeance and conspiracy set in the pristine, yet "
+"brutal, backdrop of a Renaissance Italy."
+msgstr ""
+
+#: i18n/tmp/Games/Assassin's Creed Revelations/application.js:1
+msgid "Assassin's Creed® Revelations"
+msgstr ""
+
+#: i18n/tmp/Games/Assassin's Creed Revelations/application.js:2
+msgid ""
+"Ezio Auditore walks in the footsteps of the legendary mentor Altair, on a "
+"dangerous journey of discovery and revelation."
+msgstr ""
+
+#: i18n/tmp/Games/Audiosurf/application.js:1
+msgid "Audiosurf"
+msgstr ""
+
+#: i18n/tmp/Games/Audiosurf/application.js:2
+msgid ""
+"Ride your music. Audiosurf is a music-adapting puzzle racer where you use "
+"your own music to create your own experience. The shape, the speed, and the "
+"mood of each ride is determined by the song you choose."
+msgstr ""
+
+#: i18n/tmp/Games/Beyond Good and Evil/application.js:1
+msgid "Beyond Good and Evil™"
+msgstr ""
+
+#: i18n/tmp/Games/Beyond Good and Evil/application.js:2
+msgid ""
+"For centuries, the planet Hyllis has been bombarded by a relentless alien "
+"race. Skeptical of her government's inability to repel the invaders, a "
+"rebellious action reporter named Jade sets out to capture the truth."
+msgstr ""
+
+#: i18n/tmp/Games/Black Mesa/application.js:1
+msgid "Black Mesa"
+msgstr ""
+
+#: i18n/tmp/Games/Black Mesa/application.js:2
+msgid "Relive Half-Life in this highly acclaimed, fan-made recreation"
+msgstr ""
+
+#: i18n/tmp/Games/Blizzard app/application.js:1
+msgid "Blizzard app"
+msgstr ""
+
+#: i18n/tmp/Games/Blizzard app/application.js:2
+msgid ""
+"The Blizzard desktop app is designed to improve your gaming experience. "
+"It’ll streamline your login and make it even easier to keep up with your "
+"friends!"
+msgstr ""
+
+#: i18n/tmp/Games/Burnout Paradise: The Ultimate Box/application.js:1
+msgid "Burnout™ Paradise: The Ultimate Box"
+msgstr ""
+
+#: i18n/tmp/Games/Burnout Paradise: The Ultimate Box/application.js:2
+msgid ""
+"Paradise City is the largest and most dangerous setting yet for the best-"
+"selling Burnout series. The massive setting gives players an open-ended "
+"world to explore, as they race their vehicles through hundreds of miles of "
+"roads and underground passages with more than 70 different cars. Speed "
+"through the streets from event to event, racking up points that are saved to "
+"your Paradise City driver’s license. Earn the vaunted “Burnout” license by "
+"smashing through billboards, jumping ramps, and sustaining crashes with the "
+"improved damage system."
+msgstr ""
+
+#: i18n/tmp/Games/Call of Juarez Gunslinger/application.js:1
+msgid "Call of Juarez® Gunslinger"
+msgstr ""
+
+#: i18n/tmp/Games/Call of Juarez Gunslinger/application.js:2
+msgid ""
+"From the dust of a gold mine to the dirt of a saloon, Call of Juarez® "
+"Gunslinger is a real homage to the Wild West tales. Live the epic and "
+"violent journey of a ruthless bounty hunter on the trail of the West’s most "
+"notorious outlaws."
+msgstr ""
+
+#: i18n/tmp/Games/category.js:1 i18n/tmp/Internet/category.js:1
+msgid "Games"
+msgstr ""
+
+#: i18n/tmp/Games/ChromaGun/application.js:1
+msgid "ChromaGun"
+msgstr ""
+
+#: i18n/tmp/Games/ChromaGun/application.js:2
+msgid ""
+"Welcome to ChromaTec’s test lab! You’re here to test our newest, state-of-"
+"the-art military-grade color-technology: The ChromaGun (patent pending)! Use "
+"it to try and solve our meticulously designed test chambers. The basic "
+"principle is as easy as applying it is complex: Exit the chambers via the "
+"exit doors. But be weary of the WorkerDroids in charge of maintaining the "
+"chambers. They’re not exactly what you and I would call “human friendly”."
+"<br><br>Use the ChromaGun to colorize walls and WorkerDroids to progress in "
+"the chambers. WorkerDroids are attracted to walls of the same color. Using "
+"that mechanic, try to reach the exit door of each chamber. Some doors are "
+"more complicated to use than others: They can only be opened using door "
+"triggers and only stay open as long as the triggers are occupied.<br>br>If "
+"all of this sounds like your brain can handle it, congratulations! You’re "
+"the perfect candidate for our test chambers!<br><br>That being said, welcome "
+"and good luck!"
+msgstr ""
+
+#: i18n/tmp/Games/Civilization V/application.js:1
+msgid "Civilization V"
+msgstr ""
+
+#: i18n/tmp/Games/Civilization V/application.js:2
+msgid ""
+"In Civilization V, the player leads a civilization from prehistoric times "
+"into the future on a procedurally generated map, achieving one of a number "
+"of different victory conditions through research, exploration, diplomacy, "
+"expansion, economic development, government and military conquest."
+msgstr ""
+
+#: i18n/tmp/Games/Clicker Heroes/application.js:1
+msgid "Clicker Heroes"
+msgstr ""
+
+#: i18n/tmp/Games/Clicker Heroes/application.js:2
+msgid ""
+"Ever wondered what one quadrillion damage per second feels like? Wonder no "
+"more! Embark on your quest to attain it today! Start out by clicking on the "
+"monster to kill them, and get their gold. Spend that gold on hiring new "
+"heroes and get more damage. The more damage you deal, the more gold you will "
+"get."
+msgstr ""
+
+#: i18n/tmp/Games/CONSORTIUM/application.js:1
+msgid "CONSORTIUM"
+msgstr ""
+
+#: i18n/tmp/Games/CONSORTIUM/application.js:2
+msgid ""
+"A murder mystery, on a plane, in the future. You are Consortium Bishop Six, "
+"a global peacekeeper in the year 2042. Your actions define and inform the "
+"ongoing narrative."
+msgstr ""
+
+#: i18n/tmp/Games/Crayon Physics/application.js:1
+msgid "Crayon Physics"
+msgstr ""
+
+#: i18n/tmp/Games/Crayon Physics/application.js:2
+msgid ""
+"Crayon Physics is a mouse arcade game. You will have to draw lines and "
+"squares to move a ball. The aim is to catch the stars in the level. "
+msgstr ""
+
+#: i18n/tmp/Games/Dr. Langeskov, The Tiger, and The Terribly Cursed Emerald: A Whirlwind Heist/application.js:1
+msgid ""
+"Dr. Langeskov, The Tiger, and The Terribly Cursed Emerald: A Whirlwind Heist"
+msgstr ""
+
+#: i18n/tmp/Games/Dr. Langeskov, The Tiger, and The Terribly Cursed Emerald: A Whirlwind Heist/application.js:2
+msgid ""
+"A 15 minute heist game by Crows Crows Crows & Directed by William Pugh (The "
+"Stanley Parable). "
+msgstr ""
+
+#: i18n/tmp/Games/Druid Soccer/application.js:1
+msgid "Druid Soccer"
+msgstr ""
+
+#: i18n/tmp/Games/Druid Soccer/application.js:2
+msgid "You take part in the ancient traditional game of Druid Soccer."
+msgstr ""
+
+#: i18n/tmp/Games/Enderal/application.js:1
+msgid "Enderal"
+msgstr ""
+
+#: i18n/tmp/Games/Enderal/application.js:2
+msgid ""
+"Enderal is a total conversion for TES V: Skyrim: a game modification that is "
+"set in its own world with its own landscape, lore and story. It offers an "
+"immersive open world, all for the player to explore, overhauled skill "
+"systems and gameplay mechanics and a dark, psychological storyline with "
+"believable characters."
+msgstr ""
+
+#: i18n/tmp/Games/Epic Games Launcher/application.js:1
+msgid "Epic Games Launcher"
+msgstr ""
+
+#: i18n/tmp/Games/Epic Games Launcher/application.js:2
+msgid "Launcher for Unreal Engine, Unreal Tournament, Paragon etc."
+msgstr ""
+
+#: i18n/tmp/Games/Ether One Redux/application.js:1
+msgid "Ether One Redux"
+msgstr ""
+
+#: i18n/tmp/Games/Ether One Redux/application.js:2
+msgid ""
+"Ether One is a first person adventure that deals with the fragility of the "
+"human mind. There are two paths in the world you can choose from. At its "
+"core is a story exploration path free from puzzles where you can unfold the "
+"story at your own pace."
+msgstr ""
+
+#: i18n/tmp/Games/Europa Universalis IV/application.js:1
+msgid "Europa Universalis IV"
+msgstr ""
+
+#: i18n/tmp/Games/Europa Universalis IV/application.js:2
+msgid ""
+"The empire building game Europa Universalis IV gives you control of a nation "
+"to guide through the years in order to create a dominant global empire. Rule "
+"your nation through the centuries, with unparalleled freedom, depth and "
+"historical accuracy."
+msgstr ""
+
+#: i18n/tmp/Games/Far Cry 3 - Blood Dragon/application.js:1
+msgid "Far Cry 3 - Blood Dragon"
+msgstr ""
+
+#: i18n/tmp/Games/Far Cry 3 - Blood Dragon/application.js:2
+msgid ""
+"Far Cry® 3: Blood Dragon is THE Kick-Ass Cyber Shooter.Welcome to an 80’s "
+"vision of the future. The year is 2007 and you are Sargent Rex Colt, a Mark "
+"IV Cyber Commando. Your mission: get the girl, kill the baddies, and save "
+"the world."
+msgstr ""
+
+#: i18n/tmp/Games/Goodbye Deponia/application.js:1
+msgid "Goodbye Deponia"
+msgstr ""
+
+#: i18n/tmp/Games/Goodbye Deponia/application.js:2
+msgid ""
+"More chaos, more destruction, more Rufus. Not one, not two, but three "
+"Rufuses cause all kinds of crazy mayhem in the long-awaited adventure comedy "
+"Goodbye Deponia!"
+msgstr ""
+
+#: i18n/tmp/Games/Hexcells/application.js:1
+msgid "Hexcells"
+msgstr ""
+
+#: i18n/tmp/Games/Hexcells/application.js:2
+msgid "Hexcells is an ambient logic puzzle game for PC, Mac and Linux."
+msgstr ""
+
+#: i18n/tmp/Games/Hexcells Infinite/application.js:1
+msgid "Hexcells Infinite"
+msgstr ""
+
+#: i18n/tmp/Games/Hexcells Infinite/application.js:2
+msgid ""
+"Hexcells Infinite is the third game in the series of ambient logic puzzle "
+"games.<br><br>It includes a new set of 36 puzzles as well as a random puzzle "
+"generator and now supports mid-level saving and cross platform cloud saves."
+"<br><br>The level generator uses an 8 digit seed number to generate each "
+"puzzle so they can easily be shared."
+msgstr ""
+
+#: i18n/tmp/Games/Hexcells Plus/application.js:1
+msgid "Hexcells Plus"
+msgstr ""
+
+#: i18n/tmp/Games/Hexcells Plus/application.js:2
+msgid ""
+"Hexcells Plus is a standalone expansion to Hexcells that contains 36 new and "
+"more challenging puzzles."
+msgstr ""
+
+#: i18n/tmp/Games/Icy Tower/application.js:1
+msgid "Icy Tower 1.5"
+msgstr ""
+
+#: i18n/tmp/Games/Icy Tower/application.js:2
+msgid ""
+"Icy Tower is a platform game set in a tower, where the player's goal is to "
+"jump from one floor to the next and go as high as possible without falling "
+"and plunging off the screen."
 msgstr ""
 
 #: i18n/tmp/Games/League of Legends/application.js:1
@@ -176,70 +615,57 @@ msgid ""
 "Legends offers endless replayability for players of every skill level."
 msgstr ""
 
-#: i18n/tmp/Games/The Room Two/application.js:1
-msgid "The Room Two"
+#: i18n/tmp/Games/Mafia II/application.js:1
+msgid "Mafia II"
 msgstr ""
 
-#: i18n/tmp/Games/The Room Two/application.js:2
+#: i18n/tmp/Games/Mafia II/application.js:2
 msgid ""
-"Unique events transport you to the halls of a long-forgotten crypt. The only "
-"means of escape lies locked within a stone pedestal, along with a note from "
-"your mysterious ally. His words promise assistance, but only serve to entice "
-"you into a compelling world of mystery and exploration."
+"Vito Scaletta has started to make a name for himself on the streets of "
+"Empire Bay as someone who can be trusted to get a job done. Together with "
+"his buddy Joe, he is working to prove himself to the Mafia, quickly "
+"escalating up the family ladder with crimes of larger reward, status and "
+"consequence… the life as a wise guy isn’t quite as untouchable as it seems."
 msgstr ""
 
-#: i18n/tmp/Games/Tom Clancy's Splinter Cell/application.js:1
-msgid "Tom Clancy's Splinter Cell®"
+#: i18n/tmp/Games/Mirror's Edge/application.js:1
+msgid "Mirror's Edge™"
 msgstr ""
 
-#: i18n/tmp/Games/Tom Clancy's Splinter Cell/application.js:2
+#: i18n/tmp/Games/Mirror's Edge/application.js:2
 msgid ""
-"Infiltrate terrorists' positions, acquire critical intelligence by any means "
-"necessary, execute with extreme prejudice, and exit without a trace! You are "
-"Sam Fisher, a highly trained secret operative of the NSA's secret arm: Third "
-"Echelon."
+"In a city where information is heavily monitored, agile couriers called "
+"Runners transport sensitive data away from prying eyes. In this seemingly "
+"utopian paradise, a crime has been committed, your sister has been framed "
+"and now you are being hunted."
 msgstr ""
 
-#: i18n/tmp/Games/Epic Games Launcher/application.js:1
-msgid "Epic Games Launcher"
+#: i18n/tmp/Games/Niko: Through The Dream/application.js:1
+msgid "Niko: Through The Dream"
 msgstr ""
 
-#: i18n/tmp/Games/Epic Games Launcher/application.js:2
-msgid "Launcher for Unreal Engine, Unreal Tournament, Paragon etc."
-msgstr ""
-
-#: i18n/tmp/Games/Civilization V/application.js:1
-msgid "Civilization V"
-msgstr ""
-
-#: i18n/tmp/Games/Civilization V/application.js:2
+#: i18n/tmp/Games/Niko: Through The Dream/application.js:2
 msgid ""
-"In Civilization V, the player leads a civilization from prehistoric times "
-"into the future on a procedurally generated map, achieving one of a number "
-"of different victory conditions through research, exploration, diplomacy, "
-"expansion, economic development, government and military conquest."
+"Niko is a spiritual journey through the dreams, where adventure, puzzles and "
+"mysteries come together in an oneiric and minimalist world. Dare to dream!"
 msgstr ""
 
-#: i18n/tmp/Games/Hexcells Plus/application.js:1
-msgid "Hexcells Plus"
+#: i18n/tmp/Games/Origin/application.js:1
+msgid "Origin"
 msgstr ""
 
-#: i18n/tmp/Games/Hexcells Plus/application.js:2
+#: i18n/tmp/Games/Origin/application.js:2
+msgid "Origin is EA's PC games portal."
+msgstr ""
+
+#: i18n/tmp/Games/PAYDAY The Heist/application.js:1
+msgid "PAYDAY™ The Heist"
+msgstr ""
+
+#: i18n/tmp/Games/PAYDAY The Heist/application.js:2
 msgid ""
-"Hexcells Plus is a standalone expansion to Hexcells that contains 36 new and "
-"more challenging puzzles."
-msgstr ""
-
-#: i18n/tmp/Games/Q.U.B.E: Director's Cut/application.js:1
-msgid "Q.U.B.E: Director's Cut"
-msgstr ""
-
-#: i18n/tmp/Games/Q.U.B.E: Director's Cut/application.js:2
-msgid ""
-"Q.U.B.E: Director's Cut is the definitive version of the brain-twisting "
-"first-person puzzler. Using special high-tech gloves to manipulate cubes in "
-"the environment, the player solves an array of conundrums - from physics-"
-"based challenges; to 3D jigsaws; to platform-based trials. "
+"Take on the role of a hardened career criminal executing intense, dynamic "
+"heists in constant pursuit of the next “big score”"
 msgstr ""
 
 #: i18n/tmp/Games/Prince of Persia: The Sands of Time/application.js:1
@@ -254,92 +680,27 @@ msgid ""
 "a deadly evil upon a beautiful kingdom."
 msgstr ""
 
-#: i18n/tmp/Games/Age of Empires III: Complete Collection/application.js:1
-msgid "Age of Empires® III: Complete Collection"
+#: i18n/tmp/Games/Quantum Conundrum/application.js:1
+msgid "Quantum Conundrum"
 msgstr ""
 
-#: i18n/tmp/Games/Age of Empires III: Complete Collection/application.js:2
+#: i18n/tmp/Games/Quantum Conundrum/application.js:2
 msgid ""
-"Immerse yourself in the award-winning strategy experience. Microsoft Studios "
-"brings you three epic Age of Empires III games in one monumental collection "
-"for the first time. Command mighty European powers looking to explore new "
-"lands in the New World; or jump eastward to Asia and determine the outcome "
-"of its struggles for power."
+"Find and rescue your uncle by using his newest invention to work your way "
+"through a crazy complex mansion as you switch between dimensions and solve "
+"puzzles!"
 msgstr ""
 
-#: i18n/tmp/Games/18 Wheels of Steel Across America/application.js:1
-msgid "18 Wheels of Steel: Across America"
+#: i18n/tmp/Games/Q.U.B.E: Director's Cut/application.js:1
+msgid "Q.U.B.E: Director's Cut"
 msgstr ""
 
-#: i18n/tmp/Games/18 Wheels of Steel Across America/application.js:2
+#: i18n/tmp/Games/Q.U.B.E: Director's Cut/application.js:2
 msgid ""
-"Heed the call of the open road, throw the gears in motion and take off in a "
-"tractor trailer. Drive faster than your competition, haul your cargo across "
-"the entire United States and feel the wind in your face as you control your "
-"own destiny. Blast the horn and build a career in the fast-paced world of "
-"trucking."
-msgstr ""
-
-#: i18n/tmp/Games/Niko: Through The Dream/application.js:1
-msgid "Niko: Through The Dream"
-msgstr ""
-
-#: i18n/tmp/Games/Niko: Through The Dream/application.js:2
-msgid ""
-"Niko is a spiritual journey through the dreams, where adventure, puzzles and "
-"mysteries come together in an oneiric and minimalist world. Dare to dream!"
-msgstr ""
-
-#: i18n/tmp/Games/STAR WARS Jedi Knight II - Jedi Outcast/application.js:1
-msgid "STAR WARS™ Jedi Knight II - Jedi Outcast™"
-msgstr ""
-
-#: i18n/tmp/Games/STAR WARS Jedi Knight II - Jedi Outcast/application.js:2
-msgid ""
-"The Legacy of Star Wars Dark Forces™ and Star Wars® Jedi Knight lives on in "
-"the intense first-person action of Jedi Outcast. "
-msgstr ""
-
-#: i18n/tmp/Games/Warcraft III TFT/application.js:1
-msgid "Warcraft® III: The Frozen Throne®"
-msgstr ""
-
-#: i18n/tmp/Games/Warcraft III TFT/application.js:2
-msgid ""
-"Warcraft III: The Frozen Throne adds a host of new features to the game, "
-"including four new campaigns that take you across the frozen continent of "
-"Northrend. Explore new maps and master new units such as the Troll Bat "
-"Riders, the Blood Elf Spell Breakers, and the destructive Mountain Giants."
-"<br><br>Install Warcraft III first."
-msgstr ""
-
-#: i18n/tmp/Games/Origin/application.js:1
-msgid "Origin"
-msgstr ""
-
-#: i18n/tmp/Games/Origin/application.js:2
-msgid "Origin is EA's PC games portal."
-msgstr ""
-
-#: i18n/tmp/Games/Mafia II/application.js:1
-msgid "Mafia II"
-msgstr ""
-
-#: i18n/tmp/Games/Mafia II/application.js:2
-msgid ""
-"Vito Scaletta has started to make a name for himself on the streets of "
-"Empire Bay as someone who can be trusted to get a job done. Together with "
-"his buddy Joe, he is working to prove himself to the Mafia, quickly "
-"escalating up the family ladder with crimes of larger reward, status and "
-"consequence… the life as a wise guy isn’t quite as untouchable as it seems."
-msgstr ""
-
-#: i18n/tmp/Games/Druid Soccer/application.js:1
-msgid "Druid Soccer"
-msgstr ""
-
-#: i18n/tmp/Games/Druid Soccer/application.js:2
-msgid "You take part in the ancient traditional game of Druid Soccer."
+"Q.U.B.E: Director's Cut is the definitive version of the brain-twisting "
+"first-person puzzler. Using special high-tech gloves to manipulate cubes in "
+"the environment, the player solves an array of conundrums - from physics-"
+"based challenges; to 3D jigsaws; to platform-based trials. "
 msgstr ""
 
 #: i18n/tmp/Games/Rayman Legends/application.js:1
@@ -357,6 +718,123 @@ msgid ""
 "save the day, and discover the secrets of the legendary paintings!"
 msgstr ""
 
+#: i18n/tmp/Games/Rayman Origins/application.js:1
+msgid "Rayman® Origins"
+msgstr ""
+
+#: i18n/tmp/Games/Rayman Origins/application.js:2
+msgid ""
+"Experience the magical universe of Rayman with legendary 2D gameplay that "
+"has captured the hearts of millions of fans!"
+msgstr ""
+
+#: i18n/tmp/Games/Resident Evil 3/application.js:1
+msgid "Resident Evil 3"
+msgstr ""
+
+#: i18n/tmp/Games/Resident Evil 3/application.js:2
+msgid ""
+"Resident Evil 3: Nemesis, known in Japan as Biohazard 3: Last Escape (バイオ"
+"ハザード3　ラストエスケープ), is a survival horror video game and the sequel "
+"to Resident Evil 2, developed and published by Capcom. The game was released "
+"for the PlayStation, and was subsequently ported to the Dreamcast, Microsoft "
+"Windows and Nintendo GameCube. A Windows PC version was released first in "
+"Japan in June 2000 and later in other regions, which features enhanced 3D "
+"character model graphics and higher resolutions."
+msgstr ""
+
+#: i18n/tmp/Games/Rocksmith 2014/application.js:1
+msgid "Rocksmith® 2014"
+msgstr ""
+
+#: i18n/tmp/Games/Rocksmith 2014/application.js:2
+msgid ""
+"The fastest way to learn guitar is now better than ever. Join over three "
+"million people who have learned to play guitar with the award-winning "
+"Rocksmith® method. Plug any real guitar or bass with a 1/4 inch jack "
+"directly into your PC or Mac and you’ll learn to play in just 60 days."
+msgstr ""
+
+#: i18n/tmp/Games/Rocksmith/application.js:1
+msgid "Rocksmith™"
+msgstr ""
+
+#: i18n/tmp/Games/Rocksmith/application.js:2
+msgid ""
+"Rocksmith’s innovative game design makes playing music visually intuitive "
+"and will engage experienced musicians as well as those who have never picked "
+"up a guitar in their lives."
+msgstr ""
+
+#: i18n/tmp/Games/Scribblenauts Unlimited/application.js:1
+msgid "Scribblenauts Unlimited"
+msgstr ""
+
+#: i18n/tmp/Games/Scribblenauts Unlimited/application.js:2
+msgid ""
+"Venture into a wide-open world where the most powerful tool is your "
+"imagination. Help Maxwell solve robust puzzles in seamless, free-roaming "
+"levels by summoning any object you can think of. Create your own original "
+"objects, assign unique properties, and share them with friends online using "
+"Steam Workshop – to be used in game or further modified as you like!"
+msgstr ""
+
+#: i18n/tmp/Games/Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad/application.js:1
+msgid "Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad"
+msgstr ""
+
+#: i18n/tmp/Games/Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad/application.js:2
+msgid ""
+"'Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad?' is "
+"a fast paced shower-simulation where you shower with your 8-bit dad. It's "
+"good, clean fun!"
+msgstr ""
+
+#: i18n/tmp/Games/STAR WARS Battlefront II/application.js:1
+msgid "STAR WARS™ Battlefront™ II"
+msgstr ""
+
+#: i18n/tmp/Games/STAR WARS Battlefront II/application.js:2
+msgid ""
+"Join the rise of Darth Vader’s elite 501st Legion of Stormtroopers as you "
+"fight through an all new story-based saga where every action you take "
+"impacts the battlefront and, ultimately, the fate of the Star Wars galaxy."
+msgstr ""
+
+#: i18n/tmp/Games/STAR WARS: Dark Forces/application.js:1
+msgid "STAR WARS™: Dark Forces"
+msgstr ""
+
+#: i18n/tmp/Games/STAR WARS: Dark Forces/application.js:2
+msgid ""
+"Behind a veil of secrecy the evil Empire is creating a doomsday army - one "
+"that, if finished, will become the final cog in the Empire's arsenal of "
+"terror and domination. Your Mission? Join the Rebel Alliance's covert "
+"operations division, infiltrate the Empire."
+msgstr ""
+
+#: i18n/tmp/Games/STAR WARS Jedi Knight: Dark Forces II/application.js:1
+msgid "STAR WARS™ Jedi Knight: Dark Forces II"
+msgstr ""
+
+#: i18n/tmp/Games/STAR WARS Jedi Knight: Dark Forces II/application.js:2
+msgid ""
+"Jedi Knight: Dark Forces II picks up where the award-winning Dark Forces™ "
+"game left off...with even more features and firepower in dazzling 3D "
+"graphics. As Kyle Katarn, you must acquire a lightsaber and learn the ways "
+"of the Force to become a Jedi Knight."
+msgstr ""
+
+#: i18n/tmp/Games/STAR WARS Jedi Knight II - Jedi Outcast/application.js:1
+msgid "STAR WARS™ Jedi Knight II - Jedi Outcast™"
+msgstr ""
+
+#: i18n/tmp/Games/STAR WARS Jedi Knight II - Jedi Outcast/application.js:2
+msgid ""
+"The Legacy of Star Wars Dark Forces™ and Star Wars® Jedi Knight lives on in "
+"the intense first-person action of Jedi Outcast. "
+msgstr ""
+
 #: i18n/tmp/Games/STAR WARS Jedi Knight - Jedi Academy/application.js:1
 msgid "STAR WARS™ Jedi Knight - Jedi Academy™"
 msgstr ""
@@ -369,25 +847,121 @@ msgid ""
 "Master Luke Skywalker."
 msgstr ""
 
-#: i18n/tmp/Games/Uplay/application.js:1
-msgid "Uplay"
+#: i18n/tmp/Games/STAR WARS Jedi Knight - Mysteries of the Sith/application.js:1
+msgid "STAR WARS™ Jedi Knight - Mysteries of the Sith™"
 msgstr ""
 
-#: i18n/tmp/Games/Uplay/application.js:2
-msgid "Uplay is Ubisoft's PC games portal."
-msgstr ""
-
-#: i18n/tmp/Games/Hexcells Infinite/application.js:1
-msgid "Hexcells Infinite"
-msgstr ""
-
-#: i18n/tmp/Games/Hexcells Infinite/application.js:2
+#: i18n/tmp/Games/STAR WARS Jedi Knight - Mysteries of the Sith/application.js:2
 msgid ""
-"Hexcells Infinite is the third game in the series of ambient logic puzzle "
-"games.<br><br>It includes a new set of 36 puzzles as well as a random puzzle "
-"generator and now supports mid-level saving and cross platform cloud saves."
-"<br><br>The level generator uses an 8 digit seed number to generate each "
-"puzzle so they can easily be shared."
+"It is five years after Kyle's victory over the seven dark Jedi. Invading "
+"Imperial forces advance upon a quiet Rebel outpost, interrupting Kyle's "
+"training of a brave new Jedi, Mara Jade. First introduced in Timothy Zahn's "
+"award-winning Star Wars novel, Heir to the Empire, Mara Jade blends her past "
+"experiences as a one time smuggler and Emperor's Hand with her "
+"apprenticeship as a Jedi Knight."
+msgstr ""
+
+#: i18n/tmp/Games/Steam/application.js:1
+msgid "Steam"
+msgstr ""
+
+#: i18n/tmp/Games/Steam/application.js:2
+msgid ""
+"Steam is a digital distribution platform developed by Valve Corporation, "
+"which offers digital rights management (DRM), multiplayer gaming, video "
+"streaming and social networking services."
+msgstr ""
+
+#: i18n/tmp/Games/Super Blue Boy Planet/application.js:1
+msgid "Super Blue Boy Planet"
+msgstr ""
+
+#: i18n/tmp/Games/Super Blue Boy Planet/application.js:2
+msgid ""
+"SBBP is a 2D platformer with pixel graphics. Blue boy’s girlfriend is "
+"kidnapped by aliens so he goes through 21 levels to save her and he also "
+"fight bosses along the way."
+msgstr ""
+
+#: i18n/tmp/Games/The Elder Scrolls V: Skyrim/application.js:1
+msgid "The Elder Scrolls V: Skyrim"
+msgstr ""
+
+#: i18n/tmp/Games/The Elder Scrolls V: Skyrim/application.js:2
+msgid ""
+"Winner of more than 200 Game of the Year Awards, Skyrim Special Edition "
+"brings the epic fantasy to life in stunning detail. The Special Edition "
+"includes the critically acclaimed game and add-ons with all-new features "
+"like remastered art and effects, volumetric god rays, dynamic depth of "
+"field, screen-space reflections, and more. Skyrim Special Edition also "
+"brings the full power of mods to the PC and consoles. New quests, "
+"environments, characters, dialogue, armor, weapons and more – with Mods, "
+"there are no limits to what you can experience."
+msgstr ""
+
+#: i18n/tmp/Games/The Room/application.js:1
+msgid "The Room"
+msgstr ""
+
+#: i18n/tmp/Games/The Room/application.js:2
+msgid ""
+"A mysterious invitation leads to the attic of an abandoned house. In the "
+"room is a cast-iron safe laced with strange carvings and on top, a note from "
+"your distant companion. It promises something ancient and astonishing "
+"concealed in the iron chamber - you need only find a way in."
+msgstr ""
+
+#: i18n/tmp/Games/The Room Two/application.js:1
+msgid "The Room Two"
+msgstr ""
+
+#: i18n/tmp/Games/The Room Two/application.js:2
+msgid ""
+"Unique events transport you to the halls of a long-forgotten crypt. The only "
+"means of escape lies locked within a stone pedestal, along with a note from "
+"your mysterious ally. His words promise assistance, but only serve to entice "
+"you into a compelling world of mystery and exploration."
+msgstr ""
+
+#: i18n/tmp/Games/The Vanishing of Ethan Carter/application.js:1
+msgid "The Vanishing of Ethan Carter"
+msgstr ""
+
+#: i18n/tmp/Games/The Vanishing of Ethan Carter/application.js:2
+#: i18n/tmp/Games/The Vanishing of Ethan Carter Redux/application.js:2
+msgid "The Vanishing of Ethan Carter is a first-person story-driven mystery."
+msgstr ""
+
+#: i18n/tmp/Games/The Vanishing of Ethan Carter Redux/application.js:1
+msgid "The Vanishing of Ethan Carter Redux"
+msgstr ""
+
+#: i18n/tmp/Games/Tom Clancy's Splinter Cell/application.js:1
+msgid "Tom Clancy's Splinter Cell®"
+msgstr ""
+
+#: i18n/tmp/Games/Tom Clancy's Splinter Cell/application.js:2
+msgid ""
+"Infiltrate terrorists' positions, acquire critical intelligence by any means "
+"necessary, execute with extreme prejudice, and exit without a trace! You are "
+"Sam Fisher, a highly trained secret operative of the NSA's secret arm: Third "
+"Echelon."
+msgstr ""
+
+#: i18n/tmp/Games/Tropico 3/application.js:1
+msgid "Tropico 3"
+msgstr ""
+
+#: i18n/tmp/Games/Tropico 3/application.js:2
+msgid ""
+"Engage in a tropical power trip! Become the dictator of a remote island "
+"during the Cold War. Charm, persuade, intimidate, oppress, or cheat your "
+"people to stay in power! Are you a kind and generous leader? A corrupt and "
+"ruthless tyrant ruling with an iron fist? Turn your island into a tourist "
+"paradise or an industrial power. Make promises to the electorate or slander "
+"political adversaries to get the crucial votes for the upcoming elections. "
+"Send your avatar to congratulate the people, visit the island of another "
+"player, or just sun-bathe on the Caribbean beach."
 msgstr ""
 
 #: i18n/tmp/Games/Tropico 4/application.js:1
@@ -418,177 +992,12 @@ msgid ""
 "leaderboards."
 msgstr ""
 
-#: i18n/tmp/Games/The Vanishing of Ethan Carter Redux/application.js:1
-msgid "The Vanishing of Ethan Carter Redux"
+#: i18n/tmp/Games/Uplay/application.js:1
+msgid "Uplay"
 msgstr ""
 
-#: i18n/tmp/Games/The Vanishing of Ethan Carter Redux/application.js:2
-#: i18n/tmp/Games/The Vanishing of Ethan Carter/application.js:2
-msgid "The Vanishing of Ethan Carter is a first-person story-driven mystery."
-msgstr ""
-
-#: i18n/tmp/Games/Worms Armageddon/application.js:1
-msgid "Worms Armageddon"
-msgstr ""
-
-#: i18n/tmp/Games/Worms Armageddon/application.js:2
-msgid ""
-"Those intrepid invertebrates return with a vengeance in the much-loved "
-"Worms™ Armageddon. It’s a whole new can of worms! It’s hilarious fun that "
-"you can enjoy on your own or with all your friends."
-msgstr ""
-
-#: i18n/tmp/Games/Black Mesa/application.js:1
-msgid "Black Mesa"
-msgstr ""
-
-#: i18n/tmp/Games/Black Mesa/application.js:2
-msgid "Relive Half-Life in this highly acclaimed, fan-made recreation"
-msgstr ""
-
-#: i18n/tmp/Games/The Vanishing of Ethan Carter/application.js:1
-msgid "The Vanishing of Ethan Carter"
-msgstr ""
-
-#: i18n/tmp/Games/STAR WARS Jedi Knight - Mysteries of the Sith/application.js:1
-msgid "STAR WARS™ Jedi Knight - Mysteries of the Sith™"
-msgstr ""
-
-#: i18n/tmp/Games/STAR WARS Jedi Knight - Mysteries of the Sith/application.js:2
-msgid ""
-"It is five years after Kyle's victory over the seven dark Jedi. Invading "
-"Imperial forces advance upon a quiet Rebel outpost, interrupting Kyle's "
-"training of a brave new Jedi, Mara Jade. First introduced in Timothy Zahn's "
-"award-winning Star Wars novel, Heir to the Empire, Mara Jade blends her past "
-"experiences as a one time smuggler and Emperor's Hand with her "
-"apprenticeship as a Jedi Knight."
-msgstr ""
-
-#: i18n/tmp/Games/Resident Evil 3/application.js:1
-msgid "Resident Evil 3"
-msgstr ""
-
-#: i18n/tmp/Games/Resident Evil 3/application.js:2
-msgid ""
-"Resident Evil 3: Nemesis, known in Japan as Biohazard 3: Last Escape (バイオ"
-"ハザード3　ラストエスケープ), is a survival horror video game and the sequel "
-"to Resident Evil 2, developed and published by Capcom. The game was released "
-"for the PlayStation, and was subsequently ported to the Dreamcast, Microsoft "
-"Windows and Nintendo GameCube. A Windows PC version was released first in "
-"Japan in June 2000 and later in other regions, which features enhanced 3D "
-"character model graphics and higher resolutions."
-msgstr ""
-
-#: i18n/tmp/Games/Mirror's Edge/application.js:1
-msgid "Mirror's Edge™"
-msgstr ""
-
-#: i18n/tmp/Games/Mirror's Edge/application.js:2
-msgid ""
-"In a city where information is heavily monitored, agile couriers called "
-"Runners transport sensitive data away from prying eyes. In this seemingly "
-"utopian paradise, a crime has been committed, your sister has been framed "
-"and now you are being hunted."
-msgstr ""
-
-#: i18n/tmp/Games/Audiosurf/application.js:1
-msgid "Audiosurf"
-msgstr ""
-
-#: i18n/tmp/Games/Audiosurf/application.js:2
-msgid ""
-"Ride your music. Audiosurf is a music-adapting puzzle racer where you use "
-"your own music to create your own experience. The shape, the speed, and the "
-"mood of each ride is determined by the song you choose."
-msgstr ""
-
-#: i18n/tmp/Games/Beyond Good and Evil/application.js:1
-msgid "Beyond Good and Evil™"
-msgstr ""
-
-#: i18n/tmp/Games/Beyond Good and Evil/application.js:2
-msgid ""
-"For centuries, the planet Hyllis has been bombarded by a relentless alien "
-"race. Skeptical of her government's inability to repel the invaders, a "
-"rebellious action reporter named Jade sets out to capture the truth."
-msgstr ""
-
-#: i18n/tmp/Games/CONSORTIUM/application.js:1
-msgid "CONSORTIUM"
-msgstr ""
-
-#: i18n/tmp/Games/CONSORTIUM/application.js:2
-msgid ""
-"A murder mystery, on a plane, in the future. You are Consortium Bishop Six, "
-"a global peacekeeper in the year 2042. Your actions define and inform the "
-"ongoing narrative."
-msgstr ""
-
-#: i18n/tmp/Games/ChromaGun/application.js:1
-msgid "ChromaGun"
-msgstr ""
-
-#: i18n/tmp/Games/ChromaGun/application.js:2
-msgid ""
-"Welcome to ChromaTec’s test lab! You’re here to test our newest, state-of-"
-"the-art military-grade color-technology: The ChromaGun (patent pending)! Use "
-"it to try and solve our meticulously designed test chambers. The basic "
-"principle is as easy as applying it is complex: Exit the chambers via the "
-"exit doors. But be weary of the WorkerDroids in charge of maintaining the "
-"chambers. They’re not exactly what you and I would call “human friendly”."
-"<br><br>Use the ChromaGun to colorize walls and WorkerDroids to progress in "
-"the chambers. WorkerDroids are attracted to walls of the same color. Using "
-"that mechanic, try to reach the exit door of each chamber. Some doors are "
-"more complicated to use than others: They can only be opened using door "
-"triggers and only stay open as long as the triggers are occupied.<br>br>If "
-"all of this sounds like your brain can handle it, congratulations! You’re "
-"the perfect candidate for our test chambers!<br><br>That being said, welcome "
-"and good luck!"
-msgstr ""
-
-#: i18n/tmp/Games/Scribblenauts Unlimited/application.js:1
-msgid "Scribblenauts Unlimited"
-msgstr ""
-
-#: i18n/tmp/Games/Scribblenauts Unlimited/application.js:2
-msgid ""
-"Venture into a wide-open world where the most powerful tool is your "
-"imagination. Help Maxwell solve robust puzzles in seamless, free-roaming "
-"levels by summoning any object you can think of. Create your own original "
-"objects, assign unique properties, and share them with friends online using "
-"Steam Workshop – to be used in game or further modified as you like!"
-msgstr ""
-
-#: i18n/tmp/Games/Assassin’s Creed II/application.js:1
-msgid "Assassin’s Creed II"
-msgstr ""
-
-#: i18n/tmp/Games/Assassin’s Creed II/application.js:2
-msgid ""
-"An epic story of family, vengeance and conspiracy set in the pristine, yet "
-"brutal, backdrop of a Renaissance Italy."
-msgstr ""
-
-#: i18n/tmp/Games/STAR WARS: Dark Forces/application.js:1
-msgid "STAR WARS™: Dark Forces"
-msgstr ""
-
-#: i18n/tmp/Games/STAR WARS: Dark Forces/application.js:2
-msgid ""
-"Behind a veil of secrecy the evil Empire is creating a doomsday army - one "
-"that, if finished, will become the final cog in the Empire's arsenal of "
-"terror and domination. Your Mission? Join the Rebel Alliance's covert "
-"operations division, infiltrate the Empire."
-msgstr ""
-
-#: i18n/tmp/Games/Crayon Physics/application.js:1
-msgid "Crayon Physics"
-msgstr ""
-
-#: i18n/tmp/Games/Crayon Physics/application.js:2
-msgid ""
-"Crayon Physics is a mouse arcade game. You will have to draw lines and "
-"squares to move a ball. The aim is to catch the stars in the level. "
+#: i18n/tmp/Games/Uplay/application.js:2
+msgid "Uplay is Ubisoft's PC games portal."
 msgstr ""
 
 #: i18n/tmp/Games/Warcraft III/application.js:1
@@ -603,188 +1012,28 @@ msgid ""
 "of strategy, as the Reign of Chaos begins..."
 msgstr ""
 
-#: i18n/tmp/Games/Burnout Paradise: The Ultimate Box/application.js:1
-msgid "Burnout™ Paradise: The Ultimate Box"
+#: i18n/tmp/Games/Warcraft III TFT/application.js:1
+msgid "Warcraft® III: The Frozen Throne®"
 msgstr ""
 
-#: i18n/tmp/Games/Burnout Paradise: The Ultimate Box/application.js:2
+#: i18n/tmp/Games/Warcraft III TFT/application.js:2
 msgid ""
-"Paradise City is the largest and most dangerous setting yet for the best-"
-"selling Burnout series. The massive setting gives players an open-ended "
-"world to explore, as they race their vehicles through hundreds of miles of "
-"roads and underground passages with more than 70 different cars. Speed "
-"through the streets from event to event, racking up points that are saved to "
-"your Paradise City driver’s license. Earn the vaunted “Burnout” license by "
-"smashing through billboards, jumping ramps, and sustaining crashes with the "
-"improved damage system."
+"Warcraft III: The Frozen Throne adds a host of new features to the game, "
+"including four new campaigns that take you across the frozen continent of "
+"Northrend. Explore new maps and master new units such as the Troll Bat "
+"Riders, the Blood Elf Spell Breakers, and the destructive Mountain Giants."
+"<br><br>Install Warcraft III first."
 msgstr ""
 
-#: i18n/tmp/Games/Assassin's Creed Revelations/application.js:1
-msgid "Assassin's Creed® Revelations"
+#: i18n/tmp/Games/Worms Armageddon/application.js:1
+msgid "Worms Armageddon"
 msgstr ""
 
-#: i18n/tmp/Games/Assassin's Creed Revelations/application.js:2
+#: i18n/tmp/Games/Worms Armageddon/application.js:2
 msgid ""
-"Ezio Auditore walks in the footsteps of the legendary mentor Altair, on a "
-"dangerous journey of discovery and revelation."
-msgstr ""
-
-#: i18n/tmp/Games/Ether One Redux/application.js:1
-msgid "Ether One Redux"
-msgstr ""
-
-#: i18n/tmp/Games/Ether One Redux/application.js:2
-msgid ""
-"Ether One is a first person adventure that deals with the fragility of the "
-"human mind. There are two paths in the world you can choose from. At its "
-"core is a story exploration path free from puzzles where you can unfold the "
-"story at your own pace."
-msgstr ""
-
-#: i18n/tmp/Games/Icy Tower/application.js:1
-msgid "Icy Tower 1.5"
-msgstr ""
-
-#: i18n/tmp/Games/Icy Tower/application.js:2
-msgid ""
-"Icy Tower is a platform game set in a tower, where the player's goal is to "
-"jump from one floor to the next and go as high as possible without falling "
-"and plunging off the screen."
-msgstr ""
-
-#: i18n/tmp/Games/Steam/application.js:1
-msgid "Steam"
-msgstr ""
-
-#: i18n/tmp/Games/Steam/application.js:2
-msgid ""
-"Steam is a digital distribution platform developed by Valve Corporation, "
-"which offers digital rights management (DRM), multiplayer gaming, video "
-"streaming and social networking services."
-msgstr ""
-
-#: i18n/tmp/Games/Tropico 3/application.js:1
-msgid "Tropico 3"
-msgstr ""
-
-#: i18n/tmp/Games/Tropico 3/application.js:2
-msgid ""
-"Engage in a tropical power trip! Become the dictator of a remote island "
-"during the Cold War. Charm, persuade, intimidate, oppress, or cheat your "
-"people to stay in power! Are you a kind and generous leader? A corrupt and "
-"ruthless tyrant ruling with an iron fist? Turn your island into a tourist "
-"paradise or an industrial power. Make promises to the electorate or slander "
-"political adversaries to get the crucial votes for the upcoming elections. "
-"Send your avatar to congratulate the people, visit the island of another "
-"player, or just sun-bathe on the Caribbean beach."
-msgstr ""
-
-#: i18n/tmp/Games/Assassin’s Creed: Brotherhood/application.js:1
-msgid "Assassin’s Creed® Brotherhood"
-msgstr ""
-
-#: i18n/tmp/Games/Assassin’s Creed: Brotherhood/application.js:2
-msgid ""
-"Live and breathe as Ezio, a legendary Master Assassin, in his enduring "
-"struggle against the powerful Templar order.<br><br>He must journey into "
-"Italy’s greatest city, Rome, center of power, greed and corruption to strike "
-"at the heart of the enemy. Defeating the corrupt tyrants entrenched there "
-"will require not only strength, but leadership, as Ezio commands an entire "
-"brotherhood of assassins who will rally to his side. Only by working "
-"together can the assassins defeat their mortal enemies and prevent the "
-"extinction of their order."
-msgstr ""
-
-#: i18n/tmp/Games/Dr. Langeskov, The Tiger, and The Terribly Cursed Emerald: A Whirlwind Heist/application.js:1
-msgid ""
-"Dr. Langeskov, The Tiger, and The Terribly Cursed Emerald: A Whirlwind Heist"
-msgstr ""
-
-#: i18n/tmp/Games/Dr. Langeskov, The Tiger, and The Terribly Cursed Emerald: A Whirlwind Heist/application.js:2
-msgid ""
-"A 15 minute heist game by Crows Crows Crows & Directed by William Pugh (The "
-"Stanley Parable). "
-msgstr ""
-
-#: i18n/tmp/Games/Blizzard app/application.js:1
-msgid "Blizzard app"
-msgstr ""
-
-#: i18n/tmp/Games/Blizzard app/application.js:2
-msgid ""
-"The Blizzard desktop app is designed to improve your gaming experience. "
-"It’ll streamline your login and make it even easier to keep up with your "
-"friends!"
-msgstr ""
-
-#: i18n/tmp/Games/The Elder Scrolls V: Skyrim/application.js:1
-msgid "The Elder Scrolls V: Skyrim"
-msgstr ""
-
-#: i18n/tmp/Games/The Elder Scrolls V: Skyrim/application.js:2
-msgid ""
-"Winner of more than 200 Game of the Year Awards, Skyrim Special Edition "
-"brings the epic fantasy to life in stunning detail. The Special Edition "
-"includes the critically acclaimed game and add-ons with all-new features "
-"like remastered art and effects, volumetric god rays, dynamic depth of "
-"field, screen-space reflections, and more. Skyrim Special Edition also "
-"brings the full power of mods to the PC and consoles. New quests, "
-"environments, characters, dialogue, armor, weapons and more – with Mods, "
-"there are no limits to what you can experience."
-msgstr ""
-
-#: i18n/tmp/Games/Rocksmith/application.js:1
-msgid "Rocksmith™"
-msgstr ""
-
-#: i18n/tmp/Games/Rocksmith/application.js:2
-msgid ""
-"Rocksmith’s innovative game design makes playing music visually intuitive "
-"and will engage experienced musicians as well as those who have never picked "
-"up a guitar in their lives."
-msgstr ""
-
-#: i18n/tmp/Games/STAR WARS Jedi Knight: Dark Forces II/application.js:1
-msgid "STAR WARS™ Jedi Knight: Dark Forces II"
-msgstr ""
-
-#: i18n/tmp/Games/STAR WARS Jedi Knight: Dark Forces II/application.js:2
-msgid ""
-"Jedi Knight: Dark Forces II picks up where the award-winning Dark Forces™ "
-"game left off...with even more features and firepower in dazzling 3D "
-"graphics. As Kyle Katarn, you must acquire a lightsaber and learn the ways "
-"of the Force to become a Jedi Knight."
-msgstr ""
-
-#: i18n/tmp/Games/Rocksmith 2014/application.js:1
-msgid "Rocksmith® 2014"
-msgstr ""
-
-#: i18n/tmp/Games/Rocksmith 2014/application.js:2
-msgid ""
-"The fastest way to learn guitar is now better than ever. Join over three "
-"million people who have learned to play guitar with the award-winning "
-"Rocksmith® method. Plug any real guitar or bass with a 1/4 inch jack "
-"directly into your PC or Mac and you’ll learn to play in just 60 days."
-msgstr ""
-
-#: i18n/tmp/Games/Quantum Conundrum/application.js:1
-msgid "Quantum Conundrum"
-msgstr ""
-
-#: i18n/tmp/Games/Quantum Conundrum/application.js:2
-msgid ""
-"Find and rescue your uncle by using his newest invention to work your way "
-"through a crazy complex mansion as you switch between dimensions and solve "
-"puzzles!"
-msgstr ""
-
-#: i18n/tmp/Games/Hexcells/application.js:1
-msgid "Hexcells"
-msgstr ""
-
-#: i18n/tmp/Games/Hexcells/application.js:2
-msgid "Hexcells is an ambient logic puzzle game for PC, Mac and Linux."
+"Those intrepid invertebrates return with a vengeance in the much-loved "
+"Worms™ Armageddon. It’s a whole new can of worms! It’s hilarious fun that "
+"you can enjoy on your own or with all your friends."
 msgstr ""
 
 #: i18n/tmp/Games/Worms Reloaded/application.js:1
@@ -800,307 +1049,95 @@ msgid ""
 "weapons."
 msgstr ""
 
-#: i18n/tmp/Games/PAYDAY The Heist/application.js:1
-msgid "PAYDAY™ The Heist"
+#: i18n/tmp/Graphics/category.js:1
+msgid "Graphics"
 msgstr ""
 
-#: i18n/tmp/Games/PAYDAY The Heist/application.js:2
+#: i18n/tmp/Graphics/Photofiltre/application.js:1
+msgid "Photofiltre"
+msgstr ""
+
+#: i18n/tmp/Graphics/Photofiltre/application.js:2
 msgid ""
-"Take on the role of a hardened career criminal executing intense, dynamic "
-"heists in constant pursuit of the next “big score”"
+"<b>Introduction</b><br/>PhotoFiltre Studio is a complete image retouching "
+"program. It allows you to do simple or advanced adjustments to an image and "
+"apply a vast range of filters on it. It is simple and intuitive to use, and "
+"has an easy learning curve. The toolbar, giving you access to the standard "
+"filters with just a few clicks, gives PhotoFiltre Studio a robust look. "
+"PhotoFiltre Studio also has layer manager (with Alpha channel), advanced "
+"brushes, nozzles (or tubes), red eye corrector, batch module and lot of "
+"other powerful tools."
 msgstr ""
 
-#: i18n/tmp/Games/Enderal/application.js:1
-msgid "Enderal"
+#: i18n/tmp/Internet/Internet Explorer 6.0/application.js:1
+msgid "Internet Explorer 6.0"
 msgstr ""
 
-#: i18n/tmp/Games/Enderal/application.js:2
+#: i18n/tmp/Internet/Internet Explorer 6.0/application.js:2
+#: i18n/tmp/Internet/Internet Explorer 7.0/application.js:2
 msgid ""
-"Enderal is a total conversion for TES V: Skyrim: a game modification that is "
-"set in its own world with its own landscape, lore and story. It offers an "
-"immersive open world, all for the player to explore, overhauled skill "
-"systems and gameplay mechanics and a dark, psychological storyline with "
-"believable characters."
+"Internet Explorer is an old web browser.<br />You may need it if you want to "
+"test a website compatibility, you should not use it to navigate. "
 msgstr ""
 
-#: i18n/tmp/Games/Age of Empires II HD/application.js:1
-msgid "Age of Empires II HD"
+#: i18n/tmp/Internet/Internet Explorer 7.0/application.js:1
+msgid "Internet Explorer 7.0"
 msgstr ""
 
-#: i18n/tmp/Games/Age of Empires II HD/application.js:2
+#: i18n/tmp/Internet/mIRC/application.js:1
+msgid "mIRC"
+msgstr ""
+
+#: i18n/tmp/Internet/mIRC/application.js:2
 msgid ""
-"Age of Empires II has been re-imagined in high definition with new features, "
-"trading cards, improved AI, workshop support, multiplayer, Steamworks "
-"integration and more!"
+"<p>mIRC is a <b>popular Internet Relay Chat client</b> used by millions of "
+"people, and thousands of organizations, to communicate, share, play and work "
+"with each other on IRC networks around the world. Serving the <b>Internet "
+"community</b> for over a decade, mIRC has evolved into a powerful, reliable "
+"and fun piece of technology.<br></p>"
 msgstr ""
 
-#: i18n/tmp/Games/Clicker Heroes/application.js:1
-msgid "Clicker Heroes"
+#: i18n/tmp/Internet/TeamSpeak 3/application.js:1
+msgid "TeamSpeak 3"
 msgstr ""
 
-#: i18n/tmp/Games/Clicker Heroes/application.js:2
+#: i18n/tmp/Internet/TeamSpeak 3/application.js:2
 msgid ""
-"Ever wondered what one quadrillion damage per second feels like? Wonder no "
-"more! Embark on your quest to attain it today! Start out by clicking on the "
-"monster to kill them, and get their gold. Spend that gold on hiring new "
-"heroes and get more damage. The more damage you deal, the more gold you will "
-"get."
+"TeamSpeak 3 offers the ideal voice communication tool for online gaming, "
+"education and training, internal business communication, and staying in "
+"touch with friends and family."
 msgstr ""
 
-#: i18n/tmp/Games/The Room/application.js:1
-msgid "The Room"
+#: i18n/tmp/Multimedia/category.js:1
+msgid "Multimedia"
 msgstr ""
 
-#: i18n/tmp/Games/The Room/application.js:2
-msgid ""
-"A mysterious invitation leads to the attic of an abandoned house. In the "
-"room is a cast-iron safe laced with strange carvings and on top, a note from "
-"your distant companion. It promises something ancient and astonishing "
-"concealed in the iron chamber - you need only find a way in."
+#: i18n/tmp/Office/category.js:1
+msgid "Office"
 msgstr ""
 
-#: i18n/tmp/Games/Super Blue Boy Planet/application.js:1
-msgid "Super Blue Boy Planet"
+#: i18n/tmp/Office/ElsterFormular/application.js:1
+msgid "ElsterFormular"
 msgstr ""
 
-#: i18n/tmp/Games/Super Blue Boy Planet/application.js:2
-msgid ""
-"SBBP is a 2D platformer with pixel graphics. Blue boy’s girlfriend is "
-"kidnapped by aliens so he goes through 21 levels to save her and he also "
-"fight bosses along the way."
-msgstr ""
-
-#: i18n/tmp/Games/Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad/application.js:1
-msgid "Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad"
-msgstr ""
-
-#: i18n/tmp/Games/Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad/application.js:2
-msgid ""
-"'Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad?' is "
-"a fast paced shower-simulation where you shower with your 8-bit dad. It's "
-"good, clean fun!"
-msgstr ""
-
-#: i18n/tmp/Games/Far Cry 3 - Blood Dragon/application.js:1
-msgid "Far Cry 3 - Blood Dragon"
-msgstr ""
-
-#: i18n/tmp/Games/Far Cry 3 - Blood Dragon/application.js:2
-msgid ""
-"Far Cry® 3: Blood Dragon is THE Kick-Ass Cyber Shooter.Welcome to an 80’s "
-"vision of the future. The year is 2007 and you are Sargent Rex Colt, a Mark "
-"IV Cyber Commando. Your mission: get the girl, kill the baddies, and save "
-"the world."
-msgstr ""
-
-#: i18n/tmp/Games/Rayman Origins/application.js:1
-msgid "Rayman® Origins"
-msgstr ""
-
-#: i18n/tmp/Games/Rayman Origins/application.js:2
-msgid ""
-"Experience the magical universe of Rayman with legendary 2D gameplay that "
-"has captured the hearts of millions of fans!"
-msgstr ""
-
-#: i18n/tmp/Games/STAR WARS Battlefront II/application.js:1
-msgid "STAR WARS™ Battlefront™ II"
-msgstr ""
-
-#: i18n/tmp/Games/STAR WARS Battlefront II/application.js:2
-msgid ""
-"Join the rise of Darth Vader’s elite 501st Legion of Stormtroopers as you "
-"fight through an all new story-based saga where every action you take "
-"impacts the battlefront and, ultimately, the fate of the Star Wars galaxy."
-msgstr ""
-
-#: i18n/tmp/Functions/category.js:1
-msgid "Functions"
-msgstr ""
-
-#: i18n/tmp/Development/Notepad++/application.js:1
-msgid "Notepad++"
-msgstr ""
-
-#: i18n/tmp/Development/Notepad++/application.js:2
-msgid ""
-"Notepad++ is a free (as in &quot;free speech&quot; and also as in &quot;free "
-"beer&quot;) source code editor and Notepad replacement that supports several "
-"languages. Running in the MS Windows environment, its use is governed by GPL "
-"License.<br><br>Based on a powerful editing component Scintilla, Notepad++ "
-"is written in C++ and uses pure Win32 API and STL which ensures a higher "
-"execution speed and smaller program size. By optimizing as many routines as "
-"possible without losing user friendliness, Notepad++ is trying to reduce the "
-"world carbon dioxide emissions. When using less CPU power, the PC can "
-"throttle down and reduce power consumption, resulting in a greener "
-"environment.<br><br>Source: http://notepad-plus.sourceforge.net/uk/site.htm"
-msgstr ""
-
-#: i18n/tmp/Development/category.js:1
-msgid "Development"
+#: i18n/tmp/Office/ElsterFormular/application.js:2
+msgid "ElsterFormular is the official german software to file a tax return."
 msgstr ""
 
 #: i18n/tmp/Other/category.js:1
 msgid "Other"
 msgstr ""
 
-#: Games/League of Legends/BETA Client/script.js:41
-msgid "Select your region:"
+#: i18n/tmp/Science/category.js:1
+msgid "Science"
 msgstr ""
 
-#: Games/Warcraft III TFT/Online/script.js:13
-msgid "Please install Warcraft III before installing The Frozen Throne."
+#: Internet/Internet Explorer 7.0/Online/script.js:60
+msgid "Which language version would you like to install?"
 msgstr ""
 
-#: Games/Origin/Local (Legacy)/script.js:14
-#: Games/Origin/Online (Legacy)/script.js:13
+#: Office/ElsterFormular/Online/script.js:8
 msgid ""
-"When Origin launches, you will get an error message (\"Your update could not "
-"be completed.\"). This is ok. Just close the popup."
-msgstr ""
-
-#: Functions/QuickScript/OnlineInstallerScript/script.js:32
-msgid "Please select the download URL."
-msgstr ""
-
-#: Functions/QuickScript/UplayScript/script.js:61
-msgid ""
-"Please follow the steps of the Uplay setup.\n"
-"\n"
-"Uncheck \"Run Uplay\" or close Uplay completely after the setup so that the "
-"installation of \"{0}\" can continue."
-msgstr ""
-
-#: Functions/QuickScript/UplayScript/script.js:85
-msgid "Please wait until Uplay has finished the download ..."
-msgstr ""
-
-#: Functions/QuickScript/UplayScript/script.js:93
-msgid "Please close Uplay."
-msgstr ""
-
-#: Functions/QuickScript/InstallerScript/script.js:23
-msgid "Please enter the name of your application."
-msgstr ""
-
-#: Functions/QuickScript/InstallerScript/script.js:38
-msgid "Please select the wine architecture."
-msgstr ""
-
-#: Functions/QuickScript/InstallerScript/script.js:52
-msgid "Please select the wine distribution."
-msgstr ""
-
-#: Functions/QuickScript/InstallerScript/script.js:66
-msgid "Please select the wine version."
-msgstr ""
-
-#: Functions/QuickScript/InstallerScript/script.js:88
-msgid "Please select the executable."
-msgstr ""
-
-#: Functions/QuickScript/LocalInstallerScript/script.js:23
-msgid "Please select the installation file."
-msgstr ""
-
-#: Functions/QuickScript/SteamScript/script.js:126
-msgid ""
-"Please follow the steps of the Steam setup.\n"
-"\n"
-"Uncheck \"Run Steam\" or close Steam completely after the setup so that the "
-"installation of \"{0}\" can continue."
-msgstr ""
-
-#: Functions/QuickScript/SteamScript/script.js:143
-#: Functions/QuickScript/SteamScript/script.js:153
-msgid "Please wait until Steam has finished the download ..."
-msgstr ""
-
-#: Functions/QuickScript/SteamScript/script.js:148
-msgid "Downloaded {0} of {1} bytes"
-msgstr ""
-
-#: Functions/Verbs/vcrun2003/script.js:15
-#: Functions/Verbs/vcrun2013/script.js:14
-#: Functions/Verbs/vcrun2013/script.js:25
-#: Functions/Verbs/vcrun2012/script.js:14
-#: Functions/Verbs/vcrun2012/script.js:25
-#: Functions/Verbs/vcrun2008/script.js:14
-#: Functions/Verbs/vcrun2008/script.js:25
-#: Functions/Verbs/vcrun2005/script.js:14
-#: Functions/Verbs/vcrun2015/script.js:14
-#: Functions/Verbs/vcrun2015/script.js:25
-#: Functions/Verbs/vcrun2010/script.js:14
-#: Functions/Verbs/vcrun2010/script.js:25 Functions/Verbs/dotnet40/script.js:30
-#: Functions/Verbs/physx/script.js:14 Functions/Verbs/quicktime76/script.js:10
-msgid "Please wait while {0} is installed ..."
-msgstr ""
-
-#: Functions/Verbs/d3dx9/script.js:10 Functions/Verbs/d3dx9/script.js:11
-#: Functions/Verbs/d3dx9/script.js:31
-msgid "Extracting {0} ..."
-msgstr ""
-
-#: Functions/Verbs/corefonts/script.js:80
-#: Functions/Verbs/corefonts/script.js:86
-msgid "fonts"
-msgstr ""
-
-#: Functions/Verbs/uplay/script.js:11
-msgid ""
-"Please follow the steps of the Uplay setup.\n"
-"\n"
-"Uncheck \"Run Uplay\" or close Uplay completely after the setup so that the "
-"installation can continue."
-msgstr ""
-
-#: Functions/Shortcuts/Reader/script.js:63
-msgid ""
-"The container {0} is no longer used.\n"
-"Do you want to delete it?"
-msgstr ""
-
-#: Functions/Shortcuts/Wine/script.js:58
-msgid "Executable {0} not found!"
-msgstr ""
-
-#: Functions/Engines/Wine/script.js:249
-msgid "Please wait while {0} is uninstalled ..."
-msgstr ""
-
-#: Functions/Engines/Wine/script.js:251
-msgid "Could not uninstall {0}!"
-msgstr ""
-
-#: Functions/Engines/Wine/script.js:432
-msgid "Prefix seems to be 32bits"
-msgstr ""
-
-#: Functions/Engines/Wine/script.js:450
-msgid "Installing version: "
-msgstr ""
-
-#: Functions/Engines/Wine/script.js:797
-msgid "Could not determine mimetype for file extension \"{0}\""
-msgstr ""
-
-#: Functions/Filesystem/Extract/script.js:28
-#: Functions/Filesystem/Extract/script.js:73
-msgid "Please wait while {0} is extracted ..."
-msgstr ""
-
-#: Functions/Filesystem/Files/script.js:63
-msgid "Checking file consistency ..."
-msgstr ""
-
-#: Functions/Net/Resource/script.js:47 Functions/Net/Download/script.js:37
-msgid "Please wait while {0} is downloaded ..."
-msgstr ""
-
-#: Functions/Net/Download/script.js:57
-msgid ""
-"Error while calculating checksum. \n"
-"\n"
-"Expected = {0}\n"
-"Actual = {1}"
+"Please select the installation file.\n"
+"You can download it from https://www.elster.de/elfo_down.php."
 msgstr ""
