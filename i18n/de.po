@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-25 19:45+0200\n"
-"PO-Revision-Date: 2017-06-24 16:51+0200\n"
+"POT-Creation-Date: 2017-07-01 15:47+0200\n"
+"PO-Revision-Date: 2017-07-01 15:48+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -29,10 +29,10 @@ msgstr "Konnte {0} nicht deinstallieren!"
 
 #: Functions/Engines/Wine/script.js:284
 #: Functions/QuickScript/InstallerScript/script.js:103
+#: Functions/QuickScript/SteamScript/script.js:104
+#: Functions/QuickScript/SteamScript/script.js:109
 #: Functions/QuickScript/SteamScript/script.js:129
-#: Functions/QuickScript/SteamScript/script.js:134
-#: Functions/QuickScript/SteamScript/script.js:162
-#: Functions/QuickScript/SteamScript/script.js:184
+#: Functions/QuickScript/SteamScript/script.js:151
 #: Functions/QuickScript/UplayScript/script.js:66
 #: Functions/QuickScript/UplayScript/script.js:71
 #: Functions/QuickScript/UplayScript/script.js:98
@@ -110,7 +110,7 @@ msgstr "Bitte wählen Sie die Installationsdatei aus."
 msgid "Please select the download URL."
 msgstr "Bitte wählen Sie die Download-URL."
 
-#: Functions/QuickScript/SteamScript/script.js:126
+#: Functions/QuickScript/SteamScript/script.js:101
 msgid ""
 "Please follow the steps of the Steam setup.\n"
 "\n"
@@ -123,14 +123,9 @@ msgstr ""
 "nach der Installation, damit die Installation von \"{0}\" fortgesetzt werden "
 "kann."
 
-#: Functions/QuickScript/SteamScript/script.js:143
-#: Functions/QuickScript/SteamScript/script.js:153
+#: Functions/QuickScript/SteamScript/script.js:113
 msgid "Please wait until Steam has finished the download ..."
 msgstr "Bitte warten Sie bis Steam den Download beendet hat ..."
-
-#: Functions/QuickScript/SteamScript/script.js:148
-msgid "Downloaded {0} of {1} bytes"
-msgstr "{0} von {1} Bytes heruntergeladen"
 
 #: Functions/QuickScript/UplayScript/script.js:61
 msgid ""
@@ -468,18 +463,6 @@ msgstr ""
 "Verbesserungen, wie zum Beispiel Motorräder und aufregenden neuen Onlinemodi "
 "und Herausforderungen."
 
-#: i18n/tmp/Games/Call of Juarez Gunslinger/application.js:1
-msgid "Call of Juarez® Gunslinger"
-msgstr ""
-
-#: i18n/tmp/Games/Call of Juarez Gunslinger/application.js:2
-msgid ""
-"From the dust of a gold mine to the dirt of a saloon, Call of Juarez® "
-"Gunslinger is a real homage to the Wild West tales. Live the epic and "
-"violent journey of a ruthless bounty hunter on the trail of the West’s most "
-"notorious outlaws."
-msgstr ""
-
 #: i18n/tmp/Games/category.js:1 i18n/tmp/Internet/category.js:1
 msgid "Games"
 msgstr "Spiele"
@@ -651,18 +634,6 @@ msgstr ""
 "Ether One ist ein First Person Adventure, das sich mit der Zerbrechlichkeit "
 "des menschlichen Verstands beschäftigt."
 
-#: i18n/tmp/Games/Europa Universalis IV/application.js:1
-msgid "Europa Universalis IV"
-msgstr ""
-
-#: i18n/tmp/Games/Europa Universalis IV/application.js:2
-msgid ""
-"The empire building game Europa Universalis IV gives you control of a nation "
-"to guide through the years in order to create a dominant global empire. Rule "
-"your nation through the centuries, with unparalleled freedom, depth and "
-"historical accuracy."
-msgstr ""
-
 #: i18n/tmp/Games/Far Cry 3 - Blood Dragon/application.js:1
 msgid "Far Cry 3 - Blood Dragon"
 msgstr "Far Cry 3 - Blood Dragon"
@@ -680,17 +651,6 @@ msgstr ""
 "der 80er. Wir schreiben das Jahr 2007 und Sie sind Sergeant Rex Colt, ein "
 "Mark IV Cyber Commando. Ihre Mission: Schnappen Sie sich das Mädchen, töten "
 "Sie die Bösewichte und retten Sie die Welt!"
-
-#: i18n/tmp/Games/Goodbye Deponia/application.js:1
-msgid "Goodbye Deponia"
-msgstr ""
-
-#: i18n/tmp/Games/Goodbye Deponia/application.js:2
-msgid ""
-"More chaos, more destruction, more Rufus. Not one, not two, but three "
-"Rufuses cause all kinds of crazy mayhem in the long-awaited adventure comedy "
-"Goodbye Deponia!"
-msgstr ""
 
 #: i18n/tmp/Games/Hexcells/application.js:1
 msgid "Hexcells"
@@ -1251,6 +1211,33 @@ msgstr ""
 msgid "The Vanishing of Ethan Carter Redux"
 msgstr "The Vanishing of Ethan Carter Redux"
 
+#: i18n/tmp/Games/Tomb Raider Legend/application.js:1
+msgid "Tomb Raider: Legend"
+msgstr "Tomb Raider: Legend"
+
+#: i18n/tmp/Games/Tomb Raider Legend/application.js:2
+msgid ""
+"The gaming world's sexiest and most intrepid adventurer makes her triumphant "
+"return in Lara Croft Tomb Raider: Legend!<br><br>Follow Lara down a path of "
+"discovery as she travels the globe to remote, exotic locales in search of "
+"one of history's greatest artifacts that unleash unwelcome figures from "
+"Lara's mysterious past. With guns blazing, Lara must use her athletic "
+"ability and intellectual wits to explore vast, treacherous tombs, riddled "
+"with challenging puzzles and deadly traps. Experience the beginning of the "
+"new Legend in the most adrenaline-fueled Tomb Raider adventure ever!"
+msgstr ""
+"Die verführerischste und unerschrockenste Abenteurerin der Gaming-Welt kehrt "
+"triumphierend zurück Lara Croft Tomb Raider: Legend!<br><br>Folgen Sie Lara "
+"auf dem Pfad der Entdecker, und erleben Sie, wie sie den ganzen Erdball "
+"erkundet und zu entfernten, exotischen Schauplätzen auf Ihrer Suche nach "
+"einem der bedeutensten Artefakte der Geschichte aufbricht; Laras Suche "
+"entfesselt mysteriösen Gestalten aus Ihrer Vergangenheit. Rauchende Colts, "
+"denen Lara mit ihren ausserordentlichen sportlichen Fähigkeiten und ihrem "
+"umwerfenden intellektuellen Charme begegnet, und gigantische, hinterhältige "
+"Grüfte erforscht, die mit herausfordernden Puzzles und tödlichen Fallen "
+"durchlöchert sind. Erleben Sie diese neue Legende von Anfang an in diesem "
+"nervenzerreissenden Tomb Raider Abenteuer!"
+
 #: i18n/tmp/Games/Tom Clancy's Splinter Cell/application.js:1
 msgid "Tom Clancy's Splinter Cell®"
 msgstr "Tom Clancy's Splinter Cell®"
@@ -1524,3 +1511,6 @@ msgid ""
 msgstr ""
 "Bitte wählen Sie die Installationsdatei aus.\n"
 "Sie können diese von https://www.elster.de/elfo_down.php herunterladen."
+
+#~ msgid "Downloaded {0} of {1} bytes"
+#~ msgstr "{0} von {1} Bytes heruntergeladen"
