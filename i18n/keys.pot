@@ -544,6 +544,17 @@ msgid ""
 "the world."
 msgstr ""
 
+#: i18n/tmp/Games/Goodbye Deponia/application.js:1
+msgid "Goodbye Deponia"
+msgstr ""
+
+#: i18n/tmp/Games/Goodbye Deponia/application.js:2
+msgid ""
+"More chaos, more destruction, more Rufus. Not one, not two, but three "
+"Rufuses cause all kinds of crazy mayhem in the long-awaited adventure comedy "
+"Goodbye Deponia!"
+msgstr ""
+
 #: i18n/tmp/Games/Hexcells/application.js:1
 msgid "Hexcells"
 msgstr ""

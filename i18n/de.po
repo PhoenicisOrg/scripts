@@ -687,6 +687,20 @@ msgstr ""
 "Mark IV Cyber Commando. Ihre Mission: Schnappen Sie sich das Mädchen, töten "
 "Sie die Bösewichte und retten Sie die Welt!"
 
+#: i18n/tmp/Games/Goodbye Deponia/application.js:1
+msgid "Goodbye Deponia"
+msgstr "Goodbye Deponia"
+
+#: i18n/tmp/Games/Goodbye Deponia/application.js:2
+msgid ""
+"More chaos, more destruction, more Rufus. Not one, not two, but three "
+"Rufuses cause all kinds of crazy mayhem in the long-awaited adventure comedy "
+"Goodbye Deponia!"
+msgstr ""
+"Mehr Chaos, mehr Zerstörung, mehr Rufus: Gleich drei Rufus(se) sorgen in der "
+"heiß ersehnten Point & Click-Adventure-Komödie Goodbye Deponia für "
+"abgedrehten Aberwitz!"
+
 #: i18n/tmp/Games/Hexcells/application.js:1
 msgid "Hexcells"
 msgstr "Hexcells"
