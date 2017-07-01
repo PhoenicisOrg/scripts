@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-01 15:51+0200\n"
+"POT-Creation-Date: 2017-07-01 16:07+0200\n"
 "PO-Revision-Date: 2017-06-24 16:51+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
@@ -29,10 +29,10 @@ msgstr "Konnte {0} nicht deinstallieren!"
 
 #: Functions/Engines/Wine/script.js:284
 #: Functions/QuickScript/InstallerScript/script.js:103
+#: Functions/QuickScript/SteamScript/script.js:104
+#: Functions/QuickScript/SteamScript/script.js:109
 #: Functions/QuickScript/SteamScript/script.js:129
-#: Functions/QuickScript/SteamScript/script.js:134
-#: Functions/QuickScript/SteamScript/script.js:162
-#: Functions/QuickScript/SteamScript/script.js:184
+#: Functions/QuickScript/SteamScript/script.js:151
 #: Functions/QuickScript/UplayScript/script.js:66
 #: Functions/QuickScript/UplayScript/script.js:71
 #: Functions/QuickScript/UplayScript/script.js:98
@@ -110,7 +110,7 @@ msgstr "Bitte wählen Sie die Installationsdatei aus."
 msgid "Please select the download URL."
 msgstr "Bitte wählen Sie die Download-URL."
 
-#: Functions/QuickScript/SteamScript/script.js:126
+#: Functions/QuickScript/SteamScript/script.js:101
 msgid ""
 "Please follow the steps of the Steam setup.\n"
 "\n"
@@ -123,14 +123,9 @@ msgstr ""
 "nach der Installation, damit die Installation von \"{0}\" fortgesetzt werden "
 "kann."
 
-#: Functions/QuickScript/SteamScript/script.js:143
-#: Functions/QuickScript/SteamScript/script.js:153
+#: Functions/QuickScript/SteamScript/script.js:113
 msgid "Please wait until Steam has finished the download ..."
 msgstr "Bitte warten Sie bis Steam den Download beendet hat ..."
-
-#: Functions/QuickScript/SteamScript/script.js:148
-msgid "Downloaded {0} of {1} bytes"
-msgstr "{0} von {1} Bytes heruntergeladen"
 
 #: Functions/QuickScript/UplayScript/script.js:61
 msgid ""
@@ -469,6 +464,25 @@ msgstr ""
 "Verbesserungen, wie zum Beispiel Motorräder und aufregenden neuen Onlinemodi "
 "und Herausforderungen."
 
+#: i18n/tmp/Games/Call of Juarez Gunslinger/application.js:1
+msgid "Call of Juarez® Gunslinger"
+msgstr "Call of Juarez® Gunslinger"
+
+#: i18n/tmp/Games/Call of Juarez Gunslinger/application.js:2
+msgid ""
+"From the dust of a gold mine to the dirt of a saloon, Call of Juarez® "
+"Gunslinger is a real homage to the Wild West tales. Live the epic and "
+"violent journey of a ruthless bounty hunter on the trail of the West’s most "
+"notorious outlaws."
+msgstr ""
+"Von den staubigen Goldminen bis zu den schmutzigsten Saloons ist Call of "
+"Juarez® Gunslinger eine echte Hommage an die Erzählungen aus dem Wilden "
+"Westen. Erlebe die epische und gewalttätige Reise eines skrupellosen "
+"Kopfgeldjägers, der den berüchtigtsten Gesetzlosen im Westen auf den Fersen "
+"sitzt. Während die Grenzen zwischen Wahrheit und Mythos verschmelzen, "
+"enthüllt dieses Abenteuer voller denkwürdiger Aufeinandertreffen die "
+"verborgene Wahrheit über einige der größten Legenden im Westen."
+
 #: i18n/tmp/Games/category.js:1 i18n/tmp/Internet/category.js:1
 msgid "Games"
 msgstr "Spiele"
@@ -542,6 +556,21 @@ msgstr ""
 "Hast du dich schon mal gefragt, wie es sich wohl anfühlt, eine Quadrillion "
 "Schaden pro Sekunde zu verursachen? Jetzt kannst du es herausfinden! Begib "
 "dich auf deine Mission, um mal richtig viel Schaden anzurichten!"
+
+#: i18n/tmp/Games/Cogs/application.js:1
+msgid "Cogs"
+msgstr "Cogs"
+
+#: i18n/tmp/Games/Cogs/application.js:2
+msgid ""
+"Cogs is a puzzle game where players build machines from sliding tiles. "
+"Players can choose from 50 levels and 3 gameplay modes. New puzzles are "
+"unlocked by building contraptions quickly and efficiently."
+msgstr ""
+"Cogs ist ein Puzzle-Spiel, bei dem Spieler durch das Verschieben von Teilen "
+"Maschinen bauen. Die Spieler können unter 50 Levels und 3 Spielemodi wählen. "
+"Durch ein schnelles und effizientes Bauen von Apparaturen werden neue "
+"Puzzles freigeschaltet."
 
 #: i18n/tmp/Games/CONSORTIUM/application.js:1
 msgid "CONSORTIUM"
@@ -640,6 +669,25 @@ msgstr ""
 "Ether One ist ein First Person Adventure, das sich mit der Zerbrechlichkeit "
 "des menschlichen Verstands beschäftigt."
 
+#: i18n/tmp/Games/Europa Universalis IV/application.js:1
+msgid "Europa Universalis IV"
+msgstr "Europa Universalis IV"
+
+#: i18n/tmp/Games/Europa Universalis IV/application.js:2
+msgid ""
+"The empire building game Europa Universalis IV gives you control of a nation "
+"to guide through the years in order to create a dominant global empire. Rule "
+"your nation through the centuries, with unparalleled freedom, depth and "
+"historical accuracy."
+msgstr ""
+"Im Spiel Europa Universalis IV könnt ihr ein Reich aufbauen, wobei ihr die "
+"Kontrolle über eine Nation habt, die ihr durch die Jahre führt, um dabei ein "
+"vorherrschendes, weltweites Reich zu erschaffen. Beherrscht eure Nation im "
+"Verlauf der Jahrhunderte mit einer beispiellosen Freiheit, Tiefe und "
+"historischen Genauigkeit. Echte Entdeckungen, Handel, Kriegsführung und "
+"Diplomatie werden in diesem epischen Spiel mit umfassender strategischer und "
+"taktischer Tiefe zum Leben erweckt."
+
 #: i18n/tmp/Games/Far Cry 3 - Blood Dragon/application.js:1
 msgid "Far Cry 3 - Blood Dragon"
 msgstr "Far Cry 3 - Blood Dragon"
@@ -657,6 +705,20 @@ msgstr ""
 "der 80er. Wir schreiben das Jahr 2007 und Sie sind Sergeant Rex Colt, ein "
 "Mark IV Cyber Commando. Ihre Mission: Schnappen Sie sich das Mädchen, töten "
 "Sie die Bösewichte und retten Sie die Welt!"
+
+#: i18n/tmp/Games/Goodbye Deponia/application.js:1
+msgid "Goodbye Deponia"
+msgstr "Goodbye Deponia"
+
+#: i18n/tmp/Games/Goodbye Deponia/application.js:2
+msgid ""
+"More chaos, more destruction, more Rufus. Not one, not two, but three "
+"Rufuses cause all kinds of crazy mayhem in the long-awaited adventure comedy "
+"Goodbye Deponia!"
+msgstr ""
+"Mehr Chaos, mehr Zerstörung, mehr Rufus: Gleich drei Rufus(se) sorgen in der "
+"heiß ersehnten Point & Click-Adventure-Komödie Goodbye Deponia für "
+"abgedrehten Aberwitz!"
 
 #: i18n/tmp/Games/Hexcells/application.js:1
 msgid "Hexcells"
@@ -1217,6 +1279,25 @@ msgstr ""
 msgid "The Vanishing of Ethan Carter Redux"
 msgstr "The Vanishing of Ethan Carter Redux"
 
+#: i18n/tmp/Games/Toki Tori/application.js:1
+msgid "Toki Tori"
+msgstr "Toki Tori"
+
+#: i18n/tmp/Games/Toki Tori/application.js:2
+msgid ""
+"The gameplay in Toki Tori is a blend of two genres. While it looks like a "
+"platform game, it's a puzzle game at heart. To progress through the game, "
+"the player must pick up each egg in a level using a set number of tools."
+msgstr ""
+"Der Spielablauf in Toki Tori ist ein Mix zweier Genres. Während alles wie in "
+"einem Plattformer aussieht, ist dieses Spiel im Kern ein Puzzle-Spiel. Um im "
+"Spiel voranzukommen müssen Sie in jedem Level ein Ei mit Hilfe einiger "
+"Werkzeuge aufsammeln. Die Spieler müssen genauestens Achtgeben und im voraus "
+"planen, wenn sie Werkzeuge wie z.B. den Telewarp, Freeze-o-Matic und "
+"InstantRock™ nutzen. Zusätzliche Werkzeuge werden schrittweise eingeführt "
+"während die Spieler in über 80+ Level und vier einzigartigen Welten "
+"voranschreiten."
+
 #: i18n/tmp/Games/Tom Clancy's Splinter Cell/application.js:1
 msgid "Tom Clancy's Splinter Cell®"
 msgstr "Tom Clancy's Splinter Cell®"
@@ -1394,13 +1475,14 @@ msgid ""
 "your borders, research new spells and conquer your enemies. Become the "
 "ultimate Warlock and rule over all of Ardania!"
 msgstr ""
-"Das neueste Spiel der beliebten Majesty-Reihe, Warlock: Master of the Arcane, "
-"präsentiert rundenbasierte Strategie und globale Eroberung in der fantastischen "
-"Welt von Ardania. In einer Zeit der chaotischen Aufruhr übernimmt der Spieler "
-"die Rolle eines großen Magiers, ein Kriegsherr, der um die ultimative Macht "
-"konkurriert. Ihre Mission ist es, ein Reich aufzubauen, Ihre Grenzen zu erweitern, "
-"neue Zauber zu erforschen und Ihre Gegner zu bezwingen. "
-"Werden Sie der mächtigste Zauberer und herrschen Sie über ganz Ardania!"
+"Das neueste Spiel der beliebten Majesty-Reihe, Warlock: Master of the "
+"Arcane, präsentiert rundenbasierte Strategie und globale Eroberung in der "
+"fantastischen Welt von Ardania. In einer Zeit der chaotischen Aufruhr "
+"übernimmt der Spieler die Rolle eines großen Magiers, ein Kriegsherr, der um "
+"die ultimative Macht konkurriert. Ihre Mission ist es, ein Reich aufzubauen, "
+"Ihre Grenzen zu erweitern, neue Zauber zu erforschen und Ihre Gegner zu "
+"bezwingen. Werden Sie der mächtigste Zauberer und herrschen Sie über ganz "
+"Ardania!"
 
 #: i18n/tmp/Games/Worms Armageddon/application.js:1
 msgid "Worms Armageddon"
