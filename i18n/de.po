@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-01 14:03+0200\n"
+"POT-Creation-Date: 2017-07-01 16:07+0200\n"
 "PO-Revision-Date: 2017-06-24 16:51+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
@@ -38,10 +38,10 @@ msgstr "Konnte {0} nicht deinstallieren!"
 #: Functions/QuickScript/UplayScript/script.js:98
 #: Functions/QuickScript/ZipScript/script.js:45
 #: Functions/QuickScript/ZipScript/script.js:72
-#: Functions/Verbs/corefonts/script.js:79 Functions/Verbs/d3dx9/script.js:30
-#: Functions/Verbs/dotnet40/script.js:21 Functions/Verbs/dotnet40/script.js:37
-#: Functions/Verbs/dotnet40/script.js:39 Internet/Internet Explorer
-#: 6.0/Online/script.js:69
+#: Functions/Verbs/corefonts/script.js:79 Functions/Verbs/d3dx10/script.js:30
+#: Functions/Verbs/d3dx9/script.js:30 Functions/Verbs/dotnet40/script.js:21
+#: Functions/Verbs/dotnet40/script.js:37 Functions/Verbs/dotnet40/script.js:39
+#: Internet/Internet Explorer 6.0/Online/script.js:69
 msgid "Please wait ..."
 msgstr "Bitte warten..."
 
@@ -171,8 +171,9 @@ msgstr "Schriftarten"
 msgid "Installing {0} ..."
 msgstr "Installiere {0} ..."
 
-#: Functions/Verbs/d3dx9/script.js:10 Functions/Verbs/d3dx9/script.js:11
-#: Functions/Verbs/d3dx9/script.js:31
+#: Functions/Verbs/d3dx10/script.js:10 Functions/Verbs/d3dx10/script.js:11
+#: Functions/Verbs/d3dx10/script.js:31 Functions/Verbs/d3dx9/script.js:10
+#: Functions/Verbs/d3dx9/script.js:11 Functions/Verbs/d3dx9/script.js:31
 msgid "Extracting {0} ..."
 msgstr "Extrahiere {0} ..."
 
@@ -1341,6 +1342,26 @@ msgstr ""
 "oder die zerstörerischen Bergriesen.<br><br>Installieren Sie zunächst "
 "Warcraft III."
 
+#: i18n/tmp/Games/Warlock - Master of the Arcane/application.js:1
+msgid "Warlock - Master of the Arcane"
+msgstr "Warlock - Master of the Arcane"
+
+#: i18n/tmp/Games/Warlock - Master of the Arcane/application.js:2
+msgid ""
+"In a time of chaotic upheaval, the player takes the role of a great mage, a "
+"warlord vying for ultimate power. Your mission is to build an empire, expand "
+"your borders, research new spells and conquer your enemies. Become the "
+"ultimate Warlock and rule over all of Ardania!"
+msgstr ""
+"Das neueste Spiel der beliebten Majesty-Reihe, Warlock: Master of the "
+"Arcane, präsentiert rundenbasierte Strategie und globale Eroberung in der "
+"fantastischen Welt von Ardania. In einer Zeit der chaotischen Aufruhr "
+"übernimmt der Spieler die Rolle eines großen Magiers, ein Kriegsherr, der um "
+"die ultimative Macht konkurriert. Ihre Mission ist es, ein Reich aufzubauen, "
+"Ihre Grenzen zu erweitern, neue Zauber zu erforschen und Ihre Gegner zu "
+"bezwingen. Werden Sie der mächtigste Zauberer und herrschen Sie über ganz "
+"Ardania!"
+
 #: i18n/tmp/Games/Worms Armageddon/application.js:1
 msgid "Worms Armageddon"
 msgstr "Worms Armageddon"
@@ -1484,3 +1505,6 @@ msgid ""
 msgstr ""
 "Bitte wählen Sie die Installationsdatei aus.\n"
 "Sie können diese von https://www.elster.de/elfo_down.php herunterladen."
+
+#~ msgid "Downloaded {0} of {1} bytes"
+#~ msgstr "{0} von {1} Bytes heruntergeladen"
