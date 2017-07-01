@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-01 15:44+0200\n"
+"POT-Creation-Date: 2017-07-01 16:07+0200\n"
 "PO-Revision-Date: 2017-06-24 16:51+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
@@ -29,10 +29,10 @@ msgstr "Konnte {0} nicht deinstallieren!"
 
 #: Functions/Engines/Wine/script.js:284
 #: Functions/QuickScript/InstallerScript/script.js:103
+#: Functions/QuickScript/SteamScript/script.js:104
+#: Functions/QuickScript/SteamScript/script.js:109
 #: Functions/QuickScript/SteamScript/script.js:129
-#: Functions/QuickScript/SteamScript/script.js:134
-#: Functions/QuickScript/SteamScript/script.js:162
-#: Functions/QuickScript/SteamScript/script.js:184
+#: Functions/QuickScript/SteamScript/script.js:151
 #: Functions/QuickScript/UplayScript/script.js:66
 #: Functions/QuickScript/UplayScript/script.js:71
 #: Functions/QuickScript/UplayScript/script.js:98
@@ -110,7 +110,7 @@ msgstr "Bitte wählen Sie die Installationsdatei aus."
 msgid "Please select the download URL."
 msgstr "Bitte wählen Sie die Download-URL."
 
-#: Functions/QuickScript/SteamScript/script.js:126
+#: Functions/QuickScript/SteamScript/script.js:101
 msgid ""
 "Please follow the steps of the Steam setup.\n"
 "\n"
@@ -123,14 +123,9 @@ msgstr ""
 "nach der Installation, damit die Installation von \"{0}\" fortgesetzt werden "
 "kann."
 
-#: Functions/QuickScript/SteamScript/script.js:143
-#: Functions/QuickScript/SteamScript/script.js:153
+#: Functions/QuickScript/SteamScript/script.js:113
 msgid "Please wait until Steam has finished the download ..."
 msgstr "Bitte warten Sie bis Steam den Download beendet hat ..."
-
-#: Functions/QuickScript/SteamScript/script.js:148
-msgid "Downloaded {0} of {1} bytes"
-msgstr "{0} von {1} Bytes heruntergeladen"
 
 #: Functions/QuickScript/UplayScript/script.js:61
 msgid ""
@@ -1358,13 +1353,14 @@ msgid ""
 "your borders, research new spells and conquer your enemies. Become the "
 "ultimate Warlock and rule over all of Ardania!"
 msgstr ""
-"Das neueste Spiel der beliebten Majesty-Reihe, Warlock: Master of the Arcane, "
-"präsentiert rundenbasierte Strategie und globale Eroberung in der fantastischen "
-"Welt von Ardania. In einer Zeit der chaotischen Aufruhr übernimmt der Spieler "
-"die Rolle eines großen Magiers, ein Kriegsherr, der um die ultimative Macht "
-"konkurriert. Ihre Mission ist es, ein Reich aufzubauen, Ihre Grenzen zu erweitern, "
-"neue Zauber zu erforschen und Ihre Gegner zu bezwingen. "
-"Werden Sie der mächtigste Zauberer und herrschen Sie über ganz Ardania!"
+"Das neueste Spiel der beliebten Majesty-Reihe, Warlock: Master of the "
+"Arcane, präsentiert rundenbasierte Strategie und globale Eroberung in der "
+"fantastischen Welt von Ardania. In einer Zeit der chaotischen Aufruhr "
+"übernimmt der Spieler die Rolle eines großen Magiers, ein Kriegsherr, der um "
+"die ultimative Macht konkurriert. Ihre Mission ist es, ein Reich aufzubauen, "
+"Ihre Grenzen zu erweitern, neue Zauber zu erforschen und Ihre Gegner zu "
+"bezwingen. Werden Sie der mächtigste Zauberer und herrschen Sie über ganz "
+"Ardania!"
 
 #: i18n/tmp/Games/Worms Armageddon/application.js:1
 msgid "Worms Armageddon"
@@ -1509,3 +1505,6 @@ msgid ""
 msgstr ""
 "Bitte wählen Sie die Installationsdatei aus.\n"
 "Sie können diese von https://www.elster.de/elfo_down.php herunterladen."
+
+#~ msgid "Downloaded {0} of {1} bytes"
+#~ msgstr "{0} von {1} Bytes heruntergeladen"
