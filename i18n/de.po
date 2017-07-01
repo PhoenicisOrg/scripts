@@ -1298,6 +1298,33 @@ msgstr ""
 "während die Spieler in über 80+ Level und vier einzigartigen Welten "
 "voranschreiten."
 
+#: i18n/tmp/Games/Tomb Raider Legend/application.js:1
+msgid "Tomb Raider: Legend"
+msgstr "Tomb Raider: Legend"
+
+#: i18n/tmp/Games/Tomb Raider Legend/application.js:2
+msgid ""
+"The gaming world's sexiest and most intrepid adventurer makes her triumphant "
+"return in Lara Croft Tomb Raider: Legend!<br><br>Follow Lara down a path of "
+"discovery as she travels the globe to remote, exotic locales in search of "
+"one of history's greatest artifacts that unleash unwelcome figures from "
+"Lara's mysterious past. With guns blazing, Lara must use her athletic "
+"ability and intellectual wits to explore vast, treacherous tombs, riddled "
+"with challenging puzzles and deadly traps. Experience the beginning of the "
+"new Legend in the most adrenaline-fueled Tomb Raider adventure ever!"
+msgstr ""
+"Die verführerischste und unerschrockenste Abenteurerin der Gaming-Welt kehrt "
+"triumphierend zurück Lara Croft Tomb Raider: Legend!<br><br>Folgen Sie Lara "
+"auf dem Pfad der Entdecker, und erleben Sie, wie sie den ganzen Erdball "
+"erkundet und zu entfernten, exotischen Schauplätzen auf Ihrer Suche nach "
+"einem der bedeutensten Artefakte der Geschichte aufbricht; Laras Suche "
+"entfesselt mysteriösen Gestalten aus Ihrer Vergangenheit. Rauchende Colts, "
+"denen Lara mit ihren ausserordentlichen sportlichen Fähigkeiten und ihrem "
+"umwerfenden intellektuellen Charme begegnet, und gigantische, hinterhältige "
+"Grüfte erforscht, die mit herausfordernden Puzzles und tödlichen Fallen "
+"durchlöchert sind. Erleben Sie diese neue Legende von Anfang an in diesem "
+"nervenzerreissenden Tomb Raider Abenteuer!"
+
 #: i18n/tmp/Games/Tom Clancy's Splinter Cell/application.js:1
 msgid "Tom Clancy's Splinter Cell®"
 msgstr "Tom Clancy's Splinter Cell®"

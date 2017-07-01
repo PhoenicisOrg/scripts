@@ -959,6 +959,22 @@ msgid ""
 "the player must pick up each egg in a level using a set number of tools."
 msgstr ""
 
+#: i18n/tmp/Games/Tomb Raider Legend/application.js:1
+msgid "Tomb Raider: Legend"
+msgstr ""
+
+#: i18n/tmp/Games/Tomb Raider Legend/application.js:2
+msgid ""
+"The gaming world's sexiest and most intrepid adventurer makes her triumphant "
+"return in Lara Croft Tomb Raider: Legend!<br><br>Follow Lara down a path of "
+"discovery as she travels the globe to remote, exotic locales in search of "
+"one of history's greatest artifacts that unleash unwelcome figures from "
+"Lara's mysterious past. With guns blazing, Lara must use her athletic "
+"ability and intellectual wits to explore vast, treacherous tombs, riddled "
+"with challenging puzzles and deadly traps. Experience the beginning of the "
+"new Legend in the most adrenaline-fueled Tomb Raider adventure ever!"
+msgstr ""
+
 #: i18n/tmp/Games/Tom Clancy's Splinter Cell/application.js:1
 msgid "Tom Clancy's Splinter Cell®"
 msgstr ""
