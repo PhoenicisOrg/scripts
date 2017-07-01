@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-01 18:36+0200\n"
+"POT-Creation-Date: 2017-07-01 18:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -952,6 +952,23 @@ msgid ""
 "The gameplay in Toki Tori is a blend of two genres. While it looks like a "
 "platform game, it's a puzzle game at heart. To progress through the game, "
 "the player must pick up each egg in a level using a set number of tools."
+msgstr ""
+
+#: i18n/tmp/Games/Tomb Raider Anniversary/application.js:1
+msgid "Tomb Raider: Anniversary"
+msgstr ""
+
+#: i18n/tmp/Games/Tomb Raider Anniversary/application.js:2
+msgid ""
+"Tomb Raider: Anniversary retraces Lara Croft's original genre-defining "
+"adventure globe-trotting 3rd person action-adventure in pursuit of the "
+"legendary Scion artifact. Using an enhanced 'Tomb Raider: Legend' game "
+"engine, the graphics, technology and physics bring Lara's adventure and "
+"pursuit of a mystical artifact known only as the Scion right up to today's "
+"technology standards and offers gamers a completely new gameplay experience. "
+"Re-imagined, Anniversary delivers a dynamic fluidly and fast Lara Croft, "
+"massive environments of stunning visuals, intense combat and game pacing, "
+"and an enhanced and clarified original story."
 msgstr ""
 
 #: i18n/tmp/Games/Tomb Raider Legend/application.js:1
