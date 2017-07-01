@@ -650,6 +650,25 @@ msgstr ""
 "Ether One ist ein First Person Adventure, das sich mit der Zerbrechlichkeit "
 "des menschlichen Verstands beschäftigt."
 
+#: i18n/tmp/Games/Europa Universalis IV/application.js:1
+msgid "Europa Universalis IV"
+msgstr "Europa Universalis IV"
+
+#: i18n/tmp/Games/Europa Universalis IV/application.js:2
+msgid ""
+"The empire building game Europa Universalis IV gives you control of a nation "
+"to guide through the years in order to create a dominant global empire. Rule "
+"your nation through the centuries, with unparalleled freedom, depth and "
+"historical accuracy."
+msgstr ""
+"Im Spiel Europa Universalis IV könnt ihr ein Reich aufbauen, wobei ihr die "
+"Kontrolle über eine Nation habt, die ihr durch die Jahre führt, um dabei ein "
+"vorherrschendes, weltweites Reich zu erschaffen. Beherrscht eure Nation im "
+"Verlauf der Jahrhunderte mit einer beispiellosen Freiheit, Tiefe und "
+"historischen Genauigkeit. Echte Entdeckungen, Handel, Kriegsführung und "
+"Diplomatie werden in diesem epischen Spiel mit umfassender strategischer und "
+"taktischer Tiefe zum Leben erweckt."
+
 #: i18n/tmp/Games/Far Cry 3 - Blood Dragon/application.js:1
 msgid "Far Cry 3 - Blood Dragon"
 msgstr "Far Cry 3 - Blood Dragon"
