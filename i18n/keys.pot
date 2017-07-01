@@ -383,6 +383,18 @@ msgid ""
 "improved damage system."
 msgstr ""
 
+#: i18n/tmp/Games/Call of Juarez Gunslinger/application.js:1
+msgid "Call of Juarez® Gunslinger"
+msgstr ""
+
+#: i18n/tmp/Games/Call of Juarez Gunslinger/application.js:2
+msgid ""
+"From the dust of a gold mine to the dirt of a saloon, Call of Juarez® "
+"Gunslinger is a real homage to the Wild West tales. Live the epic and "
+"violent journey of a ruthless bounty hunter on the trail of the West’s most "
+"notorious outlaws."
+msgstr ""
+
 #: i18n/tmp/Games/category.js:1 i18n/tmp/Internet/category.js:1
 msgid "Games"
 msgstr ""
