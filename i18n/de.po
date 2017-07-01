@@ -538,6 +538,21 @@ msgstr ""
 "Schaden pro Sekunde zu verursachen? Jetzt kannst du es herausfinden! Begib "
 "dich auf deine Mission, um mal richtig viel Schaden anzurichten!"
 
+#: i18n/tmp/Games/Cogs/application.js:1
+msgid "Cogs"
+msgstr "Cogs"
+
+#: i18n/tmp/Games/Cogs/application.js:2
+msgid ""
+"Cogs is a puzzle game where players build machines from sliding tiles. "
+"Players can choose from 50 levels and 3 gameplay modes. New puzzles are "
+"unlocked by building contraptions quickly and efficiently."
+msgstr ""
+"Cogs ist ein Puzzle-Spiel, bei dem Spieler durch das Verschieben von Teilen "
+"Maschinen bauen. Die Spieler können unter 50 Levels und 3 Spielemodi wählen. "
+"Durch ein schnelles und effizientes Bauen von Apparaturen werden neue "
+"Puzzles freigeschaltet."
+
 #: i18n/tmp/Games/CONSORTIUM/application.js:1
 msgid "CONSORTIUM"
 msgstr "CONSORTIUM"
@@ -1505,6 +1520,3 @@ msgid ""
 msgstr ""
 "Bitte wählen Sie die Installationsdatei aus.\n"
 "Sie können diese von https://www.elster.de/elfo_down.php herunterladen."
-
-#~ msgid "Downloaded {0} of {1} bytes"
-#~ msgstr "{0} von {1} Bytes heruntergeladen"

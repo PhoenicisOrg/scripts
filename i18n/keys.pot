@@ -434,6 +434,17 @@ msgid ""
 "get."
 msgstr ""
 
+#: i18n/tmp/Games/Cogs/application.js:1
+msgid "Cogs"
+msgstr ""
+
+#: i18n/tmp/Games/Cogs/application.js:2
+msgid ""
+"Cogs is a puzzle game where players build machines from sliding tiles. "
+"Players can choose from 50 levels and 3 gameplay modes. New puzzles are "
+"unlocked by building contraptions quickly and efficiently."
+msgstr ""
+
 #: i18n/tmp/Games/CONSORTIUM/application.js:1
 msgid "CONSORTIUM"
 msgstr ""
