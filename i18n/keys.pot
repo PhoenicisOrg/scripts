@@ -1012,6 +1012,18 @@ msgid ""
 "<br><br>Install Warcraft III first."
 msgstr ""
 
+#: i18n/tmp/Games/Warlock - Master of the Arcane/application.js:1
+msgid "Warlock - Master of the Arcane"
+msgstr ""
+
+#: i18n/tmp/Games/Warlock - Master of the Arcane/application.js:2
+msgid ""
+"In a time of chaotic upheaval, the player takes the role of a great mage, a "
+"warlord vying for ultimate power. Your mission is to build an empire, expand "
+"your borders, research new spells and conquer your enemies. Become the "
+"ultimate Warlock and rule over all of Ardania!"
+msgstr ""
+
 #: i18n/tmp/Games/Worms Armageddon/application.js:1
 msgid "Worms Armageddon"
 msgstr ""

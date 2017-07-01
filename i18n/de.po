@@ -1383,6 +1383,25 @@ msgstr ""
 "oder die zerstörerischen Bergriesen.<br><br>Installieren Sie zunächst "
 "Warcraft III."
 
+#: i18n/tmp/Games/Warlock - Master of the Arcane/application.js:1
+msgid "Warlock - Master of the Arcane"
+msgstr "Warlock - Master of the Arcane"
+
+#: i18n/tmp/Games/Warlock - Master of the Arcane/application.js:2
+msgid ""
+"In a time of chaotic upheaval, the player takes the role of a great mage, a "
+"warlord vying for ultimate power. Your mission is to build an empire, expand "
+"your borders, research new spells and conquer your enemies. Become the "
+"ultimate Warlock and rule over all of Ardania!"
+msgstr ""
+"Das neueste Spiel der beliebten Majesty-Reihe, Warlock: Master of the Arcane, "
+"präsentiert rundenbasierte Strategie und globale Eroberung in der fantastischen "
+"Welt von Ardania. In einer Zeit der chaotischen Aufruhr übernimmt der Spieler "
+"die Rolle eines großen Magiers, ein Kriegsherr, der um die ultimative Macht "
+"konkurriert. Ihre Mission ist es, ein Reich aufzubauen, Ihre Grenzen zu erweitern, "
+"neue Zauber zu erforschen und Ihre Gegner zu bezwingen. "
+"Werden Sie der mächtigste Zauberer und herrschen Sie über ganz Ardania!"
+
 #: i18n/tmp/Games/Worms Armageddon/application.js:1
 msgid "Worms Armageddon"
 msgstr "Worms Armageddon"
