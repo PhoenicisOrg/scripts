@@ -913,6 +913,17 @@ msgstr ""
 msgid "The Vanishing of Ethan Carter Redux"
 msgstr ""
 
+#: i18n/tmp/Games/Toki Tori/application.js:1
+msgid "Toki Tori"
+msgstr ""
+
+#: i18n/tmp/Games/Toki Tori/application.js:2
+msgid ""
+"The gameplay in Toki Tori is a blend of two genres. While it looks like a "
+"platform game, it's a puzzle game at heart. To progress through the game, "
+"the player must pick up each egg in a level using a set number of tools."
+msgstr ""
+
 #: i18n/tmp/Games/Tom Clancy's Splinter Cell/application.js:1
 msgid "Tom Clancy's Splinter Cell®"
 msgstr ""
