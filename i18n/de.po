@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-25 19:45+0200\n"
+"POT-Creation-Date: 2017-07-01 15:51+0200\n"
 "PO-Revision-Date: 2017-06-24 16:51+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
@@ -38,10 +38,10 @@ msgstr "Konnte {0} nicht deinstallieren!"
 #: Functions/QuickScript/UplayScript/script.js:98
 #: Functions/QuickScript/ZipScript/script.js:45
 #: Functions/QuickScript/ZipScript/script.js:72
-#: Functions/Verbs/corefonts/script.js:79 Functions/Verbs/d3dx9/script.js:30
-#: Functions/Verbs/dotnet40/script.js:21 Functions/Verbs/dotnet40/script.js:37
-#: Functions/Verbs/dotnet40/script.js:39 Internet/Internet Explorer
-#: 6.0/Online/script.js:69
+#: Functions/Verbs/corefonts/script.js:79 Functions/Verbs/d3dx10/script.js:30
+#: Functions/Verbs/d3dx9/script.js:30 Functions/Verbs/dotnet40/script.js:21
+#: Functions/Verbs/dotnet40/script.js:37 Functions/Verbs/dotnet40/script.js:39
+#: Internet/Internet Explorer 6.0/Online/script.js:69
 msgid "Please wait ..."
 msgstr "Bitte warten..."
 
@@ -176,8 +176,9 @@ msgstr "Schriftarten"
 msgid "Installing {0} ..."
 msgstr "Installiere {0} ..."
 
-#: Functions/Verbs/d3dx9/script.js:10 Functions/Verbs/d3dx9/script.js:11
-#: Functions/Verbs/d3dx9/script.js:31
+#: Functions/Verbs/d3dx10/script.js:10 Functions/Verbs/d3dx10/script.js:11
+#: Functions/Verbs/d3dx10/script.js:31 Functions/Verbs/d3dx9/script.js:10
+#: Functions/Verbs/d3dx9/script.js:11 Functions/Verbs/d3dx9/script.js:31
 msgid "Extracting {0} ..."
 msgstr "Extrahiere {0} ..."
 
@@ -468,18 +469,6 @@ msgstr ""
 "Verbesserungen, wie zum Beispiel Motorräder und aufregenden neuen Onlinemodi "
 "und Herausforderungen."
 
-#: i18n/tmp/Games/Call of Juarez Gunslinger/application.js:1
-msgid "Call of Juarez® Gunslinger"
-msgstr ""
-
-#: i18n/tmp/Games/Call of Juarez Gunslinger/application.js:2
-msgid ""
-"From the dust of a gold mine to the dirt of a saloon, Call of Juarez® "
-"Gunslinger is a real homage to the Wild West tales. Live the epic and "
-"violent journey of a ruthless bounty hunter on the trail of the West’s most "
-"notorious outlaws."
-msgstr ""
-
 #: i18n/tmp/Games/category.js:1 i18n/tmp/Internet/category.js:1
 msgid "Games"
 msgstr "Spiele"
@@ -651,18 +640,6 @@ msgstr ""
 "Ether One ist ein First Person Adventure, das sich mit der Zerbrechlichkeit "
 "des menschlichen Verstands beschäftigt."
 
-#: i18n/tmp/Games/Europa Universalis IV/application.js:1
-msgid "Europa Universalis IV"
-msgstr ""
-
-#: i18n/tmp/Games/Europa Universalis IV/application.js:2
-msgid ""
-"The empire building game Europa Universalis IV gives you control of a nation "
-"to guide through the years in order to create a dominant global empire. Rule "
-"your nation through the centuries, with unparalleled freedom, depth and "
-"historical accuracy."
-msgstr ""
-
 #: i18n/tmp/Games/Far Cry 3 - Blood Dragon/application.js:1
 msgid "Far Cry 3 - Blood Dragon"
 msgstr "Far Cry 3 - Blood Dragon"
@@ -680,17 +657,6 @@ msgstr ""
 "der 80er. Wir schreiben das Jahr 2007 und Sie sind Sergeant Rex Colt, ein "
 "Mark IV Cyber Commando. Ihre Mission: Schnappen Sie sich das Mädchen, töten "
 "Sie die Bösewichte und retten Sie die Welt!"
-
-#: i18n/tmp/Games/Goodbye Deponia/application.js:1
-msgid "Goodbye Deponia"
-msgstr ""
-
-#: i18n/tmp/Games/Goodbye Deponia/application.js:2
-msgid ""
-"More chaos, more destruction, more Rufus. Not one, not two, but three "
-"Rufuses cause all kinds of crazy mayhem in the long-awaited adventure comedy "
-"Goodbye Deponia!"
-msgstr ""
 
 #: i18n/tmp/Games/Hexcells/application.js:1
 msgid "Hexcells"
@@ -1336,6 +1302,42 @@ msgstr ""
 "Bilder Ihrer traumhaften Kreation auf Ihrer Tropico 4 Facebook-Seite posten "
 "sowie Ihre Diktator-Wertung auf den interaktiven Online-Ranglisten mit der "
 "von anderen Spielern vergleichen."
+
+#: i18n/tmp/Games/Unholy Heights/application.js:1
+msgid "Unholy Heights"
+msgstr "Unholy Heights"
+
+#: i18n/tmp/Games/Unholy Heights/application.js:2
+msgid ""
+"Welcome to Unholy Heights, a mashup of Tower Defense and Apartment "
+"Management Simulation! The Devil has converted a tenement building into "
+"monsters-only housing, and has big plans for the future. Sucker monsters "
+"into moving into your building, charge them rent and keep them happy by "
+"buying them furniture. Unfortunately, heroes have caught wind of the Devil's "
+"plan, and will stop at nothing to wipe him out. Knock on residents' doors to "
+"call them to battle, trap heroes in devious pincer formations, and command "
+"your troops to victory. Monsters get jobs, fall in love, have children, and "
+"even skip out on their rent. Keep them happy or you might not have anyone to "
+"fight for you when heroes come knocking. But don't be too soft: there's "
+"always prospective baddies looking to move in, so kick out the freeloaders "
+"when the time is right! Being a landlord is a difficult job, but it can't be "
+"harder than running Hell...right?"
+msgstr ""
+"Willkommen bei Unholy Heights, einer Mischung aus Tower Defense und "
+"Apartmentmanagementsimulation! Der Teufel hat ein Wohnhaus in ein Mietshaus "
+"nur für Monster umgewandelt und hat große Pläne für die Zukunft. Locke Monster "
+"in dein Haus, verlange von ihnen Miete und halte sie glücklich durch den Kauf "
+"von Einrichtungsgegenständen. Unglücklicherweise haben Helden von dem Plan "
+"mitbekommen und werden vor nichts Halt machen bevor sie den Teufel vernichtet haben. "
+"Klopfe an die Tür von Bewohnern um sie zum Kampf zu rufen, schließe Helden in "
+"gemeinen Scherenformationen und führe deine Truppen zum Sieg. Monster finden Arbeit, "
+"verlieben sich, bekommen Kinder und übergehen sogar ihre Mietzahlungen. "
+"Halte sie glücklich oder du gehst das Risiko einen niemanden zu haben "
+"der für die Kämpft wenn Helden anklopfen. Aber sei nicht zu weich: es "
+"sind immer vielversprechende Bösewichte unterwegs die gerne einziehen möchten, daher "
+"schmeiße Schmarotzer raus solange die Zeit reif ist! Ein Vermieter zu sein ist ein "
+"schwieriger Beruf, aber es kann nicht schwieriger sein all die Hölle zu leiten... "
+"richtig?"
 
 #: i18n/tmp/Games/Uplay/application.js:1
 msgid "Uplay"
