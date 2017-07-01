@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-25 19:45+0200\n"
-"PO-Revision-Date: 2017-06-24 16:51+0200\n"
+"POT-Creation-Date: 2017-07-01 14:44+0200\n"
+"PO-Revision-Date: 2017-07-01 14:45+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -468,18 +468,6 @@ msgstr ""
 "Verbesserungen, wie zum Beispiel Motorräder und aufregenden neuen Onlinemodi "
 "und Herausforderungen."
 
-#: i18n/tmp/Games/Call of Juarez Gunslinger/application.js:1
-msgid "Call of Juarez® Gunslinger"
-msgstr ""
-
-#: i18n/tmp/Games/Call of Juarez Gunslinger/application.js:2
-msgid ""
-"From the dust of a gold mine to the dirt of a saloon, Call of Juarez® "
-"Gunslinger is a real homage to the Wild West tales. Live the epic and "
-"violent journey of a ruthless bounty hunter on the trail of the West’s most "
-"notorious outlaws."
-msgstr ""
-
 #: i18n/tmp/Games/category.js:1 i18n/tmp/Internet/category.js:1
 msgid "Games"
 msgstr "Spiele"
@@ -553,6 +541,21 @@ msgstr ""
 "Hast du dich schon mal gefragt, wie es sich wohl anfühlt, eine Quadrillion "
 "Schaden pro Sekunde zu verursachen? Jetzt kannst du es herausfinden! Begib "
 "dich auf deine Mission, um mal richtig viel Schaden anzurichten!"
+
+#: i18n/tmp/Games/Cogs/application.js:1
+msgid "Cogs"
+msgstr "Cogs"
+
+#: i18n/tmp/Games/Cogs/application.js:2
+msgid ""
+"Cogs is a puzzle game where players build machines from sliding tiles. "
+"Players can choose from 50 levels and 3 gameplay modes. New puzzles are "
+"unlocked by building contraptions quickly and efficiently."
+msgstr ""
+"Cogs ist ein Puzzle-Spiel, bei dem Spieler durch das Verschieben von Teilen "
+"Maschinen bauen. Die Spieler können unter 50 Levels und 3 Spielemodi wählen. "
+"Durch ein schnelles und effizientes Bauen von Apparaturen werden neue "
+"Puzzles freigeschaltet."
 
 #: i18n/tmp/Games/CONSORTIUM/application.js:1
 msgid "CONSORTIUM"
@@ -651,18 +654,6 @@ msgstr ""
 "Ether One ist ein First Person Adventure, das sich mit der Zerbrechlichkeit "
 "des menschlichen Verstands beschäftigt."
 
-#: i18n/tmp/Games/Europa Universalis IV/application.js:1
-msgid "Europa Universalis IV"
-msgstr ""
-
-#: i18n/tmp/Games/Europa Universalis IV/application.js:2
-msgid ""
-"The empire building game Europa Universalis IV gives you control of a nation "
-"to guide through the years in order to create a dominant global empire. Rule "
-"your nation through the centuries, with unparalleled freedom, depth and "
-"historical accuracy."
-msgstr ""
-
 #: i18n/tmp/Games/Far Cry 3 - Blood Dragon/application.js:1
 msgid "Far Cry 3 - Blood Dragon"
 msgstr "Far Cry 3 - Blood Dragon"
@@ -680,17 +671,6 @@ msgstr ""
 "der 80er. Wir schreiben das Jahr 2007 und Sie sind Sergeant Rex Colt, ein "
 "Mark IV Cyber Commando. Ihre Mission: Schnappen Sie sich das Mädchen, töten "
 "Sie die Bösewichte und retten Sie die Welt!"
-
-#: i18n/tmp/Games/Goodbye Deponia/application.js:1
-msgid "Goodbye Deponia"
-msgstr ""
-
-#: i18n/tmp/Games/Goodbye Deponia/application.js:2
-msgid ""
-"More chaos, more destruction, more Rufus. Not one, not two, but three "
-"Rufuses cause all kinds of crazy mayhem in the long-awaited adventure comedy "
-"Goodbye Deponia!"
-msgstr ""
 
 #: i18n/tmp/Games/Hexcells/application.js:1
 msgid "Hexcells"

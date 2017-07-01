@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-25 19:45+0200\n"
+"POT-Creation-Date: 2017-07-01 14:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -388,18 +388,6 @@ msgid ""
 "improved damage system."
 msgstr ""
 
-#: i18n/tmp/Games/Call of Juarez Gunslinger/application.js:1
-msgid "Call of Juarez® Gunslinger"
-msgstr ""
-
-#: i18n/tmp/Games/Call of Juarez Gunslinger/application.js:2
-msgid ""
-"From the dust of a gold mine to the dirt of a saloon, Call of Juarez® "
-"Gunslinger is a real homage to the Wild West tales. Live the epic and "
-"violent journey of a ruthless bounty hunter on the trail of the West’s most "
-"notorious outlaws."
-msgstr ""
-
 #: i18n/tmp/Games/category.js:1 i18n/tmp/Internet/category.js:1
 msgid "Games"
 msgstr ""
@@ -449,6 +437,17 @@ msgid ""
 "monster to kill them, and get their gold. Spend that gold on hiring new "
 "heroes and get more damage. The more damage you deal, the more gold you will "
 "get."
+msgstr ""
+
+#: i18n/tmp/Games/Cogs/application.js:1
+msgid "Cogs"
+msgstr ""
+
+#: i18n/tmp/Games/Cogs/application.js:2
+msgid ""
+"Cogs is a puzzle game where players build machines from sliding tiles. "
+"Players can choose from 50 levels and 3 gameplay modes. New puzzles are "
+"unlocked by building contraptions quickly and efficiently."
 msgstr ""
 
 #: i18n/tmp/Games/CONSORTIUM/application.js:1
@@ -524,18 +523,6 @@ msgid ""
 "story at your own pace."
 msgstr ""
 
-#: i18n/tmp/Games/Europa Universalis IV/application.js:1
-msgid "Europa Universalis IV"
-msgstr ""
-
-#: i18n/tmp/Games/Europa Universalis IV/application.js:2
-msgid ""
-"The empire building game Europa Universalis IV gives you control of a nation "
-"to guide through the years in order to create a dominant global empire. Rule "
-"your nation through the centuries, with unparalleled freedom, depth and "
-"historical accuracy."
-msgstr ""
-
 #: i18n/tmp/Games/Far Cry 3 - Blood Dragon/application.js:1
 msgid "Far Cry 3 - Blood Dragon"
 msgstr ""
@@ -546,17 +533,6 @@ msgid ""
 "vision of the future. The year is 2007 and you are Sargent Rex Colt, a Mark "
 "IV Cyber Commando. Your mission: get the girl, kill the baddies, and save "
 "the world."
-msgstr ""
-
-#: i18n/tmp/Games/Goodbye Deponia/application.js:1
-msgid "Goodbye Deponia"
-msgstr ""
-
-#: i18n/tmp/Games/Goodbye Deponia/application.js:2
-msgid ""
-"More chaos, more destruction, more Rufus. Not one, not two, but three "
-"Rufuses cause all kinds of crazy mayhem in the long-awaited adventure comedy "
-"Goodbye Deponia!"
 msgstr ""
 
 #: i18n/tmp/Games/Hexcells/application.js:1
