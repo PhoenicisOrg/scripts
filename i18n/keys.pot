@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-01 16:07+0200\n"
+"POT-Creation-Date: 2017-07-01 18:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -148,8 +148,9 @@ msgid "fonts"
 msgstr ""
 
 #: Functions/Verbs/corefonts/script.js:80
-#: Functions/Verbs/corefonts/script.js:86 Internet/Internet Explorer
-#: 6.0/Online/script.js:73 7.0/Online/script.js:213
+#: Functions/Verbs/corefonts/script.js:86
+#: Internet/Internet Explorer 6.0/Online/script.js:73
+#: Internet/Internet Explorer 7.0/Online/script.js:213
 msgid "Installing {0} ..."
 msgstr ""
 
@@ -188,8 +189,8 @@ msgstr ""
 msgid "Select your region:"
 msgstr ""
 
-#: Games/Origin/Local (Legacy)/script.js:14 Games/Origin/Online
-#: (Legacy)/script.js:13
+#: Games/Origin/Local (Legacy)/script.js:14
+#: Games/Origin/Online (Legacy)/script.js:13
 msgid ""
 "When Origin launches, you will get an error message (\"Your update could not "
 "be completed.\"). This is ok. Just close the popup."
@@ -478,14 +479,12 @@ msgid ""
 "squares to move a ball. The aim is to catch the stars in the level. "
 msgstr ""
 
-#: i18n/tmp/Games/Dr. Langeskov, The Tiger, and Terribly Cursed Emerald: A
-#: Whirlwind Heist/application.js:1
+#: i18n/tmp/Games/Dr. Langeskov, The Tiger, and The Terribly Cursed Emerald: A Whirlwind Heist/application.js:1
 msgid ""
 "Dr. Langeskov, The Tiger, and The Terribly Cursed Emerald: A Whirlwind Heist"
 msgstr ""
 
-#: i18n/tmp/Games/Dr. Langeskov, The Tiger, and Terribly Cursed Emerald: A
-#: Whirlwind Heist/application.js:2
+#: i18n/tmp/Games/Dr. Langeskov, The Tiger, and The Terribly Cursed Emerald: A Whirlwind Heist/application.js:2
 msgid ""
 "A 15 minute heist game by Crows Crows Crows & Directed by William Pugh (The "
 "Stanley Parable). "
@@ -676,11 +675,11 @@ msgid ""
 "heists in constant pursuit of the next “big score”"
 msgstr ""
 
-#: i18n/tmp/Games/Prince of Persia: The Sands Time/application.js:1
+#: i18n/tmp/Games/Prince of Persia: The Sands of Time/application.js:1
 msgid "Prince of Persia®: The Sands of Time"
 msgstr ""
 
-#: i18n/tmp/Games/Prince of Persia: The Sands Time/application.js:2
+#: i18n/tmp/Games/Prince of Persia: The Sands of Time/application.js:2
 msgid ""
 "Amidst the scorched sands of ancient Persia, there is a legend spun in an "
 "ancient tongue. It speaks of a time borne by blood and ruled by deceit. "
@@ -787,13 +786,11 @@ msgid ""
 "Steam Workshop – to be used in game or further modified as you like!"
 msgstr ""
 
-#: i18n/tmp/Games/Shower With Your Dad Simulator 2015: Do You Still Shower
-#: Dad/application.js:1
+#: i18n/tmp/Games/Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad/application.js:1
 msgid "Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad"
 msgstr ""
 
-#: i18n/tmp/Games/Shower With Your Dad Simulator 2015: Do You Still Shower
-#: Dad/application.js:2
+#: i18n/tmp/Games/Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad/application.js:2
 msgid ""
 "'Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad?' is "
 "a fast paced shower-simulation where you shower with your 8-bit dad. It's "
@@ -835,21 +832,21 @@ msgid ""
 "of the Force to become a Jedi Knight."
 msgstr ""
 
-#: i18n/tmp/Games/STAR WARS Jedi Knight II - Outcast/application.js:1
+#: i18n/tmp/Games/STAR WARS Jedi Knight II - Jedi Outcast/application.js:1
 msgid "STAR WARS™ Jedi Knight II - Jedi Outcast™"
 msgstr ""
 
-#: i18n/tmp/Games/STAR WARS Jedi Knight II - Outcast/application.js:2
+#: i18n/tmp/Games/STAR WARS Jedi Knight II - Jedi Outcast/application.js:2
 msgid ""
 "The Legacy of Star Wars Dark Forces™ and Star Wars® Jedi Knight lives on in "
 "the intense first-person action of Jedi Outcast. "
 msgstr ""
 
-#: i18n/tmp/Games/STAR WARS Jedi Knight - Academy/application.js:1
+#: i18n/tmp/Games/STAR WARS Jedi Knight - Jedi Academy/application.js:1
 msgid "STAR WARS™ Jedi Knight - Jedi Academy™"
 msgstr ""
 
-#: i18n/tmp/Games/STAR WARS Jedi Knight - Academy/application.js:2
+#: i18n/tmp/Games/STAR WARS Jedi Knight - Jedi Academy/application.js:2
 msgid ""
 "Forge your weapon and follow the path of the Jedi Jedi Knight: Jedi Academy "
 "is the latest installment of the highly acclaimed Jedi Knight series. Take "
@@ -857,13 +854,11 @@ msgid ""
 "Master Luke Skywalker."
 msgstr ""
 
-#: i18n/tmp/Games/STAR WARS Jedi Knight - Mysteries of the
-#: Sith/application.js:1
+#: i18n/tmp/Games/STAR WARS Jedi Knight - Mysteries of the Sith/application.js:1
 msgid "STAR WARS™ Jedi Knight - Mysteries of the Sith™"
 msgstr ""
 
-#: i18n/tmp/Games/STAR WARS Jedi Knight - Mysteries of the
-#: Sith/application.js:2
+#: i18n/tmp/Games/STAR WARS Jedi Knight - Mysteries of the Sith/application.js:2
 msgid ""
 "It is five years after Kyle's victory over the seven dark Jedi. Invading "
 "Imperial forces advance upon a quiet Rebel outpost, interrupting Kyle's "
@@ -939,8 +934,8 @@ msgstr ""
 msgid "The Vanishing of Ethan Carter"
 msgstr ""
 
-#: i18n/tmp/Games/The Vanishing of Ethan Carter/application.js:2 Carter
-#: Redux/application.js:2
+#: i18n/tmp/Games/The Vanishing of Ethan Carter/application.js:2
+#: i18n/tmp/Games/The Vanishing of Ethan Carter Redux/application.js:2
 msgid "The Vanishing of Ethan Carter is a first-person story-driven mystery."
 msgstr ""
 
@@ -959,11 +954,11 @@ msgid ""
 "the player must pick up each egg in a level using a set number of tools."
 msgstr ""
 
-#: i18n/tmp/Games/Tomb Raider: Anniversary/application.js:1
+#: i18n/tmp/Games/Tomb Raider Anniversary/application.js:1
 msgid "Tomb Raider: Anniversary"
 msgstr ""
 
-#: i18n/tmp/Games/Tomb Raider: Anniversary/application.js:2
+#: i18n/tmp/Games/Tomb Raider Anniversary/application.js:2
 msgid ""
 "Tomb Raider: Anniversary retraces Lara Croft's original genre-defining "
 "adventure globe-trotting 3rd person action-adventure in pursuit of the "
@@ -1163,7 +1158,7 @@ msgid "Internet Explorer 6.0"
 msgstr ""
 
 #: i18n/tmp/Internet/Internet Explorer 6.0/application.js:2
-#: 7.0/application.js:2
+#: i18n/tmp/Internet/Internet Explorer 7.0/application.js:2
 msgid ""
 "Internet Explorer is an old web browser.<br />You may need it if you want to "
 "test a website compatibility, you should not use it to navigate. "
