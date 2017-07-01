@@ -50,7 +50,7 @@ for key, value in data.iteritems():
                 out_file.write(translated_message.encode('utf-8'))
 
 # update the .pot
-xgettext = 'find . -iname "*.js" | xargs -d \'\n\' xgettext --from-code=UTF-8 --language=Javascript -ktr -o i18n/keys.pot'
+xgettext = 'find . -iname "*.js" | sort | xargs -d \'\n\' xgettext --from-code=UTF-8 --language=Javascript -ktr -o i18n/keys.pot'
 ps = subprocess.Popen(xgettext, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 ps.communicate()[0]
 
