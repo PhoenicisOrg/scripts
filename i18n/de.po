@@ -1484,6 +1484,3 @@ msgid ""
 msgstr ""
 "Bitte wählen Sie die Installationsdatei aus.\n"
 "Sie können diese von https://www.elster.de/elfo_down.php herunterladen."
-
-#~ msgid "Downloaded {0} of {1} bytes"
-#~ msgstr "{0} von {1} Bytes heruntergeladen"
