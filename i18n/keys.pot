@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-02 13:14+0200\n"
+"POT-Creation-Date: 2017-07-02 11:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -349,6 +349,22 @@ msgid ""
 "rebellious action reporter named Jade sets out to capture the truth."
 msgstr ""
 
+#: i18n/tmp/Games/BioShock/application.js:1
+msgid "BioShock™"
+msgstr ""
+
+#: i18n/tmp/Games/BioShock/application.js:2
+msgid ""
+"BioShock is a shooter unlike any you've ever played, loaded with weapons and "
+"tactics never seen. You'll have a complete arsenal at your disposal from "
+"simple revolvers to grenade launchers and chemical throwers, but you'll also "
+"be forced to genetically modify your DNA to create an even more deadly "
+"weapon: you. Injectable plasmids give you super human powers: blast "
+"electrical currents into water to electrocute multiple enemies, or freeze "
+"them solid and obliterate them with the swing of a wrench.<br>No encounter "
+"ever plays out the same, and no two gamers will play the game the same way."
+msgstr ""
+
 #: i18n/tmp/Games/Black Mesa/application.js:1
 msgid "Black Mesa"
 msgstr ""
@@ -366,6 +382,18 @@ msgid ""
 "The Blizzard desktop app is designed to improve your gaming experience. "
 "It’ll streamline your login and make it even easier to keep up with your "
 "friends!"
+msgstr ""
+
+#: i18n/tmp/Games/Braid/application.js:1
+msgid "Braid"
+msgstr ""
+
+#: i18n/tmp/Games/Braid/application.js:2
+msgid ""
+"Braid is a puzzle-platformer, drawn in a painterly style, where you can "
+"manipulate the flow of time in strange and unusual ways. From a house in the "
+"city, journey to a series of worlds and solve puzzles to rescue an abducted "
+"princess."
 msgstr ""
 
 #: i18n/tmp/Games/Burnout Paradise: The Ultimate Box/application.js:1
@@ -555,6 +583,17 @@ msgid ""
 "the world."
 msgstr ""
 
+#: i18n/tmp/Games/FlatOut/application.js:1
+msgid "FlatOut"
+msgstr ""
+
+#: i18n/tmp/Games/FlatOut/application.js:2
+msgid ""
+"FlatOut is adrenaline-filled muscle car racing game packed with explosive "
+"physics, spectacular effects and graphics, innovative game play mechanics "
+"and good old fun!"
+msgstr ""
+
 #: i18n/tmp/Games/Goodbye Deponia/application.js:1
 msgid "Goodbye Deponia"
 msgstr ""
@@ -666,6 +705,17 @@ msgid ""
 "Runners transport sensitive data away from prying eyes. In this seemingly "
 "utopian paradise, a crime has been committed, your sister has been framed "
 "and now you are being hunted."
+msgstr ""
+
+#: i18n/tmp/Games/Mount & Blade/application.js:1
+msgid "Mount & Blade"
+msgstr ""
+
+#: i18n/tmp/Games/Mount & Blade/application.js:2
+msgid ""
+"Calradia is a land at war, offering great riches and even greater dangers to "
+"adventurers and mercenaries that flock to shed their blood on its soil. With "
+"courage and a strong sword, an unknown stranger can make a name as a warrior."
 msgstr ""
 
 #: i18n/tmp/Games/Niko: Through The Dream/application.js:1
