@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-01 18:22+0200\n"
+"POT-Creation-Date: 2017-07-02 12:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -347,6 +347,22 @@ msgid ""
 "For centuries, the planet Hyllis has been bombarded by a relentless alien "
 "race. Skeptical of her government's inability to repel the invaders, a "
 "rebellious action reporter named Jade sets out to capture the truth."
+msgstr ""
+
+#: i18n/tmp/Games/BioShock/application.js:1
+msgid "BioShock™"
+msgstr ""
+
+#: i18n/tmp/Games/BioShock/application.js:2
+msgid ""
+"BioShock is a shooter unlike any you've ever played, loaded with weapons and "
+"tactics never seen. You'll have a complete arsenal at your disposal from "
+"simple revolvers to grenade launchers and chemical throwers, but you'll also "
+"be forced to genetically modify your DNA to create an even more deadly "
+"weapon: you. Injectable plasmids give you super human powers: blast "
+"electrical currents into water to electrocute multiple enemies, or freeze "
+"them solid and obliterate them with the swing of a wrench.<br>No encounter "
+"ever plays out the same, and no two gamers will play the game the same way."
 msgstr ""
 
 #: i18n/tmp/Games/Black Mesa/application.js:1
