@@ -670,6 +670,17 @@ msgid ""
 "and now you are being hunted."
 msgstr ""
 
+#: i18n/tmp/Games/Mount & Blade/application.js:1
+msgid "Mount & Blade"
+msgstr ""
+
+#: i18n/tmp/Games/Mount & Blade/application.js:2
+msgid ""
+"Calradia is a land at war, offering great riches and even greater dangers to "
+"adventurers and mercenaries that flock to shed their blood on its soil. With "
+"courage and a strong sword, an unknown stranger can make a name as a warrior."
+msgstr ""
+
 #: i18n/tmp/Games/Niko: Through The Dream/application.js:1
 msgid "Niko: Through The Dream"
 msgstr ""
