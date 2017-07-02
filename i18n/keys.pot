@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-01 18:22+0200\n"
+"POT-Creation-Date: 2017-07-02 12:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -553,6 +553,17 @@ msgid ""
 "vision of the future. The year is 2007 and you are Sargent Rex Colt, a Mark "
 "IV Cyber Commando. Your mission: get the girl, kill the baddies, and save "
 "the world."
+msgstr ""
+
+#: i18n/tmp/Games/FlatOut/application.js:1
+msgid "FlatOut"
+msgstr ""
+
+#: i18n/tmp/Games/FlatOut/application.js:2
+msgid ""
+"FlatOut is adrenaline-filled muscle car racing game packed with explosive "
+"physics, spectacular effects and graphics, innovative game play mechanics "
+"and good old fun!"
 msgstr ""
 
 #: i18n/tmp/Games/Goodbye Deponia/application.js:1
