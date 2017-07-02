@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-01 18:22+0200\n"
-"PO-Revision-Date: 2017-06-24 16:51+0200\n"
+"POT-Creation-Date: 2017-07-02 12:30+0200\n"
+"PO-Revision-Date: 2017-07-02 12:30+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -828,6 +828,21 @@ msgstr ""
 "begangen - Ihre Schwester wurde als Sündenbock missbraucht und nun ist man "
 "auch Ihnen auf den Fersen. Sie sind ein Runner namens Faith und dieses "
 "innovative FPS-Abenteuer erzählt Ihre Geschichte."
+
+#: i18n/tmp/Games/Mount & Blade/application.js:1
+msgid "Mount & Blade"
+msgstr "Mount & Blade"
+
+#: i18n/tmp/Games/Mount & Blade/application.js:2
+msgid ""
+"Calradia is a land at war, offering great riches and even greater dangers to "
+"adventurers and mercenaries that flock to shed their blood on its soil. With "
+"courage and a strong sword, an unknown stranger can make a name as a warrior."
+msgstr ""
+"Calradia versinkt im Krieg - für Abenteurer und Söldner eröffnen sich in "
+"diesem Land ungeahnte Möglichkeiten, aber auch große Gefahren lauern "
+"überall. Mit Mut und einem starken Schwert kann hier ein Niemand zum "
+"gefürchteten Kämpfer werden."
 
 #: i18n/tmp/Games/Niko: Through The Dream/application.js:1
 msgid "Niko: Through The Dream"
