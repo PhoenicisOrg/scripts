@@ -567,6 +567,17 @@ msgid ""
 "the world."
 msgstr ""
 
+#: i18n/tmp/Games/FlatOut/application.js:1
+msgid "FlatOut"
+msgstr ""
+
+#: i18n/tmp/Games/FlatOut/application.js:2
+msgid ""
+"FlatOut is adrenaline-filled muscle car racing game packed with explosive "
+"physics, spectacular effects and graphics, innovative game play mechanics "
+"and good old fun!"
+msgstr ""
+
 #: i18n/tmp/Games/Goodbye Deponia/application.js:1
 msgid "Goodbye Deponia"
 msgstr ""
