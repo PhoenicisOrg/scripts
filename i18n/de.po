@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-02 12:55+0200\n"
-"PO-Revision-Date: 2017-07-02 12:56+0200\n"
+"POT-Creation-Date: 2017-07-02 11:42+0200\n"
+"PO-Revision-Date: 2017-07-02 11:43+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -470,6 +470,26 @@ msgstr ""
 "vereinheitlicht die Logins und vereinfacht es, in Kontakt mit Ihren Freunden "
 "zu bleiben!"
 
+#: i18n/tmp/Games/Braid/application.js:1
+msgid "Braid"
+msgstr "Braid"
+
+#: i18n/tmp/Games/Braid/application.js:2
+msgid ""
+"Braid is a puzzle-platformer, drawn in a painterly style, where you can "
+"manipulate the flow of time in strange and unusual ways. From a house in the "
+"city, journey to a series of worlds and solve puzzles to rescue an abducted "
+"princess."
+msgstr ""
+"Im malerischen Puzzlespiel Braid können Sie den Fluß der Zeit auf komische "
+"und ungewohnte Art und Weise beeinflussen. Reisen Sie durch eine Vielzahl "
+"von Welten und lösen Sie alle Puzzles, um eine entführte Prinzessin zu "
+"retten. In jeder Welt steht Ihnen eine andere Macht zur Verfügung, mit "
+"welcher Sie den Zeitverlauf beeinflussen können. Spulen Sie die Zeit selbst "
+"zurück und stellen Sie sich Objekten und Zeitzonen, in welchen dies nicht "
+"möglich ist. Begeben Sie sich in parallel geschaltete Realitäten, "
+"verlangsamen Sie die Zeit und vieles mehr."
+
 #: i18n/tmp/Games/Burnout Paradise: The Ultimate Box/application.js:1
 msgid "Burnout™ Paradise: The Ultimate Box"
 msgstr "Burnout™ Paradise: The Ultimate Box"
@@ -732,6 +752,20 @@ msgstr ""
 "Mark IV Cyber Commando. Ihre Mission: Schnappen Sie sich das Mädchen, töten "
 "Sie die Bösewichte und retten Sie die Welt!"
 
+#: i18n/tmp/Games/FlatOut/application.js:1
+msgid "FlatOut"
+msgstr "FlatOut"
+
+#: i18n/tmp/Games/FlatOut/application.js:2
+msgid ""
+"FlatOut is adrenaline-filled muscle car racing game packed with explosive "
+"physics, spectacular effects and graphics, innovative game play mechanics "
+"and good old fun!"
+msgstr ""
+"FlatOut ist ein adrenalingeladenes, explosives Rennspiel mit spektakulären "
+"Effekten und Grafiken sowie innovativen Spielmechaniken, das jede Menge Spaß "
+"garantiert!"
+
 #: i18n/tmp/Games/Goodbye Deponia/application.js:1
 msgid "Goodbye Deponia"
 msgstr "Goodbye Deponia"
@@ -854,6 +888,21 @@ msgstr ""
 "begangen - Ihre Schwester wurde als Sündenbock missbraucht und nun ist man "
 "auch Ihnen auf den Fersen. Sie sind ein Runner namens Faith und dieses "
 "innovative FPS-Abenteuer erzählt Ihre Geschichte."
+
+#: i18n/tmp/Games/Mount & Blade/application.js:1
+msgid "Mount & Blade"
+msgstr "Mount & Blade"
+
+#: i18n/tmp/Games/Mount & Blade/application.js:2
+msgid ""
+"Calradia is a land at war, offering great riches and even greater dangers to "
+"adventurers and mercenaries that flock to shed their blood on its soil. With "
+"courage and a strong sword, an unknown stranger can make a name as a warrior."
+msgstr ""
+"Calradia versinkt im Krieg - für Abenteurer und Söldner eröffnen sich in "
+"diesem Land ungeahnte Möglichkeiten, aber auch große Gefahren lauern "
+"überall. Mit Mut und einem starken Schwert kann hier ein Niemand zum "
+"gefürchteten Kämpfer werden."
 
 #: i18n/tmp/Games/Niko: Through The Dream/application.js:1
 msgid "Niko: Through The Dream"
