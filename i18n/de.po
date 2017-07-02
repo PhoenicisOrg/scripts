@@ -1352,6 +1352,24 @@ msgstr ""
 "durchlöchert sind. Erleben Sie diese neue Legende von Anfang an in diesem "
 "nervenzerreissenden Tomb Raider Abenteuer!"
 
+#: i18n/tmp/Games/Tomb Raider Underworld/application.js:1
+msgid "Tomb Raider: Underworld"
+msgstr "Tomb Raider: Underworld"
+
+#: i18n/tmp/Games/Tomb Raider Underworld/application.js:2
+msgid ""
+"Tomb Raider: Underworld represents a new advancement in exploration-based "
+"gameplay. As fearless adventurer Lara Croft explore exotic locations around "
+"the world, each designed with an incredible attention to detail resulting in "
+"breathtaking high-definition visual fidelity that creates a truly believable "
+"world and delivers a new level of challenge and choice."
+msgstr ""
+"Tomb Raider: Underworld ist die neue Weiterentwicklung der "
+"Entdeckungsabenteuer. Als furchtlose Heldin Lara Croft entdecken Sie "
+"exotische Schauplätze rund um die Welt - allesamt mit Liebe zum Detail "
+"entworfen - und werden durch die atemberaubende hochauflösende Grafik in "
+"eine wirklich fantastische Welt hineingesogen."
+
 #: i18n/tmp/Games/Tom Clancy's Splinter Cell/application.js:1
 msgid "Tom Clancy's Splinter Cell®"
 msgstr "Tom Clancy's Splinter Cell®"

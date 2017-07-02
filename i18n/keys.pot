@@ -987,6 +987,19 @@ msgid ""
 "new Legend in the most adrenaline-fueled Tomb Raider adventure ever!"
 msgstr ""
 
+#: i18n/tmp/Games/Tomb Raider Underworld/application.js:1
+msgid "Tomb Raider: Underworld"
+msgstr ""
+
+#: i18n/tmp/Games/Tomb Raider Underworld/application.js:2
+msgid ""
+"Tomb Raider: Underworld represents a new advancement in exploration-based "
+"gameplay. As fearless adventurer Lara Croft explore exotic locations around "
+"the world, each designed with an incredible attention to detail resulting in "
+"breathtaking high-definition visual fidelity that creates a truly believable "
+"world and delivers a new level of challenge and choice."
+msgstr ""
+
 #: i18n/tmp/Games/Tom Clancy's Splinter Cell/application.js:1
 msgid "Tom Clancy's Splinter Cell®"
 msgstr ""
