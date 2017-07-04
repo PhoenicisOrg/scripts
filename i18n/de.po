@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-02 11:42+0200\n"
-"PO-Revision-Date: 2017-07-02 11:43+0200\n"
+"POT-Creation-Date: 2017-07-04 19:01+0200\n"
+"PO-Revision-Date: 2017-07-04 19:02+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -1375,6 +1375,21 @@ msgstr ""
 "Einzigartige Ereignisse bringen dich in die Hallen einer lange vergessenen "
 "Gruft. Das einzige Fluchtmittel ist in einem Steinsockel eingeschlossen und "
 "anbei findest du eine Notiz von deinem geheimnisvollen Verbündeten."
+
+#: i18n/tmp/Games/The Turing Test/application.js:1
+msgid "The Turing Test"
+msgstr "The Turing Test"
+
+#: i18n/tmp/Games/The Turing Test/application.js:2
+msgid ""
+"The Turing Test is a challenging first-person puzzle game set on Jupiter’s "
+"moon, Europa. You are Ava Turing, an engineer for the International Space "
+"Agency (ISA) sent to discover the cause behind the disappearance of the "
+"ground crew stationed there."
+msgstr ""
+"The Turing Test ist ein Rätselspiel aus Sicht der ersten Person, welches das "
+"Phänomen des Bewusstseins erforscht und die Bedeutung der menschlichen "
+"Intuition infrage stellt."
 
 #: i18n/tmp/Games/The Vanishing of Ethan Carter/application.js:1
 msgid "The Vanishing of Ethan Carter"
