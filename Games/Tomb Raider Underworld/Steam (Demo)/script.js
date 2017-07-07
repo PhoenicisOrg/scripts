@@ -5,5 +5,5 @@ new SteamScript()
     .editor("Crystal Dynamics")
     .author("Plata")
     .appId(8150)
-    .executable("tru.exe")
+    .gameOverlay(false)
     .go();
