@@ -1,10 +1,10 @@
-include(["Functions", "QuickScript", "SteamScript"]);
+include(["Wine", "QuickScript", "SteamScript"]);
 
-include(["Functions", "Verbs", "corefonts"]);
-include(["Functions", "Verbs", "d3dx9"]);
-include(["Functions", "Verbs", "tahoma"]);
-include(["Functions", "Verbs", "vcrun2005"]);
-include(["Functions", "Verbs", "vcrun2008"]);
+include(["Wine", "Verbs", "corefonts"]);
+include(["Wine", "Verbs", "d3dx9"]);
+include(["Wine", "Verbs", "tahoma"]);
+include(["Wine", "Verbs", "vcrun2005"]);
+include(["Wine", "Verbs", "vcrun2008"]);
 
 new SteamScript()
     .name("Warlock - Master of the Arcane")

@@ -1,8 +1,8 @@
-include(["Functions", "QuickScript", "CustomInstallerScript"]);
-include(["Functions", "Shortcuts","Wine"]);
-include(["Functions", "Verbs", "sandbox"]);
-include(["Functions", "Verbs", "d3dx9"]);
-include(["Functions", "Verbs", "vcrun2015"]);
+include(["Wine", "QuickScript", "CustomInstallerScript"]);
+include(["Wine", "Shortcuts","Wine"]);
+include(["Wine", "Verbs", "sandbox"]);
+include(["Wine", "Verbs", "d3dx9"]);
+include(["Wine", "Verbs", "vcrun2015"]);
 
 // Installs League of Legends and creates two shortcuts.
 //

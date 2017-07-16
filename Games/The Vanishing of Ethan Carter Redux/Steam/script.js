@@ -1,4 +1,4 @@
-include(["Functions", "QuickScript", "SteamScript"]);
+include(["Wine", "QuickScript", "SteamScript"]);
 
 new SteamScript()
     .name("The Vanishing of Ethan Carter Redux")

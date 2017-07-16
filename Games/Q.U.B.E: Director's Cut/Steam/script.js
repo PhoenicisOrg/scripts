@@ -1,5 +1,5 @@
-include(["Functions", "QuickScript", "SteamScript"]);
-include(["Functions", "Verbs", "dotnet40"]);
+include(["Wine", "QuickScript", "SteamScript"]);
+include(["Wine", "Verbs", "dotnet40"]);
 
 new SteamScript()
     .name("QUBE: Director's Cut")

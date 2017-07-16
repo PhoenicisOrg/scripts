@@ -1,9 +1,9 @@
 include(["Functions", "Net", "Resource"]);
-include(["Functions", "Engines", "Wine"]);
+include(["Wine", "Engine", "Object"]);
 include(["Functions", "Filesystem", "Files"]);
-include(["Functions", "Shortcuts", "Wine"]);
+include(["Wine", "Shortcuts", "Wine"]);
 include(["Functions", "Apps", "Resources"]);
-include(["Functions", "Verbs", "sandbox"]);
+include(["Wine", "Verbs", "sandbox"]);
 
 var setupWizard = SetupWizard("Internet Explorer 7.0");
 

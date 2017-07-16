@@ -1,4 +1,4 @@
-include(["Functions", "QuickScript", "SteamScript"]);
+include(["Wine", "QuickScript", "SteamScript"]);
 
 new SteamScript()
     .name("STAR WARS™ Jedi Knight II - Jedi Outcast™")

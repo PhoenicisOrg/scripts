@@ -1,4 +1,4 @@
-include(["Functions", "QuickScript", "LocalInstallerScript"]);
+include(["Wine", "QuickScript", "LocalInstallerScript"]);
 include(["Functions", "Net", "Download"]);
 include(["Functions", "Filesystem", "Extract"]);
 

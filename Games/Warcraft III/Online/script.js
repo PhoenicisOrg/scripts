@@ -1,6 +1,6 @@
-include(["Functions", "QuickScript", "OnlineInstallerScript"]);
-include(["Functions", "Verbs", "corefonts"]);
-include(["Functions", "Verbs", "vcrun2015"]);
+include(["Wine", "QuickScript", "OnlineInstallerScript"]);
+include(["Wine", "Verbs", "corefonts"]);
+include(["Wine", "Verbs", "vcrun2015"]);
 
 new OnlineInstallerScript()
     .name("Warcraft III")

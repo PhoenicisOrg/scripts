@@ -1,5 +1,5 @@
-include(["Functions", "QuickScript", "SteamScript"]);
-include(["Functions", "Verbs", "physx"]);
+include(["Wine", "QuickScript", "SteamScript"]);
+include(["Wine", "Verbs", "physx"]);
 
 new SteamScript()
     .name("Mirror's Edge™")
