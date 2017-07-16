@@ -1,4 +1,4 @@
-include(["Functions", "QuickScript", "OnlineInstallerScript"]);
+include(["Wine", "QuickScript", "OnlineInstallerScript"]);
 
 new OnlineInstallerScript()
     .name("Uplay")

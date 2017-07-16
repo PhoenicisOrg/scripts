@@ -1,4 +1,4 @@
-include(["Functions", "QuickScript", "LocalInstallerScript"]);
+include(["Wine", "QuickScript", "LocalInstallerScript"]);
 
 new LocalInstallerScript()
     .name("18 Wheels of Steel: Across America")

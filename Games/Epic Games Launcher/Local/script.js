@@ -1,4 +1,4 @@
-include(["Functions", "QuickScript", "LocalInstallerScript"]);
+include(["Wine", "QuickScript", "LocalInstallerScript"]);
 
 new LocalInstallerScript()
     .name("Epic Games Launcher")

@@ -1,6 +1,6 @@
-include(["Functions", "QuickScript", "OnlineInstallerScript"]);
-include(["Functions", "Verbs", "vcrun2015"]);
-include(["Functions", "Verbs", "corefonts"]);
+include(["Wine", "QuickScript", "OnlineInstallerScript"]);
+include(["Wine", "Verbs", "vcrun2015"]);
+include(["Wine", "Verbs", "corefonts"]);
 
 new OnlineInstallerScript()
     .name("Blizzard app")

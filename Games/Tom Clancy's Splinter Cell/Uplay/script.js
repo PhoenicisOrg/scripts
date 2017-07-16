@@ -1,4 +1,4 @@
-include(["Functions", "QuickScript", "UplayScript"]);
+include(["Wine", "QuickScript", "UplayScript"]);
 
 new UplayScript()
     .name("Tom Clancy's Splinter Cell®")

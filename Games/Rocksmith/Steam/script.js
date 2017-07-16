@@ -1,4 +1,4 @@
-include(["Functions", "QuickScript", "SteamScript"]);
+include(["Wine", "QuickScript", "SteamScript"]);
 include(["Functions", "Filesystem", "Files"]);
 
 function fixIni(ini) {

@@ -1,4 +1,4 @@
-include(["Functions", "QuickScript", "UplayScript"]);
+include(["Wine", "QuickScript", "UplayScript"]);
 
 new UplayScript()
     .name("Prince of Persia®: The Sands of Time")
