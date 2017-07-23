@@ -1,5 +1,4 @@
- 
-include(["Wine", "QuickScript", "SteamScript"]);
+ include(["Wine", "QuickScript", "SteamScript"]);
 
 new SteamScript()
     .name("Star Trek Online")
@@ -9,4 +8,4 @@ new SteamScript()
     .wineVersion("2.12")
     .wineDistribution("staging")
     
-.go();
+    .go();
