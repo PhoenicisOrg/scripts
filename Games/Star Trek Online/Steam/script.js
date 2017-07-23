@@ -1,4 +1,4 @@
- include(["Wine", "QuickScript", "SteamScript"]);
+include(["Wine", "QuickScript", "SteamScript"]);
 
 new SteamScript()
     .name("Star Trek Online")
