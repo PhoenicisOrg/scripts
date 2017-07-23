@@ -7,5 +7,4 @@ new SteamScript()
     .appId(9900)
     .wineVersion("2.12")
     .wineDistribution("staging")
-    
     .go();
