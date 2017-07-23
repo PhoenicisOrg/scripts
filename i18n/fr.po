@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-22 12:05+0200\n"
+"POT-Creation-Date: 2017-07-23 16:31+0200\n"
 "PO-Revision-Date: 2017-06-11 14:51+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: French\n"
@@ -152,7 +152,7 @@ msgid ""
 "Do you want to delete it?"
 msgstr ""
 
-#: Engines/Wine/Shortcuts/Wine/script.js:58
+#: Engines/Wine/Shortcuts/Wine/script.js:63
 msgid "Executable {0} not found!"
 msgstr ""
 
@@ -421,7 +421,6 @@ msgid ""
 msgstr ""
 
 #: i18n/tmp/Applications/Games/category.js:1
-#: i18n/tmp/Applications/Internet/category.js:1
 msgid "Games"
 msgstr ""
 
@@ -1301,6 +1300,10 @@ msgstr ""
 "><br /><b>Enregistrement</b><br />PhotoFiltre est gratuit pour une "
 "utilisation privée ou éducative.<br />Toute utilisation commerciale ou "
 "professionnelle nécessite l'achat d'une licence."
+
+#: i18n/tmp/Applications/Internet/category.js:1
+msgid "Internet"
+msgstr ""
 
 #: i18n/tmp/Applications/Internet/Internet Explorer 6.0/application.js:1
 msgid "Internet Explorer 6.0"

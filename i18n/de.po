@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-22 12:05+0200\n"
+"POT-Creation-Date: 2017-07-23 16:31+0200\n"
 "PO-Revision-Date: 2017-07-04 19:02+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
@@ -171,7 +171,7 @@ msgstr ""
 "Der Container {0} wird nicht mehr verwendet.\n"
 "Möchten Sie ihn löschen?"
 
-#: Engines/Wine/Shortcuts/Wine/script.js:58
+#: Engines/Wine/Shortcuts/Wine/script.js:63
 msgid "Executable {0} not found!"
 msgstr "Ausführbare Datei {0} nicht gefunden!"
 
@@ -523,7 +523,6 @@ msgstr ""
 "verborgene Wahrheit über einige der größten Legenden im Westen."
 
 #: i18n/tmp/Applications/Games/category.js:1
-#: i18n/tmp/Applications/Internet/category.js:1
 msgid "Games"
 msgstr "Spiele"
 
@@ -1741,6 +1740,10 @@ msgid ""
 msgstr ""
 "PhotoFiltre ist ein Bildbearbeitungsprogramm, welches Ebenen, Filter und "
 "Effekte unterstützt."
+
+#: i18n/tmp/Applications/Internet/category.js:1
+msgid "Internet"
+msgstr ""
 
 #: i18n/tmp/Applications/Internet/Internet Explorer 6.0/application.js:1
 msgid "Internet Explorer 6.0"

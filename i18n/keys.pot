@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-22 12:05+0200\n"
+"POT-Creation-Date: 2017-07-23 16:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgid ""
 "Do you want to delete it?"
 msgstr ""
 
-#: Engines/Wine/Shortcuts/Wine/script.js:58
+#: Engines/Wine/Shortcuts/Wine/script.js:63
 msgid "Executable {0} not found!"
 msgstr ""
 
@@ -414,7 +414,6 @@ msgid ""
 msgstr ""
 
 #: i18n/tmp/Applications/Games/category.js:1
-#: i18n/tmp/Applications/Internet/category.js:1
 msgid "Games"
 msgstr ""
 
@@ -1237,6 +1236,10 @@ msgid ""
 "PhotoFiltre Studio also has layer manager (with Alpha channel), advanced "
 "brushes, nozzles (or tubes), red eye corrector, batch module and lot of "
 "other powerful tools."
+msgstr ""
+
+#: i18n/tmp/Applications/Internet/category.js:1
+msgid "Internet"
 msgstr ""
 
 #: i18n/tmp/Applications/Internet/Internet Explorer 6.0/application.js:1
