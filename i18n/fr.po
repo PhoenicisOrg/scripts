@@ -87,7 +87,7 @@ msgstr ""
 
 #: i18n/json_string.js:11
 msgid "Graphics"
-msgstr "Graphiques"
+msgstr "Graphismes"
 
 #: i18n/json_string.js:12
 msgid "Niko: Through The Dream"
