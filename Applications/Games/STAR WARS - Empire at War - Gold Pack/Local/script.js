@@ -1,5 +1,5 @@
 include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
-include(["Engines"," Wine", "Verbs", "d3dx9"]);
+include(["Engines","Wine", "Verbs", "d3dx9"]);
 include(["Engines", "Wine", "Engine", "Object"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
 
