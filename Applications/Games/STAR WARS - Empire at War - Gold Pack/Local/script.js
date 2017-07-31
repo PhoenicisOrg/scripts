@@ -20,7 +20,7 @@ new LocalInstallerScript()
             .to(wine.prefixDirectory + "drive_c/users/Public/Documents/EAW_RAM_MPLobby_update.exe")
             .get();
         
-        wine.run(wine.prefixDirectory + "drive_c/users/Public/Documents/EAW_RAM_MPLobby_update.exe","");
+        wine.run(wine.prefixDirectory + "drive_c/users/Public/Documents/EAW_RAM_MPLobby_update.exe");
     })
     .go(); 
 
