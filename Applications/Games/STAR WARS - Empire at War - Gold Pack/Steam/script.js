@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
+include(["Engines", "Wine", "QuickScript", "SteamScript"]);
 include(["Engines","Wine", "Verbs", "d3dx9"]);
 
 new SteamScript()
