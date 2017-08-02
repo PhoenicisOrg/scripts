@@ -1,4 +1,6 @@
 include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
+include(["Engines", "Wine", "Engine", "Object"]);
+include(["Utils", "Functions", "Filesystem", "Files"]);
 
 new LocalInstallerScript()
     .name("STAR WARS™ Battlefront™ II")                       
