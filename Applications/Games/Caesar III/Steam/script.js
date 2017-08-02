@@ -3,7 +3,7 @@ include(["Engines", "Wine", "Engine", "Object"]);;
 
 new SteamScript()
     .name("Caesar III")              
-    .editor("Impressions Gamesr")    
+    .editor("Impressions Games")    
     .author("ImperatorS79") 
     .appId(517790)
     .postInstall(function(wine, wizard) {
