@@ -1,5 +1,5 @@
 include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
-include(["Engines"," Wine", "Verbs", "d3dx9"]);
+include(["Engines","Wine", "Verbs", "d3dx9"]);
 include(["Engines", "Wine", "Engine", "Object"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
 
@@ -16,11 +16,11 @@ new LocalInstallerScript()
         new Downloader()
             .wizard(wizard)
             .url("http://static.dolimg.com/mh_netstorage/lucasfilm/patches/pc/EAW_RAM_MPLobby_update.exe")
-            .checksum("9fdecb9609a17f7358f2984a3278b484")
+            .checksum("63233107fab4c58413df04ce1d07fe65e7145329")
             .to(wine.prefixDirectory + "drive_c/users/Public/Documents/EAW_RAM_MPLobby_update.exe")
             .get();
         
-        wine.runInsidePrefix(wine.prefixDirectory + "drive_c/users/Public/Documents/EAW_RAM_MPLobby_update.exe","");
+        wine.runInsidePrefix("/users/Public/Documents/EAW_RAM_MPLobby_update.exe");
     })
     .go(); 
 
