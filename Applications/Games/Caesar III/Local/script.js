@@ -1,5 +1,5 @@
-include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"])
-include(["Engines", "Wine", "Engine", "Object"]);;
+include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
+include(["Engines", "Wine", "Engine", "Object"]);
 
 new LocalInstallerScript()
     .name("Caesar III")                       
