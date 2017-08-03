@@ -4,7 +4,7 @@ include(["Utils", "Functions", "Filesystem", "Files"]);
 
 new LocalInstallerScript()
     .name("STAR WARS™ Battlefront™ II")                       
-.editor("Pandemic Studios")                               
+    .editor("Pandemic Studio")                               
     .author("ImperatorS79")                     
     .category("Games")                           
     .executable("LaunchBFII.exe")                  
