@@ -4,11 +4,12 @@ include(["Utils", "Functions", "Filesystem", "Files"]);
 
 new LocalInstallerScript()
     .name("STAR WARS™ Battlefront™ II")                       
-    .editor("Pandemic Studiosr")                               
+.editor("Pandemic Studios")                               
     .author("ImperatorS79")                     
     .category("Games")                           
     .executable("LaunchBFII.exe")                  
     .postInstall(function(wine, wizard) {
+    // Install the 1.1 update of the game
         new Downloader()
             .wizard(wizard)
             .url("http://static.dolimg.com/mh_netstorage/lucasfilm/patches/pc/BFIIUpdateInt1_1.exe")
