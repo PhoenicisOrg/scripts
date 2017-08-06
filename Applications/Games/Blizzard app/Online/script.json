@@ -1,6 +1,6 @@
 {
 	"scriptName": "Blizzard app",
-	"compatibleOperatingSystems": [],
+	"compatibleOperatingSystems": ["LINUX"],
 	"testingOperatingSystems": ["LINUX"],
 	"free": true,
 	"requiresPatch": false
