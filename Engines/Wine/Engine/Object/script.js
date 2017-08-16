@@ -301,13 +301,18 @@ Wine.prototype.kill = function () {
 
 /**
 *
-* @returns {Downloader}
+* @returns available Wine versions
 */
 Wine.prototype.getAvailableVersions = function () {
-    return new Downloader()
+    var versionsFile = this._wineEnginesDirectory + "/availableVersions.json";
+    touch(versionsFile);
+    new Downloader()
         .wizard(this._wizard)
         .url(this._wineWebServiceUrl)
-        .get()
+        .to(versionsFile)
+        .ifUpdateAvailable(true)
+        .get();
+    return cat(versionsFile);
 };
 
 /**

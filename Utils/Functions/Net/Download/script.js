@@ -32,6 +32,10 @@ var Downloader = function () {
         that._localFile = localFile;
         return that;
     };
+    that.ifUpdateAvailable = function (ifUpdateAvailable) {
+        that._ifUpdateAvailable = ifUpdateAvailable;
+        return that;
+    }
     that.get = function () {
         if (!that._message) {
             that._message = tr("Please wait while {0} is downloaded ...", that._fetchFileNameFromUrl(that._url));
@@ -41,9 +45,18 @@ var Downloader = function () {
             var progressBar = that._wizard.progressBar(that._message);
         }
 
+        if (that._ifUpdateAvailable) {
+            if (!that._downloader.isUpdateAvailable(that._localFile, that._url)) {
+                print(that._localFile + " already up-to-date.");
+                return;
+            }
+        }
+
         if (that._localFile) {
             that._downloader.get(that._url, that._localFile, function (progressEntity) {
-                progressBar.accept(progressEntity);
+                if (progressBar) {
+                    progressBar.accept(progressEntity);
+                }
             });
 
             if (that._checksum) {
@@ -64,7 +77,7 @@ var Downloader = function () {
             }
         } else {
             return that._downloader.get(that._url, function (progressEntity) {
-                if(progressBar) {
+                if (progressBar) {
                     progressBar.accept(progressEntity);
                 }
             });
