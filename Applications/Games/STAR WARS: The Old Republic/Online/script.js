@@ -18,7 +18,7 @@ new OnlineInstallerScript()
         wine.d3dx9();
     })
     .postInstall(function(wine, wizard) {
-        //without that the launcher is unable to download te game
+        //without that the launcher is unable to download the game
         var path = wine.prefixDirectory + "drive_c/" + wine.programFiles() + "/Electronic Arts/BioWare/Star Wars - The Old Republic/launcher.settings";
         var content =   '{ "Login": ""\n'                                           +
                         ', "LastProduct": ""\n'                                     +
