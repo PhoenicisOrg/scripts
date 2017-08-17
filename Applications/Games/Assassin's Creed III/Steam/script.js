@@ -1,5 +1,4 @@
 include(["Engines", "Wine", "QuickScript", "SteamScript"]);
-include(["Engines", "Wine", "Verbs", "uplay"]);
 
 new SteamScript()
     .name("Assassin’s Creed® III")
