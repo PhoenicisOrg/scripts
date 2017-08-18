@@ -8,9 +8,6 @@ new OnlineInstallerScript()
     .url("https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UplayInstaller.exe")
     .category("Games")
     .executable("UbisoftGameLauncher.exe")
-    .wineVersion("2.5")
+    .wineVersion("2.14")
     .wineDistribution("staging")
-    .preInstall(function(wine, wizard) {
-        wine.windowsVersion("vista");
-    })
     .go();
