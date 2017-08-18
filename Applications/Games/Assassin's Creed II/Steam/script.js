@@ -5,9 +5,6 @@ new SteamScript()
     .editor("Ubisoft Montreal")
     .author("Plata")
     .appId(33230)
-    .wineVersion("2.5")
+    .wineVersion("2.14")
     .wineDistribution("staging")
-    .postInstall(function(wine, wizard) {
-        wine.setOsForApplication().set("upc.exe", "winxp").do();
-    })
     .go();
