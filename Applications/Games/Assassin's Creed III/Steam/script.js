@@ -7,7 +7,4 @@ new SteamScript()
     .appId(208480)
     .wineVersion("2.14")
     .wineDistribution("staging")
-    .preInstall(function (wine, wizard) {
-        wine.windowsVersion("win7");
-    })
     .go();
