@@ -1,9 +1,11 @@
+include(["Engines", "Wine", "Engine", "Object"]);
+
 var WineShortcut = function () {
     var that = this;
     that._shortcutManager = Bean("shortcutManager");
     that._appsManager = Bean("repositoryManager");
     that._fileSearcher = Bean("fileSearcher");
-    that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
+    that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR;
 
     that._category = "Other";
     that._description = "";
