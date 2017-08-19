@@ -33,7 +33,7 @@ new LocalInstallerScript()
             .to(originDirectory + exeName)
             .get();
             
-        wine.run(originDirectory + exeName,"");
+        wine.run(originDirectory + exeName);
     
         wine.setVirtualDesktop(1280, 1024);
         
