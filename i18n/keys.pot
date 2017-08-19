@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-24 18:17+0200\n"
+"POT-Creation-Date: 2017-08-19 11:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,12 +33,12 @@ msgid "Please install Warcraft III before installing The Frozen Throne."
 msgstr ""
 
 #: Applications/Internet/Internet Explorer 6.0/Online/script.js:69
-#: Engines/Wine/Engine/Object/script.js:284
+#: Engines/Wine/Engine/Object/script.js:287
 #: Engines/Wine/QuickScript/InstallerScript/script.js:104
-#: Engines/Wine/QuickScript/SteamScript/script.js:104
-#: Engines/Wine/QuickScript/SteamScript/script.js:109
-#: Engines/Wine/QuickScript/SteamScript/script.js:129
-#: Engines/Wine/QuickScript/SteamScript/script.js:152
+#: Engines/Wine/QuickScript/SteamScript/script.js:108
+#: Engines/Wine/QuickScript/SteamScript/script.js:113
+#: Engines/Wine/QuickScript/SteamScript/script.js:133
+#: Engines/Wine/QuickScript/SteamScript/script.js:156
 #: Engines/Wine/QuickScript/UplayScript/script.js:66
 #: Engines/Wine/QuickScript/UplayScript/script.js:71
 #: Engines/Wine/QuickScript/UplayScript/script.js:99
@@ -69,23 +69,23 @@ msgid ""
 "You can download it from https://www.elster.de/elfo_down.php."
 msgstr ""
 
-#: Engines/Wine/Engine/Object/script.js:249
+#: Engines/Wine/Engine/Object/script.js:252
 msgid "Please wait while {0} is uninstalled ..."
 msgstr ""
 
-#: Engines/Wine/Engine/Object/script.js:251
+#: Engines/Wine/Engine/Object/script.js:254
 msgid "Could not uninstall {0}!"
 msgstr ""
 
-#: Engines/Wine/Engine/Object/script.js:432
+#: Engines/Wine/Engine/Object/script.js:440
 msgid "Prefix seems to be 32bits"
 msgstr ""
 
-#: Engines/Wine/Engine/Object/script.js:450
+#: Engines/Wine/Engine/Object/script.js:458
 msgid "Installing version: "
 msgstr ""
 
-#: Engines/Wine/Engine/Object/script.js:797
+#: Engines/Wine/Engine/Object/script.js:805
 msgid "Could not determine mimetype for file extension \"{0}\""
 msgstr ""
 
@@ -117,7 +117,7 @@ msgstr ""
 msgid "Please select the download URL."
 msgstr ""
 
-#: Engines/Wine/QuickScript/SteamScript/script.js:101
+#: Engines/Wine/QuickScript/SteamScript/script.js:105
 msgid ""
 "Please follow the steps of the Steam setup.\n"
 "\n"
@@ -125,7 +125,7 @@ msgid ""
 "installation of \"{0}\" can continue."
 msgstr ""
 
-#: Engines/Wine/QuickScript/SteamScript/script.js:113
+#: Engines/Wine/QuickScript/SteamScript/script.js:117
 msgid "Please wait until Steam has finished the download ..."
 msgstr ""
 
@@ -193,8 +193,50 @@ msgid ""
 "installation can continue."
 msgstr ""
 
+#: i18n/tmp/Applications/Accessories/7-zip/application.js:1
+msgid "7-zip"
+msgstr ""
+
+#: i18n/tmp/Applications/Accessories/7-zip/application.js:2
+msgid ""
+"7-Zip is a file archiver with a high compression ratio. 7-Zip is open source "
+"software. Most of the source code is under the GNU LGPL license. The unRAR "
+"code is under a mixed license: GNU LGPL + unRAR restrictions. You can use 7-"
+"Zip on any computer, including a computer in a commercial organization. You "
+"don't need to register or pay for 7-Zip."
+msgstr ""
+
 #: i18n/tmp/Applications/Accessories/category.js:1
 msgid "Accessories"
+msgstr ""
+
+#: i18n/tmp/Applications/Accessories/ImgBurn/application.js:1
+msgid "ImgBurn"
+msgstr ""
+
+#: i18n/tmp/Applications/Accessories/ImgBurn/application.js:2
+msgid ""
+"ImgBurn is a lightweight CD / DVD / HD DVD / Blu-ray burning application."
+msgstr ""
+
+#: i18n/tmp/Applications/Accessories/Soundplant/application.js:1
+msgid "Soundplant"
+msgstr ""
+
+#: i18n/tmp/Applications/Accessories/Soundplant/application.js:2
+msgid ""
+"Soundplant turns your computer keyboard into a versatile, low latency sound "
+"trigger and playable instrument.<br><br>Via drag & drop, easily assign sound "
+"files of any format and length onto 72 keyboard keys, creating custom "
+"soundboards that put hours of instantly-playing audio at your fingertips "
+"with no extra hardware needed.<br><br>Soundplant is used for live music and "
+"sound effects, as a drum pad, as a unique electronic instrument, as an "
+"educational aid, and just for fun - in radio, television, theater, "
+"podcasting, presentations, studios, stadiums, classrooms, clubs, museums, "
+"and churches - by DJs, musicians, engineers, sound designers, composers, "
+"artists, teachers, magicians, puppeteers, comedians, public speakers, "
+"gamers, and more.<br><br> N.B.: Free version has some features unavailable, "
+"see http://soundplant.org/support.htm/"
 msgstr ""
 
 #: i18n/tmp/Applications/Custom/category.js:1
@@ -280,11 +322,11 @@ msgid ""
 "of its struggles for power."
 msgstr ""
 
-#: i18n/tmp/Applications/Games/Assassin’s Creed: Brotherhood/application.js:1
+#: i18n/tmp/Applications/Games/Assassin's Creed: Brotherhood/application.js:1
 msgid "Assassin’s Creed® Brotherhood"
 msgstr ""
 
-#: i18n/tmp/Applications/Games/Assassin’s Creed: Brotherhood/application.js:2
+#: i18n/tmp/Applications/Games/Assassin's Creed: Brotherhood/application.js:2
 msgid ""
 "Live and breathe as Ezio, a legendary Master Assassin, in his enduring "
 "struggle against the powerful Templar order.<br><br>He must journey into "
@@ -296,14 +338,38 @@ msgid ""
 "extinction of their order."
 msgstr ""
 
-#: i18n/tmp/Applications/Games/Assassin’s Creed II/application.js:1
+#: i18n/tmp/Applications/Games/Assassin's Creed II/application.js:1
 msgid "Assassin’s Creed II"
 msgstr ""
 
-#: i18n/tmp/Applications/Games/Assassin’s Creed II/application.js:2
+#: i18n/tmp/Applications/Games/Assassin's Creed II/application.js:2
 msgid ""
 "An epic story of family, vengeance and conspiracy set in the pristine, yet "
 "brutal, backdrop of a Renaissance Italy."
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Assassin's Creed III/application.js:1
+msgid "Assassin’s Creed® III"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Assassin's Creed III/application.js:2
+msgid ""
+"The American Colonies, 1775. It’s a time of civil unrest and political "
+"upheaval in the Americas. As a Native American assassin fights to protect "
+"his land and his people, he will ignite the flames of a young nation’s "
+"revolution.<br>Assassin’s Creed® III takes you back to the American "
+"Revolutionary War, but not the one you’ve read about in history books..."
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Assassin's Creed IV Black Flag/application.js:1
+msgid "Assassin’s Creed® IV Black Flag™"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Assassin's Creed IV Black Flag/application.js:2
+msgid ""
+"The year is 1715. Pirates rule the Caribbean and have established their own "
+"lawless Republic where corruption, greediness and cruelty are commonplace."
+"Among these outlaws is a brash young captain named Edward Kenway."
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Assassin's Creed Revelations/application.js:1
@@ -314,6 +380,18 @@ msgstr ""
 msgid ""
 "Ezio Auditore walks in the footsteps of the legendary mentor Altair, on a "
 "dangerous journey of discovery and revelation."
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Assassin's Creed Unity/application.js:1
+msgid "Assassin’s Creed® Unity"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Assassin's Creed Unity/application.js:2
+msgid ""
+"Assassin’s Creed® Unity tells the story of Arno, a young man who embarks "
+"upon an extraordinary journey to expose the true powers behind the French "
+"Revolution. In the brand new co-op mode, you and your friends will also be "
+"thrown in the middle of a ruthless struggle for the fate of a nation."
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Audiosurf/application.js:1
@@ -399,6 +477,21 @@ msgid ""
 "your Paradise City driver’s license. Earn the vaunted “Burnout” license by "
 "smashing through billboards, jumping ramps, and sustaining crashes with the "
 "improved damage system."
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Caesar III/application.js:1
+msgid "Caesar III"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Caesar III/application.js:2
+msgid ""
+"Hail Governor, your city awaits.<br><br>As a provincial governor charged "
+"with spreading the glory of Rome our mission is clear: build cities, foster "
+"trade and industry, make money. How you accomplish this is entirely up to "
+"you. Gain wealth and power, make a career out of pleasing the emperor, "
+"battle Barbarians and repel invaders or concentrate on building the next "
+"Eternal City. Fail and you’ll end up as lunch for the lions. Prove your "
+"strength of mind and spirit and you just may be crowned Caesar!"
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Call of Juarez Gunslinger/application.js:1
@@ -546,6 +639,17 @@ msgid ""
 "human mind. There are two paths in the world you can choose from. At its "
 "core is a story exploration path free from puzzles where you can unfold the "
 "story at your own pace."
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Europa Universalis II/application.js:1
+msgid "Europa Universalis II"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Europa Universalis II/application.js:2
+msgid ""
+"Europa Universalis II is a strategy computer game developed by Paradox "
+"Development Studio and published by Strategy First, based on world history "
+"spanning a timeline between 1419 through 1820."
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Europa Universalis IV/application.js:1
@@ -735,6 +839,18 @@ msgid ""
 "heists in constant pursuit of the next “big score”"
 msgstr ""
 
+#: i18n/tmp/Applications/Games/Prey/application.js:1
+msgid "Prey"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Prey/application.js:2
+msgid ""
+"In Prey, you awaken aboard Talos I, a space station orbiting the moon in the "
+"year 2032. You are the key subject of an experiment meant to alter humanity "
+"forever – but things have gone terribly wrong. The space station has been "
+"overrun by hostile aliens and you are now being hunted."
+msgstr ""
+
 #: i18n/tmp/Applications/Games/Prince of Persia: The Sands of Time/application.js:1
 msgid "Prince of Persia®: The Sands of Time"
 msgstr ""
@@ -892,6 +1008,18 @@ msgid ""
 "operations division, infiltrate the Empire."
 msgstr ""
 
+#: i18n/tmp/Applications/Games/STAR WARS - Empire at War - Gold Pack/application.js:1
+msgid "STAR WARS™ - Empire at War - Gold Pack"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/STAR WARS - Empire at War - Gold Pack/application.js:2
+msgid ""
+"Command or corrupt an entire galaxy in the definitive Star Wars strategy "
+"collection. It is a time of galactic civil war. Will you take up the reins "
+"of the Rebellion, assume control of the Empire, or rule the Star Wars "
+"Underworld?"
+msgstr ""
+
 #: i18n/tmp/Applications/Games/STAR WARS Jedi Knight: Dark Forces II/application.js:1
 msgid "STAR WARS™ Jedi Knight: Dark Forces II"
 msgstr ""
@@ -938,6 +1066,17 @@ msgid ""
 "award-winning Star Wars novel, Heir to the Empire, Mara Jade blends her past "
 "experiences as a one time smuggler and Emperor's Hand with her "
 "apprenticeship as a Jedi Knight."
+msgstr ""
+
+#: i18n/tmp/Applications/Games/STAR WARS: The Old Republic/application.js:1
+msgid "STAR WARS™: The Old Republic"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/STAR WARS: The Old Republic/application.js:2
+msgid ""
+"BioWare and LucasArts bring you the next evolution in MMO Gameplay. Explore "
+"an age thousands of years before the rise of Darth Vader when war between "
+"the Galactic Republic and the Sith Empire divides the galaxy."
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Steam/application.js:1
@@ -1297,6 +1436,30 @@ msgstr ""
 msgid "Multimedia"
 msgstr ""
 
+#: i18n/tmp/Applications/Multimedia/Mp3tag/application.js:1
+msgid "Mp3tag"
+msgstr ""
+
+#: i18n/tmp/Applications/Multimedia/Mp3tag/application.js:2
+msgid ""
+"Mp3tag is a powerful and yet easy-to-use tool to edit metadata of common "
+"audio formats where it supports ID3v1, ID3v2.3, ID3v2.4, iTunes MP4, WMA, "
+"Vorbis Comments and APE Tags. It also supports online database lookups from "
+"Amazon, Musicbraing, freedb or discogs for example to automatically gather "
+"proper tags and cover art."
+msgstr ""
+
+#: i18n/tmp/Applications/Office/Adobe Acrobat Reader DC/application.js:1
+msgid "Adobe Acrobat Reader DC"
+msgstr ""
+
+#: i18n/tmp/Applications/Office/Adobe Acrobat Reader DC/application.js:2
+msgid ""
+"Adobe Acrobat Reader DC software is the free global standard for reliably "
+"viewing, printing, and commenting on PDF documents.<br><br>Premium features, "
+"online services and updates do not work."
+msgstr ""
+
 #: i18n/tmp/Applications/Office/category.js:1
 msgid "Office"
 msgstr ""
@@ -1330,16 +1493,16 @@ msgstr ""
 msgid "Please wait while {0} is extracted ..."
 msgstr ""
 
-#: Utils/Functions/Filesystem/Files/script.js:63
+#: Utils/Functions/Filesystem/Files/script.js:69
 msgid "Checking file consistency ..."
 msgstr ""
 
-#: Utils/Functions/Net/Download/script.js:37
+#: Utils/Functions/Net/Download/script.js:41
 #: Utils/Functions/Net/Resource/script.js:47
 msgid "Please wait while {0} is downloaded ..."
 msgstr ""
 
-#: Utils/Functions/Net/Download/script.js:57
+#: Utils/Functions/Net/Download/script.js:70
 msgid ""
 "Error while calculating checksum. \n"
 "\n"
