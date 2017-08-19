@@ -677,7 +677,7 @@ Wine.prototype.UseGLSL = function (mode) {
         "REGEDIT4\n" +
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-        "\"UseGLSL\"=" + mode 
+        "\"UseGLSL\"=\"" + mode + "\"" 
     this.regedit().patch(regeditFileContent);
     return this;
 };
@@ -692,7 +692,7 @@ Wine.prototype.DirectDrawRenderer = function (mode) {
         "REGEDIT4\n" +
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-        "\"DirectDrawRenderer\"=" + mode
+        "\"DirectDrawRenderer\"=\"" + mode + "\""
     this.regedit().patch(regeditFileContent);
     return this;
 };
