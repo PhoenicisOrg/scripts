@@ -1,0 +1,7 @@
+{
+	"scriptName": "Local (1.0->1.6)",
+	"compatibleOperatingSystems": ["LINUX"],
+	"testingOperatingSystems": [],
+	"free": false,
+	"requiresPatch": false
+} 
