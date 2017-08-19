@@ -662,7 +662,7 @@ Wine.prototype.enableCSMT = function () {
         "REGEDIT4\n" +
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-        "\"UseGLSL\"=dword:1\n" 
+        "\"csmt\"=dword:1"
     this.regedit().patch(regeditFileContent);
     return this;
 };
@@ -676,7 +676,7 @@ Wine.prototype.UseGLSL = function () {
         "REGEDIT4\n" +
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-        "\"UseGLSL\"=\"enabled\"\n" 
+        "\"UseGLSL\"=\"enabled\"" 
     this.regedit().patch(regeditFileContent);
     return this;
 };
@@ -691,7 +691,7 @@ Wine.prototype.DirectDrawRenderer = function (mode) {
         "REGEDIT4\n" +
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-        "\"DirectDrawRenderer\"=" + mode + "\n"
+        "\"DirectDrawRenderer\"=" + mode
     this.regedit().patch(regeditFileContent);
     return this;
 };
