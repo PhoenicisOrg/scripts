@@ -32,8 +32,8 @@ var Downloader = function () {
         that._localFile = localFile;
         return that;
     };
-    that.ifUpdateAvailable = function (ifUpdateAvailable) {
-        that._ifUpdateAvailable = ifUpdateAvailable;
+    that.onlyIfUpdateAvailable = function (onlyIfUpdateAvailable) {
+        that._onlyIfUpdateAvailable = onlyIfUpdateAvailable;
         return that;
     }
     that.get = function () {
@@ -45,7 +45,7 @@ var Downloader = function () {
             var progressBar = that._wizard.progressBar(that._message);
         }
 
-        if (that._ifUpdateAvailable) {
+        if (that._onlyIfUpdateAvailable) {
             if (!that._downloader.isUpdateAvailable(that._localFile, that._url)) {
                 print(that._localFile + " already up-to-date.");
                 return;

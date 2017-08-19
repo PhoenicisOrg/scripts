@@ -310,7 +310,7 @@ Wine.prototype.getAvailableVersions = function () {
         .wizard(this._wizard)
         .url(this._wineWebServiceUrl)
         .to(versionsFile)
-        .ifUpdateAvailable(true)
+        .onlyIfUpdateAvailable(true)
         .get();
     return cat(versionsFile);
 };
