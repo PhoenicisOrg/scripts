@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-18 15:38+0200\n"
-"PO-Revision-Date: 2017-08-18 17:46+0200\n"
+"POT-Creation-Date: 2017-08-19 11:16+0200\n"
+"PO-Revision-Date: 2017-08-19 13:29+0200\n"
 "Last-Translator: ImperatorS79 <fevrier.simon@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -39,10 +39,10 @@ msgstr "Veuillez installer Warcraft II avant d'installer The Frozen Throne."
 #: Applications/Internet/Internet Explorer 6.0/Online/script.js:69
 #: Engines/Wine/Engine/Object/script.js:287
 #: Engines/Wine/QuickScript/InstallerScript/script.js:104
-#: Engines/Wine/QuickScript/SteamScript/script.js:104
-#: Engines/Wine/QuickScript/SteamScript/script.js:109
-#: Engines/Wine/QuickScript/SteamScript/script.js:129
-#: Engines/Wine/QuickScript/SteamScript/script.js:152
+#: Engines/Wine/QuickScript/SteamScript/script.js:108
+#: Engines/Wine/QuickScript/SteamScript/script.js:113
+#: Engines/Wine/QuickScript/SteamScript/script.js:133
+#: Engines/Wine/QuickScript/SteamScript/script.js:156
 #: Engines/Wine/QuickScript/UplayScript/script.js:66
 #: Engines/Wine/QuickScript/UplayScript/script.js:71
 #: Engines/Wine/QuickScript/UplayScript/script.js:99
@@ -82,15 +82,15 @@ msgstr "Veuillez patienter pendant que {0} est désinstallé ..."
 msgid "Could not uninstall {0}!"
 msgstr "Impossible de désinstaller {0} !"
 
-#: Engines/Wine/Engine/Object/script.js:435
+#: Engines/Wine/Engine/Object/script.js:440
 msgid "Prefix seems to be 32bits"
 msgstr "Le préfixe semble être en 32bits"
 
-#: Engines/Wine/Engine/Object/script.js:453
+#: Engines/Wine/Engine/Object/script.js:458
 msgid "Installing version: "
 msgstr "Installe la version : "
 
-#: Engines/Wine/Engine/Object/script.js:800
+#: Engines/Wine/Engine/Object/script.js:805
 msgid "Could not determine mimetype for file extension \"{0}\""
 msgstr ""
 "Impossible de déterminer le type mime pour l'extension de fichier \"{0}\""
@@ -123,7 +123,7 @@ msgstr "Veuillez sélectionner le fichier d'installation."
 msgid "Please select the download URL."
 msgstr "Veuillez sélectionner l'URL de téléchargement."
 
-#: Engines/Wine/QuickScript/SteamScript/script.js:101
+#: Engines/Wine/QuickScript/SteamScript/script.js:105
 msgid ""
 "Please follow the steps of the Steam setup.\n"
 "\n"
@@ -135,7 +135,7 @@ msgstr ""
 "Décochez \"Lancer Steam\" ou fermez Steam complètement après l'installation  "
 "pour que l'installation de \"{0}\" puisse continuer."
 
-#: Engines/Wine/QuickScript/SteamScript/script.js:113
+#: Engines/Wine/QuickScript/SteamScript/script.js:117
 msgid "Please wait until Steam has finished the download ..."
 msgstr "Veuillez patienter jusqu'à ce que Steam aie fini le téléchargement ..."
 
@@ -394,11 +394,11 @@ msgstr ""
 "monde, ou partez à la conquête de l’est, en Asie, pour déterminer l’issue "
 "des batailles pour le pouvoir."
 
-#: i18n/tmp/Applications/Games/Assassin’s Creed: Brotherhood/application.js:1
+#: i18n/tmp/Applications/Games/Assassin's Creed: Brotherhood/application.js:1
 msgid "Assassin’s Creed® Brotherhood"
 msgstr "Assassin’s Creed® Brotherhood"
 
-#: i18n/tmp/Applications/Games/Assassin’s Creed: Brotherhood/application.js:2
+#: i18n/tmp/Applications/Games/Assassin's Creed: Brotherhood/application.js:2
 msgid ""
 "Live and breathe as Ezio, a legendary Master Assassin, in his enduring "
 "struggle against the powerful Templar order.<br><br>He must journey into "
@@ -418,11 +418,11 @@ msgstr ""
 "placée sous ses ordres. Ce n'est qu'en travaillant ensemble que les "
 "Assassins vaincront leurs ennemis jurés."
 
-#: i18n/tmp/Applications/Games/Assassin’s Creed II/application.js:1
+#: i18n/tmp/Applications/Games/Assassin's Creed II/application.js:1
 msgid "Assassin’s Creed II"
 msgstr "Assassin’s Creed II"
 
-#: i18n/tmp/Applications/Games/Assassin’s Creed II/application.js:2
+#: i18n/tmp/Applications/Games/Assassin's Creed II/application.js:2
 msgid ""
 "An epic story of family, vengeance and conspiracy set in the pristine, yet "
 "brutal, backdrop of a Renaissance Italy."
@@ -475,6 +475,22 @@ msgid ""
 msgstr ""
 "Ezio Auditore marche dans les pas du légendaire mentor Altaïr, dans un "
 "dangereux périple de découvertes et révélations."
+
+#: i18n/tmp/Applications/Games/Assassin's Creed Unity/application.js:1
+msgid "Assassin’s Creed® Unity"
+msgstr "Assassin’s Creed® Unity"
+
+#: i18n/tmp/Applications/Games/Assassin's Creed Unity/application.js:2
+msgid ""
+"Assassin’s Creed® Unity tells the story of Arno, a young man who embarks "
+"upon an extraordinary journey to expose the true powers behind the French "
+"Revolution. In the brand new co-op mode, you and your friends will also be "
+"thrown in the middle of a ruthless struggle for the fate of a nation."
+msgstr ""
+"Dans Assassin's Creed® Unity, vous incarnerez Arno, un jeune homme qui va "
+"être plongé dans les rouages de la Révolution Française. Avec le tout "
+"nouveau mode Coop, vous découvrirez comment le destin de toute une nation a "
+"basculé."
 
 #: i18n/tmp/Applications/Games/Audiosurf/application.js:1
 msgid "Audiosurf"
@@ -2043,16 +2059,16 @@ msgstr "Fonctions"
 msgid "Please wait while {0} is extracted ..."
 msgstr "Veuillez patienter pendant que {0} est extrait ..."
 
-#: Utils/Functions/Filesystem/Files/script.js:63
+#: Utils/Functions/Filesystem/Files/script.js:69
 msgid "Checking file consistency ..."
 msgstr "Vérification de la cohérence des fichiers  ..."
 
-#: Utils/Functions/Net/Download/script.js:37
+#: Utils/Functions/Net/Download/script.js:41
 #: Utils/Functions/Net/Resource/script.js:47
 msgid "Please wait while {0} is downloaded ..."
 msgstr "Veuillez patienter pendant que {0} est téléchargé ..."
 
-#: Utils/Functions/Net/Download/script.js:57
+#: Utils/Functions/Net/Download/script.js:70
 msgid ""
 "Error while calculating checksum. \n"
 "\n"
