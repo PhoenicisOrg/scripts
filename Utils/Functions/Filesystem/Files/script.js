@@ -33,6 +33,12 @@ var remove = function(filePath) {
     return Bean("fileUtilities").remove(new java.io.File(filePath));
 };
 
+var touch = function(filePath) {
+    if (!fileExists(filePath)) {
+        Bean("fileUtilities").writeToFile(new java.io.File(filePath), "");
+    }
+};
+
 var writeToFile = function(filePath, content) {
     Bean("fileUtilities").writeToFile(new java.io.File(filePath), content);
 };
