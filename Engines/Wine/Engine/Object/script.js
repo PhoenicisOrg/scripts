@@ -669,14 +669,15 @@ Wine.prototype.enableCSMT = function () {
 
 /**
  * force the Use of GLSL
+ * @param mode {enabled, disabled}
  * @returns {Wine}
  */
-Wine.prototype.UseGLSL = function () {
+Wine.prototype.UseGLSL = function (mode) {
     var regeditFileContent =
         "REGEDIT4\n" +
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-        "\"UseGLSL\"=\"enabled\"" 
+        "\"UseGLSL\"=" + mode 
     this.regedit().patch(regeditFileContent);
     return this;
 };
