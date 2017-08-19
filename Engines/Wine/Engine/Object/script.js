@@ -683,7 +683,7 @@ Wine.prototype.UseGLSL = function () {
 
 /**
  * force the DirectDrawRenderer
- * @params mode{gdi,opengl}
+ * @param mode {gdi,opengl}
  * @returns {Wine}
  */
 Wine.prototype.DirectDrawRenderer = function (mode) {
