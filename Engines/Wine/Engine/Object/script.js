@@ -646,6 +646,66 @@ Wine.prototype.setSoundDriver = function (driver) {
 };
 
 /**
+ * sets OpenGL max core version
+ * @param {number} major
+ * @param {number} minor
+ * @returns {Wine}
+ */
+Wine.prototype.setVersionGL = function (major, minor) {
+    var regeditFileContent =
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
+        "\"MaxVersionGL\"=dword:000"+ major + "000" + minor 
+    this.regedit().patch(regeditFileContent);
+    return this;
+};
+
+/**
+ * enable command stream multi-threading
+ * @returns {Wine}
+ */
+Wine.prototype.enableCSMT = function () {
+    var regeditFileContent =
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
+        "\"csmt\"=dword:1"
+    this.regedit().patch(regeditFileContent);
+    return this;
+};
+
+/**
+ * force the Use of GLSL
+ * @param mode {enabled, disabled}
+ * @returns {Wine}
+ */
+Wine.prototype.UseGLSL = function (mode) {
+    var regeditFileContent =
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
+        "\"UseGLSL\"=\"" + mode + "\"" 
+    this.regedit().patch(regeditFileContent);
+    return this;
+};
+
+/**
+ * force the DirectDrawRenderer
+ * @param mode {gdi,opengl}
+ * @returns {Wine}
+ */
+Wine.prototype.DirectDrawRenderer = function (mode) {
+    var regeditFileContent =
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
+        "\"DirectDrawRenderer\"=\"" + mode + "\""
+    this.regedit().patch(regeditFileContent);
+    return this;
+};
+
+/**
  * sets Virtual Desktop with window resolution
  * @param {number} width
  * @param {number} height
