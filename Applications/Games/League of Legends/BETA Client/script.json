@@ -1,7 +1,7 @@
 {
 	"scriptName": "BETA Client",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": [],
+	"testingOperatingSystems": ["MACOSX", "LINUX"],
 	"free": true,
 	"requiresPatch": false
 }
