@@ -13,17 +13,9 @@ new SteamScript()
     .appId(292030)
     .preInstall(function(wine, wizard) {
         //Ensure Directx11 full features will work, and CSMT for performance
-        var path = wine.prefixDirectory + "drive_c/witcher3.reg";
-        
-        var content =   'REGEDIT4\n'                                        +
-                        '[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n'   +  
-                        '"csmt"=dword:1\n'                                  +
-                        '"DirectDrawRenderer"="opengl"\n'                   +
-                        '"UseGLSL"="enabled"\n'                             +
-                        '"MaxVersionGL"=dword:00040005'                     ;
-                        
-        writeToFile(path, content);
-        
-        wine.regedit().open(path);
+        wine.setVersionGL(4,5);
+        wine.enableCSMT();
+        wine.UseGLSL("enabled");
+        wine.DirectDrawRenderer("opengl");
     })
     .go(); 
