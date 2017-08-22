@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-19 11:16+0200\n"
-"PO-Revision-Date: 2017-08-19 13:29+0200\n"
+"POT-Creation-Date: 2017-08-22 14:32+0200\n"
+"PO-Revision-Date: 2017-08-22 14:50+0200\n"
 "Last-Translator: ImperatorS79 <fevrier.simon@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -32,12 +32,17 @@ msgstr ""
 "Au lancement d'Origin, il y aura un message d'erreur (\"Your update could "
 "not be completed.\"). C'est normal. Fermez juste le popup."
 
+#: Applications/Games/Tom Clancy's Rainbow Six 3 : Raven Shield/Local
+#: (1.0->1.6)/script.js:11
+msgid "Select your region for the patch (1.0 to 1.60)."
+msgstr "Sélectionner votre région pour le patch (1.0 vers 1.60)."
+
 #: Applications/Games/Warcraft III TFT/Online/script.js:13
 msgid "Please install Warcraft III before installing The Frozen Throne."
 msgstr "Veuillez installer Warcraft II avant d'installer The Frozen Throne."
 
 #: Applications/Internet/Internet Explorer 6.0/Online/script.js:69
-#: Engines/Wine/Engine/Object/script.js:287
+#: Engines/Wine/Engine/Object/script.js:290
 #: Engines/Wine/QuickScript/InstallerScript/script.js:104
 #: Engines/Wine/QuickScript/SteamScript/script.js:108
 #: Engines/Wine/QuickScript/SteamScript/script.js:113
@@ -74,23 +79,23 @@ msgstr ""
 "Veuillez sélectionner le fichier d'installation.\n"
 "Vous pouvez le télécharger depuis https://www.elster.de/elfo_down.php."
 
-#: Engines/Wine/Engine/Object/script.js:252
+#: Engines/Wine/Engine/Object/script.js:255
 msgid "Please wait while {0} is uninstalled ..."
 msgstr "Veuillez patienter pendant que {0} est désinstallé ..."
 
-#: Engines/Wine/Engine/Object/script.js:254
+#: Engines/Wine/Engine/Object/script.js:257
 msgid "Could not uninstall {0}!"
 msgstr "Impossible de désinstaller {0} !"
 
-#: Engines/Wine/Engine/Object/script.js:440
+#: Engines/Wine/Engine/Object/script.js:443
 msgid "Prefix seems to be 32bits"
 msgstr "Le préfixe semble être en 32bits"
 
-#: Engines/Wine/Engine/Object/script.js:458
+#: Engines/Wine/Engine/Object/script.js:461
 msgid "Installing version: "
 msgstr "Installe la version : "
 
-#: Engines/Wine/Engine/Object/script.js:805
+#: Engines/Wine/Engine/Object/script.js:868
 msgid "Could not determine mimetype for file extension \"{0}\""
 msgstr ""
 "Impossible de déterminer le type mime pour l'extension de fichier \"{0}\""
@@ -167,7 +172,7 @@ msgstr ""
 "Le conteneur {0} n'est plus utilisé.\n"
 "Voulez)vous le supprimer ?"
 
-#: Engines/Wine/Shortcuts/Wine/script.js:63
+#: Engines/Wine/Shortcuts/Wine/script.js:65
 msgid "Executable {0} not found!"
 msgstr "Exécutable {0} introuvable !"
 
@@ -278,7 +283,8 @@ msgstr ""
 "classe, les clubs, les musées et les églises - par des DJ, des musiciens, "
 "des ingénieurs, des créateurs de sons, des compositeurs, des artistes, des "
 "enseignants, des magiciens, des marionnettistes, des comédiens, des "
-"conférenciers, des joueurs et plus encore."
+"conférenciers, des joueurs et plus encore.<br><br> N.B.: Free version has "
+"some features unavailable, see http://soundplant.org/support.htm/"
 
 #: i18n/tmp/Applications/Custom/category.js:1
 msgid "Custom"
@@ -690,7 +696,7 @@ msgstr ""
 "restent ouvertes que si un objet est posé contre elles. <br><br>Si ton "
 "cerveau est déjà en ébullition et que tu as hâte d'utiliser tes cellules "
 "grises, alors tu es le candidat parfait pour affronter ces salles !<br><br> "
-"Alors : Bienvenue et bonne chance !“ "
+"Alors : Bienvenue et bonne chance !"
 
 #: i18n/tmp/Applications/Games/Civilization V/application.js:1
 msgid "Civilization V"
@@ -768,6 +774,33 @@ msgid ""
 msgstr ""
 "Crayon Physics est un jeu d'arcade à la souris. Vous devrez tracer lignes et "
 "carrés pour bouger la balle. Le but est d'avoir les étoiles du niveau. "
+
+#: i18n/tmp/Applications/Games/DOOM (2016)/application.js:1
+msgid "DOOM (2016)"
+msgstr "DOOM (2016)"
+
+#: i18n/tmp/Applications/Games/DOOM (2016)/application.js:2
+msgid ""
+"Developed by id software, the studio that pioneered the first-person shooter "
+"genre and created multiplayer Deathmatch, DOOM returns as a brutally fun and "
+"challenging modern-day shooter experience. Relentless demons, impossibly "
+"destructive guns, and fast, fluid movement provide the foundation for "
+"intense, first-person combat – whether you’re obliterating demon hordes "
+"through the depths of Hell in the single-player campaign, or competing "
+"against your friends in numerous multiplayer modes. Expand your gameplay "
+"experience using DOOM SnapMap game editor to easily create, play, and share "
+"your content with the world."
+msgstr ""
+"Développé par id Software, le pionnier des jeux de tir à la première "
+"personne et du mode match à mort multijoueur, DOOM revient sous une forme "
+"moderne qui conserve sa difficulté et sa brutalité. Que vous décidiez "
+"d'éradiquer des hordes de démons sorties tout droit de l'Enfer dans la "
+"campagne du jeu ou que vous combattiez vos amis dans l'un des multiples "
+"modes multijoueur, le programme est le même : des démons sans pitié, des "
+"armes d'une puissance inouïe et des mouvements rapides et fluides qui sont "
+"les fondations de ce jeu de tir intense à la première personne.. Prolongez "
+"votre expérience de jeu en utilisant l'éditeur DOOM SnapMap pour créer, "
+"jouer et partager facilement du contenu avec le monde entier."
 
 #: i18n/tmp/Applications/Games/Dr. Langeskov, The Tiger, and Terribly Cursed
 #: Emerald: A Whirlwind Heist/application.js:1
@@ -1348,8 +1381,8 @@ msgstr ""
 
 #: i18n/tmp/Applications/Games/STAR WARS - Empire at War Gold
 #: Pack/application.js:1
-msgid "STAR WARS™ - Empire at War - Gold Pack"
-msgstr "STAR WARS™ - Empire at War - Gold Pack"
+msgid "STAR WARS™ Empire at War: Gold Pack"
+msgstr "STAR WARS™ Empire at War: Gold Pack"
 
 #: i18n/tmp/Applications/Games/STAR WARS - Empire at War Gold
 #: Pack/application.js:2
@@ -1475,6 +1508,24 @@ msgstr ""
 "amie de Blue boy a été kidnappée par des extraterrestres, il va donc "
 "parcourir 21 niveaux pour la sauver et aussi combattre des boss en chemin."
 
+#: i18n/tmp/Applications/Games/The Elder Scrolls IV: Oblivion/application.js:1
+msgid "The Elder Scrolls IV: Oblivion"
+msgstr "The Elder Scrolls IV: Oblivion"
+
+#: i18n/tmp/Applications/Games/The Elder Scrolls IV: Oblivion/application.js:2
+msgid ""
+"The Elder Scrolls IV: Oblivion® presents one of the best RPGs of all time "
+"like never before. Step inside the most richly detailed and vibrant game-"
+"world ever created. With a powerful combination of freeform gameplay and "
+"unprecedented graphics, you can unravel the main quest at your own pace or "
+"explore the vast world and find your own challenges."
+msgstr ""
+"L'édition de l'année d'Elder Scrolls IV: Oblivion® vous apporte un des "
+"meilleurs jeux de rôle jamais conçu. Entrez l'un des plus richement détaillé "
+"et vibrant monde jamais créé. Avec une puissante combinaison de jeu libre et "
+"de graphismes sans précédent, vous pouvez démêler la quête principale à "
+"votre propre rythme ou explorer le vaste monde et trouver vos propres défis."
+
 #: i18n/tmp/Applications/Games/The Elder Scrolls V: Skyrim/application.js:1
 msgid "The Elder Scrolls V: Skyrim"
 msgstr "The Elder Scrolls V: Skyrim"
@@ -1565,6 +1616,27 @@ msgstr ""
 msgid "The Vanishing of Ethan Carter Redux"
 msgstr "The Vanishing of Ethan Carter Redux"
 
+#: i18n/tmp/Applications/Games/The Witcher 3: Wild Hunt/application.js:1
+msgid "The Witcher 3: Wild Hunt"
+msgstr "The Witcher 3: Wild Hunt"
+
+#: i18n/tmp/Applications/Games/The Witcher 3: Wild Hunt/application.js:2
+msgid ""
+"The Witcher: Wild Hunt is a story-driven, next-generation open world role-"
+"playing game set in a visually stunning fantasy universe full of meaningful "
+"choices and impactful consequences. In The Witcher you play as the "
+"professional monster hunter, Geralt of Rivia, tasked with finding a child of "
+"prophecy in a vast open world rich with merchant cities, viking pirate "
+"islands, dangerous mountain passes, and forgotten caverns to explore."
+msgstr ""
+"The Witcher: Wild Hunt est un jeu de rôle à monde ouvert de nouvelle "
+"génération situé dans un univers fantastique aux graphismes époustouflants "
+"où le moindre choix peut avoir des répercussions profondes. Dans The "
+"Witcher, vous incarnez un chasseur de monstres, Geralt de Riv, chargé de "
+"retrouver une enfant prophétique dans un vaste monde ouvert, rempli de cités "
+"marchandes, d’îles peuplées de pirates vikings, de cols montagneux dangereux "
+"et de grottes oubliées à explorer."
+
 #: i18n/tmp/Applications/Games/Toki Tori/application.js:1
 msgid "Toki Tori"
 msgstr "Toki Tori"
@@ -1628,7 +1700,7 @@ msgstr ""
 "ses ennemis. Lara devra, utiliser ses qualités intellectuelles et "
 "athlétiques, ainsi que ses colts, pour éviter les pièges et résoudre les "
 "énigmes. Faites partie de la renaissance d'une légende avec cet épisode, le "
-"plus dynamique jusqu'à ce jour, des Tomb raiders."
+"plus dynamique jusqu'à ce jour, des Tomb raiders!"
 
 #: i18n/tmp/Applications/Games/Tomb Raider Underworld/application.js:1
 msgid "Tomb Raider: Underworld"
@@ -1648,6 +1720,24 @@ msgstr ""
 "détail résultant en une fidélité visuelle haute définition à couper le "
 "souffle qui crée un monde très réaliste et délivre un nouveau niveau de défi "
 "et de choix."
+
+#: i18n/tmp/Applications/Games/Tom Clancy's Rainbow Six 3 : Raven
+#: Shield/application.js:1
+msgid "Tom Clancy's Rainbow Six 3 : Raven Shield"
+msgstr "Tom Clancy's Rainbow Six 3 : Raven Shield"
+
+#: i18n/tmp/Applications/Games/Tom Clancy's Rainbow Six 3 : Raven
+#: Shield/application.js:2
+msgid ""
+"Raven Shield: Command an elite multinational squad of special operatives "
+"against hidden terrorist forces. In Tom Clancy's Rainbow Six 3: Raven "
+"Shield, the third installment to the wildly popular Rainbow Six series, Team "
+"Rainbow faces the hidden global forces of a new and secretive foe."
+msgstr ""
+"Raven Shield : Commandez l’élite de la brigade multinationale des opérations "
+"spéciales contre les forces terroristes cachées. Dans Tom Clancy's Rainbow "
+"Six 3: Raven Shield, le troisième épisode de la série populaire Rainbow Six, "
+"l'équipe Rainbow est confrontée à un nouvel ennemi secret mondiale."
 
 #: i18n/tmp/Applications/Games/Tom Clancy's Splinter Cell/application.js:1
 msgid "Tom Clancy's Splinter Cell®"
