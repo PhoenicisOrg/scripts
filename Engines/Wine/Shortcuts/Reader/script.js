@@ -30,7 +30,6 @@ var _WineShortcutReader = function(shortcut) {
             .debug(shortcutContent.wineDebug)
             .workingDirectory(shortcutContent.workingDirectory)
             .run(shortcutContent.executable, arguments)
-            .wait()
     };
 
 
