@@ -13,35 +13,35 @@ new LocalInstallerScript()
          wine.overrideDLL()
             .set("native, builtin", ["riched20"])
             .do();
-            
+
         new WineShortcut()
             .name("Microsoft Word 2013")
             .prefix("Microsoft Office 2013")
             .search("WINWORD.EXE")
             .miniature(["Office", "Microsoft Office 2013"])
             .create();
-            
+
         new WineShortcut()
             .name("Microsoft Excel 2013")
             .prefix("Microsoft Excel 2013")
             .search("EXCEL.EXE")
             .miniature(["Office", "Microsoft Office 2013"])
             .create();
-            
+
         new WineShortcut()
-            .name("Microsoft PowePoint 2013")
+            .name("Microsoft PowerPoint 2013")
             .prefix("Microsoft Office 2013")
             .search("POWERPNT.EXE")
             .miniature(["Office", "Microsoft Office 2013"])
             .create();
-            
+
         new WineShortcut()
             .name("Microsoft OneNote 2013")
             .prefix("Microsoft Office 2013")
             .search("ONENOTE.EXE")
             .miniature(["Office", "Microsoft Office 2013"])
             .create();
-            
+
         new WineShortcut()
             .name("Microsoft Outlook 2013")
             .prefix("Microsoft Office 2013")
