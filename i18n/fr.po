@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-22 14:32+0200\n"
-"PO-Revision-Date: 2017-08-22 14:50+0200\n"
+"POT-Creation-Date: 2017-08-24 21:33+0200\n"
+"PO-Revision-Date: 2017-08-24 21:36+0200\n"
 "Last-Translator: ImperatorS79 <fevrier.simon@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -42,7 +42,7 @@ msgid "Please install Warcraft III before installing The Frozen Throne."
 msgstr "Veuillez installer Warcraft II avant d'installer The Frozen Throne."
 
 #: Applications/Internet/Internet Explorer 6.0/Online/script.js:69
-#: Engines/Wine/Engine/Object/script.js:290
+#: Engines/Wine/Engine/Object/script.js:291
 #: Engines/Wine/QuickScript/InstallerScript/script.js:104
 #: Engines/Wine/QuickScript/SteamScript/script.js:108
 #: Engines/Wine/QuickScript/SteamScript/script.js:113
@@ -79,23 +79,23 @@ msgstr ""
 "Veuillez sélectionner le fichier d'installation.\n"
 "Vous pouvez le télécharger depuis https://www.elster.de/elfo_down.php."
 
-#: Engines/Wine/Engine/Object/script.js:255
+#: Engines/Wine/Engine/Object/script.js:256
 msgid "Please wait while {0} is uninstalled ..."
 msgstr "Veuillez patienter pendant que {0} est désinstallé ..."
 
-#: Engines/Wine/Engine/Object/script.js:257
+#: Engines/Wine/Engine/Object/script.js:258
 msgid "Could not uninstall {0}!"
 msgstr "Impossible de désinstaller {0} !"
 
-#: Engines/Wine/Engine/Object/script.js:443
+#: Engines/Wine/Engine/Object/script.js:444
 msgid "Prefix seems to be 32bits"
 msgstr "Le préfixe semble être en 32bits"
 
-#: Engines/Wine/Engine/Object/script.js:461
+#: Engines/Wine/Engine/Object/script.js:462
 msgid "Installing version: "
 msgstr "Installe la version : "
 
-#: Engines/Wine/Engine/Object/script.js:868
+#: Engines/Wine/Engine/Object/script.js:869
 msgid "Could not determine mimetype for file extension \"{0}\""
 msgstr ""
 "Impossible de déterminer le type mime pour l'extension de fichier \"{0}\""
@@ -164,7 +164,7 @@ msgstr "Veuillez patienter jusqu'à ce que Uplay aie fini le téléchargement ..
 msgid "Please close Uplay."
 msgstr "Veuillez fermer Uplay."
 
-#: Engines/Wine/Shortcuts/Reader/script.js:63
+#: Engines/Wine/Shortcuts/Reader/script.js:62
 msgid ""
 "The container {0} is no longer used.\n"
 "Do you want to delete it?"
@@ -590,6 +590,18 @@ msgstr ""
 "étrange et inhabituelle. Depuis une maison dans la ville, parcourez une "
 "série de mondes et résolvez des casse-têtes pour sauver une princesse "
 "enlevée."
+
+#: i18n/tmp/Applications/Games/BRINK/application.js:1
+msgid "BRINK"
+msgstr "BRINK"
+
+#: i18n/tmp/Applications/Games/BRINK/application.js:2
+msgid ""
+"You decide the combat role you want to assume in the world of Brink as you "
+"fight to save yourself and mankind’s last refuge!"
+msgstr ""
+"Décidez du type de combattant que vous souhaitez être dans Brink et partez "
+"défendre le dernier refuge de l'humanité ! "
 
 #: i18n/tmp/Applications/Games/Burnout Paradise: The Ultimate
 #: Box/application.js:1
@@ -1508,6 +1520,33 @@ msgstr ""
 "amie de Blue boy a été kidnappée par des extraterrestres, il va donc "
 "parcourir 21 niveaux pour la sauver et aussi combattre des boss en chemin."
 
+#: i18n/tmp/Applications/Games/The Crew/application.js:1
+msgid "The Crew™"
+msgstr "The Crew™"
+
+#: i18n/tmp/Applications/Games/The Crew/application.js:2
+msgid ""
+"Your car is your avatar - fine tune your ride as you level up and progress "
+"through 5 unique and richly detailed regions of a massive open-world US. "
+"Maneuver through the bustling streets of New York City and Los Angeles, "
+"cruise down sunny Miami Beach or trek through the breathtaking plateaus of "
+"Monument Valley. Each locale comes with its own set of surprises and driving "
+"challenges to master. On your journey you will encounter other players on "
+"the road – all potentially worthy companions to crew up with, or future "
+"rivals to compete against. This is driving at its most exciting, varied and "
+"open."
+msgstr ""
+"Votre voiture est votre avatar – personnalisez-là dans les moindres détails "
+"en montant de niveau et progressez à travers les 5 régions uniques et "
+"massives contenues dans ces Etats-Unis en monde ouvert. Manœuvrez dans les "
+"rues animées de New York ou de Los Angeles, baladez-vous sous le soleil de "
+"Miami Beach ou partez pour un périple à travers les paysages à couper le "
+"souffle de la Monument Valley. Chaque endroit réserve son lot de surprises "
+"et de défis de conduite à maitriser. Pendant votre voyage, vous rencontrerez "
+"d’autres joueurs sur la route – tous étant des compagnons potentiels pour "
+"votre Crew ou de futurs rivaux à battre. The Crew propose l’expérience de "
+"course la plus connectée, variée et ouverte qui soit."
+
 #: i18n/tmp/Applications/Games/The Elder Scrolls IV: Oblivion/application.js:1
 msgid "The Elder Scrolls IV: Oblivion"
 msgstr "The Elder Scrolls IV: Oblivion"
@@ -2127,6 +2166,19 @@ msgid "ElsterFormular is the official german software to file a tax return."
 msgstr ""
 "ElsterFormular est le programme officiel allemand pour la déclaration "
 "d'impôts."
+
+#: i18n/tmp/Applications/Office/Microsoft Office 2013/application.js:1
+msgid "Microsoft Office 2013"
+msgstr "Microsoft Office 2013"
+
+#: i18n/tmp/Applications/Office/Microsoft Office 2013/application.js:2
+msgid ""
+"Microsoft Office 2013 is a version of Microsoft Office, a productivity suite "
+"for Microsoft Windows. It is the successor to Microsoft Office 2010."
+msgstr ""
+"Microsoft Office 2013 est une version de Microsoft Office, une suite de "
+"productivité pour Microsoft Windows. Il s'agit du successeur de Microsoft "
+"Office 2010."
 
 #: i18n/tmp/Applications/Other/category.js:1
 msgid "Other"
