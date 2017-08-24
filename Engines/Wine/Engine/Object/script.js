@@ -211,10 +211,6 @@ Wine.prototype.run = function (executable, args, captureOutput) {
         processBuilder.directory(new java.io.File(driveC));
     }
 
-    if (!captureOutput) {
-        processBuilder.inheritIO();
-    }
-
     var environment = processBuilder.environment();
     // disable winemenubuilder (we manage our own shortcuts)
     environment.put("WINEDLLOVERRIDES", "winemenubuilder.exe=d");
@@ -230,6 +226,11 @@ Wine.prototype.run = function (executable, args, captureOutput) {
         this._ldPath = this._fetchLocalDirectory() + "/lib/:" + this._ldPath
     }
     environment.put("LD_LIBRARY_PATH", this._ldPath);
+
+    if (!captureOutput) {
+        processBuilder.redirectErrorStream(true);
+        processBuilder.redirectOutput(new java.io.File(this.prefixDirectory + "/wine.log"));
+    }
 
     this._process = processBuilder.start();
 
