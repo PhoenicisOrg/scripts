@@ -334,7 +334,7 @@ Wine.prototype.install = function (category, subCategory, version, userData) {
     this.architecture(architecture);
     this.version(version);
     if (!this.installed()) {
-        var wizard = EngineProgressUi("Wine");
+        var wizard = EngineProgressUi("Wine " + version + " " + distribution + " (" + architecture + ")");
         this.wizard(wizard);
         this._installVersion();
         wizard.close();
