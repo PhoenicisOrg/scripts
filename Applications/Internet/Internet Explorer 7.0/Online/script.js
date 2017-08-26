@@ -5,7 +5,9 @@ include(["Engines", "Wine", "Shortcuts", "Wine"]);
 include(["Utils", "Functions", "Apps", "Resources"]);
 include(["Engines", "Wine", "Verbs", "sandbox"]);
 
-var setupWizard = SetupWizard("Internet Explorer 7.0");
+var appsManager = Bean("repositoryManager");
+var application = appsManager.getApplication(["Applications", "Internet", "Internet Explorer 7.0"]);
+var setupWizard = SetupWizardWithMiniature("Internet Explorer 7.0", application.getMainMiniature().get());
 
 setupWizard.presentation("Internet Explorer 7.0", "Microsoft", "http://www.microsoft.com", "Quentin PÂRIS");
 
@@ -221,7 +223,7 @@ new WineShortcut()
     .name("Internet Explorer 7.0")
     .prefix("InternetExplorer7")
     .search("iexplore.exe")
-    .miniature(["Internet", "Internet Explorer 7.0"])
+    .miniature(["Applications", "Internet", "Internet Explorer 7.0"])
     .create();
 
 setupWizard.close();

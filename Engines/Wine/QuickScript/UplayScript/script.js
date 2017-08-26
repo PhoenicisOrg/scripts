@@ -38,7 +38,9 @@ UplayScript.prototype.go = function() {
         this._executableArgs = ["uplay://launch/" + this._appId + "/0"];
     }
 
-    var setupWizard = SetupWizard(this._name);
+    var appsManager = Bean("repositoryManager");
+    var application = appsManager.getApplication([this._type, this._category, this._name]);
+    var setupWizard = SetupWizardWithMiniature(this._name, application.getMainMiniature().get());
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
