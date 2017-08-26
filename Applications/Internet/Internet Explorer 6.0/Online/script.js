@@ -5,7 +5,9 @@ include(["Engines", "Wine", "Shortcuts", "Wine"]);
 include(["Utils", "Functions", "Apps", "Resources"]);
 include(["Engines", "Wine", "Verbs", "msls31"]);
 
-var setupWizard = SetupWizard("Internet Explorer 6.0");
+var appsManager = Bean("repositoryManager");
+var application = appsManager.getApplication(["Applications", "Internet", "Internet Explorer 6.0"]);
+var setupWizard = SetupWizardWithMiniature("Internet Explorer 6.0", application.getMainMiniature());
 
 setupWizard.presentation("Internet Explorer 6.0", "Microsoft", "http://www.microsoft.com", "Quentin PÂRIS");
 
@@ -81,10 +83,10 @@ new WineShortcut()
     .name("Internet Explorer 6.0")
     .prefix("InternetExplorer6")
     .search("iexplore.exe")
-    .miniature(["Internet", "Internet Explorer 6.0"])
+    .miniature(["Applications", "Internet", "Internet Explorer 6.0"])
     .create();
 
-var registrySettings = new AppResource().application(["Internet", "Internet Explorer 6.0"]).get("ie6.reg");
+var registrySettings = new AppResource().application(["Applications", "Internet", "Internet Explorer 6.0"]).get("ie6.reg");
 wine.regedit().patch(registrySettings);
 
 setupWizard.close();
