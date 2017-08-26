@@ -7,7 +7,7 @@ include(["Engines", "Wine", "Verbs", "sandbox"]);
 
 var appsManager = Bean("repositoryManager");
 var application = appsManager.getApplication(["Applications", "Internet", "Internet Explorer 7.0"]);
-var setupWizard = SetupWizardWithMiniature("Internet Explorer 7.0", application.getMainMiniature().get());
+var setupWizard = SetupWizardWithMiniature("Internet Explorer 7.0", application.getMainMiniature());
 
 setupWizard.presentation("Internet Explorer 7.0", "Microsoft", "http://www.microsoft.com", "Quentin PÂRIS");
 

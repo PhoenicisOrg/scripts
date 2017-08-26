@@ -19,7 +19,7 @@ InstallerScript.prototype.go = function() {
 
     var appsManager = Bean("repositoryManager");
     var application = appsManager.getApplication([this._type, this._category, this._name]);
-    var setupWizard = SetupWizardWithMiniature(this._name, application.getMainMiniature().get());
+    var setupWizard = SetupWizardWithMiniature(this._name, application.getMainMiniature());
 
     // if no name given, ask user
     if (this._name == "Custom Installer") {
