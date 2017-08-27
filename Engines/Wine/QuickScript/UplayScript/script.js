@@ -40,7 +40,7 @@ UplayScript.prototype.go = function() {
 
     var appsManager = Bean("repositoryManager");
     var application = appsManager.getApplication([this._type, this._category, this._name]);
-    var setupWizard = SetupWizardWithMiniature(this._name, application.getMainMiniature());
+    var setupWizard = SetupWizardApps(this._name, application.getMainMiniature());
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
