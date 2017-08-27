@@ -334,7 +334,7 @@ Wine.prototype.install = function (category, subCategory, version, userData) {
     this.architecture(architecture);
     this.version(version);
     if (!this.installed()) {
-        var wizard = EngineProgressUi("Wine " + version + " " + distribution + " (" + architecture + ")");
+        var wizard = SetupWizard(InstallationType.ENGINES, "Wine " + version + " " + distribution + " (" + architecture + ")", java.util.Optional.empty());
         this.wizard(wizard);
         this._installVersion();
         wizard.close();
