@@ -27,7 +27,7 @@ ZipScript.prototype.checksum = function(checksum) {
 ZipScript.prototype.go = function() {
     var appsManager = Bean("repositoryManager");
     var application = appsManager.getApplication([this._type, this._category, this._name]);
-    var setupWizard = SetupWizard(org.phoenicis.scripts.ui.InstallationType.APPS, this._name, application.getMainMiniature());
+    var setupWizard = SetupWizard(InstallationType.APPS, this._name, application.getMainMiniature());
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 

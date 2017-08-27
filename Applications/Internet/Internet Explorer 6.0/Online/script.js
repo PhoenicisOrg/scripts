@@ -7,7 +7,7 @@ include(["Engines", "Wine", "Verbs", "msls31"]);
 
 var appsManager = Bean("repositoryManager");
 var application = appsManager.getApplication(["Applications", "Internet", "Internet Explorer 6.0"]);
-var setupWizard = SetupWizard(org.phoenicis.scripts.ui.InstallationType.APPS, "Internet Explorer 6.0", application.getMainMiniature());
+var setupWizard = SetupWizard(InstallationType.APPS, "Internet Explorer 6.0", application.getMainMiniature());
 
 setupWizard.presentation("Internet Explorer 6.0", "Microsoft", "http://www.microsoft.com", "Quentin PÂRIS");
 
