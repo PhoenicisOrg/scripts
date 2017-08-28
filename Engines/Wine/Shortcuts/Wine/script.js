@@ -45,6 +45,14 @@ var WineShortcut = function () {
         return that;
     };
 
+    /**
+    * sets the miniature for the shortcut
+    * @param {string[]|URI} miniature
+    * array which specifies the application of which the miniature shall be used
+    * or
+    * URI of the miniature
+    * @returns {WineShortcut}
+    */
     that.miniature = function(miniature) {
         if(isArray(miniature)) {
             // application of miniature given
