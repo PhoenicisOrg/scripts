@@ -6,5 +6,5 @@ new SteamScript()
     .author("Plata")
     .appId(499520)
     .wineArchitecture("amd64")
-    .wineVersion("2.11")
+    .wineVersion("2.14")
     .go();

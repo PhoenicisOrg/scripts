@@ -1,9 +1,11 @@
+include(["Engines", "Wine", "Engine", "Object"]);
+
 var WineShortcut = function () {
     var that = this;
     that._shortcutManager = Bean("shortcutManager");
     that._appsManager = Bean("repositoryManager");
     that._fileSearcher = Bean("fileSearcher");
-    that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
+    that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
 
     that._category = "Other";
     that._description = "";
@@ -43,13 +45,25 @@ var WineShortcut = function () {
         return that;
     };
 
+    /**
+    * sets the miniature for the shortcut
+    * @param {string[]|URI} miniature
+    * array which specifies the application of which the miniature shall be used
+    * or
+    * URI of the miniature
+    * @returns {WineShortcut}
+    */
     that.miniature = function(miniature) {
-      if(isArray(miniature)) {
-          var application = that._appsManager.getApplication(miniature);
-          if(application != null && application.getMainMiniature().isPresent()) {
-              that._miniature = application.getMainMiniature().get();
-          }
-      }
+        if(isArray(miniature)) {
+            // application of miniature given
+            var application = that._appsManager.getApplication(miniature);
+            if(application != null && application.getMainMiniature().isPresent()) {
+                that._miniature = application.getMainMiniature().get();
+            }
+        } else {
+            // miniature URI given
+            that._miniature = miniature;
+        }
 
         return that;
     };

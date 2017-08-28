@@ -5,6 +5,9 @@ include(["Utils", "Functions", "Net", "Resource"]);
 
 LATEST_STABLE_VERSION = "2.0.2";
 
+WINE_PREFIX_DIR = "wineprefix"
+
+
 /**
  * Wine main prototype
  * @constructor
@@ -12,7 +15,7 @@ LATEST_STABLE_VERSION = "2.0.2";
 function Wine() {
     this._wineWebServiceUrl = Bean("propertyReader").getProperty("webservice.wine.url");
     this._wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines") + "/wine";
-    this._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
+    this._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
     this._configFactory = Bean("compatibleConfigFileFormatFactory");
     this._OperatingSystemFetcher = Bean("operatingSystemFetcher");
     this._wineDebug = "-all";
@@ -208,10 +211,6 @@ Wine.prototype.run = function (executable, args, captureOutput) {
         processBuilder.directory(new java.io.File(driveC));
     }
 
-    if (!captureOutput) {
-        processBuilder.inheritIO();
-    }
-
     var environment = processBuilder.environment();
     // disable winemenubuilder (we manage our own shortcuts)
     environment.put("WINEDLLOVERRIDES", "winemenubuilder.exe=d");
@@ -227,6 +226,11 @@ Wine.prototype.run = function (executable, args, captureOutput) {
         this._ldPath = this._fetchLocalDirectory() + "/lib/:" + this._ldPath
     }
     environment.put("LD_LIBRARY_PATH", this._ldPath);
+
+    if (!captureOutput) {
+        processBuilder.redirectErrorStream(true);
+        processBuilder.redirectOutput(new java.io.File(this.prefixDirectory + "/wine.log"));
+    }
 
     this._process = processBuilder.start();
 
@@ -301,13 +305,18 @@ Wine.prototype.kill = function () {
 
 /**
 *
-* @returns {Downloader}
+* @returns available Wine versions
 */
 Wine.prototype.getAvailableVersions = function () {
-    return new Downloader()
+    var versionsFile = this._wineEnginesDirectory + "/availableVersions.json";
+    touch(versionsFile);
+    new Downloader()
         .wizard(this._wizard)
         .url(this._wineWebServiceUrl)
-        .get()
+        .to(versionsFile)
+        .onlyIfUpdateAvailable(true)
+        .get();
+    return cat(versionsFile);
 };
 
 /**
@@ -325,7 +334,7 @@ Wine.prototype.install = function (category, subCategory, version, userData) {
     this.architecture(architecture);
     this.version(version);
     if (!this.installed()) {
-        var wizard = EngineProgressUi("Wine");
+        var wizard = SetupWizard(InstallationType.ENGINES, "Wine " + version + " " + distribution + " (" + architecture + ")", java.util.Optional.empty());
         this.wizard(wizard);
         this._installVersion();
         wizard.close();
@@ -633,6 +642,66 @@ Wine.prototype.setSoundDriver = function (driver) {
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\Drivers]\n" +
         "\"Audio\"=\"" + driver + "\"\n";
+    this.regedit().patch(regeditFileContent);
+    return this;
+};
+
+/**
+ * sets OpenGL max core version
+ * @param {number} major
+ * @param {number} minor
+ * @returns {Wine}
+ */
+Wine.prototype.setVersionGL = function (major, minor) {
+    var regeditFileContent =
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
+        "\"MaxVersionGL\"=dword:000"+ major + "000" + minor 
+    this.regedit().patch(regeditFileContent);
+    return this;
+};
+
+/**
+ * enable command stream multi-threading
+ * @returns {Wine}
+ */
+Wine.prototype.enableCSMT = function () {
+    var regeditFileContent =
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
+        "\"csmt\"=dword:1"
+    this.regedit().patch(regeditFileContent);
+    return this;
+};
+
+/**
+ * force the Use of GLSL
+ * @param mode {enabled, disabled}
+ * @returns {Wine}
+ */
+Wine.prototype.UseGLSL = function (mode) {
+    var regeditFileContent =
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
+        "\"UseGLSL\"=\"" + mode + "\"" 
+    this.regedit().patch(regeditFileContent);
+    return this;
+};
+
+/**
+ * force the DirectDrawRenderer
+ * @param mode {gdi,opengl}
+ * @returns {Wine}
+ */
+Wine.prototype.DirectDrawRenderer = function (mode) {
+    var regeditFileContent =
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
+        "\"DirectDrawRenderer\"=\"" + mode + "\""
     this.regedit().patch(regeditFileContent);
     return this;
 };

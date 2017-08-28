@@ -36,7 +36,11 @@ SteamScript.prototype.gameOverlay = function(gameOverlay) {
 };
 
 SteamScript.prototype.manifest = function(wine) {
-    return wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf";
+    if (!this._manifest) {
+        // cache manifest path (will not change during the installation)
+        this._manifest = wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf";
+    }
+    return this._manifest;
 };
 
 SteamScript.prototype.downloadStarted = function(wine) {
@@ -77,7 +81,9 @@ SteamScript.prototype.go = function() {
         this._executableArgs = ["-silent", "-applaunch", this._appId];
     }
 
-    var setupWizard = SetupWizard(this._name);
+    var appsManager = Bean("repositoryManager");
+    var application = appsManager.getApplication([this._type, this._category, this._name]);
+    var setupWizard = SetupWizard(InstallationType.APPS, this._name, application.getMainMiniature());
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 

@@ -5,7 +5,7 @@ var _WineShortcutReader = function(shortcut) {
     that._shortcutManager = Bean("shortcutManager");
     that._libraryManager = Bean("libraryManager");
     that._uiQuestionFactory = Bean("uiQuestionFactory");
-    that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.wineprefix");
+    that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
 
     this.shortcut = shortcut;
 
@@ -30,7 +30,6 @@ var _WineShortcutReader = function(shortcut) {
             .debug(shortcutContent.wineDebug)
             .workingDirectory(shortcutContent.workingDirectory)
             .run(shortcutContent.executable, arguments)
-            .wait()
     };
 
 
