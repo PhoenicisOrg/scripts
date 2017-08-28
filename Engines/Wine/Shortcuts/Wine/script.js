@@ -46,12 +46,16 @@ var WineShortcut = function () {
     };
 
     that.miniature = function(miniature) {
-      if(isArray(miniature)) {
-          var application = that._appsManager.getApplication(miniature);
-          if(application != null && application.getMainMiniature().isPresent()) {
-              that._miniature = application.getMainMiniature().get();
-          }
-      }
+        if(isArray(miniature)) {
+            // application of miniature given
+            var application = that._appsManager.getApplication(miniature);
+            if(application != null && application.getMainMiniature().isPresent()) {
+                that._miniature = application.getMainMiniature().get();
+            }
+        } else {
+            // miniature URI given
+            that._miniature = miniature;
+        }
 
         return that;
     };
