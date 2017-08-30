@@ -5,4 +5,5 @@ new SteamScript()
     .editor("Crystal Dynamics")
     .author("Plata")
     .appId(7000)
+    .executable("trl.exe")
     .go();
