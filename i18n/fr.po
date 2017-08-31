@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 21:33+0200\n"
-"PO-Revision-Date: 2017-08-24 21:36+0200\n"
+"POT-Creation-Date: 2017-08-31 13:06+0200\n"
+"PO-Revision-Date: 2017-08-31 13:08+0200\n"
 "Last-Translator: ImperatorS79 <fevrier.simon@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -41,18 +41,18 @@ msgstr "Sélectionner votre région pour le patch (1.0 vers 1.60)."
 msgid "Please install Warcraft III before installing The Frozen Throne."
 msgstr "Veuillez installer Warcraft II avant d'installer The Frozen Throne."
 
-#: Applications/Internet/Internet Explorer 6.0/Online/script.js:69
+#: Applications/Internet/Internet Explorer 6.0/Online/script.js:71
 #: Engines/Wine/Engine/Object/script.js:291
-#: Engines/Wine/QuickScript/InstallerScript/script.js:104
-#: Engines/Wine/QuickScript/SteamScript/script.js:108
-#: Engines/Wine/QuickScript/SteamScript/script.js:113
-#: Engines/Wine/QuickScript/SteamScript/script.js:133
-#: Engines/Wine/QuickScript/SteamScript/script.js:156
-#: Engines/Wine/QuickScript/UplayScript/script.js:66
-#: Engines/Wine/QuickScript/UplayScript/script.js:71
-#: Engines/Wine/QuickScript/UplayScript/script.js:99
-#: Engines/Wine/QuickScript/ZipScript/script.js:45
-#: Engines/Wine/QuickScript/ZipScript/script.js:73
+#: Engines/Wine/QuickScript/InstallerScript/script.js:111
+#: Engines/Wine/QuickScript/SteamScript/script.js:114
+#: Engines/Wine/QuickScript/SteamScript/script.js:119
+#: Engines/Wine/QuickScript/SteamScript/script.js:139
+#: Engines/Wine/QuickScript/SteamScript/script.js:162
+#: Engines/Wine/QuickScript/UplayScript/script.js:72
+#: Engines/Wine/QuickScript/UplayScript/script.js:77
+#: Engines/Wine/QuickScript/UplayScript/script.js:105
+#: Engines/Wine/QuickScript/ZipScript/script.js:51
+#: Engines/Wine/QuickScript/ZipScript/script.js:79
 #: Engines/Wine/Verbs/corefonts/script.js:79
 #: Engines/Wine/Verbs/d3dx10/script.js:30 Engines/Wine/Verbs/d3dx9/script.js:30
 #: Engines/Wine/Verbs/dotnet40/script.js:21
@@ -61,13 +61,13 @@ msgstr "Veuillez installer Warcraft II avant d'installer The Frozen Throne."
 msgid "Please wait ..."
 msgstr "Veuillez patienter ..."
 
-#: Applications/Internet/Internet Explorer 6.0/Online/script.js:73
-#: 7.0/Online/script.js:213 Engines/Wine/Verbs/corefonts/script.js:80
+#: Applications/Internet/Internet Explorer 6.0/Online/script.js:75
+#: 7.0/Online/script.js:215 Engines/Wine/Verbs/corefonts/script.js:80
 #: Engines/Wine/Verbs/corefonts/script.js:86
 msgid "Installing {0} ..."
 msgstr "Installe {0} ..."
 
-#: Applications/Internet/Internet Explorer 7.0/Online/script.js:60
+#: Applications/Internet/Internet Explorer 7.0/Online/script.js:62
 msgid "Which language version would you like to install?"
 msgstr "Quelle langue aimeriez-vous installer ?"
 
@@ -100,23 +100,23 @@ msgid "Could not determine mimetype for file extension \"{0}\""
 msgstr ""
 "Impossible de déterminer le type mime pour l'extension de fichier \"{0}\""
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js:23
+#: Engines/Wine/QuickScript/InstallerScript/script.js:30
 msgid "Please enter the name of your application."
 msgstr "Veuillez entrer le nom de votre application."
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js:38
+#: Engines/Wine/QuickScript/InstallerScript/script.js:45
 msgid "Please select the wine architecture."
 msgstr "Veuillez sélectionner l'architecture de wine."
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js:52
+#: Engines/Wine/QuickScript/InstallerScript/script.js:59
 msgid "Please select the wine distribution."
 msgstr "Veuillez sélectionner la distributions de wine."
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js:66
+#: Engines/Wine/QuickScript/InstallerScript/script.js:73
 msgid "Please select the wine version."
 msgstr "Veuillez sélectionner la version de wine."
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js:88
+#: Engines/Wine/QuickScript/InstallerScript/script.js:95
 msgid "Please select the executable."
 msgstr "Veuillez sélectionner l'exécutable."
 
@@ -128,7 +128,7 @@ msgstr "Veuillez sélectionner le fichier d'installation."
 msgid "Please select the download URL."
 msgstr "Veuillez sélectionner l'URL de téléchargement."
 
-#: Engines/Wine/QuickScript/SteamScript/script.js:105
+#: Engines/Wine/QuickScript/SteamScript/script.js:111
 msgid ""
 "Please follow the steps of the Steam setup.\n"
 "\n"
@@ -140,11 +140,11 @@ msgstr ""
 "Décochez \"Lancer Steam\" ou fermez Steam complètement après l'installation  "
 "pour que l'installation de \"{0}\" puisse continuer."
 
-#: Engines/Wine/QuickScript/SteamScript/script.js:117
+#: Engines/Wine/QuickScript/SteamScript/script.js:123
 msgid "Please wait until Steam has finished the download ..."
 msgstr "Veuillez patienter jusqu'à ce que Steam aie fini le téléchargement ..."
 
-#: Engines/Wine/QuickScript/UplayScript/script.js:61
+#: Engines/Wine/QuickScript/UplayScript/script.js:67
 msgid ""
 "Please follow the steps of the Uplay setup.\n"
 "\n"
@@ -156,11 +156,11 @@ msgstr ""
 "Décochez \"Lancer Uplay\" ou fermez Uplay complètement après l'installation  "
 "pour que l'installation de \"{0}\" puisse continuer."
 
-#: Engines/Wine/QuickScript/UplayScript/script.js:86
+#: Engines/Wine/QuickScript/UplayScript/script.js:92
 msgid "Please wait until Uplay has finished the download ..."
 msgstr "Veuillez patienter jusqu'à ce que Uplay aie fini le téléchargement ..."
 
-#: Engines/Wine/QuickScript/UplayScript/script.js:94
+#: Engines/Wine/QuickScript/UplayScript/script.js:100
 msgid "Please close Uplay."
 msgstr "Veuillez fermer Uplay."
 
@@ -172,7 +172,7 @@ msgstr ""
 "Le conteneur {0} n'est plus utilisé.\n"
 "Voulez)vous le supprimer ?"
 
-#: Engines/Wine/Shortcuts/Wine/script.js:65
+#: Engines/Wine/Shortcuts/Wine/script.js:77
 msgid "Executable {0} not found!"
 msgstr "Exécutable {0} introuvable !"
 
@@ -399,6 +399,34 @@ msgstr ""
 "européennes pour leur faire explorer de nouvelles terres dans le Nouveau "
 "monde, ou partez à la conquête de l’est, en Asie, pour déterminer l’issue "
 "des batailles pour le pouvoir."
+
+#: i18n/tmp/Applications/Games/Assassin's Creed/application.js:1
+msgid "Assassin's Creed™"
+msgstr "Assassin's Creed™"
+
+#: i18n/tmp/Applications/Games/Assassin's Creed/application.js:2
+msgid ""
+"Assassin's Creed™ is the next-gen game developed by Ubisoft Montreal that "
+"redefines the action genre. While other games claim to be next-gen with "
+"impressive graphics and physics, Assassin's Creed merges technology, game "
+"design, theme and emotions into a world where you instigate chaos and become "
+"a vulnerable, yet powerful, agent of change.<br><br>The setting is 1191 AD. "
+"The Third Crusade is tearing the Holy Land apart. You, Altair, intend to "
+"stop the hostilities by suppressing both sides of the conflict.You are an "
+"Assassin, a warrior shrouded in secrecy and feared for your ruthlessness. "
+"Your actions can throw your immediate environment into chaos, and your "
+"existence will shape events during this pivotal moment in history."
+msgstr ""
+"Assassin’s Creed™ est un jeu de nouvelle génération développé par Ubisoft "
+"Montréal qui redéfinit le genre du jeu d'action. Alors que d'autres jeux se "
+"réclament de la nouvelle génération en se basant sur le graphisme, "
+"Assassin’s Creed mélange lui technologie, design, thématique et émotion dans "
+"un monde où règne le chaos.<br><br>1191, la troisième croisade déferle sur "
+"le proche orient. Vous êtes Altair et vous allez essayer de mettre un terme "
+"au conflit qui ravage la Terre Sainte.Vous êtes un Assassin, le guerrier "
+"d'un ordre secret réputé pour ses méthodes expéditives. Vos actions et votre "
+"présence pèseront sur les événements historiques qui se déroulent sous vos "
+"yeux."
 
 #: i18n/tmp/Applications/Games/Assassin's Creed: Brotherhood/application.js:1
 msgid "Assassin’s Creed® Brotherhood"
@@ -956,6 +984,23 @@ msgstr ""
 "trois Rufus causent toutes sortes de chaos fous dans l' aventure comédie "
 "tant attendue Goodbye Deponia!"
 
+#: i18n/tmp/Applications/Games/Hearthstone/application.js:1
+msgid "Hearthstone"
+msgstr "Hearthstone"
+
+#: i18n/tmp/Applications/Games/Hearthstone/application.js:2
+msgid ""
+"Sheathe your sword, draw your deck, and get ready for Hearthstone - the fast-"
+"paced strategy card game that's easy to learn and massively fun. Start a "
+"free game and play your cards to sling spells, summon creatures, and command "
+"the heroes of Warcraft in duels of epic strategy."
+msgstr ""
+"Rangez votre épée, sortez votre deck et préparez-vous pour Hearthstone. Les "
+"règles de ce jeu de cartes et de stratégie sont simples, mais vous pouvez "
+"vous attendre à des défis épiques et intenses ! Jouez gratuitement, utilisez "
+"vos cartes pour jeter des sorts, invoquer des créatures et donner des ordres "
+"aux héros de Warcraft lors de duels légendaires et stratégiques."
+
 #: i18n/tmp/Applications/Games/Hexcells/application.js:1
 msgid "Hexcells"
 msgstr "Hexcells"
@@ -1505,6 +1550,22 @@ msgstr ""
 "Steam est une plateforme de distribution numérique développée par Valve "
 "Corporation, qui offre des services de gestion numérique des droits (GND), "
 "jeu multijoueur, diffusion vidéo et de réseau social."
+
+#: i18n/tmp/Applications/Games/Styx: Shards of Darkness/application.js:1
+msgid "Styx: Shards of Darkness"
+msgstr "Styx: Shards of Darkness"
+
+#: i18n/tmp/Applications/Games/Styx: Shards of Darkness/application.js:2
+msgid ""
+"Styx returns in a new stealth adventure! Explore and master huge open "
+"environments, sneak past or assassinate new enemies and bosses, and "
+"experiment with the new array of lethal abilities and weapons in our goblin "
+"assassin's arsenal."
+msgstr ""
+"Styx revient dans un tout nouveau jeu d’infiltration ! Explorez d’immenses "
+"environnements, et faites usage de vos redoutables compétences et de votre "
+"arsenal d’assassin pour vous infiltrer ou éliminer silencieusement vos "
+"ennemis"
 
 #: i18n/tmp/Applications/Games/Super Blue Boy Planet/application.js:1
 msgid "Super Blue Boy Planet"
