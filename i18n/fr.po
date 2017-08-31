@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-31 13:06+0200\n"
-"PO-Revision-Date: 2017-08-31 13:08+0200\n"
+"POT-Creation-Date: 2017-08-31 14:40+0200\n"
+"PO-Revision-Date: 2017-08-31 14:41+0200\n"
 "Last-Translator: ImperatorS79 <fevrier.simon@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -42,7 +42,7 @@ msgid "Please install Warcraft III before installing The Frozen Throne."
 msgstr "Veuillez installer Warcraft II avant d'installer The Frozen Throne."
 
 #: Applications/Internet/Internet Explorer 6.0/Online/script.js:71
-#: Engines/Wine/Engine/Object/script.js:291
+#: Engines/Wine/Engine/Object/script.js:301
 #: Engines/Wine/QuickScript/InstallerScript/script.js:111
 #: Engines/Wine/QuickScript/SteamScript/script.js:114
 #: Engines/Wine/QuickScript/SteamScript/script.js:119
@@ -79,23 +79,27 @@ msgstr ""
 "Veuillez sélectionner le fichier d'installation.\n"
 "Vous pouvez le télécharger depuis https://www.elster.de/elfo_down.php."
 
-#: Engines/Wine/Engine/Object/script.js:256
+#: Engines/Wine/Engine/Object/script.js:207
+msgid "Cannot run 64bit executable in a 32bit Wine prefix."
+msgstr "Ne peut pas lancer un exécutable 64bit dans un préfixe wine 32bit."
+
+#: Engines/Wine/Engine/Object/script.js:266
 msgid "Please wait while {0} is uninstalled ..."
 msgstr "Veuillez patienter pendant que {0} est désinstallé ..."
 
-#: Engines/Wine/Engine/Object/script.js:258
+#: Engines/Wine/Engine/Object/script.js:268
 msgid "Could not uninstall {0}!"
 msgstr "Impossible de désinstaller {0} !"
 
-#: Engines/Wine/Engine/Object/script.js:444
+#: Engines/Wine/Engine/Object/script.js:454
 msgid "Prefix seems to be 32bits"
 msgstr "Le préfixe semble être en 32bits"
 
-#: Engines/Wine/Engine/Object/script.js:462
+#: Engines/Wine/Engine/Object/script.js:472
 msgid "Installing version: "
 msgstr "Installe la version : "
 
-#: Engines/Wine/Engine/Object/script.js:869
+#: Engines/Wine/Engine/Object/script.js:879
 msgid "Could not determine mimetype for file extension \"{0}\""
 msgstr ""
 "Impossible de déterminer le type mime pour l'extension de fichier \"{0}\""
