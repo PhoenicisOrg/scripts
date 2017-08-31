@@ -198,6 +198,16 @@ Wine.prototype.run = function (executable, args, captureOutput) {
         return this.run("start", ["/Unix", executable].concat(args), captureOutput);
     }
 
+    // do not run 64bit executable in 32bit prefix
+    if (this._architecture == "x86") {
+        var fileProcessBuilder = new java.lang.ProcessBuilder("file", executable);
+        var fileProcess = fileProcessBuilder.start();
+        var fileOutput = org.apache.commons.io.IOUtils.toString(fileProcess.getInputStream());
+        if (fileOutput.contains("x86-64")) {
+            throw tr("Cannot run 64bit executable in a 32bit Wine prefix.")
+        }
+    }
+
     this._installVersion();
 
     var wineBinary = this._fetchLocalDirectory() + "/bin/wine";
