@@ -1,8 +1,16 @@
 include(["Engines", "Wine", "Engine", "Object"]);
 
+/**
+ * tool to open the Wine task manager
+ * @constructor
+ */
 var WineTaskManager = function() {
 };
 
+/**
+* runs the tool
+* @param {String} container name
+*/
 WineTaskManager.prototype.run = function (container) {
     new Wine()
         .prefix(container)
