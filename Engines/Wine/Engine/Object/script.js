@@ -18,6 +18,7 @@ function Wine() {
     this._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
     this._configFactory = Bean("compatibleConfigFileFormatFactory");
     this._OperatingSystemFetcher = Bean("operatingSystemFetcher");
+    this._ExeAnalyser = Bean("exeAnalyser");
     this._wineDebug = "-all";
     this._ldPath = Bean("propertyReader").getProperty("application.environment.ld");
 }
@@ -199,13 +200,8 @@ Wine.prototype.run = function (executable, args, captureOutput) {
     }
 
     // do not run 64bit executable in 32bit prefix
-    if (this._architecture == "x86") {
-        var fileProcessBuilder = new java.lang.ProcessBuilder("file", executable);
-        var fileProcess = fileProcessBuilder.start();
-        var fileOutput = org.apache.commons.io.IOUtils.toString(fileProcess.getInputStream());
-        if (fileOutput.contains("x86-64")) {
-            throw tr("Cannot run 64bit executable in a 32bit Wine prefix.")
-        }
+    if (this._architecture == "x86" && this._ExeAnalyser.is64Bits(new java.io.File(executable))) {
+        throw tr("Cannot run 64bit executable in a 32bit Wine prefix.")
     }
 
     this._installVersion();
