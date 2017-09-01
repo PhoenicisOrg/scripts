@@ -202,7 +202,7 @@ Wine.prototype.run = function (executable, args, captureOutput) {
     // do not run 64bit executable in 32bit prefix
     if (extensionFile == "exe") {
         if (this._architecture == "x86" && this._ExeAnalyser.is64Bits(new java.io.File(executable))) {
-            throw tr("Cannot run 64bit executable in a 32bit Wine prefix.")
+            throw tr("Cannot run 64bit executable in a 32bit Wine prefix.");
         }
     }
 
