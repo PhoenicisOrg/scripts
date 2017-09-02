@@ -169,6 +169,14 @@ Wine.prototype.installed = function () {
 };
 
 /**
+* returns the path to the engine binary directory
+* @returns {String}
+*/
+Wine.prototype.binDir = function () {
+    return this._fetchLocalDirectory() + "/bin/";
+};
+
+/**
 *
 * @param executable
 * @param args
