@@ -17,6 +17,6 @@ WineTerminalOpener.prototype.run = function (container) {
         .prefix(container);
     var environment = [];
     environment["WINEPREFIX"] = wine.prefixDirectory;
-    environment["PATH"] = wine.binDir() + ":$PATH";
+    environment["PATH"] = wine.binPath() + ":$PATH";
     this._TerminalOpener.openTerminal(wine.prefixDirectory, environment);
 };
