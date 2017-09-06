@@ -9,6 +9,7 @@ new SteamScript()
     .postInstall(function(wine, wizard) {
         //Steam says only compatible with windows > xp
         wine.setOsForApplication().set("BatmanOrigins.exe", "win7").do();
+        wine.enableCSMT();
         //maybe needs xact
     })
     .appId(209000)               
