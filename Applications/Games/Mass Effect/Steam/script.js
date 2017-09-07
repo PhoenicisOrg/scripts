@@ -6,6 +6,6 @@ new SteamScript()
     .author("ImperatorS79")  
     .appId(17460) 
     .postInstall(function(wine, wizard) {
-        wizard.message(tr("If you have sound issues, please edit the BIOEngine.ini and/or BaseEngine.ini file in .Phoenicis/Mass Effect/drive_c/Program Files (x86)/Steam/steamapps/common/Mass Effect/Engine/Config/\n\nAnd add the following under [ISACTAudio.ISACTAudioDevice] :\n\nDeviceName=Generic Software\nUseEffectsProcessing=False\n\n"));
+        wizard.message(tr("If you have sound issues, please edit the BIOEngine.ini and/or BaseEngine.ini file in {0}/Program Files (x86)/Steam/steamapps/common/Mass Effect/Engine/Config/\n\nAnd add the following under [ISACTAudio.ISACTAudioDevice] :\n\nDeviceName=Generic Software\nUseEffectsProcessing=False\n\n", wine.prefixDirectory));
     })
     .go(); 
