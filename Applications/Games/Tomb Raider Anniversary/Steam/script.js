@@ -5,5 +5,5 @@ new SteamScript()
     .editor("Crystal Dynamics, Feral Interactive (Mac)")
     .author("Plata")
     .appId(8000)
-    .executable("tra.exe")
+    .gameOverlay(false)
     .go();
