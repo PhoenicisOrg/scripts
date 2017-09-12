@@ -80,6 +80,7 @@ var WineShortcut = function () {
         var builder = new org.phoenicis.library.dto.ShortcutDTO.Builder()
             .withCategory(that._category)
             .withName(that._name)
+            .withId(that._name)
             .withDescription(that._description)
             .withScript(JSON.stringify({
                 type: "WINE",
