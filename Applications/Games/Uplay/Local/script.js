@@ -7,6 +7,6 @@ new LocalInstallerScript()
     .author("Plata")
     .category("Games")
     .executable("UbisoftGameLauncher.exe")
-    .wineVersion("2.14")
+    .wineVersion("2.16")
     .wineDistribution("staging")
     .go();
