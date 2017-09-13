@@ -10,7 +10,7 @@ new OnlineInstallerScript()
     .url("https://www.battle.net/download/getLegacy?product=WAR3&locale=en-US&os=WIN")
     .category("Games")
     .executable("Warcraft III.exe")
-    .wineVersion("2.7")
+    .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .preInstall(function (wine, wizard) {
         wine.windowsVersion("winxp");

@@ -7,7 +7,7 @@ new SteamScript()
     .editor("AGM PLAYISM")
     .author("madoar")
     .appId(249330)
-    .wineVersion("2.14")
+    .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .preInstall(function (wine, wizard) {
         wine.dotnet40();

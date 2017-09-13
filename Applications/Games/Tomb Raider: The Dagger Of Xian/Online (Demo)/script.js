@@ -9,7 +9,7 @@ new ZipScript()
     .checksum("f321a0db456227ba3f1e36bbead2b8564bfb26f5")
     .category("Games")
     .executable("TombRaiderDOX.exe")
-    .wineVersion("2.14")
+    .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .wineArchitecture("amd64")
     .go();

@@ -24,7 +24,7 @@ new CustomInstallerScript()
     })
     .category("Games")
     .wineDistribution("staging")
-    .wineVersion("2.0")
+    .wineVersion(LATEST_STAGING_VERSION)
     .preInstall(function(wine, wizard) {
         // Select the region and download the setup file
         ////////////////////////////////////////////////

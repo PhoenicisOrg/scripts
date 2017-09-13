@@ -10,7 +10,7 @@ new OnlineInstallerScript()
     .installationArgs(["/q"])
     .category("Games")
     .executable("EpicGamesLauncher.exe", ["-SkipBuildPatchPrereq", "-OpenGL"])
-    .wineVersion("2.16")
+    .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .wineArchitecture("amd64")
     .go();

@@ -8,7 +8,7 @@ new OnlineInstallerScript()
     .url("https://origin-a.akamaihd.net/Origin-Client-Download/origin/legacy/OriginThinSetup.exe")
     .category("Games")
     .executable("Origin.exe")
-    .wineVersion("2.10")
+    .wineVersion(LATEST_DEVELOPMENT_VERSION)
     .preInstall(function(wine, wizard) {
         wizard.message(tr("When Origin launches, you will get an error message (\"Your update could not be completed.\"). This is ok. Just close the popup."));
     })

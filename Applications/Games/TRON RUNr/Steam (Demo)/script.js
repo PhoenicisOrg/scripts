@@ -5,7 +5,7 @@ new SteamScript()
     .editor("Sanzaru Games Inc.")
     .author("Plata")
     .appId(436130)
-    .wineVersion("2.16")
+    .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .wineArchitecture("amd64")
     .go();

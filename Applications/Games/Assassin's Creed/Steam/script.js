@@ -4,7 +4,7 @@ new SteamScript()
     .name("Assassin's Creed™")
     .editor("Ubisoft Montréal")
     .author("ImperatorS79")
-    .wineVersion("2.16")
+    .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .appId(15100)
     .go();
