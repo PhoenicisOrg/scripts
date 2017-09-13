@@ -77,11 +77,15 @@ var WineShortcut = function () {
             throw tr("Executable {0} not found!", that._search)
         }
 
-        var builder = new org.phoenicis.library.dto.ShortcutDTO.Builder()
+        var info = new org.phoenicis.library.dto.ShortcutInfoDTO.Builder()
             .withCategory(that._category)
             .withName(that._name)
-            .withId(that._name)
             .withDescription(that._description)
+            .build();
+
+        var builder = new org.phoenicis.library.dto.ShortcutDTO.Builder()
+            .withId(that._name)
+            .withInfo(info)
             .withScript(JSON.stringify({
                 type: "WINE",
                 wineDebug: "-all",
