@@ -6,7 +6,7 @@ new SteamScript()
     .editor("Massive Entertainment")
     .author("Plata")
     .appId(588220)
-    .wineVersion("2.16")
+    .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .wineArchitecture("amd64")
     .postInstall(function(wine, wizard) {

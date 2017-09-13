@@ -5,6 +5,6 @@ new SteamScript()
     .editor("Ubisoft Montreal")
     .author("Plata")
     .appId(33230)
-    .wineVersion("2.16")
+    .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .go();

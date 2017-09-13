@@ -1,13 +1,13 @@
 include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
 
 new LocalInstallerScript()
-    .name("Microsoft Office 2013")                       
-    .editor("Microsoft")                              
+    .name("Microsoft Office 2013")
+    .editor("Microsoft")
     .applicationHomepage("https://products.office.com/fr-be/microsoft-office-2013")
-    .wineVersion("2.14")
+    .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .author("ImperatorS79")                     
-    .category("Office")                           
+    .author("ImperatorS79")
+    .category("Office")
     // exe set with WineShorcut
     .postInstall(function(wine, wizard) {
          wine.overrideDLL()

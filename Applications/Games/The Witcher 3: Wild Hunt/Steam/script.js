@@ -1,14 +1,13 @@
 include(["Engines", "Wine", "QuickScript", "SteamScript"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
 
-
 new SteamScript()
-    .name("The Witcher 3: Wild Hunt")              
-    .editor("CD Projekt Red")     
-    .author("ImperatorS79")  
-    .wineVersion("2.14")
+    .name("The Witcher 3: Wild Hunt")
+    .editor("CD Projekt Red")
+    .author("ImperatorS79")
+    .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    //it would be better with dark ground fix -> https://bugs.winehq.org/attachment.cgi?id=58842&action=diff&context=patch&collapsed=&headers=1&format=raw 
+    //it would be better with dark ground fix -> https://bugs.winehq.org/attachment.cgi?id=58842&action=diff&context=patch&collapsed=&headers=1&format=raw
     .wineArchitecture("amd64")
     .appId(292030)
     .preInstall(function(wine, wizard) {

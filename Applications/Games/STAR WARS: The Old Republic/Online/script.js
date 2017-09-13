@@ -3,15 +3,15 @@ include(["Engines", "Wine", "Verbs", "d3dx9"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
 
 new OnlineInstallerScript()
-    .name("STAR WARS™: The Old Republic")                       
-    .editor("BioWare")                               
-    .applicationHomepage("http://www.swtor.com/")  
+    .name("STAR WARS™: The Old Republic")
+    .editor("BioWare")
+    .applicationHomepage("http://www.swtor.com/")
     .author("ImperatorS79")
-    .wineVersion("2.14")
+    .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")    //minimum version to run it, see https://dev.wine-staging.com/patches/164/
-    .url("https://swtor-a.akamaihd.net/installer/SWTOR_setup.exe")                       
-    .checksum("c538935eff4ec90ce2e48dc7e515a8dec2f15f58")                       
-    .category("Games")                           
+    .url("https://swtor-a.akamaihd.net/installer/SWTOR_setup.exe")
+    .checksum("c538935eff4ec90ce2e48dc7e515a8dec2f15f58")
+    .category("Games")
     .executable("launcher.exe")
     .preInstall(function(wine, wizard) {
         //it seems it brings better performance

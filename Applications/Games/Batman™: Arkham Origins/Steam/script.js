@@ -1,10 +1,10 @@
 include(["Engines", "Wine", "QuickScript", "SteamScript"]);
 
 new SteamScript()
-    .name("Batman™: Arkham Origins")              
-    .editor("WB Games Montreal, Splash Damage")     
+    .name("Batman™: Arkham Origins")
+    .editor("WB Games Montreal, Splash Damage")
     .author("ImperatorS79")
-    .wineVersion("2.15")
+    .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .postInstall(function(wine, wizard) {
         wine.enableCSMT();
