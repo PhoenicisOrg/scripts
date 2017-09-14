@@ -15,5 +15,5 @@ new OnlineInstallerScript()
         wine.windowsVersion("winxp");
         wine.vcrun2015();
         wine.corefonts();
-	})	
+    })	
     .go();
