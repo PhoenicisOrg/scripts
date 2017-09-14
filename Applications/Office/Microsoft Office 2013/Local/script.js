@@ -23,7 +23,7 @@ new LocalInstallerScript()
 
         new WineShortcut()
             .name("Microsoft Excel 2013")
-            .prefix("Microsoft Excel 2013")
+            .prefix("Microsoft Office 2013")
             .search("EXCEL.EXE")
             .miniature(["Office", "Microsoft Office 2013"])
             .create();
