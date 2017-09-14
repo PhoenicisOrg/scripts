@@ -20,7 +20,7 @@ new LocalInstallerScript()
 
         new WineShortcut()
             .name("Microsoft Excel 2010")
-            .prefix("Microsoft Excel 2010")
+            .prefix("Microsoft Office 2010")
             .search("EXCEL.EXE")
             .miniature(["Office", "Microsoft Office 2010"])
             .create();
