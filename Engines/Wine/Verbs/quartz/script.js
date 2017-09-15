@@ -32,5 +32,4 @@ Wine.prototype.quartz = function(){
         .do()
     
     return this;
-
 }
