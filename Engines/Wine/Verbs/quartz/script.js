@@ -2,8 +2,11 @@ include(["Engines", "Wine", "Engine", "Object"]);
 include(["Utils", "Functions", "Net", "Resource"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
 
+/**
+ * Inspired from winetricks quartz -> https://download.microsoft.com/download/E/E/1/EE17FF74-6C45-4575-9CF4-7FC2597ACD18/directx_feb2010_redist.exe
+ * @returns {Wine}
+ */
 Wine.prototype.quartz = function(){
-    //Inspired from winetricks quartz
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("https://download.microsoft.com/download/E/E/1/EE17FF74-6C45-4575-9CF4-7FC2597ACD18/directx_feb2010_redist.exe")
