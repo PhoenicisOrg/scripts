@@ -4,8 +4,12 @@ include(["Engines", "Wine", "Verbs", "luna"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
 include(["Engines", "Wine", "Verbs", "dotnet40"]);
 
+/**
+* Inspired from winetricks dotnet452 and POL4 POL_install_dotnet45
+* -> https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+* @returns {Wine}
+*/
 Wine.prototype.dotnet452 = function() {
-    //Inspired from winetricks mspatcha, and from POL4 POL_install_dotnet45
     if (this.architecture() == "amd64") {
         throw "{0} cannot be installed in a 64bit wine prefix!".format("dotnet452");
     }
