@@ -5,7 +5,7 @@ include(["Utils", "Functions", "Filesystem", "Files"]);
 include(["Engines", "Wine", "Verbs", "dotnet40"]);
 
 /**
-* Inspired from winetricks dotnet45 and POL4 POL_install_dotnet45
+* Inspired from dotnet40 verb, winetricks dotnet45 and POL4 POL_install_dotnet45
 * -> https://github.com/Winetricks/winetricks/blob/63bc6dbe612d017a0cb6bf6e4cde265162d75bca/src/winetricks#L8523
 * @returns {Wine}
 */
