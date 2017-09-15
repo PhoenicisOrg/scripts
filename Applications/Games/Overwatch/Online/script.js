@@ -9,7 +9,7 @@ new OnlineInstallerScript()
     .author("ImperatorS79")                     
     .url("https://eu.battle.net/download/getInstaller?os=win&installer=Overwatch-Setup.exe")                      
     //The checksum is different each time you download
-    .wineVersion("LATEST_STAGING_VERSION")
+    .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .wineArchitecture("amd64")
     .category("Games")                           
