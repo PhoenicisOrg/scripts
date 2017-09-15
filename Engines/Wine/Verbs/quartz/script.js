@@ -3,7 +3,7 @@ include(["Utils", "Functions", "Net", "Resource"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
 
 /**
- * Inspired from winetricks quartz -> https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+ * Inspired from winetricks quartz -> https://github.com/Winetricks/winetricks/blob/63bc6dbe612d017a0cb6bf6e4cde265162d75bca/src/winetricks#L8523
  * @returns {Wine}
  */
 Wine.prototype.quartz = function(){
