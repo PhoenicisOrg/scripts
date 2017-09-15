@@ -30,5 +30,7 @@ Wine.prototype.quartz = function(){
     this.overrideDLL()
         .set("native, builtin", ["quartz"])
         .do()
+    
+    return this;
 
 }
