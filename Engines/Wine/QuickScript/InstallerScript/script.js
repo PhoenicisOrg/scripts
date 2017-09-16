@@ -17,13 +17,7 @@ InstallerScript.prototype.constructor = InstallerScript;
 InstallerScript.prototype.go = function() {
     this._name = this._name || "Custom Installer";
 
-    var appsManager = Bean("repositoryManager");
-    var application = appsManager.getApplication([this._type, this._category, this._name]);
-    var miniature = java.util.Optional.empty();
-    if (application) {
-        miniature = application.getMainMiniature();
-    }
-    var setupWizard = SetupWizard(InstallationType.APPS, this._name, miniature);
+    var setupWizard = SetupWizard(InstallationType.APPS, this._name, this.miniature());
 
     // if no name given, ask user
     if (this._name == "Custom Installer") {
@@ -102,7 +96,7 @@ InstallerScript.prototype.go = function() {
         .prefix(wine.prefix())
         .search(this._executable)
         .arguments(this._executableArgs)
-        .miniature([this._type, this._category, this._name])
+        .miniature(this.miniature().get())
         .create();
 
     this._postInstall(wine, setupWizard);

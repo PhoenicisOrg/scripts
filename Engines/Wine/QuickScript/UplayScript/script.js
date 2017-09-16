@@ -38,13 +38,7 @@ UplayScript.prototype.go = function() {
         this._executableArgs = ["uplay://launch/" + this._appId + "/0"];
     }
 
-    var appsManager = Bean("repositoryManager");
-    var application = appsManager.getApplication([this._type, this._category, this._name]);
-    var miniature = java.util.Optional.empty();
-    if (application) {
-        miniature = application.getMainMiniature();
-    }
-    var setupWizard = SetupWizard(InstallationType.APPS, this._name, miniature);
+    var setupWizard = SetupWizard(InstallationType.APPS, this._name, this.miniature());
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
@@ -83,7 +77,7 @@ UplayScript.prototype.go = function() {
         .prefix(wine.prefix())
         .search(this._executable)
         .arguments(this._executableArgs)
-        .miniature([this._type, this._category, this._name])
+        .miniature(this.miniature().get())
         .create();
 
     wine.runInsidePrefix(wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/Uplay.exe", ["uplay://launch/" + this._appId + "/0"]);

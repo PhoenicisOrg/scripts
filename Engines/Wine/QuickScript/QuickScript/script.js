@@ -9,6 +9,13 @@ function QuickScript() {
     this._postInstall = function() {};
     this._preInstall = function() {};
     this._wineUserSettings = false;
+
+    var appsManager = Bean("repositoryManager");
+    var application = appsManager.getApplication([TYPE_ID, CATEGORY_ID, APPLICATION_ID]);
+    this._miniature = java.util.Optional.empty();
+    if (application) {
+        this._miniature = application.getMainMiniature();
+    }
 }
 
 QuickScript.prototype.name = function(name) {
@@ -38,6 +45,21 @@ QuickScript.prototype.type = function(type) {
 
 QuickScript.prototype.category = function(category) {
     this._category = category;
+    return this;
+};
+
+/**
+ * set miniature (for the installation and the shortcut)
+ * @param miniature path to the miniature file
+ */
+QuickScript.prototype.miniature = function(miniature) {
+    // get
+    if (arguments.length == 0) {
+        return this._miniature;
+    }
+
+    // set
+    this._miniature = java.util.Optional.of(miniature);
     return this;
 };
 
