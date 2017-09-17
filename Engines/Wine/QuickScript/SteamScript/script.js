@@ -3,7 +3,6 @@ include(["Utils", "Functions", "Net", "Download"]);
 include(["Engines", "Wine", "Engine", "Object"]);
 include(["Utils", "Functions", "Filesystem", "Extract"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
-include(["Engines", "Wine", "Shortcuts", "Wine"]);
 include(["Engines", "Wine", "Verbs", "luna"]);
 
 
@@ -133,15 +132,7 @@ SteamScript.prototype.go = function() {
     setupWizard.wait(tr("Please wait ..."));
 
     // create shortcut after installation (if executable is specified, it does not exist earlier)
-    new WineShortcut()
-        .name(this._name)
-        .type(this._type)
-        .category(this._category)
-        .prefix(wine.prefix())
-        .search(this._executable)
-        .arguments(this._executableArgs)
-        .miniature(this.miniature().get())
-        .create();
+    this._createShortcut(wine.prefix());
 
     this._postInstall(wine, setupWizard);
 

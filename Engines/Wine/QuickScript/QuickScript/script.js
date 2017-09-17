@@ -1,3 +1,5 @@
+include(["Engines", "Wine", "Shortcuts", "Wine"]);
+
 function QuickScript() {
     this._wineVersion = LATEST_STABLE_VERSION;
     this._wineArchitecture = "x86";
@@ -108,4 +110,23 @@ QuickScript.prototype.postInstall = function(postInstall) {
 QuickScript.prototype.preInstall = function(preInstall) {
     this._preInstall = preInstall;
     return this;
+};
+
+/**
+ * creates shortcut
+ * @param {string} [prefix] prefix name
+ */
+QuickScript.prototype._createShortcut = function(prefix) {
+    var shortcut = new WineShortcut()
+                       .name(this._name)
+                       .type(this._type)
+                       .category(this._category)
+                       .prefix(prefix)
+                       .search(this._executable)
+                       .arguments(this._executableArgs);
+
+    if(this.miniature().isPresent()) {
+        shortcut.miniature(this.miniature().get())
+    }
+    shortcut.create();
 };

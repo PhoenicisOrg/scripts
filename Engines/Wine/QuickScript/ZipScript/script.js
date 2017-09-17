@@ -2,7 +2,6 @@ include(["Engines", "Wine", "QuickScript", "QuickScript"]);
 include(["Utils", "Functions", "Net", "Download"]);
 include(["Engines", "Wine", "Engine", "Object"]);
 include(["Utils", "Functions", "Filesystem", "Extract"]);
-include(["Engines", "Wine", "Shortcuts", "Wine"]);
 include(["Engines", "Wine", "Verbs", "luna"]);
 
 
@@ -57,15 +56,7 @@ ZipScript.prototype.go = function() {
         .to(wine.prefixDirectory + "/drive_c/" + this._name)
         .extract();
 
-    new WineShortcut()
-        .name(this._name)
-        .type(this._type)
-        .category(this._category)
-        .prefix(wine.prefix())
-        .search(this._executable)
-        .arguments(this._executableArgs)
-        .miniature(this.miniature().get())
-        .create();
+    this._createShortcut(wine.prefix());
 
     this._postInstall(wine, setupWizard);
 
