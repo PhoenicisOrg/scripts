@@ -49,8 +49,8 @@ QuickScript.prototype.category = function(category) {
 };
 
 /**
- * set miniature (for the installation and the shortcut)
- * @param miniature path to the miniature file
+ * get/set miniature (for the installation and the shortcut)
+ * @param {URI} [miniature] path to the miniature file
  */
 QuickScript.prototype.miniature = function(miniature) {
     // get
