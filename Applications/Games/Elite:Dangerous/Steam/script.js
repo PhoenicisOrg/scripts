@@ -2,6 +2,7 @@ include(["Engines", "Wine", "QuickScript", "SteamScript"]);
 include(["Engines", "Wine", "Verbs", "corefonts"]);
 include(["Engines", "Wine", "Verbs", "dotnet452"]);
 include(["Engines", "Wine", "Verbs", "vcrun2012"]);
+include(["Engines", "Wine", "Verbs", "quartz"]);
 
 new SteamScript()
     .name("Elite:Dangerous")             
@@ -13,6 +14,7 @@ new SteamScript()
     .preInstall(function(wine, wizard) {
         wine.dotnet452();
         wine.corefonts();
+        wine.quartz();
         wine.vcrun2012();
         wine.windowsVersion("win7");
         wine.enableCSMT();
