@@ -12,5 +12,6 @@ new LocalInstallerScript()
     .preInstall(function(wine, wizard) {
         // avoid that launcher freezes the complete system
         wine.setVirtualDesktop(1280, 1024);
+        wine.enableCSMT();
     })
     .go();
