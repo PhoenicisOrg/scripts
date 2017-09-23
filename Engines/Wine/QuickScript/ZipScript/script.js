@@ -50,16 +50,22 @@ ZipScript.prototype.go = function() {
     // back to generic wait (might have been changed in preInstall)
     setupWizard.wait(tr("Please wait ..."));
 
-    new Downloader()
-        .wizard(setupWizard)
-        .url(this._url)
-        .checksum(this._checksum)
-        .to(wine.prefixDirectory + "/drive_c/archive.zip")
-        .get();
+    var archive = "";
+    if (!this._url) {
+        archive = setupWizard.browse(tr("Please select the .zip file."), wine.prefixDirectory, ["zip"]);
+    } else {
+        archive = wine.prefixDirectory + "/drive_c/archive.zip";
+        new Downloader()
+            .wizard(setupWizard)
+            .url(this._url)
+            .checksum(this._checksum)
+            .to(archive)
+            .get();
+    }
 
     new Extractor()
         .wizard(setupWizard)
-        .archive(wine.prefixDirectory + "/drive_c/archive.zip")
+        .archive(archive)
         .to(wine.prefixDirectory + "/drive_c/" + this._name)
         .extract();
 
