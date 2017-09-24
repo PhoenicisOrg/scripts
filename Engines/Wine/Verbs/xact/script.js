@@ -132,7 +132,7 @@ Wine.prototype.xact = function () {
             "mar2009_xact_x64.cab", "nov2007_xact_x64.cab", "nov2008_xact_x64.cab",
             "oct2006_xact_x64.cab", 
         ];
-        extractXacttoSystemDirectory(progressBar, filesToExtract, that.system32directory(), "xactengine*.dll", "xact_x64/");
+        extractXacttoSystemDirectory(progressBar, filesToExtract, that.system64directory(), "xactengine*.dll", "xact_x64/");
         
         
         //---------------------------------------------------------Extarct X3Daudio*.dll (x64)----------------------------------------------
@@ -145,7 +145,7 @@ Wine.prototype.xact = function () {
             "feb2010_x3daudio_x64.cab", "jun2008_x3daudio_x64.cab", "mar2008_x3daudio_x64.cab",
             "mar2009_x3daudio_x64.cab", "nov2007_x3daudio_x64.cab", "nov2008_x3daudio_x64.cab"
         ];
-        extractXacttoSystemDirectory(progressBar, filesToExtract, that.system32directory(), "X3Daudio*.dll", "x3daudio_x64/");
+        extractXacttoSystemDirectory(progressBar, filesToExtract, that.system64directory(), "X3Daudio*.dll", "x3daudio_x64/");
         
         
         //---------------------------------------------------------Extarct XAudio*.dll and XAPOFX*.dll (x64)---------------------------------
@@ -159,8 +159,8 @@ Wine.prototype.xact = function () {
             "jun2008_xaudio_x64.cab", "jun2010_xaudio_x64.cab", "mar2008_xaudio_x64.cab",
             "mar2009_xaudio_x64.cab", "nov2008_xaudio_x64.cab"
         ];
-        extractXacttoSystemDirectory(progressBar, filesToExtract, that.system32directory(), "XAudio*.dll", "xaudio_x64/");
-        extractXacttoSystemDirectory(progressBar, filesToExtract, that.system32directory(), "XAPOFX*.dll", "xaudio_x64/");
+        extractXacttoSystemDirectory(progressBar, filesToExtract, that.system64directory(), "XAudio*.dll", "xaudio_x64/");
+        extractXacttoSystemDirectory(progressBar, filesToExtract, that.system64directory(), "XAPOFX*.dll", "xaudio_x64/");
         
         remove(this.prefixDirectory + "/drive_c/xact_x64/");
         remove(this.prefixDirectory + "/drive_c/x3daudio_x64/");
