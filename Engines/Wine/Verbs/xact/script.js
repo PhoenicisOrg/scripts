@@ -26,6 +26,7 @@ Wine.prototype.xact = function () {
         });
     };
     
+    //This function executes regsvr32 on the dlls present in dllToRegsvr 
     var regsvr32Xact = function(dllToRegsvr) {
         var numberOfExtractedFiles = 0;
         dllToRegsvr.forEach(function(dll) {
