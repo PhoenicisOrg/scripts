@@ -50,7 +50,7 @@ Wine.prototype.xact = function () {
     progressBar.setText(tr("Extracting {0} ...", "Xact"));
     progressBar.setProgressPercentage(0.);
 
-    //---------------------------------------------------------Extarct xactengine*.dll--------------------------------------------
+    //---------------------------------------------------------Extract xactengine*.dll--------------------------------------------
     new CabExtract()
         .archive(setupFile)
         .to(this.prefixDirectory + "/drive_c/xact_x86/")
@@ -68,7 +68,7 @@ Wine.prototype.xact = function () {
     extractXacttoSystemDirectory(progressBar, filesToExtract, that.system32directory(), "xactengine*.dll", "xact_x86/");
     
     
-    //---------------------------------------------------------Extarct X3Daudio*.dll----------------------------------------------
+    //---------------------------------------------------------Extract X3Daudio*.dll----------------------------------------------
     new CabExtract()
         .archive(setupFile)
         .to(this.prefixDirectory + "/drive_c/x3daudio_x86/")
@@ -81,7 +81,7 @@ Wine.prototype.xact = function () {
     extractXacttoSystemDirectory(progressBar, filesToExtract, that.system32directory(), "X3Daudio*.dll", "x3daudio_x86/");
      
      
-    //---------------------------------------------------------Extarct XAudio*.dll and XAPOFX*.dll---------------------------------
+    //---------------------------------------------------------Extract XAudio*.dll and XAPOFX*.dll---------------------------------
     new CabExtract()
         .archive(setupFile)
         .to(this.prefixDirectory + "/drive_c/xaudio_x86/")
@@ -117,7 +117,7 @@ Wine.prototype.xact = function () {
     
     
     if (this.architecture() == "amd64") {
-        //---------------------------------------------------------Extarct xactengine*.dll (x64)--------------------------------------------
+        //---------------------------------------------------------Extract xactengine*.dll (x64)--------------------------------------------
         new CabExtract()
             .archive(setupFile)
             .to(this.prefixDirectory + "/drive_c/xact_x64/")
@@ -135,7 +135,7 @@ Wine.prototype.xact = function () {
         extractXacttoSystemDirectory(progressBar, filesToExtract, that.system64directory(), "xactengine*.dll", "xact_x64/");
         
         
-        //---------------------------------------------------------Extarct X3Daudio*.dll (x64)----------------------------------------------
+        //---------------------------------------------------------Extract X3Daudio*.dll (x64)----------------------------------------------
         new CabExtract()
             .archive(setupFile)
             .to(this.prefixDirectory + "/drive_c/x3daudio_x64/")
@@ -148,7 +148,7 @@ Wine.prototype.xact = function () {
         extractXacttoSystemDirectory(progressBar, filesToExtract, that.system64directory(), "X3Daudio*.dll", "x3daudio_x64/");
         
         
-        //---------------------------------------------------------Extarct XAudio*.dll and XAPOFX*.dll (x64)---------------------------------
+        //---------------------------------------------------------Extract XAudio*.dll and XAPOFX*.dll (x64)---------------------------------
         new CabExtract()
             .archive(setupFile)
             .to(this.prefixDirectory + "/drive_c/xaudio_x64/")
