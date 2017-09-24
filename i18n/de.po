@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-24 10:21+0200\n"
-"PO-Revision-Date: 2017-09-24 10:23+0200\n"
+"POT-Creation-Date: 2017-09-24 10:31+0200\n"
+"PO-Revision-Date: 2017-09-24 10:34+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -255,6 +255,33 @@ msgstr ""
 "sogar gewerblich genutzten, Computern benutzen. Dazu müssen Sie 7-Zip weder "
 "registrieren noch dafür bezahlen."
 
+#: i18n/tmp/Applications/Accessories/7-zip/Online/script.js
+#: i18n/tmp/Applications/Accessories/ImgBurn/Online/script.js
+#: i18n/tmp/Applications/Accessories/Soundplant/Online/script.js
+#: i18n/tmp/Applications/Custom/OnlineInstaller/Online/script.js
+#: i18n/tmp/Applications/Games/Crayon Physics/Online/script.js
+#: i18n/tmp/Applications/Games/Druid Soccer/Online/script.js
+#: i18n/tmp/Applications/Games/Epic Games Launcher/Online/script.js
+#: i18n/tmp/Applications/Games/Guild Wars 2/Online/script.js
+#: i18n/tmp/Applications/Games/Hearthstone/Online/script.js
+#: i18n/tmp/Applications/Games/Heroes of the Storm/Online/script.js
+#: i18n/tmp/Applications/Games/Origin/Online/script.js
+#: i18n/tmp/Applications/Games/Overwatch/Online/script.js
+#: i18n/tmp/Applications/Games/Star Craft II/Online/script.js
+#: i18n/tmp/Applications/Games/STAR WARS: The Old Republic/Online/script.js
+#: i18n/tmp/Applications/Games/Steam/Online/script.js
+#: i18n/tmp/Applications/Games/Uplay/Online/script.js
+#: i18n/tmp/Applications/Games/Warcraft III/Online/script.js III
+#: TFT/Online/script.js
+#: i18n/tmp/Applications/Graphics/Photofiltre/Online/script.js
+#: i18n/tmp/Applications/Internet/Internet Explorer 6.0/Online/script.js
+#: 7.0/Online/script.js
+#: i18n/tmp/Applications/Multimedia/Mp3tag/Online/script.js
+#: i18n/tmp/Applications/Office/Adobe Acrobat Reader DC/Online/script.js
+#: i18n/tmp/Applications/Office/ElsterFormular/Online/script.js
+msgid "Online"
+msgstr "Online"
+
 #: i18n/tmp/Applications/Accessories/category.js
 msgid "Accessories"
 msgstr "Dienstprogramme"
@@ -318,6 +345,21 @@ msgstr ""
 "Mit dem Local Installer können Sie eigene Anwendungen von Ihrem lokalen "
 "Computer installieren."
 
+#: i18n/tmp/Applications/Custom/LocalInstaller/Local/script.js
+#: i18n/tmp/Applications/Games/18 Wheels of Steel Across
+#: America/Local/script.js i18n/tmp/Applications/Games/Caesar
+#: III/Local/script.js i18n/tmp/Applications/Games/Epic Games
+#: Launcher/Local/script.js i18n/tmp/Applications/Games/Europa Universalis
+#: II/Local/script.js i18n/tmp/Applications/Games/Guild Wars 2/Local/script.js
+#: i18n/tmp/Applications/Games/Resident Evil 3/Local/script.js
+#: i18n/tmp/Applications/Games/STAR WARS Battlefront - Empire at War Gold
+#: Pack/Local/script.js i18n/tmp/Applications/Games/The Elder Scrolls IV:
+#: Oblivion/Local/script.js i18n/tmp/Applications/Games/Uplay/Local/script.js
+#: i18n/tmp/Applications/Office/Microsoft Office 2010/Local/script.js
+#: 2013/Local/script.js
+msgid "Local"
+msgstr "Lokal"
+
 #: i18n/tmp/Applications/Custom/OnlineInstaller/application.js
 msgid "Online Installer"
 msgstr "Online Installer"
@@ -354,6 +396,10 @@ msgstr ""
 "Notepad++ ist ein freier Editor, der verschiedene Programmiersprachen "
 "unterstützt."
 
+#: i18n/tmp/Applications/Development/Notepad++/v7.2.2/script.js
+msgid "v.7.2.2"
+msgstr "v.7.2.2"
+
 #: i18n/tmp/Applications/Games/18 Wheels of Steel Across America/application.js
 msgid "18 Wheels of Steel: Across America"
 msgstr "18 Wheels of Steel: Across America"
@@ -383,6 +429,80 @@ msgstr ""
 "Features, Sammelkarten, verbesserter KI, Steam-Workshop-Unterstützung, "
 "überarbeitetem Multiplayermodus, Steamworks-Integration und vielem mehr "
 "versehen!"
+
+#: i18n/tmp/Applications/Games/Age of Empires II HD/Steam/script.js III:
+#: Complete Collection/Steam/script.js i18n/tmp/Applications/Games/Assassin's
+#: Creed: Brotherhood/Steam/script.js Creed III/Steam/script.js
+#: II/Steam/script.js IV Black Flag/Steam/script.js Revelations/Steam/script.js
+#: Creed/Steam/script.js Unity/Steam/script.js
+#: i18n/tmp/Applications/Games/Audiosurf/Steam/script.js
+#: i18n/tmp/Applications/Games/Batman™: Arkham Asylum/Steam/script.js
+#: City/Steam/script.js Origins/Steam/script.js
+#: i18n/tmp/Applications/Games/BioShock/Steam/script.js
+#: i18n/tmp/Applications/Games/Black Mesa/Steam/script.js
+#: i18n/tmp/Applications/Games/Borderlands/Steam/script.js
+#: i18n/tmp/Applications/Games/Braid/Steam/script.js
+#: i18n/tmp/Applications/Games/BRINK/Steam/script.js
+#: i18n/tmp/Applications/Games/Burnout Paradise: The Ultimate
+#: Box/Steam/script.js i18n/tmp/Applications/Games/Caesar
+#: i18n/tmp/Applications/Games/Call Juarez Gunslinger/Steam/script.js
+#: i18n/tmp/Applications/Games/ChromaGun/Steam/script.js
+#: i18n/tmp/Applications/Games/Civilization V/Steam/script.js
+#: i18n/tmp/Applications/Games/Clicker Heroes/Steam/script.js
+#: i18n/tmp/Applications/Games/Cogs/Steam/script.js
+#: i18n/tmp/Applications/Games/CONSORTIUM/Steam/script.js
+#: i18n/tmp/Applications/Games/DOOM (2016)/Steam/script.js
+#: i18n/tmp/Applications/Games/Dr. Langeskov, Tiger, and Terribly Cursed
+#: Emerald: A Whirlwind Heist/Steam/script.js
+#: i18n/tmp/Applications/Games/Enderal/Steam/script.js
+#: i18n/tmp/Applications/Games/Ether One Redux/Steam/script.js
+#: i18n/tmp/Applications/Games/Europa Universalis IV/Steam/script.js
+#: i18n/tmp/Applications/Games/Far Cry/Steam/script.js
+#: i18n/tmp/Applications/Games/FlatOut/Steam/script.js
+#: i18n/tmp/Applications/Games/Goodbye Deponia/Steam/script.js
+#: i18n/tmp/Applications/Games/Hexcells Infinite/Steam/script.js
+#: Plus/Steam/script.js i18n/tmp/Applications/Games/Hexcells/Steam/script.js
+#: i18n/tmp/Applications/Games/Mafia i18n/tmp/Applications/Games/Mass Effect
+#: 2/Steam/script.js Effect/Steam/script.js
+#: i18n/tmp/Applications/Games/Medieval II: Total War/Steam/script.js
+#: i18n/tmp/Applications/Games/Mirror's Edge/Steam/script.js
+#: i18n/tmp/Applications/Games/Mount & Blade/Steam/script.js
+#: i18n/tmp/Applications/Games/Niko: Through Dream/Steam/script.js
+#: i18n/tmp/Applications/Games/Orwell: Keeping an Eye On You/Steam/script.js
+#: i18n/tmp/Applications/Games/PAYDAY
+#: i18n/tmp/Applications/Games/Prey/Steam/script.js
+#: i18n/tmp/Applications/Games/Pro Evolution Soccer 2018/Steam/script.js
+#: i18n/tmp/Applications/Games/Quantum Conundrum/Steam/script.js
+#: i18n/tmp/Applications/Games/Q.U.B.E: Director's Cut/Steam/script.js
+#: i18n/tmp/Applications/Games/Rayman Legends/Steam/script.js
+#: i18n/tmp/Applications/Games/Rocksmith 2014/Steam/script.js
+#: i18n/tmp/Applications/Games/Rocksmith/Steam/script.js
+#: i18n/tmp/Applications/Games/Scribblenauts Unlimited/Steam/script.js
+#: i18n/tmp/Applications/Games/Shower With Your Dad Simulator 2015: Do You
+#: Still Shower Dad/Steam/script.js i18n/tmp/Applications/Games/Star Trek
+#: Online/Steam/script.js i18n/tmp/Applications/Games/STAR WARS Battlefront
+#: WARS: Dark Forces/Steam/script.js - Empire at War Gold Pack/Steam/script.js
+#: Jedi Knight: Forces Knight Outcast/Steam/script.js Academy/Steam/script.js
+#: Mysteries the Sith/Steam/script.js
+#: i18n/tmp/Applications/Games/Steam/application.js
+#: i18n/tmp/Applications/Games/Styx: Shards Darkness/Steam/script.js
+#: i18n/tmp/Applications/Games/Super Blue Boy Planet/Steam/script.js
+#: i18n/tmp/Applications/Games/The Crew/Steam/script.js Elder Scrolls V:
+#: Skyrim/Steam/script.js Room/Steam/script.js Room Two/Steam/script.js Turing
+#: Test/Steam/script.js Vanishing Ethan Carter Carter/Steam/script.js Witcher
+#: 3: Wild Hunt/Steam/script.js i18n/tmp/Applications/Games/Toki
+#: Tori/Steam/script.js i18n/tmp/Applications/Games/Tomb Raider
+#: Anniversary/Steam/script.js Legend/Steam/script.js
+#: Underworld/Steam/script.js i18n/tmp/Applications/Games/Tom Clancy's
+#: Division/Steam/script.js i18n/tmp/Applications/Games/Trackmania
+#: Turbo/Steam/script.js i18n/tmp/Applications/Games/TRON RUNr/Steam/script.js
+#: i18n/tmp/Applications/Games/Tropico 3/Steam/script.js 4/Steam/script.js
+#: i18n/tmp/Applications/Games/Unholy Heights/Steam/script.js
+#: i18n/tmp/Applications/Games/Warlock Master Arcane/Steam/script.js
+#: i18n/tmp/Applications/Games/Worms Armageddon/Steam/script.js
+#: Reloaded/Steam/script.js
+msgid "Steam"
+msgstr "Steam"
 
 #: i18n/tmp/Applications/Games/Age of Empires III: Complete
 #: Collection/application.js
@@ -636,6 +756,15 @@ msgstr ""
 "Angreifer abzuwehren, versucht die rebellische Reporterin Jade jetzt die "
 "Wahrheit heraus zu finden."
 
+#: i18n/tmp/Applications/Games/Beyond Good and Evil/Uplay/script.js
+#: i18n/tmp/Applications/Games/Far Cry 3 - Blood Dragon/Uplay/script.js
+#: i18n/tmp/Applications/Games/Prince of Persia: The Sands Time/Uplay/script.js
+#: i18n/tmp/Applications/Games/Rayman Origins/Uplay/script.js
+#: i18n/tmp/Applications/Games/Tom Clancy's Splinter Cell/Uplay/script.js
+#: i18n/tmp/Applications/Games/Uplay/application.js
+msgid "Uplay"
+msgstr "Uplay"
+
 #: i18n/tmp/Applications/Games/BioShock/application.js
 msgid "BioShock™"
 msgstr "BioShock™"
@@ -662,6 +791,28 @@ msgstr ""
 "einfachen Schraubenschlüssel.<br>Keine Feindesbegegnung gleicht der anderen "
 "und kein anderer Spieler wird dieses Spiel genau wie Sie spielen."
 
+#: i18n/tmp/Applications/Games/BioShock/Steam (Demo)/script.js
+#: i18n/tmp/Applications/Games/Braid/Steam i18n/tmp/Applications/Games/Call of
+#: Juarez Gunslinger/Steam i18n/tmp/Applications/Games/ChromaGun/Steam
+#: i18n/tmp/Applications/Games/Cogs/Steam i18n/tmp/Applications/Games/Europa
+#: Universalis IV/Steam i18n/tmp/Applications/Games/FlatOut/Steam
+#: i18n/tmp/Applications/Games/Goodbye Deponia/Steam
+#: i18n/tmp/Applications/Games/Mafia II/Steam
+#: i18n/tmp/Applications/Games/Medieval II: Total War/Steam
+#: i18n/tmp/Applications/Games/Mount & Blade/Steam
+#: i18n/tmp/Applications/Games/Orwell: Keeping an Eye On You/Steam
+#: i18n/tmp/Applications/Games/Prey/Steam i18n/tmp/Applications/Games/Pro
+#: Evolution Soccer 2018/Steam i18n/tmp/Applications/Games/Rayman Legends/Steam
+#: i18n/tmp/Applications/Games/Styx: Shards Darkness/Steam
+#: i18n/tmp/Applications/Games/The Crew/Steam i18n/tmp/Applications/Games/Toki
+#: Tori/Steam i18n/tmp/Applications/Games/Tomb Raider Anniversary/Steam
+#: Legend/Steam Underworld/Steam i18n/tmp/Applications/Games/Tom Clancy's The
+#: Division/Steam i18n/tmp/Applications/Games/Trackmania Turbo/Steam
+#: i18n/tmp/Applications/Games/TRON RUNr/Steam
+#: i18n/tmp/Applications/Games/Tropico 4/Steam
+msgid "Steam (Demo)"
+msgstr "Steam (Demo)"
+
 #: i18n/tmp/Applications/Games/Black Mesa/application.js
 msgid "Black Mesa"
 msgstr "Black Mesa"
@@ -671,7 +822,7 @@ msgid "Relive Half-Life in this highly acclaimed, fan-made recreation"
 msgstr ""
 "Erleben Sie Half-Life neu in dieser vielgepriesenen Neugestaltung durch Fans."
 
-#: i18n/tmp/Applications/Games/Blizzard app/application.js
+#: i18n/tmp/Applications/Games/Blizzard app/application.js app/Online/script.js
 msgid "Blizzard app"
 msgstr "Blizzard App"
 
@@ -1234,6 +1385,10 @@ msgstr ""
 "Ebene zu Ebene zu springen und dabei so hoch wie möglich zu kommen ohne "
 "abzustürzen."
 
+#: i18n/tmp/Applications/Games/Icy Tower/v1.5/script.js
+msgid "v1.5"
+msgstr "v1.5"
+
 #: i18n/tmp/Applications/Games/League of Legends/application.js
 msgid "League of Legends BETA Client"
 msgstr "League of Legends BETA Client"
@@ -1255,6 +1410,10 @@ msgstr ""
 "einer ständig wachsenden Anzahl an Champions, häufigen Aktualisierungen und "
 "einer blühenden Wettkampfszene unbegrenzte Wiederspielbarkeit für Spieler "
 "jeden Niveaus."
+
+#: i18n/tmp/Applications/Games/League of Legends/BETA Client/script.js
+msgid "BETA Client"
+msgstr "BETA Client"
 
 #: i18n/tmp/Applications/Games/Mafia II/application.js
 msgid "Mafia II"
@@ -1411,6 +1570,14 @@ msgstr "Origin"
 #: i18n/tmp/Applications/Games/Origin/application.js
 msgid "Origin is EA's PC games portal."
 msgstr "Origin ist EA's Portal für PC-Spiele."
+
+#: i18n/tmp/Applications/Games/Origin/Local (Legacy)/script.js
+msgid "Local (Legacy)"
+msgstr "Lokal (Legacy)"
+
+#: i18n/tmp/Applications/Games/Origin/Online (Legacy)/script.js
+msgid "Online (Legacy)"
+msgstr "Online (Legacy)"
 
 #: i18n/tmp/Applications/Games/Orwell: Keeping an Eye On You/application.js
 msgid "Orwell: Keeping an Eye On You"
@@ -1863,10 +2030,6 @@ msgstr ""
 "Galaxie teilte."
 
 #: i18n/tmp/Applications/Games/Steam/application.js
-msgid "Steam"
-msgstr "Steam"
-
-#: i18n/tmp/Applications/Games/Steam/application.js
 msgid ""
 "Steam is a digital distribution platform developed by Valve Corporation, "
 "which offers digital rights management (DRM), multiplayer gaming, video "
@@ -1952,6 +2115,10 @@ msgstr ""
 "individuell gestaltete Spielerlebnis mit brandneuer Grafik können Sie die "
 "Rätsel im Spiel in Ihrem eigenen Tempo lösen oder einfach die riesige Welt "
 "erkunden und sich Ihre Herausforderungen selbst suchen."
+
+#: i18n/tmp/Applications/Games/The Elder Scrolls IV: Oblivion/Steam/script.js
+msgid "Steam (GOTY)"
+msgstr "Steam (GOTY)"
 
 #: i18n/tmp/Applications/Games/The Elder Scrolls V: Skyrim/application.js
 msgid "The Elder Scrolls V: Skyrim"
@@ -2143,6 +2310,16 @@ msgstr "Tomb Raider: The Dagger Of Xian"
 msgid "Fan Game Tomb Raider 2 Remake by Nicobass."
 msgstr "Ein Tomb Raider 2 Remake von Nicobass."
 
+#: i18n/tmp/Applications/Games/Tomb Raider: The Dagger Of Xian/Local
+#: (Demo)/script.js
+msgid "Local (Demo)"
+msgstr "Lokal (Demo)"
+
+#: i18n/tmp/Applications/Games/Tomb Raider: The Dagger Of Xian/Online
+#: (Demo)/script.js
+msgid "Online (Demo)"
+msgstr "Online (Demo)"
+
 #: i18n/tmp/Applications/Games/Tomb Raider Underworld/application.js
 msgid "Tomb Raider: Underworld"
 msgstr "Tomb Raider: Underworld"
@@ -2182,6 +2359,16 @@ msgstr ""
 "Rainbow in einem Rennen gegen die Zeit - an Orten wie England, Norwegen, der "
 "Karibik und Rio de Janeiro mitten im Karneval - um einen Verrückten und sein "
 "Weltuntergangsszenario zu stoppen."
+
+#: i18n/tmp/Applications/Games/Tom Clancy's Rainbow Six 3 : Raven Shield/Local
+#: (1.0->1.6)/script.js
+msgid "Local (1.0->1.6)"
+msgstr "Lokal (1.0->1.6)"
+
+#: i18n/tmp/Applications/Games/Tom Clancy's Rainbow Six 3 : Raven Shield/Steam
+#: (Gold)/script.js
+msgid "Steam (Gold)"
+msgstr "Steam (Gold)"
 
 #: i18n/tmp/Applications/Games/Tom Clancy's Splinter Cell/application.js
 msgid "Tom Clancy's Splinter Cell®"
@@ -2357,10 +2544,6 @@ msgstr ""
 "schwieriger sein all die Hölle zu leiten... richtig?"
 
 #: i18n/tmp/Applications/Games/Uplay/application.js
-msgid "Uplay"
-msgstr "Uplay"
-
-#: i18n/tmp/Applications/Games/Uplay/application.js
 msgid "Uplay is Ubisoft's PC games portal."
 msgstr "Uplay ist Ubisoft's Portal für PC-Spiele."
 
@@ -2516,6 +2699,10 @@ msgstr ""
 "Menschen und Tausenden Firmen genutzt wird um miteinander über globale IRC "
 "Netzwerke zu kommunizieren, zu teilen, zu spielen und zu arbeiten."
 
+#: i18n/tmp/Applications/Internet/mIRC/v7.46/script.js
+msgid "v7.46"
+msgstr "v7.46"
+
 #: i18n/tmp/Applications/Internet/TeamSpeak 3/application.js
 msgid "TeamSpeak 3"
 msgstr "TeamSpeak 3"
@@ -2530,6 +2717,10 @@ msgstr ""
 "ermöglicht, über das Internet oder ein LAN per Sprache und Text miteinander "
 "zu kommunizieren sowie Dateien auszutauschen. TeamSpeak ist für die Nutzung "
 "parallel zu Online-Spielen optimiert."
+
+#: i18n/tmp/Applications/Internet/TeamSpeak 3/v3.0.19.4/script.js
+msgid "v3.0.19.4"
+msgstr "v3.0.19.4"
 
 #: i18n/tmp/Applications/Multimedia/category.js
 msgid "Multimedia"
@@ -2616,6 +2807,42 @@ msgstr "Lernprogramme"
 #: i18n/tmp/Engines/Wine/category.js
 msgid "Wine"
 msgstr "Wine"
+
+#: i18n/tmp/Engines/Wine/Tools/ConfigureWine/script.js
+msgid "Configure Wine"
+msgstr "Wine einrichten"
+
+#: i18n/tmp/Engines/Wine/Tools/KillWineProcesses/script.js
+msgid "Kill processes"
+msgstr "Prozesse beenden"
+
+#: i18n/tmp/Engines/Wine/Tools/RebootWine/script.js
+msgid "Windows reboot"
+msgstr "Windows neustarten"
+
+#: i18n/tmp/Engines/Wine/Tools/RepairWinePrefix/script.js
+msgid "Repair virtual drive"
+msgstr "Virtuelles Laufwerk reparieren"
+
+#: i18n/tmp/Engines/Wine/Tools/WineConsole/script.js
+msgid "Command prompt"
+msgstr "Kommandozeile"
+
+#: i18n/tmp/Engines/Wine/Tools/WineRegistryEditor/script.js
+msgid "Registry Editor"
+msgstr "Registryeditor"
+
+#: i18n/tmp/Engines/Wine/Tools/WineTaskManager/script.js
+msgid "Task manager"
+msgstr "Taskmanager"
+
+#: i18n/tmp/Engines/Wine/Tools/WineTerminalOpener/script.js
+msgid "Open a terminal"
+msgstr "Terminal öffnen"
+
+#: i18n/tmp/Engines/Wine/Tools/WineUninstaller/script.js
+msgid "Wine uninstaller"
+msgstr "Wine Uninstaller"
 
 #: i18n/tmp/Utils/Functions/category.js
 msgid "Functions"

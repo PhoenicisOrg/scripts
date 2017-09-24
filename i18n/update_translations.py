@@ -24,7 +24,9 @@ for file_name in json_file_names:
 for key, value in data.iteritems():
     messages = []
     basename = os.path.basename(key)
-    if basename == 'application.json':
+    if basename == 'script.json':
+        messages.append(data[key]['scriptName'])
+    elif basename == 'application.json':
         messages.append(data[key]['name'])
         messages.append(data[key]['description'])
     elif basename == 'category.json':
