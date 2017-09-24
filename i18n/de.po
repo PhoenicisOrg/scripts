@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-22 18:16+0200\n"
-"PO-Revision-Date: 2017-09-22 17:55+0200\n"
+"POT-Creation-Date: 2017-09-24 10:21+0200\n"
+"PO-Revision-Date: 2017-09-24 10:23+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -185,6 +185,10 @@ msgstr "Bitte warten Sie bis Uplay den Download beendet hat ..."
 #: Engines/Wine/QuickScript/UplayScript/script.js
 msgid "Please close Uplay."
 msgstr "Bitte schließen Sie Uplay."
+
+#: Engines/Wine/QuickScript/ZipScript/script.js
+msgid "Please select the .zip file."
+msgstr "Bitte wählen Sie die .zip Datei aus."
 
 #: Engines/Wine/Shortcuts/Reader/script.js
 msgid ""
@@ -1136,6 +1140,21 @@ msgstr ""
 "Mehr Chaos, mehr Zerstörung, mehr Rufus: Gleich drei Rufus(se) sorgen in der "
 "heiß ersehnten Point & Click-Adventure-Komödie Goodbye Deponia für "
 "abgedrehten Aberwitz!"
+
+#: i18n/tmp/Applications/Games/Guild Wars 2/application.js
+msgid "Guild Wars 2"
+msgstr "Guild Wars 2"
+
+#: i18n/tmp/Applications/Games/Guild Wars 2/application.js
+msgid ""
+"Guild Wars 2 defines the future of online roleplaying games with action-"
+"oriented combat, customized personal storylines, epic dynamic events, world-"
+"class PvP, and no subscription fees!"
+msgstr ""
+"Mit seinen actiongeladenen Kämpfen, individuellen persönlichen Geschichten, "
+"epischen dynamischen Events, PvP der Spitzenklasse und dem Verzicht auf "
+"Abonnementsgebühren definiert Guild Wars 2 die Zukunft der Online-"
+"Rollenspiele neu!"
 
 #: i18n/tmp/Applications/Games/Hearthstone/application.js
 msgid "Hearthstone"
