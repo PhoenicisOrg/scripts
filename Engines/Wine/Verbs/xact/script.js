@@ -27,7 +27,7 @@ Wine.prototype.xact = function () {
     };
     
     //This function executes regsvr32 on the dlls present in dllToRegsvr 
-    var regsvr32Xact = function(dllToRegsvr) {
+    var regsvr32Xact = function(progressBar, dllToRegsvr) {
         var numberOfExtractedFiles = 0;
         dllToRegsvr.forEach(function(dll) {
             print(tr("Registering {0} ...", dll));
@@ -109,8 +109,8 @@ Wine.prototype.xact = function () {
         "xaudio2_6.dll", "xaudio2_7.dll", "xaudio2_9.dll"
     ];
     
-    regsvr32Xact(xactToRegserv);
-    regsvr32Xact(xaudioToRegserv);
+    regsvr32Xact(progressBar, xactToRegserv);
+    regsvr32Xact(progressBar, xaudioToRegserv);
     
     remove(this.prefixDirectory + "/drive_c/xact_x86/");
     remove(this.prefixDirectory + "/drive_c/x3daudio_x86/");
