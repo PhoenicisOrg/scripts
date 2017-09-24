@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-22 18:16+0200\n"
+"POT-Creation-Date: 2017-09-24 10:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,6 +155,10 @@ msgstr ""
 
 #: Engines/Wine/QuickScript/UplayScript/script.js
 msgid "Please close Uplay."
+msgstr ""
+
+#: Engines/Wine/QuickScript/ZipScript/script.js
+msgid "Please select the .zip file."
 msgstr ""
 
 #: Engines/Wine/Shortcuts/Reader/script.js
@@ -828,6 +832,17 @@ msgid ""
 "More chaos, more destruction, more Rufus. Not one, not two, but three "
 "Rufuses cause all kinds of crazy mayhem in the long-awaited adventure comedy "
 "Goodbye Deponia!"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Guild Wars 2/application.js
+msgid "Guild Wars 2"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Guild Wars 2/application.js
+msgid ""
+"Guild Wars 2 defines the future of online roleplaying games with action-"
+"oriented combat, customized personal storylines, epic dynamic events, world-"
+"class PvP, and no subscription fees!"
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Hearthstone/application.js

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-22 18:16+0200\n"
-"PO-Revision-Date: 2017-07-25 16:56+0200\n"
+"POT-Creation-Date: 2017-09-24 10:21+0200\n"
+"PO-Revision-Date: 2017-09-24 10:24+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #: Applications/Games/League of Legends/BETA Client/script.js
 msgid "Select your region:"
@@ -938,6 +938,20 @@ msgid ""
 "Rufuses cause all kinds of crazy mayhem in the long-awaited adventure comedy "
 "Goodbye Deponia!"
 msgstr ""
+
+#: i18n/tmp/Applications/Games/Guild Wars 2/application.js
+msgid "Guild Wars 2"
+msgstr "Guild Wars 2"
+
+#: i18n/tmp/Applications/Games/Guild Wars 2/application.js
+msgid ""
+"Guild Wars 2 defines the future of online roleplaying games with action-"
+"oriented combat, customized personal storylines, epic dynamic events, world-"
+"class PvP, and no subscription fees!"
+msgstr ""
+"Guild Wars 2 redéfinit le futur des jeux de rôles en ligne avec des combats "
+"regorgeant d’action, des histoires élaborées et personnalisées, d’épiques "
+"évènements dynamiques, du JcJ exceptionnel, le tout sans aucun abonnement !"
 
 #: i18n/tmp/Applications/Games/Hearthstone/application.js
 msgid "Hearthstone"
