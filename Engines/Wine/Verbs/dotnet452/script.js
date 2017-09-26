@@ -42,7 +42,10 @@ Wine.prototype.dotnet452 = function() {
         .set("native", ["mscoree"])
         .do();
         
-    this.windowsVersion("win2003");
+    /**
+    * winetricks set the windows version to 2003    
+    * this.windowsVersion("win2003");
+    */
 
     return this;
 };
