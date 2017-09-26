@@ -10,7 +10,7 @@ new OnlineInstallerScript()
     .url("https://www.battle.net/download/getInstallerForGame?os=win&locale=enGB&version=LIVE&gameProgram=BATTLENET_APP.exe")
     .category("Games")
     .executable("Battle.net.exe")
-    .wineVersion("2.7")
+    .wineVersion(LATEST_DEVELOPMENT_VERSION)
     .preInstall(function(wine, wizard) {
         wine.windowsVersion("winxp");
         wine.vcrun2015();

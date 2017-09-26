@@ -4,10 +4,6 @@ include(["Engines", "Wine", "Verbs", "luna"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
 
 Wine.prototype.dotnet40 = function() {
-    if (this.architecture() == "amd64") {
-        throw "{0} cannot be installed in a 64bit wine prefix!".format("dotnet40");
-    }
-
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("http://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe")

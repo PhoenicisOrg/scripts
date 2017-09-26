@@ -24,7 +24,9 @@ for file_name in json_file_names:
 for key, value in data.iteritems():
     messages = []
     basename = os.path.basename(key)
-    if basename == 'application.json':
+    if basename == 'script.json':
+        messages.append(data[key]['scriptName'])
+    elif basename == 'application.json':
         messages.append(data[key]['name'])
         messages.append(data[key]['description'])
     elif basename == 'category.json':
@@ -50,7 +52,7 @@ for key, value in data.iteritems():
                 out_file.write(translated_message.encode('utf-8'))
 
 # update the .pot
-xgettext = 'find . -iname "*.js" | sort | xargs -d \'\n\' xgettext --from-code=UTF-8 --language=Javascript -ktr -o i18n/keys.pot'
+xgettext = 'find . -iname "*.js" | sort | xargs -d \'\n\' xgettext --add-location=file --from-code=UTF-8 --language=Javascript -ktr -o i18n/keys.pot'
 ps = subprocess.Popen(xgettext, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 ps.communicate()[0]
 

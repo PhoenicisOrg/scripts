@@ -27,7 +27,11 @@ ZipScript.prototype.checksum = function(checksum) {
 ZipScript.prototype.go = function() {
     var appsManager = Bean("repositoryManager");
     var application = appsManager.getApplication([this._type, this._category, this._name]);
-    var setupWizard = SetupWizard(InstallationType.APPS, this._name, application.getMainMiniature());
+    var miniature = java.util.Optional.empty();
+    if (application) {
+        miniature = application.getMainMiniature();
+    }
+    var setupWizard = SetupWizard(InstallationType.APPS, this._name, miniature);
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
@@ -46,16 +50,22 @@ ZipScript.prototype.go = function() {
     // back to generic wait (might have been changed in preInstall)
     setupWizard.wait(tr("Please wait ..."));
 
-    new Downloader()
-        .wizard(setupWizard)
-        .url(this._url)
-        .checksum(this._checksum)
-        .to(wine.prefixDirectory + "/drive_c/archive.zip")
-        .get();
+    var archive = "";
+    if (!this._url) {
+        archive = setupWizard.browse(tr("Please select the .zip file."), wine.prefixDirectory, ["zip"]);
+    } else {
+        archive = wine.prefixDirectory + "/drive_c/archive.zip";
+        new Downloader()
+            .wizard(setupWizard)
+            .url(this._url)
+            .checksum(this._checksum)
+            .to(archive)
+            .get();
+    }
 
     new Extractor()
         .wizard(setupWizard)
-        .archive(wine.prefixDirectory + "/drive_c/archive.zip")
+        .archive(archive)
         .to(wine.prefixDirectory + "/drive_c/" + this._name)
         .extract();
 

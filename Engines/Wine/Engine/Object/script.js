@@ -4,6 +4,8 @@ include(["Utils", "Functions", "Net", "Download"]);
 include(["Utils", "Functions", "Net", "Resource"]);
 
 LATEST_STABLE_VERSION = "2.0.2";
+LATEST_DEVELOPMENT_VERSION = "2.17";
+LATEST_STAGING_VERSION = "2.17";
 
 WINE_PREFIX_DIR = "wineprefix"
 
@@ -18,6 +20,7 @@ function Wine() {
     this._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
     this._configFactory = Bean("compatibleConfigFileFormatFactory");
     this._OperatingSystemFetcher = Bean("operatingSystemFetcher");
+    this._ExeAnalyser = Bean("exeAnalyser");
     this._wineDebug = "-all";
     this._ldPath = Bean("propertyReader").getProperty("application.environment.ld");
 }
@@ -168,6 +171,14 @@ Wine.prototype.installed = function () {
 };
 
 /**
+* returns the path to the engine binary directory
+* @returns {String}
+*/
+Wine.prototype.binPath = function () {
+    return this._fetchLocalDirectory() + "/bin/";
+};
+
+/**
 *
 * @param executable
 * @param args
@@ -196,6 +207,13 @@ Wine.prototype.run = function (executable, args, captureOutput) {
 
     if(extensionFile == "bat") {
         return this.run("start", ["/Unix", executable].concat(args), captureOutput);
+    }
+
+    // do not run 64bit executable in 32bit prefix
+    if (extensionFile == "exe") {
+        if (this._architecture == "x86" && this._ExeAnalyser.is64Bits(new java.io.File(executable))) {
+            throw tr("Cannot run 64bit executable in a 32bit Wine prefix.");
+        }
     }
 
     this._installVersion();
