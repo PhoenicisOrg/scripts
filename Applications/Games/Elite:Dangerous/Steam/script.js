@@ -16,7 +16,6 @@ new SteamScript()
         wine.corefonts();
         wine.quartz();
         wine.vcrun2012();
-        wine.windowsVersion("win7");
         wine.enableCSMT();
     })
     .appId(359320)               
