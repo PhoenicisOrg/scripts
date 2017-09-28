@@ -14,6 +14,8 @@ Wine.prototype.dotnet45 = function() {
     if (this.architecture() == "amd64") {
         throw "{0} cannot be installed in a 64bit wine prefix!".format("dotnet45");
     }
+    
+    var OSVersion = this.windowsVersion;
 
     var setupFile = new Resource()
         .wizard(this._wizard)
@@ -42,11 +44,12 @@ Wine.prototype.dotnet45 = function() {
     this.overrideDLL()
         .set("native", ["mscoree"])
         .do();
+        
+    this.windowsVersion(OSVersion);
     
-    /**
-    * winetricks set the windows version to 2003    
-    * this.windowsVersion("win2003");
-    */
+    if(OSVersion != "win2003") {
+     print(tr("{0} applications can have issues when windows version is not set to \"win2003\""), ".NET 4.5");
+    }
     
     return this;
-}; 
+};  
