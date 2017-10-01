@@ -14,7 +14,7 @@ Wine.prototype.dotnet452 = function() {
         throw "{0} cannot be installed in a 64bit wine prefix!".format("dotnet452");
     }
     
-    var OSVersion = this.windowsVersion;
+    var OSVersion = this.windowsVersion();
 
     var setupFile = new Resource()
         .wizard(this._wizard)
@@ -47,7 +47,7 @@ Wine.prototype.dotnet452 = function() {
     this.windowsVersion(OSVersion);
     
     if(OSVersion != "win2003") {
-     print(tr("{0} applications can have issues when windows version is not set to \"win2003\"", ".NET 4.5.2"));
+        print(tr("{0} applications can have issues when windows version is not set to \"win2003\"", ".NET 4.5.2"));
     }
     
     return this;
