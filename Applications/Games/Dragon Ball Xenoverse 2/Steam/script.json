@@ -1,0 +1,7 @@
+{
+      "scriptName": "Dragon Ball Xenoverse 2",
+      "compatibleOperatingSystems": ["MACOSX", "LINUX"],
+      "testingOperatingSystems": ["MACOSX", "LINUX"],
+      "free": false,
+      "requiresPatch": false
+}
