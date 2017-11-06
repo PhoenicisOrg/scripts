@@ -1,5 +1,5 @@
 {
-      "scriptName": "Far Cry 2",
+      "scriptName": "Steam",
       "compatibleOperatingSystems": ["MACOSX", "LINUX"],
       "testingOperatingSystems": ["MACOSX", "LINUX"],
       "free": false,
