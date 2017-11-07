@@ -10,5 +10,6 @@ new SteamScript()
     .appId(454650)
     .preInstall(function(wine, wizard) {
         wine.enableCSMT();
+        //might need dxfullsetup d3d11 and d3d_43 compiler, but test result is old (2.10)
     })
     .go();
