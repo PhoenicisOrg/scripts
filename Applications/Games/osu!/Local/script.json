@@ -1,7 +1,7 @@
 {
 	"scriptName": "Local",
 	"compatibleOperatingSystems": ["LINUX"],
-	"testingOperatingSystems": ["LINUX"],
+	"testingOperatingSystems": [],
 	"free": false,
 	"requiresPatch": false
 } 
