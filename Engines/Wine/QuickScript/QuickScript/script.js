@@ -1,3 +1,5 @@
+include(["Engines", "Wine", "Shortcuts", "Wine"]);
+
 function QuickScript() {
     this._wineVersion = LATEST_STABLE_VERSION;
     this._wineArchitecture = "x86";
@@ -9,6 +11,13 @@ function QuickScript() {
     this._postInstall = function() {};
     this._preInstall = function() {};
     this._wineUserSettings = false;
+
+    var appsManager = Bean("repositoryManager");
+    var application = appsManager.getApplication([TYPE_ID, CATEGORY_ID, APPLICATION_ID]);
+    this._miniature = java.util.Optional.empty();
+    if (application) {
+        this._miniature = application.getMainMiniature();
+    }
 }
 
 QuickScript.prototype.name = function(name) {
@@ -38,6 +47,21 @@ QuickScript.prototype.type = function(type) {
 
 QuickScript.prototype.category = function(category) {
     this._category = category;
+    return this;
+};
+
+/**
+ * get/set miniature (for the installation and the shortcut)
+ * @param {URI} [miniature] path to the miniature file
+ */
+QuickScript.prototype.miniature = function(miniature) {
+    // get
+    if (arguments.length == 0) {
+        return this._miniature;
+    }
+
+    // set
+    this._miniature = java.util.Optional.of(miniature);
     return this;
 };
 
@@ -86,4 +110,23 @@ QuickScript.prototype.postInstall = function(postInstall) {
 QuickScript.prototype.preInstall = function(preInstall) {
     this._preInstall = preInstall;
     return this;
+};
+
+/**
+ * creates shortcut
+ * @param {string} [prefix] prefix name
+ */
+QuickScript.prototype._createShortcut = function(prefix) {
+    var shortcut = new WineShortcut()
+                       .name(this._name)
+                       .type(this._type)
+                       .category(this._category)
+                       .prefix(prefix)
+                       .search(this._executable)
+                       .arguments(this._executableArgs);
+
+    if(this.miniature().isPresent()) {
+        shortcut.miniature(this.miniature().get())
+    }
+    shortcut.create();
 };

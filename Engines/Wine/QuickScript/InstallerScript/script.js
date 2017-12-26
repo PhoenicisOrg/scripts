@@ -2,7 +2,6 @@ include(["Engines", "Wine", "QuickScript", "QuickScript"]);
 include(["Engines", "Wine", "Engine", "Object"]);
 include(["Utils", "Functions", "Filesystem", "Extract"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
-include(["Engines", "Wine", "Shortcuts", "Wine"]);
 include(["Engines", "Wine", "Verbs", "luna"]);
 
 
@@ -17,13 +16,7 @@ InstallerScript.prototype.constructor = InstallerScript;
 InstallerScript.prototype.go = function() {
     this._name = this._name || "Custom Installer";
 
-    var appsManager = Bean("repositoryManager");
-    var application = appsManager.getApplication([this._type, this._category, this._name]);
-    var miniature = java.util.Optional.empty();
-    if (application) {
-        miniature = application.getMainMiniature();
-    }
-    var setupWizard = SetupWizard(InstallationType.APPS, this._name, miniature);
+    var setupWizard = SetupWizard(InstallationType.APPS, this._name, this.miniature());
 
     // if no name given, ask user
     if (this._name == "Custom Installer") {
@@ -95,15 +88,7 @@ InstallerScript.prototype.go = function() {
         this._executable = fileName(setupWizard.browse(tr("Please select the executable."), wine.prefixDirectory, ["exe"]));
     }
 
-    new WineShortcut()
-        .name(this._name)
-        .type(this._type)
-        .category(this._category)
-        .prefix(wine.prefix())
-        .search(this._executable)
-        .arguments(this._executableArgs)
-        .miniature([this._type, this._category, this._name])
-        .create();
+    this._createShortcut(wine.prefix());
 
     this._postInstall(wine, setupWizard);
 
