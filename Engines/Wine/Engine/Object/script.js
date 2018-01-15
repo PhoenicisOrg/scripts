@@ -3,7 +3,7 @@ include(["Utils", "Functions", "Filesystem", "Extract"]);
 include(["Utils", "Functions", "Net", "Download"]);
 include(["Utils", "Functions", "Net", "Resource"]);
 
-LATEST_STABLE_VERSION = "2.0.3";
+LATEST_STABLE_VERSION = "2.0.4";
 LATEST_DEVELOPMENT_VERSION = "2.22";
 LATEST_STAGING_VERSION = "2.19";
 
