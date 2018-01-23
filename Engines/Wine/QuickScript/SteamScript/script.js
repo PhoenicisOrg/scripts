@@ -77,7 +77,7 @@ SteamScript.prototype.go = function() {
 
     // default executable args if not specified
     if (!this._executableArgs) {
-        this._executableArgs = ["-silent", "-applaunch", this._appId];
+        this._executableArgs = ["-no-cef-sandbox", "-silent", "-applaunch", this._appId];
     }
 
     var setupWizard = SetupWizard(InstallationType.APPS, this._name, this.miniature());
