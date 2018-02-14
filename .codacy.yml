@@ -1,6 +1,6 @@
 engines:
- eslint:
-   enabled: true
+  eslint:
+    enabled: true
    
 exclude_paths:
   - '**.po'
