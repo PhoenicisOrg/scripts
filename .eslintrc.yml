@@ -1,0 +1,6 @@
+globals:
+  include: true
+  # wine
+  LATEST_DEVELOPMENT_VERSION: true
+  LATEST_STABLE_VERSION: true
+  LATEST_STAGING_VERSION: true
