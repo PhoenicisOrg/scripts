@@ -1,7 +1,6 @@
-# How to add a script
-
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ec5268b4e2c0412ead8d90e561795fd1)](https://app.codacy.com/app/PhoenicisOrg/Scripts?utm_source=github.com&utm_medium=referral&utm_content=PhoenicisOrg/Scripts&utm_campaign=badger)
 
+# How to add a script
 1. Select the right category
   * Accessories
   * Development
