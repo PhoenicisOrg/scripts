@@ -1,0 +1,7 @@
+{
+  	"scriptName": "Steam",
+  	"compatibleOperatingSystems": ["LINUX"],
+  	"testingOperatingSystems": ["LINUX"],
+  	"free": false,
+  	"requiresPatch": false
+}
