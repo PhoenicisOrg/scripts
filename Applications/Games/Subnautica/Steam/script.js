@@ -1,7 +1,6 @@
 include(["Engines", "Wine", "QuickScript", "SteamScript"]);
 include(["Engines", "Wine", "Verbs", "vcrun2013"]);
 include(["Engines", "Wine", "Verbs", "vcrun2008"]);
-include(["Engines", "Wine", "Verbs", "d3dx9"]);
 include(["Engines", "Wine", "Verbs", "xact"]);
 include(["Engines", "Wine", "Verbs", "corefonts"]);
 
@@ -18,11 +17,10 @@ new SteamScript()
         	wine.vcrun2013();
         	wine.corefonts();
 		wine.vcrun2008();
-		wine.d3dx9();
 		wine.xact();
+		var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		wine.setVirtualDesktop(screenSize.width, screenSize.height);
 	})
 	.gameOverlay(false)
+	.executable("Steam.exe", ["-silent", "-applaunch", 264710, "-no-ces-sandbox", "-force-opengl"])
 	.go();
-
-var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-wine.setVirtualDesktop(screenSize.width, screenSize.height);
