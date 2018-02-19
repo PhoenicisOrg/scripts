@@ -20,7 +20,10 @@ new SteamScript()
 		wine.xact();
 		var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		wine.setVirtualDesktop(screenSize.width, screenSize.height);
+		Set objShell = WScript.CreateObject("UseTakeFocus")
+		objShell.RegWrite "HKEY_CURRENT_USER\Software\Wine\X11 Driver", "N", "REG_SZ"
 	})
 	.gameOverlay(false)
 	.executable("Steam.exe", ["-silent", "-applaunch", 264710, "-no-ces-sandbox", "-force-opengl"])
 	.go();
+
