@@ -1,3 +1,6 @@
+rules:
+  indent: 4
+  
 globals:
   include: true
   # files
