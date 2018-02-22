@@ -1,8 +1,12 @@
+print(TYPE_ID);
 include(["Engines", "Wine", "QuickScript", "SteamScript"]);
 include(["Engines", "Wine", "Verbs", "vcrun2013"]);
 include(["Engines", "Wine", "Verbs", "vcrun2008"]);
 include(["Engines", "Wine", "Verbs", "xact"]);
 include(["Engines", "Wine", "Verbs", "corefonts"]);
+include(["Utils", "Functions", "Apps", "Resources"]);
+include(["Utils", "Functions", "Filesystem", "Files"]);
+include(["Engines", "Wine", "Engine", "Object"]);
 
 new SteamScript()
 	.name("Subnautica")
@@ -20,8 +24,9 @@ new SteamScript()
 		wine.xact();
 		var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		wine.setVirtualDesktop(screenSize.width, screenSize.height);
-		Set objShell = WScript.CreateObject("UseTakeFocus")
-		objShell.RegWrite "HKEY_CURRENT_USER\Software\Wine\X11 Driver", "N", "REG_SZ"
+		var registrySettings = new AppResource().application(["Applications", "Games", "Subnautica"]).get("fix.reg");
+		wine.regedit().patch(registrySettings);
+
 	})
 	.gameOverlay(false)
 	.executable("Steam.exe", ["-silent", "-applaunch", 264710, "-no-ces-sandbox", "-force-opengl"])
