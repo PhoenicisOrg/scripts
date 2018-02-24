@@ -1,5 +1,5 @@
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y python-jsonschema
+  - sudo apt-get install -y python-jsonschema python-pil
 
 script: python ./validate.py
