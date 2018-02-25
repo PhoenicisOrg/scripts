@@ -4,7 +4,7 @@ before_install:
 
 script: python ./validate.py
 
-after_success: if [ "$TRAVIS_BRANCH" == "master" ]; then && ./i18n/push_translations.sh; fi
+after_success: if [ "$TRAVIS_BRANCH" == "master" ]; then ./i18n/push_translations.sh; fi
 
 env:
   global:
