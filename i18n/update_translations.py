@@ -57,3 +57,14 @@ ps = subprocess.Popen(xgettext, shell=True, stdout=subprocess.PIPE, stderr=subpr
 ps.communicate()[0]
 
 shutil.rmtree(out_dir)
+
+# merge .po's and update .properties
+languages = []
+for root, dir_names, file_names in os.walk(cwd + '/i18n'):
+    for file_name in fnmatch.filter(file_names, '*.po'):
+        languages.append(os.path.splitext(file_name)[0])
+for language in languages:
+    ps = subprocess.Popen('msgmerge -U i18n/{}.po i18n/keys.pot'.format(language), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    ps.communicate()[0]
+    ps = subprocess.Popen('msgcat --properties-output i18n/{0}.po -o i18n/Messages_{0}.properties'.format(language), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    ps.communicate()[0]
