@@ -24,7 +24,7 @@ new SteamScript()
 		wine.xact();
 		var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		wine.setVirtualDesktop(screenSize.width, screenSize.height);
-		var registrySettings = new AppResource().application(["Applications", "Games", "Subnautica"]).get("fix.reg");
+		var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("fix.reg");
 		wine.regedit().patch(registrySettings);
 
 	})
