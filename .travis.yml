@@ -2,9 +2,12 @@ before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y python-jsonschema python-pil
 
-script: python ./validate.py
+script:
+  - python ./validate.py
 
-after_success: if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./i18n/push_translations.sh; fi
+after_success:
+  # push translation updates only for master (PR changes must be committed to master before they are taken into account)
+  - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./i18n/push_translations.sh; fi
 
 env:
   global:
