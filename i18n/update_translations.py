@@ -56,15 +56,7 @@ for key, value in data.iteritems():
 
 # update the .pot
 print "\nrun xgettext to update the .pot"
-ps = subprocess.Popen('find . -iname "*.js"', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-print ps.communicate()[0]
-print "\n\nsorted:"
-ps = subprocess.Popen('find . -iname "*.js" | sort', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-print ps.communicate()[0]
-print "\n for the witness"
-ps = subprocess.Popen('xgettext --add-location=file --from-code=UTF-8 --language=Javascript -ktr -o i18n/keys.pot ./i18n/tmp/Applications/Games/The Witness/application.js', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-print ps.communicate()[0]
-xgettext = 'find . -iname "*.js" | sort | xargs -d \'\n\' xgettext --add-location=file --from-code=UTF-8 --language=Javascript -ktr -o i18n/keys.pot'
+xgettext = 'find . -iname "*.js" | sort | xargs -d \'\n\' xgettext --from-code=UTF-8 --language=Javascript -ktr -o i18n/keys.pot'
 ps = subprocess.Popen(xgettext, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 ps.communicate()[0]
 
