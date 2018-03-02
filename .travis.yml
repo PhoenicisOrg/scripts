@@ -7,6 +7,7 @@ script:
 
 after_success:
   - python i18n/update_translations.py
+  - git checkout master
   - git status
 
 env:
