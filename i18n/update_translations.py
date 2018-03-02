@@ -9,6 +9,8 @@ import subprocess
 cwd = os.getcwd()
 out_dir = cwd + '/i18n/tmp'
 
+print "write xgettext input files to {}".format(out_dir)
+
 # load all .json files
 json_file_names = []
 for root, dir_names, file_names in os.walk(cwd):
@@ -45,6 +47,7 @@ for key, value in data.iteritems():
 
     # write messages to file
     with open(out_file_name, 'w') as out_file:
+        print " generating {}".format(out_file_name)
         for message in messages:
             # no empty strings
             if message:
@@ -52,6 +55,7 @@ for key, value in data.iteritems():
                 out_file.write(translated_message.encode('utf-8'))
 
 # update the .pot
+print "\nrun xgettext to update the .pot"
 xgettext = 'find . -iname "*.js" | sort | xargs -d \'\n\' xgettext --add-location=file --from-code=UTF-8 --language=Javascript -ktr -o i18n/keys.pot'
 ps = subprocess.Popen(xgettext, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 ps.communicate()[0]
@@ -59,6 +63,7 @@ ps.communicate()[0]
 shutil.rmtree(out_dir)
 
 # merge .po's and update .properties for all available languages
+print "\nmerge .po's and update .properties for all available languages"
 languages = []
 for root, dir_names, file_names in os.walk(cwd + '/i18n'):
     # the .po's are named lanuage.po (e.g. de.po)
@@ -66,6 +71,7 @@ for root, dir_names, file_names in os.walk(cwd + '/i18n'):
     for file_name in fnmatch.filter(file_names, '*.po'):
         languages.append(os.path.splitext(file_name)[0])
 for language in languages:
+    print " {}".format(language)
     # update .po with changes in .pot
     ps = subprocess.Popen('msgmerge -U i18n/{}.po i18n/keys.pot'.format(language), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     ps.communicate()[0]
