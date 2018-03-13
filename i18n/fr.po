@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-02 18:20+0000\n"
+"POT-Creation-Date: 2018-03-13 17:35+0000\n"
 "PO-Revision-Date: 2017-09-24 10:24+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: French\n"
@@ -509,6 +509,7 @@ msgstr ""
 #: Academy/Steam/script.js:1 Mysteries the Sith/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Steam/application.js:1
 #: i18n/tmp/Applications/Games/Styx: Shards Darkness/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Subnautica/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Super Blue Boy Planet/Steam/script.js:1
 #: i18n/tmp/Applications/Games/The Crew/Steam/script.js:1 Elder Scrolls V:
 #: Skyrim/Steam/script.js:1 Room/Steam/script.js:1 Room Two/Steam/script.js:1
@@ -1916,6 +1917,30 @@ msgid ""
 "environments, sneak past or assassinate new enemies and bosses, and "
 "experiment with the new array of lethal abilities and weapons in our goblin "
 "assassin's arsenal."
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Subnautica/application.js:1
+msgid "Subnautica"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Subnautica/application.js:2
+msgid ""
+"Subnautica is a game about exploration and adventure set in an underwater "
+"world. After an emergency landing on a foreign water planet you can only "
+"look in the depths. Discover seaweed forests and grass plateaus, reefs and "
+"labyrinths of underwater caves, but remember the ever-diminished oxygen. "
+"Water is swarming with life: some creatures are useful, but a large part is "
+"dangerous. When you wake up in a life capsule, you fight with time - you "
+"need to find drinking water, food, and develop equipment that will be useful "
+"during exploration. Collect resources from the ocean around you. Create "
+"knives, lighting, diving equipment, and build small submarines. The ocean is "
+"full of life: use the ecosystem to your advantage. Lure and outwit the "
+"dangerous creature with a fresh fish, or just swim as fast as you can to "
+"avoid the jaws of omnipresent predators. Cave systems extend below the "
+"bottom of the ocean - from dark, claustrophobic passages to caves "
+"illuminated by bioluminescent life forms. Explore the world below the bottom "
+"of the ocean, but watch out for oxygen levels and avoid the dangers lurking "
+"in the dark."
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Super Blue Boy Planet/application.js:1
