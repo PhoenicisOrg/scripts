@@ -1,6 +1,6 @@
 {
   	"scriptName": "Online",
-  	"compatibleOperatingSystems": [],
+  	"compatibleOperatingSystems": ["LINUX"],
   	"testingOperatingSystems": ["LINUX"],
   	"free": true,
   	"requiresPatch": false
