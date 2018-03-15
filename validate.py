@@ -117,7 +117,7 @@ for script_dir in script_dirs:
             script_json = json.loads(f.read().decode("utf-8-sig"))
             jsonschema.validate(script_json, script_schema)
             # check that testingOperatingSystems is a subset of compatibleOperatingSystems
-            if not set(script_json['testingOperatingSystems']) < set(script_json['compatibleOperatingSystems']):
+            if not set(script_json['testingOperatingSystems']) <= set(script_json['compatibleOperatingSystems']):
                 print "{}: testingOperatingSystems must be a subset of compatibleOperatingSystems".format(script_json_file)
                 is_valid = False
     except ValueError as value_error:
