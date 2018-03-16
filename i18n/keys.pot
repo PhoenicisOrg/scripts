@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-13 17:35+0000\n"
+"POT-Creation-Date: 2018-03-16 14:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -267,6 +267,7 @@ msgstr ""
 #: i18n/tmp/Applications/Accessories/Soundplant/Online/script.js:1
 #: i18n/tmp/Applications/Custom/OnlineInstaller/Online/script.js:1
 #: i18n/tmp/Applications/Games/Crayon Physics/Online/script.js:1
+#: i18n/tmp/Applications/Games/DC Universe Online/Online/script.js:1
 #: i18n/tmp/Applications/Games/Druid Soccer/Online/script.js:1
 #: i18n/tmp/Applications/Games/Earth Eternal - Valkal's Shadow/Online/script.js:1
 #: i18n/tmp/Applications/Games/Epic Games Launcher/Online/script.js:1
@@ -946,6 +947,16 @@ msgstr ""
 msgid ""
 "Crayon Physics is a mouse arcade game. You will have to draw lines and "
 "squares to move a ball. The aim is to catch the stars in the level. "
+msgstr ""
+
+#: i18n/tmp/Applications/Games/DC Universe Online/application.js:1
+msgid "DC Universe Online"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/DC Universe Online/application.js:2
+msgid ""
+"Sony's new MMORPG based on the DC universe. Be a hero or villain in 2 "
+"humongous cities."
 msgstr ""
 
 #: i18n/tmp/Applications/Games/DOOM (2016)/application.js:1

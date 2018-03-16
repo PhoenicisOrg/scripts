@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-13 17:35+0000\n"
+"POT-Creation-Date: 2018-03-16 14:52+0000\n"
 "PO-Revision-Date: 2017-09-24 10:24+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: French\n"
@@ -273,6 +273,7 @@ msgstr ""
 #: i18n/tmp/Applications/Accessories/Soundplant/Online/script.js:1
 #: i18n/tmp/Applications/Custom/OnlineInstaller/Online/script.js:1
 #: i18n/tmp/Applications/Games/Crayon Physics/Online/script.js:1
+#: i18n/tmp/Applications/Games/DC Universe Online/Online/script.js:1
 #: i18n/tmp/Applications/Games/Druid Soccer/Online/script.js:1
 #: i18n/tmp/Applications/Games/Earth Eternal - Valkal's
 #: Shadow/Online/script.js:1 i18n/tmp/Applications/Games/Epic Games
@@ -1019,6 +1020,16 @@ msgid ""
 msgstr ""
 "Crayon Physics est un jeu d'arcade à la souris. Vous devrez tracer lignes et "
 "carrés pour bouger la balle. Le but est d'avoir les étoiles du niveau."
+
+#: i18n/tmp/Applications/Games/DC Universe Online/application.js:1
+msgid "DC Universe Online"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/DC Universe Online/application.js:2
+msgid ""
+"Sony's new MMORPG based on the DC universe. Be a hero or villain in 2 "
+"humongous cities."
+msgstr ""
 
 #: i18n/tmp/Applications/Games/DOOM (2016)/application.js:1
 msgid "DOOM (2016)"
