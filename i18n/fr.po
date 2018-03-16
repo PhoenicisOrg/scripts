@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-29 21:45+0200\n"
-"PO-Revision-Date: 2017-09-29 22:21+0200\n"
+"POT-Creation-Date: 2018-03-02 18:20+0000\n"
+"PO-Revision-Date: 2018-03-03 11:44+0100\n"
 "Last-Translator: ImperatorS79 <fevrier.simon@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
-#: Applications/Games/League of Legends/BETA Client/script.js
+#: Applications/Games/League of Legends/BETA Client/script.js:41
 msgid "Select your region:"
 msgstr "Sélectionnez votre région :"
 
-#: Applications/Games/Mass Effect/Steam/script.js
+#: Applications/Games/Mass Effect/Steam/script.js:9
 msgid ""
 "If you have sound issues, please edit the BIOEngine.ini and/or BaseEngine."
 "ini file in {0}/drive_c/Program Files/Steam/steamapps/common/Mass Effect/"
@@ -45,8 +45,8 @@ msgstr ""
 "UseEffectsProcessing=False\n"
 "\n"
 
-#: Applications/Games/Origin/Local (Legacy)/script.js
-#: Applications/Games/Origin/Online
+#: Applications/Games/Origin/Local (Legacy)/script.js:14
+#: Applications/Games/Origin/Online (Legacy)/script.js:13
 msgid ""
 "When Origin launches, you will get an error message (\"Your update could not "
 "be completed.\"). This is ok. Just close the popup."
@@ -55,37 +55,68 @@ msgstr ""
 "not be completed.\"). C'est normal. Fermez juste le popup."
 
 #: Applications/Games/Tom Clancy's Rainbow Six 3 : Raven Shield/Local
-#: (1.0->1.6)/script.js
+#: (1.0->1.6)/script.js:11
 msgid "Select your region for the patch (1.0 to 1.60)."
 msgstr "Sélectionner votre région pour le patch (1.0 vers 1.60)."
 
-#: Applications/Games/Warcraft III TFT/Online/script.js
+#: Applications/Games/Total War Rome II/Steam/script.js:19
+msgid ""
+"If you are experiencing issues with game (e.g. it crashes at start or "
+"rendering is broken), you can try to enable de OpenGL renderer, by "
+"modifying :\n"
+"\n"
+" gfx_device_type to 2\n"
+"\n"
+" in the {0}/drive_c/users/USERNAME/Application Data/The Creative Assembly/"
+"Rome2/scripts/preferences_script.txt "
+msgstr ""
+"Si vous avez des problèmes en jeu (par ex : le jeu crash au début ou le "
+"rendu ne fonctionne pas correctement), vous puvez essayer d'activer le rendu "
+"OpenGL, en mofifiant :\n"
+"\v\n"
+" gfx_device_type à 2\n"
+"\n"
+"dans {0}/drive_c/users/USERNAME/Application Data/The Creative Assembly/Rome2/"
+"scripts/preferences_script.txt "
+
+#: Applications/Games/Warcraft III TFT/Online/script.js:13
 msgid "Please install Warcraft III before installing The Frozen Throne."
 msgstr "Veuillez installer Warcraft II avant d'installer The Frozen Throne."
 
-#: Applications/Internet/Internet Explorer 6.0/Online/script.js
-#: Engines/Wine/Engine/Object/script.js
-#: Engines/Wine/QuickScript/InstallerScript/script.js
-#: Engines/Wine/QuickScript/SteamScript/script.js
-#: Engines/Wine/QuickScript/UplayScript/script.js
-#: Engines/Wine/QuickScript/ZipScript/script.js
-#: Engines/Wine/Verbs/corefonts/script.js Engines/Wine/Verbs/d3dx10/script.js
-#: Engines/Wine/Verbs/d3dx9/script.js Engines/Wine/Verbs/dotnet40/script.js
-#: Engines/Wine/Verbs/dotnet452/script.js Engines/Wine/Verbs/dotnet45/script.js
-#: Engines/Wine/Verbs/xact/script.js
+#: Applications/Internet/Internet Explorer 6.0/Online/script.js:71
+#: Engines/Wine/Engine/Object/script.js:309
+#: Engines/Wine/QuickScript/InstallerScript/script.js:96
+#: Engines/Wine/QuickScript/SteamScript/script.js:107
+#: Engines/Wine/QuickScript/SteamScript/script.js:112
+#: Engines/Wine/QuickScript/SteamScript/script.js:132
+#: Engines/Wine/QuickScript/SteamScript/script.js:147
+#: Engines/Wine/QuickScript/UplayScript/script.js:65
+#: Engines/Wine/QuickScript/UplayScript/script.js:70
+#: Engines/Wine/QuickScript/UplayScript/script.js:90
+#: Engines/Wine/QuickScript/ZipScript/script.js:44
+#: Engines/Wine/QuickScript/ZipScript/script.js:70
+#: Engines/Wine/Verbs/corefonts/script.js:79
+#: Engines/Wine/Verbs/d3dx10/script.js:30 Engines/Wine/Verbs/d3dx9/script.js:30
+#: Engines/Wine/Verbs/dotnet40/script.js:17
+#: Engines/Wine/Verbs/dotnet40/script.js:33
+#: Engines/Wine/Verbs/dotnet40/script.js:35
+#: Engines/Wine/Verbs/dotnet452/script.js:29
+#: Engines/Wine/Verbs/dotnet45/script.js:30
+#: Engines/Wine/Verbs/xact/script.js:50
 msgid "Please wait ..."
 msgstr "Veuillez patienter ..."
 
-#: Applications/Internet/Internet Explorer 6.0/Online/script.js
-#: 7.0/Online/script.js Engines/Wine/Verbs/corefonts/script.js
+#: Applications/Internet/Internet Explorer 6.0/Online/script.js:75
+#: 7.0/Online/script.js:215 Engines/Wine/Verbs/corefonts/script.js:80
+#: Engines/Wine/Verbs/corefonts/script.js:86
 msgid "Installing {0} ..."
 msgstr "Installe {0} ..."
 
-#: Applications/Internet/Internet Explorer 7.0/Online/script.js
+#: Applications/Internet/Internet Explorer 7.0/Online/script.js:62
 msgid "Which language version would you like to install?"
 msgstr "Quelle langue aimeriez-vous installer ?"
 
-#: Applications/Office/ElsterFormular/Online/script.js
+#: Applications/Office/ElsterFormular/Online/script.js:8
 msgid ""
 "Please select the installation file.\n"
 "You can download it from https://www.elster.de/elfo_down.php."
@@ -93,60 +124,60 @@ msgstr ""
 "Veuillez sélectionner le fichier d'installation.\n"
 "Vous pouvez le télécharger depuis https://www.elster.de/elfo_down.php."
 
-#: Engines/Wine/Engine/Object/script.js
+#: Engines/Wine/Engine/Object/script.js:215
 msgid "Cannot run 64bit executable in a 32bit Wine prefix."
 msgstr "Ne peut pas lancer un exécutable 64bit dans un préfixe wine 32bit."
 
-#: Engines/Wine/Engine/Object/script.js
+#: Engines/Wine/Engine/Object/script.js:274
 msgid "Please wait while {0} is uninstalled ..."
 msgstr "Veuillez patienter pendant que {0} est désinstallé ..."
 
-#: Engines/Wine/Engine/Object/script.js
+#: Engines/Wine/Engine/Object/script.js:276
 msgid "Could not uninstall {0}!"
 msgstr "Impossible de désinstaller {0} !"
 
-#: Engines/Wine/Engine/Object/script.js
+#: Engines/Wine/Engine/Object/script.js:462
 msgid "Prefix seems to be 32bits"
 msgstr "Le préfixe semble être en 32bits"
 
-#: Engines/Wine/Engine/Object/script.js
+#: Engines/Wine/Engine/Object/script.js:480
 msgid "Installing version: "
 msgstr "Installe la version : "
 
-#: Engines/Wine/Engine/Object/script.js
+#: Engines/Wine/Engine/Object/script.js:887
 msgid "Could not determine mimetype for file extension \"{0}\""
 msgstr ""
 "Impossible de déterminer le type mime pour l'extension de fichier \"{0}\""
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js
+#: Engines/Wine/QuickScript/InstallerScript/script.js:23
 msgid "Please enter the name of your application."
 msgstr "Veuillez entrer le nom de votre application."
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js
+#: Engines/Wine/QuickScript/InstallerScript/script.js:38
 msgid "Please select the wine architecture."
 msgstr "Veuillez sélectionner l'architecture de wine."
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js
+#: Engines/Wine/QuickScript/InstallerScript/script.js:52
 msgid "Please select the wine distribution."
 msgstr "Veuillez sélectionner la distributions de wine."
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js
+#: Engines/Wine/QuickScript/InstallerScript/script.js:66
 msgid "Please select the wine version."
 msgstr "Veuillez sélectionner la version de wine."
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js
+#: Engines/Wine/QuickScript/InstallerScript/script.js:88
 msgid "Please select the executable."
 msgstr "Veuillez sélectionner l'exécutable."
 
-#: Engines/Wine/QuickScript/LocalInstallerScript/script.js
+#: Engines/Wine/QuickScript/LocalInstallerScript/script.js:23
 msgid "Please select the installation file."
 msgstr "Veuillez sélectionner le fichier d'installation."
 
-#: Engines/Wine/QuickScript/OnlineInstallerScript/script.js
+#: Engines/Wine/QuickScript/OnlineInstallerScript/script.js:32
 msgid "Please select the download URL."
 msgstr "Veuillez sélectionner l'URL de téléchargement."
 
-#: Engines/Wine/QuickScript/SteamScript/script.js
+#: Engines/Wine/QuickScript/SteamScript/script.js:104
 msgid ""
 "Please follow the steps of the Steam setup.\n"
 "\n"
@@ -158,11 +189,11 @@ msgstr ""
 "Décochez \"Lancer Steam\" ou fermez Steam complètement après l'installation  "
 "pour que l'installation de \"{0}\" puisse continuer."
 
-#: Engines/Wine/QuickScript/SteamScript/script.js
+#: Engines/Wine/QuickScript/SteamScript/script.js:116
 msgid "Please wait until Steam has finished the download ..."
 msgstr "Veuillez patienter jusqu'à ce que Steam aie fini le téléchargement ..."
 
-#: Engines/Wine/QuickScript/UplayScript/script.js
+#: Engines/Wine/QuickScript/UplayScript/script.js:60
 msgid ""
 "Please follow the steps of the Uplay setup.\n"
 "\n"
@@ -174,19 +205,19 @@ msgstr ""
 "Décochez \"Lancer Uplay\" ou fermez Uplay complètement après l'installation  "
 "pour que l'installation de \"{0}\" puisse continuer."
 
-#: Engines/Wine/QuickScript/UplayScript/script.js
+#: Engines/Wine/QuickScript/UplayScript/script.js:77
 msgid "Please wait until Uplay has finished the download ..."
 msgstr "Veuillez patienter jusqu'à ce que Uplay aie fini le téléchargement ..."
 
-#: Engines/Wine/QuickScript/UplayScript/script.js
+#: Engines/Wine/QuickScript/UplayScript/script.js:85
 msgid "Please close Uplay."
 msgstr "Veuillez fermer Uplay."
 
-#: Engines/Wine/QuickScript/ZipScript/script.js
+#: Engines/Wine/QuickScript/ZipScript/script.js:48
 msgid "Please select the .zip file."
-msgstr "Veuillez sélectionner le fichier .zip"
+msgstr "Veuillez sélectionner le fichier .zip."
 
-#: Engines/Wine/Shortcuts/Reader/script.js
+#: Engines/Wine/Shortcuts/Reader/script.js:62
 msgid ""
 "The container {0} is no longer used.\n"
 "Do you want to delete it?"
@@ -194,33 +225,54 @@ msgstr ""
 "Le conteneur {0} n'est plus utilisé.\n"
 "Voulez)vous le supprimer ?"
 
-#: Engines/Wine/Shortcuts/Wine/script.js
+#: Engines/Wine/Shortcuts/Wine/script.js:77
 msgid "Executable {0} not found!"
 msgstr "Exécutable {0} introuvable !"
 
-#: Engines/Wine/Verbs/corefonts/script.js
+#: Engines/Wine/Verbs/corefonts/script.js:80
+#: Engines/Wine/Verbs/corefonts/script.js:86
 msgid "fonts"
 msgstr "polices"
 
-#: Engines/Wine/Verbs/d3dx10/script.js Engines/Wine/Verbs/d3dx9/script.js
-#: Engines/Wine/Verbs/xact/script.js
+#: Engines/Wine/Verbs/d3dx10/script.js:10
+#: Engines/Wine/Verbs/d3dx10/script.js:11
+#: Engines/Wine/Verbs/d3dx10/script.js:31 Engines/Wine/Verbs/d3dx9/script.js:10
+#: Engines/Wine/Verbs/d3dx9/script.js:11 Engines/Wine/Verbs/d3dx9/script.js:31
+#: Engines/Wine/Verbs/xact/script.js:16 Engines/Wine/Verbs/xact/script.js:17
+#: Engines/Wine/Verbs/xact/script.js:51
 msgid "Extracting {0} ..."
 msgstr "Extraction de {0} ..."
 
-#: Engines/Wine/Verbs/dotnet40/script.js Engines/Wine/Verbs/dotnet452/script.js
-#: Engines/Wine/Verbs/dotnet45/script.js Engines/Wine/Verbs/physx/script.js
-#: Engines/Wine/Verbs/quicktime76/script.js
-#: Engines/Wine/Verbs/vcrun2003/script.js
-#: Engines/Wine/Verbs/vcrun2005/script.js
-#: Engines/Wine/Verbs/vcrun2008/script.js
-#: Engines/Wine/Verbs/vcrun2010/script.js
-#: Engines/Wine/Verbs/vcrun2012/script.js
-#: Engines/Wine/Verbs/vcrun2013/script.js
-#: Engines/Wine/Verbs/vcrun2015/script.js
+#: Engines/Wine/Verbs/dotnet40/script.js:26
+#: Engines/Wine/Verbs/dotnet452/script.js:41
+#: Engines/Wine/Verbs/dotnet45/script.js:42
+#: Engines/Wine/Verbs/physx/script.js:14
+#: Engines/Wine/Verbs/quicktime76/script.js:10
+#: Engines/Wine/Verbs/vcrun2003/script.js:15
+#: Engines/Wine/Verbs/vcrun2005/script.js:14
+#: Engines/Wine/Verbs/vcrun2008/script.js:14
+#: Engines/Wine/Verbs/vcrun2008/script.js:25
+#: Engines/Wine/Verbs/vcrun2010/script.js:14
+#: Engines/Wine/Verbs/vcrun2010/script.js:25
+#: Engines/Wine/Verbs/vcrun2012/script.js:14
+#: Engines/Wine/Verbs/vcrun2012/script.js:25
+#: Engines/Wine/Verbs/vcrun2013/script.js:14
+#: Engines/Wine/Verbs/vcrun2013/script.js:25
+#: Engines/Wine/Verbs/vcrun2015/script.js:14
+#: Engines/Wine/Verbs/vcrun2015/script.js:25
 msgid "Please wait while {0} is installed ..."
 msgstr "Veuillez patienter pendant que {0} est installé ..."
 
-#: Engines/Wine/Verbs/uplay/script.js
+#: Engines/Wine/Verbs/dotnet452/script.js:50
+#: Engines/Wine/Verbs/dotnet45/script.js:51
+msgid ""
+"{0} applications can have issues when windows version is not set to "
+"\"win2003\""
+msgstr ""
+"{0} certaines applications peuvent avoir des problèmes si la version de "
+"windows n'est pas mise à \"win2003\""
+
+#: Engines/Wine/Verbs/uplay/script.js:11
 msgid ""
 "Please follow the steps of the Uplay setup.\n"
 "\n"
@@ -232,15 +284,15 @@ msgstr ""
 "Décochez \"Lancer Uplay\" ou fermez Uplay complètement après l'installation  "
 "pour que l'installation de \"{0}\" puisse continuer."
 
-#: Engines/Wine/Verbs/xact/script.js
+#: Engines/Wine/Verbs/xact/script.js:33 Engines/Wine/Verbs/xact/script.js:34
 msgid "Registering {0} ..."
 msgstr "Enregistre {0} ..."
 
-#: i18n/tmp/Applications/Accessories/7-zip/application.js
+#: i18n/tmp/Applications/Accessories/7-zip/application.js:1
 msgid "7-zip"
 msgstr "7-zip"
 
-#: i18n/tmp/Applications/Accessories/7-zip/application.js
+#: i18n/tmp/Applications/Accessories/7-zip/application.js:2
 msgid ""
 "7-Zip is a file archiver with a high compression ratio. 7-Zip is open source "
 "software. Most of the source code is under the GNU LGPL license. The unRAR "
@@ -255,52 +307,57 @@ msgstr ""
 "ordinateur, y compris dans les sociétés commerciales. Il n'est pas "
 "nécessaire de s'enregistrer ou payer pour utiliser 7-Zip."
 
-#: i18n/tmp/Applications/Accessories/7-zip/Online/script.js
-#: i18n/tmp/Applications/Accessories/ImgBurn/Online/script.js
-#: i18n/tmp/Applications/Accessories/Soundplant/Online/script.js
-#: i18n/tmp/Applications/Custom/OnlineInstaller/Online/script.js
-#: i18n/tmp/Applications/Games/Crayon Physics/Online/script.js
-#: i18n/tmp/Applications/Games/Druid Soccer/Online/script.js
-#: i18n/tmp/Applications/Games/Epic Games Launcher/Online/script.js
-#: i18n/tmp/Applications/Games/Guild Wars 2/Online/script.js
-#: i18n/tmp/Applications/Games/Hearthstone/Online/script.js
-#: i18n/tmp/Applications/Games/Heroes of the Storm/Online/script.js
-#: i18n/tmp/Applications/Games/Origin/Online/script.js
-#: i18n/tmp/Applications/Games/Overwatch/Online/script.js
-#: i18n/tmp/Applications/Games/Star Craft II/Online/script.js
-#: i18n/tmp/Applications/Games/STAR WARS: The Old Republic/Online/script.js
-#: i18n/tmp/Applications/Games/Steam/Online/script.js
-#: i18n/tmp/Applications/Games/Uplay/Online/script.js
-#: i18n/tmp/Applications/Games/Warcraft III/Online/script.js III
-#: TFT/Online/script.js
-#: i18n/tmp/Applications/Graphics/Photofiltre/Online/script.js
-#: i18n/tmp/Applications/Internet/Internet Explorer 6.0/Online/script.js
-#: 7.0/Online/script.js
-#: i18n/tmp/Applications/Multimedia/Mp3tag/Online/script.js
-#: i18n/tmp/Applications/Office/Adobe Acrobat Reader DC/Online/script.js
-#: i18n/tmp/Applications/Office/ElsterFormular/Online/script.js
+#: i18n/tmp/Applications/Accessories/7-zip/Online/script.js:1
+#: i18n/tmp/Applications/Accessories/ImgBurn/Online/script.js:1
+#: i18n/tmp/Applications/Accessories/Soundplant/Online/script.js:1
+#: i18n/tmp/Applications/Custom/OnlineInstaller/Online/script.js:1
+#: i18n/tmp/Applications/Games/Crayon Physics/Online/script.js:1
+#: i18n/tmp/Applications/Games/Druid Soccer/Online/script.js:1
+#: i18n/tmp/Applications/Games/Earth Eternal - Valkal's
+#: Shadow/Online/script.js:1 i18n/tmp/Applications/Games/Epic Games
+#: Launcher/Online/script.js:1 i18n/tmp/Applications/Games/Guild Wars
+#: 2/Online/script.js:1
+#: i18n/tmp/Applications/Games/Hearthstone/Online/script.js:1
+#: i18n/tmp/Applications/Games/Heroes of the Storm/Online/script.js:1
+#: i18n/tmp/Applications/Games/Origin/Online/script.js:1
+#: i18n/tmp/Applications/Games/Overwatch/Online/script.js:1
+#: i18n/tmp/Applications/Games/Prehistorik/Online/script.js:1
+#: i18n/tmp/Applications/Games/Prince Of Persia: Original/Online/script.js:1
+#: i18n/tmp/Applications/Games/Road Rash/Online/script.js:1
+#: i18n/tmp/Applications/Games/Star Craft II/Online/script.js:1
+#: i18n/tmp/Applications/Games/STAR WARS: The Old Republic/Online/script.js:1
+#: i18n/tmp/Applications/Games/Steam/Online/script.js:1
+#: i18n/tmp/Applications/Games/Uplay/Online/script.js:1
+#: i18n/tmp/Applications/Games/Warcraft III/Online/script.js:1 III
+#: TFT/Online/script.js:1 i18n/tmp/Applications/Games/Xenon
+#: i18n/tmp/Applications/Graphics/Photofiltre/Online/script.js:1
+#: i18n/tmp/Applications/Internet/Internet Explorer 6.0/Online/script.js:1
+#: 7.0/Online/script.js:1
+#: i18n/tmp/Applications/Multimedia/Mp3tag/Online/script.js:1
+#: i18n/tmp/Applications/Office/Adobe Acrobat Reader DC/Online/script.js:1
+#: i18n/tmp/Applications/Office/ElsterFormular/Online/script.js:1
 msgid "Online"
 msgstr "En ligne"
 
-#: i18n/tmp/Applications/Accessories/category.js
+#: i18n/tmp/Applications/Accessories/category.js:1
 msgid "Accessories"
 msgstr "Accessoires"
 
-#: i18n/tmp/Applications/Accessories/ImgBurn/application.js
+#: i18n/tmp/Applications/Accessories/ImgBurn/application.js:1
 msgid "ImgBurn"
 msgstr "ImgBurn"
 
-#: i18n/tmp/Applications/Accessories/ImgBurn/application.js
+#: i18n/tmp/Applications/Accessories/ImgBurn/application.js:2
 msgid ""
 "ImgBurn is a lightweight CD / DVD / HD DVD / Blu-ray burning application."
 msgstr ""
 "ImgBurn est une application de gravure de CD / DVD / HD DVD / Blu-ray légère."
 
-#: i18n/tmp/Applications/Accessories/Soundplant/application.js
+#: i18n/tmp/Applications/Accessories/Soundplant/application.js:1
 msgid "Soundplant"
 msgstr "Soundplant"
 
-#: i18n/tmp/Applications/Accessories/Soundplant/application.js
+#: i18n/tmp/Applications/Accessories/Soundplant/application.js:2
 msgid ""
 "Soundplant turns your computer keyboard into a versatile, low latency sound "
 "trigger and playable instrument.<br><br>Via drag & drop, easily assign sound "
@@ -332,15 +389,15 @@ msgstr ""
 "gratuite ne possède pas certaines fonctionnalités,  http://soundplant.org/"
 "support.htm/"
 
-#: i18n/tmp/Applications/Custom/category.js
+#: i18n/tmp/Applications/Custom/category.js:1
 msgid "Custom"
 msgstr "Personnalisé"
 
-#: i18n/tmp/Applications/Custom/LocalInstaller/application.js
+#: i18n/tmp/Applications/Custom/LocalInstaller/application.js:1
 msgid "Local Installer"
 msgstr "Installeur local"
 
-#: i18n/tmp/Applications/Custom/LocalInstaller/application.js
+#: i18n/tmp/Applications/Custom/LocalInstaller/application.js:2
 msgid ""
 "The Local Installer allows you to install custom applications from your "
 "local computer."
@@ -348,26 +405,29 @@ msgstr ""
 "L'installeur local vous permet d'installé des applications personnalisées "
 "depuis votre ordinateur."
 
-#: i18n/tmp/Applications/Custom/LocalInstaller/Local/script.js
+#: i18n/tmp/Applications/Custom/LocalInstaller/Local/script.js:1
 #: i18n/tmp/Applications/Games/18 Wheels of Steel Across
-#: America/Local/script.js i18n/tmp/Applications/Games/Caesar
-#: III/Local/script.js i18n/tmp/Applications/Games/Epic Games
-#: Launcher/Local/script.js i18n/tmp/Applications/Games/Europa Universalis
-#: II/Local/script.js i18n/tmp/Applications/Games/Guild Wars 2/Local/script.js
-#: i18n/tmp/Applications/Games/Resident Evil 3/Local/script.js
-#: i18n/tmp/Applications/Games/STAR WARS Battlefront - Empire at War Gold
-#: Pack/Local/script.js i18n/tmp/Applications/Games/The Elder Scrolls IV:
-#: Oblivion/Local/script.js i18n/tmp/Applications/Games/Uplay/Local/script.js
-#: i18n/tmp/Applications/Office/Microsoft Office 2010/Local/script.js
-#: 2013/Local/script.js
+#: America/Local/script.js:1 i18n/tmp/Applications/Games/Caesar
+#: III/Local/script.js:1 i18n/tmp/Applications/Games/Command and Conquer -
+#: Tiberium Wars/Local/script.js:1 i18n/tmp/Applications/Games/Epic Games
+#: Launcher/Local/script.js:1 i18n/tmp/Applications/Games/Europa Universalis
+#: II/Local/script.js:1 i18n/tmp/Applications/Games/Guild Wars
+#: 2/Local/script.js:1 i18n/tmp/Applications/Games/osu!/Local/script.js:1
+#: i18n/tmp/Applications/Games/Resident Evil 3/Local/script.js:1
+#: i18n/tmp/Applications/Games/STAR WARS Battlefront Empire at War Gold
+#: Pack/Local/script.js:1 i18n/tmp/Applications/Games/The Elder Scrolls IV:
+#: Oblivion/Local/script.js:1
+#: i18n/tmp/Applications/Games/Uplay/Local/script.js:1
+#: i18n/tmp/Applications/Office/Microsoft Office 2010/Local/script.js:1
+#: 2013/Local/script.js:1
 msgid "Local"
 msgstr "Local"
 
-#: i18n/tmp/Applications/Custom/OnlineInstaller/application.js
+#: i18n/tmp/Applications/Custom/OnlineInstaller/application.js:1
 msgid "Online Installer"
 msgstr "Installeur en ligne"
 
-#: i18n/tmp/Applications/Custom/OnlineInstaller/application.js
+#: i18n/tmp/Applications/Custom/OnlineInstaller/application.js:2
 msgid ""
 "The Online Installer allows you to install custom applications from the "
 "Internet."
@@ -375,15 +435,15 @@ msgstr ""
 "L'installeur en ligne vous permet d'installer des applications "
 "personnalisées depuis Internet."
 
-#: i18n/tmp/Applications/Development/category.js
+#: i18n/tmp/Applications/Development/category.js:1
 msgid "Development"
 msgstr "Développement"
 
-#: i18n/tmp/Applications/Development/Notepad++/application.js
+#: i18n/tmp/Applications/Development/Notepad++/application.js:1
 msgid "Notepad++"
 msgstr "Notepad++"
 
-#: i18n/tmp/Applications/Development/Notepad++/application.js
+#: i18n/tmp/Applications/Development/Notepad++/application.js:2
 msgid ""
 "Notepad++ is a free (as in &quot;free speech&quot; and also as in &quot;free "
 "beer&quot;) source code editor and Notepad replacement that supports several "
@@ -406,15 +466,17 @@ msgstr ""
 "chute considérablement, en conséquence de quoi, la terre est plus verte."
 "<br><br>Source: http://notepad-plus.sourceforge.net/fr"
 
-#: i18n/tmp/Applications/Development/Notepad++/v7.2.2/script.js
+#: i18n/tmp/Applications/Development/Notepad++/v7.2.2/script.js:1
 msgid "v.7.2.2"
 msgstr "v.7.2.2"
 
-#: i18n/tmp/Applications/Games/18 Wheels of Steel Across America/application.js
+#: i18n/tmp/Applications/Games/18 Wheels of Steel Across
+#: America/application.js:1
 msgid "18 Wheels of Steel: Across America"
 msgstr "18 Wheels of Steel: Across America"
 
-#: i18n/tmp/Applications/Games/18 Wheels of Steel Across America/application.js
+#: i18n/tmp/Applications/Games/18 Wheels of Steel Across
+#: America/application.js:2
 msgid ""
 "Heed the call of the open road, throw the gears in motion and take off in a "
 "tractor trailer. Drive faster than your competition, haul your cargo across "
@@ -428,11 +490,11 @@ msgstr ""
 "visage alors que vous contrôlez votre propre destin.‬ \"Blast the horn\" et "
 "construisez une carrière dans le monde rapide du camionnage."
 
-#: i18n/tmp/Applications/Games/Age of Empires II HD/application.js
+#: i18n/tmp/Applications/Games/Age of Empires II HD/application.js:1
 msgid "Age of Empires II HD"
 msgstr "Age of Empires II HD"
 
-#: i18n/tmp/Applications/Games/Age of Empires II HD/application.js
+#: i18n/tmp/Applications/Games/Age of Empires II HD/application.js:2
 msgid ""
 "Age of Empires II has been re-imagined in high definition with new features, "
 "trading cards, improved AI, workshop support, multiplayer, Steamworks "
@@ -442,88 +504,95 @@ msgstr ""
 "fonctionnalités, cartes à échanger, IA améliorée, support des workshops, "
 "multiplayer, intégration au Steamworks et bien plus encore !"
 
-#: i18n/tmp/Applications/Games/Age of Empires II HD/Steam/script.js III:
-#: Complete Collection/Steam/script.js i18n/tmp/Applications/Games/Assassin's
-#: Creed: Brotherhood/Steam/script.js Creed III/Steam/script.js
-#: II/Steam/script.js IV Black Flag/Steam/script.js Revelations/Steam/script.js
-#: Creed/Steam/script.js Unity/Steam/script.js
-#: i18n/tmp/Applications/Games/Audiosurf/Steam/script.js
-#: i18n/tmp/Applications/Games/Batman™: Arkham Asylum/Steam/script.js
-#: City/Steam/script.js Origins/Steam/script.js
-#: i18n/tmp/Applications/Games/BioShock/Steam/script.js
-#: i18n/tmp/Applications/Games/Black Mesa/Steam/script.js
-#: i18n/tmp/Applications/Games/Borderlands/Steam/script.js
-#: i18n/tmp/Applications/Games/Braid/Steam/script.js
-#: i18n/tmp/Applications/Games/BRINK/Steam/script.js
+#: i18n/tmp/Applications/Games/Age of Empires II HD/Steam/script.js:1 III:
+#: Complete Collection/Steam/script.js:1 i18n/tmp/Applications/Games/Assassin's
+#: Creed: Brotherhood/Steam/script.js:1 Creed III/Steam/script.js:1
+#: II/Steam/script.js:1 IV Black Flag/Steam/script.js:1
+#: Revelations/Steam/script.js:1 Creed/Steam/script.js:1
+#: Unity/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Audiosurf/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Batman™: Arkham Asylum/Steam/script.js:1
+#: City/Steam/script.js:1 Origins/Steam/script.js:1
+#: i18n/tmp/Applications/Games/BioShock/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Black Mesa/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Borderlands/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Braid/Steam/script.js:1
+#: i18n/tmp/Applications/Games/BRINK/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Burnout Paradise: The Ultimate
-#: Box/Steam/script.js i18n/tmp/Applications/Games/Caesar
-#: i18n/tmp/Applications/Games/Call Juarez Gunslinger/Steam/script.js
-#: i18n/tmp/Applications/Games/ChromaGun/Steam/script.js
-#: i18n/tmp/Applications/Games/Civilization V/Steam/script.js
-#: i18n/tmp/Applications/Games/Clicker Heroes/Steam/script.js
-#: i18n/tmp/Applications/Games/Cogs/Steam/script.js
-#: i18n/tmp/Applications/Games/CONSORTIUM/Steam/script.js
-#: i18n/tmp/Applications/Games/DOOM (2016)/Steam/script.js
-#: i18n/tmp/Applications/Games/Dr. Langeskov, Tiger, and Terribly Cursed
-#: Emerald: A Whirlwind Heist/Steam/script.js
-#: i18n/tmp/Applications/Games/Elite:Dangerous/Steam/script.js
-#: i18n/tmp/Applications/Games/Enderal/Steam/script.js
-#: i18n/tmp/Applications/Games/Ether One Redux/Steam/script.js
-#: i18n/tmp/Applications/Games/Europa Universalis IV/Steam/script.js
-#: i18n/tmp/Applications/Games/Far Cry/Steam/script.js
-#: i18n/tmp/Applications/Games/FlatOut/Steam/script.js
-#: i18n/tmp/Applications/Games/Goodbye Deponia/Steam/script.js
-#: i18n/tmp/Applications/Games/Hexcells Infinite/Steam/script.js
-#: Plus/Steam/script.js i18n/tmp/Applications/Games/Hexcells/Steam/script.js
+#: Box/Steam/script.js:1 i18n/tmp/Applications/Games/Caesar
+#: i18n/tmp/Applications/Games/Call Juarez Gunslinger/Steam/script.js:1
+#: i18n/tmp/Applications/Games/ChromaGun/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Civilization V/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Clicker Heroes/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Cogs/Steam/script.js:1
+#: i18n/tmp/Applications/Games/CONSORTIUM/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Consortium: Tower/Steam/script.js:1
+#: i18n/tmp/Applications/Games/DOOM (2016)/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Dragon Ball Xenoverse 2/Steam/script.js:1
+#: Xenoverse/Steam/script.js:1 i18n/tmp/Applications/Games/Dr. Langeskov,
+#: Tiger, and Terribly Cursed Emerald: A Whirlwind Heist/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Elite:Dangerous/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Enderal/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Ether One Redux/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Europa Universalis IV/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Far Cry Cry/Steam/script.js:1
+#: i18n/tmp/Applications/Games/FlatOut/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Goodbye Deponia/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Hexcells Infinite/Steam/script.js:1
+#: Plus/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Hexcells/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Mafia i18n/tmp/Applications/Games/Mass Effect
-#: 2/Steam/script.js Effect/Steam/script.js
-#: i18n/tmp/Applications/Games/Medieval II: Total War/Steam/script.js
-#: i18n/tmp/Applications/Games/Mirror's Edge/Steam/script.js
-#: i18n/tmp/Applications/Games/Mount & Blade/Steam/script.js
-#: i18n/tmp/Applications/Games/Niko: Through Dream/Steam/script.js
-#: i18n/tmp/Applications/Games/Orwell: Keeping an Eye On You/Steam/script.js
-#: i18n/tmp/Applications/Games/PAYDAY
-#: i18n/tmp/Applications/Games/Prey/Steam/script.js
-#: i18n/tmp/Applications/Games/Pro Evolution Soccer 2018/Steam/script.js
-#: i18n/tmp/Applications/Games/Quantum Conundrum/Steam/script.js
-#: i18n/tmp/Applications/Games/Q.U.B.E: Director's Cut/Steam/script.js
-#: i18n/tmp/Applications/Games/Rayman Legends/Steam/script.js
-#: i18n/tmp/Applications/Games/Rocksmith 2014/Steam/script.js
-#: i18n/tmp/Applications/Games/Rocksmith/Steam/script.js
-#: i18n/tmp/Applications/Games/Scribblenauts Unlimited/Steam/script.js
+#: Effect/Steam/script.js:1 i18n/tmp/Applications/Games/Medieval II: Total
+#: War/Steam/script.js:1 i18n/tmp/Applications/Games/Mirror's
+#: Edge/Steam/script.js:1 i18n/tmp/Applications/Games/Mount &
+#: Blade/Steam/script.js:1 i18n/tmp/Applications/Games/Niko: Through
+#: Dream/Steam/script.js:1 i18n/tmp/Applications/Games/Orwell: Keeping an Eye
+#: On You/Steam/script.js:1 i18n/tmp/Applications/Games/PAYDAY
+#: i18n/tmp/Applications/Games/Prey/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Pro Evolution Soccer 2018/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Quantum Conundrum/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Q.U.B.E: Director's Cut/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Rayman Legends/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Red Trigger/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Rocksmith 2014/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Rocksmith/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Scribblenauts Unlimited/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Shower With Your Dad Simulator 2015: Do You
-#: Still Shower Dad/Steam/script.js i18n/tmp/Applications/Games/Star Trek
-#: Online/Steam/script.js i18n/tmp/Applications/Games/STAR WARS Battlefront
-#: WARS: Dark Forces/Steam/script.js - Empire at War Gold Pack/Steam/script.js
-#: Jedi Knight: Forces Knight Outcast/Steam/script.js Academy/Steam/script.js
-#: Mysteries the Sith/Steam/script.js
-#: i18n/tmp/Applications/Games/Steam/application.js
-#: i18n/tmp/Applications/Games/Styx: Shards Darkness/Steam/script.js
-#: i18n/tmp/Applications/Games/Super Blue Boy Planet/Steam/script.js
-#: i18n/tmp/Applications/Games/The Crew/Steam/script.js Elder Scrolls V:
-#: Skyrim/Steam/script.js Room/Steam/script.js Room Two/Steam/script.js Turing
-#: Test/Steam/script.js Vanishing Ethan Carter Carter/Steam/script.js Witcher
-#: 3: Wild Hunt/Steam/script.js i18n/tmp/Applications/Games/Toki
-#: Tori/Steam/script.js i18n/tmp/Applications/Games/Tomb Raider
-#: Anniversary/Steam/script.js Legend/Steam/script.js
-#: Underworld/Steam/script.js i18n/tmp/Applications/Games/Tom Clancy's
-#: Division/Steam/script.js i18n/tmp/Applications/Games/Trackmania
-#: Turbo/Steam/script.js i18n/tmp/Applications/Games/TRON RUNr/Steam/script.js
-#: i18n/tmp/Applications/Games/Tropico 3/Steam/script.js 4/Steam/script.js
-#: i18n/tmp/Applications/Games/Unholy Heights/Steam/script.js
-#: i18n/tmp/Applications/Games/Warlock Master Arcane/Steam/script.js
-#: i18n/tmp/Applications/Games/Worms Armageddon/Steam/script.js
-#: Reloaded/Steam/script.js
+#: Still Shower Dad/Steam/script.js:1 i18n/tmp/Applications/Games/Star Trek
+#: Online/Steam/script.js:1 i18n/tmp/Applications/Games/STAR WARS Battlefront
+#: WARS: Dark Forces/Steam/script.js:1 - Empire at War Gold
+#: Pack/Steam/script.js:1 Jedi Knight: Forces Knight Outcast/Steam/script.js:1
+#: Academy/Steam/script.js:1 Mysteries the Sith/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Steam/application.js:1
+#: i18n/tmp/Applications/Games/Styx: Shards Darkness/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Super Blue Boy Planet/Steam/script.js:1
+#: i18n/tmp/Applications/Games/The Crew/Steam/script.js:1 Elder Scrolls V:
+#: Skyrim/Steam/script.js:1 Room/Steam/script.js:1 Room Two/Steam/script.js:1
+#: Turing Test/Steam/script.js:1 Vanishing Ethan Carter
+#: Carter/Steam/script.js:1 Witcher 3: Wild Hunt/Steam/script.js:1
+#: Witness/Steam/script.js:1 i18n/tmp/Applications/Games/Toki
+#: Tori/Steam/script.js:1 i18n/tmp/Applications/Games/Tomb Raider
+#: Anniversary/Steam/script.js:1 Legend/Steam/script.js:1
+#: Underworld/Steam/script.js:1 i18n/tmp/Applications/Games/Tom Clancy's
+#: Division/Steam/script.js:1 i18n/tmp/Applications/Games/Total Rome
+#: i18n/tmp/Applications/Games/Trackmania Turbo/Steam/script.js:1
+#: i18n/tmp/Applications/Games/TRON RUNr/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Tropico 3/Steam/script.js:1 4/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Unholy Heights/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Warface/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Warlock Master Arcane/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Worms Armageddon/Steam/script.js:1
+#: Reloaded/Steam/script.js:1
 msgid "Steam"
 msgstr "Steam"
 
 #: i18n/tmp/Applications/Games/Age of Empires III: Complete
-#: Collection/application.js
+#: Collection/application.js:1
 msgid "Age of Empires® III: Complete Collection"
 msgstr "Age of Empires® III: Complete Collection"
 
 #: i18n/tmp/Applications/Games/Age of Empires III: Complete
-#: Collection/application.js
+#: Collection/application.js:2
 msgid ""
 "Immerse yourself in the award-winning strategy experience. Microsoft Studios "
 "brings you three epic Age of Empires III games in one monumental collection "
@@ -538,11 +607,11 @@ msgstr ""
 "monde, ou partez à la conquête de l’est, en Asie, pour déterminer l’issue "
 "des batailles pour le pouvoir."
 
-#: i18n/tmp/Applications/Games/Assassin's Creed/application.js
+#: i18n/tmp/Applications/Games/Assassin's Creed/application.js:1
 msgid "Assassin's Creed™"
 msgstr "Assassin's Creed™"
 
-#: i18n/tmp/Applications/Games/Assassin's Creed/application.js
+#: i18n/tmp/Applications/Games/Assassin's Creed/application.js:2
 msgid ""
 "Assassin's Creed™ is the next-gen game developed by Ubisoft Montreal that "
 "redefines the action genre. While other games claim to be next-gen with "
@@ -566,11 +635,11 @@ msgstr ""
 "présence pèseront sur les événements historiques qui se déroulent sous vos "
 "yeux."
 
-#: i18n/tmp/Applications/Games/Assassin's Creed: Brotherhood/application.js
+#: i18n/tmp/Applications/Games/Assassin's Creed: Brotherhood/application.js:1
 msgid "Assassin’s Creed® Brotherhood"
 msgstr "Assassin’s Creed® Brotherhood"
 
-#: i18n/tmp/Applications/Games/Assassin's Creed: Brotherhood/application.js
+#: i18n/tmp/Applications/Games/Assassin's Creed: Brotherhood/application.js:2
 msgid ""
 "Live and breathe as Ezio, a legendary Master Assassin, in his enduring "
 "struggle against the powerful Templar order.<br><br>He must journey into "
@@ -590,11 +659,11 @@ msgstr ""
 "placée sous ses ordres. Ce n'est qu'en travaillant ensemble que les "
 "Assassins vaincront leurs ennemis jurés."
 
-#: i18n/tmp/Applications/Games/Assassin's Creed II/application.js
+#: i18n/tmp/Applications/Games/Assassin's Creed II/application.js:1
 msgid "Assassin’s Creed II"
 msgstr "Assassin’s Creed II"
 
-#: i18n/tmp/Applications/Games/Assassin's Creed II/application.js
+#: i18n/tmp/Applications/Games/Assassin's Creed II/application.js:2
 msgid ""
 "An epic story of family, vengeance and conspiracy set in the pristine, yet "
 "brutal, backdrop of a Renaissance Italy."
@@ -603,11 +672,11 @@ msgstr ""
 "déroulant dans la vierge, mais brutale, toile de fond de la Renaissance "
 "Italienne."
 
-#: i18n/tmp/Applications/Games/Assassin's Creed III/application.js
+#: i18n/tmp/Applications/Games/Assassin's Creed III/application.js:1
 msgid "Assassin’s Creed® III"
 msgstr "Assassin’s Creed® III"
 
-#: i18n/tmp/Applications/Games/Assassin's Creed III/application.js
+#: i18n/tmp/Applications/Games/Assassin's Creed III/application.js:2
 msgid ""
 "The American Colonies, 1775. It’s a time of civil unrest and political "
 "upheaval in the Americas. As a Native American assassin fights to protect "
@@ -621,11 +690,11 @@ msgstr ""
 "Assassin’s Creed® III vous transporte au temps de la guerre d'indépendance "
 "des États-Unis, mais pas celle des livres d'histoire..."
 
-#: i18n/tmp/Applications/Games/Assassin's Creed IV Black Flag/application.js
+#: i18n/tmp/Applications/Games/Assassin's Creed IV Black Flag/application.js:1
 msgid "Assassin’s Creed® IV Black Flag™"
 msgstr "Assassin’s Creed® IV Black Flag™"
 
-#: i18n/tmp/Applications/Games/Assassin's Creed IV Black Flag/application.js
+#: i18n/tmp/Applications/Games/Assassin's Creed IV Black Flag/application.js:2
 msgid ""
 "The year is 1715. Pirates rule the Caribbean and have established their own "
 "lawless Republic where corruption, greediness and cruelty are commonplace."
@@ -636,11 +705,11 @@ msgstr ""
 "courante. Parmi ces hors-la-loi, un jeune capitaine impétueux du nom "
 "d’Edward Kenway."
 
-#: i18n/tmp/Applications/Games/Assassin's Creed Revelations/application.js
+#: i18n/tmp/Applications/Games/Assassin's Creed Revelations/application.js:1
 msgid "Assassin's Creed® Revelations"
 msgstr "Assassin's Creed® Revelations"
 
-#: i18n/tmp/Applications/Games/Assassin's Creed Revelations/application.js
+#: i18n/tmp/Applications/Games/Assassin's Creed Revelations/application.js:2
 msgid ""
 "Ezio Auditore walks in the footsteps of the legendary mentor Altair, on a "
 "dangerous journey of discovery and revelation."
@@ -648,11 +717,11 @@ msgstr ""
 "Ezio Auditore marche dans les pas du légendaire mentor Altaïr, dans un "
 "dangereux périple de découvertes et révélations."
 
-#: i18n/tmp/Applications/Games/Assassin's Creed Unity/application.js
+#: i18n/tmp/Applications/Games/Assassin's Creed Unity/application.js:1
 msgid "Assassin’s Creed® Unity"
 msgstr "Assassin’s Creed® Unity"
 
-#: i18n/tmp/Applications/Games/Assassin's Creed Unity/application.js
+#: i18n/tmp/Applications/Games/Assassin's Creed Unity/application.js:2
 msgid ""
 "Assassin’s Creed® Unity tells the story of Arno, a young man who embarks "
 "upon an extraordinary journey to expose the true powers behind the French "
@@ -664,11 +733,11 @@ msgstr ""
 "nouveau mode Coop, vous découvrirez comment le destin de toute une nation a "
 "basculé."
 
-#: i18n/tmp/Applications/Games/Audiosurf/application.js
+#: i18n/tmp/Applications/Games/Audiosurf/application.js:1
 msgid "Audiosurf"
 msgstr "Audiosurf"
 
-#: i18n/tmp/Applications/Games/Audiosurf/application.js
+#: i18n/tmp/Applications/Games/Audiosurf/application.js:2
 msgid ""
 "Ride your music. Audiosurf is a music-adapting puzzle racer where you use "
 "your own music to create your own experience. The shape, the speed, and the "
@@ -678,11 +747,11 @@ msgstr ""
 "propre musique pour créer votre propre expérience. La forme, la vitesse et "
 "l'ambiance de chaque session sera déterminée par le choix de votre morceau."
 
-#: i18n/tmp/Applications/Games/Batman™: Arkham Asylum/application.js
+#: i18n/tmp/Applications/Games/Batman™: Arkham Asylum/application.js:1
 msgid "Batman™: Arkham Asylum"
 msgstr "Batman™: Arkham Asylum"
 
-#: i18n/tmp/Applications/Games/Batman™: Arkham Asylum/application.js
+#: i18n/tmp/Applications/Games/Batman™: Arkham Asylum/application.js:2
 msgid ""
 "Experience what it’s like to be Batman and face off against Gotham's "
 "greatest villians. Explore every inch of Arkham Asylum and roam freely on "
@@ -700,11 +769,11 @@ msgstr ""
 "et Chasseur Nocturne (les deux dernières proviennent du pack de cartes Nuit "
 "démentielle)."
 
-#: i18n/tmp/Applications/Games/Batman™: Arkham City/application.js
+#: i18n/tmp/Applications/Games/Batman™: Arkham City/application.js:1
 msgid "Batman™: Arkham City"
 msgstr "Batman™: Arkham City"
 
-#: i18n/tmp/Applications/Games/Batman™: Arkham City/application.js
+#: i18n/tmp/Applications/Games/Batman™: Arkham City/application.js:2
 msgid ""
 "Batman: Arkham City builds upon the intense, atmospheric foundation of "
 "Batman: Arkham Asylum, sending players flying through the expansive Arkham "
@@ -721,11 +790,11 @@ msgstr ""
 "d'autres, le jeu permet aux joueurs de véritablement entrer dans la peau du "
 "Chevalier noir rendant la justice à travers les rues de Gotham City."
 
-#: i18n/tmp/Applications/Games/Batman™: Arkham Origins/application.js
+#: i18n/tmp/Applications/Games/Batman™: Arkham Origins/application.js:1
 msgid "Batman™: Arkham Origins"
 msgstr "Batman™: Arkham Origins"
 
-#: i18n/tmp/Applications/Games/Batman™: Arkham Origins/application.js
+#: i18n/tmp/Applications/Games/Batman™: Arkham Origins/application.js:2
 msgid ""
 "Batman™: Arkham Origins is the next installment in the blockbuster Batman: "
 "Arkham videogame franchise. Developed by WB Games Montréal, the game "
@@ -749,11 +818,11 @@ msgstr ""
 "l'histoire progresse, le joueur va rencontrer des personnages clés et mettre "
 "en place des relations cruciales."
 
-#: i18n/tmp/Applications/Games/Beyond Good and Evil/application.js
+#: i18n/tmp/Applications/Games/Beyond Good and Evil/application.js:1
 msgid "Beyond Good and Evil™"
 msgstr "Beyond Good and Evil™"
 
-#: i18n/tmp/Applications/Games/Beyond Good and Evil/application.js
+#: i18n/tmp/Applications/Games/Beyond Good and Evil/application.js:2
 msgid ""
 "For centuries, the planet Hyllis has been bombarded by a relentless alien "
 "race. Skeptical of her government's inability to repel the invaders, a "
@@ -764,20 +833,20 @@ msgstr ""
 "envahisseurs, une journaliste d'action rebelle nommée Jade part à la "
 "recherche de la vérité."
 
-#: i18n/tmp/Applications/Games/Beyond Good and Evil/Uplay/script.js
-#: i18n/tmp/Applications/Games/Far Cry 3 - Blood Dragon/Uplay/script.js
-#: i18n/tmp/Applications/Games/Prince of Persia: The Sands Time/Uplay/script.js
-#: i18n/tmp/Applications/Games/Rayman Origins/Uplay/script.js
-#: i18n/tmp/Applications/Games/Tom Clancy's Splinter Cell/Uplay/script.js
-#: i18n/tmp/Applications/Games/Uplay/application.js
+#: i18n/tmp/Applications/Games/Beyond Good and Evil/Uplay/script.js:1
+#: i18n/tmp/Applications/Games/Far Cry 3 - Blood Dragon/Uplay/script.js:1
+#: i18n/tmp/Applications/Games/Prince of Persia: The Sands
+#: Time/Uplay/script.js:1 i18n/tmp/Applications/Games/Rayman
+#: Origins/Uplay/script.js:1 i18n/tmp/Applications/Games/Tom Clancy's Splinter
+#: Cell/Uplay/script.js:1 i18n/tmp/Applications/Games/Uplay/application.js:1
 msgid "Uplay"
 msgstr "Uplay"
 
-#: i18n/tmp/Applications/Games/BioShock/application.js
+#: i18n/tmp/Applications/Games/BioShock/application.js:1
 msgid "BioShock™"
 msgstr "BioShock™"
 
-#: i18n/tmp/Applications/Games/BioShock/application.js
+#: i18n/tmp/Applications/Games/BioShock/application.js:2
 msgid ""
 "BioShock is a shooter unlike any you've ever played, loaded with weapons and "
 "tactics never seen. You'll have a complete arsenal at your disposal from "
@@ -798,11 +867,13 @@ msgstr ""
 "aléatoires : deux joueurs différents ne pourront ainsi jamais vivre la même "
 "aventure."
 
-#: i18n/tmp/Applications/Games/BioShock/Steam (Demo)/script.js
+#: i18n/tmp/Applications/Games/BioShock/Steam (Demo)/script.js:1
 #: i18n/tmp/Applications/Games/Braid/Steam i18n/tmp/Applications/Games/Call of
 #: Juarez Gunslinger/Steam i18n/tmp/Applications/Games/ChromaGun/Steam
-#: i18n/tmp/Applications/Games/Cogs/Steam i18n/tmp/Applications/Games/Europa
-#: Universalis IV/Steam i18n/tmp/Applications/Games/FlatOut/Steam
+#: i18n/tmp/Applications/Games/Cogs/Steam
+#: i18n/tmp/Applications/Games/Consortium: The Tower/Steam
+#: i18n/tmp/Applications/Games/Europa Universalis IV/Steam
+#: i18n/tmp/Applications/Games/FlatOut/Steam
 #: i18n/tmp/Applications/Games/Goodbye Deponia/Steam
 #: i18n/tmp/Applications/Games/Mafia II/Steam
 #: i18n/tmp/Applications/Games/Medieval II: Total War/Steam
@@ -813,26 +884,27 @@ msgstr ""
 #: i18n/tmp/Applications/Games/Styx: Shards Darkness/Steam
 #: i18n/tmp/Applications/Games/The Crew/Steam i18n/tmp/Applications/Games/Toki
 #: Tori/Steam i18n/tmp/Applications/Games/Tomb Raider Anniversary/Steam
-#: Legend/Steam Underworld/Steam i18n/tmp/Applications/Games/Tom Clancy's The
+#: Legend/Steam Underworld/Steam i18n/tmp/Applications/Games/Tom Clancy's
 #: Division/Steam i18n/tmp/Applications/Games/Trackmania Turbo/Steam
 #: i18n/tmp/Applications/Games/TRON RUNr/Steam
 #: i18n/tmp/Applications/Games/Tropico 4/Steam
 msgid "Steam (Demo)"
 msgstr "Steam (Demo)"
 
-#: i18n/tmp/Applications/Games/Black Mesa/application.js
+#: i18n/tmp/Applications/Games/Black Mesa/application.js:1
 msgid "Black Mesa"
 msgstr "Black Mesa"
 
-#: i18n/tmp/Applications/Games/Black Mesa/application.js
+#: i18n/tmp/Applications/Games/Black Mesa/application.js:2
 msgid "Relive Half-Life in this highly acclaimed, fan-made recreation"
 msgstr "Revivez Half-Life dans cette recréation acclamée faite par les fans"
 
-#: i18n/tmp/Applications/Games/Blizzard app/application.js app/Online/script.js
+#: i18n/tmp/Applications/Games/Blizzard app/application.js:1
+#: app/Online/script.js:1
 msgid "Blizzard app"
 msgstr "Application Blizzard"
 
-#: i18n/tmp/Applications/Games/Blizzard app/application.js
+#: i18n/tmp/Applications/Games/Blizzard app/application.js:2
 msgid ""
 "The Blizzard desktop app is designed to improve your gaming experience. "
 "It’ll streamline your login and make it even easier to keep up with your "
@@ -842,11 +914,11 @@ msgstr ""
 "de jeu. Elle simplifiera votre connexion et vous permettra de suivre plus "
 "facilement vos amis !"
 
-#: i18n/tmp/Applications/Games/Borderlands/application.js
+#: i18n/tmp/Applications/Games/Borderlands/application.js:1
 msgid "Borderlands"
 msgstr "Borderlands"
 
-#: i18n/tmp/Applications/Games/Borderlands/application.js
+#: i18n/tmp/Applications/Games/Borderlands/application.js:2
 msgid ""
 "Lock, Load, & Face the Madness<br><br>Get ready for the mind blowing "
 "insanity! Play as one of four trigger-happy mercenaries and take out "
@@ -867,11 +939,11 @@ msgstr ""
 "désolée de Pandore. Il va vous falloir trouver une technologie "
 "extraterrestre ultra-puissante appelée The Vault."
 
-#: i18n/tmp/Applications/Games/Braid/application.js
+#: i18n/tmp/Applications/Games/Braid/application.js:1
 msgid "Braid"
 msgstr "Braid"
 
-#: i18n/tmp/Applications/Games/Braid/application.js
+#: i18n/tmp/Applications/Games/Braid/application.js:2
 msgid ""
 "Braid is a puzzle-platformer, drawn in a painterly style, where you can "
 "manipulate the flow of time in strange and unusual ways. From a house in the "
@@ -884,11 +956,11 @@ msgstr ""
 "série de mondes et résolvez des casse-têtes pour sauver une princesse "
 "enlevée."
 
-#: i18n/tmp/Applications/Games/BRINK/application.js
+#: i18n/tmp/Applications/Games/BRINK/application.js:1
 msgid "BRINK"
 msgstr "BRINK"
 
-#: i18n/tmp/Applications/Games/BRINK/application.js
+#: i18n/tmp/Applications/Games/BRINK/application.js:2
 msgid ""
 "You decide the combat role you want to assume in the world of Brink as you "
 "fight to save yourself and mankind’s last refuge!"
@@ -897,12 +969,12 @@ msgstr ""
 "défendre le dernier refuge de l'humanité !"
 
 #: i18n/tmp/Applications/Games/Burnout Paradise: The Ultimate
-#: Box/application.js
+#: Box/application.js:1
 msgid "Burnout™ Paradise: The Ultimate Box"
 msgstr "Burnout™ Paradise: The Ultimate Box"
 
 #: i18n/tmp/Applications/Games/Burnout Paradise: The Ultimate
-#: Box/application.js
+#: Box/application.js:2
 msgid ""
 "Paradise City is the largest and most dangerous setting yet for the best-"
 "selling Burnout series. The massive setting gives players an open-ended "
@@ -923,11 +995,11 @@ msgstr ""
 "les panneaux d'affichage, les rampes de saut et grâce au maintien de "
 "collisions avec le système de dégâts amélioré."
 
-#: i18n/tmp/Applications/Games/Caesar III/application.js
+#: i18n/tmp/Applications/Games/Caesar III/application.js:1
 msgid "Caesar III"
 msgstr "Caesar III"
 
-#: i18n/tmp/Applications/Games/Caesar III/application.js
+#: i18n/tmp/Applications/Games/Caesar III/application.js:2
 msgid ""
 "Hail Governor, your city awaits.<br><br>As a provincial governor charged "
 "with spreading the glory of Rome our mission is clear: build cities, foster "
@@ -947,11 +1019,11 @@ msgstr ""
 "vous finirez comme un déjeuner pour les lions. Prouvez votre force d'esprit "
 "et vous pourrez être couronné César!"
 
-#: i18n/tmp/Applications/Games/Call of Juarez Gunslinger/application.js
+#: i18n/tmp/Applications/Games/Call of Juarez Gunslinger/application.js:1
 msgid "Call of Juarez® Gunslinger"
 msgstr "Call of Juarez® Gunslinger"
 
-#: i18n/tmp/Applications/Games/Call of Juarez Gunslinger/application.js
+#: i18n/tmp/Applications/Games/Call of Juarez Gunslinger/application.js:2
 msgid ""
 "From the dust of a gold mine to the dirt of a saloon, Call of Juarez® "
 "Gunslinger is a real homage to the Wild West tales. Live the epic and "
@@ -963,15 +1035,15 @@ msgstr ""
 "périple violent et épique d'un chasseur de primes impitoyable sur les traces "
 "des criminels les plus connus du Wild West."
 
-#: i18n/tmp/Applications/Games/category.js
+#: i18n/tmp/Applications/Games/category.js:1
 msgid "Games"
 msgstr "Jeux"
 
-#: i18n/tmp/Applications/Games/ChromaGun/application.js
+#: i18n/tmp/Applications/Games/ChromaGun/application.js:1
 msgid "ChromaGun"
 msgstr "ChromaGun"
 
-#: i18n/tmp/Applications/Games/ChromaGun/application.js
+#: i18n/tmp/Applications/Games/ChromaGun/application.js:2
 msgid ""
 "Welcome to ChromaTec’s test lab! You’re here to test our newest, state-of-"
 "the-art military-grade color-technology: The ChromaGun (patent pending)! Use "
@@ -1003,11 +1075,11 @@ msgstr ""
 "grises, alors tu es le candidat parfait pour affronter ces salles !<br><br> "
 "Alors : Bienvenue et bonne chance !"
 
-#: i18n/tmp/Applications/Games/Civilization V/application.js
+#: i18n/tmp/Applications/Games/Civilization V/application.js:1
 msgid "Civilization V"
 msgstr "Civilization V"
 
-#: i18n/tmp/Applications/Games/Civilization V/application.js
+#: i18n/tmp/Applications/Games/Civilization V/application.js:2
 msgid ""
 "In Civilization V, the player leads a civilization from prehistoric times "
 "into the future on a procedurally generated map, achieving one of a number "
@@ -1020,11 +1092,11 @@ msgstr ""
 "recherche, à l'exploration, à la diplomatie, à l'expansion, au développement "
 "économique, à la conquête gouvernementale et militaire."
 
-#: i18n/tmp/Applications/Games/Clicker Heroes/application.js
+#: i18n/tmp/Applications/Games/Clicker Heroes/application.js:1
 msgid "Clicker Heroes"
 msgstr "Clicker Heroes"
 
-#: i18n/tmp/Applications/Games/Clicker Heroes/application.js
+#: i18n/tmp/Applications/Games/Clicker Heroes/application.js:2
 msgid ""
 "Ever wondered what one quadrillion damage per second feels like? Wonder no "
 "more! Embark on your quest to attain it today! Start out by clicking on the "
@@ -1039,11 +1111,11 @@ msgstr ""
 "héros et faites plus de dégâts. Plus vous infligez de dégâts, plus vous "
 "obtiendrez d'or."
 
-#: i18n/tmp/Applications/Games/Cogs/application.js
+#: i18n/tmp/Applications/Games/Cogs/application.js:1
 msgid "Cogs"
 msgstr "Cogs"
 
-#: i18n/tmp/Applications/Games/Cogs/application.js
+#: i18n/tmp/Applications/Games/Cogs/application.js:2
 msgid ""
 "Cogs is a puzzle game where players build machines from sliding tiles. "
 "Players can choose from 50 levels and 3 gameplay modes. New puzzles are "
@@ -1054,11 +1126,25 @@ msgstr ""
 "jeu. De nouveaux casse-têtes sont débloqués en construisant les objets "
 "rapidement et efficacement."
 
-#: i18n/tmp/Applications/Games/CONSORTIUM/application.js
+#: i18n/tmp/Applications/Games/Command and Conquer - Tiberium
+#: Wars/application.js:1
+msgid "Command and Conquer - Tiberium Wars"
+msgstr "Command and Conquer - Tiberium Wars"
+
+#: i18n/tmp/Applications/Games/Command and Conquer - Tiberium
+#: Wars/application.js:2
+msgid ""
+"You are in command of the armies of either GDI or NOD with the fate of Earth "
+"in the balance."
+msgstr ""
+"Vous commandez les armées du GDI ou du NOD, le sort de la Terre est dans la "
+"balance."
+
+#: i18n/tmp/Applications/Games/CONSORTIUM/application.js:1
 msgid "CONSORTIUM"
 msgstr "CONSORTIUM"
 
-#: i18n/tmp/Applications/Games/CONSORTIUM/application.js
+#: i18n/tmp/Applications/Games/CONSORTIUM/application.js:2
 msgid ""
 "A murder mystery, on a plane, in the future. You are Consortium Bishop Six, "
 "a global peacekeeper in the year 2042. Your actions define and inform the "
@@ -1068,11 +1154,25 @@ msgstr ""
 "Bishop Six, un gardien global de la paix dans l'année 2042. Vos actions "
 "définissent et informent le récit en cours."
 
-#: i18n/tmp/Applications/Games/Crayon Physics/application.js
+#: i18n/tmp/Applications/Games/Consortium: The Tower/application.js:1
+msgid "Consortium: The Tower"
+msgstr "Consortium: The Tower"
+
+#: i18n/tmp/Applications/Games/Consortium: The Tower/application.js:2
+msgid ""
+"A pure sci-fi single-player immersive simulation. Dive into a world shaped "
+"by YOUR choices! Explore, talk, fight or sneak through The Churchill Tower "
+"in 2042! Can you survive The Tower?"
+msgstr ""
+"Une pure simulation immersive de science fiction à un joueur. Plonger dans "
+"un monde modifié par vos choix ! Explorez, discutez, battez-vous ou faufilez-"
+"vous dans The Churchill Tower en 2041 ! Pourrez-vous survivre à The Tower ?"
+
+#: i18n/tmp/Applications/Games/Crayon Physics/application.js:1
 msgid "Crayon Physics"
 msgstr "Crayon Physics"
 
-#: i18n/tmp/Applications/Games/Crayon Physics/application.js
+#: i18n/tmp/Applications/Games/Crayon Physics/application.js:2
 msgid ""
 "Crayon Physics is a mouse arcade game. You will have to draw lines and "
 "squares to move a ball. The aim is to catch the stars in the level. "
@@ -1080,11 +1180,11 @@ msgstr ""
 "Crayon Physics est un jeu d'arcade à la souris. Vous devrez tracer lignes et "
 "carrés pour bouger la balle. Le but est d'avoir les étoiles du niveau. "
 
-#: i18n/tmp/Applications/Games/DOOM (2016)/application.js
+#: i18n/tmp/Applications/Games/DOOM (2016)/application.js:1
 msgid "DOOM (2016)"
 msgstr "DOOM (2016)"
 
-#: i18n/tmp/Applications/Games/DOOM (2016)/application.js
+#: i18n/tmp/Applications/Games/DOOM (2016)/application.js:2
 msgid ""
 "Developed by id software, the studio that pioneered the first-person shooter "
 "genre and created multiplayer Deathmatch, DOOM returns as a brutally fun and "
@@ -1107,15 +1207,56 @@ msgstr ""
 "votre expérience de jeu en utilisant l'éditeur DOOM SnapMap pour créer, "
 "jouer et partager facilement du contenu avec le monde entier."
 
+#: i18n/tmp/Applications/Games/Dragon Ball Xenoverse 2/application.js:1
+msgid "Dragon Ball Xenoverse 2"
+msgstr "Dragon Ball Xenoverse 2"
+
+#: i18n/tmp/Applications/Games/Dragon Ball Xenoverse 2/application.js:2
+msgid ""
+"DRAGON BALL XENOVERSE 2 builds upon the highly popular DRAGON BALL XENOVERSE "
+"with enhanced graphics that will further immerse players into the largest "
+"and most detailed Dragon Ball world ever developed.<br><br>DRAGON BALL "
+"XENOVERSE 2 will deliver a new hub city and the most character customization "
+"choices to date among a multitude of new features and special upgrades."
+msgstr ""
+"DRAGON BALL XENOVERSE 2 suit les traces du titre à succès DRAGON BALL "
+"XENOVERSE, avec des graphismes améliorés pour procurer au joueur encore plus "
+"d'immersion dans l'univers Dragon Ball le plus vaste et le mieux détaillé à "
+"ce jour.<br><br> DRAGON BALL XENOVERSE 2 proposera une nouvelle ville et des "
+"fonctions et améliorations spéciales en pagaille, dont de nombreuses "
+"personnalisations de personnages."
+
+#: i18n/tmp/Applications/Games/Dragon Ball Xenoverse/application.js:1
+msgid "Dragon Ball Xenoverse"
+msgstr "Dragon Ball Xenoverse"
+
+#: i18n/tmp/Applications/Games/Dragon Ball Xenoverse/application.js:2
+msgid ""
+"FOR THE FIRST TIME EVER, THE DRAGON BALL UNIVERSE IS COMING TO STEAM!"
+"<br><br>DRAGON BALL XENOVERSE revisits famous battles from the series "
+"through your custom Avatar, who fights alongside Trunks and many other "
+"characters. Will the strength of this partnership be enough to intervene in "
+"fights and restore the Dragon Ball timeline we know? New features include "
+"the mysterious Toki Toki City, new gameplay mechanics, new character "
+"animations and many other amazing features to be unveiled soon!"
+msgstr ""
+"L'UNIVERS DE DRAGON BALL DÉBARQUE SUR STEAM POUR LA TOUTE PREMIÈRE FOIS !"
+"<br><br>DRAGON BALL XENOVERSE revient sur tous les combats emblématiques de "
+"la saga grâce à l'Avatar, lié à Trunks et à bien d'autres personnages. Ce "
+"lien et sa volonté d'intervenir dans les combats seront-ils assez forts pour "
+"changer l'histoire telle que nous la connaissons ? Tu découvriras également "
+"la mystérieuse ville de Tokitoki, de nouveaux mécanismes de jeu et "
+"d'animation des personnages et bien d'autres incroyables surprises !"
+
 #: i18n/tmp/Applications/Games/Dr. Langeskov, The Tiger, and Terribly Cursed
-#: Emerald: A Whirlwind Heist/application.js
+#: Emerald: A Whirlwind Heist/application.js:1
 msgid ""
 "Dr. Langeskov, The Tiger, and The Terribly Cursed Emerald: A Whirlwind Heist"
 msgstr ""
 "Dr. Langeskov, The Tiger, and The Terribly Cursed Emerald: A Whirlwind Heist"
 
 #: i18n/tmp/Applications/Games/Dr. Langeskov, The Tiger, and Terribly Cursed
-#: Emerald: A Whirlwind Heist/application.js
+#: Emerald: A Whirlwind Heist/application.js:2
 msgid ""
 "A 15 minute heist game by Crows Crows Crows & Directed by William Pugh (The "
 "Stanley Parable). "
@@ -1123,19 +1264,38 @@ msgstr ""
 "Un jeu de braquage de 15 min par Crows Crows Crows  et dirigé par William "
 "Pugh (The Stanley Parable). "
 
-#: i18n/tmp/Applications/Games/Druid Soccer/application.js
+#: i18n/tmp/Applications/Games/Druid Soccer/application.js:1
 msgid "Druid Soccer"
 msgstr "Druid Soccer"
 
-#: i18n/tmp/Applications/Games/Druid Soccer/application.js
+#: i18n/tmp/Applications/Games/Druid Soccer/application.js:2
 msgid "You take part in the ancient traditional game of Druid Soccer."
 msgstr "Vous prenez part à l'ancien jeu traditionnel de Druid Soccer."
 
-#: i18n/tmp/Applications/Games/Elite:Dangerous/application.js
+#: i18n/tmp/Applications/Games/Earth Eternal - Valkal's Shadow/application.js:1
+msgid "Earth Eternal - Valkal's Shadow"
+msgstr "Earth Eternal - Valkal's Shadow"
+
+#: i18n/tmp/Applications/Games/Earth Eternal - Valkal's Shadow/application.js:2
+msgid ""
+"Set in a world where humans are long gone, and beasts reign supreme, Earth "
+"Eternal - Valkal's Shadow is a fan-run continuation of Earth Eternal, an "
+"abandoned MMORPG by Sparkplay Media. Valkal's Shadow is based off of version "
+"0.8.6, but with lots of new content and features added, including 2 new "
+"regions, many new dungeons and countless new quests."
+msgstr ""
+"Dans un monde où les humains ont depuis longtemps disparu, et les bêtes "
+"reignent en maître, Earth Eternal - Valkal's Shadow est la suit faite par "
+"les fans de Earth Eternal, un MMORPG abandonné par Sparkplay Media. Valkal's "
+"Shadow est basé sur la version 0.8.6, mais avec beaucoup de contenu et de "
+"fonctionnalités ajoutée, incluant 2 nouvelles régions, beaucoup de nouveaux "
+"donjons and d'inombrables nouvelles quêtes."
+
+#: i18n/tmp/Applications/Games/Elite:Dangerous/application.js:1
 msgid "Elite:Dangerous"
 msgstr "Elite:Dangerous"
 
-#: i18n/tmp/Applications/Games/Elite:Dangerous/application.js
+#: i18n/tmp/Applications/Games/Elite:Dangerous/application.js:2
 msgid ""
 "Take control of your own starship in a cutthroat galaxy. Elite Dangerous "
 "brings gaming’s original open world adventure into the modern generation "
@@ -1155,11 +1315,11 @@ msgstr ""
 "galaxie connectée, une narration évolutive et l'intégralité de la voie "
 "lactée reproduite e conservant ses proportions."
 
-#: i18n/tmp/Applications/Games/Enderal/application.js
+#: i18n/tmp/Applications/Games/Enderal/application.js:1
 msgid "Enderal"
 msgstr "Enderal"
 
-#: i18n/tmp/Applications/Games/Enderal/application.js
+#: i18n/tmp/Applications/Games/Enderal/application.js:2
 msgid ""
 "Enderal is a total conversion for TES V: Skyrim: a game modification that is "
 "set in its own world with its own landscape, lore and story. It offers an "
@@ -1174,19 +1334,19 @@ msgstr ""
 "révisés et un scénario sombre et psychologique avec des personnages "
 "crédibles."
 
-#: i18n/tmp/Applications/Games/Epic Games Launcher/application.js
+#: i18n/tmp/Applications/Games/Epic Games Launcher/application.js:1
 msgid "Epic Games Launcher"
 msgstr "Epic Games Launcher"
 
-#: i18n/tmp/Applications/Games/Epic Games Launcher/application.js
+#: i18n/tmp/Applications/Games/Epic Games Launcher/application.js:2
 msgid "Launcher for Unreal Engine, Unreal Tournament, Paragon etc."
 msgstr "Laucher pour Unreal Engine, Unreal Tournament, Paragon etc."
 
-#: i18n/tmp/Applications/Games/Ether One Redux/application.js
+#: i18n/tmp/Applications/Games/Ether One Redux/application.js:1
 msgid "Ether One Redux"
 msgstr "Ether One Redux"
 
-#: i18n/tmp/Applications/Games/Ether One Redux/application.js
+#: i18n/tmp/Applications/Games/Ether One Redux/application.js:2
 msgid ""
 "Ether One is a first person adventure that deals with the fragility of the "
 "human mind. There are two paths in the world you can choose from. At its "
@@ -1199,11 +1359,11 @@ msgstr ""
 "l'histoire libre de  tous casse-têtes où vous pouvez  dévoiler l'histoire à "
 "votre rythme."
 
-#: i18n/tmp/Applications/Games/Europa Universalis II/application.js
+#: i18n/tmp/Applications/Games/Europa Universalis II/application.js:1
 msgid "Europa Universalis II"
 msgstr "Europa Universalis II"
 
-#: i18n/tmp/Applications/Games/Europa Universalis II/application.js
+#: i18n/tmp/Applications/Games/Europa Universalis II/application.js:2
 msgid ""
 "Europa Universalis II is a strategy computer game developed by Paradox "
 "Development Studio and published by Strategy First, based on world history "
@@ -1213,11 +1373,11 @@ msgstr ""
 "Development Studio et publié par Strategy First, basé sur l'histoire du "
 "monde se déroulant entre 1419 et 1820."
 
-#: i18n/tmp/Applications/Games/Europa Universalis IV/application.js
+#: i18n/tmp/Applications/Games/Europa Universalis IV/application.js:1
 msgid "Europa Universalis IV"
 msgstr "Europa Universalis IV"
 
-#: i18n/tmp/Applications/Games/Europa Universalis IV/application.js
+#: i18n/tmp/Applications/Games/Europa Universalis IV/application.js:2
 msgid ""
 "The empire building game Europa Universalis IV gives you control of a nation "
 "to guide through the years in order to create a dominant global empire. Rule "
@@ -1229,11 +1389,30 @@ msgstr ""
 "nation à travers les siècles, avec une liberté inégalée, profondeur et "
 "précision historique."
 
-#: i18n/tmp/Applications/Games/Far Cry 3 - Blood Dragon/application.js
+#: i18n/tmp/Applications/Games/Far Cry 2/application.js:1
+#, fuzzy
+#| msgid "Far Cry"
+msgid "Far Cry® 2"
+msgstr "Far Cry"
+
+#: i18n/tmp/Applications/Games/Far Cry 2/application.js:2
+msgid ""
+"You are a gun for hire, trapped in a war-torn African state, stricken with "
+"malaria and forced to make deals with corrupt warlords on both sides of the "
+"conflict in order to make this country your home.<br><br>You must identify "
+"and exploit your enemies' weaknesses, neutralizing their superior numbers "
+"and firepower with surprise, subversion, cunning and of course brute force."
+msgstr ""
+"Vous voici mercenaire au cœur de l'Afrique. La guerre et la malaria sont "
+"votre quotidien.<br><br>Il vous faut identifier et exploiter les faiblesses "
+"de vos ennemis pour les neutraliser. Surprise, force pure, contournement et "
+"ruse seront indispensables."
+
+#: i18n/tmp/Applications/Games/Far Cry 3 - Blood Dragon/application.js:1
 msgid "Far Cry 3 - Blood Dragon"
 msgstr "Far Cry 3 - Blood Dragon"
 
-#: i18n/tmp/Applications/Games/Far Cry 3 - Blood Dragon/application.js
+#: i18n/tmp/Applications/Games/Far Cry 3 - Blood Dragon/application.js:2
 msgid ""
 "Far Cry® 3: Blood Dragon is THE Kick-Ass Cyber Shooter.Welcome to an 80’s "
 "vision of the future. The year is 2007 and you are Sargent Rex Colt, a Mark "
@@ -1245,11 +1424,11 @@ msgstr ""
 "Commando Mark IV, mi-homme, mi-machine (mais 100% américain). Votre "
 "mission : ramener la fille, tuer les méchants et sauver le monde."
 
-#: i18n/tmp/Applications/Games/Far Cry/application.js
+#: i18n/tmp/Applications/Games/Far Cry/application.js:1
 msgid "Far Cry"
 msgstr "Far Cry"
 
-#: i18n/tmp/Applications/Games/Far Cry/application.js
+#: i18n/tmp/Applications/Games/Far Cry/application.js:2
 msgid ""
 "A tropical paradise seethes with hidden evil in Far Cry®, a cunningly "
 "detailed action shooter that pushes the boundaries of combat to shocking new "
@@ -1279,11 +1458,11 @@ msgstr ""
 "à partir de cet instant, plus le choix : il va falloir combattre cette armée "
 "de mercenaires et contrecarrer leur plan démoniaque."
 
-#: i18n/tmp/Applications/Games/FlatOut/application.js
+#: i18n/tmp/Applications/Games/FlatOut/application.js:1
 msgid "FlatOut"
 msgstr "FlatOut"
 
-#: i18n/tmp/Applications/Games/FlatOut/application.js
+#: i18n/tmp/Applications/Games/FlatOut/application.js:2
 msgid ""
 "FlatOut is adrenaline-filled muscle car racing game packed with explosive "
 "physics, spectacular effects and graphics, innovative game play mechanics "
@@ -1293,11 +1472,11 @@ msgstr ""
 "physique explosive, d'effets et de graphismes spectaculaires, d'une "
 "mécanique de jeu innovante et du bon vieux plaisir !"
 
-#: i18n/tmp/Applications/Games/Goodbye Deponia/application.js
+#: i18n/tmp/Applications/Games/Goodbye Deponia/application.js:1
 msgid "Goodbye Deponia"
 msgstr "Goodbye Deponia"
 
-#: i18n/tmp/Applications/Games/Goodbye Deponia/application.js
+#: i18n/tmp/Applications/Games/Goodbye Deponia/application.js:2
 msgid ""
 "More chaos, more destruction, more Rufus. Not one, not two, but three "
 "Rufuses cause all kinds of crazy mayhem in the long-awaited adventure comedy "
@@ -1307,11 +1486,11 @@ msgstr ""
 "trois Rufus causent toutes sortes de chaos fous dans l' aventure comédie "
 "tant attendue Goodbye Deponia!"
 
-#: i18n/tmp/Applications/Games/Guild Wars 2/application.js
+#: i18n/tmp/Applications/Games/Guild Wars 2/application.js:1
 msgid "Guild Wars 2"
 msgstr "Guild Wars 2"
 
-#: i18n/tmp/Applications/Games/Guild Wars 2/application.js
+#: i18n/tmp/Applications/Games/Guild Wars 2/application.js:2
 msgid ""
 "Guild Wars 2 defines the future of online roleplaying games with action-"
 "oriented combat, customized personal storylines, epic dynamic events, world-"
@@ -1321,11 +1500,11 @@ msgstr ""
 "regorgeant d’action, des histoires élaborées et personnalisées, d’épiques "
 "évènements dynamiques, du JcJ exceptionnel, le tout sans aucun abonnement !"
 
-#: i18n/tmp/Applications/Games/Hearthstone/application.js
+#: i18n/tmp/Applications/Games/Hearthstone/application.js:1
 msgid "Hearthstone"
 msgstr "Hearthstone"
 
-#: i18n/tmp/Applications/Games/Hearthstone/application.js
+#: i18n/tmp/Applications/Games/Hearthstone/application.js:2
 msgid ""
 "Sheathe your sword, draw your deck, and get ready for Hearthstone - the fast-"
 "paced strategy card game that's easy to learn and massively fun. Start a "
@@ -1338,11 +1517,11 @@ msgstr ""
 "vos cartes pour jeter des sorts, invoquer des créatures et donner des ordres "
 "aux héros de Warcraft lors de duels légendaires et stratégiques."
 
-#: i18n/tmp/Applications/Games/Heroes of the Storm/application.js
+#: i18n/tmp/Applications/Games/Heroes of the Storm/application.js:1
 msgid "Heroes of the Storm"
 msgstr "Heroes of the Storm"
 
-#: i18n/tmp/Applications/Games/Heroes of the Storm/application.js
+#: i18n/tmp/Applications/Games/Heroes of the Storm/application.js:2
 msgid ""
 "Heroes of the Storm (HotS) is a multiplayer online battle arena video game "
 "developed and published by Blizzard Entertainment."
@@ -1350,19 +1529,19 @@ msgstr ""
 "Heroes of the Storm est un jeu vidéo de type arène de bataille en ligne "
 "multijoueur (MOBA) développé par Blizzard Entertainment."
 
-#: i18n/tmp/Applications/Games/Hexcells/application.js
+#: i18n/tmp/Applications/Games/Hexcells/application.js:1
 msgid "Hexcells"
 msgstr "Hexcells"
 
-#: i18n/tmp/Applications/Games/Hexcells/application.js
+#: i18n/tmp/Applications/Games/Hexcells/application.js:2
 msgid "Hexcells is an ambient logic puzzle game for PC, Mac and Linux."
 msgstr "Hexcells est un jeu de casse-têtes pour PC, Mac et Linux."
 
-#: i18n/tmp/Applications/Games/Hexcells Infinite/application.js
+#: i18n/tmp/Applications/Games/Hexcells Infinite/application.js:1
 msgid "Hexcells Infinite"
 msgstr "Hexcells Infinite"
 
-#: i18n/tmp/Applications/Games/Hexcells Infinite/application.js
+#: i18n/tmp/Applications/Games/Hexcells Infinite/application.js:2
 msgid ""
 "Hexcells Infinite is the third game in the series of ambient logic puzzle "
 "games.<br><br>It includes a new set of 36 puzzles as well as a random puzzle "
@@ -1377,11 +1556,11 @@ msgstr ""
 "générateur de niveau utilise une graine de 8 chiffres pour générer chaque "
 "casse-têtes afin qu'ils puissent être facilement partagés."
 
-#: i18n/tmp/Applications/Games/Hexcells Plus/application.js
+#: i18n/tmp/Applications/Games/Hexcells Plus/application.js:1
 msgid "Hexcells Plus"
 msgstr "Hexcells Plus"
 
-#: i18n/tmp/Applications/Games/Hexcells Plus/application.js
+#: i18n/tmp/Applications/Games/Hexcells Plus/application.js:2
 msgid ""
 "Hexcells Plus is a standalone expansion to Hexcells that contains 36 new and "
 "more challenging puzzles."
@@ -1389,11 +1568,11 @@ msgstr ""
 "Hexcells Plus est une extension autonome à Hexcells qui contient 36 nouveaux "
 "casse-têtes plus difficiles."
 
-#: i18n/tmp/Applications/Games/Icy Tower/application.js
+#: i18n/tmp/Applications/Games/Icy Tower/application.js:1
 msgid "Icy Tower 1.5"
 msgstr "Icy Tower 1.5"
 
-#: i18n/tmp/Applications/Games/Icy Tower/application.js
+#: i18n/tmp/Applications/Games/Icy Tower/application.js:2
 msgid ""
 "Icy Tower is a platform game set in a tower, where the player's goal is to "
 "jump from one floor to the next and go as high as possible without falling "
@@ -1403,15 +1582,15 @@ msgstr ""
 "joueur est de sauter d'un étage à l'autre et aller le plus haut possible "
 "sans tomber ou plonger hors de l'écran."
 
-#: i18n/tmp/Applications/Games/Icy Tower/v1.5/script.js
+#: i18n/tmp/Applications/Games/Icy Tower/v1.5/script.js:1
 msgid "v1.5"
 msgstr "v1.5"
 
-#: i18n/tmp/Applications/Games/League of Legends/application.js
+#: i18n/tmp/Applications/Games/League of Legends/application.js:1
 msgid "League of Legends BETA Client"
 msgstr "League of Legends BETA Client"
 
-#: i18n/tmp/Applications/Games/League of Legends/application.js
+#: i18n/tmp/Applications/Games/League of Legends/application.js:2
 msgid ""
 "League of Legends is a fast-paced, competitive online game that blends the "
 "speed and intensity of an RTS with RPG elements. Two teams of powerful "
@@ -1429,15 +1608,15 @@ msgstr ""
 "événements compétitifs florissants, League of Legends offre des parties sans "
 "cesse renouvelées aux joueurs de tous niveaux."
 
-#: i18n/tmp/Applications/Games/League of Legends/BETA Client/script.js
+#: i18n/tmp/Applications/Games/League of Legends/BETA Client/script.js:1
 msgid "BETA Client"
 msgstr "Client BETA"
 
-#: i18n/tmp/Applications/Games/Mafia II/application.js
+#: i18n/tmp/Applications/Games/Mafia II/application.js:1
 msgid "Mafia II"
 msgstr "Mafia II"
 
-#: i18n/tmp/Applications/Games/Mafia II/application.js
+#: i18n/tmp/Applications/Games/Mafia II/application.js:2
 msgid ""
 "Vito Scaletta has started to make a name for himself on the streets of "
 "Empire Bay as someone who can be trusted to get a job done. Together with "
@@ -1452,11 +1631,11 @@ msgstr ""
 "envergures, faits et conséquences… sa vie de « simple mec sage » n’est pas "
 "aussi calme qu’il n'y paraît."
 
-#: i18n/tmp/Applications/Games/Mass Effect 2/application.js
+#: i18n/tmp/Applications/Games/Mass Effect 2/application.js:1
 msgid "Mass Effect 2"
 msgstr "Mass Effect 2"
 
-#: i18n/tmp/Applications/Games/Mass Effect 2/application.js
+#: i18n/tmp/Applications/Games/Mass Effect 2/application.js:2
 msgid ""
 "Recruit. Explore. Control.Two years after Commander Shepard repelled "
 "invading Reapers bent on the destruction of organic life, a mysterious new "
@@ -1467,11 +1646,11 @@ msgstr ""
 "repoussé l'invasion des Reapers un nouvel ennemi surgit du néant. Quelque "
 "chose décime les colonies humaines aux confins de l'univers."
 
-#: i18n/tmp/Applications/Games/Mass Effect/application.js
+#: i18n/tmp/Applications/Games/Mass Effect/application.js:1
 msgid "Mass Effect"
 msgstr "Mass Effect"
 
-#: i18n/tmp/Applications/Games/Mass Effect/application.js
+#: i18n/tmp/Applications/Games/Mass Effect/application.js:2
 msgid ""
 "As Commander Shepard, you lead an elite squad on a heroic, action-packed "
 "adventure throughout the galaxy. Discover the imminent danger from an "
@@ -1483,11 +1662,11 @@ msgstr ""
 "les dangers imminents qui menacent la civilisation et combattez traître "
 "Saren et son armée.  Le destin de toute vie dépend de vos actions !"
 
-#: i18n/tmp/Applications/Games/Medieval II: Total War/application.js
+#: i18n/tmp/Applications/Games/Medieval II: Total War/application.js:1
 msgid "Medieval II: Total War™"
 msgstr "Medieval II: Total War™"
 
-#: i18n/tmp/Applications/Games/Medieval II: Total War/application.js
+#: i18n/tmp/Applications/Games/Medieval II: Total War/application.js:2
 msgid ""
 "Take command of your army and expand your reign in Medieval II - the fourth "
 "installment of the award-winning Total War series of strategy games. Direct "
@@ -1520,11 +1699,11 @@ msgstr ""
 "vainqueur de la Guerre sainte. Réécrivez l'Histoire et partez à la conquête "
 "du monde. Bienvenue dans Total War !"
 
-#: i18n/tmp/Applications/Games/Mirror's Edge/application.js
+#: i18n/tmp/Applications/Games/Mirror's Edge/application.js:1
 msgid "Mirror's Edge™"
 msgstr "Mirror's Edge™"
 
-#: i18n/tmp/Applications/Games/Mirror's Edge/application.js
+#: i18n/tmp/Applications/Games/Mirror's Edge/application.js:2
 msgid ""
 "In a city where information is heavily monitored, agile couriers called "
 "Runners transport sensitive data away from prying eyes. In this seemingly "
@@ -1536,11 +1715,11 @@ msgstr ""
 "univers utopique, vous êtes recherchée. Vous êtes un de ces runner et vous "
 "vous appelez Faith dans ce jeu à la première personne."
 
-#: i18n/tmp/Applications/Games/Mount & Blade/application.js
+#: i18n/tmp/Applications/Games/Mount & Blade/application.js:1
 msgid "Mount & Blade"
 msgstr "Mount & Blade"
 
-#: i18n/tmp/Applications/Games/Mount & Blade/application.js
+#: i18n/tmp/Applications/Games/Mount & Blade/application.js:2
 msgid ""
 "Calradia is a land at war, offering great riches and even greater dangers to "
 "adventurers and mercenaries that flock to shed their blood on its soil. With "
@@ -1551,11 +1730,11 @@ msgstr ""
 "affluent pour y verser leur sang sur son sol. Avec du courage et une épée "
 "forte, un étranger inconnu peut se faire un nom comme guerrier."
 
-#: i18n/tmp/Applications/Games/Niko: Through The Dream/application.js
+#: i18n/tmp/Applications/Games/Niko: Through The Dream/application.js:1
 msgid "Niko: Through The Dream"
 msgstr "Niko: Through The Dream"
 
-#: i18n/tmp/Applications/Games/Niko: Through The Dream/application.js
+#: i18n/tmp/Applications/Games/Niko: Through The Dream/application.js:2
 msgid ""
 "Niko is a spiritual journey through the dreams, where adventure, puzzles and "
 "mysteries come together in an oneiric and minimalist world. Dare to dream!"
@@ -1564,27 +1743,27 @@ msgstr ""
 "mystère se retrouvent ensemble dans un monde onirique et minimaliste. Oser "
 "rêver !"
 
-#: i18n/tmp/Applications/Games/Origin/application.js
+#: i18n/tmp/Applications/Games/Origin/application.js:1
 msgid "Origin"
 msgstr "Origin"
 
-#: i18n/tmp/Applications/Games/Origin/application.js
+#: i18n/tmp/Applications/Games/Origin/application.js:2
 msgid "Origin is EA's PC games portal."
 msgstr "Origin est le portail des jeux PC d'EA."
 
-#: i18n/tmp/Applications/Games/Origin/Local (Legacy)/script.js
+#: i18n/tmp/Applications/Games/Origin/Local (Legacy)/script.js:1
 msgid "Local (Legacy)"
 msgstr "Local (Legacy)"
 
-#: i18n/tmp/Applications/Games/Origin/Online (Legacy)/script.js
+#: i18n/tmp/Applications/Games/Origin/Online (Legacy)/script.js:1
 msgid "Online (Legacy)"
 msgstr "Online (Legacy)"
 
-#: i18n/tmp/Applications/Games/Orwell: Keeping an Eye On You/application.js
+#: i18n/tmp/Applications/Games/Orwell: Keeping an Eye On You/application.js:1
 msgid "Orwell: Keeping an Eye On You"
 msgstr "Orwell : Keeping an Eye On You"
 
-#: i18n/tmp/Applications/Games/Orwell: Keeping an Eye On You/application.js
+#: i18n/tmp/Applications/Games/Orwell: Keeping an Eye On You/application.js:2
 msgid ""
 "Big Brother has arrived - and it’s you. Investigate the lives of citizens to "
 "find those responsible for a series of terror attacks. Information from the "
@@ -1597,21 +1776,29 @@ msgstr ""
 "fichiers privés vous sont toutes accessibles. Mais soyez prévenus, "
 "l'information que vous soumettez aura des conséquences."
 
-#: i18n/tmp/Applications/Games/Overwatch/application.js
+#: i18n/tmp/Applications/Games/osu!/application.js:1
+msgid "osu!"
+msgstr "osu!"
+
+#: i18n/tmp/Applications/Games/osu!/application.js:2
+msgid "osu! is a free-to-win online rhythm game."
+msgstr "osu! jeu en ligne gratuit de rythme."
+
+#: i18n/tmp/Applications/Games/Overwatch/application.js:1
 msgid "Overwatch"
 msgstr "Overwatch"
 
-#: i18n/tmp/Applications/Games/Overwatch/application.js
+#: i18n/tmp/Applications/Games/Overwatch/application.js:2
 msgid ""
 "Overwatch is a team-based multiplayer online first-person shooter video game."
 msgstr ""
 "Overwatch est un jeu de tir à la première personne multijoueur en équipe."
 
-#: i18n/tmp/Applications/Games/PAYDAY The Heist/application.js
+#: i18n/tmp/Applications/Games/PAYDAY The Heist/application.js:1
 msgid "PAYDAY™ The Heist"
 msgstr "PAYDAY™ The Heist"
 
-#: i18n/tmp/Applications/Games/PAYDAY The Heist/application.js
+#: i18n/tmp/Applications/Games/PAYDAY The Heist/application.js:2
 msgid ""
 "Take on the role of a hardened career criminal executing intense, dynamic "
 "heists in constant pursuit of the next “big score”"
@@ -1619,11 +1806,15 @@ msgstr ""
 "Prenez le rôle d'un criminel de carrière endurci qui exécute des casses "
 "intenses et dynamiques dans la poursuite constante du prochain \"grand coup\""
 
-#: i18n/tmp/Applications/Games/Prey/application.js
+#: i18n/tmp/Applications/Games/Prehistorik/application.js:1
+msgid "Prehistorik"
+msgstr "Prehistorik"
+
+#: i18n/tmp/Applications/Games/Prey/application.js:1
 msgid "Prey"
 msgstr "Prey"
 
-#: i18n/tmp/Applications/Games/Prey/application.js
+#: i18n/tmp/Applications/Games/Prey/application.js:2
 msgid ""
 "In Prey, you awaken aboard Talos I, a space station orbiting the moon in the "
 "year 2032. You are the key subject of an experiment meant to alter humanity "
@@ -1635,11 +1826,17 @@ msgstr ""
 "d'une expérience censée altérer l'humanité à jamais, mais la situation s'est "
 "transformée en cauchemar."
 
-#: i18n/tmp/Applications/Games/Prince of Persia: The Sands Time/application.js
+#: i18n/tmp/Applications/Games/Prince Of Persia: Original/application.js:1
+msgid "Prince Of Persia: Original"
+msgstr "Prince Of Persia: Original"
+
+#: i18n/tmp/Applications/Games/Prince of Persia: The Sands
+#: Time/application.js:1
 msgid "Prince of Persia®: The Sands of Time"
 msgstr "Prince of Persia®: The Sands of Time"
 
-#: i18n/tmp/Applications/Games/Prince of Persia: The Sands Time/application.js
+#: i18n/tmp/Applications/Games/Prince of Persia: The Sands
+#: Time/application.js:2
 msgid ""
 "Amidst the scorched sands of ancient Persia, there is a legend spun in an "
 "ancient tongue. It speaks of a time borne by blood and ruled by deceit. "
@@ -1651,11 +1848,11 @@ msgstr ""
 "séduisante et du pouvoir absolu des sables du temps, ce prince va relever le "
 "défi de réclamer le palais et le royaume."
 
-#: i18n/tmp/Applications/Games/Pro Evolution Soccer 2018/application.js
+#: i18n/tmp/Applications/Games/Pro Evolution Soccer 2018/application.js:1
 msgid "Pro Evolution Soccer 2018"
 msgstr "Pro Evolution Soccer 2018"
 
-#: i18n/tmp/Applications/Games/Pro Evolution Soccer 2018/application.js
+#: i18n/tmp/Applications/Games/Pro Evolution Soccer 2018/application.js:2
 msgid ""
 "'Where Legends Are Made' encapsulates the return of PES, with an "
 "unparalleled gameplay experience."
@@ -1663,11 +1860,11 @@ msgstr ""
 "'Where Legends Are Made' encapsule le retour de PES, avec une expérience de "
 "jeu sans précédent."
 
-#: i18n/tmp/Applications/Games/Quantum Conundrum/application.js
+#: i18n/tmp/Applications/Games/Quantum Conundrum/application.js:1
 msgid "Quantum Conundrum"
 msgstr "Quantum Conundrum"
 
-#: i18n/tmp/Applications/Games/Quantum Conundrum/application.js
+#: i18n/tmp/Applications/Games/Quantum Conundrum/application.js:2
 msgid ""
 "Find and rescue your uncle by using his newest invention to work your way "
 "through a crazy complex mansion as you switch between dimensions and solve "
@@ -1677,11 +1874,11 @@ msgstr ""
 "votre chemin à travers un manoir complexe et fou, alors que vous changez de "
 "dimensions et résolvez les casse-tête !"
 
-#: i18n/tmp/Applications/Games/Q.U.B.E: Director's Cut/application.js
+#: i18n/tmp/Applications/Games/Q.U.B.E: Director's Cut/application.js:1
 msgid "Q.U.B.E: Director's Cut"
 msgstr "Q.U.B.E: Director's Cut"
 
-#: i18n/tmp/Applications/Games/Q.U.B.E: Director's Cut/application.js
+#: i18n/tmp/Applications/Games/Q.U.B.E: Director's Cut/application.js:2
 msgid ""
 "Q.U.B.E: Director's Cut is the definitive version of the brain-twisting "
 "first-person puzzler. Using special high-tech gloves to manipulate cubes in "
@@ -1694,11 +1891,11 @@ msgstr ""
 "d'énigmes - depuis des défis basés sur la physique, jusqu'aux puzzle 3D, "
 "jusqu'aux épreuves de plateforme. "
 
-#: i18n/tmp/Applications/Games/Rayman Legends/application.js
+#: i18n/tmp/Applications/Games/Rayman Legends/application.js:1
 msgid "Rayman® Legends"
 msgstr "Rayman® Legends"
 
-#: i18n/tmp/Applications/Games/Rayman Legends/application.js
+#: i18n/tmp/Applications/Games/Rayman Legends/application.js:2
 msgid ""
 "Michel Ancel, the celebrated creator of Rayman®, Beyond Good & Evil®, and "
 "the Raving Rabbids®, returns to unleash his innovative creativity on this "
@@ -1719,11 +1916,11 @@ msgstr ""
 "maison, sauver la journée et découvrir les secrets des peintures "
 "légendaires !"
 
-#: i18n/tmp/Applications/Games/Rayman Origins/application.js
+#: i18n/tmp/Applications/Games/Rayman Origins/application.js:1
 msgid "Rayman® Origins"
 msgstr "Rayman® Origins"
 
-#: i18n/tmp/Applications/Games/Rayman Origins/application.js
+#: i18n/tmp/Applications/Games/Rayman Origins/application.js:2
 msgid ""
 "Experience the magical universe of Rayman with legendary 2D gameplay that "
 "has captured the hearts of millions of fans!"
@@ -1731,11 +1928,23 @@ msgstr ""
 "Découvrez l'univers magique de Rayman avec le légendaire jouabilité 2D qui a "
 "capturé le cœur de millions de fans !"
 
-#: i18n/tmp/Applications/Games/Resident Evil 3/application.js
+#: i18n/tmp/Applications/Games/Red Trigger/application.js:1
+msgid "Red Trigger"
+msgstr "Red Trigger"
+
+#: i18n/tmp/Applications/Games/Red Trigger/application.js:2
+msgid ""
+"Red Trigger is a First Person Shooter (FPS) Puzzle game. Can you infiltrate "
+"and corrupt the system?"
+msgstr ""
+"Red Trigger est une jeu de tir à la première personne d'énigme. Pourrez-vous "
+"vous infiltrer et corrompre le système ?"
+
+#: i18n/tmp/Applications/Games/Resident Evil 3/application.js:1
 msgid "Resident Evil 3"
 msgstr "Resident Evil 3"
 
-#: i18n/tmp/Applications/Games/Resident Evil 3/application.js
+#: i18n/tmp/Applications/Games/Resident Evil 3/application.js:2
 msgid ""
 "Resident Evil 3: Nemesis, known in Japan as Biohazard 3: Last Escape (バイオ"
 "ハザード3　ラストエスケープ), is a survival horror video game and the sequel "
@@ -1754,11 +1963,15 @@ msgstr ""
 "comporte des modèles 3D de personnages améliorés et des résolutions plus "
 "élevées."
 
-#: i18n/tmp/Applications/Games/Rocksmith 2014/application.js
+#: i18n/tmp/Applications/Games/Road Rash/application.js:1
+msgid "Road Rash"
+msgstr "Road Rash"
+
+#: i18n/tmp/Applications/Games/Rocksmith 2014/application.js:1
 msgid "Rocksmith® 2014"
 msgstr "Rocksmith® 2014"
 
-#: i18n/tmp/Applications/Games/Rocksmith 2014/application.js
+#: i18n/tmp/Applications/Games/Rocksmith 2014/application.js:2
 msgid ""
 "The fastest way to learn guitar is now better than ever. Join over three "
 "million people who have learned to play guitar with the award-winning "
@@ -1771,11 +1984,11 @@ msgstr ""
 "guitare ou basse réelle avec une prise 1/4 pouces directement dans votre PC "
 "ou Mac et vous apprendrez à jouer en seulement 60 jours."
 
-#: i18n/tmp/Applications/Games/Rocksmith/application.js
+#: i18n/tmp/Applications/Games/Rocksmith/application.js:1
 msgid "Rocksmith™"
 msgstr "Rocksmith™"
 
-#: i18n/tmp/Applications/Games/Rocksmith/application.js
+#: i18n/tmp/Applications/Games/Rocksmith/application.js:2
 msgid ""
 "Rocksmith’s innovative game design makes playing music visually intuitive "
 "and will engage experienced musicians as well as those who have never picked "
@@ -1785,11 +1998,11 @@ msgstr ""
 "intuitivement et attirera les musiciens expérimentés ainsi que ceux qui "
 "n'ont jamais pris de guitare dans leur vie."
 
-#: i18n/tmp/Applications/Games/Scribblenauts Unlimited/application.js
+#: i18n/tmp/Applications/Games/Scribblenauts Unlimited/application.js:1
 msgid "Scribblenauts Unlimited"
 msgstr "Scribblenauts Unlimited"
 
-#: i18n/tmp/Applications/Games/Scribblenauts Unlimited/application.js
+#: i18n/tmp/Applications/Games/Scribblenauts Unlimited/application.js:2
 msgid ""
 "Venture into a wide-open world where the most powerful tool is your "
 "imagination. Help Maxwell solve robust puzzles in seamless, free-roaming "
@@ -1805,12 +2018,12 @@ msgstr ""
 "Steam Workshop – pour être utilisé en jeu ou encore plus modifié, au choix !"
 
 #: i18n/tmp/Applications/Games/Shower With Your Dad Simulator 2015: Do You
-#: Still Shower Dad/application.js
+#: Still Shower Dad/application.js:1
 msgid "Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad"
 msgstr "Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad"
 
 #: i18n/tmp/Applications/Games/Shower With Your Dad Simulator 2015: Do You
-#: Still Shower Dad/application.js
+#: Still Shower Dad/application.js:2
 msgid ""
 "'Shower With Your Dad Simulator 2015: Do You Still Shower With Your Dad?' is "
 "a fast paced shower-simulation where you shower with your 8-bit dad. It's "
@@ -1820,11 +2033,11 @@ msgstr ""
 "est un palpitant simulateur de douche où vous prenez une douche avec votre "
 "père 8 bits. C'est bien, propre et amusant !"
 
-#: i18n/tmp/Applications/Games/Star Craft II/application.js
+#: i18n/tmp/Applications/Games/Star Craft II/application.js:1
 msgid "Star Craft II"
 msgstr "Star Craft II"
 
-#: i18n/tmp/Applications/Games/Star Craft II/application.js
+#: i18n/tmp/Applications/Games/Star Craft II/application.js:2
 msgid ""
 "StarCraft II: Wings of Liberty is a military science fiction real-time "
 "strategy video game developed and published by Blizzard Entertainment."
@@ -1832,11 +2045,11 @@ msgstr ""
 "StarCraft II: Wings of Liberty est un jeu militaire de stratégie de science "
 "fiction en temps réel développé et publié par Blizzard Entertainment."
 
-#: i18n/tmp/Applications/Games/Star Trek Online/application.js
+#: i18n/tmp/Applications/Games/Star Trek Online/application.js:1
 msgid "Star Trek Online"
 msgstr "Star Trek Online"
 
-#: i18n/tmp/Applications/Games/Star Trek Online/application.js
+#: i18n/tmp/Applications/Games/Star Trek Online/application.js:2
 msgid ""
 "In Star Trek Online, the Star Trek universe appears for the first time on a "
 "truly massive scale. Players take the captain's chair as they command their "
@@ -1849,11 +2062,11 @@ msgstr ""
 "nouveaux et étranges découvrez de nouvelles formes de vie et de nouvelles "
 "civilisations, et au mépris du danger, avancez vers l'inconnu."
 
-#: i18n/tmp/Applications/Games/STAR WARS Battlefront II/application.js
+#: i18n/tmp/Applications/Games/STAR WARS Battlefront II/application.js:1
 msgid "STAR WARS™ Battlefront™ II"
 msgstr "STAR WARS™ Battlefront™ II"
 
-#: i18n/tmp/Applications/Games/STAR WARS Battlefront II/application.js
+#: i18n/tmp/Applications/Games/STAR WARS Battlefront II/application.js:2
 msgid ""
 "Join the rise of Darth Vader’s elite 501st Legion of Stormtroopers as you "
 "fight through an all new story-based saga where every action you take "
@@ -1864,11 +2077,11 @@ msgstr ""
 "scénario où chaque action que vous prenez sur le camp d bataille influe sur, "
 "en fin de compte, le destin de la Galaxie Star Wars."
 
-#: i18n/tmp/Applications/Games/STAR WARS: Dark Forces/application.js
+#: i18n/tmp/Applications/Games/STAR WARS: Dark Forces/application.js:1
 msgid "STAR WARS™: Dark Forces"
 msgstr "STAR WARS™: Dark Forces"
 
-#: i18n/tmp/Applications/Games/STAR WARS: Dark Forces/application.js
+#: i18n/tmp/Applications/Games/STAR WARS: Dark Forces/application.js:2
 msgid ""
 "Behind a veil of secrecy the evil Empire is creating a doomsday army - one "
 "that, if finished, will become the final cog in the Empire's arsenal of "
@@ -1882,12 +2095,12 @@ msgstr ""
 "infiltrer l'Empire."
 
 #: i18n/tmp/Applications/Games/STAR WARS - Empire at War Gold
-#: Pack/application.js
+#: Pack/application.js:1
 msgid "STAR WARS™ Empire at War: Gold Pack"
 msgstr "STAR WARS™ Empire at War: Gold Pack"
 
 #: i18n/tmp/Applications/Games/STAR WARS - Empire at War Gold
-#: Pack/application.js
+#: Pack/application.js:2
 msgid ""
 "Command or corrupt an entire galaxy in the definitive Star Wars strategy "
 "collection. It is a time of galactic civil war. Will you take up the reins "
@@ -1899,12 +2112,12 @@ msgstr ""
 "contrôle des rebelles de l'Empire voire même le Star Wars Underworld ?"
 
 #: i18n/tmp/Applications/Games/STAR WARS Jedi Knight: Dark Forces
-#: II/application.js
+#: II/application.js:1
 msgid "STAR WARS™ Jedi Knight: Dark Forces II"
 msgstr "STAR WARS™ Jedi Knight: Dark Forces II"
 
 #: i18n/tmp/Applications/Games/STAR WARS Jedi Knight: Dark Forces
-#: II/application.js
+#: II/application.js:2
 msgid ""
 "Jedi Knight: Dark Forces II picks up where the award-winning Dark Forces™ "
 "game left off...with even more features and firepower in dazzling 3D "
@@ -1918,12 +2131,12 @@ msgstr ""
 "Jedi."
 
 #: i18n/tmp/Applications/Games/STAR WARS Jedi Knight II -
-#: Outcast/application.js
+#: Outcast/application.js:1
 msgid "STAR WARS™ Jedi Knight II - Jedi Outcast™"
 msgstr "STAR WARS™ Jedi Knight II - Jedi Outcast™"
 
 #: i18n/tmp/Applications/Games/STAR WARS Jedi Knight II -
-#: Outcast/application.js
+#: Outcast/application.js:2
 msgid ""
 "The Legacy of Star Wars Dark Forces™ and Star Wars® Jedi Knight lives on in "
 "the intense first-person action of Jedi Outcast. "
@@ -1931,11 +2144,11 @@ msgstr ""
 "L'héritage de Star Wars Dark Forces™ et Star Wars® Jedi Knight vit dans "
 "l'action intense à la première personne de Jedi Outcast. "
 
-#: i18n/tmp/Applications/Games/STAR WARS Jedi Knight - Academy/application.js
+#: i18n/tmp/Applications/Games/STAR WARS Jedi Knight - Academy/application.js:1
 msgid "STAR WARS™ Jedi Knight - Jedi Academy™"
 msgstr "STAR WARS™ Jedi Knight - Jedi Academy™"
 
-#: i18n/tmp/Applications/Games/STAR WARS Jedi Knight - Academy/application.js
+#: i18n/tmp/Applications/Games/STAR WARS Jedi Knight - Academy/application.js:2
 msgid ""
 "Forge your weapon and follow the path of the Jedi Jedi Knight: Jedi Academy "
 "is the latest installment of the highly acclaimed Jedi Knight series. Take "
@@ -1948,12 +2161,12 @@ msgstr ""
 "Luke Skywalker."
 
 #: i18n/tmp/Applications/Games/STAR WARS Jedi Knight - Mysteries of the
-#: Sith/application.js
+#: Sith/application.js:1
 msgid "STAR WARS™ Jedi Knight - Mysteries of the Sith™"
 msgstr "STAR WARS™ Jedi Knight - Mysteries of the Sith™"
 
 #: i18n/tmp/Applications/Games/STAR WARS Jedi Knight - Mysteries of the
-#: Sith/application.js
+#: Sith/application.js:2
 msgid ""
 "It is five years after Kyle's victory over the seven dark Jedi. Invading "
 "Imperial forces advance upon a quiet Rebel outpost, interrupting Kyle's "
@@ -1968,11 +2181,11 @@ msgstr ""
 "de Timothy Zahn Star Wars, Mara Jade, héritière de l'Empire, combine son "
 "expérience de contrebandier avec celle d'apprenti chevalier Jedi."
 
-#: i18n/tmp/Applications/Games/STAR WARS: The Old Republic/application.js
+#: i18n/tmp/Applications/Games/STAR WARS: The Old Republic/application.js:1
 msgid "STAR WARS™: The Old Republic"
 msgstr "STAR WARS™: The Old Republic"
 
-#: i18n/tmp/Applications/Games/STAR WARS: The Old Republic/application.js
+#: i18n/tmp/Applications/Games/STAR WARS: The Old Republic/application.js:2
 msgid ""
 "BioWare and LucasArts bring you the next evolution in MMO Gameplay. Explore "
 "an age thousands of years before the rise of Darth Vader when war between "
@@ -1982,7 +2195,7 @@ msgstr ""
 "un âge de milliers d'années avant l'ascension de Darth Vader lorsque la "
 "guerre entre la République galactique et l'Empire Sith divise la galaxie."
 
-#: i18n/tmp/Applications/Games/Steam/application.js
+#: i18n/tmp/Applications/Games/Steam/application.js:2
 msgid ""
 "Steam is a digital distribution platform developed by Valve Corporation, "
 "which offers digital rights management (DRM), multiplayer gaming, video "
@@ -1992,11 +2205,11 @@ msgstr ""
 "Corporation, qui offre des services de gestion numérique des droits (GND), "
 "jeu multijoueur, diffusion vidéo et de réseau social."
 
-#: i18n/tmp/Applications/Games/Styx: Shards of Darkness/application.js
+#: i18n/tmp/Applications/Games/Styx: Shards of Darkness/application.js:1
 msgid "Styx: Shards of Darkness"
 msgstr "Styx: Shards of Darkness"
 
-#: i18n/tmp/Applications/Games/Styx: Shards of Darkness/application.js
+#: i18n/tmp/Applications/Games/Styx: Shards of Darkness/application.js:2
 msgid ""
 "Styx returns in a new stealth adventure! Explore and master huge open "
 "environments, sneak past or assassinate new enemies and bosses, and "
@@ -2008,11 +2221,11 @@ msgstr ""
 "arsenal d’assassin pour vous infiltrer ou éliminer silencieusement vos "
 "ennemis."
 
-#: i18n/tmp/Applications/Games/Super Blue Boy Planet/application.js
+#: i18n/tmp/Applications/Games/Super Blue Boy Planet/application.js:1
 msgid "Super Blue Boy Planet"
 msgstr "Super Blue Boy Planet"
 
-#: i18n/tmp/Applications/Games/Super Blue Boy Planet/application.js
+#: i18n/tmp/Applications/Games/Super Blue Boy Planet/application.js:2
 msgid ""
 "SBBP is a 2D platformer with pixel graphics. Blue boy’s girlfriend is "
 "kidnapped by aliens so he goes through 21 levels to save her and he also "
@@ -2022,11 +2235,11 @@ msgstr ""
 "amie de Blue boy a été kidnappée par des extraterrestres, il va donc "
 "parcourir 21 niveaux pour la sauver et aussi combattre des boss en chemin."
 
-#: i18n/tmp/Applications/Games/The Crew/application.js
+#: i18n/tmp/Applications/Games/The Crew/application.js:1
 msgid "The Crew™"
 msgstr "The Crew™"
 
-#: i18n/tmp/Applications/Games/The Crew/application.js
+#: i18n/tmp/Applications/Games/The Crew/application.js:2
 msgid ""
 "Your car is your avatar - fine tune your ride as you level up and progress "
 "through 5 unique and richly detailed regions of a massive open-world US. "
@@ -2049,11 +2262,11 @@ msgstr ""
 "votre Crew ou de futurs rivaux à battre. The Crew propose l’expérience de "
 "course la plus connectée, variée et ouverte qui soit."
 
-#: i18n/tmp/Applications/Games/The Elder Scrolls IV: Oblivion/application.js
+#: i18n/tmp/Applications/Games/The Elder Scrolls IV: Oblivion/application.js:1
 msgid "The Elder Scrolls IV: Oblivion"
 msgstr "The Elder Scrolls IV: Oblivion"
 
-#: i18n/tmp/Applications/Games/The Elder Scrolls IV: Oblivion/application.js
+#: i18n/tmp/Applications/Games/The Elder Scrolls IV: Oblivion/application.js:2
 msgid ""
 "The Elder Scrolls IV: Oblivion® presents one of the best RPGs of all time "
 "like never before. Step inside the most richly detailed and vibrant game-"
@@ -2067,15 +2280,15 @@ msgstr ""
 "de graphismes sans précédent, vous pouvez démêler la quête principale à "
 "votre propre rythme ou explorer le vaste monde et trouver vos propres défis."
 
-#: i18n/tmp/Applications/Games/The Elder Scrolls IV: Oblivion/Steam/script.js
+#: i18n/tmp/Applications/Games/The Elder Scrolls IV: Oblivion/Steam/script.js:1
 msgid "Steam (GOTY)"
 msgstr "Steam (GOTY)"
 
-#: i18n/tmp/Applications/Games/The Elder Scrolls V: Skyrim/application.js
+#: i18n/tmp/Applications/Games/The Elder Scrolls V: Skyrim/application.js:1
 msgid "The Elder Scrolls V: Skyrim"
 msgstr "The Elder Scrolls V: Skyrim"
 
-#: i18n/tmp/Applications/Games/The Elder Scrolls V: Skyrim/application.js
+#: i18n/tmp/Applications/Games/The Elder Scrolls V: Skyrim/application.js:2
 msgid ""
 "Winner of more than 200 Game of the Year Awards, Skyrim Special Edition "
 "brings the epic fantasy to life in stunning detail. The Special Edition "
@@ -2095,11 +2308,11 @@ msgstr ""
 "console.  Nouvelles quêtes, environnements, personnages, dialogue, armure, "
 "armes et plus encore... l'expérience est sans limite."
 
-#: i18n/tmp/Applications/Games/The Room/application.js
+#: i18n/tmp/Applications/Games/The Room/application.js:1
 msgid "The Room"
 msgstr "The Room"
 
-#: i18n/tmp/Applications/Games/The Room/application.js
+#: i18n/tmp/Applications/Games/The Room/application.js:2
 msgid ""
 "A mysterious invitation leads to the attic of an abandoned house. In the "
 "room is a cast-iron safe laced with strange carvings and on top, a note from "
@@ -2112,11 +2325,11 @@ msgstr ""
 "quelque chose d'ancien et d'étonnant caché à l'intérieur de la chambre de "
 "fer - Vous avez seulement besoin de trouver le chemin."
 
-#: i18n/tmp/Applications/Games/The Room Two/application.js
+#: i18n/tmp/Applications/Games/The Room Two/application.js:1
 msgid "The Room Two"
 msgstr "The Room Two"
 
-#: i18n/tmp/Applications/Games/The Room Two/application.js
+#: i18n/tmp/Applications/Games/The Room Two/application.js:2
 msgid ""
 "Unique events transport you to the halls of a long-forgotten crypt. The only "
 "means of escape lies locked within a stone pedestal, along with a note from "
@@ -2129,11 +2342,11 @@ msgstr ""
 "une aide, mais ne servent qu'à vous inciter à devenir un monde convaincant "
 "de mystère et d'exploration."
 
-#: i18n/tmp/Applications/Games/The Turing Test/application.js
+#: i18n/tmp/Applications/Games/The Turing Test/application.js:1
 msgid "The Turing Test"
 msgstr "The Turing Test"
 
-#: i18n/tmp/Applications/Games/The Turing Test/application.js
+#: i18n/tmp/Applications/Games/The Turing Test/application.js:2
 msgid ""
 "The Turing Test is a challenging first-person puzzle game set on Jupiter’s "
 "moon, Europa. You are Ava Turing, an engineer for the International Space "
@@ -2145,27 +2358,27 @@ msgstr ""
 "l'Agence Spatiale Internationale (ISA) envoyée pour découvrir la cause de la "
 "disparition de l'équipage au sol."
 
-#: i18n/tmp/Applications/Games/The Vanishing of Ethan Carter/application.js
+#: i18n/tmp/Applications/Games/The Vanishing of Ethan Carter/application.js:1
 msgid "The Vanishing of Ethan Carter"
 msgstr "The Vanishing of Ethan Carter"
 
-#: i18n/tmp/Applications/Games/The Vanishing of Ethan Carter/application.js
-#: Carter Redux/application.js
+#: i18n/tmp/Applications/Games/The Vanishing of Ethan Carter/application.js:2
+#: Carter Redux/application.js:2
 msgid "The Vanishing of Ethan Carter is a first-person story-driven mystery."
 msgstr ""
 "The Vanishing of Ethan Carter est un mystère à la première personne axé sur "
 "l'histoire."
 
 #: i18n/tmp/Applications/Games/The Vanishing of Ethan Carter
-#: Redux/application.js
+#: Redux/application.js:1
 msgid "The Vanishing of Ethan Carter Redux"
 msgstr "The Vanishing of Ethan Carter Redux"
 
-#: i18n/tmp/Applications/Games/The Witcher 3: Wild Hunt/application.js
+#: i18n/tmp/Applications/Games/The Witcher 3: Wild Hunt/application.js:1
 msgid "The Witcher 3: Wild Hunt"
 msgstr "The Witcher 3: Wild Hunt"
 
-#: i18n/tmp/Applications/Games/The Witcher 3: Wild Hunt/application.js
+#: i18n/tmp/Applications/Games/The Witcher 3: Wild Hunt/application.js:2
 msgid ""
 "The Witcher: Wild Hunt is a story-driven, next-generation open world role-"
 "playing game set in a visually stunning fantasy universe full of meaningful "
@@ -2182,11 +2395,37 @@ msgstr ""
 "marchandes, d’îles peuplées de pirates vikings, de cols montagneux dangereux "
 "et de grottes oubliées à explorer."
 
-#: i18n/tmp/Applications/Games/Toki Tori/application.js
+#: i18n/tmp/Applications/Games/The Witness/application.js:1
+msgid "The Witness"
+msgstr "The Witness"
+
+#: i18n/tmp/Applications/Games/The Witness/application.js:2
+msgid ""
+"You wake up, alone, on a strange island full of puzzles that will challenge "
+"and surprise you.<br><br>You don't remember who you are, and you don't "
+"remember how you got here, but there's one thing you can do: explore the "
+"island in hope of discovering clues, regaining your memory, and somehow "
+"finding your way home.<br><br>The Witness is a single-player game in an open "
+"world with dozens of locations to explore and over 500 puzzles. This game "
+"respects you as an intelligent player and it treats your time as precious. "
+"There's no filler; each of those puzzles brings its own new idea into the "
+"mix. So, this is a game full of ideas."
+msgstr ""
+"Vous vous réveillez seul, sur une île étrange remplie d'énigmes qui vous "
+"mettront à l'épreuve et vous surprendront.<br><br>Vous avez oublié qui vous "
+"êtes et comment vous avez atterri ici. Une seule solution s'offre à vous : "
+"explorez l'île en quête d'indices pour retrouver la mémoire et découvrir "
+"comment retourner chez vous.<br><br>The Witness est un jeu solo dans un "
+"monde ouvert comptant des dizaines de lieux à découvrir et plus de 500 "
+"énigmes. Ce jeu respecte votre intelligence de joueur et considère que votre "
+"temps est précieux. Rien n'est dû au hasard. Chacune des énigmes ajoute une "
+"idée à l'édifice. Ce jeu regorge donc d'idées."
+
+#: i18n/tmp/Applications/Games/Toki Tori/application.js:1
 msgid "Toki Tori"
 msgstr "Toki Tori"
 
-#: i18n/tmp/Applications/Games/Toki Tori/application.js
+#: i18n/tmp/Applications/Games/Toki Tori/application.js:2
 msgid ""
 "The gameplay in Toki Tori is a blend of two genres. While it looks like a "
 "platform game, it's a puzzle game at heart. To progress through the game, "
@@ -2197,11 +2436,11 @@ msgstr ""
 "têtes. Pour progresser à travers le jeu, le joueur doit ramasser chaque œuf "
 "dans un niveau en utilisant un nombre déterminé d'outils."
 
-#: i18n/tmp/Applications/Games/Tomb Raider Anniversary/application.js
+#: i18n/tmp/Applications/Games/Tomb Raider Anniversary/application.js:1
 msgid "Tomb Raider: Anniversary"
 msgstr "Tomb Raider: Anniversary"
 
-#: i18n/tmp/Applications/Games/Tomb Raider Anniversary/application.js
+#: i18n/tmp/Applications/Games/Tomb Raider Anniversary/application.js:2
 msgid ""
 "Tomb Raider: Anniversary retraces Lara Croft's original genre-defining "
 "adventure globe-trotting 3rd person action-adventure in pursuit of the "
@@ -2224,11 +2463,11 @@ msgstr ""
 "les plus reculés, mystérieux et sombres de la planète et résolvez le plus "
 "important des mystères : celui du passé de Lara."
 
-#: i18n/tmp/Applications/Games/Tomb Raider Legend/application.js
+#: i18n/tmp/Applications/Games/Tomb Raider Legend/application.js:1
 msgid "Tomb Raider: Legend"
 msgstr "Tomb Raider: Legend"
 
-#: i18n/tmp/Applications/Games/Tomb Raider Legend/application.js
+#: i18n/tmp/Applications/Games/Tomb Raider Legend/application.js:2
 msgid ""
 "The gaming world's sexiest and most intrepid adventurer makes her triumphant "
 "return in Lara Croft Tomb Raider: Legend!<br><br>Follow Lara down a path of "
@@ -2247,29 +2486,29 @@ msgstr ""
 "énigmes. Faites partie de la renaissance d'une légende avec cet épisode, le "
 "plus dynamique jusqu'à ce jour, des Tomb raiders!"
 
-#: i18n/tmp/Applications/Games/Tomb Raider: The Dagger Of Xian/application.js
+#: i18n/tmp/Applications/Games/Tomb Raider: The Dagger Of Xian/application.js:1
 msgid "Tomb Raider: The Dagger Of Xian"
 msgstr "Tomb Raider: The Dagger Of Xian"
 
-#: i18n/tmp/Applications/Games/Tomb Raider: The Dagger Of Xian/application.js
+#: i18n/tmp/Applications/Games/Tomb Raider: The Dagger Of Xian/application.js:2
 msgid "Fan Game Tomb Raider 2 Remake by Nicobass."
 msgstr "Fan Game, remake de Tomb Raider 2 par Nicobass."
 
 #: i18n/tmp/Applications/Games/Tomb Raider: The Dagger Of Xian/Local
-#: (Demo)/script.js
+#: (Demo)/script.js:1
 msgid "Local (Demo)"
 msgstr "Local (Demo)"
 
 #: i18n/tmp/Applications/Games/Tomb Raider: The Dagger Of Xian/Online
-#: (Demo)/script.js
+#: (Demo)/script.js:1
 msgid "Online (Demo)"
 msgstr "En ligne (Demo)"
 
-#: i18n/tmp/Applications/Games/Tomb Raider Underworld/application.js
+#: i18n/tmp/Applications/Games/Tomb Raider Underworld/application.js:1
 msgid "Tomb Raider: Underworld"
 msgstr "Tomb Raider: Underworld"
 
-#: i18n/tmp/Applications/Games/Tomb Raider Underworld/application.js
+#: i18n/tmp/Applications/Games/Tomb Raider Underworld/application.js:2
 msgid ""
 "Tomb Raider: Underworld represents a new advancement in exploration-based "
 "gameplay. As fearless adventurer Lara Croft explore exotic locations around "
@@ -2285,12 +2524,12 @@ msgstr ""
 "et de choix."
 
 #: i18n/tmp/Applications/Games/Tom Clancy's Rainbow Six 3 : Raven
-#: Shield/application.js
+#: Shield/application.js:1
 msgid "Tom Clancy's Rainbow Six 3 : Raven Shield"
 msgstr "Tom Clancy's Rainbow Six 3 : Raven Shield"
 
 #: i18n/tmp/Applications/Games/Tom Clancy's Rainbow Six 3 : Raven
-#: Shield/application.js
+#: Shield/application.js:2
 msgid ""
 "Raven Shield: Command an elite multinational squad of special operatives "
 "against hidden terrorist forces. In Tom Clancy's Rainbow Six 3: Raven "
@@ -2303,20 +2542,20 @@ msgstr ""
 "l'équipe Rainbow est confrontée à un nouvel ennemi secret mondiale."
 
 #: i18n/tmp/Applications/Games/Tom Clancy's Rainbow Six 3 : Raven Shield/Local
-#: (1.0->1.6)/script.js
+#: (1.0->1.6)/script.js:1
 msgid "Local (1.0->1.6)"
 msgstr "Local (1.0->1.6)"
 
 #: i18n/tmp/Applications/Games/Tom Clancy's Rainbow Six 3 : Raven Shield/Steam
-#: (Gold)/script.js
+#: (Gold)/script.js:1
 msgid "Steam (Gold)"
 msgstr "Steam (Gold)"
 
-#: i18n/tmp/Applications/Games/Tom Clancy's Splinter Cell/application.js
+#: i18n/tmp/Applications/Games/Tom Clancy's Splinter Cell/application.js:1
 msgid "Tom Clancy's Splinter Cell®"
 msgstr "Tom Clancy's Splinter Cell®"
 
-#: i18n/tmp/Applications/Games/Tom Clancy's Splinter Cell/application.js
+#: i18n/tmp/Applications/Games/Tom Clancy's Splinter Cell/application.js:2
 msgid ""
 "Infiltrate terrorists' positions, acquire critical intelligence by any means "
 "necessary, execute with extreme prejudice, and exit without a trace! You are "
@@ -2328,11 +2567,11 @@ msgstr ""
 "de trace ! Vous êtes Sam Fisher, un agent secret de haut niveau d’une "
 "branche secrète de la NSA : Third Echelon."
 
-#: i18n/tmp/Applications/Games/Tom Clancy's The Division/application.js
+#: i18n/tmp/Applications/Games/Tom Clancy's The Division/application.js:1
 msgid "Tom Clancy’s The Division™"
 msgstr "Tom Clancy’s The Division™"
 
-#: i18n/tmp/Applications/Games/Tom Clancy's The Division/application.js
+#: i18n/tmp/Applications/Games/Tom Clancy's The Division/application.js:2
 msgid ""
 "Black Friday – a devastating pandemic sweeps through New York City, and one "
 "by one, basic services fail. In only days, without food or water, society "
@@ -2345,11 +2584,38 @@ msgstr ""
 "plonge la société dans le chaos. C’est alors qu’intervient La Division, une "
 "unité d’agents tactiques autonomes, classée secret défense."
 
-#: i18n/tmp/Applications/Games/Trackmania Turbo/application.js
+#: i18n/tmp/Applications/Games/Total War Rome II/application.js:1
+msgid "Total War: ROME II"
+msgstr "Total War: ROME II"
+
+#: i18n/tmp/Applications/Games/Total War Rome II/application.js:2
+msgid ""
+"Emperor Edition is the definitive edition of ROME II, featuring an improved "
+"politics system, overhauled building chains, rebalanced battles and improved "
+"visuals in both campaign and battle.<br><br>In addition, Emperor Edition "
+"includes all content and feature updates made available for ROME II since "
+"its launch in September 2013. These include Twitch.TV integration, "
+"touchscreen controls, new playable factions and units, and Mac "
+"compatibility. The Imperator Augustus Campaign Pack and all Emperor Edition "
+"content and features are free, via automatic update, to all existing ROME II "
+"owners."
+msgstr ""
+"Emperor Edition est la version ultime de ROME II, elle inclut un système "
+"politique amélioré, des chaînes de construction remaniées, des combats "
+"rééquilibrés et des visuels améliorés à la fois en campagne et en bataille."
+"<br><br>De plus, Emperor Edition inclut tout le contenu et les mises à jour "
+"disponibles pour ROME II depuis son lancement en septembre 2013. Celles-ci "
+"incluent l'intégration de Twitch.TV, les commandes tactiles, de nouvelles "
+"factions et unités jouables et la compatibilité Mac. Le pack de campagne "
+"Imperator Augustus ainsi que tout le contenu et fonctionnalités de Emperor "
+"Edition sont gratuits, via une mise à jour gratuite pour tous les "
+"possesseurs de ROME II."
+
+#: i18n/tmp/Applications/Games/Trackmania Turbo/application.js:1
 msgid "Trackmania® Turbo"
 msgstr "Trackmania® Turbo"
 
-#: i18n/tmp/Applications/Games/Trackmania Turbo/application.js
+#: i18n/tmp/Applications/Games/Trackmania Turbo/application.js:2
 msgid ""
 "Trackmania offers you the ultimate arcade racing universe where everything "
 "is about reaching the perfect racing time. Test your skills in over 200 "
@@ -2361,11 +2627,11 @@ msgstr ""
 "amusez-vous immédiatement en défiant vos amis en écran partagé (hors "
 "connexion) ou en ligne."
 
-#: i18n/tmp/Applications/Games/TRON RUNr/application.js
+#: i18n/tmp/Applications/Games/TRON RUNr/application.js:1
 msgid "TRON RUN/r"
 msgstr "TRON RUN/r"
 
-#: i18n/tmp/Applications/Games/TRON RUNr/application.js
+#: i18n/tmp/Applications/Games/TRON RUNr/application.js:2
 msgid ""
 "Return to the world of TRON with TRON RUN/r, a new lightning fast, action-"
 "adventure runner with a twist! Hone your DISC and CYCLE skills, then "
@@ -2378,11 +2644,11 @@ msgstr ""
 "modes et de niveaux jusqu'à ce que vous vous écrasiez. Combien de temps "
 "survivrez-vous ?"
 
-#: i18n/tmp/Applications/Games/Tropico 3/application.js
+#: i18n/tmp/Applications/Games/Tropico 3/application.js:1
 msgid "Tropico 3"
 msgstr "Tropico 3"
 
-#: i18n/tmp/Applications/Games/Tropico 3/application.js
+#: i18n/tmp/Applications/Games/Tropico 3/application.js:2
 msgid ""
 "Engage in a tropical power trip! Become the dictator of a remote island "
 "during the Cold War. Charm, persuade, intimidate, oppress, or cheat your "
@@ -2404,11 +2670,11 @@ msgstr ""
 "l'île d'un autre joueur, ou simplement prenez un bain de soleil sur la plage "
 "des Caraïbes."
 
-#: i18n/tmp/Applications/Games/Tropico 4/application.js
+#: i18n/tmp/Applications/Games/Tropico 4/application.js:1
 msgid "Tropico 4"
 msgstr "Tropico 4"
 
-#: i18n/tmp/Applications/Games/Tropico 4/application.js
+#: i18n/tmp/Applications/Games/Tropico 4/application.js:2
 msgid ""
 "The world is changing and Tropico is moving with the times - geographical "
 "powers rise and fall and the world market is dominated by new players with "
@@ -2454,11 +2720,11 @@ msgstr ""
 "publier votre création de rêve sur votre page Facebook Tropico 4 et comparer "
 "votre classement interactif des dictateurs sur les classements en ligne."
 
-#: i18n/tmp/Applications/Games/Unholy Heights/application.js
+#: i18n/tmp/Applications/Games/Unholy Heights/application.js:1
 msgid "Unholy Heights"
 msgstr "Unholy Heights"
 
-#: i18n/tmp/Applications/Games/Unholy Heights/application.js
+#: i18n/tmp/Applications/Games/Unholy Heights/application.js:2
 msgid ""
 "Welcome to Unholy Heights, a mashup of Tower Defense and Apartment "
 "Management Simulation! The Devil has converted a tenement building into "
@@ -2490,15 +2756,15 @@ msgstr ""
 "est un travail difficile, mais il ne peut pas être plus difficile que de "
 "courir l'enfer ... n'est-ce pas?"
 
-#: i18n/tmp/Applications/Games/Uplay/application.js
+#: i18n/tmp/Applications/Games/Uplay/application.js:2
 msgid "Uplay is Ubisoft's PC games portal."
 msgstr "Uplay est le portail des jeux PC d'Ubisoft."
 
-#: i18n/tmp/Applications/Games/Warcraft III/application.js
+#: i18n/tmp/Applications/Games/Warcraft III/application.js:1
 msgid "Warcraft® III: Reign of Chaos®"
 msgstr "Warcraft® III: Reign of Chaos®"
 
-#: i18n/tmp/Applications/Games/Warcraft III/application.js
+#: i18n/tmp/Applications/Games/Warcraft III/application.js:2
 msgid ""
 "A generation before the events of World of Warcraft begin... Cunning, "
 "sinister, and seemingly unstoppable, the demonic Burning Legion prepare to "
@@ -2510,11 +2776,11 @@ msgstr ""
 "Brûlante se prépare à lancer leur assaut tant attendu sur le monde mortel. "
 "La survie est une question de stratégie, comme le Règne du Chaos commence..."
 
-#: i18n/tmp/Applications/Games/Warcraft III TFT/application.js
+#: i18n/tmp/Applications/Games/Warcraft III TFT/application.js:1
 msgid "Warcraft® III: The Frozen Throne®"
 msgstr "Warcraft® III: The Frozen Throne®"
 
-#: i18n/tmp/Applications/Games/Warcraft III TFT/application.js
+#: i18n/tmp/Applications/Games/Warcraft III TFT/application.js:2
 msgid ""
 "Warcraft III: The Frozen Throne adds a host of new features to the game, "
 "including four new campaigns that take you across the frozen continent of "
@@ -2528,11 +2794,28 @@ msgstr ""
 "comme le chevaucheur de chauve-souris troll, le brisesort elfe de sang ou le "
 "géant de la montagne destructeur.<br><br>Installer Warcraft III d'abord."
 
-#: i18n/tmp/Applications/Games/Warlock - Master of the Arcane/application.js
+#: i18n/tmp/Applications/Games/Warface/application.js:1
+msgid "Warface"
+msgstr "Warface"
+
+#: i18n/tmp/Applications/Games/Warface/application.js:2
+msgid ""
+"Warface offers an intense Co-op experience with daily new content, in which "
+"players can master unique teamwork moves and gameplay styles. They can also "
+"engage in fast-paced or tactical action in Versus modes such as Team Death "
+"Match or Plant The Bomb."
+msgstr ""
+"Warface offre une expérience Co-op intense avec des missions quotidiennes, "
+"dans lesquelles les joueurs doivent maitriser le jeu en équipe et des "
+"actions de combat uniques. Ils peuvent aussi s’engager dans des parties "
+"Conflit au rythme effréné et tactiques telles les modes Détonation ou "
+"Escarmouche."
+
+#: i18n/tmp/Applications/Games/Warlock - Master of the Arcane/application.js:1
 msgid "Warlock - Master of the Arcane"
 msgstr "Warlock - Master of the Arcane"
 
-#: i18n/tmp/Applications/Games/Warlock - Master of the Arcane/application.js
+#: i18n/tmp/Applications/Games/Warlock - Master of the Arcane/application.js:2
 msgid ""
 "In a time of chaotic upheaval, the player takes the role of a great mage, a "
 "warlord vying for ultimate power. Your mission is to build an empire, expand "
@@ -2545,11 +2828,11 @@ msgstr ""
 "de nouveaux sorts et de conquérir vos ennemis. Devenez le magicien ultime et "
 "règne sur Ardania !"
 
-#: i18n/tmp/Applications/Games/Worms Armageddon/application.js
+#: i18n/tmp/Applications/Games/Worms Armageddon/application.js:1
 msgid "Worms Armageddon"
 msgstr "Worms Armageddon"
 
-#: i18n/tmp/Applications/Games/Worms Armageddon/application.js
+#: i18n/tmp/Applications/Games/Worms Armageddon/application.js:2
 msgid ""
 "Those intrepid invertebrates return with a vengeance in the much-loved "
 "Worms™ Armageddon. It’s a whole new can of worms! It’s hilarious fun that "
@@ -2559,11 +2842,11 @@ msgstr ""
 "apprécié Worms™ Armageddon. Il s'agit là d'un toute nouvelle gamme de vers ! "
 "C'est hilarant et vous pouvez en profiter tout seul ou avec tous vos amis."
 
-#: i18n/tmp/Applications/Games/Worms Reloaded/application.js
+#: i18n/tmp/Applications/Games/Worms Reloaded/application.js:1
 msgid "Worms™ Reloaded"
 msgstr "Worms™ Reloaded"
 
-#: i18n/tmp/Applications/Games/Worms Reloaded/application.js
+#: i18n/tmp/Applications/Games/Worms Reloaded/application.js:2
 msgid ""
 "Worms™ Reloaded is a turn-based computer games developed by Team17 Software. "
 "Players control a small platoon of earthworms across a deformable landscape, "
@@ -2577,15 +2860,19 @@ msgstr ""
 "des équipes contrôlées par d'autres joueur. Le jeu présente des animations "
 "style cartoon et humoristique et un arsenal varié d'armes bizarres."
 
-#: i18n/tmp/Applications/Graphics/category.js
+#: i18n/tmp/Applications/Games/Xenon 2/application.js:1
+msgid "Xenon 2"
+msgstr "Xenon 2"
+
+#: i18n/tmp/Applications/Graphics/category.js:1
 msgid "Graphics"
 msgstr "Graphismes"
 
-#: i18n/tmp/Applications/Graphics/Photofiltre/application.js
+#: i18n/tmp/Applications/Graphics/Photofiltre/application.js:1
 msgid "Photofiltre"
 msgstr "Photofiltre"
 
-#: i18n/tmp/Applications/Graphics/Photofiltre/application.js
+#: i18n/tmp/Applications/Graphics/Photofiltre/application.js:2
 msgid ""
 "<b>Introduction</b><br/>PhotoFiltre Studio is a complete image retouching "
 "program. It allows you to do simple or advanced adjustments to an image and "
@@ -2640,16 +2927,16 @@ msgstr ""
 "utilisation privée ou éducative.<br />Toute utilisation commerciale ou "
 "professionnelle nécessite l'achat d'une licence."
 
-#: i18n/tmp/Applications/Internet/category.js
+#: i18n/tmp/Applications/Internet/category.js:1
 msgid "Internet"
 msgstr "Internet"
 
-#: i18n/tmp/Applications/Internet/Internet Explorer 6.0/application.js
+#: i18n/tmp/Applications/Internet/Internet Explorer 6.0/application.js:1
 msgid "Internet Explorer 6.0"
 msgstr "Internet Explorer 6.0"
 
-#: i18n/tmp/Applications/Internet/Internet Explorer 6.0/application.js
-#: 7.0/application.js
+#: i18n/tmp/Applications/Internet/Internet Explorer 6.0/application.js:2
+#: 7.0/application.js:2
 msgid ""
 "Internet Explorer is an old web browser.<br />You may need it if you want to "
 "test a website compatibility, you should not use it to navigate. "
@@ -2658,15 +2945,15 @@ msgstr ""
 "avoir besoin si vous voulez tester la compatibilité d'un site, vous ne "
 "devriez pas l'utiliser pour naviguer. "
 
-#: i18n/tmp/Applications/Internet/Internet Explorer 7.0/application.js
+#: i18n/tmp/Applications/Internet/Internet Explorer 7.0/application.js:1
 msgid "Internet Explorer 7.0"
 msgstr "Internet Explorer 7.0"
 
-#: i18n/tmp/Applications/Internet/mIRC/application.js
+#: i18n/tmp/Applications/Internet/mIRC/application.js:1
 msgid "mIRC"
 msgstr "mIRC"
 
-#: i18n/tmp/Applications/Internet/mIRC/application.js
+#: i18n/tmp/Applications/Internet/mIRC/application.js:2
 msgid ""
 "<p>mIRC is a <b>popular Internet Relay Chat client</b> used by millions of "
 "people, and thousands of organizations, to communicate, share, play and work "
@@ -2681,15 +2968,15 @@ msgstr ""
 "b> depuis plus d'une décennie, mIRC est devenu une technologie puissante, "
 "fiable et amusante. </p>"
 
-#: i18n/tmp/Applications/Internet/mIRC/v7.46/script.js
+#: i18n/tmp/Applications/Internet/mIRC/v7.46/script.js:1
 msgid "v7.46"
 msgstr "v7.46"
 
-#: i18n/tmp/Applications/Internet/TeamSpeak 3/application.js
+#: i18n/tmp/Applications/Internet/TeamSpeak 3/application.js:1
 msgid "TeamSpeak 3"
 msgstr "TeamSpeak 3"
 
-#: i18n/tmp/Applications/Internet/TeamSpeak 3/application.js
+#: i18n/tmp/Applications/Internet/TeamSpeak 3/application.js:2
 msgid ""
 "TeamSpeak 3 offers the ideal voice communication tool for online gaming, "
 "education and training, internal business communication, and staying in "
@@ -2699,19 +2986,19 @@ msgstr ""
 "éducation et entraînement, communication commerciale interne et rester en "
 "contact avec les amis et la famille."
 
-#: i18n/tmp/Applications/Internet/TeamSpeak 3/v3.0.19.4/script.js
+#: i18n/tmp/Applications/Internet/TeamSpeak 3/v3.0.19.4/script.js:1
 msgid "v3.0.19.4"
 msgstr "v3.0.19.4"
 
-#: i18n/tmp/Applications/Multimedia/category.js
+#: i18n/tmp/Applications/Multimedia/category.js:1
 msgid "Multimedia"
 msgstr "Multimedia"
 
-#: i18n/tmp/Applications/Multimedia/Mp3tag/application.js
+#: i18n/tmp/Applications/Multimedia/Mp3tag/application.js:1
 msgid "Mp3tag"
 msgstr "Mp3tag"
 
-#: i18n/tmp/Applications/Multimedia/Mp3tag/application.js
+#: i18n/tmp/Applications/Multimedia/Mp3tag/application.js:2
 msgid ""
 "Mp3tag is a powerful and yet easy-to-use tool to edit metadata of common "
 "audio formats where it supports ID3v1, ID3v2.3, ID3v2.4, iTunes MP4, WMA, "
@@ -2726,11 +3013,11 @@ msgstr ""
 "d'Amazon, Musicbraing, freedb ou discogs par exemple pour collecter "
 "automatiquement les étiquettes appropriées et les pochettes."
 
-#: i18n/tmp/Applications/Office/Adobe Acrobat Reader DC/application.js
+#: i18n/tmp/Applications/Office/Adobe Acrobat Reader DC/application.js:1
 msgid "Adobe Acrobat Reader DC"
 msgstr "Adobe Acrobat Reader DC"
 
-#: i18n/tmp/Applications/Office/Adobe Acrobat Reader DC/application.js
+#: i18n/tmp/Applications/Office/Adobe Acrobat Reader DC/application.js:2
 msgid ""
 "Adobe Acrobat Reader DC software is the free global standard for reliably "
 "viewing, printing, and commenting on PDF documents.<br><br>Premium features, "
@@ -2741,25 +3028,25 @@ msgstr ""
 "documents PDF.<br><br>Les fonctionnalités premium , les services en ligne et "
 "les mises à jour ne fonctionnent pas."
 
-#: i18n/tmp/Applications/Office/category.js
+#: i18n/tmp/Applications/Office/category.js:1
 msgid "Office"
 msgstr "Office"
 
-#: i18n/tmp/Applications/Office/ElsterFormular/application.js
+#: i18n/tmp/Applications/Office/ElsterFormular/application.js:1
 msgid "ElsterFormular"
 msgstr "ElsterFormular"
 
-#: i18n/tmp/Applications/Office/ElsterFormular/application.js
+#: i18n/tmp/Applications/Office/ElsterFormular/application.js:2
 msgid "ElsterFormular is the official german software to file a tax return."
 msgstr ""
 "ElsterFormular est le programme officiel allemand pour la déclaration "
 "d'impôts."
 
-#: i18n/tmp/Applications/Office/Microsoft Office 2010/application.js
+#: i18n/tmp/Applications/Office/Microsoft Office 2010/application.js:1
 msgid "Microsoft Office 2010"
 msgstr "Microsoft Office 2010"
 
-#: i18n/tmp/Applications/Office/Microsoft Office 2010/application.js
+#: i18n/tmp/Applications/Office/Microsoft Office 2010/application.js:2
 msgid ""
 "Microsoft Office 2010 is a version of Microsoft Office, a productivity suite "
 "for Microsoft Windows. It is the successor to Microsoft Office 2007."
@@ -2768,11 +3055,11 @@ msgstr ""
 "productivité pour Microsoft Windows. Il s'agit du successeur de Microsoft "
 "Office 2007."
 
-#: i18n/tmp/Applications/Office/Microsoft Office 2013/application.js
+#: i18n/tmp/Applications/Office/Microsoft Office 2013/application.js:1
 msgid "Microsoft Office 2013"
 msgstr "Microsoft Office 2013"
 
-#: i18n/tmp/Applications/Office/Microsoft Office 2013/application.js
+#: i18n/tmp/Applications/Office/Microsoft Office 2013/application.js:2
 msgid ""
 "Microsoft Office 2013 is a version of Microsoft Office, a productivity suite "
 "for Microsoft Windows. It is the successor to Microsoft Office 2010."
@@ -2781,72 +3068,73 @@ msgstr ""
 "productivité pour Microsoft Windows. Il s'agit du successeur de Microsoft "
 "Office 2010."
 
-#: i18n/tmp/Applications/Other/category.js
+#: i18n/tmp/Applications/Other/category.js:1
 msgid "Other"
 msgstr "Autre"
 
-#: i18n/tmp/Applications/Science/category.js
+#: i18n/tmp/Applications/Science/category.js:1
 msgid "Science"
 msgstr "Science"
 
-#: i18n/tmp/Engines/Wine/category.js
+#: i18n/tmp/Engines/Wine/category.js:1
 msgid "Wine"
 msgstr "Wine"
 
-#: i18n/tmp/Engines/Wine/Tools/ConfigureWine/script.js
+#: i18n/tmp/Engines/Wine/Tools/ConfigureWine/script.js:1
 msgid "Configure Wine"
 msgstr "Configurer Wine"
 
-#: i18n/tmp/Engines/Wine/Tools/KillWineProcesses/script.js
+#: i18n/tmp/Engines/Wine/Tools/KillWineProcesses/script.js:1
 msgid "Kill processes"
 msgstr "Tuer les processus"
 
-#: i18n/tmp/Engines/Wine/Tools/RebootWine/script.js
+#: i18n/tmp/Engines/Wine/Tools/RebootWine/script.js:1
 msgid "Windows reboot"
 msgstr "Redémarrer windows"
 
-#: i18n/tmp/Engines/Wine/Tools/RepairWinePrefix/script.js
+#: i18n/tmp/Engines/Wine/Tools/RepairWinePrefix/script.js:1
 msgid "Repair virtual drive"
 msgstr "Réparer le disque virtuel"
 
-#: i18n/tmp/Engines/Wine/Tools/WineConsole/script.js
+#: i18n/tmp/Engines/Wine/Tools/WineConsole/script.js:1
 msgid "Command prompt"
 msgstr "Invite de commande"
 
-#: i18n/tmp/Engines/Wine/Tools/WineRegistryEditor/script.js
+#: i18n/tmp/Engines/Wine/Tools/WineRegistryEditor/script.js:1
 msgid "Registry Editor"
 msgstr "Éditeur du registre"
 
-#: i18n/tmp/Engines/Wine/Tools/WineTaskManager/script.js
+#: i18n/tmp/Engines/Wine/Tools/WineTaskManager/script.js:1
 msgid "Task manager"
 msgstr "Gestionnaire de tâches"
 
-#: i18n/tmp/Engines/Wine/Tools/WineTerminalOpener/script.js
+#: i18n/tmp/Engines/Wine/Tools/WineTerminalOpener/script.js:1
 msgid "Open a terminal"
 msgstr "Ouvrir un terminal"
 
-#: i18n/tmp/Engines/Wine/Tools/WineUninstaller/script.js
+#: i18n/tmp/Engines/Wine/Tools/WineUninstaller/script.js:1
 msgid "Wine uninstaller"
 msgstr "Désinstaller wine"
 
-#: i18n/tmp/Utils/Functions/category.js
+#: i18n/tmp/Utils/Functions/category.js:1
 msgid "Functions"
 msgstr "Fonctions"
 
-#: Utils/Functions/Filesystem/Extract/script.js
+#: Utils/Functions/Filesystem/Extract/script.js:28
+#: Utils/Functions/Filesystem/Extract/script.js:73
 msgid "Please wait while {0} is extracted ..."
 msgstr "Veuillez patienter pendant que {0} est extrait ..."
 
-#: Utils/Functions/Filesystem/Files/script.js
+#: Utils/Functions/Filesystem/Files/script.js:69
 msgid "Checking file consistency ..."
 msgstr "Vérification de la cohérence des fichiers  ..."
 
-#: Utils/Functions/Net/Download/script.js
-#: Utils/Functions/Net/Resource/script.js
+#: Utils/Functions/Net/Download/script.js:41
+#: Utils/Functions/Net/Resource/script.js:47
 msgid "Please wait while {0} is downloaded ..."
 msgstr "Veuillez patienter pendant que {0} est téléchargé ..."
 
-#: Utils/Functions/Net/Download/script.js
+#: Utils/Functions/Net/Download/script.js:70
 msgid ""
 "Error while calculating checksum. \n"
 "\n"
