@@ -3,9 +3,9 @@ include(["Utils", "Functions", "Filesystem", "Extract"]);
 include(["Utils", "Functions", "Net", "Download"]);
 include(["Utils", "Functions", "Net", "Resource"]);
 
-LATEST_STABLE_VERSION = "2.0.2";
-LATEST_DEVELOPMENT_VERSION = "2.17";
-LATEST_STAGING_VERSION = "2.17";
+LATEST_STABLE_VERSION = "3.0";
+LATEST_DEVELOPMENT_VERSION = "3.4";
+LATEST_STAGING_VERSION = "2.21";
 
 WINE_PREFIX_DIR = "wineprefix"
 

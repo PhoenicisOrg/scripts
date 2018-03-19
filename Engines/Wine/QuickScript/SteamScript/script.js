@@ -3,7 +3,6 @@ include(["Utils", "Functions", "Net", "Download"]);
 include(["Engines", "Wine", "Engine", "Object"]);
 include(["Utils", "Functions", "Filesystem", "Extract"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
-include(["Engines", "Wine", "Shortcuts", "Wine"]);
 include(["Engines", "Wine", "Verbs", "luna"]);
 
 
@@ -78,16 +77,10 @@ SteamScript.prototype.go = function() {
 
     // default executable args if not specified
     if (!this._executableArgs) {
-        this._executableArgs = ["-silent", "-applaunch", this._appId];
+        this._executableArgs = ["-no-cef-sandbox", "-silent", "-applaunch", this._appId];
     }
 
-    var appsManager = Bean("repositoryManager");
-    var application = appsManager.getApplication([this._type, this._category, this._name]);
-    var miniature = java.util.Optional.empty();
-    if (application) {
-        miniature = application.getMainMiniature();
-    }
-    var setupWizard = SetupWizard(InstallationType.APPS, this._name, miniature);
+    var setupWizard = SetupWizard(InstallationType.APPS, this._name, this.miniature());
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
@@ -139,15 +132,7 @@ SteamScript.prototype.go = function() {
     setupWizard.wait(tr("Please wait ..."));
 
     // create shortcut after installation (if executable is specified, it does not exist earlier)
-    new WineShortcut()
-        .name(this._name)
-        .type(this._type)
-        .category(this._category)
-        .prefix(wine.prefix())
-        .search(this._executable)
-        .arguments(this._executableArgs)
-        .miniature([this._type, this._category, this._name])
-        .create();
+    this._createShortcut(wine.prefix());
 
     this._postInstall(wine, setupWizard);
 

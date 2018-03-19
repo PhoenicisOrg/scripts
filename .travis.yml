@@ -1,0 +1,14 @@
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y python-jsonschema python-pil gettext
+
+script:
+  - python ./validate.py
+
+after_success:
+  # push translation updates only for master (PR changes must be committed to master before they are taken into account)
+  - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./i18n/push_translations.sh; fi
+
+env:
+  global:
+    - secure: "G4stg+1ko5gyBf7q4d3BPmpHKKNkNjEFJOjE83JAe+3aJFYUSh+bwQKizc6+0BaekhyQcQB2CxtknkVGk/xnio2fNNuahxYV1QJmEDxNeBmwF4LS8rQcidoxOPfCVHQ/DXCqtJrCjof7BrWGJKsnhIVHtkQFwo369XATCNIZdsjhuM4ROT35HykoGE+us2qWsoU5C/j+F3dD+9LC8y8ye7SljC9EJVCjZ7HrW77ghS7aulZ+tcrQiHeFwRGJ9Oppwq+XbViflMmPxsp1z3Sg829dWA0Fv9+ejZo7ys0KJauh0H00J8druy3X/QncibzOqy2FCbwXm3e8k3WHgUpYihN3x2Up4PmhEysrlctnR1s3VFDr2cUHYbmeh4eqjSy9O3ejPu9th7Z0pjAJxJae8BWx3Gg2oA+tuIeMAxvGQScQkj93g2moAq2n1wSaa5wCEzoLTV+gheqojRIMc/E9O5VQB+oXgDv1xUKfJ5ZmB7nPGoVBbw2YimGTeICbLjydH6ErKTnxdia1EVn5OX5OOss5H6u/jxg8wJALp4+Qq/7EwMj9f6j6J8JuZSNMAqlvSovdqNPlrywPsqtGEJlB6GU3Sqc5cWW/qlefXNZzXHJkZGGQCqhQiQljNxzRm8lgh0u9/uAH4RhOFhtJnBbE/yo7Exe0yIH6eadBaMl+xTQ="

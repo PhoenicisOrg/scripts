@@ -3,7 +3,6 @@ include(["Utils", "Functions", "Net", "Download"]);
 include(["Engines", "Wine", "Engine", "Object"]);
 include(["Utils", "Functions", "Filesystem", "Extract"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
-include(["Engines", "Wine", "Shortcuts", "Wine"]);
 include(["Engines", "Wine", "Verbs", "luna"]);
 
 
@@ -38,13 +37,7 @@ UplayScript.prototype.go = function() {
         this._executableArgs = ["uplay://launch/" + this._appId + "/0"];
     }
 
-    var appsManager = Bean("repositoryManager");
-    var application = appsManager.getApplication([this._type, this._category, this._name]);
-    var miniature = java.util.Optional.empty();
-    if (application) {
-        miniature = application.getMainMiniature();
-    }
-    var setupWizard = SetupWizard(InstallationType.APPS, this._name, miniature);
+    var setupWizard = SetupWizard(InstallationType.APPS, this._name, this.miniature());
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
@@ -76,15 +69,7 @@ UplayScript.prototype.go = function() {
     // back to generic wait (might have been changed in preInstall)
     setupWizard.wait(tr("Please wait ..."));
 
-    new WineShortcut()
-        .name(this._name)
-        .type(this._type)
-        .category(this._category)
-        .prefix(wine.prefix())
-        .search(this._executable)
-        .arguments(this._executableArgs)
-        .miniature([this._type, this._category, this._name])
-        .create();
+    this._createShortcut(wine.prefix());
 
     wine.runInsidePrefix(wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/Uplay.exe", ["uplay://launch/" + this._appId + "/0"]);
 

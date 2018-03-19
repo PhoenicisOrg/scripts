@@ -1,0 +1,21 @@
+rules:
+  indent: 4
+  
+globals:
+  include: true
+  # files
+  mkdir: true
+  fileExists: true
+  cat: true
+  cp: true
+  getFileSize: true
+  fileName: true
+  lns: true
+  remove: true
+  touch: true
+  writeToFile: true
+  createTempFile: true
+  # wine
+  LATEST_DEVELOPMENT_VERSION: true
+  LATEST_STABLE_VERSION: true
+  LATEST_STAGING_VERSION: true
