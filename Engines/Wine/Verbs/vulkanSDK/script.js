@@ -31,17 +31,17 @@ Wine.prototype.vulkanSDK = function() {
 	writeToFile(pathVulkanJSON,contentVulkanJSON);
 	
 	var regeditFileContent = 
-	"REGEDIT4\n"                                              +
-        "\n"                                                      +
-        "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers\\]\n" +
+	"REGEDIT4\n"                                              	+
+        "\n"                                                      	+
+        "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers\\]\n" 	+
         "\"C:\Windows\winevulkan.json\"=dword:00000000"
 		
 	this.regedit().patch(regeditFileContent);
 	
 	if (this.architecture() == "amd64") {
 		var regeditFileContent = 
-		"REGEDIT4\n"                                                         +
-                "\n"                                                                 +
+		"REGEDIT4\n"                                             	           +
+                "\n"                                                            	   +
                 "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Khronos\\Vulkan\\Drivers\\]n" +
 		"\"C:\Windows\winevulkan.json\"=dword:00000000"
 		
