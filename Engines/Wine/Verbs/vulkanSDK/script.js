@@ -1,6 +1,7 @@
 include(["Engines", "Wine", "Engine", "Object"]);
 include(["Utils", "Functions", "Net", "Resource"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
+include(["Utils", "Functions", "Apps", "Resources"]);
 
 /**
 * All the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
@@ -30,22 +31,12 @@ Wine.prototype.vulkanSDK = function() {
 
 	writeToFile(pathVulkanJSON,contentVulkanJSON);
 	
-	var regeditFileContent = 
-	"REGEDIT4\n"                                              	+
-        "\n"                                                      	+
-        "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers\\]\n" 	+
-        "\"C:\Windows\winevulkan.json\"=dword:00000000"
-		
-	this.regedit().patch(regeditFileContent);
+	var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("vulkan.reg");
+        this.regedit().patch(registrySettings);
 	
 	if (this.architecture() == "amd64") {
-		var regeditFileContent = 
-		"REGEDIT4\n"                                             	           +
-                "\n"                                                            	   +
-                "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Khronos\\Vulkan\\Drivers\\]n" +
-		"\"C:\Windows\winevulkan.json\"=dword:00000000"
-		
-		this.regedit().patch(regeditFileContent);
+		var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("vulkan64.reg");
+                this.regedit().patch(registrySettings);
 	}
 	
 	return this;
