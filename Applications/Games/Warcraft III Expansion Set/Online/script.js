@@ -5,7 +5,7 @@ include(["Engines", "Wine", "Verbs", "corefonts"]);
 new OnlineInstallerScript()
     .name("Warcraft III Expansion Set")
     .editor("Blizzard")
-    .applicationHomepage("https://eu.battle.net/shop/en/product/warcraft-iii-the-frozen-throne")
+    .applicationHomepage("http://www.blizzard.com/en-gb/games/war3/")
     .author("Grimler91")
     .url("https://www.battle.net/download/getInstaller?os=win&installer=Warcraft-III-Setup.exe")
     // The checksum changes each time you download
