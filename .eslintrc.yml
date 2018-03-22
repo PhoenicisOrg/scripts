@@ -1,6 +1,10 @@
-rules:
-  indent: 4
-  
+---
+extends:
+  - eslint:recommended
+
+env:
+  nashorn: true
+
 globals:
   include: true
   # files
