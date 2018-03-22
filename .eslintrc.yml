@@ -3,6 +3,11 @@ rules:
   
 globals:
   include: true
+  TYPE_ID: true
+  CATEGORY_ID: true
+  APPLICATION_ID: true
+  # java
+  Bean: true
   # files
   mkdir: true
   fileExists: true
@@ -13,8 +18,28 @@ globals:
   lns: true
   remove: true
   touch: true
+  tr: true
   writeToFile: true
   createTempFile: true
+  # classes
+  AppResource: true
+  CabExtract: true
+  Checksum: true
+  Downloader: true
+  Extractor: true
+  Resource: true
+  SetupWizard: true
+  Wine: true
+  WineShortcut: true
+  # quick scripts
+  CustomInstallerScript: true
+  InstallerScript: true
+  LocalInstallerScript: true
+  OnlineInstallerScript: true
+  QuickScript: true
+  SteamScript: true
+  UplayScript: true
+  ZipScript: true
   # wine
   LATEST_DEVELOPMENT_VERSION: true
   LATEST_STABLE_VERSION: true
