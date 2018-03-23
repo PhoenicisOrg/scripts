@@ -9,4 +9,4 @@ new LocalInstallerScript()
     .author("Zemogiter")
     .category("Games")
     .executable("Sims.exe", ["-skip_intro"])
-.go();
+    .go();
