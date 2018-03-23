@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-16 14:52+0000\n"
+"POT-Creation-Date: 2018-03-23 15:04+0000\n"
 "PO-Revision-Date: 2017-09-24 10:34+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
@@ -71,12 +71,6 @@ msgid ""
 " in the {0}/drive_c/users/USERNAME/Application Data/The Creative Assembly/"
 "Rome2/scripts/preferences_script.txt "
 msgstr ""
-
-#: Applications/Games/Warcraft III TFT/Online/script.js:13
-msgid "Please install Warcraft III before installing The Frozen Throne."
-msgstr ""
-"Bitte installieren Sie Warcraft® III bevor Sie Warcraft® III: The Frozen "
-"Throne® installieren."
 
 #: Applications/Internet/Internet Explorer 6.0/Online/script.js:71
 #: Engines/Wine/Engine/Object/script.js:309
@@ -327,8 +321,8 @@ msgstr ""
 #: i18n/tmp/Applications/Games/STAR WARS: The Old Republic/Online/script.js:1
 #: i18n/tmp/Applications/Games/Steam/Online/script.js:1
 #: i18n/tmp/Applications/Games/Uplay/Online/script.js:1
-#: i18n/tmp/Applications/Games/Warcraft III/Online/script.js:1 III
-#: TFT/Online/script.js:1 i18n/tmp/Applications/Games/Xenon
+#: i18n/tmp/Applications/Games/Warcraft III Expansion Set/Online/script.js:1
+#: i18n/tmp/Applications/Games/Xenon
 #: i18n/tmp/Applications/Graphics/Photofiltre/Online/script.js:1
 #: i18n/tmp/Applications/Internet/Internet Explorer 6.0/Online/script.js:1
 #: 7.0/Online/script.js:1
@@ -2822,41 +2816,20 @@ msgstr ""
 msgid "Uplay is Ubisoft's PC games portal."
 msgstr "Uplay ist Ubisoft's Portal für PC-Spiele."
 
-#: i18n/tmp/Applications/Games/Warcraft III/application.js:1
-msgid "Warcraft® III: Reign of Chaos®"
-msgstr "Warcraft® III: Reign of Chaos®"
-
-#: i18n/tmp/Applications/Games/Warcraft III/application.js:2
-msgid ""
-"A generation before the events of World of Warcraft begin... Cunning, "
-"sinister, and seemingly unstoppable, the demonic Burning Legion prepare to "
-"launch their long-awaited assault on the mortal world. Survival is a matter "
-"of strategy, as the Reign of Chaos begins..."
-msgstr ""
-"Erforscht die vom Krieg zerrissene Welt von Azeroth, eine Generation bevor "
-"die Geschehnisse von World of Warcraft einsetzen. Durchtrieben, böse und "
-"scheinbar unaufhaltsam bereitet sich die Brennende Legion darauf vor, ihren "
-"langerwarteten Angriff auf die sterbliche Welt zu beginnen. Überleben ist "
-"eine Frage der Strategie, nun da die Herrschaft des Chaos beginnt..."
-
-#: i18n/tmp/Applications/Games/Warcraft III TFT/application.js:1
-msgid "Warcraft® III: The Frozen Throne®"
+#: i18n/tmp/Applications/Games/Warcraft III Expansion Set/application.js:1
+#, fuzzy
+msgid "Warcraft® III: Expansion Set"
 msgstr "Warcraft® III: The Frozen Throne®"
 
-#: i18n/tmp/Applications/Games/Warcraft III TFT/application.js:2
+#: i18n/tmp/Applications/Games/Warcraft III Expansion Set/application.js:2
 msgid ""
-"Warcraft III: The Frozen Throne adds a host of new features to the game, "
-"including four new campaigns that take you across the frozen continent of "
-"Northrend. Explore new maps and master new units such as the Troll Bat "
-"Riders, the Blood Elf Spell Breakers, and the destructive Mountain Giants."
-"<br><br>Install Warcraft III first."
+"The war rages on. The demonic threat has been banished from the battle-"
+"scarred fields of Azeroth, but peace is still a distant dream. The epic "
+"conflict that began in Warcraft III: Reign of Chaos continues with more "
+"units, more missions, and more explosive strategic combat.<br><br>This set "
+"contains both Warcraft III: Reign of Chaos and Warcraft III: The Frozen "
+"Throne."
 msgstr ""
-"Warcraft III: The Frozen Throne beinhaltet eine Unmenge an neuen Funktionen "
-"für das Spiel, einschließlich vier neuer Kampagnen, die euch über den "
-"eisigen Kontinent Nordend führen. Erforscht neue Karten und befehligt neue "
-"Einheiten wie die Troll-Fledermausreiter, die Zauberbrecher der Blutelfen "
-"oder die zerstörerischen Bergriesen.<br><br>Installieren Sie zunächst "
-"Warcraft III."
 
 #: i18n/tmp/Applications/Games/Warface/application.js:1
 msgid "Warface"
@@ -3164,3 +3137,38 @@ msgstr ""
 "\n"
 "Erwartet = {0}\n"
 "Tatsächlich = {1}"
+
+#~ msgid "Please install Warcraft III before installing The Frozen Throne."
+#~ msgstr ""
+#~ "Bitte installieren Sie Warcraft® III bevor Sie Warcraft® III: The Frozen "
+#~ "Throne® installieren."
+
+#~ msgid "Warcraft® III: Reign of Chaos®"
+#~ msgstr "Warcraft® III: Reign of Chaos®"
+
+#~ msgid ""
+#~ "A generation before the events of World of Warcraft begin... Cunning, "
+#~ "sinister, and seemingly unstoppable, the demonic Burning Legion prepare "
+#~ "to launch their long-awaited assault on the mortal world. Survival is a "
+#~ "matter of strategy, as the Reign of Chaos begins..."
+#~ msgstr ""
+#~ "Erforscht die vom Krieg zerrissene Welt von Azeroth, eine Generation "
+#~ "bevor die Geschehnisse von World of Warcraft einsetzen. Durchtrieben, "
+#~ "böse und scheinbar unaufhaltsam bereitet sich die Brennende Legion darauf "
+#~ "vor, ihren langerwarteten Angriff auf die sterbliche Welt zu beginnen. "
+#~ "Überleben ist eine Frage der Strategie, nun da die Herrschaft des Chaos "
+#~ "beginnt..."
+
+#~ msgid ""
+#~ "Warcraft III: The Frozen Throne adds a host of new features to the game, "
+#~ "including four new campaigns that take you across the frozen continent of "
+#~ "Northrend. Explore new maps and master new units such as the Troll Bat "
+#~ "Riders, the Blood Elf Spell Breakers, and the destructive Mountain Giants."
+#~ "<br><br>Install Warcraft III first."
+#~ msgstr ""
+#~ "Warcraft III: The Frozen Throne beinhaltet eine Unmenge an neuen "
+#~ "Funktionen für das Spiel, einschließlich vier neuer Kampagnen, die euch "
+#~ "über den eisigen Kontinent Nordend führen. Erforscht neue Karten und "
+#~ "befehligt neue Einheiten wie die Troll-Fledermausreiter, die "
+#~ "Zauberbrecher der Blutelfen oder die zerstörerischen Bergriesen."
+#~ "<br><br>Installieren Sie zunächst Warcraft III."
