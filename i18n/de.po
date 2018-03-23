@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-23 15:04+0000\n"
+"POT-Creation-Date: 2018-03-23 15:15+0000\n"
 "PO-Revision-Date: 2017-09-24 10:34+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
@@ -406,7 +406,7 @@ msgstr ""
 #: i18n/tmp/Applications/Games/Resident Evil 3/Local/script.js:1
 #: i18n/tmp/Applications/Games/STAR WARS Battlefront Empire at War Gold
 #: Pack/Local/script.js:1 i18n/tmp/Applications/Games/The Elder Scrolls IV:
-#: Oblivion/Local/script.js:1
+#: Oblivion/Local/script.js:1 Sims/Local/script.js:1
 #: i18n/tmp/Applications/Games/Uplay/Local/script.js:1
 #: i18n/tmp/Applications/Office/Microsoft Office 2010/Local/script.js:1
 #: 2013/Local/script.js:1
@@ -2408,6 +2408,20 @@ msgstr ""
 "Einzigartige Ereignisse bringen dich in die Hallen einer lange vergessenen "
 "Gruft. Das einzige Fluchtmittel ist in einem Steinsockel eingeschlossen und "
 "anbei findest du eine Notiz von deinem geheimnisvollen Verbündeten."
+
+#: i18n/tmp/Applications/Games/The Sims/application.js:1
+#, fuzzy
+msgid "The Sims"
+msgstr "The Turing Test"
+
+#: i18n/tmp/Applications/Games/The Sims/application.js:2
+msgid ""
+"The Sims is a simulation game that simulates people. With various goals and "
+"objectives you control people called sims. These sims require the user to "
+"periodically replenish their needs, socialize, and buy new stuff. The game "
+"currently has 7 expansion packs, Livin Large, House Party, Hot Date, "
+"Vacation, Superstar, Makin Magic, and Unleashed. "
+msgstr ""
 
 #: i18n/tmp/Applications/Games/The Turing Test/application.js:1
 msgid "The Turing Test"

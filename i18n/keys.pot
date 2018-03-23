@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-23 15:04+0000\n"
+"POT-Creation-Date: 2018-03-23 15:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -349,6 +349,7 @@ msgstr ""
 #: i18n/tmp/Applications/Games/STAR WARS Battlefront II/Local/script.js:1
 #: i18n/tmp/Applications/Games/STAR WARS - Empire at War - Gold Pack/Local/script.js:1
 #: i18n/tmp/Applications/Games/The Elder Scrolls IV: Oblivion/Local/script.js:1
+#: i18n/tmp/Applications/Games/The Sims/Local/script.js:1
 #: i18n/tmp/Applications/Games/Uplay/Local/script.js:1
 #: i18n/tmp/Applications/Office/Microsoft Office 2010/Local/script.js:1
 #: i18n/tmp/Applications/Office/Microsoft Office 2013/Local/script.js:1
@@ -1824,6 +1825,19 @@ msgid ""
 "means of escape lies locked within a stone pedestal, along with a note from "
 "your mysterious ally. His words promise assistance, but only serve to entice "
 "you into a compelling world of mystery and exploration."
+msgstr ""
+
+#: i18n/tmp/Applications/Games/The Sims/application.js:1
+msgid "The Sims"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/The Sims/application.js:2
+msgid ""
+"The Sims is a simulation game that simulates people. With various goals and "
+"objectives you control people called sims. These sims require the user to "
+"periodically replenish their needs, socialize, and buy new stuff. The game "
+"currently has 7 expansion packs, Livin Large, House Party, Hot Date, "
+"Vacation, Superstar, Makin Magic, and Unleashed. "
 msgstr ""
 
 #: i18n/tmp/Applications/Games/The Turing Test/application.js:1
