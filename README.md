@@ -54,5 +54,5 @@
   4. Create a pull request
   * Please create one pull request per script if you want to commit multiple scripts.
   * use the following naming convention  
-       * for a new script: "added \<application name\>" (e.g. "added 7-zip")
-       * for an updated script: "updated \<application name\> \<what changed\>" (e.g. "updated 7-zip to use Wine 2.1")
+       * for a new script: "Add \<application name\>" (e.g. "Add 7-zip")
+       * for an updated script: "Update \<application name\> \<what changed\>" (e.g. "Update 7-zip to use Wine 2.1")
