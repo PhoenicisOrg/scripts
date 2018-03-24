@@ -1,4 +1,3 @@
-print(TYPE_ID);
 include(["Engines", "Wine", "QuickScript", "SteamScript"]);
 include(["Engines", "Wine", "Verbs", "quartz"]);
 
