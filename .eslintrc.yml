@@ -1,3 +1,10 @@
+---
+extends:
+  - eslint:recommended
+
+env:
+  nashorn: true
+
 globals:
   include: true
   # files
