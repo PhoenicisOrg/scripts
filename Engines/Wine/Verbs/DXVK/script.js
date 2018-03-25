@@ -14,9 +14,9 @@ Wine.prototype.DXVK = function() {
 	
 	var setupFile = new Resource()
 		.wizard(this._wizard)
-                .url("https://github.com/doitsujin/dxvk/releases/download/v0.31/dxvk-0.31.tar.gz")
-                .checksum("9e3c377a91b6f75a095d85ce4fc19f96bf4cab65")
-                .name("dxvk-0.31.tar.gz")
+                .url("https://github.com/doitsujin/dxvk/releases/download/v0.40/dxvk-0.40.tar.gz")
+                .checksum("ed0b121832b604bc06f30a51d9f8790ea1ff5862")
+                .name("dxvk-0.40.tar.gz")
 		.get();
 		
         var setupExtracted = new Extractor()
@@ -25,13 +25,13 @@ Wine.prototype.DXVK = function() {
                 .to(this.prefixDirectory + "/TMP/")
                 .extract();
         
-        cp(this.prefixDirectory + "/TMP/dxvk-0.31/x32/d3d11.dll", this.system32directory());
-        cp(this.prefixDirectory + "/TMP/dxvk-0.31/x32/dxgi.dll", this.system32directory());
+        cp(this.prefixDirectory + "/TMP/dxvk-0.40/x32/d3d11.dll", this.system32directory());
+        cp(this.prefixDirectory + "/TMP/dxvk-0.40/x32/dxgi.dll", this.system32directory());
         
         
         if (this.architecture() == "amd64") {
-            cp(this.prefixDirectory + "/TMP/dxvk-0.31/x64/d3d11.dll", this.system64directory());
-            cp(this.prefixDirectory + "/TMP/dxvk-0.31/x64/dxgi.dll", this.system64directory());
+            cp(this.prefixDirectory + "/TMP/dxvk-0.40/x64/d3d11.dll", this.system64directory());
+            cp(this.prefixDirectory + "/TMP/dxvk-0.40/x64/dxgi.dll", this.system64directory());
         }
       
         this.overrideDLL()
