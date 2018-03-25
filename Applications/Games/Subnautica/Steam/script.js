@@ -17,7 +17,7 @@ new SteamScript()
 	.wineVersion(3.1)
 	.wineArchitecture("amd64")
 	.appId(264710)
-	.preInstall(function(wine, wizard) {
+	.preInstall(function(wine,wizard) {
         	wine.vcrun2013();
         	wine.corefonts();
 		wine.vcrun2008();
