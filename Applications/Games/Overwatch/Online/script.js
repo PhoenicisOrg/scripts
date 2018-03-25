@@ -14,7 +14,7 @@ new OnlineInstallerScript()
     .wineArchitecture("amd64")
     .category("Games")                           
     .executable("Overwatch.exe")
-    .preInstall(function(wine, wizard) {
+    .preInstall(function(wine/*, wizard*/) {
         wine.windowsVersion("winxp");
         wine.vcrun2015();
         wine.corefonts();

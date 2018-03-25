@@ -11,7 +11,7 @@ new OnlineInstallerScript()
     // The checksum changes each time you download                       
     .category("Games")                           
     .executable("StarCraft II.exe")
-    .preInstall(function(wine, wizard) {
+    .preInstall(function(wine/*, wizard*/) {
         wine.windowsVersion("winxp");
         wine.vcrun2015();
         wine.corefonts();
