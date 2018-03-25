@@ -6,7 +6,7 @@ new SteamScript()
     .editor("DICE")
     .author("Plata")
     .appId(17410)
-    .preInstall(function(wine, wizard) {
+    .preInstall(function(wine/*, wizard*/) {
         wine.physx();
         wine.setManagedForApplication().set("MirrorsEdge.exe", false).do();
     })
