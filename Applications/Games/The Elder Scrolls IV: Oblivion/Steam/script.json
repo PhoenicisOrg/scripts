@@ -1,0 +1,7 @@
+{
+	"scriptName": "Steam (GOTY)",
+	"compatibleOperatingSystems": ["LINUX"],
+	"testingOperatingSystems": [],
+	"free": false,
+	"requiresPatch": false
+}  

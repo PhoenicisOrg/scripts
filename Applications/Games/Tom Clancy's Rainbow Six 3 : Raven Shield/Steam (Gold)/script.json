@@ -1,0 +1,7 @@
+{
+	"scriptName": "Steam (Gold)",
+	"compatibleOperatingSystems": ["LINUX"],
+	"testingOperatingSystems": [],
+	"free": false,
+	"requiresPatch": false
+} 

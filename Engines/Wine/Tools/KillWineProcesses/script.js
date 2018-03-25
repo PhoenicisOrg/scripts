@@ -1,0 +1,19 @@
+include(["Engines", "Wine", "Engine", "Object"]);
+
+/**
+ * tool to kill running Wine processes
+ * @constructor
+ */
+var KillWineProcesses = function() {
+};
+
+/**
+* runs the tool
+* @param {String} container name
+*/
+KillWineProcesses.prototype.run = function (container) {
+    new Wine()
+        .prefix(container)
+        .run("kill")
+        .wait();
+};

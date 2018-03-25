@@ -1,0 +1,10 @@
+engines:
+  eslint:
+    enabled: true
+  duplication:
+    enabled: true
+    exclude_paths:
+      - "Applications/**/*.js'
+   
+exclude_paths:
+  - '**.po'
