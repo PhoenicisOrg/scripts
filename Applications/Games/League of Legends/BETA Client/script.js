@@ -19,7 +19,7 @@ new CustomInstallerScript()
     .editor("Riot Games")
     .applicationHomepage("http://leagueoflegends.com/")
     .author("Plata, feanor12")
-    .installationCommand(function(wizard) {
+    .installationCommand(function(/*wizard*/) {
         return {command: "msiexec", args: ["/i", "C://LoL_tmp/LoL.msi", "APPDIR=C:\\LoL"]};
     })
     .category("Games")
