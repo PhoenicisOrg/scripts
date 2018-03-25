@@ -836,6 +836,7 @@ Wine.prototype.overrideDLL = function () {
  * @returns {string|Wine}
  */
 Wine.prototype.windowsVersion = function (version, servicePack) {
+    var that = this;
     // get
     if (arguments.length == 0) {
         return this.regedit().fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Version"]);
