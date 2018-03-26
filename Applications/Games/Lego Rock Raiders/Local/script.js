@@ -24,7 +24,7 @@ new LocalInstallerScript()
     })*/
     .postInstall(function(wine,wizard) {
         var GameDir = wine.prefixDirectory + "drive_c/" + wine.programFiles() + "/LEGO Media/Games/Rock Raiders/d3drm.dll";
-        var DllFile = new Downloader()
+        new Downloader()
             .wizard(wizard)
             .url("http://s2.pliki.info/5709/d3drm.dll")
             .checksum("af25767f425fa7877b996e5d29a54cab29b5ecfb")
