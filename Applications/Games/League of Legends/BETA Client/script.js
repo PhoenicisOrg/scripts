@@ -19,7 +19,7 @@ new CustomInstallerScript()
     .editor("Riot Games")
     .applicationHomepage("http://leagueoflegends.com/")
     .author("Plata, feanor12")
-    .installationCommand(function(wizard) {
+    .installationCommand(function(/*wizard*/) {
         return {command: "msiexec", args: ["/i", "C://LoL_tmp/LoL.msi", "APPDIR=C:\\LoL"]};
     })
     .category("Games")
@@ -122,7 +122,7 @@ new CustomInstallerScript()
         wine.d3dx9();
         wine.vcrun2015();
     })
-    .postInstall(function(wine, wizard) {
+    .postInstall(function(wine/*, wizard*/) {
         remove(wine.prefixDirectory+"drive_c/LoL_tmp");
 
         // Enable BETA
