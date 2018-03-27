@@ -57,7 +57,7 @@ InstallerScript.prototype.go = function() {
         var shownVersions = [];
         for (var versionIdx in versions) {
             if (versions[versionIdx] == LATEST_STABLE_VERSION) {
-                shownVersions.push(versions[i] + " (recommended)");
+                shownVersions.push(versions[versionIdx] + " (recommended)");
             }
             else {
                 shownVersions.push(versions[versionIdx]);
