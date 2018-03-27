@@ -12,7 +12,7 @@ new OnlineInstallerScript()
     .checksum("98b2b838e6c4663fefdfd341dfdc596b1eff355c")
     .category("Office")
     .executable("AcroRd32.exe")
-    .preInstall(function(wine, wizard) {
+    .preInstall(function(wine/*, wizard*/) {
         wine.mspatcha();
     })
     .go();

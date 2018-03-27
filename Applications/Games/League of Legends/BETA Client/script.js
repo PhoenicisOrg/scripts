@@ -122,7 +122,7 @@ new CustomInstallerScript()
         wine.d3dx9();
         wine.vcrun2015();
     })
-    .postInstall(function(wine, wizard) {
+    .postInstall(function(wine/*, wizard*/) {
         remove(wine.prefixDirectory+"drive_c/LoL_tmp");
 
         // Enable BETA
