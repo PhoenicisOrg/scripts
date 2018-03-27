@@ -10,10 +10,7 @@ include(["Utils", "Functions", "Apps", "Resources"]);
 */
 Wine.prototype.vulkanSDK = function() {
 	print("NOTE: you need a driver that support Vulkan enough to run winevulkan");
-	
-	if(this.version()<"3.4") {
-		throw "Wine version too old to support vulkan";	
-	}
+	prtint("Vulkan works in wine from version 3.3");
 		
 	var setupFile = new Resource()
 		.wizard(this._wizard)
