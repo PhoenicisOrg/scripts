@@ -1,5 +1,6 @@
 include(["Utils", "Functions", "Filesystem", "Files"]);
 
+/* exported CabExtract */
 var CabExtract = function() {
     var that = this;
 
@@ -49,6 +50,7 @@ var CabExtract = function() {
 
 };
 
+/* exported Extractor */
 var Extractor = function () {
     var that = this;
     that._extractor = Bean("extractor");
