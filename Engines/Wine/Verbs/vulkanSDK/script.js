@@ -11,6 +11,10 @@ include(["Utils", "Functions", "Apps", "Resources"]);
 Wine.prototype.vulkanSDK = function() {
 	print("NOTE: you need a driver that support Vulkan enough to run winevulkan");
 	
+	if(this.version()<"3.4") {
+		throw "Wine version too old to support vulkan";	
+	}
+		
 	var setupFile = new Resource()
 		.wizard(this._wizard)
                 .url("https://sdk.lunarg.com/sdk/download/1.0.68.0/windows/VulkanSDK-1.0.68.0-Installer.exe")
