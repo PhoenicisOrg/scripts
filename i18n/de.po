@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-25 12:17+0000\n"
+"POT-Creation-Date: 2018-03-27 17:24+0000\n"
 "PO-Revision-Date: 2017-09-24 10:34+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
@@ -532,13 +532,15 @@ msgstr ""
 #: i18n/tmp/Applications/Games/Hexcells Infinite/Steam/script.js:1
 #: Plus/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Hexcells/Steam/script.js:1
-#: i18n/tmp/Applications/Games/Mafia i18n/tmp/Applications/Games/Mass Effect
-#: Effect/Steam/script.js:1 i18n/tmp/Applications/Games/Medieval II: Total
-#: War/Steam/script.js:1 i18n/tmp/Applications/Games/Mirror's
-#: Edge/Steam/script.js:1 i18n/tmp/Applications/Games/Mount &
-#: Blade/Steam/script.js:1 i18n/tmp/Applications/Games/Niko: Through
-#: Dream/Steam/script.js:1 i18n/tmp/Applications/Games/Orwell: Keeping an Eye
-#: On You/Steam/script.js:1 i18n/tmp/Applications/Games/PAYDAY
+#: i18n/tmp/Applications/Games/It came from space ate our
+#: brains/Steam/script.js:1 i18n/tmp/Applications/Games/Mafia
+#: i18n/tmp/Applications/Games/Mass Effect Effect/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Medieval II: Total War/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Mirror's Edge/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Mount & Blade/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Niko: Through Dream/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Orwell: Keeping an Eye On You/Steam/script.js:1
+#: i18n/tmp/Applications/Games/PAYDAY
 #: i18n/tmp/Applications/Games/Prey/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Pro Evolution Soccer 2018/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Quantum Conundrum/Steam/script.js:1
@@ -1571,6 +1573,26 @@ msgstr ""
 #: i18n/tmp/Applications/Games/Icy Tower/v1.5/script.js:1
 msgid "v1.5"
 msgstr "v1.5"
+
+#: i18n/tmp/Applications/Games/It came from space and ate our
+#: brains/application.js:1
+msgid "It came from space, and ate our brains"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/It came from space and ate our
+#: brains/application.js:2
+msgid ""
+"‘It came from space, and ate our brains’ is an Arcade top down shooter with "
+"horde survival gameplay in a unique atmospheric setting with addicting "
+"gameplay elements, which all can be played cooperatively. You are a no-"
+"nonsense kind of guy equipped with a flashlight and a weapon. You somehow "
+"managed to survive the invasion of a merciless alien species, the kind that "
+"feeds on human brains. Things look bad when you wander the city and other "
+"locations, there is chaos everywhere! You are looking for gear and weapons "
+"to survive, as pink light emitting aliens try to corner you and eat your "
+"brain. You realize there is only one thing left to do: set a new high score "
+"and die like a badass."
+msgstr ""
 
 #: i18n/tmp/Applications/Games/League of Legends/application.js:1
 msgid "League of Legends BETA Client"
