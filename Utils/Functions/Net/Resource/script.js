@@ -1,6 +1,7 @@
 include(["Utils", "Functions", "Net", "Download"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
 
+/* exported Resource */
 var Resource = function () {
     var that = this;
     this._algorithm = "SHA";
