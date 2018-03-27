@@ -10,7 +10,7 @@ new LocalInstallerScript()
     .author("ImperatorS79")                     
     .category("Games")                           
     .executable("osu!.exe")
-    .preInstall(function(wine, wizard) {
+    .preInstall(function(wine/*, wizard*/) {
         //maybe needs cjkfonts or set sound driver to alsa
         wine.corefonts();
         wine.dotnet40();

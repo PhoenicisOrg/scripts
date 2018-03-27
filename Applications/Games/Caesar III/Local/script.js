@@ -7,7 +7,7 @@ new LocalInstallerScript()
     .author("ImperatorS79")                    
     .category("Games")                          
     .executable("c3.exe")
-    .postInstall(function(wine, wizard) {
+    .postInstall(function(wine/*, wizard*/) {
         wine.setVirtualDesktop(1280, 1024);
     })
     .go(); 

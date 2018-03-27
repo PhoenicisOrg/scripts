@@ -13,11 +13,11 @@ new OnlineInstallerScript()
     .checksum("c538935eff4ec90ce2e48dc7e515a8dec2f15f58")
     .category("Games")
     .executable("launcher.exe")
-    .preInstall(function(wine, wizard) {
+    .preInstall(function(wine/*, wizard*/) {
         //it seems it brings better performance
         wine.d3dx9();
     })
-    .postInstall(function(wine, wizard) {
+    .postInstall(function(wine/*, wizard*/) {
         //without that the launcher is unable to download the game
         var path = wine.prefixDirectory + "drive_c/" + wine.programFiles() + "/Electronic Arts/BioWare/Star Wars - The Old Republic/launcher.settings";
         var content =   '{ "Login": ""\n'                                           +

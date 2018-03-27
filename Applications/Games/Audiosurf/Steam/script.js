@@ -8,7 +8,7 @@ new SteamScript()
     .editor("Dylan Fitterer")
     .author("Brainzyy")
     .appId(12900)
-    .preInstall(function(wine, wizard) {
+    .preInstall(function(wine/*, wizard*/) {
         wine.quicktime76();
         wine.corefonts();
         wine.tahoma();
