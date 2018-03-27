@@ -9,7 +9,7 @@ new LocalInstallerScript()
     .author("Plata")
     .category("Office")
     .executable("pica.exe")
-    .preInstall(function(wine, wizard) {
+    .preInstall(function(wine/*, wizard*/) {
         wine.vcrun2013();
         wine.nativeApplication("pdf");
     })
