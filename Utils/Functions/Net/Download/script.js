@@ -1,5 +1,6 @@
 include(["Utils", "Functions", "Filesystem", "Files"]);
 
+/* exported Downloader */
 var Downloader = function () {
     var that = this;
     that._downloader = Bean("downloader");
