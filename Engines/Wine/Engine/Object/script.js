@@ -4,7 +4,7 @@ include(["Utils", "Functions", "Net", "Download"]);
 include(["Utils", "Functions", "Net", "Resource"]);
 
 LATEST_STABLE_VERSION = "3.0";
-LATEST_DEVELOPMENT_VERSION = "3.2";
+LATEST_DEVELOPMENT_VERSION = "3.4";
 LATEST_STAGING_VERSION = "2.21";
 
 WINE_PREFIX_DIR = "wineprefix"
@@ -836,6 +836,7 @@ Wine.prototype.overrideDLL = function () {
  * @returns {string|Wine}
  */
 Wine.prototype.windowsVersion = function (version, servicePack) {
+    var that = this;
     // get
     if (arguments.length == 0) {
         return this.regedit().fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Version"]);

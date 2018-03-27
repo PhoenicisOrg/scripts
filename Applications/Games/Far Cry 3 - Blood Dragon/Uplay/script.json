@@ -1,6 +1,6 @@
 {
 	"scriptName": "Uplay",
-	"compatibleOperatingSystems": [],
+	"compatibleOperatingSystems": ["LINUX"],
 	"testingOperatingSystems": ["LINUX"],
 	"free": false,
 	"requiresPatch": false

@@ -11,7 +11,7 @@ new OnlineInstallerScript()
     .executable("Gw2.exe")
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .preInstall(function(wine, wizard) {
+    .preInstall(function(wine/*, wizard*/) {
         // avoid that launcher freezes the complete system
         wine.setVirtualDesktop(1280, 1024);
         wine.enableCSMT();
