@@ -51,13 +51,15 @@ Wine.prototype.xact = function () {
     progressBar.setText(tr("Extracting {0} ...", "Xact"));
     progressBar.setProgressPercentage(0.);
 
+    var filesToExtract = []
+
     //---------------------------------------------------------Extract xactengine*.dll--------------------------------------------
     new CabExtract()
         .archive(setupFile)
         .to(this.prefixDirectory + "/drive_c/xact_x86/")
         .extract(["-L", "-F", "*_xact_*x86*"]);
 
-    var filesToExtract = [
+    filesToExtract = [
         "apr2006_xact_x86.cab", "apr2007_xact_x86.cab", "aug2006_xact_x86.cab",
         "aug2007_xact_x86.cab", "aug2008_xact_x86.cab", "aug2009_xact_x86.cab",
         "dec2006_xact_x86.cab", "fev2006_xact_x86.cab", "fev2007_xact_x86.cab",
@@ -75,7 +77,7 @@ Wine.prototype.xact = function () {
         .to(this.prefixDirectory + "/drive_c/x3daudio_x86/")
         .extract(["-L", "-F", "*_x3daudio_*x86*"]);
     
-    var filesToExtract = [
+    filesToExtract = [
         "feb2010_x3daudio_x86.cab", "jun2008_x3daudio_x86.cab", "mar2008_x3daudio_x86.cab",
         "mar2009_x3daudio_x86.cab", "nov2007_x3daudio_x86.cab", "nov2008_x3daudio_x86.cab"
     ];
@@ -88,7 +90,7 @@ Wine.prototype.xact = function () {
         .to(this.prefixDirectory + "/drive_c/xaudio_x86/")
         .extract(["-L", "-F", "*_xaudio_*x86*"]);
         
-    var filesToExtract = [
+    filesToExtract = [
         "aug2008_xaudio_x86.cab", "aug2009_xaudio_x86.cab", "feb2010_xaudio_x86.cab",
         "jun2008_xaudio_x86.cab", "jun2010_xaudio_x86.cab", "mar2008_xaudio_x86.cab",
         "mar2009_xaudio_x86.cab", "nov2008_xaudio_x86.cab"
@@ -124,7 +126,7 @@ Wine.prototype.xact = function () {
             .to(this.prefixDirectory + "/drive_c/xact_x64/")
             .extract(["-L", "-F", "*_xact_*x64*"]);
 
-        var filesToExtract = [
+        filesToExtract = [
             "apr2006_xact_x64.cab", "apr2007_xact_x64.cab", "aug2006_xact_x64.cab",
             "aug2007_xact_x64.cab", "aug2008_xact_x64.cab", "aug2009_xact_x64.cab",
             "dec2006_xact_x64.cab", "fev2006_xact_x64.cab", "fev2007_xact_x64.cab",
@@ -142,7 +144,7 @@ Wine.prototype.xact = function () {
             .to(this.prefixDirectory + "/drive_c/x3daudio_x64/")
             .extract(["-L", "-F", "*_x3daudio_*x64*"]);
         
-        var filesToExtract = [
+        filesToExtract = [
             "feb2010_x3daudio_x64.cab", "jun2008_x3daudio_x64.cab", "mar2008_x3daudio_x64.cab",
             "mar2009_x3daudio_x64.cab", "nov2007_x3daudio_x64.cab", "nov2008_x3daudio_x64.cab"
         ];
@@ -155,7 +157,7 @@ Wine.prototype.xact = function () {
             .to(this.prefixDirectory + "/drive_c/xaudio_x64/")
             .extract(["-L", "-F", "*_xaudio_*64*"]);
             
-        var filesToExtract = [
+        filesToExtract = [
             "aug2008_xaudio_x64.cab", "aug2009_xaudio_x64.cab", "feb2010_xaudio_x64.cab",
             "jun2008_xaudio_x64.cab", "jun2010_xaudio_x64.cab", "mar2008_xaudio_x64.cab",
             "mar2009_xaudio_x64.cab", "nov2008_xaudio_x64.cab"
