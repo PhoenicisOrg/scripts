@@ -41,12 +41,12 @@ InstallerScript.prototype.go = function() {
         
         var distributions = wine.availableDistributions();
         var shownDistributions = [];
-        for (var i in distributions) {
-            if (distributions[i] == "upstream") {
+        for (var distributionIdx in distributions) {
+            if (distributions[distributionIdx] == "upstream") {
                 shownDistributions.push("upstream (recommended)");
             }
             else {
-                shownDistributions.push(distributions[i]);
+                shownDistributions.push(distributions[distributionIdx]);
             }
         }
         var selectedDistribution = setupWizard.menu(tr("Please select the wine distribution."), shownDistributions, "upstream (recommended)");
@@ -55,12 +55,12 @@ InstallerScript.prototype.go = function() {
         
         var versions = wine.availableVersions();
         var shownVersions = [];
-        for (var i in versions) {
-            if (versions[i] == LATEST_STABLE_VERSION) {
-                shownVersions.push(versions[i] + " (recommended)");
+        for (var versionIdx in versions) {
+            if (versions[versionIdx] == LATEST_STABLE_VERSION) {
+                shownVersions.push(versions[versionIdx] + " (recommended)");
             }
             else {
-                shownVersions.push(versions[i]);
+                shownVersions.push(versions[versionIdx]);
             }
         }
         var selectedVersion = setupWizard.menu(tr("Please select the wine version."), shownVersions, LATEST_STABLE_VERSION + " (recommended)");

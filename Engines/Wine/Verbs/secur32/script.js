@@ -8,7 +8,7 @@ include(["Utils", "Functions", "Filesystem", "Files"]);
 * @returns {Wine}
 */
 Wine.prototype.secur32 = function() {
-	var setupFile = new Resource()
+	var setupFilex86 = new Resource()
             .wizard(this._wizard)
             .url("https://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X86.exe")
             .checksum("c3516bc5c9e69fee6d9ac4f981f5b95977a8a2fa")
@@ -16,7 +16,7 @@ Wine.prototype.secur32 = function() {
             .get();
 		
 	new CabExtract()
-            .archive(setupFile)
+            .archive(setupFilex86)
             .wizard(this._wizard)
             .to(this.prefixDirectory + "/TMP/")
             .extract(["-L", "-F", "x86_microsoft-windows-lsa_31bf3856ad364e35_6.1.7601.17514_none_a851f4adbb0d5141/secur32.dll"]);
@@ -26,7 +26,7 @@ Wine.prototype.secur32 = function() {
 	remove(this.prefixDirectory + "/TMP/");
 	
         if (this.architecture() == "amd64") {
-            var setupFile = new Resource()
+            var setupFilex64 = new Resource()
                 .wizard(this._wizard)
                 .url("https://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X64.exe")
                 .checksum("74865ef2562006e51d7f9333b4a8d45b7a749dab")
@@ -34,7 +34,7 @@ Wine.prototype.secur32 = function() {
                 .get();
 		
             new CabExtract()
-                .archive(setupFile)
+                .archive(setupFilex64)
                 .wizard(this._wizard)
                 .to(this.prefixDirectory + "/TMP/")
                 .extract(["-L", "-F", "amd64_microsoft-windows-lsa_31bf3856ad364e35_6.1.7601.17514_none_04709031736ac277/secur32.dll"]);

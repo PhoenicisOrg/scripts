@@ -67,6 +67,7 @@ var _WineShortcutReader = function(shortcut) {
     }
 };
 
+/* exported ShortcutReader */
 var ShortcutReader = function() {
     var that = this;
 

@@ -1,5 +1,6 @@
 include(["Engines", "Wine", "Engine", "Object"]);
 
+/* exported WineShortcut */
 var WineShortcut = function () {
     var that = this;
     that._shortcutManager = Bean("shortcutManager");
