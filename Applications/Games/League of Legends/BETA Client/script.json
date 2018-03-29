@@ -1,5 +1,6 @@
 {
 	"scriptName": "BETA Client",
+	"id": "BETA_Client",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": ["MACOSX", "LINUX"],
 	"free": true,
