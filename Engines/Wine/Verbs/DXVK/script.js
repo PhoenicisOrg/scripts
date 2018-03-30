@@ -9,6 +9,7 @@ include(["Utils", "Functions", "Filesystem", "Files"]);
 */
 Wine.prototype.DXVK = function() {
 	print("NOTE: you need a driver that support Vulkan enough to run DXVK");
+	print("NOTE: wine version should be greater or equal to 3.5");
 	
 	var setupFile = new Resource()
 		.wizard(this._wizard)
