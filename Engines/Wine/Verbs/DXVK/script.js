@@ -1,7 +1,6 @@
 include(["Engines", "Wine", "Engine", "Object"]);
 include(["Utils", "Functions", "Net", "Resource"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
-include(["Engines", "Wine", "Verbs", "vulkanSDK"]);
 
 /**
 * Setup DXVK
@@ -9,8 +8,7 @@ include(["Engines", "Wine", "Verbs", "vulkanSDK"]);
 * @returns {Wine}
 */
 Wine.prototype.DXVK = function() {
-	this.vulkanSDK();
-        print("NOTE: you need a driver that support Vulkan enough to run DXVK");
+	print("NOTE: you need a driver that support Vulkan enough to run DXVK");
 	
 	var setupFile = new Resource()
 		.wizard(this._wizard)
