@@ -13,16 +13,16 @@ Wine.prototype.DXVK = function() {
 	
 	var setupFile = new Resource()
 		.wizard(this._wizard)
-                .url("https://github.com/doitsujin/dxvk/releases/download/v0.40/dxvk-0.40.tar.gz")
-                .checksum("ed0b121832b604bc06f30a51d9f8790ea1ff5862")
-                .name("dxvk-0.40.tar.gz")
+		.url("https://github.com/doitsujin/dxvk/releases/download/v0.40/dxvk-0.40.tar.gz")
+		.checksum("ed0b121832b604bc06f30a51d9f8790ea1ff5862")
+		.name("dxvk-0.40.tar.gz")
 		.get();
 		
         var setupExtracted = new Extractor()
-                .wizard(this._wizard)
-                .archive(setupFile)
-                .to(this.prefixDirectory + "/TMP/")
-                .extract();
+		.wizard(this._wizard)
+		.archive(setupFile)
+		.to(this.prefixDirectory + "/TMP/")
+		.extract();
         
         cp(this.prefixDirectory + "/TMP/dxvk-0.40/x32/d3d11.dll", this.system32directory());
         cp(this.prefixDirectory + "/TMP/dxvk-0.40/x32/dxgi.dll", this.system32directory());
