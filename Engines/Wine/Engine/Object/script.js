@@ -696,7 +696,7 @@ Wine.prototype.enableCSMT = function () {
 
 /**
  * force the Use of GLSL
- * @param mode {enabled, disabled}
+ * @param {string} mode (enabled or disabled)
  * @returns {Wine}
  */
 Wine.prototype.UseGLSL = function (mode) {
@@ -711,7 +711,7 @@ Wine.prototype.UseGLSL = function (mode) {
 
 /**
  * force the DirectDrawRenderer
- * @param mode {gdi,opengl}
+ * @param {string} mode (gdi or opengl)
  * @returns {Wine}
  */
 Wine.prototype.DirectDrawRenderer = function (mode) {
