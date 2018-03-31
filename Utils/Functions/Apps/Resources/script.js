@@ -1,3 +1,4 @@
+/* exported AppResource */
 var AppResource = function() {
     var that = this;
     that._appsManager = Bean("repositoryManager");

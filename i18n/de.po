@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-16 14:52+0000\n"
+"POT-Creation-Date: 2018-03-28 16:33+0000\n"
 "PO-Revision-Date: 2017-09-24 10:34+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
@@ -72,11 +72,14 @@ msgid ""
 "Rome2/scripts/preferences_script.txt "
 msgstr ""
 
-#: Applications/Games/Warcraft III TFT/Online/script.js:13
-msgid "Please install Warcraft III before installing The Frozen Throne."
+#: Applications/Games/Wildlife Park 2/Local/script.js:12 2/Steam/script.js:11
+msgid ""
+"On first run the game might not go into full screen. If that happens go to "
+"options and set the resolution to 1280x960. You will be asked to close the "
+"game in order to apply the new settings. Click Yes. Once you start the game "
+"again you should see a window where you can set your game resolution to "
+"match your screen."
 msgstr ""
-"Bitte installieren Sie Warcraft® III bevor Sie Warcraft® III: The Frozen "
-"Throne® installieren."
 
 #: Applications/Internet/Internet Explorer 6.0/Online/script.js:71
 #: Engines/Wine/Engine/Object/script.js:309
@@ -141,7 +144,7 @@ msgstr "Der Prefix scheint 32bit zu sein"
 msgid "Installing version: "
 msgstr "Installiere Version:"
 
-#: Engines/Wine/Engine/Object/script.js:887
+#: Engines/Wine/Engine/Object/script.js:888
 msgid "Could not determine mimetype for file extension \"{0}\""
 msgstr "Konnte Mimetype für Dateiendung \"{0}\" nicht bestimmen"
 
@@ -223,7 +226,7 @@ msgstr ""
 "Der Container {0} wird nicht mehr verwendet.\n"
 "Möchten Sie ihn löschen?"
 
-#: Engines/Wine/Shortcuts/Wine/script.js:77
+#: Engines/Wine/Shortcuts/Wine/script.js:78
 msgid "Executable {0} not found!"
 msgstr "Ausführbare Datei {0} nicht gefunden!"
 
@@ -327,8 +330,8 @@ msgstr ""
 #: i18n/tmp/Applications/Games/STAR WARS: The Old Republic/Online/script.js:1
 #: i18n/tmp/Applications/Games/Steam/Online/script.js:1
 #: i18n/tmp/Applications/Games/Uplay/Online/script.js:1
-#: i18n/tmp/Applications/Games/Warcraft III/Online/script.js:1 III
-#: TFT/Online/script.js:1 i18n/tmp/Applications/Games/Xenon
+#: i18n/tmp/Applications/Games/Warcraft III Expansion Set/Online/script.js:1
+#: i18n/tmp/Applications/Games/Xenon
 #: i18n/tmp/Applications/Graphics/Photofiltre/Online/script.js:1
 #: i18n/tmp/Applications/Internet/Internet Explorer 6.0/Online/script.js:1
 #: 7.0/Online/script.js:1
@@ -412,8 +415,9 @@ msgstr ""
 #: i18n/tmp/Applications/Games/Resident Evil 3/Local/script.js:1
 #: i18n/tmp/Applications/Games/STAR WARS Battlefront Empire at War Gold
 #: Pack/Local/script.js:1 i18n/tmp/Applications/Games/The Elder Scrolls IV:
-#: Oblivion/Local/script.js:1
+#: Oblivion/Local/script.js:1 Sims/Local/script.js:1
 #: i18n/tmp/Applications/Games/Uplay/Local/script.js:1
+#: i18n/tmp/Applications/Games/Wildlife Park
 #: i18n/tmp/Applications/Office/Microsoft Office 2010/Local/script.js:1
 #: 2013/Local/script.js:1
 msgid "Local"
@@ -528,13 +532,15 @@ msgstr ""
 #: i18n/tmp/Applications/Games/Hexcells Infinite/Steam/script.js:1
 #: Plus/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Hexcells/Steam/script.js:1
-#: i18n/tmp/Applications/Games/Mafia i18n/tmp/Applications/Games/Mass Effect
-#: Effect/Steam/script.js:1 i18n/tmp/Applications/Games/Medieval II: Total
-#: War/Steam/script.js:1 i18n/tmp/Applications/Games/Mirror's
-#: Edge/Steam/script.js:1 i18n/tmp/Applications/Games/Mount &
-#: Blade/Steam/script.js:1 i18n/tmp/Applications/Games/Niko: Through
-#: Dream/Steam/script.js:1 i18n/tmp/Applications/Games/Orwell: Keeping an Eye
-#: On You/Steam/script.js:1 i18n/tmp/Applications/Games/PAYDAY
+#: i18n/tmp/Applications/Games/It came from space ate our
+#: brains/Steam/script.js:1 i18n/tmp/Applications/Games/Mafia
+#: i18n/tmp/Applications/Games/Mass Effect Effect/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Medieval II: Total War/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Mirror's Edge/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Mount & Blade/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Niko: Through Dream/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Orwell: Keeping an Eye On You/Steam/script.js:1
+#: i18n/tmp/Applications/Games/PAYDAY
 #: i18n/tmp/Applications/Games/Prey/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Pro Evolution Soccer 2018/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Quantum Conundrum/Steam/script.js:1
@@ -569,8 +575,8 @@ msgstr ""
 #: i18n/tmp/Applications/Games/Unholy Heights/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Warface/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Warlock Master Arcane/Steam/script.js:1
-#: i18n/tmp/Applications/Games/Worms Armageddon/Steam/script.js:1
-#: Reloaded/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Wildlife Park i18n/tmp/Applications/Games/Worms
+#: Armageddon/Steam/script.js:1 Reloaded/Steam/script.js:1
 msgid "Steam"
 msgstr "Steam"
 
@@ -1568,6 +1574,26 @@ msgstr ""
 msgid "v1.5"
 msgstr "v1.5"
 
+#: i18n/tmp/Applications/Games/It came from space and ate our
+#: brains/application.js:1
+msgid "It came from space, and ate our brains"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/It came from space and ate our
+#: brains/application.js:2
+msgid ""
+"‘It came from space, and ate our brains’ is an Arcade top down shooter with "
+"horde survival gameplay in a unique atmospheric setting with addicting "
+"gameplay elements, which all can be played cooperatively. You are a no-"
+"nonsense kind of guy equipped with a flashlight and a weapon. You somehow "
+"managed to survive the invasion of a merciless alien species, the kind that "
+"feeds on human brains. Things look bad when you wander the city and other "
+"locations, there is chaos everywhere! You are looking for gear and weapons "
+"to survive, as pink light emitting aliens try to corner you and eat your "
+"brain. You realize there is only one thing left to do: set a new high score "
+"and die like a badass."
+msgstr ""
+
 #: i18n/tmp/Applications/Games/League of Legends/application.js:1
 msgid "League of Legends BETA Client"
 msgstr "League of Legends BETA Client"
@@ -2415,6 +2441,20 @@ msgstr ""
 "Gruft. Das einzige Fluchtmittel ist in einem Steinsockel eingeschlossen und "
 "anbei findest du eine Notiz von deinem geheimnisvollen Verbündeten."
 
+#: i18n/tmp/Applications/Games/The Sims/application.js:1
+#, fuzzy
+msgid "The Sims"
+msgstr "The Turing Test"
+
+#: i18n/tmp/Applications/Games/The Sims/application.js:2
+msgid ""
+"The Sims is a simulation game that simulates people. With various goals and "
+"objectives you control people called sims. These sims require the user to "
+"periodically replenish their needs, socialize, and buy new stuff. The game "
+"currently has 7 expansion packs, Livin Large, House Party, Hot Date, "
+"Vacation, Superstar, Makin Magic, and Unleashed. "
+msgstr ""
+
 #: i18n/tmp/Applications/Games/The Turing Test/application.js:1
 msgid "The Turing Test"
 msgstr "The Turing Test"
@@ -2822,41 +2862,20 @@ msgstr ""
 msgid "Uplay is Ubisoft's PC games portal."
 msgstr "Uplay ist Ubisoft's Portal für PC-Spiele."
 
-#: i18n/tmp/Applications/Games/Warcraft III/application.js:1
-msgid "Warcraft® III: Reign of Chaos®"
-msgstr "Warcraft® III: Reign of Chaos®"
-
-#: i18n/tmp/Applications/Games/Warcraft III/application.js:2
-msgid ""
-"A generation before the events of World of Warcraft begin... Cunning, "
-"sinister, and seemingly unstoppable, the demonic Burning Legion prepare to "
-"launch their long-awaited assault on the mortal world. Survival is a matter "
-"of strategy, as the Reign of Chaos begins..."
-msgstr ""
-"Erforscht die vom Krieg zerrissene Welt von Azeroth, eine Generation bevor "
-"die Geschehnisse von World of Warcraft einsetzen. Durchtrieben, böse und "
-"scheinbar unaufhaltsam bereitet sich die Brennende Legion darauf vor, ihren "
-"langerwarteten Angriff auf die sterbliche Welt zu beginnen. Überleben ist "
-"eine Frage der Strategie, nun da die Herrschaft des Chaos beginnt..."
-
-#: i18n/tmp/Applications/Games/Warcraft III TFT/application.js:1
-msgid "Warcraft® III: The Frozen Throne®"
+#: i18n/tmp/Applications/Games/Warcraft III Expansion Set/application.js:1
+#, fuzzy
+msgid "Warcraft® III: Expansion Set"
 msgstr "Warcraft® III: The Frozen Throne®"
 
-#: i18n/tmp/Applications/Games/Warcraft III TFT/application.js:2
+#: i18n/tmp/Applications/Games/Warcraft III Expansion Set/application.js:2
 msgid ""
-"Warcraft III: The Frozen Throne adds a host of new features to the game, "
-"including four new campaigns that take you across the frozen continent of "
-"Northrend. Explore new maps and master new units such as the Troll Bat "
-"Riders, the Blood Elf Spell Breakers, and the destructive Mountain Giants."
-"<br><br>Install Warcraft III first."
+"The war rages on. The demonic threat has been banished from the battle-"
+"scarred fields of Azeroth, but peace is still a distant dream. The epic "
+"conflict that began in Warcraft III: Reign of Chaos continues with more "
+"units, more missions, and more explosive strategic combat.<br><br>This set "
+"contains both Warcraft III: Reign of Chaos and Warcraft III: The Frozen "
+"Throne."
 msgstr ""
-"Warcraft III: The Frozen Throne beinhaltet eine Unmenge an neuen Funktionen "
-"für das Spiel, einschließlich vier neuer Kampagnen, die euch über den "
-"eisigen Kontinent Nordend führen. Erforscht neue Karten und befehligt neue "
-"Einheiten wie die Troll-Fledermausreiter, die Zauberbrecher der Blutelfen "
-"oder die zerstörerischen Bergriesen.<br><br>Installieren Sie zunächst "
-"Warcraft III."
 
 #: i18n/tmp/Applications/Games/Warface/application.js:1
 msgid "Warface"
@@ -2889,6 +2908,36 @@ msgstr ""
 "Ihre Grenzen zu erweitern, neue Zauber zu erforschen und Ihre Gegner zu "
 "bezwingen. Werden Sie der mächtigste Zauberer und herrschen Sie über ganz "
 "Ardania!"
+
+#: i18n/tmp/Applications/Games/Wildlife Park 2/application.js:1
+msgid "Wildlife Park 2"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Wildlife Park 2/application.js:2
+msgid ""
+"Become a zoo manager and take good care of your animals. Wildlife Park 2 "
+"brings you into up close and personal contact with more than 50 different "
+"animal species. Observe the lovingly animated interaction of the animals - "
+"with other animals, the landscape, the play equipment, or the visitors to "
+"the park! Just like in a real zoo, the animals must receive all-round care. "
+"This is as easy as winking in Wildlife Park 2: With a click of the mouse you "
+"can feed, doctor, pet, or even relocate animals, or get them moving. You "
+"will guide a team of landscape architects, gardeners, keepers, "
+"veterinarians, and scientists. If you manage your zoo carefully, you will "
+"soon be able to celebrate the birth of new animals! Construct your zoo using "
+"more than 100 animal houses, visitor facilities, staff buildings, decorative "
+"park elements, and enclosure equipment. Wildlife Park 2 is an ideal "
+"playground for amateur architects, too! Use the extensive terraforming "
+"options to create your own imaginative landscapes. Plenty of established "
+"plant species and botanical rarities such us underwater plants or cacti will "
+"thrive under your loving care, and all this is lavishly displayed by a "
+"dynamic plant system. Another specialty is the realistically simulated flow "
+"of water. By easily placing a water source, you can create thunderous "
+"waterfalls and rambling water worlds. Visitors to your zoo will expect a few "
+"treats, too - build restaurants and ice-cream parlors and provide "
+"spectacular entertainment. Employ advertising and marketing to attract new "
+"visitors. But don't forget to keep an eye on your zoo's budget at all times!"
+msgstr ""
 
 #: i18n/tmp/Applications/Games/Worms Armageddon/application.js:1
 msgid "Worms Armageddon"
@@ -3139,21 +3188,21 @@ msgstr "Wine Uninstaller"
 msgid "Functions"
 msgstr "Functions"
 
-#: Utils/Functions/Filesystem/Extract/script.js:28
-#: Utils/Functions/Filesystem/Extract/script.js:73
+#: Utils/Functions/Filesystem/Extract/script.js:29
+#: Utils/Functions/Filesystem/Extract/script.js:75
 msgid "Please wait while {0} is extracted ..."
 msgstr "Bitte warten Sie während {0} extrahiert wird ..."
 
-#: Utils/Functions/Filesystem/Files/script.js:69
+#: Utils/Functions/Filesystem/Files/script.js:81
 msgid "Checking file consistency ..."
 msgstr "Dateikonsistenz wird geprüft ..."
 
-#: Utils/Functions/Net/Download/script.js:41
-#: Utils/Functions/Net/Resource/script.js:47
+#: Utils/Functions/Net/Download/script.js:42
+#: Utils/Functions/Net/Resource/script.js:48
 msgid "Please wait while {0} is downloaded ..."
 msgstr "Bitte warten Sie während {0} heruntergeladen wird ..."
 
-#: Utils/Functions/Net/Download/script.js:70
+#: Utils/Functions/Net/Download/script.js:71
 msgid ""
 "Error while calculating checksum. \n"
 "\n"
@@ -3164,3 +3213,38 @@ msgstr ""
 "\n"
 "Erwartet = {0}\n"
 "Tatsächlich = {1}"
+
+#~ msgid "Please install Warcraft III before installing The Frozen Throne."
+#~ msgstr ""
+#~ "Bitte installieren Sie Warcraft® III bevor Sie Warcraft® III: The Frozen "
+#~ "Throne® installieren."
+
+#~ msgid "Warcraft® III: Reign of Chaos®"
+#~ msgstr "Warcraft® III: Reign of Chaos®"
+
+#~ msgid ""
+#~ "A generation before the events of World of Warcraft begin... Cunning, "
+#~ "sinister, and seemingly unstoppable, the demonic Burning Legion prepare "
+#~ "to launch their long-awaited assault on the mortal world. Survival is a "
+#~ "matter of strategy, as the Reign of Chaos begins..."
+#~ msgstr ""
+#~ "Erforscht die vom Krieg zerrissene Welt von Azeroth, eine Generation "
+#~ "bevor die Geschehnisse von World of Warcraft einsetzen. Durchtrieben, "
+#~ "böse und scheinbar unaufhaltsam bereitet sich die Brennende Legion darauf "
+#~ "vor, ihren langerwarteten Angriff auf die sterbliche Welt zu beginnen. "
+#~ "Überleben ist eine Frage der Strategie, nun da die Herrschaft des Chaos "
+#~ "beginnt..."
+
+#~ msgid ""
+#~ "Warcraft III: The Frozen Throne adds a host of new features to the game, "
+#~ "including four new campaigns that take you across the frozen continent of "
+#~ "Northrend. Explore new maps and master new units such as the Troll Bat "
+#~ "Riders, the Blood Elf Spell Breakers, and the destructive Mountain Giants."
+#~ "<br><br>Install Warcraft III first."
+#~ msgstr ""
+#~ "Warcraft III: The Frozen Throne beinhaltet eine Unmenge an neuen "
+#~ "Funktionen für das Spiel, einschließlich vier neuer Kampagnen, die euch "
+#~ "über den eisigen Kontinent Nordend führen. Erforscht neue Karten und "
+#~ "befehligt neue Einheiten wie die Troll-Fledermausreiter, die "
+#~ "Zauberbrecher der Blutelfen oder die zerstörerischen Bergriesen."
+#~ "<br><br>Installieren Sie zunächst Warcraft III."

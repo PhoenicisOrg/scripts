@@ -1,5 +1,6 @@
 include(["Engines", "Wine", "Engine", "Object"]);
 
+/* exported WineShortcut */
 var WineShortcut = function () {
     var that = this;
     that._shortcutManager = Bean("shortcutManager");
@@ -30,8 +31,8 @@ var WineShortcut = function () {
         return that;
     };
 
-    that.arguments = function(arguments) {
-        that._arguments = arguments;
+    that.arguments = function(args) {
+        that._arguments = args;
         return that;
     };
 

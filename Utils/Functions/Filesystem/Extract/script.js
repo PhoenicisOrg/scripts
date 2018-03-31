@@ -1,5 +1,6 @@
 include(["Utils", "Functions", "Filesystem", "Files"]);
 
+/* exported CabExtract */
 var CabExtract = function() {
     var that = this;
 
@@ -23,7 +24,7 @@ var CabExtract = function() {
         return that;
     };
 
-    that.extract = function(arguments) {
+    that.extract = function(args) {
         if (!that._progressMessage) {
             that._progressMessage = tr("Please wait while {0} is extracted ...", that._archive);
         }
@@ -33,8 +34,8 @@ var CabExtract = function() {
         }
 
         var processArguments;
-        if(arguments) {
-            processArguments = ["cabextract"].concat(arguments).concat([that._archive]);
+        if(args) {
+            processArguments = ["cabextract"].concat(args).concat([that._archive]);
         } else {
             processArguments = ["cabextract", that._archive];
         }
@@ -49,6 +50,7 @@ var CabExtract = function() {
 
 };
 
+/* exported Extractor */
 var Extractor = function () {
     var that = this;
     that._extractor = Bean("extractor");
