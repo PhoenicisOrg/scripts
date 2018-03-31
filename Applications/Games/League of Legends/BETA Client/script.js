@@ -29,15 +29,15 @@ new CustomInstallerScript()
         // Select the region and download the setup file
         ////////////////////////////////////////////////
         var regions = ["EU West",
-            "Latin America North",
-            "Latin America South",
-            "Oceania",
-            "Japan",
-            "Turkey",
-            "Brasil",
-            "EU Nordic & East",
-            "North America",
-            "Russia"];
+                       "Latin America North",
+                       "Latin America South",
+                       "Oceania",
+                       "Japan",
+                       "Turkey",
+                       "Brasil",
+                       "EU Nordic & East",
+                       "North America",
+                       "Russia"];
         var selectedRegion = wizard.menu(tr("Select your region:"), regions);
         var regionID, url, sha1;
         var baseUrl = "https://riotgamespatcher-a.akamaihd.net/ShellInstaller/";
