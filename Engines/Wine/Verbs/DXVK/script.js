@@ -40,8 +40,8 @@ Wine.prototype.DXVK = function() {
         this.overrideDLL()
             .set("native", ["dxgi"])
             .do();
-            
-        remove(this.prefixDirectory + "/TMP/");
+	
+	remove(this.prefixDirectory + "/TMP/");
 	
 	return this;	
 }
