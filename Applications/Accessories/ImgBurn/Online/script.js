@@ -1,4 +1,4 @@
- include(["Engines", "Wine", "QuickScript", "OnlineInstallerScript"]);
+include(["Engines", "Wine", "QuickScript", "OnlineInstallerScript"]);
 
 new OnlineInstallerScript()
     .name("ImgBurn")                       

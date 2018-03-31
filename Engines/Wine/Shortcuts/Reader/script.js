@@ -60,9 +60,9 @@ var _WineShortcutReader = function(shortcut) {
 
         if(!_found) {
             this._uiQuestionFactory.create(tr("The container {0} is no longer used.\nDo you want to delete it?", _winePrefix),
-            function() {
-                remove(that._winePrefixesDirectory + _winePrefix);
-            });
+                function() {
+                    remove(that._winePrefixesDirectory + _winePrefix);
+                });
         }
     }
 };

@@ -35,7 +35,7 @@ remove(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Internet Exp
 
 ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon", "browseui", "iseng", "inetcpl"]
     .forEach(function(dll) {
-            remove(wine.prefixDirectory + "/drive_c/windows/system32/" + dll + ".dll");
+        remove(wine.prefixDirectory + "/drive_c/windows/system32/" + dll + ".dll");
     });
 
 wine.run(setupFile).wait();
@@ -48,14 +48,14 @@ new CabExtract()
 
 wine.run("iexplore", ["-unregserver"])
     .overrideDLL()
-        .set("native", ["inseng"])
-        .do()
+    .set("native", ["inseng"])
+    .do()
     .runInsidePrefix("IE 6.0 Full/IE6SETUP.EXE").wait()
     .overrideDLL()
-        .set("native,builtin", [
-                "inetcpl.cpl", "itircl", "itss", "jscript", "mlang",
-                "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"
-        ]).do();
+    .set("native,builtin", [
+        "inetcpl.cpl", "itircl", "itss", "jscript", "mlang",
+        "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"
+    ]).do();
 
 var librairiesToRegister = ["actxprxy.dll", "browseui.dll", "browsewm.dll", "cdfview.dll", "ddraw.dll",
     "dispex.dll", "dsound.dll", "iedkcs32.dll", "iepeers.dll", "iesetup.dll", "imgutil.dll",

@@ -238,7 +238,7 @@ Wine.prototype.run = function (executable, args, captureOutput) {
         environment.put("WINEDEBUG", this._wineDebug);
     }
 
-   if (this._architecture == "amd64") {
+    if (this._architecture == "amd64") {
         this._ldPath = this._fetchLocalDirectory() + "/lib64/:" + this._ldPath
     } else {
         this._ldPath = this._fetchLocalDirectory() + "/lib/:" + this._ldPath
@@ -619,14 +619,14 @@ Wine.prototype.regedit = function () {
         var root = keyPath[0];
         var registryFile;
         switch (root) {
-            case "HKEY_CURRENT_USER":
-                registryFile = "user.reg";
-                break;
-            case "HKEY_LOCAL_MACHINE":
-                registryFile = "system.reg";
-                break;
-            default:
-                throw "Illegal registry root exception";
+        case "HKEY_CURRENT_USER":
+            registryFile = "user.reg";
+            break;
+        case "HKEY_LOCAL_MACHINE":
+            registryFile = "system.reg";
+            break;
+        default:
+            throw "Illegal registry root exception";
         }
 
         keyPath.shift();
@@ -875,17 +875,17 @@ Wine.prototype.nativeApplication = function (extension) {
     // set
     var mimetype = null;
     switch (extension) {
-        case "pdf":
-            mimetype = "application/pdf";
-            break;
-        case "txt":
-            mimetype = "application/plain";
-            break;
-        case "rtf":
-            mimetype = "application/rtf";
-            break;
-        default:
-            throw tr("Could not determine mimetype for file extension \"{0}\"", extension);
+    case "pdf":
+        mimetype = "application/pdf";
+        break;
+    case "txt":
+        mimetype = "application/plain";
+        break;
+    case "rtf":
+        mimetype = "application/rtf";
+        break;
+    default:
+        throw tr("Could not determine mimetype for file extension \"{0}\"", extension);
     }
     var regeditFileContent =
         "REGEDIT4\n" +
