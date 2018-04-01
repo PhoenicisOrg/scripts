@@ -1,0 +1,8 @@
+{
+	"scriptName": "d3dx9",
+	"id": "d3dx9",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}
