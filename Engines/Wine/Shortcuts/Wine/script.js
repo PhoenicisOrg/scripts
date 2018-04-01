@@ -31,8 +31,8 @@ var WineShortcut = function () {
         return that;
     };
 
-    that.arguments = function(arguments) {
-        that._arguments = arguments;
+    that.arguments = function(args) {
+        that._arguments = args;
         return that;
     };
 

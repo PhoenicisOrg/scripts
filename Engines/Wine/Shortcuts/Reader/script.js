@@ -23,13 +23,13 @@ var _WineShortcutReader = function(shortcut) {
             userArguments = [];
         }
 
-        var arguments = (shortcutContent.arguments ? shortcutContent.arguments : []).concat(Java.from(userArguments));
+        var args = (shortcutContent.arguments ? shortcutContent.arguments : []).concat(Java.from(userArguments));
 
         new Wine()
             .prefix(shortcutContent.winePrefix)
             .debug(shortcutContent.wineDebug)
             .workingDirectory(shortcutContent.workingDirectory)
-            .run(shortcutContent.executable, arguments)
+            .run(shortcutContent.executable, args)
     };
 
 

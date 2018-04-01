@@ -5,6 +5,8 @@ extends:
 env:
   nashorn: true
 
+valid-jsdoc: 2
+
 globals:
   include: false
   TYPE_ID: false
