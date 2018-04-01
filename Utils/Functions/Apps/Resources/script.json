@@ -1,6 +1,6 @@
 {
-  	"scriptName": "Command prompt",
-    "id": "WineConsole",
+  	"scriptName": "App Resources",
+    "id": "Resources",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

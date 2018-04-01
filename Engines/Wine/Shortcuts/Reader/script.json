@@ -1,6 +1,6 @@
 {
-  	"scriptName": "Command prompt",
-    "id": "WineConsole",
+	"scriptName": "Shortcut Reader",
+    "id": "Reader",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

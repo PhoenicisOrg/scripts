@@ -1,6 +1,6 @@
 {
-  	"scriptName": "Command prompt",
-    "id": "WineConsole",
+  	"scriptName": "Registry Editor",
+    "id": "WineRegistryEditor",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

@@ -1,6 +1,6 @@
 {
-  	"scriptName": "Command prompt",
-    "id": "WineConsole",
+  	"scriptName": "File Extractors",
+    "id": "Extract",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

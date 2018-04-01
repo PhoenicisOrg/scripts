@@ -1,6 +1,6 @@
 {
-  	"scriptName": "Command prompt",
-    "id": "WineConsole",
+	"scriptName": "Wine engine",
+    "id": "Object",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,
