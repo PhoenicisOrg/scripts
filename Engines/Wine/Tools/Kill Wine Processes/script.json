@@ -1,6 +1,6 @@
 {
   	"scriptName": "Kill processes",
-    "id": "KillWineProcesses",
+	"id": "KillWineProcesses",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

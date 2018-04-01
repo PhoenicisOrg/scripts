@@ -1,6 +1,6 @@
 {
   	"scriptName": "Repair virtual drive",
-    "id": "RepairWinePrefix",
+	"id": "RepairWinePrefix",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

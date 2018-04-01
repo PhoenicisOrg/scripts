@@ -1,6 +1,6 @@
 {
 	"scriptName": "Configure Wine",
-    "id": "ConfigureWine",
+	"id": "ConfigureWine",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

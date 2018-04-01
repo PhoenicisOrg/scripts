@@ -1,6 +1,6 @@
 {
 	"scriptName": "Shortcut Reader",
-    "id": "Reader",
+	"id": "Reader",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

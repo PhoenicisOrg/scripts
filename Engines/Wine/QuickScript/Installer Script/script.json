@@ -1,6 +1,6 @@
 {
 	"scriptName": "Installer Script",
-    "id": "InstallerScript",
+	"id": "InstallerScript",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

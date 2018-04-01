@@ -1,6 +1,6 @@
 {
 	"scriptName": "Steam Script",
-    "id": "SteamScript",
+	"id": "SteamScript",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

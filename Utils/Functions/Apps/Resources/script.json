@@ -1,6 +1,6 @@
 {
   	"scriptName": "App Resources",
-    "id": "Resources",
+  	"id": "Resources",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

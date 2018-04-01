@@ -1,6 +1,6 @@
 {
   	"scriptName": "File Extractors",
-    "id": "Extract",
+  	"id": "Extract",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

@@ -1,6 +1,6 @@
 {
   	"scriptName": "Task manager",
-    "id": "WineTaskManager",
+	"id": "WineTaskManager",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

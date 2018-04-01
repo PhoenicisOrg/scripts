@@ -1,6 +1,6 @@
 {
   	"scriptName": "Downloader",
-    "id": "Download",
+  	"id": "Download",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,
