@@ -1,0 +1,8 @@
+{
+	"scriptName": "Zip Script",
+	"id": "zip-script",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

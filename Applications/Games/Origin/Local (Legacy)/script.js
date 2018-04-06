@@ -1,6 +1,6 @@
-include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
-include(["Utils", "Functions", "Net", "Download"]);
-include(["Utils", "Functions", "Filesystem", "Extract"]);
+include(["engines", "wine", "quick_script", "local_installer_script"]);
+include(["utils", "functions", "net", "download"]);
+include(["Utils", "Functions", "filesystem", "extract"]);
 
 new LocalInstallerScript()
     .name("Origin")

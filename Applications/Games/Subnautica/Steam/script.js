@@ -1,11 +1,11 @@
-include(["Engines", "Wine", "QuickScript", "SteamScript"]);
+include(["engines", "wine", "quick_script", "steam_script"]);
 include(["Engines", "Wine", "Verbs", "vcrun2013"]);
 include(["Engines", "Wine", "Verbs", "vcrun2008"]);
 include(["Engines", "Wine", "Verbs", "xact"]);
 include(["Engines", "Wine", "Verbs", "corefonts"]);
-include(["Utils", "Functions", "Apps", "Resources"]);
-include(["Utils", "Functions", "Filesystem", "Files"]);
-include(["Engines", "Wine", "Engine", "Object"]);
+include(["utils", "functions", "apps", "resources"]);
+include(["Utils", "Functions", "filesystem", "files"]);
+include(["engines", "wine", "engine", "object"]);
 
 new SteamScript()
     .name("Subnautica")

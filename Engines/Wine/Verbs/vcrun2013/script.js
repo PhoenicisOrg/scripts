@@ -1,5 +1,5 @@
-include(["Engines", "Wine", "Engine", "Object"]);
-include(["Utils", "Functions", "Net", "Resource"]);
+include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "net", "resource"]);
 include(["Engines", "Wine", "Verbs", "luna"]);
 
 Wine.prototype.vcrun2013 = function() {

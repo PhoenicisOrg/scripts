@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "QuickScript", "OnlineInstallerScript"]);
+include(["engines", "wine", "quick_script", "online_installer_script"]);
 include(["Engines", "Wine", "Verbs", "vcrun2012"]);
 include(["Engines", "Wine", "Verbs", "d3dx9"]);
 
@@ -11,7 +11,7 @@ new OnlineInstallerScript()
     .category("Games")
     .executable("LaunchPad.exe")
     .preInstall(function(wine/*, wizard*/) {
-	wine.vcrun2012();
-	wine.d3dx9();
+        wine.vcrun2012();
+        wine.d3dx9();
     })
-.go();
+    .go();

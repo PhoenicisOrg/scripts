@@ -1,0 +1,8 @@
+{
+  	"scriptName": "Open a terminal",
+	"id": "wine-terminal-opener",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

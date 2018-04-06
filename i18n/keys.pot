@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-25 12:17+0000\n"
+"POT-Creation-Date: 2018-04-06 15:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Applications/Games/League of Legends/BETA Client/script.js:41
+#: Applications/Games/League of Legends/Online/script.js:26
 msgid "Select your region:"
 msgstr ""
 
@@ -69,16 +69,16 @@ msgstr ""
 
 #: Applications/Internet/Internet Explorer 6.0/Online/script.js:71
 #: Engines/Wine/Engine/Object/script.js:309
-#: Engines/Wine/QuickScript/InstallerScript/script.js:96
-#: Engines/Wine/QuickScript/SteamScript/script.js:107
-#: Engines/Wine/QuickScript/SteamScript/script.js:112
-#: Engines/Wine/QuickScript/SteamScript/script.js:132
-#: Engines/Wine/QuickScript/SteamScript/script.js:147
-#: Engines/Wine/QuickScript/UplayScript/script.js:65
-#: Engines/Wine/QuickScript/UplayScript/script.js:70
-#: Engines/Wine/QuickScript/UplayScript/script.js:90
-#: Engines/Wine/QuickScript/ZipScript/script.js:44
-#: Engines/Wine/QuickScript/ZipScript/script.js:70
+#: Engines/Wine/QuickScript/Installer Script/script.js:96
+#: Engines/Wine/QuickScript/Steam Script/script.js:107
+#: Engines/Wine/QuickScript/Steam Script/script.js:112
+#: Engines/Wine/QuickScript/Steam Script/script.js:132
+#: Engines/Wine/QuickScript/Steam Script/script.js:147
+#: Engines/Wine/QuickScript/Uplay Script/script.js:65
+#: Engines/Wine/QuickScript/Uplay Script/script.js:70
+#: Engines/Wine/QuickScript/Uplay Script/script.js:90
+#: Engines/Wine/QuickScript/Zip Script/script.js:44
+#: Engines/Wine/QuickScript/Zip Script/script.js:70
 #: Engines/Wine/Verbs/corefonts/script.js:79
 #: Engines/Wine/Verbs/d3dx10/script.js:30
 #: Engines/Wine/Verbs/d3dx9/script.js:30
@@ -132,35 +132,35 @@ msgstr ""
 msgid "Could not determine mimetype for file extension \"{0}\""
 msgstr ""
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js:23
+#: Engines/Wine/QuickScript/Installer Script/script.js:23
 msgid "Please enter the name of your application."
 msgstr ""
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js:38
+#: Engines/Wine/QuickScript/Installer Script/script.js:38
 msgid "Please select the wine architecture."
 msgstr ""
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js:52
+#: Engines/Wine/QuickScript/Installer Script/script.js:52
 msgid "Please select the wine distribution."
 msgstr ""
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js:66
+#: Engines/Wine/QuickScript/Installer Script/script.js:66
 msgid "Please select the wine version."
 msgstr ""
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js:88
+#: Engines/Wine/QuickScript/Installer Script/script.js:88
 msgid "Please select the executable."
 msgstr ""
 
-#: Engines/Wine/QuickScript/LocalInstallerScript/script.js:23
+#: Engines/Wine/QuickScript/Local Installer Script/script.js:23
 msgid "Please select the installation file."
 msgstr ""
 
-#: Engines/Wine/QuickScript/OnlineInstallerScript/script.js:32
+#: Engines/Wine/QuickScript/Online Installer Script/script.js:32
 msgid "Please select the download URL."
 msgstr ""
 
-#: Engines/Wine/QuickScript/SteamScript/script.js:104
+#: Engines/Wine/QuickScript/Steam Script/script.js:104
 msgid ""
 "Please follow the steps of the Steam setup.\n"
 "\n"
@@ -168,11 +168,11 @@ msgid ""
 "installation of \"{0}\" can continue."
 msgstr ""
 
-#: Engines/Wine/QuickScript/SteamScript/script.js:116
+#: Engines/Wine/QuickScript/Steam Script/script.js:116
 msgid "Please wait until Steam has finished the download ..."
 msgstr ""
 
-#: Engines/Wine/QuickScript/UplayScript/script.js:60
+#: Engines/Wine/QuickScript/Uplay Script/script.js:60
 msgid ""
 "Please follow the steps of the Uplay setup.\n"
 "\n"
@@ -180,15 +180,15 @@ msgid ""
 "installation of \"{0}\" can continue."
 msgstr ""
 
-#: Engines/Wine/QuickScript/UplayScript/script.js:77
+#: Engines/Wine/QuickScript/Uplay Script/script.js:77
 msgid "Please wait until Uplay has finished the download ..."
 msgstr ""
 
-#: Engines/Wine/QuickScript/UplayScript/script.js:85
+#: Engines/Wine/QuickScript/Uplay Script/script.js:85
 msgid "Please close Uplay."
 msgstr ""
 
-#: Engines/Wine/QuickScript/ZipScript/script.js:48
+#: Engines/Wine/QuickScript/Zip Script/script.js:48
 msgid "Please select the .zip file."
 msgstr ""
 
@@ -198,7 +198,7 @@ msgid ""
 "Do you want to delete it?"
 msgstr ""
 
-#: Engines/Wine/Shortcuts/Wine/script.js:77
+#: Engines/Wine/Shortcuts/Wine/script.js:78
 msgid "Executable {0} not found!"
 msgstr ""
 
@@ -219,8 +219,8 @@ msgstr ""
 #: Engines/Wine/Verbs/dotnet40/script.js:26
 #: Engines/Wine/Verbs/dotnet452/script.js:41
 #: Engines/Wine/Verbs/dotnet45/script.js:42
-#: Engines/Wine/Verbs/physx/script.js:14
-#: Engines/Wine/Verbs/quicktime76/script.js:10
+#: Engines/Wine/Verbs/PhysX/script.js:14
+#: Engines/Wine/Verbs/QuickTime 7.6/script.js:10
 #: Engines/Wine/Verbs/vcrun2003/script.js:15
 #: Engines/Wine/Verbs/vcrun2005/script.js:14
 #: Engines/Wine/Verbs/vcrun2008/script.js:14
@@ -243,7 +243,7 @@ msgid ""
 "\"win2003\""
 msgstr ""
 
-#: Engines/Wine/Verbs/uplay/script.js:11
+#: Engines/Wine/Verbs/Uplay/script.js:11
 msgid ""
 "Please follow the steps of the Uplay setup.\n"
 "\n"
@@ -280,6 +280,7 @@ msgstr ""
 #: i18n/tmp/Applications/Games/Guild Wars 2/Online/script.js:1
 #: i18n/tmp/Applications/Games/Hearthstone/Online/script.js:1
 #: i18n/tmp/Applications/Games/Heroes of the Storm/Online/script.js:1
+#: i18n/tmp/Applications/Games/League of Legends/Online/script.js:1
 #: i18n/tmp/Applications/Games/Origin/Online/script.js:1
 #: i18n/tmp/Applications/Games/Overwatch/Online/script.js:1
 #: i18n/tmp/Applications/Games/Prehistorik/Online/script.js:1
@@ -469,6 +470,7 @@ msgstr ""
 #: i18n/tmp/Applications/Games/Hexcells Infinite/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Hexcells Plus/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Hexcells/Steam/script.js:1
+#: i18n/tmp/Applications/Games/It came from space and ate our brains/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Mafia II/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Mass Effect 2/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Mass Effect/Steam/script.js:1
@@ -703,6 +705,7 @@ msgstr ""
 #: i18n/tmp/Applications/Games/Rayman Origins/Uplay/script.js:1
 #: i18n/tmp/Applications/Games/Tom Clancy's Splinter Cell/Uplay/script.js:1
 #: i18n/tmp/Applications/Games/Uplay/application.js:1
+#: i18n/tmp/Engines/Wine/Verbs/Uplay/script.js:1
 msgid "Uplay"
 msgstr ""
 
@@ -1265,8 +1268,26 @@ msgstr ""
 msgid "v1.5"
 msgstr ""
 
+#: i18n/tmp/Applications/Games/It came from space and ate our brains/application.js:1
+msgid "It came from space, and ate our brains"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/It came from space and ate our brains/application.js:2
+msgid ""
+"‘It came from space, and ate our brains’ is an Arcade top down shooter with "
+"horde survival gameplay in a unique atmospheric setting with addicting "
+"gameplay elements, which all can be played cooperatively. You are a no-"
+"nonsense kind of guy equipped with a flashlight and a weapon. You somehow "
+"managed to survive the invasion of a merciless alien species, the kind that "
+"feeds on human brains. Things look bad when you wander the city and other "
+"locations, there is chaos everywhere! You are looking for gear and weapons "
+"to survive, as pink light emitting aliens try to corner you and eat your "
+"brain. You realize there is only one thing left to do: set a new high score "
+"and die like a badass."
+msgstr ""
+
 #: i18n/tmp/Applications/Games/League of Legends/application.js:1
-msgid "League of Legends BETA Client"
+msgid "League of Legends"
 msgstr ""
 
 #: i18n/tmp/Applications/Games/League of Legends/application.js:2
@@ -1277,10 +1298,6 @@ msgid ""
 "across multiple battlefields and game modes. With an ever-expanding roster "
 "of champions, frequent updates and a thriving tournament scene, League of "
 "Legends offers endless replayability for players of every skill level."
-msgstr ""
-
-#: i18n/tmp/Applications/Games/League of Legends/BETA Client/script.js:1
-msgid "BETA Client"
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Mafia II/application.js:1
@@ -2374,19 +2391,95 @@ msgstr ""
 msgid "Wine"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/ConfigureWine/script.js:1
+#: i18n/tmp/Engines/Wine/Engine/application.js:1
+msgid "Wine Engine"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Engine/application.js:2
+msgid "The Wine engine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Engine/Object/script.js:1
+msgid "Wine engine"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/application.js:1
+msgid "QuickScript"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/application.js:2
+msgid "QuickScripts for Wine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Custom Installer Script/script.js:1
+msgid "Custom Installer Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Installer Script/script.js:1
+msgid "Installer Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Local Installer Script/script.js:1
+msgid "Local Installer Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Online Installer Script/script.js:1
+msgid "Online Installer Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Quick Script/script.js:1
+msgid "Quick Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Steam Script/script.js:1
+msgid "Steam Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Uplay Script/script.js:1
+msgid "Uplay Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Zip Script/script.js:1
+msgid "Zip Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Shortcuts/application.js:1
+msgid "Wine Shortcuts"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Shortcuts/application.js:2
+msgid "Shortcuts for Wine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Shortcuts/Reader/script.js:1
+msgid "Shortcut Reader"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Shortcuts/Wine/script.js:1
+msgid "Wine Shortcut"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Tools/application.js:1
+msgid "Wine Tools"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Tools/application.js:2
+msgid "Tools for Wine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Tools/Configure Wine/script.js:1
 msgid "Configure Wine"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/KillWineProcesses/script.js:1
+#: i18n/tmp/Engines/Wine/Tools/Kill Wine Processes/script.js:1
 msgid "Kill processes"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/RebootWine/script.js:1
+#: i18n/tmp/Engines/Wine/Tools/Reboot Wine/script.js:1
 msgid "Windows reboot"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/RepairWinePrefix/script.js:1
+#: i18n/tmp/Engines/Wine/Tools/Repair Wine Prefix/script.js:1
 msgid "Repair virtual drive"
 msgstr ""
 
@@ -2394,41 +2487,197 @@ msgstr ""
 msgid "Command prompt"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/WineRegistryEditor/script.js:1
+#: i18n/tmp/Engines/Wine/Tools/Wine Registry Editor/script.js:1
 msgid "Registry Editor"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/WineTaskManager/script.js:1
+#: i18n/tmp/Engines/Wine/Tools/Wine Task Manager/script.js:1
 msgid "Task manager"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/WineTerminalOpener/script.js:1
+#: i18n/tmp/Engines/Wine/Tools/Wine Terminal Opener/script.js:1
 msgid "Open a terminal"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/WineUninstaller/script.js:1
+#: i18n/tmp/Engines/Wine/Tools/Wine Uninstaller/script.js:1
 msgid "Wine uninstaller"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/application.js:1
+msgid "Wine Verbs"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/application.js:2
+msgid "Verbs for Wine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/corefonts/script.js:1
+msgid "corefonts"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/crypt32/script.js:1
+msgid "crypt32"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/d3dx10/script.js:1
+msgid "d3dx10"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/d3dx9/script.js:1
+msgid "d3dx9"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/dotnet40/script.js:1
+msgid ".NET 4.0"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/dotnet452/script.js:1
+msgid ".NET 4.5.2"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/dotnet45/script.js:1
+msgid ".NET 4.5"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/luna/script.js:1
+msgid "luna"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/mfc42/script.js:1
+msgid "mfc42"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/msls31/script.js:1
+msgid "msls31"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/mspatcha/script.js:1
+msgid "mspatcha"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/PhysX/script.js:1
+msgid "PhysX"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/quartz/script.js:1
+msgid "quartz"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/QuickTime 7.6/script.js:1
+msgid "QuickTime 7.6"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/sandbox/script.js:1
+msgid "sandbox"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/secur32/script.js:1
+msgid "secur32"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/Tahoma/script.js:1
+msgid "Tahoma"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2003/script.js:1
+msgid "vcrun2003"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2005/script.js:1
+msgid "vcrun2005"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2008/script.js:1
+msgid "vcrun2008"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2010/script.js:1
+msgid "vcrun2010"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2012/script.js:1
+msgid "vcrun2012"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2013/script.js:1
+msgid "vcrun2013"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2015/script.js:1
+msgid "vcrun2015"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/Windows XP SP 3/script.js:1
+msgid "Windows XP Service Pack 3"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/xact/script.js:1
+msgid "xact"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Apps/application.js:1
+msgid "App Utils"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Apps/application.js:2
+msgid "Utils for apps."
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Apps/Resources/script.js:1
+msgid "App Resources"
 msgstr ""
 
 #: i18n/tmp/Utils/Functions/category.js:1
 msgid "Functions"
 msgstr ""
 
-#: Utils/Functions/Filesystem/Extract/script.js:28
-#: Utils/Functions/Filesystem/Extract/script.js:73
+#: i18n/tmp/Utils/Functions/Filesystem/application.js:1
+msgid "Filesystem Utils"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Filesystem/application.js:2
+msgid "Utils for file system interaction."
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Filesystem/Extract/script.js:1
+msgid "File Extractors"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Filesystem/Files/script.js:1
+msgid "File Utilities"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Net/application.js:1
+msgid "Net Utils"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Net/application.js:2
+msgid "Utils for interaction with the Internet."
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Net/Download/script.js:1
+msgid "Downloader"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Net/Resource/script.js:1
+msgid "Internet Resource"
+msgstr ""
+
+#: Utils/Functions/Filesystem/Extract/script.js:29
+#: Utils/Functions/Filesystem/Extract/script.js:75
 msgid "Please wait while {0} is extracted ..."
 msgstr ""
 
-#: Utils/Functions/Filesystem/Files/script.js:69
+#: Utils/Functions/Filesystem/Files/script.js:81
 msgid "Checking file consistency ..."
 msgstr ""
 
-#: Utils/Functions/Net/Download/script.js:41
-#: Utils/Functions/Net/Resource/script.js:47
+#: Utils/Functions/Net/Download/script.js:42
+#: Utils/Functions/Net/Resource/script.js:48
 msgid "Please wait while {0} is downloaded ..."
 msgstr ""
 
-#: Utils/Functions/Net/Download/script.js:70
+#: Utils/Functions/Net/Download/script.js:71
 msgid ""
 "Error while calculating checksum. \n"
 "\n"

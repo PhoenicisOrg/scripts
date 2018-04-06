@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "QuickScript", "SteamScript"]);
+include(["engines", "wine", "quick_script", "steam_script"]);
 include(["Engines","Wine", "Verbs", "d3dx9"]);
 
 new SteamScript()
