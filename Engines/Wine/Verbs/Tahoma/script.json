@@ -1,0 +1,8 @@
+{
+	"scriptName": "Tahoma",
+	"id": "tahoma",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

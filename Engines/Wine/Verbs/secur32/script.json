@@ -1,0 +1,8 @@
+{
+	"scriptName": "secur32",
+	"id": "secur32",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}
