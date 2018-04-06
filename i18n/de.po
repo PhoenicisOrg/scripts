@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-06 08:47+0000\n"
+"POT-Creation-Date: 2018-04-06 14:40+0000\n"
 "PO-Revision-Date: 2017-09-24 10:34+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
@@ -3150,6 +3150,39 @@ msgstr "Lernprogramme"
 msgid "Wine"
 msgstr "Wine"
 
+#: i18n/tmp/Engines/Wine/Engine/application.js:1
+#, fuzzy
+msgid "Wine Engine"
+msgstr "Wine Uninstaller"
+
+#: i18n/tmp/Engines/Wine/Engine/application.js:2
+msgid "The Wine engine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/application.js:1
+msgid "QuickScript"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/application.js:2
+msgid "QuickScripts for Wine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Shortcuts/application.js:1
+msgid "Wine Shortcuts"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Shortcuts/application.js:2
+msgid "Shortcuts for Wine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Tools/application.js:1
+msgid "Wine Tools"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Tools/application.js:2
+msgid "Tools for Wine."
+msgstr ""
+
 #: i18n/tmp/Engines/Wine/Tools/ConfigureWine/script.js:1
 msgid "Configure Wine"
 msgstr "Wine einrichten"
@@ -3186,9 +3219,41 @@ msgstr "Terminal öffnen"
 msgid "Wine uninstaller"
 msgstr "Wine Uninstaller"
 
+#: i18n/tmp/Engines/Wine/Verbs/application.js:1
+msgid "Wine Verbs"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/application.js:2
+msgid "Verbs for Wine."
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Apps/application.js:1
+msgid "App Utils"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Apps/application.js:2
+msgid "Utils for apps."
+msgstr ""
+
 #: i18n/tmp/Utils/Functions/category.js:1
 msgid "Functions"
 msgstr "Functions"
+
+#: i18n/tmp/Utils/Functions/Filesystem/application.js:1
+msgid "Filesystem Utils"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Filesystem/application.js:2
+msgid "Utils for file system interaction."
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Net/application.js:1
+msgid "Net Utils"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Net/application.js:2
+msgid "Utils for interaction with the Internet."
+msgstr ""
 
 #: Utils/Functions/Filesystem/Extract/script.js:29
 #: Utils/Functions/Filesystem/Extract/script.js:75
