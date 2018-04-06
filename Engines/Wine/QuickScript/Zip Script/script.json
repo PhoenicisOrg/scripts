@@ -1,6 +1,6 @@
 {
-  	"scriptName": "Command prompt",
-  	"id": "Command_prompt",
+	"scriptName": "Zip Script",
+	"id": "ZipScript",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

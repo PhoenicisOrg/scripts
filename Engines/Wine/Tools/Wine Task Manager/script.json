@@ -1,6 +1,6 @@
 {
-  	"scriptName": "Command prompt",
-  	"id": "Command_prompt",
+  	"scriptName": "Task manager",
+	"id": "WineTaskManager",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

@@ -1,6 +1,6 @@
 {
-  	"scriptName": "Command prompt",
-  	"id": "Command_prompt",
+	"scriptName": "Quick Script",
+	"id": "QuickScript",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

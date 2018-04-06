@@ -1,6 +1,6 @@
 {
-  	"scriptName": "Command prompt",
-  	"id": "Command_prompt",
+  	"scriptName": "Open a terminal",
+	"id": "WineTerminalOpener",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

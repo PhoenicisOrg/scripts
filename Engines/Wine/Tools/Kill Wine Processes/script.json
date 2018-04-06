@@ -1,6 +1,6 @@
 {
-  	"scriptName": "Command prompt",
-  	"id": "Command_prompt",
+  	"scriptName": "Kill processes",
+	"id": "KillWineProcesses",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,
