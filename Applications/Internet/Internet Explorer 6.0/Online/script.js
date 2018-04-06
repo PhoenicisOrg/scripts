@@ -35,7 +35,7 @@ remove(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Internet Exp
 
 ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon", "browseui", "iseng", "inetcpl"]
     .forEach(function(dll) {
-            remove(wine.prefixDirectory + "/drive_c/windows/system32/" + dll + ".dll");
+        remove(wine.prefixDirectory + "/drive_c/windows/system32/" + dll + ".dll");
     });
 
 wine.run(setupFile).wait();
@@ -48,25 +48,25 @@ new CabExtract()
 
 wine.run("iexplore", ["-unregserver"])
     .overrideDLL()
-        .set("native", ["inseng"])
-        .do()
+    .set("native", ["inseng"])
+    .do()
     .runInsidePrefix("IE 6.0 Full/IE6SETUP.EXE").wait()
     .overrideDLL()
-        .set("native,builtin", [
-                "inetcpl.cpl", "itircl", "itss", "jscript", "mlang",
-                "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"
-        ]).do();
+    .set("native,builtin", [
+        "inetcpl.cpl", "itircl", "itss", "jscript", "mlang",
+        "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"
+    ]).do();
 
 var librairiesToRegister = ["actxprxy.dll", "browseui.dll", "browsewm.dll", "cdfview.dll", "ddraw.dll",
-    "dispex.dll", "dsound.dll", "iedkcs32.dll", "iepeers.dll", "iesetup.dll", "imgutil.dll",
-    "inetcomm.dll", "inetcpl.cpl", "inseng.dll", "isetup.dll", "jscript.dll", "laprxy.dll",
-    "mlang.dll", "mshtml.dll", "mshtmled.dll", "msi.dll", "msident.dll",
-    "msoeacct.dll", "msrating.dll", "mstime.dll", "msxml3.dll", "occache.dll",
-    "ole32.dll", "oleaut32.dll", "olepro32.dll", "pngfilt.dll", "quartz.dll",
-    "rpcrt4.dll", "rsabase.dll", "rsaenh.dll", "scrobj.dll", "scrrun.dll",
-    "shdocvw.dll", "shell32.dll", "urlmon.dll", "vbscript.dll", "webcheck.dll",
-    "wshcon.dll", "wshext.dll", "asctrls.ocx", "hhctrl.ocx", "mscomct2.ocx",
-    "plugin.ocx", "proctexe.ocx", "tdc.ocx", "webcheck.dll", "wshom.ocx"];
+                            "dispex.dll", "dsound.dll", "iedkcs32.dll", "iepeers.dll", "iesetup.dll", "imgutil.dll",
+                            "inetcomm.dll", "inetcpl.cpl", "inseng.dll", "isetup.dll", "jscript.dll", "laprxy.dll",
+                            "mlang.dll", "mshtml.dll", "mshtmled.dll", "msi.dll", "msident.dll",
+                            "msoeacct.dll", "msrating.dll", "mstime.dll", "msxml3.dll", "occache.dll",
+                            "ole32.dll", "oleaut32.dll", "olepro32.dll", "pngfilt.dll", "quartz.dll",
+                            "rpcrt4.dll", "rsabase.dll", "rsaenh.dll", "scrobj.dll", "scrrun.dll",
+                            "shdocvw.dll", "shell32.dll", "urlmon.dll", "vbscript.dll", "webcheck.dll",
+                            "wshcon.dll", "wshext.dll", "asctrls.ocx", "hhctrl.ocx", "mscomct2.ocx",
+                            "plugin.ocx", "proctexe.ocx", "tdc.ocx", "webcheck.dll", "wshom.ocx"];
 
 var progressBar = setupWizard.progressBar(tr("Please wait ..."));
 var i = 1;

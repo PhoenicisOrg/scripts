@@ -238,7 +238,7 @@ Wine.prototype.run = function (executable, args, captureOutput) {
         environment.put("WINEDEBUG", this._wineDebug);
     }
 
-   if (this._architecture == "amd64") {
+    if (this._architecture == "amd64") {
         this._ldPath = this._fetchLocalDirectory() + "/lib64/:" + this._ldPath
     } else {
         this._ldPath = this._fetchLocalDirectory() + "/lib/:" + this._ldPath

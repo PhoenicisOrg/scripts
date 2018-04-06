@@ -5,7 +5,12 @@ extends:
 env:
   nashorn: true
 
-valid-jsdoc: 2
+rules:
+  valid-jsdoc: 2
+  indent: 
+    - 2
+    - 4
+    - {SwitchCase: 1, ArrayExpression: first}
 
 globals:
   include: false
