@@ -1,6 +1,6 @@
 {
-  	"scriptName": "Command prompt",
-  	"id": "command_prompt",
+	"scriptName": ".NET 4.5",
+	"id": "dotnet45",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

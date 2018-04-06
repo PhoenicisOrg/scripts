@@ -1,6 +1,6 @@
 {
-  	"scriptName": "Command prompt",
-  	"id": "command_prompt",
+  	"scriptName": "Windows reboot",
+	"id": "RebootWine",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

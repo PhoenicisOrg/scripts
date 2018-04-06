@@ -1,6 +1,6 @@
 {
-  	"scriptName": "Command prompt",
-  	"id": "command_prompt",
+	"scriptName": "corefonts",
+	"id": "corefonts",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

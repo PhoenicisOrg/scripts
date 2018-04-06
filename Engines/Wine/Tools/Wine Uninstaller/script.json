@@ -1,6 +1,6 @@
 {
-  	"scriptName": "Command prompt",
-  	"id": "command_prompt",
+  	"scriptName": "Wine uninstaller",
+	"id": "WineUninstaller",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,
