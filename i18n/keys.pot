@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-28 16:33+0000\n"
+"POT-Creation-Date: 2018-04-06 08:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Applications/Games/League of Legends/BETA Client/script.js:41
+#: Applications/Games/League of Legends/Client/script.js:26
 msgid "Select your region:"
 msgstr ""
 
@@ -1285,7 +1285,7 @@ msgid ""
 msgstr ""
 
 #: i18n/tmp/Applications/Games/League of Legends/application.js:1
-msgid "League of Legends BETA Client"
+msgid "League of Legends"
 msgstr ""
 
 #: i18n/tmp/Applications/Games/League of Legends/application.js:2
@@ -1298,8 +1298,8 @@ msgid ""
 "Legends offers endless replayability for players of every skill level."
 msgstr ""
 
-#: i18n/tmp/Applications/Games/League of Legends/BETA Client/script.js:1
-msgid "BETA Client"
+#: i18n/tmp/Applications/Games/League of Legends/Client/script.js:1
+msgid "Client"
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Mafia II/application.js:1

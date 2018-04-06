@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-28 16:33+0000\n"
+"POT-Creation-Date: 2018-04-06 08:47+0000\n"
 "PO-Revision-Date: 2017-09-24 10:24+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: French\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: Applications/Games/League of Legends/BETA Client/script.js:41
+#: Applications/Games/League of Legends/Client/script.js:26
 msgid "Select your region:"
 msgstr ""
 
@@ -1393,7 +1393,8 @@ msgid ""
 msgstr ""
 
 #: i18n/tmp/Applications/Games/League of Legends/application.js:1
-msgid "League of Legends BETA Client"
+#, fuzzy
+msgid "League of Legends"
 msgstr "League of Legends BETA Client"
 
 #: i18n/tmp/Applications/Games/League of Legends/application.js:2
@@ -1414,8 +1415,8 @@ msgstr ""
 "événements compétitifs florissants, League of Legends offre des parties sans "
 "cesse renouvelées aux joueurs de tous niveaux."
 
-#: i18n/tmp/Applications/Games/League of Legends/BETA Client/script.js:1
-msgid "BETA Client"
+#: i18n/tmp/Applications/Games/League of Legends/Client/script.js:1
+msgid "Client"
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Mafia II/application.js:1
