@@ -1,0 +1,8 @@
+{
+	"scriptName": "Uplay",
+	"id": "uplay",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

@@ -1,4 +1,4 @@
- include(["Engines", "Wine", "QuickScript", "SteamScript"]);
+include(["Engines", "Wine", "QuickScript", "SteamScript"]);
 
 new SteamScript()
     .name("The Elder Scrolls IV: Oblivion")

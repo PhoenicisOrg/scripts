@@ -1,0 +1,8 @@
+{
+	"scriptName": "quartz",
+	"id": "quartz",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

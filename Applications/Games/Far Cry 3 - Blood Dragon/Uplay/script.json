@@ -1,5 +1,6 @@
 {
 	"scriptName": "Uplay",
+	"id": "Uplay",
 	"compatibleOperatingSystems": ["LINUX"],
 	"testingOperatingSystems": ["LINUX"],
 	"free": false,

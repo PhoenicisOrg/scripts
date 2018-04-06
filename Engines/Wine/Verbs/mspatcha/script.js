@@ -19,7 +19,7 @@ Wine.prototype.mspatcha = function() {
         .to(this.system32directory())
         .extract();
         
-     new CabExtract()
+    new CabExtract()
         .archive(this.system32directory() + "/i386/mspatcha.dl_")
         .wizard(this._wizard)
         .to(this.system32directory())

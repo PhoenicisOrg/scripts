@@ -118,12 +118,12 @@ QuickScript.prototype.preInstall = function(preInstall) {
  */
 QuickScript.prototype._createShortcut = function(prefix) {
     var shortcut = new WineShortcut()
-                       .name(this._name)
-                       .type(this._type)
-                       .category(this._category)
-                       .prefix(prefix)
-                       .search(this._executable)
-                       .arguments(this._executableArgs);
+        .name(this._name)
+        .type(this._type)
+        .category(this._category)
+        .prefix(prefix)
+        .search(this._executable)
+        .arguments(this._executableArgs);
 
     if(this.miniature().isPresent()) {
         shortcut.miniature(this.miniature().get())

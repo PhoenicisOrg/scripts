@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-28 16:33+0000\n"
+"POT-Creation-Date: 2018-04-06 15:43+0000\n"
 "PO-Revision-Date: 2017-09-24 10:24+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: French\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: Applications/Games/League of Legends/BETA Client/script.js:41
+#: Applications/Games/League of Legends/Online/script.js:26
 msgid "Select your region:"
 msgstr ""
 
@@ -223,9 +223,8 @@ msgstr ""
 #: Engines/Wine/Verbs/dotnet40/script.js:26
 #: Engines/Wine/Verbs/dotnet452/script.js:41
 #: Engines/Wine/Verbs/dotnet45/script.js:42
-#: Engines/Wine/Verbs/physx/script.js:14
-#: Engines/Wine/Verbs/quicktime76/script.js:10
-#: Engines/Wine/Verbs/vcrun2003/script.js:15
+#: Engines/Wine/Verbs/PhysX/script.js:14 Engines/Wine/Verbs/QuickTime
+#: 7.6/script.js:10 Engines/Wine/Verbs/vcrun2003/script.js:15
 #: Engines/Wine/Verbs/vcrun2005/script.js:14
 #: Engines/Wine/Verbs/vcrun2008/script.js:14
 #: Engines/Wine/Verbs/vcrun2008/script.js:25
@@ -247,7 +246,7 @@ msgid ""
 "\"win2003\""
 msgstr ""
 
-#: Engines/Wine/Verbs/uplay/script.js:11
+#: Engines/Wine/Verbs/Uplay/script.js:11
 msgid ""
 "Please follow the steps of the Uplay setup.\n"
 "\n"
@@ -285,6 +284,7 @@ msgstr ""
 #: 2/Online/script.js:1
 #: i18n/tmp/Applications/Games/Hearthstone/Online/script.js:1
 #: i18n/tmp/Applications/Games/Heroes of the Storm/Online/script.js:1
+#: i18n/tmp/Applications/Games/League Legends/Online/script.js:1
 #: i18n/tmp/Applications/Games/Origin/Online/script.js:1
 #: i18n/tmp/Applications/Games/Overwatch/Online/script.js:1
 #: i18n/tmp/Applications/Games/Prehistorik/Online/script.js:1
@@ -747,6 +747,7 @@ msgstr ""
 #: Time/Uplay/script.js:1 i18n/tmp/Applications/Games/Rayman
 #: Origins/Uplay/script.js:1 i18n/tmp/Applications/Games/Tom Clancy's Splinter
 #: Cell/Uplay/script.js:1 i18n/tmp/Applications/Games/Uplay/application.js:1
+#: i18n/tmp/Engines/Wine/Verbs/Uplay/script.js:1
 msgid "Uplay"
 msgstr "Uplay"
 
@@ -1393,7 +1394,8 @@ msgid ""
 msgstr ""
 
 #: i18n/tmp/Applications/Games/League of Legends/application.js:1
-msgid "League of Legends BETA Client"
+#, fuzzy
+msgid "League of Legends"
 msgstr "League of Legends BETA Client"
 
 #: i18n/tmp/Applications/Games/League of Legends/application.js:2
@@ -1413,10 +1415,6 @@ msgstr ""
 "champions en expansion permanente, des mises à jour fréquentes et des "
 "événements compétitifs florissants, League of Legends offre des parties sans "
 "cesse renouvelées aux joueurs de tous niveaux."
-
-#: i18n/tmp/Applications/Games/League of Legends/BETA Client/script.js:1
-msgid "BETA Client"
-msgstr ""
 
 #: i18n/tmp/Applications/Games/Mafia II/application.js:1
 msgid "Mafia II"
@@ -2713,6 +2711,39 @@ msgstr "Science"
 msgid "Wine"
 msgstr ""
 
+#: i18n/tmp/Engines/Wine/Engine/application.js:1
+#, fuzzy
+msgid "Wine Engine"
+msgstr "Installeur en ligne"
+
+#: i18n/tmp/Engines/Wine/Engine/application.js:2
+msgid "The Wine engine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/application.js:1
+msgid "QuickScript"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/application.js:2
+msgid "QuickScripts for Wine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Shortcuts/application.js:1
+msgid "Wine Shortcuts"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Shortcuts/application.js:2
+msgid "Shortcuts for Wine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Tools/application.js:1
+msgid "Wine Tools"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Tools/application.js:2
+msgid "Tools for Wine."
+msgstr ""
+
 #: i18n/tmp/Engines/Wine/Tools/ConfigureWine/script.js:1
 msgid "Configure Wine"
 msgstr ""
@@ -2750,9 +2781,145 @@ msgstr ""
 msgid "Wine uninstaller"
 msgstr "Installeur en ligne"
 
+#: i18n/tmp/Engines/Wine/Verbs/application.js:1
+msgid "Wine Verbs"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/application.js:2
+msgid "Verbs for Wine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/corefonts/script.js:1
+msgid "corefonts"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/crypt32/script.js:1
+msgid "crypt32"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/d3dx10/script.js:1
+msgid "d3dx10"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/d3dx9/script.js:1
+msgid "d3dx9"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/dotnet40/script.js:1
+msgid ".NET 4.0"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/dotnet452/script.js:1
+msgid ".NET 4.5.2"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/dotnet45/script.js:1
+msgid ".NET 4.5"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/luna/script.js:1
+msgid "luna"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/mfc42/script.js:1
+msgid "mfc42"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/msls31/script.js:1
+msgid "msls31"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/mspatcha/script.js:1
+msgid "mspatcha"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/PhysX/script.js:1
+msgid "PhysX"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/quartz/script.js:1
+msgid "quartz"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/QuickTime 7.6/script.js:1
+msgid "QuickTime 7.6"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/sandbox/script.js:1
+msgid "sandbox"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/secur32/script.js:1
+msgid "secur32"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/Tahoma/script.js:1
+msgid "Tahoma"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2003/script.js:1
+msgid "vcrun2003"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2005/script.js:1
+msgid "vcrun2005"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2008/script.js:1
+msgid "vcrun2008"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2010/script.js:1
+msgid "vcrun2010"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2012/script.js:1
+msgid "vcrun2012"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2013/script.js:1
+msgid "vcrun2013"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2015/script.js:1
+msgid "vcrun2015"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/Windows XP SP 3/script.js:1
+msgid "Windows XP Service Pack 3"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/xact/script.js:1
+msgid "xact"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Apps/application.js:1
+msgid "App Utils"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Apps/application.js:2
+msgid "Utils for apps."
+msgstr ""
+
 #: i18n/tmp/Utils/Functions/category.js:1
 msgid "Functions"
 msgstr "Fonctions"
+
+#: i18n/tmp/Utils/Functions/Filesystem/application.js:1
+msgid "Filesystem Utils"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Filesystem/application.js:2
+msgid "Utils for file system interaction."
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Net/application.js:1
+msgid "Net Utils"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Net/application.js:2
+msgid "Utils for interaction with the Internet."
+msgstr ""
 
 #: Utils/Functions/Filesystem/Extract/script.js:29
 #: Utils/Functions/Filesystem/Extract/script.js:75

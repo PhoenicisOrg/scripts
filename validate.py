@@ -15,6 +15,8 @@ applications_dir = args.apps_dir
 
 is_valid = True
 
+id_pattern = '^[a-zA-Z0-9_]+$'
+
 # get category directories
 category_dirs = []
 for category in next(os.walk(applications_dir))[1]:
@@ -26,9 +28,10 @@ category_schema = {
     'type': 'object',
     'properties': {
         'name': {'type': 'string'},
+        'id': {'type': 'string', 'pattern': id_pattern},
         'type': {'enum': ['FUNCTIONS', 'INSTALLERS']},
     },
-    'required': ['name', 'type']
+    'required': ['name', 'id', 'type']
 }
 
 for category_dir in category_dirs:
@@ -56,9 +59,10 @@ application_schema = {
     'type': 'object',
     'properties': {
         'name': {'type': 'string'},
+        'id': {'type': 'string', 'pattern': id_pattern},
         'description': {'type': 'string'},
     },
-    'required': ['name', 'description']
+    'required': ['name', 'id', 'description']
 }
 
 for application_dir in application_dirs:
@@ -94,6 +98,7 @@ script_schema = {
     'type': 'object',
     'properties': {
         'scriptName': {'type': 'string'},
+        'id': {'type': 'string', 'pattern': id_pattern},
         'compatibleOperatingSystems': {
             'type': 'array',
             'items': {'enum': ['LINUX', 'MACOSX']},
@@ -107,7 +112,7 @@ script_schema = {
         'free': {'type': 'boolean'},
         'requiresPatch': {'type': 'boolean'},
     },
-    'required': ['scriptName', 'compatibleOperatingSystems', 'testingOperatingSystems', 'free', 'requiresPatch']
+    'required': ['scriptName', 'id', 'compatibleOperatingSystems', 'testingOperatingSystems', 'free', 'requiresPatch']
 }
 
 for script_dir in script_dirs:

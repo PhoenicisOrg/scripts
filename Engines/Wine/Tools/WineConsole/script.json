@@ -1,6 +1,6 @@
 {
   	"scriptName": "Command prompt",
-  	"id": "WineConsole",
+  	"id": "Command_prompt",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

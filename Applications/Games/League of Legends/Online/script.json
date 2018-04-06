@@ -1,7 +1,8 @@
 {
-	"scriptName": "BETA Client",
+	"scriptName": "Online",
+	"id": "Online",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
 	"free": true,
 	"requiresPatch": false
 }
