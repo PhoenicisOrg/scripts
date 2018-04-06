@@ -1,6 +1,6 @@
 {
 	"scriptName": "Steam (Demo)",
-	"id": "Steam_Demo",
+	"id": "steam_demo",
 	"compatibleOperatingSystems": ["LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

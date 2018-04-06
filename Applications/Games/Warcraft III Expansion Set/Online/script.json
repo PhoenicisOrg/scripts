@@ -1,6 +1,6 @@
 {
 	"scriptName": "Online",
-  	"id": "Online",
+  	"id": "online",
 	"compatibleOperatingSystems": ["LINUX"],
 	"testingOperatingSystems": [],
 	"free": false,

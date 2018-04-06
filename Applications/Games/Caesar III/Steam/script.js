@@ -1,5 +1,5 @@
-include(["Engines", "Wine", "QuickScript", "SteamScript"]);
-include(["Engines", "Wine", "Engine", "Object"]);
+include(["engines", "wine", "quick_script", "steam_script"]);
+include(["engines", "wine", "engine", "object"]);
 
 new SteamScript()
     .name("Caesar III")              

@@ -1,7 +1,7 @@
-include(["Utils", "Functions", "Filesystem", "Files"]);
-include(["Utils", "Functions", "Filesystem", "Extract"]);
-include(["Utils", "Functions", "Net", "Download"]);
-include(["Utils", "Functions", "Net", "Resource"]);
+include(["Utils", "Functions", "filesystem", "files"]);
+include(["Utils", "Functions", "filesystem", "extract"]);
+include(["utils", "functions", "net", "download"]);
+include(["utils", "functions", "net", "resource"]);
 
 LATEST_STABLE_VERSION = "3.0";
 LATEST_DEVELOPMENT_VERSION = "3.4";

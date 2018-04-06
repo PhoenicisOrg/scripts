@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
+include(["engines", "wine", "quick_script", "local_installer_script"]);
 include(["Engines", "Wine", "Verbs", "dotnet40"]);
 include(["Engines", "Wine", "Verbs", "corefonts"]);
 

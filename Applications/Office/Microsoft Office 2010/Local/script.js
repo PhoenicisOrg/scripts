@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
+include(["engines", "wine", "quick_script", "local_installer_script"]);
 
 new LocalInstallerScript()
     .name("Microsoft Office 2010")                       

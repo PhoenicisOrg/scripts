@@ -1,5 +1,5 @@
-include(["Utils", "Functions", "Net", "Download"]);
-include(["Utils", "Functions", "Filesystem", "Files"]);
+include(["utils", "functions", "net", "download"]);
+include(["Utils", "Functions", "filesystem", "files"]);
 
 /* exported Resource */
 var Resource = function () {

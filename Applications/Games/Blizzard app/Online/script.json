@@ -1,6 +1,6 @@
 {
 	"scriptName": "Blizzard app",
-	"id": "Blizzard_app",
+	"id": "blizzard_app",
 	"compatibleOperatingSystems": ["LINUX"],
 	"testingOperatingSystems": ["LINUX"],
 	"free": true,

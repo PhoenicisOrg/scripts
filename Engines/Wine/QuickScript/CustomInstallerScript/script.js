@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "QuickScript", "InstallerScript"]);
+include(["engines", "wine", "quick_script", "installer_script"]);
 
 function CustomInstallerScript() {
     InstallerScript.call(this);

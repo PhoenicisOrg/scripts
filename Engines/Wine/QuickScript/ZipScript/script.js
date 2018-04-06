@@ -1,7 +1,7 @@
-include(["Engines", "Wine", "QuickScript", "QuickScript"]);
-include(["Utils", "Functions", "Net", "Download"]);
-include(["Engines", "Wine", "Engine", "Object"]);
-include(["Utils", "Functions", "Filesystem", "Extract"]);
+include(["engines", "wine", "quick_script", "quick_script"]);
+include(["utils", "functions", "net", "download"]);
+include(["engines", "wine", "engine", "object"]);
+include(["Utils", "Functions", "filesystem", "extract"]);
 include(["Engines", "Wine", "Verbs", "luna"]);
 
 

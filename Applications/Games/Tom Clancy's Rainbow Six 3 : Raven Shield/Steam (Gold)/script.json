@@ -1,6 +1,6 @@
 {
 	"scriptName": "Steam (Gold)",
-	"id": "Steam_Gold",
+	"id": "steam_gold",
 	"compatibleOperatingSystems": ["LINUX"],
 	"testingOperatingSystems": [],
 	"free": false,

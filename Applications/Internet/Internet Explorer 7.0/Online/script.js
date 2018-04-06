@@ -1,8 +1,8 @@
-include(["Utils", "Functions", "Net", "Resource"]);
-include(["Engines", "Wine", "Engine", "Object"]);
-include(["Utils", "Functions", "Filesystem", "Files"]);
-include(["Engines", "Wine", "Shortcuts", "Wine"]);
-include(["Utils", "Functions", "Apps", "Resources"]);
+include(["utils", "functions", "net", "resource"]);
+include(["engines", "wine", "engine", "object"]);
+include(["Utils", "Functions", "filesystem", "files"]);
+include(["engines", "wine", "shortcuts", "wine"]);
+include(["utils", "functions", "apps", "resources"]);
 include(["Engines", "Wine", "Verbs", "sandbox"]);
 
 var appsManager = Bean("repositoryManager");
