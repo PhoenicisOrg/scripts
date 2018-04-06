@@ -1,0 +1,8 @@
+{
+	"scriptName": "Client",
+	"id": "Client",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

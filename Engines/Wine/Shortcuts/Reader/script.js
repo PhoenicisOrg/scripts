@@ -23,13 +23,13 @@ var _WineShortcutReader = function(shortcut) {
             userArguments = [];
         }
 
-        var arguments = (shortcutContent.arguments ? shortcutContent.arguments : []).concat(Java.from(userArguments));
+        var args = (shortcutContent.arguments ? shortcutContent.arguments : []).concat(Java.from(userArguments));
 
         new Wine()
             .prefix(shortcutContent.winePrefix)
             .debug(shortcutContent.wineDebug)
             .workingDirectory(shortcutContent.workingDirectory)
-            .run(shortcutContent.executable, arguments)
+            .run(shortcutContent.executable, args)
     };
 
 
@@ -60,9 +60,9 @@ var _WineShortcutReader = function(shortcut) {
 
         if(!_found) {
             this._uiQuestionFactory.create(tr("The container {0} is no longer used.\nDo you want to delete it?", _winePrefix),
-            function() {
-                remove(that._winePrefixesDirectory + _winePrefix);
-            });
+                function() {
+                    remove(that._winePrefixesDirectory + _winePrefix);
+                });
         }
     }
 };
