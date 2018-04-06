@@ -1,5 +1,6 @@
 {
 	"scriptName": "Online (Demo)",
+	"id": "Online_Demo",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": ["MACOSX", "LINUX"],
 	"free": true,

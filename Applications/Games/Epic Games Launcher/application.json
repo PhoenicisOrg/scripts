@@ -1,4 +1,5 @@
 {
 	"name":	"Epic Games Launcher",
+	"id":	"Epic_Games_Launcher",
 	"description": "Launcher for Unreal Engine, Unreal Tournament, Paragon etc."
 }

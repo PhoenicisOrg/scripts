@@ -1,3 +1,4 @@
 {
-  	"scriptName": "Windows reboot"
+  	"scriptName": "Windows reboot",
+  	"id": "Windows_reboot"
 }

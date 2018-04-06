@@ -1,5 +1,6 @@
 {
 	"scriptName": "v7.46",
+	"id": "v7_46",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

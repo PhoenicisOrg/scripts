@@ -1,5 +1,6 @@
 {
 	"scriptName": "Steam (GOTY)",
+	"id": "Steam_GOTY",
 	"compatibleOperatingSystems": ["LINUX"],
 	"testingOperatingSystems": [],
 	"free": false,
