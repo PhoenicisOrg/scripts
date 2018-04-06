@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "Engine", "Object"]);
+include(["engines", "wine", "engine", "object"]);
 
 /**
  * tool to uninstall Wine

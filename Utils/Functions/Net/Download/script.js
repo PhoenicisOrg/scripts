@@ -1,4 +1,4 @@
-include(["Utils", "Functions", "Filesystem", "Files"]);
+include(["Utils", "Functions", "filesystem", "files"]);
 
 /* exported Downloader */
 var Downloader = function () {

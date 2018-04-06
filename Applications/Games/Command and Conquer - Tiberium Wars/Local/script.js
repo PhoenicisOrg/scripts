@@ -1,5 +1,5 @@
-include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
-include(["Engines", "Wine", "Engine", "Object"]);
+include(["engines", "wine", "quick_script", "local_installer_script"]);
+include(["engines", "wine", "engine", "object"]);
 include(["Engines", "Wine", "Verbs", "d3dx9"]);
 
 new LocalInstallerScript()

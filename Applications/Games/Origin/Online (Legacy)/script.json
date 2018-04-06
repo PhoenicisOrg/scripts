@@ -1,6 +1,6 @@
 {
 	"scriptName": "Online (Legacy)",
-	"id": "Online_Legacy",
+	"id": "online_legacy",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "Shortcuts", "Wine"]);
+include(["engines", "wine", "shortcuts", "wine"]);
 
 function QuickScript() {
     this._wineVersion = LATEST_STABLE_VERSION;

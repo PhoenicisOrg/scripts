@@ -1,6 +1,6 @@
 {
   	"scriptName": "Windows reboot",
-	"id": "RebootWine",
+	"id": "reboot-wine",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

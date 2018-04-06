@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "QuickScript", "OnlineInstallerScript"]);
+include(["engines", "wine", "quick_script", "online_installer_script"]);
 include(["Engines", "Wine", "Verbs", "vcrun2012"]);
 include(["Engines", "Wine", "Verbs", "d3dx9"]);
 

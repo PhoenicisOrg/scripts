@@ -1,7 +1,7 @@
-include(["Engines", "Wine", "Engine", "Object"]);
-include(["Utils", "Functions", "Net", "Resource"]);
+include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "net", "resource"]);
 include(["Engines", "Wine", "Verbs", "luna"]);
-include(["Utils", "Functions", "Filesystem", "Files"]);
+include(["Utils", "Functions", "filesystem", "files"]);
 
 Wine.prototype.dotnet40 = function() {
     var setupFile = new Resource()

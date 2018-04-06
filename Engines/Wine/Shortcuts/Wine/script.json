@@ -1,6 +1,6 @@
 {
 	"scriptName": "Wine Shortcut",
-	"id": "Wine",
+	"id": "wine",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

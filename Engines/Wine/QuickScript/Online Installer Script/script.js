@@ -1,5 +1,5 @@
-include(["Engines", "Wine", "QuickScript", "InstallerScript"]);
-include(["Utils", "Functions", "Net", "Download"]);
+include(["engines", "wine", "quick_script", "installer_script"]);
+include(["utils", "functions", "net", "download"]);
 
 
 function OnlineInstallerScript() {

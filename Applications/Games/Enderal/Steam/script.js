@@ -1,5 +1,5 @@
-include(["Engines", "Wine", "QuickScript", "SteamScript"]);
-include(["Utils", "Functions", "Filesystem", "Files"]);
+include(["engines", "wine", "quick_script", "steam_script"]);
+include(["Utils", "Functions", "filesystem", "files"]);
 
 new SteamScript()
     .name("Enderal")

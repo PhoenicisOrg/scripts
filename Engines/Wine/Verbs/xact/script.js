@@ -1,6 +1,6 @@
-include(["Engines", "Wine", "Engine", "Object"]);
-include(["Utils", "Functions", "Net", "Resource"]);
-include(["Utils", "Functions", "Filesystem", "Files"]);
+include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "net", "resource"]);
+include(["Utils", "Functions", "filesystem", "files"]);
 
 /**
 * Inspired from d3dx9 verb, winetricks xact
