@@ -1,6 +1,6 @@
 {
-	"scriptName": "Client",
-	"id": "Client",
+	"scriptName": "Online",
+	"id": "Online",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,
