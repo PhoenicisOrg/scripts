@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-06 14:40+0000\n"
+"POT-Creation-Date: 2018-04-06 15:10+0000\n"
 "PO-Revision-Date: 2017-09-24 10:24+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: French\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: Applications/Games/League of Legends/Client/script.js:26
+#: Applications/Games/League of Legends/Online/script.js:26
 msgid "Select your region:"
 msgstr ""
 
@@ -285,6 +285,7 @@ msgstr ""
 #: 2/Online/script.js:1
 #: i18n/tmp/Applications/Games/Hearthstone/Online/script.js:1
 #: i18n/tmp/Applications/Games/Heroes of the Storm/Online/script.js:1
+#: i18n/tmp/Applications/Games/League Legends/Online/script.js:1
 #: i18n/tmp/Applications/Games/Origin/Online/script.js:1
 #: i18n/tmp/Applications/Games/Overwatch/Online/script.js:1
 #: i18n/tmp/Applications/Games/Prehistorik/Online/script.js:1
@@ -1414,10 +1415,6 @@ msgstr ""
 "champions en expansion permanente, des mises à jour fréquentes et des "
 "événements compétitifs florissants, League of Legends offre des parties sans "
 "cesse renouvelées aux joueurs de tous niveaux."
-
-#: i18n/tmp/Applications/Games/League of Legends/Client/script.js:1
-msgid "Client"
-msgstr ""
 
 #: i18n/tmp/Applications/Games/Mafia II/application.js:1
 msgid "Mafia II"

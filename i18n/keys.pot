@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-06 14:40+0000\n"
+"POT-Creation-Date: 2018-04-06 15:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Applications/Games/League of Legends/Client/script.js:26
+#: Applications/Games/League of Legends/Online/script.js:26
 msgid "Select your region:"
 msgstr ""
 
@@ -280,6 +280,7 @@ msgstr ""
 #: i18n/tmp/Applications/Games/Guild Wars 2/Online/script.js:1
 #: i18n/tmp/Applications/Games/Hearthstone/Online/script.js:1
 #: i18n/tmp/Applications/Games/Heroes of the Storm/Online/script.js:1
+#: i18n/tmp/Applications/Games/League of Legends/Online/script.js:1
 #: i18n/tmp/Applications/Games/Origin/Online/script.js:1
 #: i18n/tmp/Applications/Games/Overwatch/Online/script.js:1
 #: i18n/tmp/Applications/Games/Prehistorik/Online/script.js:1
@@ -1296,10 +1297,6 @@ msgid ""
 "across multiple battlefields and game modes. With an ever-expanding roster "
 "of champions, frequent updates and a thriving tournament scene, League of "
 "Legends offers endless replayability for players of every skill level."
-msgstr ""
-
-#: i18n/tmp/Applications/Games/League of Legends/Client/script.js:1
-msgid "Client"
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Mafia II/application.js:1

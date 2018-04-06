@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-06 14:40+0000\n"
+"POT-Creation-Date: 2018-04-06 15:10+0000\n"
 "PO-Revision-Date: 2017-09-24 10:34+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: German\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: Applications/Games/League of Legends/Client/script.js:26
+#: Applications/Games/League of Legends/Online/script.js:26
 msgid "Select your region:"
 msgstr "Wählen Sie Ihre Region:"
 
@@ -321,6 +321,7 @@ msgstr ""
 #: 2/Online/script.js:1
 #: i18n/tmp/Applications/Games/Hearthstone/Online/script.js:1
 #: i18n/tmp/Applications/Games/Heroes of the Storm/Online/script.js:1
+#: i18n/tmp/Applications/Games/League Legends/Online/script.js:1
 #: i18n/tmp/Applications/Games/Origin/Online/script.js:1
 #: i18n/tmp/Applications/Games/Overwatch/Online/script.js:1
 #: i18n/tmp/Applications/Games/Prehistorik/Online/script.js:1
@@ -1616,11 +1617,6 @@ msgstr ""
 "einer ständig wachsenden Anzahl an Champions, häufigen Aktualisierungen und "
 "einer blühenden Wettkampfszene unbegrenzte Wiederspielbarkeit für Spieler "
 "jeden Niveaus."
-
-#: i18n/tmp/Applications/Games/League of Legends/Client/script.js:1
-#, fuzzy
-msgid "Client"
-msgstr "BETA Client"
 
 #: i18n/tmp/Applications/Games/Mafia II/application.js:1
 msgid "Mafia II"
@@ -3280,6 +3276,10 @@ msgstr ""
 "\n"
 "Erwartet = {0}\n"
 "Tatsächlich = {1}"
+
+#, fuzzy
+#~ msgid "Client"
+#~ msgstr "BETA Client"
 
 #~ msgid "Please install Warcraft III before installing The Frozen Throne."
 #~ msgstr ""
