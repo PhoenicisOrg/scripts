@@ -1,6 +1,6 @@
 {
   	"scriptName": "Internet Resource",
-  	"id": "Resource",
+  	"id": "resource",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,
