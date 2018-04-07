@@ -110,49 +110,22 @@ var createTempFile = function (extension) {
     return tmpFile.getAbsolutePath();
 };
 
-/**
-* checksum utilities
-*
-* exported Checksum */
 var Checksum = function () {
     var that = this;
     that._method = "SHA";
     that._checksumCalculator = Bean("checksumCalculator");
-
-    /**
-    * sets wizard
-    * @param {SetupWizard} wizard
-    * @returns {Checksum}
-    */
     that.wizard = function (wizard) {
         that._wizard = wizard;
         return that;
     };
-
-    /**
-    * sets algorithm
-    * @param {string} algorithm (e.g. "SHA")
-    * @returns {Checksum}
-    */
     that.method = function (algorithm) {
         that._method = algorithm;
         return that;
     };
-
-    /**
-    * sets file for which the checksum shall be computed
-    * @param {string} file path
-    * @returns {Checksum}
-    */
     that.of = function (file) {
         that._file = file;
         return that;
     };
-
-    /**
-    * returns checksum
-    * @returns {number} checksum
-    */
     that.get = function () {
         if(that._wizard) {
             var progressBar = that._wizard.progressBar(tr("Checking file consistency ..."));
