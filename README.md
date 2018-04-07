@@ -31,8 +31,8 @@
     Even if the application name contains ®, ™ or the like, you should not use it in the folder name.
 
 3. Fill the files:
-  * [script.js](https://github.com/PlayOnLinux/Scripts/wiki/script.js): actual installation script
-  * [script.json](https://github.com/PlayOnLinux/Scripts/wiki/script.json): describes the installation script
+  * [script.js](https://phoenicisorg.github.io/scripts/script-js): actual installation script
+  * [script.json](https://phoenicisorg.github.io/scripts/script-json): describes the installation script
   ```json
   {
 		"scriptName": "Online",
@@ -43,7 +43,7 @@
   }
   ```
   * main.png: application icon (400px x 300px)
-  * [application.json](https://github.com/PlayOnLinux/Scripts/wiki/application.json): describes the application
+  * [application.json](https://phoenicisorg.github.io/scripts/application-json): describes the application
   ```json
   {
  		"name":	"Steam",
