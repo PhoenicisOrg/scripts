@@ -50,6 +50,7 @@ CabExtract.prototype.to = function (destination) {
 /**
 * extracts archive
 * @param {string} args arguments for the extraction
+* @returns {void}
 */
 CabExtract.prototype.extract = function (args) {
     if (!this._progressMessage) {
@@ -125,6 +126,7 @@ Extractor.prototype.to = function (destination) {
 
 /**
 * extracts archive
+* @returns {void}
 */
 Extractor.prototype.extract = function () {
     if (!this._progressMessage) {

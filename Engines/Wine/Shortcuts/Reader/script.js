@@ -77,6 +77,7 @@ function ShortcutReader() {
 /**
 * sets shortcut
 * @param {string} shortcut shortcut
+* @returns {void}
 */
 ShortcutReader.prototype.of = function (shortcut) {
     this.shortcut = shortcut;
@@ -90,6 +91,7 @@ ShortcutReader.prototype.of = function (shortcut) {
 /**
 * runs shortcut
 * @param {array} userArguments arguments
+* @returns {void}
 */
 ShortcutReader.prototype.run = function (userArguments) {
     this._runner.run(userArguments);
@@ -97,6 +99,7 @@ ShortcutReader.prototype.run = function (userArguments) {
 
 /**
 * stops running shortcut
+* @returns {void}
 */
 ShortcutReader.prototype.stop = function () {
     this._runner.stop();
@@ -104,6 +107,7 @@ ShortcutReader.prototype.stop = function () {
 
 /**
 * uninstalls shortcut
+* @returns {void}
 */
 ShortcutReader.prototype.uninstall = function () {
     this._runner.uninstall();

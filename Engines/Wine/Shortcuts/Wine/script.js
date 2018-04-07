@@ -109,6 +109,7 @@ WineShortcut.prototype.miniature = function (miniature) {
 
 /**
 * creates shortcut
+* @returns {void}
 */
 WineShortcut.prototype.create = function () {
     var _shortcutPrefixDirectory = this._winePrefixesDirectory + "/" + this._prefix;
