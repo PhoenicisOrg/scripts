@@ -1,25 +1,36 @@
-/* exported AppResource */
-var AppResource = function() {
-    var that = this;
-    that._appsManager = Bean("repositoryManager");
+/**
+* AppResource prototype
+* @constructor
+*/
+function AppResource() {
+    this._appsManager = Bean("repositoryManager");
+}
 
-    this.application = function(application) {
-        that._application = application;
-        return that;
-    };
+/**
+* sets application
+* @param {string} application application of the resource
+* @returns {AppResource} AppResource object
+*/
+AppResource.prototype.application = function (application) {
+    this._application = application;
+    return this;
+}
 
-    this.get = function(resourceName) {
-        var application = that._appsManager.getApplication(that._application);
-        var foundResource = null;
-        if(application != null && application.resources != null) {
-            application.resources.forEach(function(resource) {
-                if(resource.name == resourceName) {
-                    foundResource = resource.content;
-                }
-            });
-        }
-
-        return foundResource;
+/**
+* returns resource
+* @param {string} resourceName name of the resource
+* @returns found resource
+*/
+AppResource.prototype.get = function (resourceName) {
+    var application = this._appsManager.getApplication(this._application);
+    var foundResource = null;
+    if (application != null && application.resources != null) {
+        application.resources.forEach(function(resource) {
+            if(resource.name == resourceName) {
+                foundResource = resource.content;
+            }
+        });
     }
-};
 
+    return foundResource;
+}
