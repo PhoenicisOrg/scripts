@@ -4,7 +4,7 @@ include(["Engines", "Wine", "Verbs", "vcrun2008"]);
 include(["Engines", "Wine", "Verbs", "xact"]);
 include(["Engines", "Wine", "Verbs", "corefonts"]);
 include(["utils", "functions", "apps", "resources"]);
-include(["Utils", "Functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "files"]);
 include(["engines", "wine", "engine", "object"]);
 
 new SteamScript()

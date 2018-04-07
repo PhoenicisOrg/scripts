@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
-include(["Utils", "Functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "files"]);
 
 new SteamScript()
     .name("Age of Empires II HD")

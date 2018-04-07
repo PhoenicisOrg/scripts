@@ -1,7 +1,7 @@
 include(["engines", "wine", "quick_script", "local_installer_script"]);
 include(["Engines","Wine", "Verbs", "d3dx9"]);
 include(["engines", "wine", "engine", "object"]);
-include(["Utils", "Functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "files"]);
 
 new LocalInstallerScript()
     .name("STAR WARS™ Empire at War: Gold Pack")                       

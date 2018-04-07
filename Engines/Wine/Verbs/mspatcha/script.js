@@ -1,6 +1,6 @@
 include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "net", "resource"]);
-include(["Utils", "Functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "files"]);
 
 Wine.prototype.mspatcha = function() {
     //Inspired from winetricks mspatcha, but with a link Phoenicis can understand

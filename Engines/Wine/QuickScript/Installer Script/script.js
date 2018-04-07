@@ -1,7 +1,7 @@
 include(["engines", "wine", "quick_script", "quick_script"]);
 include(["engines", "wine", "engine", "object"]);
-include(["Utils", "Functions", "filesystem", "extract"]);
-include(["Utils", "Functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "extract"]);
+include(["utils", "functions", "filesystem", "files"]);
 include(["Engines", "Wine", "Verbs", "luna"]);
 
 

@@ -1,6 +1,6 @@
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "engine", "object"]);
-include(["Utils", "Functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "files"]);
 include(["engines", "wine", "shortcuts", "wine"]);
 include(["utils", "functions", "apps", "resources"]);
 include(["Engines", "Wine", "Verbs", "msls31"]);
