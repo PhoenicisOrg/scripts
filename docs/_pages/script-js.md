@@ -18,7 +18,7 @@ QuickScripts use the latest stable wine version by default (recommended).
 A basic script looks like:
 
 ```javascript
-include(["Engines", "Wine", "QuickScript", "SteamScript"]);
+include(["engines", "wine", "quick-script", "steam-script"]);
 
 new SteamScript()
     .name("A Game")              // name of the game
@@ -49,7 +49,7 @@ For a different shortcut (e.g. if you want to pass arguments):
 A basic script looks like:
 
 ```javascript
-include(["Engines", "Wine", "QuickScript", "UplayScript"]);
+include(["engines", "wine", "quick-script", "uplay-script"]);
 
 new UplayScript()
     .name("A Game")                                 // name of the game
@@ -67,7 +67,7 @@ Installs a local Windows executable. Shows a setup window browse step (see [Setu
 A basic script looks like:
 
 ```javascript
-include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
+include(["engines", "wine", "quick-script", "local-installer-script"]);
 
 new LocalInstallerScript()
     .name("Application-Name")                       // name of the application
@@ -85,7 +85,7 @@ Downloads and installs a Windows executable.
 A basic script looks like:
 
 ```javascript
-include(["Engines", "Wine", "QuickScript", "OnlineInstallerScript"]);
+include(["engines", "wine", "quick-script", "online-installer-script"]);
 
 new OnlineInstallerScript()
     .name("Application-Name")                       // name of the application
@@ -102,7 +102,7 @@ new OnlineInstallerScript()
 ### CustomInstallerScript
 Executes a custom installation command:
 ```javascript
-include(["Engines", "Wine", "QuickScript", "CustomInstallerScript"]);
+include(["engines", "wine", "quick-script", "custom-installer-script"]);
 
 new CustomInstallerScript()
     .name("Application-Name")                                           // name of the application
@@ -121,7 +121,7 @@ new CustomInstallerScript()
 A basic script looks like:
 
 ```javascript
-include(["Engines", "Wine", "QuickScript", "ZipScript"]);
+include(["engines", "wine", "quick-script", "zip-script"]);
 
 new ZipScript()
     .name("Application-Name")                       // name of the application
@@ -154,8 +154,8 @@ You can find the complete list of available verbs [here](https://github.com/Phoe
 
 For example, in the script for "Assassin’s Creed: Brotherhood":
 ```javascript
-include(["Engines", "Wine", "Verbs", "d3dx9"]);
-include(["Engines", "Wine", "Verbs", "crypt32"]);
+include(["engines", "wine", "verbs", "d3dx9"]);
+include(["engines", "wine", "verbs", "crypt32"]);
 
 new SteamScript()
          ...
@@ -205,8 +205,8 @@ If the QuickScript is not sufficient for you, you can still write a custom scrip
 
 The frame for a custom script looks like this:
 ```javascript
-include(["Engines", "Wine", "Engines", "Wine"]);
-include(["Engines", "Wine", "Shortcuts", "Wine"]);
+include(["engines", "wine", "engines", "wine"]);
+include(["engines", "wine", "shortcuts", "wine"]);
 
 var application = "application name"
 
