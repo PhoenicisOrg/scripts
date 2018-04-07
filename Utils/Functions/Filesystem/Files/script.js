@@ -4,111 +4,101 @@ var fileUtilities = Bean("fileUtilities");
 /**
 * creates directory
 * @param {string} directoryPath directory path
-*
-* exported mkdir */
-var mkdir = function (directoryPath) {
+*/
+function mkdir(directoryPath) {
     fileUtilities.mkdir(new java.io.File(directoryPath))
-};
+}
 
 /**
 * check if file exists
 * @param {string} filePath file path
 * @returns {boolean} true if file exists
-*
-* exported fileExists */
-var fileExists = function (filePath) {
+*/
+function fileExists(filePath) {
     return new java.io.File(filePath).exists();
-};
+}
 
 /**
 * returns file content
 * @param {string} filePath file path
 * @returns {string} content
-/* exported cat */
-var cat = function(filePath) {
+*/
+function cat(filePath) {
     return Bean("fileUtilities").getFileContent(new java.io.File(filePath));
-};
+}
 
 /**
 * copies file
 * @param {string} source source
 * @param {string} target target
-*
-* exported cp */
-var cp = function(source, target) {
+*/
+function cp(source, target) {
     return Bean("fileUtilities").copy(new java.io.File(source), new java.io.File(target));
-};
+}
 
 /**
 * returns file size
 * @param {string} filePath file path
 * @returns {number} file size
-*
-* exported getFileSize */
-var getFileSize = function(filePath) {
+*/
+function getFileSize(filePath) {
     return Bean("fileUtilities").getSize(new java.io.File(filePath));
-};
+}
 
 /**
 * returns file name
 * @param {string} filePath file path
 * @returns {string} file name
-*
-* exported fileName */
-var fileName = function(filePath) {
+*/
+function fileName(filePath) {
     return new java.io.File(filePath).getName();
-};
+}
 
 /**
 * creates link
 * @param {string} target target
 * @param {string} destination destination
-*
-* exported lns */
-var lns = function(target, destination) {
+*/
+function lns(target, destination) {
     return Bean("fileUtilities").createSymbolicLink(new java.io.File(destination), new java.io.File(target));
-};
+}
 
 /**
 * removes file
 * @param {string} filePath file path
-*
-* exported remove */
-var remove = function(filePath) {
+*/
+function remove(filePath) {
     return Bean("fileUtilities").remove(new java.io.File(filePath));
-};
+}
 
 /**
 * creates empty file
 * @param {string} filePath file path
-*
-* exported touch */
-var touch = function(filePath) {
+*/
+function touch(filePath) {
     if (!fileExists(filePath)) {
         Bean("fileUtilities").writeToFile(new java.io.File(filePath), "");
     }
-};
+}
 
 /**
 * writes content into file
 * @param {string} filePath file path
 * @param {string} content content which shall be written
-*
-* exported writeToFile */
-var writeToFile = function(filePath, content) {
+*/
+function writeToFile(filePath, content) {
     Bean("fileUtilities").writeToFile(new java.io.File(filePath), content);
-};
+}
 
 /**
 * creates temporary file
 * @param {string} extension file extension
 * @returns {string} file path of created temporary file
-*
-* exported createTempFile */
-var createTempFile = function (extension) {
+*/
+function createTempFile(extension) {
     var tmpFile = Bean("fileUtilities").createTmpFile(extension);
     return tmpFile.getAbsolutePath();
-};
+}
 
 var Checksum = function () {
     var that = this;
