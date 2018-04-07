@@ -1,6 +1,6 @@
 include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "net", "resource"]);
-include(["Engines", "Wine", "Verbs", "luna"]);
+include(["engines", "wine", "verbs", "luna"]);
 
 Wine.prototype.vcrun2005 = function() {
     var setupFile = new Resource()

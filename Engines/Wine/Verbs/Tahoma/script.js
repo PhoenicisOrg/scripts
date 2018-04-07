@@ -1,6 +1,6 @@
 include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "net", "resource"]);
-include(["Engines", "Wine", "Verbs", "luna"]);
+include(["engines", "wine", "verbs", "luna"]);
 include(["utils", "functions", "filesystem", "files"]);
 
 Wine.prototype.tahoma = function() {

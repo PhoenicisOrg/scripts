@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
-include(["Engines", "Wine", "Verbs", "secur32"]);
+include(["engines", "wine", "verbs", "secur32"]);
 
 new SteamScript()
     .name("Far Cry® 2")

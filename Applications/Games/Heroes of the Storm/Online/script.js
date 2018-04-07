@@ -1,6 +1,6 @@
 include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["Engines", "Wine", "Verbs", "vcrun2015"]);
-include(["Engines", "Wine", "Verbs", "corefonts"]);
+include(["engines", "wine", "verbs", "vcrun2015"]);
+include(["engines", "wine", "verbs", "corefonts"]);
 
 new OnlineInstallerScript()
     .name("Heroes of the Storm")

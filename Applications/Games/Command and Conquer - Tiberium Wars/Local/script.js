@@ -1,6 +1,6 @@
 include(["engines", "wine", "quick_script", "local_installer_script"]);
 include(["engines", "wine", "engine", "object"]);
-include(["Engines", "Wine", "Verbs", "d3dx9"]);
+include(["engines", "wine", "verbs", "d3dx9"]);
 
 new LocalInstallerScript()
     .name("Command and Conquer - Tiberium Wars")

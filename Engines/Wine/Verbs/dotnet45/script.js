@@ -1,8 +1,8 @@
 include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "net", "resource"]);
-include(["Engines", "Wine", "Verbs", "luna"]);
+include(["engines", "wine", "verbs", "luna"]);
 include(["utils", "functions", "filesystem", "files"]);
-include(["Engines", "Wine", "Verbs", "dotnet40"]);
+include(["engines", "wine", "verbs", "dotnet40"]);
 
 /**
 * Inspired from dotnet40 verb, winetricks dotnet45 and POL4 POL_install_dotnet45

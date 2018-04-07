@@ -3,7 +3,7 @@ include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "filesystem", "files"]);
 include(["engines", "wine", "shortcuts", "wine"]);
 include(["utils", "functions", "apps", "resources"]);
-include(["Engines", "Wine", "Verbs", "msls31"]);
+include(["engines", "wine", "verbs", "msls31"]);
 
 var appsManager = Bean("repositoryManager");
 var application = appsManager.getApplication(["Applications", "Internet", "Internet Explorer 6.0"]);

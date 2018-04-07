@@ -3,7 +3,7 @@ include(["utils", "functions", "net", "download"]);
 include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "filesystem", "extract"]);
 include(["utils", "functions", "filesystem", "files"]);
-include(["Engines", "Wine", "Verbs", "luna"]);
+include(["engines", "wine", "verbs", "luna"]);
 
 
 function UplayScript() {

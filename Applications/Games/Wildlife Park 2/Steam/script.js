@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
-include(["Engines", "Wine", "Verbs", "quartz"]);
+include(["engines", "wine", "verbs", "quartz"]);
 
 new SteamScript()
     .name("Wildlife Park 2")

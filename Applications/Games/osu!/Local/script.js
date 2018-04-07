@@ -1,6 +1,6 @@
 include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["Engines", "Wine", "Verbs", "dotnet40"]);
-include(["Engines", "Wine", "Verbs", "corefonts"]);
+include(["engines", "wine", "verbs", "dotnet40"]);
+include(["engines", "wine", "verbs", "corefonts"]);
 
 new LocalInstallerScript()
     //Local because download failed due to "unable to find valid certification path to requested target"
