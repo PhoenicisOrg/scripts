@@ -90,7 +90,7 @@ Downloader.prototype.onlyIfUpdateAvailable = function (onlyIfUpdateAvailable) {
 
 /**
 * returns downloaded file
-* @returns downloaded file
+* @returns {String} content of downloaded file
 */
 Downloader.prototype.get = function () {
     if (!this._message) {

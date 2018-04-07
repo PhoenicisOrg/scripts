@@ -19,7 +19,7 @@ AppResource.prototype.application = function (application) {
 /**
 * returns resource
 * @param {string} resourceName name of the resource
-* @returns found resource
+* @returns {Resource} found resource
 */
 AppResource.prototype.get = function (resourceName) {
     var application = this._appsManager.getApplication(this._application);
