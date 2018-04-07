@@ -3,7 +3,7 @@ include(["utils", "functions", "net", "resource"]);
 
 /**
 * Verb to install mfc42.dll and mfc42u.dll
-* @returns {Wine}
+* @returns {Wine} Wine object
 */
 Wine.prototype.mfc42 = function() {
     var setupFile = new Resource()

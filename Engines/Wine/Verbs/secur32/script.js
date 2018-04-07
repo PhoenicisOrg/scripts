@@ -4,7 +4,7 @@ include(["Utils", "Functions", "filesystem", "files"]);
 
 /**
 * Verb to install secur32
-* @returns {Wine}
+* @returns {Wine} Wine object
 */
 Wine.prototype.secur32 = function() {
     var setupFilex86 = new Resource()

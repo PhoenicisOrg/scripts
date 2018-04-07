@@ -4,7 +4,7 @@ include(["Engines", "Wine", "Verbs", "luna"]);
 
 /**
 * Verb to install corefonts
-* @returns {Wine}
+* @returns {Wine} Wine object
 */
 Wine.prototype.corefonts = function() {
     var fontResources =

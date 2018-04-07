@@ -4,7 +4,7 @@ include(["Engines", "Wine", "Verbs", "luna"]);
 
 /**
 * Verb to install Nvidia PhysX
-* @returns {Wine}
+* @returns {Wine} Wine object
 */
 Wine.prototype.physx = function() {
     var setupFile = new Resource()

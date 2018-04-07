@@ -5,7 +5,7 @@ include(["Utils", "Functions", "filesystem", "files"]);
 
 /**
 * Verb to install the Tahoma font
-* @returns {Wine}
+* @returns {Wine} Wine object
 */
 Wine.prototype.tahoma = function() {
     var tahoma = new Resource()

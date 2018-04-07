@@ -6,7 +6,7 @@ include(["Engines", "Wine", "Verbs", "dotnet40"]);
 
 /**
 * Verb to install .NET 4.5
-* @returns {Wine}
+* @returns {Wine} Wine object
 */
 Wine.prototype.dotnet45 = function() {
     

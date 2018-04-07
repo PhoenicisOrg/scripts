@@ -6,7 +6,7 @@ include(["Engines", "Wine", "Verbs", "dotnet40"]);
 
 /**
 * Verb to install .NET 4.5.2
-* @returns {Wine}
+* @returns {Wine} Wine object
 */
 Wine.prototype.dotnet452 = function() {
     if (this.architecture() == "amd64") {

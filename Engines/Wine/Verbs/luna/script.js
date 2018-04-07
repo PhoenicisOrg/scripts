@@ -4,7 +4,7 @@ include(["utils", "functions", "net", "resource"]);
 
 /**
 * Verb to install luna
-* @returns {Wine}
+* @returns {Wine} Wine object
 */
 Wine.prototype.luna = function() {
     var lunaStyle = new Resource()

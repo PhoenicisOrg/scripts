@@ -5,7 +5,7 @@ include(["Utils", "Functions", "filesystem", "files"]);
 
 /**
 * Verb to install .NET 4.0
-* @returns {Wine}
+* @returns {Wine} Wine object
 */
 Wine.prototype.dotnet40 = function() {
     var setupFile = new Resource()

@@ -4,7 +4,7 @@ include(["Utils", "Functions", "filesystem", "files"]);
 
 /**
 * Verb to install quartz
-* @returns {Wine}
+* @returns {Wine} Wine object
 */
 Wine.prototype.quartz = function(){
     var setupFile = new Resource()

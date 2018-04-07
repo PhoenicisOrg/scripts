@@ -5,7 +5,7 @@ include(["Engines", "Wine", "Verbs", "luna"]);
 
 /**
 * Verb to install vcrun2003
-* @returns {Wine}
+* @returns {Wine} Wine object
 */
 Wine.prototype.vcrun2003 = function() {
     var setupFile = new Resource()

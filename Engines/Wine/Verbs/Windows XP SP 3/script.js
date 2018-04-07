@@ -3,7 +3,7 @@ include(["utils", "functions", "net", "resource"]);
 
 /**
 * Verb to install Windows XP Service Pack 3
-* @returns {Wine}
+* @returns {Wine} Wine object
 */
 Wine.prototype.sp3extract = function(fileToExtract) {
     var that = this;

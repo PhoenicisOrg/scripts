@@ -4,7 +4,7 @@ include(["Utils", "Functions", "filesystem", "files"]);
 
 /**
 * Verb to install xact
-* @returns {Wine}
+* @returns {Wine} Wine object
 */
 Wine.prototype.xact = function () {
     var that = this;
