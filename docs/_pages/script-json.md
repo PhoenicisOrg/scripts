@@ -25,7 +25,7 @@ Name of the script. Typical values are:
 ## id
 ID of the script. Requirements:
 * all lower case
-* only a-z, A-Z, _
+* only a-z, 0-9, _
 
 ## compatibleOperatingSystems
 Operating systems which the script is known to work with. Can be:
