@@ -84,7 +84,7 @@ ShortcutReader.prototype.of = function (shortcut) {
     var shortcutContentParsed = JSON.parse(this.shortcut.script);
 
     if(shortcutContentParsed.type == "WINE") {
-        that._runner = new _WineShortcutReader(this.shortcut);
+        this._runner = new _WineShortcutReader(this.shortcut);
     }
 }
 
