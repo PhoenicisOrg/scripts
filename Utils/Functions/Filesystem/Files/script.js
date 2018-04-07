@@ -1,81 +1,158 @@
 var fileAnalyser = Bean("fileAnalyser");
 var fileUtilities = Bean("fileUtilities");
 
-/* exported mkdir */
+/**
+* creates directory
+* @param {string} directory path
+*
+* exported mkdir */
 var mkdir = function (directoryPath) {
     fileUtilities.mkdir(new java.io.File(directoryPath))
 };
 
-/* exported fileExists */
+/**
+* check if file exists
+* @param {string} file path
+* @returns {boolean} true if file exists
+*
+* exported fileExists */
 var fileExists = function (filePath) {
     return new java.io.File(filePath).exists();
 };
 
+/**
+* returns file content
+* @param {string} file path
+* @returns {string} content
 /* exported cat */
 var cat = function(filePath) {
     return Bean("fileUtilities").getFileContent(new java.io.File(filePath));
 };
 
-/* exported cp */
+/**
+* copies file
+* @param {string} source
+* @param {string} target
+*
+* exported cp */
 var cp = function(source, target) {
     return Bean("fileUtilities").copy(new java.io.File(source), new java.io.File(target));
 };
 
-/* exported getFileSize */
+/**
+* returns file size
+* @param {string} file path
+* @returns {number} file size
+*
+* exported getFileSize */
 var getFileSize = function(filePath) {
     return Bean("fileUtilities").getSize(new java.io.File(filePath));
 };
 
-/* exported fileName */
+/**
+* returns file name
+* @param {string} file path
+* @returns {string} file name
+*
+* exported fileName */
 var fileName = function(filePath) {
     return new java.io.File(filePath).getName();
 };
 
-/* exported lns */
+/**
+* creates link
+* @param {string} target
+* @param {string} destination
+*
+* exported lns */
 var lns = function(target, destination) {
     return Bean("fileUtilities").createSymbolicLink(new java.io.File(destination), new java.io.File(target));
 };
 
-/* exported remove */
+/**
+* removes file
+* @param {string} file path
+*
+* exported remove */
 var remove = function(filePath) {
     return Bean("fileUtilities").remove(new java.io.File(filePath));
 };
 
-/* exported touch */
+/**
+* creates empty file
+* @param {string} file path
+*
+* exported touch */
 var touch = function(filePath) {
     if (!fileExists(filePath)) {
         Bean("fileUtilities").writeToFile(new java.io.File(filePath), "");
     }
 };
 
-/* exported writeToFile */
+/**
+* writes content into file
+* @param {string} file path
+* @param {string} content
+*
+* exported writeToFile */
 var writeToFile = function(filePath, content) {
     Bean("fileUtilities").writeToFile(new java.io.File(filePath), content);
 };
 
-/* exported createTempFile */
+/**
+* creates temporary file
+* @param {string} file extension
+* @returns {string} file path of created temporary file
+*
+* exported createTempFile */
 var createTempFile = function (extension) {
     var tmpFile = Bean("fileUtilities").createTmpFile(extension);
     return tmpFile.getAbsolutePath();
 };
 
-/* exported Checksum */
+/**
+* checksum utilities
+*
+* exported Checksum */
 var Checksum = function () {
     var that = this;
     that._method = "SHA";
     that._checksumCalculator = Bean("checksumCalculator");
+
+    /**
+    * sets wizard
+    * @param {SetupWizard} wizard
+    * @returns {Checksum}
+    */
     that.wizard = function (wizard) {
         that._wizard = wizard;
         return that;
     };
+
+    /**
+    * sets algorithm
+    * @param {string} algorithm (e.g. "SHA")
+    * @returns {Checksum}
+    */
     that.method = function (algorithm) {
         that._method = algorithm;
         return that;
     };
+
+    /**
+    * sets file for which the checksum shall be computed
+    * @param {string} file path
+    * @returns {Checksum}
+    */
     that.of = function (file) {
         that._file = file;
         return that;
     };
+
+    /**
+    * returns checksum
+    * @returns {number} checksum
+    */
     that.get = function () {
         if(that._wizard) {
             var progressBar = that._wizard.progressBar(tr("Checking file consistency ..."));
