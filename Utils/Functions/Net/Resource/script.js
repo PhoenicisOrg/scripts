@@ -16,7 +16,7 @@ function Resource() {
 * @param {SetupWizard} wizard setup wizard
 * @returns {Resource} Resource object
 */
-Downloader.prototype.wizard = function (wizard) {
+Resource.prototype.wizard = function (wizard) {
     this._wizard = wizard;
     return this;
 }
@@ -26,7 +26,7 @@ Downloader.prototype.wizard = function (wizard) {
 * @param {string} algorithm algorithm to verify the checksum (e.g. "SHA")
 * @returns {Resource} Resource object
 */
-Downloader.prototype.algorithm = function (algorithm) {
+Resource.prototype.algorithm = function (algorithm) {
     this._algorithm = algorithm;
     return this;
 }
@@ -36,7 +36,7 @@ Downloader.prototype.algorithm = function (algorithm) {
 * @param {string} name name of the resource
 * @returns {Resource} Resource object
 */
-Downloader.prototype.name = function (name) {
+Resource.prototype.name = function (name) {
     this._name = name;
     return this;
 }
@@ -46,7 +46,7 @@ Downloader.prototype.name = function (name) {
 * @param {string} checksum checksum
 * @returns {Resource} Resource object
 */
-Downloader.prototype.checksum = function (checksum) {
+Resource.prototype.checksum = function (checksum) {
     this._checksum = checksum;
     return this;
 }
@@ -56,7 +56,7 @@ Downloader.prototype.checksum = function (checksum) {
 * @param {string} url URL
 * @returns {Resource} Resource object
 */
-Downloader.prototype.url = function (url) {
+Resource.prototype.url = function (url) {
     this._url = url;
     return this;
 }
@@ -66,7 +66,7 @@ Downloader.prototype.url = function (url) {
 * @param {string} directory directory path
 * @returns {Resource} Resource object
 */
-Downloader.prototype.directory = function (directory) {
+Resource.prototype.directory = function (directory) {
     this._directory = directory;
     return this;
 }
@@ -75,7 +75,7 @@ Downloader.prototype.directory = function (directory) {
 * returns the Resource
 * @returns {Resource} downloaded Resource object
 */
-Downloader.prototype.get = function () {
+Resource.prototype.get = function () {
     if (!this._message) {
         this._message = tr("Please wait while {0} is downloaded ...", this._name);
     }
