@@ -1,5 +1,5 @@
 {
 	"name":	"ChromaGun",
-	"id":	"ChromaGun",
+	"id":	"chroma_gun",
 	"description": "Welcome to ChromaTec’s test lab! You’re here to test our newest, state-of-the-art military-grade color-technology: The ChromaGun (patent pending)! Use it to try and solve our meticulously designed test chambers. The basic principle is as easy as applying it is complex: Exit the chambers via the exit doors. But be weary of the WorkerDroids in charge of maintaining the chambers. They’re not exactly what you and I would call “human friendly”.<br><br>Use the ChromaGun to colorize walls and WorkerDroids to progress in the chambers. WorkerDroids are attracted to walls of the same color. Using that mechanic, try to reach the exit door of each chamber. Some doors are more complicated to use than others: They can only be opened using door triggers and only stay open as long as the triggers are occupied.<br>br>If all of this sounds like your brain can handle it, congratulations! You’re the perfect candidate for our test chambers!<br><br>That being said, welcome and good luck!"
 }

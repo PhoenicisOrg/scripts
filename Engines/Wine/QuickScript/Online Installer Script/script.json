@@ -1,6 +1,6 @@
 {
 	"scriptName": "Online Installer Script",
-	"id": "online-installer-script",
+	"id": "online_installer_script",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,
