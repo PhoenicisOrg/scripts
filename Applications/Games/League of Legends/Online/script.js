@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "custom_installer_script"]);
-include(["Engines", "Wine", "Shortcuts","Wine"]);
+include(["engines", "wine", "shortcuts","wine"]);
 include(["engines", "wine", "verbs", "sandbox"]);
 include(["engines", "wine", "verbs", "d3dx9"]);
 
