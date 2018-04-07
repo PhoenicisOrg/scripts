@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-06 15:55+0000\n"
+"POT-Creation-Date: 2018-04-07 09:12+0000\n"
 "PO-Revision-Date: 2017-09-24 10:24+0200\n"
 "Last-Translator: Plata <plata@phoenicis.org>\n"
 "Language-Team: French\n"
@@ -1583,8 +1583,9 @@ msgid ""
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Prince Of Persia: Original/application.js:1
-msgid "Prince Of Persia: Original"
-msgstr ""
+#, fuzzy
+msgid "Prince of Persia: Original"
+msgstr "Prince of Persia®: The Sands of Time"
 
 #: i18n/tmp/Applications/Games/Prince of Persia: The Sands
 #: Time/application.js:1
