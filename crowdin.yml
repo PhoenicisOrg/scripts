@@ -3,3 +3,5 @@ commit_message: '[Crowdin] updated translations'
 files:
   - source: /i18n/*.pot
     translation: /i18n/Messages_%two_letters_code%.properties
+  - source: /**/*.json
+    translation: /i18n/Messages_%two_letters_code%.properties
