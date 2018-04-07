@@ -9,6 +9,7 @@ This file describes the script.
 ```json
 {
 	"scriptName": "name of the script",
+	"id": "script_id",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,
@@ -20,6 +21,11 @@ This file describes the script.
 Name of the script. Typical values are:
 * Steam: script installs a game from Steam
 * Online: script downloads the application from the Internet
+
+## id
+ID of the script. Requirements:
+* all lower case
+* only a-z, A-Z, _
 
 ## compatibleOperatingSystems
 Operating systems which the script is known to work with. Can be:

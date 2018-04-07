@@ -9,6 +9,7 @@ This file describes the application.
 ```json
 {
 	"name":	"Application",
+	"id":	"application",
 	"description": "Application description"
 }
 ```
