@@ -4,6 +4,7 @@ var fileUtilities = Bean("fileUtilities");
 /**
 * creates directory
 * @param {string} directoryPath directory path
+* @returns {void}
 */
 function mkdir(directoryPath) { // eslint-disable-line no-unused-vars
     fileUtilities.mkdir(new java.io.File(directoryPath))
@@ -31,6 +32,7 @@ function cat(filePath) { // eslint-disable-line no-unused-vars
 * copies file
 * @param {string} source source
 * @param {string} target target
+* @returns {void}
 */
 function cp(source, target) { // eslint-disable-line no-unused-vars
     return Bean("fileUtilities").copy(new java.io.File(source), new java.io.File(target));
@@ -58,6 +60,7 @@ function fileName(filePath) { // eslint-disable-line no-unused-vars
 * creates link
 * @param {string} target target
 * @param {string} destination destination
+* @returns {void}
 */
 function lns(target, destination) { // eslint-disable-line no-unused-vars
     return Bean("fileUtilities").createSymbolicLink(new java.io.File(destination), new java.io.File(target));
@@ -66,6 +69,7 @@ function lns(target, destination) { // eslint-disable-line no-unused-vars
 /**
 * removes file
 * @param {string} filePath file path
+* @returns {void}
 */
 function remove(filePath) { // eslint-disable-line no-unused-vars
     return Bean("fileUtilities").remove(new java.io.File(filePath));
@@ -74,6 +78,7 @@ function remove(filePath) { // eslint-disable-line no-unused-vars
 /**
 * creates empty file
 * @param {string} filePath file path
+* @returns {void}
 */
 function touch(filePath) { // eslint-disable-line no-unused-vars
     if (!fileExists(filePath)) {
@@ -85,6 +90,7 @@ function touch(filePath) { // eslint-disable-line no-unused-vars
 * writes content into file
 * @param {string} filePath file path
 * @param {string} content content which shall be written
+* @returns {void}
 */
 function writeToFile(filePath, content) { // eslint-disable-line no-unused-vars
     Bean("fileUtilities").writeToFile(new java.io.File(filePath), content);
