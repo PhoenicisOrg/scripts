@@ -15,6 +15,12 @@ matrix:
         # push translation updates only for master (PR changes must be committed to master before they are taken into account)
         - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./i18n/push_translations.sh; fi
 
+    # Update JSDoc
+    - stage: Update JSDoc
+      script:
+        # push JSDoc updates only for master (PR changes must be committed to master before they are taken into account)
+        - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./push_jsdoc.sh; fi
+
     # Check GitHub Pages
     - stage: Check GitHub Pages
       os: linux
