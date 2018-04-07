@@ -3,9 +3,8 @@ include(["utils", "functions", "net", "resource"]);
 include(["Utils", "Functions", "filesystem", "files"]);
 
 /**
-* Inspired from winetricks secur32
-* -> https://github.com/Winetricks/winetricks/blob/63bc6dbe612d017a0cb6bf6e4cde265162d75bca/src/winetricks#L8744
-* @returns {Wine}
+* Verb to install secur32
+* @returns {Wine} Wine object
 */
 Wine.prototype.secur32 = function() {
     var setupFilex86 = new Resource()

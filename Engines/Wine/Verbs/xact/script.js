@@ -3,9 +3,8 @@ include(["utils", "functions", "net", "resource"]);
 include(["Utils", "Functions", "filesystem", "files"]);
 
 /**
-* Inspired from d3dx9 verb, winetricks xact
-* -> https://github.com/Winetricks/winetricks/blob/63bc6dbe612d017a0cb6bf6e4cde265162d75bca/src/winetricks#L9643
-* @returns {Wine}
+* Verb to install xact
+* @returns {Wine} Wine object
 */
 Wine.prototype.xact = function () {
     var that = this;
