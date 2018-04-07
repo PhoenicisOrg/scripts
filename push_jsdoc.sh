@@ -2,7 +2,7 @@
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 
-jsdoc -d docs/jsdoc -r .
+jsdoc -c jsdoc_conf.json .
 
 head_ref=$(git rev-parse HEAD)
 if [[ $? -ne 0 || ! $head_ref ]]; then
