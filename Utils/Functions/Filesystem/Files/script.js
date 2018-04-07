@@ -3,7 +3,7 @@ var fileUtilities = Bean("fileUtilities");
 
 /**
 * creates directory
-* @param {string} directory path
+* @param {string} directoryPath directory path
 *
 * exported mkdir */
 var mkdir = function (directoryPath) {
@@ -12,7 +12,7 @@ var mkdir = function (directoryPath) {
 
 /**
 * check if file exists
-* @param {string} file path
+* @param {string} filePath file path
 * @returns {boolean} true if file exists
 *
 * exported fileExists */
@@ -22,7 +22,7 @@ var fileExists = function (filePath) {
 
 /**
 * returns file content
-* @param {string} file path
+* @param {string} filePath file path
 * @returns {string} content
 /* exported cat */
 var cat = function(filePath) {
@@ -31,8 +31,8 @@ var cat = function(filePath) {
 
 /**
 * copies file
-* @param {string} source
-* @param {string} target
+* @param {string} source source
+* @param {string} target target
 *
 * exported cp */
 var cp = function(source, target) {
@@ -41,7 +41,7 @@ var cp = function(source, target) {
 
 /**
 * returns file size
-* @param {string} file path
+* @param {string} filePath file path
 * @returns {number} file size
 *
 * exported getFileSize */
@@ -51,7 +51,7 @@ var getFileSize = function(filePath) {
 
 /**
 * returns file name
-* @param {string} file path
+* @param {string} filePath file path
 * @returns {string} file name
 *
 * exported fileName */
@@ -61,8 +61,8 @@ var fileName = function(filePath) {
 
 /**
 * creates link
-* @param {string} target
-* @param {string} destination
+* @param {string} target target
+* @param {string} destination destination
 *
 * exported lns */
 var lns = function(target, destination) {
@@ -71,7 +71,7 @@ var lns = function(target, destination) {
 
 /**
 * removes file
-* @param {string} file path
+* @param {string} filePath file path
 *
 * exported remove */
 var remove = function(filePath) {
@@ -80,7 +80,7 @@ var remove = function(filePath) {
 
 /**
 * creates empty file
-* @param {string} file path
+* @param {string} filePath file path
 *
 * exported touch */
 var touch = function(filePath) {
@@ -91,8 +91,8 @@ var touch = function(filePath) {
 
 /**
 * writes content into file
-* @param {string} file path
-* @param {string} content
+* @param {string} filePath file path
+* @param {string} content content which shall be written
 *
 * exported writeToFile */
 var writeToFile = function(filePath, content) {
@@ -101,7 +101,7 @@ var writeToFile = function(filePath, content) {
 
 /**
 * creates temporary file
-* @param {string} file extension
+* @param {string} extension file extension
 * @returns {string} file path of created temporary file
 *
 * exported createTempFile */
