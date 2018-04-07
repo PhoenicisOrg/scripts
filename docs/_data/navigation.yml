@@ -13,6 +13,8 @@ docs:
         url: /verbs/
       - title: "SetupWizard"
         url: /setup-wizard/
+      - title: "JSDoc"
+        url: /jsdoc/
   - title: "General"
     children:
       - title: "Translation"
