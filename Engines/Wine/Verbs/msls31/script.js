@@ -1,6 +1,10 @@
 include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "net", "resource"]);
 
+/**
+* Verb to install msls31.dll
+* @returns {Wine} Wine object
+*/
 Wine.prototype.msls31 = function() {
     var setupFile = new Resource()
         .wizard(this._wizard)

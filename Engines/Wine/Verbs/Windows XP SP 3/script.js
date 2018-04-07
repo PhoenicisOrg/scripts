@@ -1,6 +1,11 @@
 include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "net", "resource"]);
 
+/**
+* Verb to install Windows XP Service Pack 3
+* @param {string} fileToExtract path to file which shall be extracted
+* @returns {Wine} Wine object
+*/
 Wine.prototype.sp3extract = function(fileToExtract) {
     var that = this;
     that._targetDirectory = this.system32directory();

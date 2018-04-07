@@ -5,9 +5,8 @@ include(["Utils", "Functions", "filesystem", "files"]);
 include(["Engines", "Wine", "Verbs", "dotnet40"]);
 
 /**
-* Inspired from dotnet40 verb, winetricks dotnet45 and POL4 POL_install_dotnet45
-* -> https://github.com/Winetricks/winetricks/blob/63bc6dbe612d017a0cb6bf6e4cde265162d75bca/src/winetricks#L6886
-* @returns {Wine}
+* Verb to install .NET 4.5
+* @returns {Wine} Wine object
 */
 Wine.prototype.dotnet45 = function() {
     

@@ -3,6 +3,10 @@ include(["utils", "functions", "net", "resource"]);
 include(["Engines", "Wine", "Verbs", "luna"]);
 include(["Utils", "Functions", "filesystem", "files"]);
 
+/**
+* Verb to install .NET 4.0
+* @returns {Wine} Wine object
+*/
 Wine.prototype.dotnet40 = function() {
     var setupFile = new Resource()
         .wizard(this._wizard)

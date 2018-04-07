@@ -3,6 +3,10 @@ include(["utils", "functions", "net", "resource"]);
 include(["Utils", "Functions", "filesystem", "files"]);
 include(["Engines", "Wine", "Verbs", "luna"]);
 
+/**
+* Verb to install vcrun2003
+* @returns {Wine} Wine object
+*/
 Wine.prototype.vcrun2003 = function() {
     var setupFile = new Resource()
         .wizard(this._wizard)

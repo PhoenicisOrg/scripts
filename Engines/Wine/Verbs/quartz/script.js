@@ -3,9 +3,9 @@ include(["utils", "functions", "net", "resource"]);
 include(["Utils", "Functions", "filesystem", "files"]);
 
 /**
- * Inspired from winetricks quartz -> https://github.com/Winetricks/winetricks/blob/63bc6dbe612d017a0cb6bf6e4cde265162d75bca/src/winetricks#L8523
- * @returns {Wine}
- */
+* Verb to install quartz
+* @returns {Wine} Wine object
+*/
 Wine.prototype.quartz = function(){
     var setupFile = new Resource()
         .wizard(this._wizard)

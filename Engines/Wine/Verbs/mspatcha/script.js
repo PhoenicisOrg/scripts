@@ -2,6 +2,10 @@ include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "net", "resource"]);
 include(["Utils", "Functions", "filesystem", "files"]);
 
+/**
+* Verb to install mspatcha
+* @returns {Wine} Wine object
+*/
 Wine.prototype.mspatcha = function() {
     //Inspired from winetricks mspatcha, but with a link Phoenicis can understand
     var setupFile = new Resource()

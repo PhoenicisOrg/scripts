@@ -1,63 +1,110 @@
 var fileAnalyser = Bean("fileAnalyser");
 var fileUtilities = Bean("fileUtilities");
 
-/* exported mkdir */
-var mkdir = function (directoryPath) {
+/**
+* creates directory
+* @param {string} directoryPath directory path
+* @returns {void}
+*/
+function mkdir(directoryPath) { // eslint-disable-line no-unused-vars
     fileUtilities.mkdir(new java.io.File(directoryPath))
-};
+}
 
-/* exported fileExists */
-var fileExists = function (filePath) {
+/**
+* check if file exists
+* @param {string} filePath file path
+* @returns {boolean} true if file exists
+*/
+function fileExists(filePath) { // eslint-disable-line no-unused-vars
     return new java.io.File(filePath).exists();
-};
+}
 
-/* exported cat */
-var cat = function(filePath) {
+/**
+* returns file content
+* @param {string} filePath file path
+* @returns {string} content
+*/
+function cat(filePath) { // eslint-disable-line no-unused-vars
     return Bean("fileUtilities").getFileContent(new java.io.File(filePath));
-};
+}
 
-/* exported cp */
-var cp = function(source, target) {
+/**
+* copies file
+* @param {string} source source
+* @param {string} target target
+* @returns {void}
+*/
+function cp(source, target) { // eslint-disable-line no-unused-vars
     return Bean("fileUtilities").copy(new java.io.File(source), new java.io.File(target));
-};
+}
 
-/* exported getFileSize */
-var getFileSize = function(filePath) {
+/**
+* returns file size
+* @param {string} filePath file path
+* @returns {number} file size
+*/
+function getFileSize(filePath) { // eslint-disable-line no-unused-vars
     return Bean("fileUtilities").getSize(new java.io.File(filePath));
-};
+}
 
-/* exported fileName */
-var fileName = function(filePath) {
+/**
+* returns file name
+* @param {string} filePath file path
+* @returns {string} file name
+*/
+function fileName(filePath) { // eslint-disable-line no-unused-vars
     return new java.io.File(filePath).getName();
-};
+}
 
-/* exported lns */
-var lns = function(target, destination) {
+/**
+* creates link
+* @param {string} target target
+* @param {string} destination destination
+* @returns {void}
+*/
+function lns(target, destination) { // eslint-disable-line no-unused-vars
     return Bean("fileUtilities").createSymbolicLink(new java.io.File(destination), new java.io.File(target));
-};
+}
 
-/* exported remove */
-var remove = function(filePath) {
+/**
+* removes file
+* @param {string} filePath file path
+* @returns {void}
+*/
+function remove(filePath) { // eslint-disable-line no-unused-vars
     return Bean("fileUtilities").remove(new java.io.File(filePath));
-};
+}
 
-/* exported touch */
-var touch = function(filePath) {
+/**
+* creates empty file
+* @param {string} filePath file path
+* @returns {void}
+*/
+function touch(filePath) { // eslint-disable-line no-unused-vars
     if (!fileExists(filePath)) {
         Bean("fileUtilities").writeToFile(new java.io.File(filePath), "");
     }
-};
+}
 
-/* exported writeToFile */
-var writeToFile = function(filePath, content) {
+/**
+* writes content into file
+* @param {string} filePath file path
+* @param {string} content content which shall be written
+* @returns {void}
+*/
+function writeToFile(filePath, content) { // eslint-disable-line no-unused-vars
     Bean("fileUtilities").writeToFile(new java.io.File(filePath), content);
-};
+}
 
-/* exported createTempFile */
-var createTempFile = function (extension) {
+/**
+* creates temporary file
+* @param {string} extension file extension
+* @returns {string} file path of created temporary file
+*/
+function createTempFile(extension) { // eslint-disable-line no-unused-vars
     var tmpFile = Bean("fileUtilities").createTmpFile(extension);
     return tmpFile.getAbsolutePath();
-};
+}
 
 /**
 * Checksum prototype
