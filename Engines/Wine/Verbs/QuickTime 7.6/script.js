@@ -1,3 +1,10 @@
+include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "net", "resource"]);
+
+/**
+* Verb to install QuickTime 7.6
+* @returns {Wine}
+*/
 Wine.prototype.quicktime76 = function() {
     var setupFile = new Resource()
         .wizard(this._wizard)

@@ -3,6 +3,10 @@ include(["utils", "functions", "net", "resource"]);
 include(["Engines", "Wine", "Verbs", "luna"]);
 include(["Utils", "Functions", "filesystem", "files"]);
 
+/**
+* Verb to install the Tahoma font
+* @returns {Wine}
+*/
 Wine.prototype.tahoma = function() {
     var tahoma = new Resource()
         .wizard(this._wizard)

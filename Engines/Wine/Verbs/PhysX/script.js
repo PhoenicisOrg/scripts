@@ -2,6 +2,10 @@ include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "net", "resource"]);
 include(["Engines", "Wine", "Verbs", "luna"]);
 
+/**
+* Verb to install Nvidia PhysX
+* @returns {Wine}
+*/
 Wine.prototype.physx = function() {
     var setupFile = new Resource()
         .wizard(this._wizard)

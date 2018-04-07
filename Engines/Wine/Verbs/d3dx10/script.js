@@ -1,6 +1,10 @@
 include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "net", "resource"]);
 
+/**
+* Verb to install D3DX10
+* @returns {Wine}
+*/
 Wine.prototype.d3dx10 = function () {
     var that = this;
 
