@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-07 09:12+0000\n"
+"POT-Creation-Date: 2018-04-07 17:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,22 +79,22 @@ msgstr ""
 #: Engines/Wine/QuickScript/Uplay Script/script.js:90
 #: Engines/Wine/QuickScript/Zip Script/script.js:44
 #: Engines/Wine/QuickScript/Zip Script/script.js:70
-#: Engines/Wine/Verbs/corefonts/script.js:79
-#: Engines/Wine/Verbs/d3dx10/script.js:30
-#: Engines/Wine/Verbs/d3dx9/script.js:30
-#: Engines/Wine/Verbs/dotnet40/script.js:17
-#: Engines/Wine/Verbs/dotnet40/script.js:33
-#: Engines/Wine/Verbs/dotnet40/script.js:35
-#: Engines/Wine/Verbs/dotnet452/script.js:29
-#: Engines/Wine/Verbs/dotnet45/script.js:30
-#: Engines/Wine/Verbs/xact/script.js:50
+#: Engines/Wine/Verbs/corefonts/script.js:83
+#: Engines/Wine/Verbs/d3dx10/script.js:34
+#: Engines/Wine/Verbs/d3dx9/script.js:34
+#: Engines/Wine/Verbs/dotnet40/script.js:21
+#: Engines/Wine/Verbs/dotnet40/script.js:37
+#: Engines/Wine/Verbs/dotnet40/script.js:39
+#: Engines/Wine/Verbs/dotnet452/script.js:28
+#: Engines/Wine/Verbs/dotnet45/script.js:29
+#: Engines/Wine/Verbs/xact/script.js:49
 msgid "Please wait ..."
 msgstr ""
 
 #: Applications/Internet/Internet Explorer 6.0/Online/script.js:75
 #: Applications/Internet/Internet Explorer 7.0/Online/script.js:215
-#: Engines/Wine/Verbs/corefonts/script.js:80
-#: Engines/Wine/Verbs/corefonts/script.js:86
+#: Engines/Wine/Verbs/corefonts/script.js:84
+#: Engines/Wine/Verbs/corefonts/script.js:90
 msgid "Installing {0} ..."
 msgstr ""
 
@@ -202,48 +202,48 @@ msgstr ""
 msgid "Executable {0} not found!"
 msgstr ""
 
-#: Engines/Wine/Verbs/corefonts/script.js:80
-#: Engines/Wine/Verbs/corefonts/script.js:86
+#: Engines/Wine/Verbs/corefonts/script.js:84
+#: Engines/Wine/Verbs/corefonts/script.js:90
 msgid "fonts"
 msgstr ""
 
-#: Engines/Wine/Verbs/d3dx10/script.js:10
-#: Engines/Wine/Verbs/d3dx10/script.js:11
-#: Engines/Wine/Verbs/d3dx10/script.js:31
-#: Engines/Wine/Verbs/d3dx9/script.js:10 Engines/Wine/Verbs/d3dx9/script.js:11
-#: Engines/Wine/Verbs/d3dx9/script.js:31 Engines/Wine/Verbs/xact/script.js:16
-#: Engines/Wine/Verbs/xact/script.js:17 Engines/Wine/Verbs/xact/script.js:51
+#: Engines/Wine/Verbs/d3dx10/script.js:14
+#: Engines/Wine/Verbs/d3dx10/script.js:15
+#: Engines/Wine/Verbs/d3dx10/script.js:35
+#: Engines/Wine/Verbs/d3dx9/script.js:14 Engines/Wine/Verbs/d3dx9/script.js:15
+#: Engines/Wine/Verbs/d3dx9/script.js:35 Engines/Wine/Verbs/xact/script.js:15
+#: Engines/Wine/Verbs/xact/script.js:16 Engines/Wine/Verbs/xact/script.js:50
 msgid "Extracting {0} ..."
 msgstr ""
 
-#: Engines/Wine/Verbs/dotnet40/script.js:26
-#: Engines/Wine/Verbs/dotnet452/script.js:41
-#: Engines/Wine/Verbs/dotnet45/script.js:42
-#: Engines/Wine/Verbs/PhysX/script.js:14
-#: Engines/Wine/Verbs/QuickTime 7.6/script.js:10
-#: Engines/Wine/Verbs/vcrun2003/script.js:15
-#: Engines/Wine/Verbs/vcrun2005/script.js:14
-#: Engines/Wine/Verbs/vcrun2008/script.js:14
-#: Engines/Wine/Verbs/vcrun2008/script.js:25
-#: Engines/Wine/Verbs/vcrun2010/script.js:14
-#: Engines/Wine/Verbs/vcrun2010/script.js:25
-#: Engines/Wine/Verbs/vcrun2012/script.js:14
-#: Engines/Wine/Verbs/vcrun2012/script.js:25
-#: Engines/Wine/Verbs/vcrun2013/script.js:14
-#: Engines/Wine/Verbs/vcrun2013/script.js:25
-#: Engines/Wine/Verbs/vcrun2015/script.js:14
-#: Engines/Wine/Verbs/vcrun2015/script.js:25
+#: Engines/Wine/Verbs/dotnet40/script.js:30
+#: Engines/Wine/Verbs/dotnet452/script.js:40
+#: Engines/Wine/Verbs/dotnet45/script.js:41
+#: Engines/Wine/Verbs/PhysX/script.js:18
+#: Engines/Wine/Verbs/QuickTime 7.6/script.js:17
+#: Engines/Wine/Verbs/vcrun2003/script.js:19
+#: Engines/Wine/Verbs/vcrun2005/script.js:18
+#: Engines/Wine/Verbs/vcrun2008/script.js:18
+#: Engines/Wine/Verbs/vcrun2008/script.js:29
+#: Engines/Wine/Verbs/vcrun2010/script.js:18
+#: Engines/Wine/Verbs/vcrun2010/script.js:29
+#: Engines/Wine/Verbs/vcrun2012/script.js:18
+#: Engines/Wine/Verbs/vcrun2012/script.js:29
+#: Engines/Wine/Verbs/vcrun2013/script.js:18
+#: Engines/Wine/Verbs/vcrun2013/script.js:29
+#: Engines/Wine/Verbs/vcrun2015/script.js:18
+#: Engines/Wine/Verbs/vcrun2015/script.js:29
 msgid "Please wait while {0} is installed ..."
 msgstr ""
 
-#: Engines/Wine/Verbs/dotnet452/script.js:50
-#: Engines/Wine/Verbs/dotnet45/script.js:51
+#: Engines/Wine/Verbs/dotnet452/script.js:49
+#: Engines/Wine/Verbs/dotnet45/script.js:50
 msgid ""
 "{0} applications can have issues when windows version is not set to "
 "\"win2003\""
 msgstr ""
 
-#: Engines/Wine/Verbs/Uplay/script.js:11
+#: Engines/Wine/Verbs/Uplay/script.js:16
 msgid ""
 "Please follow the steps of the Uplay setup.\n"
 "\n"
@@ -251,7 +251,7 @@ msgid ""
 "installation can continue."
 msgstr ""
 
-#: Engines/Wine/Verbs/xact/script.js:33 Engines/Wine/Verbs/xact/script.js:34
+#: Engines/Wine/Verbs/xact/script.js:32 Engines/Wine/Verbs/xact/script.js:33
 msgid "Registering {0} ..."
 msgstr ""
 
