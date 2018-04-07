@@ -18,7 +18,7 @@ QuickScripts use the latest stable wine version by default (recommended).
 A basic script looks like:
 
 ```javascript
-include(["engines", "wine", "quick-script", "steam-script"]);
+include(["engines", "wine", "quick_script", "steam_script"]);
 
 new SteamScript()
     .name("A Game")              // name of the game
@@ -49,7 +49,7 @@ For a different shortcut (e.g. if you want to pass arguments):
 A basic script looks like:
 
 ```javascript
-include(["engines", "wine", "quick-script", "uplay-script"]);
+include(["engines", "wine", "quick_script", "uplay_script"]);
 
 new UplayScript()
     .name("A Game")                                 // name of the game
@@ -67,7 +67,7 @@ Installs a local Windows executable. Shows a setup window browse step (see [Setu
 A basic script looks like:
 
 ```javascript
-include(["engines", "wine", "quick-script", "local-installer-script"]);
+include(["engines", "wine", "quick_script", "local_installer_script"]);
 
 new LocalInstallerScript()
     .name("Application-Name")                       // name of the application
@@ -85,7 +85,7 @@ Downloads and installs a Windows executable.
 A basic script looks like:
 
 ```javascript
-include(["engines", "wine", "quick-script", "online-installer-script"]);
+include(["engines", "wine", "quick_script", "online_installer_script"]);
 
 new OnlineInstallerScript()
     .name("Application-Name")                       // name of the application
@@ -102,7 +102,7 @@ new OnlineInstallerScript()
 ### CustomInstallerScript
 Executes a custom installation command:
 ```javascript
-include(["engines", "wine", "quick-script", "custom-installer-script"]);
+include(["engines", "wine", "quick_script", "custom_installer_script"]);
 
 new CustomInstallerScript()
     .name("Application-Name")                                           // name of the application
@@ -121,7 +121,7 @@ new CustomInstallerScript()
 A basic script looks like:
 
 ```javascript
-include(["engines", "wine", "quick-script", "zip-script"]);
+include(["engines", "wine", "quick_script", "zip_script"]);
 
 new ZipScript()
     .name("Application-Name")                       // name of the application
