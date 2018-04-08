@@ -39,7 +39,7 @@ Wine.prototype.DXVK = function() {
     this.overrideDLL()
         .set("native", ["d3d11", "dxgi"])
         .do();
-	
+
     remove(this.prefixDirectory + "/TMP/");
 
     return this;
