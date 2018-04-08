@@ -1,5 +1,10 @@
 include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "net", "resource"]);
 
+/**
+* Verb to install Uplay
+* @returns {Wine} Wine object
+*/
 Wine.prototype.uplay = function() {
     var setupFile = new Resource()
         .wizard(this._wizard)

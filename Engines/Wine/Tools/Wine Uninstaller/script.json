@@ -1,6 +1,6 @@
 {
   	"scriptName": "Wine uninstaller",
-	"id": "wine-uninstaller",
+	"id": "wine_uninstaller",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

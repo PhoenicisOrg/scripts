@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
-include(["Engines", "Wine", "Verbs", "uplay"]);
+include(["engines", "wine", "verbs", "uplay"]);
 
 new SteamScript()
     .name("Assassin's Creed® Revelations")

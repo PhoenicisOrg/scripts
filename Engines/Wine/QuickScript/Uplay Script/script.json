@@ -1,6 +1,6 @@
 {
 	"scriptName": "Uplay Script",
-	"id": "uplay-script",
+	"id": "uplay_script",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

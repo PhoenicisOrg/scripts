@@ -1,6 +1,6 @@
 {
 	"scriptName": "Local Installer Script",
-	"id": "local-installer-script",
+	"id": "local_installer_script",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

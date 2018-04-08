@@ -1,7 +1,11 @@
 include(["engines", "wine", "engine", "object"]);
-include(["Utils", "Functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "files"]);
 include(["utils", "functions", "net", "resource"]);
 
+/**
+* Verb to install luna
+* @returns {Wine} Wine object
+*/
 Wine.prototype.luna = function() {
     var lunaStyle = new Resource()
         .wizard(this._wizard)

@@ -11,4 +11,4 @@ new SteamScript()
         wine.UseGLSL("disabled");
         wine.enableCSMT();
     })
-    .go(); 
+    .go();

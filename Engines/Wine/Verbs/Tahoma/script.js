@@ -1,8 +1,12 @@
 include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "net", "resource"]);
-include(["Engines", "Wine", "Verbs", "luna"]);
-include(["Utils", "Functions", "filesystem", "files"]);
+include(["engines", "wine", "verbs", "luna"]);
+include(["utils", "functions", "filesystem", "files"]);
 
+/**
+* Verb to install the Tahoma font
+* @returns {Wine} Wine object
+*/
 Wine.prototype.tahoma = function() {
     var tahoma = new Resource()
         .wizard(this._wizard)

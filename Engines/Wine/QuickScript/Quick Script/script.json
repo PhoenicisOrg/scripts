@@ -1,6 +1,6 @@
 {
 	"scriptName": "Quick Script",
-	"id": "quick-script",
+	"id": "quick_script",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

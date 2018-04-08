@@ -1,5 +1,5 @@
 {
 	"name":	"Mp3tag",
-	"id":	"Mp3tag",
+	"id":	"mp3tag",
 	"description": "Mp3tag is a powerful and yet easy-to-use tool to edit metadata of common audio formats where it supports ID3v1, ID3v2.3, ID3v2.4, iTunes MP4, WMA, Vorbis Comments and APE Tags. It also supports online database lookups from Amazon, Musicbraing, freedb or discogs for example to automatically gather proper tags and cover art."
 } 

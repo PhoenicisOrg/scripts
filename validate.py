@@ -6,22 +6,52 @@ import os
 from PIL import Image
 import sys
 
-parser = argparse.ArgumentParser(description="Validates applications (must have an 'application.json')")
-parser.add_argument('--apps_dir',
-                    help="applications directory (default: 'Applications' directory in working directory)",
-                    default=os.getcwd() + '/Applications')
+parser = argparse.ArgumentParser(description="Validates scripts")
+parser.add_argument('--scripts_dir',
+                    help="scripts directory (default: working directory)",
+                    default=os.getcwd())
 args = parser.parse_args()
-applications_dir = args.apps_dir
+scripts_dir = args.scripts_dir
 
 is_valid = True
 
-id_pattern = '^[a-zA-Z0-9_]+$'
+id_pattern = '^[a-z0-9_]+$'
+
+# get type directories
+type_dirs = []
+for type_dir in next(os.walk(scripts_dir))[1]:
+    if os.path.isfile(scripts_dir + '/' + type_dir + '/type.json'):
+        type_dirs.append(scripts_dir + '/' + type_dir)
+
+# validate type.json
+type_schema = {
+    'type': 'object',
+    'properties': {
+        'name': {'type': 'string'},
+        'id': {'type': 'string', 'pattern': id_pattern},
+    },
+    'required': ['name', 'id']
+}
+
+for type_dir in type_dirs:
+    type_json_file = type_dir + '/type.json'
+    try:
+        with open(type_json_file) as f:
+            type_json = json.loads(f.read().decode("utf-8-sig"))
+            jsonschema.validate(type_json, type_schema)
+    except ValueError as value_error:
+        print "invalid type.json {}: {}".format(type_json_file, value_error)
+        is_valid = False
+    except jsonschema.exceptions.ValidationError as validation_error:
+        print "invalid type.json {}: {}".format(type_json_file, validation_error)
+        is_valid = False
 
 # get category directories
 category_dirs = []
-for category in next(os.walk(applications_dir))[1]:
-    if os.path.isfile(applications_dir + '/' + category + '/category.json'):
-        category_dirs.append(applications_dir + '/' + category)
+for type_dir in type_dirs:
+    for category in next(os.walk(type_dir))[1]:
+        if os.path.isfile(type_dir + '/' + category + '/category.json'):
+            category_dirs.append(type_dir + '/' + category)
 
 # validate category.json
 category_schema = {
@@ -134,15 +164,17 @@ for script_dir in script_dirs:
 
 # check miniature
 for application_dir in application_dirs:
-    main_miniature_file = application_dir + '/miniatures/main.png'
-    if os.path.isfile(main_miniature_file):
-        image = Image.open(main_miniature_file)
-        width, height = image.size
-        if width != 400 or height != 300:
-            print "main.png {} must be 400x300px".format(main_miniature_file)
+    # do not check miniature for verbs etc.
+    if "Applications" in application_dir:
+        main_miniature_file = application_dir + '/miniatures/main.png'
+        if os.path.isfile(main_miniature_file):
+            image = Image.open(main_miniature_file)
+            width, height = image.size
+            if width != 400 or height != 300:
+                print "main.png {} must be 400x300px".format(main_miniature_file)
+                is_valid = False
+        else:
+            print "missing main.png: {}".format(main_miniature_file)
             is_valid = False
-    else:
-        print "missing main.png: {}".format(main_miniature_file)
-        is_valid = False
 
 sys.exit(0 if is_valid else 1)

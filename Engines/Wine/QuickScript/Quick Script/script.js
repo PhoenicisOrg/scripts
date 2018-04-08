@@ -125,7 +125,7 @@ QuickScript.prototype._createShortcut = function(prefix) {
         .search(this._executable)
         .arguments(this._executableArgs);
 
-    if(this.miniature().isPresent()) {
+    if (this.miniature().isPresent()) {
         shortcut.miniature(this.miniature().get())
     }
     shortcut.create();

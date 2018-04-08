@@ -10,5 +10,5 @@ new SteamScript()
     .postInstall(function(wine, wizard) {
         wine.enableCSMT();
     })
-    .go(); 
- 
+    .go();
+
