@@ -1,6 +1,6 @@
 include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "net", "resource"]);
-include(["Utils", "Functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "files"]);
 
 /**
 * Verb to install quartz

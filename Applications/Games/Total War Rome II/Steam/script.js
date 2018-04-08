@@ -1,8 +1,8 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
-include(["Engines", "Wine", "Verbs", "d3dx9"]);
-include(["Engines", "Wine", "Verbs", "vcrun2005"]);
-include(["Engines", "Wine", "Verbs", "vcrun2008"]);
-include(["Engines", "Wine", "Verbs", "vcrun2010"]);
+include(["engines", "wine", "verbs", "d3dx9"]);
+include(["engines", "wine", "verbs", "vcrun2005"]);
+include(["engines", "wine", "verbs", "vcrun2008"]);
+include(["engines", "wine", "verbs", "vcrun2010"]);
 
 new SteamScript()
     .name("Total War: ROME II")              

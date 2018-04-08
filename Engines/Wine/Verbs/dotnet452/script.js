@@ -1,8 +1,8 @@
 include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "net", "resource"]);
-include(["Engines", "Wine", "Verbs", "luna"]);
-include(["Utils", "Functions", "filesystem", "files"]);
-include(["Engines", "Wine", "Verbs", "dotnet40"]);
+include(["engines", "wine", "verbs", "luna"]);
+include(["utils", "functions", "filesystem", "files"]);
+include(["engines", "wine", "verbs", "dotnet40"]);
 
 /**
 * Verb to install .NET 4.5.2

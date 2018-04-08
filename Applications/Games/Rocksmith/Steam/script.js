@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
-include(["Utils", "Functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "files"]);
 
 function fixIni(ini) {
     var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();

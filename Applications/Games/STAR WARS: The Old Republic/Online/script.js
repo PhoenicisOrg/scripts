@@ -1,6 +1,6 @@
 include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["Engines", "Wine", "Verbs", "d3dx9"]);
-include(["Utils", "Functions", "filesystem", "files"]);
+include(["engines", "wine", "verbs", "d3dx9"]);
+include(["utils", "functions", "filesystem", "files"]);
 
 new OnlineInstallerScript()
     .name("STAR WARS™: The Old Republic")
