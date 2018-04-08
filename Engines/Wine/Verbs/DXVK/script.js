@@ -9,7 +9,7 @@ include(["utils", "functions", "filesystem", "files"]);
 Wine.prototype.DXVK = function() {
     print("NOTE: you need a driver that support Vulkan enough to run DXVK");
     print("NOTE: wine version should be greater or equal to 3.5");
-	
+
     var setupFile = new Resource()
         .wizard(this.wizard())
         .url("https://github.com/doitsujin/dxvk/releases/download/v0.41/dxvk-0.41.tar.gz")
@@ -34,7 +34,7 @@ Wine.prototype.DXVK = function() {
 	
         cp(this.prefixDirectory + "/TMP/dxvk-0.41/x64/d3d11.dll", this.system32directory());
         cp(this.prefixDirectory + "/TMP/dxvk-0.41/x64/dxgi.dll", this.system32directory());
-    }  
+    }
 	
     this.overrideDLL()
         .set("native", ["d3d11", "dxgi"])
