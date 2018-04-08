@@ -1,11 +1,11 @@
-include(["Engines", "Wine", "Engine", "Object"]);
-include(["Utils", "Functions", "Net", "Resource"]);
-include(["Utils", "Functions", "Filesystem", "Files"]);
+include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "net", "resource"]);
+include(["utils", "functions", "filesystem", "files"]);
 
 /**
- * Setup DXVK-> https://github.com/doitsujin/dxvk/
- * @returns {Wine}
- */
+* Setup DXVK-> https://github.com/doitsujin/dxvk/
+* @returns {Wine} Wine object
+*/
 Wine.prototype.DXVK = function() {
     print("NOTE: you need a driver that support Vulkan enough to run DXVK");
     print("NOTE: wine version should be greater or equal to 3.5");
@@ -37,11 +37,7 @@ Wine.prototype.DXVK = function() {
     }
       
     this.overrideDLL()
-        .set("native", ["d3d11"])
-        .do();
-
-    this.overrideDLL()
-        .set("native", ["dxgi"])
+        .set("native", ["d3d11", "dxgi"])
         .do();
 	
     remove(this.prefixDirectory + "/TMP/");
