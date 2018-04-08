@@ -11,7 +11,7 @@ var KillWineProcesses = function() {
 * runs the tool
 * @param {String} container name
 */
-KillWineProcesses.prototype.run = function (container) {
+KillWineProcesses.prototype.run = function(container) {
     new Wine()
         .prefix(container)
         .run("kill")

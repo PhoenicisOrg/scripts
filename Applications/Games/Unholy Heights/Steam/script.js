@@ -8,7 +8,7 @@ new SteamScript()
     .appId(249330)
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .preInstall(function (wine/*, wizard*/) {
+    .preInstall(function(wine/*, wizard*/) {
         wine.dotnet40();
     })
     .go();

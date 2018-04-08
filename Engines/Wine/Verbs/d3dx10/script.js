@@ -5,7 +5,7 @@ include(["utils", "functions", "net", "resource"]);
 * Verb to install D3DX10
 * @returns {Wine} Wine object
 */
-Wine.prototype.d3dx10 = function () {
+Wine.prototype.d3dx10 = function() {
     var that = this;
 
     var extractDirectXtoSystemDirectory = function(progressBar, filesToExtract, destination, pattern) {

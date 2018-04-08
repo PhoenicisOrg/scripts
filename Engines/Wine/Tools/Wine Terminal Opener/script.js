@@ -12,7 +12,7 @@ var WineTerminalOpener = function() {
 * runs the tool
 * @param {String} container name
 */
-WineTerminalOpener.prototype.run = function (container) {
+WineTerminalOpener.prototype.run = function(container) {
     var wine = new Wine()
         .prefix(container);
     var environment = [];

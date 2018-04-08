@@ -22,7 +22,7 @@ Wine.prototype.vcrun2003 = function() {
         "msvcp71",
         "mfc71"
     ];
-    dlls.forEach(function (dll) {
+    dlls.forEach(function(dll) {
         cp(wine.programFiles() + "/BZEdit1.6.5/" + dll, this.system32directory());
     });
 

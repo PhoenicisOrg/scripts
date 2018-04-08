@@ -6,7 +6,7 @@ include(["utils", "functions", "filesystem", "files"]);
 * Verb to install xact
 * @returns {Wine} Wine object
 */
-Wine.prototype.xact = function () {
+Wine.prototype.xact = function() {
     var that = this;
 
     var extractFiles = function(progressBar, filesToExtract, destination, pattern, directory) {

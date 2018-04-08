@@ -11,7 +11,7 @@ var WineTaskManager = function() {
 * runs the tool
 * @param {String} container name
 */
-WineTaskManager.prototype.run = function (container) {
+WineTaskManager.prototype.run = function(container) {
     new Wine()
         .prefix(container)
         .run("taskmgr")

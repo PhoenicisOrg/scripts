@@ -12,7 +12,7 @@ function CabExtract() {
 * @param {SetupWizard} wizard setup wizard
 * @returns {CabExtract} CabExtract object
 */
-CabExtract.prototype.wizard = function (wizard) {
+CabExtract.prototype.wizard = function(wizard) {
     this._wizard = wizard;
     return this;
 }
@@ -22,7 +22,7 @@ CabExtract.prototype.wizard = function (wizard) {
 * @param {string} archive archive which shall be extracted
 * @returns {CabExtract} CabExtract object
 */
-CabExtract.prototype.archive = function (archive) {
+CabExtract.prototype.archive = function(archive) {
     this._archive = archive;
     return this;
 }
@@ -32,7 +32,7 @@ CabExtract.prototype.archive = function (archive) {
 * @param {string} progressMessage progress message
 * @returns {CabExtract} CabExtract object
 */
-CabExtract.prototype.message = function (progressMessage) {
+CabExtract.prototype.message = function(progressMessage) {
     this._progressMessage = progressMessage;
     return this;
 }
@@ -42,7 +42,7 @@ CabExtract.prototype.message = function (progressMessage) {
 * @param {string} destination place where the archive shall be extracted
 * @returns {CabExtract} CabExtract object
 */
-CabExtract.prototype.to = function (destination) {
+CabExtract.prototype.to = function(destination) {
     this._destination = destination;
     return this;
 }
@@ -52,7 +52,7 @@ CabExtract.prototype.to = function (destination) {
 * @param {string} args arguments for the extraction
 * @returns {void}
 */
-CabExtract.prototype.extract = function (args) {
+CabExtract.prototype.extract = function(args) {
     if (!this._progressMessage) {
         this._progressMessage = tr("Please wait while {0} is extracted ...", this._archive);
     }
@@ -89,7 +89,7 @@ function Extractor() {
 * @param {SetupWizard} wizard setup wizard
 * @returns {Extractor} Extractor object
 */
-Extractor.prototype.wizard = function (wizard) {
+Extractor.prototype.wizard = function(wizard) {
     this._wizard = wizard;
     return this;
 }
@@ -99,7 +99,7 @@ Extractor.prototype.wizard = function (wizard) {
 * @param {string} archive archive which shall be extracted
 * @returns {Extractor} Extractor object
 */
-Extractor.prototype.archive = function (archive) {
+Extractor.prototype.archive = function(archive) {
     this._archive = archive;
     return this;
 }
@@ -109,7 +109,7 @@ Extractor.prototype.archive = function (archive) {
 * @param {string} progressMessage progress message
 * @returns {Extractor} Extractor object
 */
-Extractor.prototype.message = function (progressMessage) {
+Extractor.prototype.message = function(progressMessage) {
     this._progressMessage = progressMessage;
     return this;
 }
@@ -119,7 +119,7 @@ Extractor.prototype.message = function (progressMessage) {
 * @param {string} destination place where the archive shall be extracted
 * @returns {Extractor} Extractor object
 */
-Extractor.prototype.to = function (destination) {
+Extractor.prototype.to = function(destination) {
     this._destination = destination;
     return this;
 }
@@ -128,7 +128,7 @@ Extractor.prototype.to = function (destination) {
 * extracts archive
 * @returns {void}
 */
-Extractor.prototype.extract = function () {
+Extractor.prototype.extract = function() {
     if (!this._progressMessage) {
         this._progressMessage = tr("Please wait while {0} is extracted ...", this._archive);
     }
@@ -136,7 +136,7 @@ Extractor.prototype.extract = function () {
     var progressBar = this._wizard.progressBar(this._progressMessage);
 
     mkdir(this._destination);
-    this._extractor.uncompress(this._archive, this._destination, function (progress) {
+    this._extractor.uncompress(this._archive, this._destination, function(progress) {
         progressBar.accept(progress);
     });
 }

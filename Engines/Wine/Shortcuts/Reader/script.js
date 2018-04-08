@@ -79,7 +79,7 @@ function ShortcutReader() {
 * @param {string} shortcut shortcut
 * @returns {void}
 */
-ShortcutReader.prototype.of = function (shortcut) {
+ShortcutReader.prototype.of = function(shortcut) {
     this.shortcut = shortcut;
     var shortcutContentParsed = JSON.parse(this.shortcut.script);
 
@@ -93,7 +93,7 @@ ShortcutReader.prototype.of = function (shortcut) {
 * @param {array} userArguments arguments
 * @returns {void}
 */
-ShortcutReader.prototype.run = function (userArguments) {
+ShortcutReader.prototype.run = function(userArguments) {
     this._runner.run(userArguments);
 }
 
@@ -101,7 +101,7 @@ ShortcutReader.prototype.run = function (userArguments) {
 * stops running shortcut
 * @returns {void}
 */
-ShortcutReader.prototype.stop = function () {
+ShortcutReader.prototype.stop = function() {
     this._runner.stop();
 }
 
@@ -109,7 +109,7 @@ ShortcutReader.prototype.stop = function () {
 * uninstalls shortcut
 * @returns {void}
 */
-ShortcutReader.prototype.uninstall = function () {
+ShortcutReader.prototype.uninstall = function() {
     this._runner.uninstall();
 }
 
@@ -117,6 +117,6 @@ ShortcutReader.prototype.uninstall = function () {
 * returns container of shortcut
 * @returns {string} container
 */
-ShortcutReader.prototype.container = function () {
+ShortcutReader.prototype.container = function() {
     return this._runner.container();
 }

@@ -7,7 +7,7 @@ new SteamScript()
     .editor("Triangle Studios")
     .author("madoar")
     .appId(342620)
-    .preInstall(function (wine/*, wizard*/) {
+    .preInstall(function(wine/*, wizard*/) {
         wine.d3dx10();
     })
     .go();

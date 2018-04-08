@@ -11,7 +11,7 @@ function AppResource() {
 * @param {string} application application of the resource
 * @returns {AppResource} AppResource object
 */
-AppResource.prototype.application = function (application) {
+AppResource.prototype.application = function(application) {
     this._application = application;
     return this;
 }
@@ -21,7 +21,7 @@ AppResource.prototype.application = function (application) {
 * @param {string} resourceName name of the resource
 * @returns {Resource} found resource
 */
-AppResource.prototype.get = function (resourceName) {
+AppResource.prototype.get = function(resourceName) {
     var application = this._appsManager.getApplication(this._application);
     var foundResource = null;
     if (application != null && application.resources != null) {
