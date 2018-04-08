@@ -24,7 +24,7 @@ ConfigureWine.prototype.run = function (container) {
 * @param {String} container name
 * @returns {void}
 */
-function run(container) {
+function run(container) { // eslint-disable-line no-unused-vars
     var tool = new ConfigureWine();
     tool.run(container);
 }
