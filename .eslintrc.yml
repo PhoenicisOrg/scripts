@@ -10,6 +10,9 @@ rules:
   comma-spacing:
     - 2
     - {before: false, after: true}
+  keyword-spacing:
+    - 2
+    - {before: true, after: true}
   no-trailing-spaces: 2
   indent:
     - 2

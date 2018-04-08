@@ -19,7 +19,7 @@ var _WineShortcutReader = function(shortcut) {
     this.run = function(userArguments) {
         var shortcutContent = JSON.parse(this.shortcut.script);
 
-        if(!userArguments) {
+        if (!userArguments) {
             userArguments = [];
         }
 
@@ -50,7 +50,7 @@ var _WineShortcutReader = function(shortcut) {
             shortcutCategory.getShortcuts().forEach(function(shortcut) {
                 var _otherShortcutContent = JSON.parse(shortcut.script);
 
-                if(_otherShortcutContent.winePrefix == _winePrefix && shortcut.name != that.shortcut.name) {
+                if (_otherShortcutContent.winePrefix == _winePrefix && shortcut.name != that.shortcut.name) {
                     _found = true;
                 }
             });
@@ -58,7 +58,7 @@ var _WineShortcutReader = function(shortcut) {
 
         this._shortcutManager.deleteShortcut(this.shortcut);
 
-        if(!_found) {
+        if (!_found) {
             this._uiQuestionFactory.create(tr("The container {0} is no longer used.\nDo you want to delete it?", _winePrefix),
                 function() {
                     remove(that._winePrefixesDirectory + _winePrefix);
@@ -83,7 +83,7 @@ ShortcutReader.prototype.of = function (shortcut) {
     this.shortcut = shortcut;
     var shortcutContentParsed = JSON.parse(this.shortcut.script);
 
-    if(shortcutContentParsed.type == "WINE") {
+    if (shortcutContentParsed.type == "WINE") {
         this._runner = new _WineShortcutReader(this.shortcut);
     }
 }

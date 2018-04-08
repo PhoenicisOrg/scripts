@@ -92,7 +92,7 @@ Resource.prototype.get = function () {
             .method(this._algorithm)
             .get();
 
-        if(fileChecksum == this._checksum) {
+        if (fileChecksum == this._checksum) {
             return resourcePath;
         }
     }

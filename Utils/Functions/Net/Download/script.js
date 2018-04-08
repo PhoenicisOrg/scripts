@@ -97,7 +97,7 @@ Downloader.prototype.get = function () {
         this._message = tr("Please wait while {0} is downloaded ...", this._fetchFileNameFromUrl(this._url));
     }
 
-    if(this._wizard) {
+    if (this._wizard) {
         var progressBar = this._wizard.progressBar(this._message);
     }
 

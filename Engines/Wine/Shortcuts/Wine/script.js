@@ -93,10 +93,10 @@ WineShortcut.prototype.prefix = function (prefix) {
 * @returns {WineShortcut} WineShortcut object
 */
 WineShortcut.prototype.miniature = function (miniature) {
-    if(isArray(miniature)) {
+    if (isArray(miniature)) {
         // application of miniature given
         var application = this._appsManager.getApplication(miniature);
-        if(application != null && application.getMainMiniature().isPresent()) {
+        if (application != null && application.getMainMiniature().isPresent()) {
             this._miniature = application.getMainMiniature().get();
         }
     } else {
@@ -138,7 +138,7 @@ WineShortcut.prototype.create = function () {
             executable: executables[0].getAbsolutePath()
         }));
 
-    if(this._miniature) {
+    if (this._miniature) {
         builder.withMiniature(this._miniature);
     }
 

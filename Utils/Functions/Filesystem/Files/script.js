@@ -150,12 +150,12 @@ Checksum.prototype.of = function (file) {
 * @returns {string} calculated checksum
 */
 Checksum.prototype.get = function () {
-    if(this._wizard) {
+    if (this._wizard) {
         var progressBar = this._wizard.progressBar(tr("Checking file consistency ..."));
     }
 
     return this._checksumCalculator.calculate(this._file, this._method, function (progressEntity) {
-        if(progressBar) {
+        if (progressBar) {
             progressBar.accept(progressEntity);
         }
     });

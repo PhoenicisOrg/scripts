@@ -201,11 +201,11 @@ Wine.prototype.run = function (executable, args, captureOutput) {
 
     var extensionFile = executable.split(".").pop();
 
-    if(extensionFile == "msi") {
+    if (extensionFile == "msi") {
         return this.run("msiexec", ["/i", executable].concat(args), captureOutput);
     }
 
-    if(extensionFile == "bat") {
+    if (extensionFile == "bat") {
         return this.run("start", ["/Unix", executable].concat(args), captureOutput);
     }
 
@@ -849,7 +849,7 @@ Wine.prototype.windowsVersion = function (version, servicePack) {
         "[HKEY_CURRENT_USER\\Software\\Wine]\n" +
         "\"Version\"=\"" + version + "\"\n";
 
-    if(servicePack) {
+    if (servicePack) {
         var servicePackNumber = servicePack.replace("sp", "");
         that._regeditFileContent += "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion]";
         that._regeditFileContent += "\"CSDVersion\"=\"Service Pack "+ servicePackNumber +"\"";

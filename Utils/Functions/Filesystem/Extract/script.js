@@ -57,12 +57,12 @@ CabExtract.prototype.extract = function (args) {
         this._progressMessage = tr("Please wait while {0} is extracted ...", this._archive);
     }
 
-    if(this._wizard) {
+    if (this._wizard) {
         var progressBar = this._wizard.progressBar(this._progressMessage);
     }
 
     var processArguments;
-    if(args) {
+    if (args) {
         processArguments = ["cabextract"].concat(args).concat([this._archive]);
     } else {
         processArguments = ["cabextract", this._archive];
