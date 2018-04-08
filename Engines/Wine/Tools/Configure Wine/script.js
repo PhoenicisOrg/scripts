@@ -17,3 +17,12 @@ ConfigureWine.prototype.run = function (container) {
         .run("winecfg")
         .wait();
 };
+
+/**
+* runs the ConfigureWine tool
+* @param {String} container name
+*/
+function run(container) {
+    var tool = new ConfigureWine();
+    tool.run(container);
+}

@@ -17,3 +17,12 @@ KillWineProcesses.prototype.run = function (container) {
         .run("kill")
         .wait();
 };
+
+/**
+* runs the KillWineProcesses tool
+* @param {String} container name
+*/
+function run(container) {
+    var tool = new KillWineProcesses();
+    tool.run(container);
+}

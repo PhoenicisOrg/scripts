@@ -17,3 +17,12 @@ WineConsole.prototype.run = function (container) {
         .run("wineconsole")
         .wait();
 };
+
+/**
+* runs the WineConsole tool
+* @param {String} container name
+*/
+function run(container) {
+    var tool = new WineConsole();
+    tool.run(container);
+}

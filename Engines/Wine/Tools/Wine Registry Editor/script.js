@@ -17,3 +17,12 @@ WineRegistryEditor.prototype.run = function (container) {
         .run("regedit")
         .wait();
 };
+
+/**
+* runs the WineRegistryEditor tool
+* @param {String} container name
+*/
+function run(container) {
+    var tool = new WineRegistryEditor();
+    tool.run(container);
+}

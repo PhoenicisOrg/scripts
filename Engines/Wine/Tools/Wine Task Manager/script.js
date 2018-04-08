@@ -17,3 +17,12 @@ WineTaskManager.prototype.run = function (container) {
         .run("taskmgr")
         .wait();
 };
+
+/**
+* runs the WineTaskManager tool
+* @param {String} container name
+*/
+function run(container) {
+    var tool = new WineTaskManager();
+    tool.run(container);
+}

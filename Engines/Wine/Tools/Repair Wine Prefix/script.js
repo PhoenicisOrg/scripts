@@ -17,3 +17,12 @@ RepairWinePrefix.prototype.run = function (container) {
         .run("wineboot")
         .wait();
 };
+
+/**
+* runs the RepairWinePrefix tool
+* @param {String} container name
+*/
+function run(container) {
+    var tool = new RepairWinePrefix();
+    tool.run(container);
+}

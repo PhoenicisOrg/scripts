@@ -20,3 +20,12 @@ WineTerminalOpener.prototype.run = function (container) {
     environment["PATH"] = wine.binPath() + ":$PATH";
     this._TerminalOpener.openTerminal(wine.prefixDirectory, environment);
 };
+
+/**
+* runs the WineTerminalOpener tool
+* @param {String} container name
+*/
+function run(container) {
+    var tool = new WineTerminalOpener();
+    tool.run(container);
+}

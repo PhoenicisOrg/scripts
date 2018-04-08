@@ -17,3 +17,12 @@ RebootWine.prototype.run = function (container) {
         .run("wineboot")
         .wait();
 };
+
+/**
+* runs the RebootWine tool
+* @param {String} container name
+*/
+function run(container) {
+    var tool = new RebootWine();
+    tool.run(container);
+}
