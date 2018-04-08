@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/PhoenicisOrg/Scripts.svg?branch=master)](https://travis-ci.org/PhoenicisOrg/Scripts)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ec5268b4e2c0412ead8d90e561795fd1)](https://app.codacy.com/app/PhoenicisOrg/Scripts?utm_source=github.com&utm_medium=referral&utm_content=PhoenicisOrg/Scripts&utm_campaign=badger)
+[![Build Status](https://travis-ci.org/PhoenicisOrg/scripts.svg?branch=master)](https://travis-ci.org/PhoenicisOrg/scripts)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ff0c41daa31549e4a9bb3998ca0c87ae)](https://www.codacy.com/app/PhoenicisOrg/scripts?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=PhoenicisOrg/scripts&amp;utm_campaign=Badge_Grade)
 [![Crowdin Badge](https://d322cqt584bo4o.cloudfront.net/phoenicis-scripts/localized.svg)](https://crowdin.com/project/phoenicis-scripts)
 
 # How to add a script
@@ -31,8 +31,8 @@
     Even if the application name contains ®, ™ or the like, you should not use it in the folder name.
 
 3. Fill the files:
-  * [script.js](https://github.com/PlayOnLinux/Scripts/wiki/script.js): actual installation script
-  * [script.json](https://github.com/PlayOnLinux/Scripts/wiki/script.json): describes the installation script
+  * [script.js](https://phoenicisorg.github.io/scripts/script-js): actual installation script
+  * [script.json](https://phoenicisorg.github.io/scripts/script-json): describes the installation script
   ```json
   {
 		"scriptName": "Online",
@@ -43,7 +43,7 @@
   }
   ```
   * main.png: application icon (400px x 300px)
-  * [application.json](https://github.com/PlayOnLinux/Scripts/wiki/application.json): describes the application
+  * [application.json](https://phoenicisorg.github.io/scripts/application-json): describes the application
   ```json
   {
  		"name":	"Steam",

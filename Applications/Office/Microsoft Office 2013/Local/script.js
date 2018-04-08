@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
+include(["engines", "wine", "quick_script", "local_installer_script"]);
 
 new LocalInstallerScript()
     .name("Microsoft Office 2013")
@@ -10,7 +10,7 @@ new LocalInstallerScript()
     .category("Office")
     // exe set with WineShorcut
     .postInstall(function(wine/*, wizard*/) {
-         wine.overrideDLL()
+        wine.overrideDLL()
             .set("native, builtin", ["riched20"])
             .do();
 

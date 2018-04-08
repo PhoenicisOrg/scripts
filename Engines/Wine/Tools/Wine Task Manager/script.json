@@ -1,0 +1,8 @@
+{
+  	"scriptName": "Task manager",
+	"id": "wine_task_manager",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

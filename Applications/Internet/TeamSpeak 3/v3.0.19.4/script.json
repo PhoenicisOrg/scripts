@@ -1,5 +1,6 @@
 {
 	"scriptName": "v3.0.19.4",
+	"id": "v3_0_19_4",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": [],
 	"free": true,

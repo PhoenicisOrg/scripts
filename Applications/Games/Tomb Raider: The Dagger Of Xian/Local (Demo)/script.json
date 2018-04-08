@@ -1,5 +1,6 @@
 {
 	"scriptName": "Local (Demo)",
+	"id": "local_demo",
 	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 	"testingOperatingSystems": ["MACOSX", "LINUX"],
 	"free": true,

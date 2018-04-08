@@ -1,7 +1,7 @@
-include(["Utils", "Functions", "Filesystem", "Files"]);
-include(["Utils", "Functions", "Filesystem", "Extract"]);
-include(["Utils", "Functions", "Net", "Download"]);
-include(["Utils", "Functions", "Net", "Resource"]);
+include(["utils", "functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "extract"]);
+include(["utils", "functions", "net", "download"]);
+include(["utils", "functions", "net", "resource"]);
 
 LATEST_STABLE_VERSION = "3.0";
 LATEST_DEVELOPMENT_VERSION = "3.4";
@@ -201,11 +201,11 @@ Wine.prototype.run = function (executable, args, captureOutput) {
 
     var extensionFile = executable.split(".").pop();
 
-    if(extensionFile == "msi") {
+    if (extensionFile == "msi") {
         return this.run("msiexec", ["/i", executable].concat(args), captureOutput);
     }
 
-    if(extensionFile == "bat") {
+    if (extensionFile == "bat") {
         return this.run("start", ["/Unix", executable].concat(args), captureOutput);
     }
 
@@ -238,7 +238,7 @@ Wine.prototype.run = function (executable, args, captureOutput) {
         environment.put("WINEDEBUG", this._wineDebug);
     }
 
-   if (this._architecture == "amd64") {
+    if (this._architecture == "amd64") {
         this._ldPath = this._fetchLocalDirectory() + "/lib64/:" + this._ldPath
     } else {
         this._ldPath = this._fetchLocalDirectory() + "/lib/:" + this._ldPath
@@ -675,7 +675,7 @@ Wine.prototype.setVersionGL = function (major, minor) {
         "REGEDIT4\n" +
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-        "\"MaxVersionGL\"=dword:000"+ major + "000" + minor 
+        "\"MaxVersionGL\"=dword:000"+ major + "000" + minor
     this.regedit().patch(regeditFileContent);
     return this;
 };
@@ -704,7 +704,7 @@ Wine.prototype.UseGLSL = function (mode) {
         "REGEDIT4\n" +
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-        "\"UseGLSL\"=\"" + mode + "\"" 
+        "\"UseGLSL\"=\"" + mode + "\""
     this.regedit().patch(regeditFileContent);
     return this;
 };
@@ -849,7 +849,7 @@ Wine.prototype.windowsVersion = function (version, servicePack) {
         "[HKEY_CURRENT_USER\\Software\\Wine]\n" +
         "\"Version\"=\"" + version + "\"\n";
 
-    if(servicePack) {
+    if (servicePack) {
         var servicePackNumber = servicePack.replace("sp", "");
         that._regeditFileContent += "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion]";
         that._regeditFileContent += "\"CSDVersion\"=\"Service Pack "+ servicePackNumber +"\"";

@@ -1,5 +1,5 @@
-include(["Engines", "Wine", "QuickScript", "SteamScript"]);
-include(["Engines", "Wine", "Verbs", "vcrun2008"]);
+include(["engines", "wine", "quick_script", "steam_script"]);
+include(["engines", "wine", "verbs", "vcrun2008"]);
 
 new SteamScript()
     .name("Quantum Conundrum")

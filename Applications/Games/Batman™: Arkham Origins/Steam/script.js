@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "QuickScript", "SteamScript"]);
+include(["engines", "wine", "quick_script", "steam_script"]);
 
 new SteamScript()
     .name("Batman™: Arkham Origins")
@@ -10,5 +10,5 @@ new SteamScript()
         wine.enableCSMT();
         //maybe needs xact
     })
-    .appId(209000)               
+    .appId(209000)
     .go();

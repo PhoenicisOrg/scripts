@@ -1,6 +1,10 @@
-include(["Engines", "Wine", "Engine", "Object"]);
-include(["Utils", "Functions", "Net", "Resource"]);
+include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "net", "resource"]);
 
+/**
+* Verb to install D3DX9
+* @returns {Wine} Wine object
+*/
 Wine.prototype.d3dx9 = function () {
     var that = this;
 

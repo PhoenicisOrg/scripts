@@ -1,7 +1,11 @@
-include(["Engines", "Wine", "Engine", "Object"]);
-include(["Utils", "Functions", "Net", "Resource"]);
-include(["Engines", "Wine", "Verbs", "luna"]);
+include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "net", "resource"]);
+include(["engines", "wine", "verbs", "luna"]);
 
+/**
+* Verb to install vcrun2008
+* @returns {Wine} Wine object
+*/
 Wine.prototype.vcrun2008 = function() {
     var setupFile32 = new Resource()
         .wizard(this._wizard)

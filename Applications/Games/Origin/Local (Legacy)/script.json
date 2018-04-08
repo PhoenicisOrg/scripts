@@ -1,5 +1,6 @@
 {
   	"scriptName": "Local (Legacy)",
+	"id": "local_legacy",
   	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
   	"testingOperatingSystems": [],
   	"free": true,

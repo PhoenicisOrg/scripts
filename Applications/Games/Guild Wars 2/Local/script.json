@@ -1,5 +1,6 @@
 {
   	"scriptName": "Local",
+  	"id": "local",
   	"compatibleOperatingSystems": ["LINUX"],
   	"testingOperatingSystems": [],
   	"free": true,

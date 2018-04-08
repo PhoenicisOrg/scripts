@@ -1,6 +1,10 @@
-include(["Engines", "Wine", "Engine", "Object"]);
-include(["Utils", "Functions", "Net", "Resource"]);
+include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "net", "resource"]);
 
+/**
+* Verb to install mfc42.dll and mfc42u.dll
+* @returns {Wine} Wine object
+*/
 Wine.prototype.mfc42 = function() {
     var setupFile = new Resource()
         .wizard(this._wizard)

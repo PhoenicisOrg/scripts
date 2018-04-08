@@ -1,0 +1,8 @@
+{
+	"scriptName": "PhysX",
+	"id": "physx",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

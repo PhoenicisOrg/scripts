@@ -1,5 +1,5 @@
-include(["Engines", "Wine", "QuickScript", "SteamScript"]);
-include(["Engines", "Wine", "Verbs", "uplay"]);
+include(["engines", "wine", "quick_script", "steam_script"]);
+include(["engines", "wine", "verbs", "uplay"]);
 
 new SteamScript()
     .name("Rayman® Legends (Demo)")
