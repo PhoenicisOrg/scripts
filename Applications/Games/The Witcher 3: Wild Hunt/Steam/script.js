@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
-include(["Utils", "Functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "files"]);
 
 new SteamScript()
     .name("The Witcher 3: Wild Hunt")
@@ -17,4 +17,4 @@ new SteamScript()
         wine.UseGLSL("enabled");
         wine.DirectDrawRenderer("opengl");
     })
-    .go(); 
+    .go();

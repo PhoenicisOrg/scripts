@@ -1,10 +1,10 @@
 include(["engines", "wine", "quick_script", "local_installer_script"]);
 
 new LocalInstallerScript()
-    .name("Microsoft Office 2010")                       
-    .editor("Microsoft")                              
-    .author("ImperatorS79")                     
-    .category("Office")                           
+    .name("Microsoft Office 2010")
+    .editor("Microsoft")
+    .author("ImperatorS79")
+    .category("Office")
     // exe set with WineShorcut
     .postInstall(function(wine/*, wizard*/) {
         wine.overrideDLL()

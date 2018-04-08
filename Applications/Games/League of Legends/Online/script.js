@@ -1,7 +1,7 @@
 include(["engines", "wine", "quick_script", "custom_installer_script"]);
-include(["Engines", "Wine", "Shortcuts", "Wine"]);
-include(["Engines", "Wine", "Verbs", "sandbox"]);
-include(["Engines", "Wine", "Verbs", "d3dx9"]);
+include(["engines", "wine", "shortcuts", "wine"]);
+include(["engines", "wine", "verbs", "sandbox"]);
+include(["engines", "wine", "verbs", "d3dx9"]);
 
 // Installs League of Legends
 
@@ -102,7 +102,7 @@ new CustomInstallerScript()
         /////////////////////////////////////////
         var client = wine.prefixDirectory + "drive_c/LoL/run.bat";
         var batContent = "start C:\\LoL\\LeagueClient.exe";
-        writeToFile(client, batContent); 
+        writeToFile(client, batContent);
     })
     .executable("run.bat")
     .go();

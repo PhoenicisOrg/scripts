@@ -1,12 +1,12 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
-include(["Engines", "Wine", "Verbs", "corefonts"]);
-include(["Engines", "Wine", "Verbs", "dotnet452"]);
-include(["Engines", "Wine", "Verbs", "vcrun2012"]);
-include(["Engines", "Wine", "Verbs", "quartz"]);
+include(["engines", "wine", "verbs", "corefonts"]);
+include(["engines", "wine", "verbs", "dotnet452"]);
+include(["engines", "wine", "verbs", "vcrun2012"]);
+include(["engines", "wine", "verbs", "quartz"]);
 
 new SteamScript()
-    .name("Elite:Dangerous")             
-    .editor("Frontier Developments")     
+    .name("Elite:Dangerous")
+    .editor("Frontier Developments")
     .author("ImperatorS79")
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
@@ -18,5 +18,5 @@ new SteamScript()
         wine.vcrun2012();
         wine.enableCSMT();
     })
-    .appId(359320)               
-    .go(); 
+    .appId(359320)
+    .go();

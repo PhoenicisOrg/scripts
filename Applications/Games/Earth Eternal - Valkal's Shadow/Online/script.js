@@ -1,7 +1,7 @@
 include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["Engines", "Wine", "Verbs", "corefonts"]);
-include(["Engines", "Wine", "Verbs", "d3dx9"]);
-include(["Engines", "Wine", "Verbs", "vcrun2008"]);
+include(["engines", "wine", "verbs", "corefonts"]);
+include(["engines", "wine", "verbs", "d3dx9"]);
+include(["engines", "wine", "verbs", "vcrun2008"]);
 
 new OnlineInstallerScript()
     .name("Earth Eternal - Valkal's Shadow")
