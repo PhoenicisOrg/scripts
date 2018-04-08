@@ -1,0 +1,8 @@
+{
+	"scriptName": "DXVK",
+	"id": "DXVK",
+	"compatibleOperatingSystems": ["LINUX"],
+	"testingOperatingSystems": ["LINUX"],
+	"free": true,
+	"requiresPatch": false
+} 
