@@ -5,7 +5,7 @@ include(["utils", "functions", "net", "resource"]);
 * Verb to install Uplay
 * @returns {Wine} Wine object
 */
-Wine.prototype.uplay = function() {
+Wine.prototype.uplay = function () {
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UplayInstaller.exe")

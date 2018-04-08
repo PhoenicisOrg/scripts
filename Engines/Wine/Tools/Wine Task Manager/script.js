@@ -4,7 +4,7 @@ include(["engines", "wine", "engine", "object"]);
  * tool to open the Wine task manager
  * @constructor
  */
-var WineTaskManager = function() {
+var WineTaskManager = function () {
 };
 
 /**

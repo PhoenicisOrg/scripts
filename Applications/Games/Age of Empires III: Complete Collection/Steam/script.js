@@ -6,7 +6,7 @@ new SteamScript()
     .editor("Microsoft Studios")
     .author("Quentin PARIS")
     .appId(105450)
-    .postInstall(function(wine/*, wizard*/) {
+    .postInstall(function (wine/*, wizard*/) {
         wine.mfc42();
         wine.overrideDLL()
             .set("native, builtin", ["pidgen"])

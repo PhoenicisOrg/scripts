@@ -6,7 +6,7 @@ include(["engines", "wine", "verbs", "luna"]);
 * Verb to install corefonts
 * @returns {Wine} Wine object
 */
-Wine.prototype.corefonts = function() {
+Wine.prototype.corefonts = function () {
     var fontResources =
     [
         new Resource()
@@ -86,7 +86,7 @@ Wine.prototype.corefonts = function() {
     var numInstalledFonts = 0;
 
     var that = this;
-    fontResources.forEach(function(fontResource) {
+    fontResources.forEach(function (fontResource) {
         progressBar.setText(tr("Installing {0} ...", tr("fonts")));
         progressBar.setProgressPercentage(numInstalledFonts * 100 / fontResources.length);
 

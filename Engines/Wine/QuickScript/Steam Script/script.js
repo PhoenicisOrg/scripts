@@ -18,12 +18,12 @@ SteamScript.prototype = Object.create(QuickScript.prototype);
 
 SteamScript.prototype.constructor = SteamScript;
 
-SteamScript.prototype.appId = function(appId) {
+SteamScript.prototype.appId = function (appId) {
     this._appId = appId;
     return this;
 };
 
-SteamScript.prototype.gameOverlay = function(gameOverlay) {
+SteamScript.prototype.gameOverlay = function (gameOverlay) {
     // get
     if (arguments.length == 0) {
         return this._gameOverlay;
@@ -34,7 +34,7 @@ SteamScript.prototype.gameOverlay = function(gameOverlay) {
     return this;
 };
 
-SteamScript.prototype.manifest = function(wine) {
+SteamScript.prototype.manifest = function (wine) {
     if (!this._manifest) {
         // cache manifest path (will not change during the installation)
         this._manifest = wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf";
@@ -42,7 +42,7 @@ SteamScript.prototype.manifest = function(wine) {
     return this._manifest;
 };
 
-SteamScript.prototype.downloadStarted = function(wine) {
+SteamScript.prototype.downloadStarted = function (wine) {
     if (fileExists(this.manifest(wine)))
     {
         var manifest = cat(this.manifest(wine));
@@ -55,7 +55,7 @@ SteamScript.prototype.downloadStarted = function(wine) {
     }
 };
 
-SteamScript.prototype.downloadFinished = function(wine) {
+SteamScript.prototype.downloadFinished = function (wine) {
     // check if download already finished (download folder has been deleted)
     if (fileExists(this.manifest(wine)))
     {
@@ -69,7 +69,7 @@ SteamScript.prototype.downloadFinished = function(wine) {
     }
 };
 
-SteamScript.prototype.go = function() {
+SteamScript.prototype.go = function () {
     // default application homepage if not specified
     if (!this._applicationHomepage) {
         this._applicationHomepage = "http://store.steampowered.com/app/" + this._appId;

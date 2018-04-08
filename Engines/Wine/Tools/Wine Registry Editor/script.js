@@ -4,7 +4,7 @@ include(["engines", "wine", "engine", "object"]);
  * tool to open the Wine registry editor
  * @constructor
  */
-var WineRegistryEditor = function() {
+var WineRegistryEditor = function () {
 };
 
 /**

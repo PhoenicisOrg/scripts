@@ -25,7 +25,7 @@ AppResource.prototype.get = function (resourceName) {
     var application = this._appsManager.getApplication(this._application);
     var foundResource = null;
     if (application != null && application.resources != null) {
-        application.resources.forEach(function(resource) {
+        application.resources.forEach(function (resource) {
             if (resource.name == resourceName) {
                 foundResource = resource.content;
             }

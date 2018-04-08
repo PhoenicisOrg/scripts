@@ -4,7 +4,7 @@ include(["engines", "wine", "engine", "object"]);
  * tool to uninstall Wine
  * @constructor
  */
-var WineUninstaller = function() {
+var WineUninstaller = function () {
 };
 
 /**

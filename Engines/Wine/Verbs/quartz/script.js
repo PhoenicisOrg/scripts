@@ -6,7 +6,7 @@ include(["utils", "functions", "filesystem", "files"]);
 * Verb to install quartz
 * @returns {Wine} Wine object
 */
-Wine.prototype.quartz = function(){
+Wine.prototype.quartz = function (){
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("https://download.microsoft.com/download/E/E/1/EE17FF74-6C45-4575-9CF4-7FC2597ACD18/directx_feb2010_redist.exe")

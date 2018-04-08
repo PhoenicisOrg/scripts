@@ -6,7 +6,7 @@ new SteamScript()
     .author("ImperatorS79")
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .postInstall(function(wine, wizard) {
+    .postInstall(function (wine, wizard) {
         wine.enableCSMT();
         //maybe needs xact
     })

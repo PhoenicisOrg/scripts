@@ -4,7 +4,7 @@ include(["engines", "wine", "engine", "object"]);
  * tool to open a Wine console
  * @constructor
  */
-var WineConsole = function() {
+var WineConsole = function () {
 };
 
 /**

@@ -7,7 +7,7 @@ include(["engines", "wine", "verbs", "luna"]);
 * Verb to install vcrun2003
 * @returns {Wine} Wine object
 */
-Wine.prototype.vcrun2003 = function() {
+Wine.prototype.vcrun2003 = function () {
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("https://sourceforge.net/projects/bzflag/files/bzedit%20win32/1.6.5/BZEditW32_1.6.5.exe")

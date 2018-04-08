@@ -4,7 +4,7 @@ include(["engines", "wine", "engine", "object"]);
  * tool to reboot Wine
  * @constructor
  */
-var RebootWine = function() {
+var RebootWine = function () {
 };
 
 /**

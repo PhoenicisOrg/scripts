@@ -5,7 +5,7 @@ new SteamScript()
     .editor("Red Storm Entertainment")
     .author("ImperatorS79")
     .appId(19830)
-    .postInstall(function(wine/*, wizard*/) {
+    .postInstall(function (wine/*, wizard*/) {
         wine.setVirtualDesktop(1280, 1024);
     })
     .go();

@@ -13,7 +13,7 @@ InstallerScript.prototype = Object.create(QuickScript.prototype);
 
 InstallerScript.prototype.constructor = InstallerScript;
 
-InstallerScript.prototype.go = function() {
+InstallerScript.prototype.go = function () {
     this._name = this._name || "Custom Installer";
 
     var setupWizard = SetupWizard(InstallationType.APPS, this._name, this.miniature());

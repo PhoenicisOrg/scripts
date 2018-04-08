@@ -8,9 +8,9 @@ include(["utils", "functions", "net", "resource"]);
 Wine.prototype.d3dx9 = function () {
     var that = this;
 
-    var extractDirectXtoSystemDirectory = function(progressBar, filesToExtract, destination, pattern) {
+    var extractDirectXtoSystemDirectory = function (progressBar, filesToExtract, destination, pattern) {
         var numberOfExtractedFiles = 0;
-        filesToExtract.forEach(function(cabFile) {
+        filesToExtract.forEach(function (cabFile) {
             print(tr("Extracting {0} ...", cabFile));
             progressBar.setText(tr("Extracting {0} ...", "DirectX 9"));
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);

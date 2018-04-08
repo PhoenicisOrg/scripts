@@ -1,6 +1,6 @@
 include(["engines", "wine", "engine", "object"]);
 
-var _WineShortcutReader = function(shortcut) {
+var _WineShortcutReader = function (shortcut) {
     var that = this;
     that._shortcutManager = Bean("shortcutManager");
     that._libraryManager = Bean("libraryManager");
@@ -9,14 +9,14 @@ var _WineShortcutReader = function(shortcut) {
 
     this.shortcut = shortcut;
 
-    this.wineprefix = function() {
+    this.wineprefix = function () {
         var shortcutContent = JSON.parse(this.shortcut.script);
         return shortcutContent.winePrefix;
     };
 
     this.container = this.wineprefix;
 
-    this.run = function(userArguments) {
+    this.run = function (userArguments) {
         var shortcutContent = JSON.parse(this.shortcut.script);
 
         if (!userArguments) {
@@ -33,7 +33,7 @@ var _WineShortcutReader = function(shortcut) {
     };
 
 
-    this.stop = function() {
+    this.stop = function () {
         var shortcutContent = JSON.parse(this.shortcut.script);
 
         new Wine()
@@ -41,13 +41,13 @@ var _WineShortcutReader = function(shortcut) {
             .kill()
     };
 
-    this.uninstall = function() {
+    this.uninstall = function () {
         var shortcutContent = JSON.parse(this.shortcut.script);
         var _winePrefix = shortcutContent.winePrefix;
 
         var _found = false;
-        this._libraryManager.fetchShortcuts().forEach(function(shortcutCategory) {
-            shortcutCategory.getShortcuts().forEach(function(shortcut) {
+        this._libraryManager.fetchShortcuts().forEach(function (shortcutCategory) {
+            shortcutCategory.getShortcuts().forEach(function (shortcut) {
                 var _otherShortcutContent = JSON.parse(shortcut.script);
 
                 if (_otherShortcutContent.winePrefix == _winePrefix && shortcut.name != that.shortcut.name) {
@@ -60,7 +60,7 @@ var _WineShortcutReader = function(shortcut) {
 
         if (!_found) {
             this._uiQuestionFactory.create(tr("The container {0} is no longer used.\nDo you want to delete it?", _winePrefix),
-                function() {
+                function () {
                     remove(that._winePrefixesDirectory + _winePrefix);
                 });
         }

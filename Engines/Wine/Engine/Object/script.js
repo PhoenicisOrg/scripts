@@ -772,12 +772,12 @@ var SetManagedForApplication = function () {
         "REGEDIT4\n" +
         "\n";
 
-    that.wine = function(wine) {
+    that.wine = function (wine) {
         that._wine = wine;
         return that;
     };
 
-    that.set = function(application, managed) {
+    that.set = function (application, managed) {
         var managedYn = managed ? "Y" : "N";
 
         that._regeditFileContent += "[HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\" + application + "\\X11 Driver]\n";
@@ -786,13 +786,13 @@ var SetManagedForApplication = function () {
         return that;
     };
 
-    that.do =  function() {
+    that.do =  function () {
         that._wine.regedit().patch(that._regeditFileContent);
         return that._wine;
     }
 };
 
-Wine.prototype.setManagedForApplication = function() {
+Wine.prototype.setManagedForApplication = function () {
     return new SetManagedForApplication()
         .wine(this)
 };

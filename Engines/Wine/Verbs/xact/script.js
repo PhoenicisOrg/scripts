@@ -9,9 +9,9 @@ include(["utils", "functions", "filesystem", "files"]);
 Wine.prototype.xact = function () {
     var that = this;
 
-    var extractFiles = function(progressBar, filesToExtract, destination, pattern, directory) {
+    var extractFiles = function (progressBar, filesToExtract, destination, pattern, directory) {
         var numberOfExtractedFiles = 0;
-        filesToExtract.forEach(function(cabFile) {
+        filesToExtract.forEach(function (cabFile) {
             print(tr("Extracting {0} ...", cabFile));
             progressBar.setText(tr("Extracting {0} ...", "Xact"));
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
@@ -26,9 +26,9 @@ Wine.prototype.xact = function () {
     };
 
     //This function executes regsvr32 on the dlls present in dllToRegsvr
-    var regsvr32Xact = function(progressBar, dllToRegsvr) {
+    var regsvr32Xact = function (progressBar, dllToRegsvr) {
         var numberOfExtractedFiles = 0;
-        dllToRegsvr.forEach(function(dll) {
+        dllToRegsvr.forEach(function (dll) {
             print(tr("Registering {0} ...", dll));
             progressBar.setText(tr("Registering {0} ...", "Xact"));
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);

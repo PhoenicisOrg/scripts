@@ -13,17 +13,17 @@ ZipScript.prototype = Object.create(QuickScript.prototype);
 
 ZipScript.prototype.constructor = ZipScript;
 
-ZipScript.prototype.url = function(url) {
+ZipScript.prototype.url = function (url) {
     this._url = url;
     return this;
 };
 
-ZipScript.prototype.checksum = function(checksum) {
+ZipScript.prototype.checksum = function (checksum) {
     this._checksum = checksum;
     return this;
 };
 
-ZipScript.prototype.go = function() {
+ZipScript.prototype.go = function () {
     var setupWizard = SetupWizard(InstallationType.APPS, this._name, this.miniature());
 
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);

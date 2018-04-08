@@ -6,7 +6,7 @@ new LocalInstallerScript()
     .author("ImperatorS79")
     .category("Games")
     .executable("ravenshield.exe")
-    .postInstall(function(wine, wizard) {
+    .postInstall(function (wine, wizard) {
         var regions=[ "France", "England"];
         var selectedRegion = wizard.menu(tr("Select your region for the patch (1.0 to 1.60)."), regions);
         var exeName, url, sha1;

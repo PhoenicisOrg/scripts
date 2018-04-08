@@ -4,7 +4,7 @@ include(["engines", "wine", "engine", "object"]);
  * tool to repair a Wine prefix
  * @constructor
  */
-var RepairWinePrefix = function() {
+var RepairWinePrefix = function () {
 };
 
 /**

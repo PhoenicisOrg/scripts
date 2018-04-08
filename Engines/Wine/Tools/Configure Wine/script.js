@@ -4,7 +4,7 @@ include(["engines", "wine", "engine", "object"]);
  * tool to configure Wine
  * @constructor
  */
-var ConfigureWine = function() {
+var ConfigureWine = function () {
 };
 
 /**

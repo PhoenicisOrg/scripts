@@ -6,7 +6,7 @@ include(["engines", "wine", "verbs", "luna"]);
 * Verb to install Nvidia PhysX
 * @returns {Wine} Wine object
 */
-Wine.prototype.physx = function() {
+Wine.prototype.physx = function () {
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("http://uk.download.nvidia.com/Windows/9.14.0702/PhysX-9.14.0702-SystemSoftware.msi")
