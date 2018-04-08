@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["Engines", "Wine", "Verbs", "mspatcha"]);
+include(["engines", "wine", "verbs", "mspatcha"]);
 
 new OnlineInstallerScript()
     .name("Adobe Acrobat Reader DC")

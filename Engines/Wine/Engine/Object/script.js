@@ -1,5 +1,5 @@
-include(["Utils", "Functions", "filesystem", "files"]);
-include(["Utils", "Functions", "filesystem", "extract"]);
+include(["utils", "functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "extract"]);
 include(["utils", "functions", "net", "download"]);
 include(["utils", "functions", "net", "resource"]);
 
@@ -675,7 +675,7 @@ Wine.prototype.setVersionGL = function (major, minor) {
         "REGEDIT4\n" +
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-        "\"MaxVersionGL\"=dword:000"+ major + "000" + minor 
+        "\"MaxVersionGL\"=dword:000"+ major + "000" + minor
     this.regedit().patch(regeditFileContent);
     return this;
 };
@@ -704,7 +704,7 @@ Wine.prototype.UseGLSL = function (mode) {
         "REGEDIT4\n" +
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-        "\"UseGLSL\"=\"" + mode + "\"" 
+        "\"UseGLSL\"=\"" + mode + "\""
     this.regedit().patch(regeditFileContent);
     return this;
 };

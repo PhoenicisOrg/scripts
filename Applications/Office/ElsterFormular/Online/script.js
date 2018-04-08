@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["Engines", "Wine", "Verbs", "vcrun2013"]);
+include(["engines", "wine", "verbs", "vcrun2013"]);
 
 new LocalInstallerScript()
     .name("ElsterFormular")

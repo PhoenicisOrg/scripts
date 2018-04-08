@@ -1,6 +1,6 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
 
-include(["Engines", "Wine", "Verbs", "d3dx10"]);
+include(["engines", "wine", "verbs", "d3dx10"]);
 
 new SteamScript()
     .name("It came from space, and ate our brains")

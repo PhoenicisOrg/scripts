@@ -1,8 +1,8 @@
 include(["engines", "wine", "quick_script", "quick_script"]);
 include(["utils", "functions", "net", "download"]);
 include(["engines", "wine", "engine", "object"]);
-include(["Utils", "Functions", "filesystem", "extract"]);
-include(["Engines", "Wine", "Verbs", "luna"]);
+include(["utils", "functions", "filesystem", "extract"]);
+include(["engines", "wine", "verbs", "luna"]);
 
 
 function ZipScript() {
@@ -11,7 +11,7 @@ function ZipScript() {
 
 ZipScript.prototype = Object.create(QuickScript.prototype);
 
-ZipScript.prototype.constructor = ZipScript;   
+ZipScript.prototype.constructor = ZipScript;
 
 ZipScript.prototype.url = function(url) {
     this._url = url;

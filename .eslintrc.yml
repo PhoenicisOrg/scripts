@@ -7,10 +7,14 @@ env:
 
 rules:
   valid-jsdoc: 2
+  comma-spacing:
+    - 2
+    - {before: false, after: true}
   keyword-spacing:
     - 2
     - {before: true, after: true}
-  indent: 
+  no-trailing-spaces: 2
+  indent:
     - 2
     - 4
     - {SwitchCase: 1, ArrayExpression: first}

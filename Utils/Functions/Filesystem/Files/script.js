@@ -106,31 +106,57 @@ function createTempFile(extension) { // eslint-disable-line no-unused-vars
     return tmpFile.getAbsolutePath();
 }
 
-var Checksum = function () {
-    var that = this;
-    that._method = "SHA";
-    that._checksumCalculator = Bean("checksumCalculator");
-    that.wizard = function (wizard) {
-        that._wizard = wizard;
-        return that;
-    };
-    that.method = function (algorithm) {
-        that._method = algorithm;
-        return that;
-    };
-    that.of = function (file) {
-        that._file = file;
-        return that;
-    };
-    that.get = function () {
-        if (that._wizard) {
-            var progressBar = that._wizard.progressBar(tr("Checking file consistency ..."));
-        }
+/**
+* Checksum prototype
+* @constructor
+*/
+function Checksum() {
+    this._method = "SHA";
+    this._checksumCalculator = Bean("checksumCalculator");
+}
 
-        return that._checksumCalculator.calculate(that._file, that._method, function (progressEntity) {
-            if (progressBar) {
-                progressBar.accept(progressEntity);
-            }
-        });
+/**
+* sets wizard
+* @param {SetupWizard} wizard setup wizard
+* @returns {Checksum} Checksum object
+*/
+Checksum.prototype.wizard = function (wizard) {
+    this._wizard = wizard;
+    return this;
+}
+
+/**
+* sets checksum algorithm
+* @param {string} algorithm algorithm (e.g. "SHA")
+* @returns {Checksum} Checksum object
+*/
+Checksum.prototype.method = function (algorithm) {
+    this._method = algorithm;
+    return this;
+}
+
+/**
+* sets file for which the checksum shall be computed
+* @param {string} file file for which the checksum shall be computed
+* @returns {Checksum} Checksum object
+*/
+Checksum.prototype.of = function (file) {
+    this._file = file;
+    return this;
+}
+
+/**
+* returns calculated checksum
+* @returns {string} calculated checksum
+*/
+Checksum.prototype.get = function () {
+    if (this._wizard) {
+        var progressBar = this._wizard.progressBar(tr("Checking file consistency ..."));
     }
-};
+
+    return this._checksumCalculator.calculate(this._file, this._method, function (progressEntity) {
+        if (progressBar) {
+            progressBar.accept(progressEntity);
+        }
+    });
+}

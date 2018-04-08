@@ -1,79 +1,110 @@
 include(["utils", "functions", "net", "download"]);
-include(["Utils", "Functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "files"]);
 
-/* exported Resource */
-var Resource = function () {
-    var that = this;
+/**
+* Resource prototype
+* @constructor
+*/
+function Resource() {
     this._algorithm = "SHA";
     this._resourcesPath = Bean("propertyReader").getProperty("application.user.resources");
     this._directory = "";
+}
 
-    that.wizard = function(wizard) {
-        that._wizard = wizard;
-        return that;
-    };
+/**
+* sets wizard
+* @param {SetupWizard} wizard setup wizard
+* @returns {Resource} Resource object
+*/
+Resource.prototype.wizard = function (wizard) {
+    this._wizard = wizard;
+    return this;
+}
 
-    that.algorithm = function(algorithm) {
-        that._algorithm = algorithm;
-        return that;
-    };
+/**
+* sets algorithm
+* @param {string} algorithm algorithm to verify the checksum (e.g. "SHA")
+* @returns {Resource} Resource object
+*/
+Resource.prototype.algorithm = function (algorithm) {
+    this._algorithm = algorithm;
+    return this;
+}
 
-    that.name = function (name) {
-        that._name = name;
-        return that;
-    };
+/**
+* sets name
+* @param {string} name name of the resource
+* @returns {Resource} Resource object
+*/
+Resource.prototype.name = function (name) {
+    this._name = name;
+    return this;
+}
 
-    that.checksum = function (checksum) {
-        that._checksum = checksum;
-        return that;
-    };
+/**
+* sets checksum which shall be used to verify the resource
+* @param {string} checksum checksum
+* @returns {Resource} Resource object
+*/
+Resource.prototype.checksum = function (checksum) {
+    this._checksum = checksum;
+    return this;
+}
 
-    that.url = function(url) {
-        that._url = url;
-        return that;
-    };
+/**
+* sets URL
+* @param {string} url URL
+* @returns {Resource} Resource object
+*/
+Resource.prototype.url = function (url) {
+    this._url = url;
+    return this;
+}
 
-    /**
-     * directory inside the resource directory where the Resource is stored
-     * @param {string} directory
-     * @returns {Resource}
-     */
-    that.directory = function(directory) {
-        that._directory = directory;
-        return that;
-    };
+/**
+* sets directory inside the resource directory where the Resource is stored
+* @param {string} directory directory path
+* @returns {Resource} Resource object
+*/
+Resource.prototype.directory = function (directory) {
+    this._directory = directory;
+    return this;
+}
 
-    that.get = function () {
-        if (!that._message) {
-            that._message = tr("Please wait while {0} is downloaded ...", that._name);
-        }
+/**
+* returns the Resource
+* @returns {Resource} downloaded Resource object
+*/
+Resource.prototype.get = function () {
+    if (!this._message) {
+        this._message = tr("Please wait while {0} is downloaded ...", this._name);
+    }
 
-        var resourcesPath = that._resourcesPath + "/" + that._directory;
-        mkdir(resourcesPath);
+    var resourcesPath = this._resourcesPath + "/" + this._directory;
+    mkdir(resourcesPath);
 
-        var resourcePath = resourcesPath + "/" + that._name;
+    var resourcePath = resourcesPath + "/" + this._name;
 
-        if (fileExists(resourcePath)) {
-            var fileChecksum = new Checksum()
-                .wizard(that._wizard)
-                .of(resourcePath)
-                .method(that._algorithm)
-                .get();
-
-            if (fileChecksum == that._checksum) {
-                return resourcePath;
-            }
-        }
-
-        new Downloader()
-            .url(that._url)
-            .wizard(that._wizard)
-            .message(that._message)
-            .checksum(that._checksum)
-            .algorithm(that._algorithm)
-            .to(resourcePath)
+    if (fileExists(resourcePath)) {
+        var fileChecksum = new Checksum()
+            .wizard(this._wizard)
+            .of(resourcePath)
+            .method(this._algorithm)
             .get();
 
-        return resourcePath;
+        if (fileChecksum == this._checksum) {
+            return resourcePath;
+        }
     }
-};
+
+    new Downloader()
+        .url(this._url)
+        .wizard(this._wizard)
+        .message(this._message)
+        .checksum(this._checksum)
+        .algorithm(this._algorithm)
+        .to(resourcePath)
+        .get();
+
+    return resourcePath;
+}

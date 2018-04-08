@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
-include(["Engines", "Wine", "Verbs", "mfc42"]);
+include(["engines", "wine", "verbs", "mfc42"]);
 
 new SteamScript()
     .name("Age of Empires® III: Complete Collection")

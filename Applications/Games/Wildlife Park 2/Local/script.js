@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["Engines", "Wine", "Verbs", "quartz"]);
+include(["engines", "wine", "verbs", "quartz"]);
 
 new LocalInstallerScript()
     .name("Wildlife Park 2")

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-07 19:06+0000\n"
+"POT-Creation-Date: 2018-04-08 09:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,7 +198,7 @@ msgid ""
 "Do you want to delete it?"
 msgstr ""
 
-#: Engines/Wine/Shortcuts/Wine/script.js:78
+#: Engines/Wine/Shortcuts/Wine/script.js:120
 msgid "Executable {0} not found!"
 msgstr ""
 
@@ -2663,21 +2663,21 @@ msgstr ""
 msgid "Internet Resource"
 msgstr ""
 
-#: Utils/Functions/Filesystem/Extract/script.js:29
-#: Utils/Functions/Filesystem/Extract/script.js:75
+#: Utils/Functions/Filesystem/Extract/script.js:57
+#: Utils/Functions/Filesystem/Extract/script.js:133
 msgid "Please wait while {0} is extracted ..."
 msgstr ""
 
-#: Utils/Functions/Filesystem/Files/script.js:127
+#: Utils/Functions/Filesystem/Files/script.js:154
 msgid "Checking file consistency ..."
 msgstr ""
 
-#: Utils/Functions/Net/Download/script.js:42
-#: Utils/Functions/Net/Resource/script.js:48
+#: Utils/Functions/Net/Download/script.js:97
+#: Utils/Functions/Net/Resource/script.js:80
 msgid "Please wait while {0} is downloaded ..."
 msgstr ""
 
-#: Utils/Functions/Net/Download/script.js:71
+#: Utils/Functions/Net/Download/script.js:126
 msgid ""
 "Error while calculating checksum. \n"
 "\n"

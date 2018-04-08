@@ -67,32 +67,56 @@ var _WineShortcutReader = function(shortcut) {
     }
 };
 
-/* exported ShortcutReader */
-var ShortcutReader = function() {
-    var that = this;
+/**
+* ShortcutReader prototype
+* @constructor
+*/
+function ShortcutReader() {
+}
 
-    this.of = function(shortcut) {
-        this.shortcut = shortcut;
-        var shortcutContentParsed = JSON.parse(this.shortcut.script);
+/**
+* sets shortcut
+* @param {string} shortcut shortcut
+* @returns {void}
+*/
+ShortcutReader.prototype.of = function (shortcut) {
+    this.shortcut = shortcut;
+    var shortcutContentParsed = JSON.parse(this.shortcut.script);
 
-        if (shortcutContentParsed.type == "WINE") {
-            that._runner = new _WineShortcutReader(this.shortcut);
-        }
-    };
+    if (shortcutContentParsed.type == "WINE") {
+        this._runner = new _WineShortcutReader(this.shortcut);
+    }
+}
 
-    this.run = function(userArguments) {
-        that._runner.run(userArguments);
-    };
+/**
+* runs shortcut
+* @param {array} userArguments arguments
+* @returns {void}
+*/
+ShortcutReader.prototype.run = function (userArguments) {
+    this._runner.run(userArguments);
+}
 
-    this.stop = function() {
-        that._runner.stop();
-    };
+/**
+* stops running shortcut
+* @returns {void}
+*/
+ShortcutReader.prototype.stop = function () {
+    this._runner.stop();
+}
 
-    this.uninstall = function() {
-        that._runner.uninstall();
-    };
+/**
+* uninstalls shortcut
+* @returns {void}
+*/
+ShortcutReader.prototype.uninstall = function () {
+    this._runner.uninstall();
+}
 
-    this.container = function() {
-        return that._runner.container();
-    };
-};
+/**
+* returns container of shortcut
+* @returns {string} container
+*/
+ShortcutReader.prototype.container = function () {
+    return this._runner.container();
+}

@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "Verbs", "sp3extract"]);
+include(["engines", "wine", "verbs", "sp3extract"]);
 
 /**
 * Verb to install crypt32

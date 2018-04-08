@@ -1,5 +1,5 @@
 include(["engines", "wine", "engine", "object"]);
-include(["Utils", "Functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "files"]);
 include(["utils", "functions", "net", "resource"]);
 
 /**

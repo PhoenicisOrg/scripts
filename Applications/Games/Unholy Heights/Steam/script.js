@@ -1,6 +1,5 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
-
-include(["Engines", "Wine", "Verbs", "dotnet40"]);
+include(["engines", "wine", "verbs", "dotnet40"]);
 
 new SteamScript()
     .name("Unholy Heights")
