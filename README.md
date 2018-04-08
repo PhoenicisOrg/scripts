@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/PhoenicisOrg/scripts.svg?branch=master)](https://travis-ci.org/PhoenicisOrg/scripts)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ec5268b4e2c0412ead8d90e561795fd1)](https://app.codacy.com/app/PhoenicisOrg/Scripts?utm_source=github.com&utm_medium=referral&utm_content=PhoenicisOrg/Scripts&utm_campaign=badger)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ff0c41daa31549e4a9bb3998ca0c87ae)](https://www.codacy.com/app/PhoenicisOrg/scripts?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=PhoenicisOrg/scripts&amp;utm_campaign=Badge_Grade)
 [![Crowdin Badge](https://d322cqt584bo4o.cloudfront.net/phoenicis-scripts/localized.svg)](https://crowdin.com/project/phoenicis-scripts)
 
 # How to add a script
