@@ -10,6 +10,7 @@ var WineRegistryEditor = function() {
 /**
 * runs the tool
 * @param {String} container name
+* @returns {void}
 */
 WineRegistryEditor.prototype.run = function (container) {
     new Wine()
@@ -17,3 +18,13 @@ WineRegistryEditor.prototype.run = function (container) {
         .run("regedit")
         .wait();
 };
+
+/**
+* runs the WineRegistryEditor tool
+* @param {String} container name
+* @returns {void}
+*/
+function run(container) { // eslint-disable-line no-unused-vars
+    var tool = new WineRegistryEditor();
+    tool.run(container);
+}

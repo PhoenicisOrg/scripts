@@ -10,6 +10,7 @@ var WineTaskManager = function() {
 /**
 * runs the tool
 * @param {String} container name
+* @returns {void}
 */
 WineTaskManager.prototype.run = function (container) {
     new Wine()
@@ -17,3 +18,13 @@ WineTaskManager.prototype.run = function (container) {
         .run("taskmgr")
         .wait();
 };
+
+/**
+* runs the WineTaskManager tool
+* @param {String} container name
+* @returns {void}
+*/
+function run(container) { // eslint-disable-line no-unused-vars
+    var tool = new WineTaskManager();
+    tool.run(container);
+}

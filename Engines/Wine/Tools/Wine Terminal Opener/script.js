@@ -11,6 +11,7 @@ var WineTerminalOpener = function() {
 /**
 * runs the tool
 * @param {String} container name
+* @returns {void}
 */
 WineTerminalOpener.prototype.run = function (container) {
     var wine = new Wine()
@@ -20,3 +21,13 @@ WineTerminalOpener.prototype.run = function (container) {
     environment["PATH"] = wine.binPath() + ":$PATH";
     this._TerminalOpener.openTerminal(wine.prefixDirectory, environment);
 };
+
+/**
+* runs the WineTerminalOpener tool
+* @param {String} container name
+* @returns {void}
+*/
+function run(container) { // eslint-disable-line no-unused-vars
+    var tool = new WineTerminalOpener();
+    tool.run(container);
+}
