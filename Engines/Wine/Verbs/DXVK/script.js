@@ -24,7 +24,7 @@ Wine.prototype.DXVK = function() {
 		.to(this.prefixDirectory + "/TMP/")
 		.extract();
         
-        if (this.architecture() == "i386") {
+        if (this.architecture() == "x86") {
 		cp(this.prefixDirectory + "/TMP/dxvk-0.41/x32/d3d11.dll", this.system32directory());
         	cp(this.prefixDirectory + "/TMP/dxvk-0.41/x32/dxgi.dll", this.system32directory());
 	}
