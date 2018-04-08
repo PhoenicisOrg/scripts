@@ -10,5 +10,5 @@ new SteamScript()
         wine.enableCSMT();
         //maybe needs xact
     })
-    .appId(209000)               
+    .appId(209000)
     .go();

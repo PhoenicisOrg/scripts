@@ -5,9 +5,9 @@ include(["Engines", "Wine", "Verbs", "vcrun2008"]);
 include(["Engines", "Wine", "Verbs", "vcrun2010"]);
 
 new SteamScript()
-    .name("Total War: ROME II")              
-    .editor("Creative Assembly")    
-    .author("ImperatorS79")  
+    .name("Total War: ROME II")
+    .editor("Creative Assembly")
+    .author("ImperatorS79")
     .appId(214950)
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")

@@ -3,16 +3,16 @@ include(["Engines", "Wine", "Verbs", "vcrun2015"]);
 include(["Engines", "Wine", "Verbs", "corefonts"]);
 
 new OnlineInstallerScript()
-    .name("Overwatch")                      
-    .editor("Blizzard")                              
-    .applicationHomepage("http://www.playoverwatch.com/")  
-    .author("ImperatorS79")                     
-    .url("https://eu.battle.net/download/getInstaller?os=win&installer=Overwatch-Setup.exe")                      
+    .name("Overwatch")
+    .editor("Blizzard")
+    .applicationHomepage("http://www.playoverwatch.com/")
+    .author("ImperatorS79")
+    .url("https://eu.battle.net/download/getInstaller?os=win&installer=Overwatch-Setup.exe")
     //The checksum is different each time you download
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .wineArchitecture("amd64")
-    .category("Games")                           
+    .category("Games")
     .executable("Overwatch.exe")
     .preInstall(function(wine/*, wizard*/) {
         wine.windowsVersion("winxp");
@@ -20,5 +20,5 @@ new OnlineInstallerScript()
         wine.corefonts();
         wine.enableCSMT();
     })
-    
-    .go(); 
+
+    .go();

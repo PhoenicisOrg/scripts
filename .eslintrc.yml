@@ -7,6 +7,7 @@ env:
 
 rules:
   valid-jsdoc: 2
+  no-trailing-spaces: 2
   indent: 
     - 2
     - 4

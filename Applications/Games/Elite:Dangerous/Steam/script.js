@@ -5,8 +5,8 @@ include(["Engines", "Wine", "Verbs", "vcrun2012"]);
 include(["Engines", "Wine", "Verbs", "quartz"]);
 
 new SteamScript()
-    .name("Elite:Dangerous")             
-    .editor("Frontier Developments")     
+    .name("Elite:Dangerous")
+    .editor("Frontier Developments")
     .author("ImperatorS79")
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
@@ -18,5 +18,5 @@ new SteamScript()
         wine.vcrun2012();
         wine.enableCSMT();
     })
-    .appId(359320)               
-    .go(); 
+    .appId(359320)
+    .go();

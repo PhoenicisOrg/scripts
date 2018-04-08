@@ -32,13 +32,13 @@ InstallerScript.prototype.go = function() {
         .wizard(setupWizard);
 
     // let user select wine settings if desired
-    if (this._wineUserSettings) {        
+    if (this._wineUserSettings) {
         var architectures = ["x86", "amd64"];
         var shownArchitectures = ["x86 (recommended)", "amd64"];
         var selectedArchitecture = setupWizard.menu(tr("Please select the wine architecture."), shownArchitectures, "x86 (recommended)");
         this._wineArchitecture = architectures[selectedArchitecture.index];
         wine.architecture(this._wineArchitecture); // do this here to show correct values for distribution
-        
+
         var distributions = wine.availableDistributions();
         var shownDistributions = [];
         for (var distributionIdx in distributions) {
@@ -52,7 +52,7 @@ InstallerScript.prototype.go = function() {
         var selectedDistribution = setupWizard.menu(tr("Please select the wine distribution."), shownDistributions, "upstream (recommended)");
         this._wineDistribution = distributions[selectedDistribution.index];
         wine.distribution(this._wineDistribution); // do this here to show correct values for version
-        
+
         var versions = wine.availableVersions();
         var shownVersions = [];
         for (var versionIdx in versions) {

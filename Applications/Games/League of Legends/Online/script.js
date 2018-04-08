@@ -102,7 +102,7 @@ new CustomInstallerScript()
         /////////////////////////////////////////
         var client = wine.prefixDirectory + "drive_c/LoL/run.bat";
         var batContent = "start C:\\LoL\\LeagueClient.exe";
-        writeToFile(client, batContent); 
+        writeToFile(client, batContent);
     })
     .executable("run.bat")
     .go();

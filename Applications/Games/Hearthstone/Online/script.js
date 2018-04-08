@@ -17,4 +17,4 @@ new OnlineInstallerScript()
         wine.vcrun2015();
         wine.corefonts();
     })
-    .go(); 
+    .go();

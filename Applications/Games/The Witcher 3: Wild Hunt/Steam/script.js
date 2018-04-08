@@ -17,4 +17,4 @@ new SteamScript()
         wine.UseGLSL("enabled");
         wine.DirectDrawRenderer("opengl");
     })
-    .go(); 
+    .go();

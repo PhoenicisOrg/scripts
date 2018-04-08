@@ -22,13 +22,13 @@ Wine.prototype.mspatcha = function() {
         .wizard(this._wizard)
         .to(this.system32directory())
         .extract();
-        
+
     new CabExtract()
         .archive(this.system32directory() + "/i386/mspatcha.dl_")
         .wizard(this._wizard)
         .to(this.system32directory())
         .extract();
-    
+
     remove(this.system32directory() + "/i386/");
 
     this.overrideDLL()
