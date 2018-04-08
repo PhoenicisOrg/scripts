@@ -10,6 +10,7 @@ var KillWineProcesses = function() {
 /**
 * runs the tool
 * @param {String} container name
+* @returns {void}
 */
 KillWineProcesses.prototype.run = function (container) {
     new Wine()
@@ -21,6 +22,7 @@ KillWineProcesses.prototype.run = function (container) {
 /**
 * runs the KillWineProcesses tool
 * @param {String} container name
+* @returns {void}
 */
 function run(container) {
     var tool = new KillWineProcesses();

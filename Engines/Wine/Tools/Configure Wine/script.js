@@ -10,6 +10,7 @@ var ConfigureWine = function() {
 /**
 * runs the tool
 * @param {String} container name
+* @returns {void}
 */
 ConfigureWine.prototype.run = function (container) {
     new Wine()
@@ -21,6 +22,7 @@ ConfigureWine.prototype.run = function (container) {
 /**
 * runs the ConfigureWine tool
 * @param {String} container name
+* @returns {void}
 */
 function run(container) {
     var tool = new ConfigureWine();

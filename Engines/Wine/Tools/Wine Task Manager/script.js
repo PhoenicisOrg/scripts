@@ -10,6 +10,7 @@ var WineTaskManager = function() {
 /**
 * runs the tool
 * @param {String} container name
+* @returns {void}
 */
 WineTaskManager.prototype.run = function (container) {
     new Wine()
@@ -21,6 +22,7 @@ WineTaskManager.prototype.run = function (container) {
 /**
 * runs the WineTaskManager tool
 * @param {String} container name
+* @returns {void}
 */
 function run(container) {
     var tool = new WineTaskManager();

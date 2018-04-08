@@ -10,6 +10,7 @@ var WineRegistryEditor = function() {
 /**
 * runs the tool
 * @param {String} container name
+* @returns {void}
 */
 WineRegistryEditor.prototype.run = function (container) {
     new Wine()
@@ -21,6 +22,7 @@ WineRegistryEditor.prototype.run = function (container) {
 /**
 * runs the WineRegistryEditor tool
 * @param {String} container name
+* @returns {void}
 */
 function run(container) {
     var tool = new WineRegistryEditor();

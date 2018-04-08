@@ -10,6 +10,7 @@ var WineUninstaller = function() {
 /**
 * runs the tool
 * @param {String} container name
+* @returns {void}
 */
 WineUninstaller.prototype.run = function (container) {
     new Wine()
@@ -21,6 +22,7 @@ WineUninstaller.prototype.run = function (container) {
 /**
 * runs the WineUninstaller tool
 * @param {String} container name
+* @returns {void}
 */
 function run(container) {
     var tool = new WineUninstaller();

@@ -11,6 +11,7 @@ var WineTerminalOpener = function() {
 /**
 * runs the tool
 * @param {String} container name
+* @returns {void}
 */
 WineTerminalOpener.prototype.run = function (container) {
     var wine = new Wine()
@@ -24,6 +25,7 @@ WineTerminalOpener.prototype.run = function (container) {
 /**
 * runs the WineTerminalOpener tool
 * @param {String} container name
+* @returns {void}
 */
 function run(container) {
     var tool = new WineTerminalOpener();

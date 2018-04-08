@@ -10,6 +10,7 @@ var RepairWinePrefix = function() {
 /**
 * runs the tool
 * @param {String} container name
+* @returns {void}
 */
 RepairWinePrefix.prototype.run = function (container) {
     new Wine()
@@ -21,6 +22,7 @@ RepairWinePrefix.prototype.run = function (container) {
 /**
 * runs the RepairWinePrefix tool
 * @param {String} container name
+* @returns {void}
 */
 function run(container) {
     var tool = new RepairWinePrefix();

@@ -10,6 +10,7 @@ var WineConsole = function() {
 /**
 * runs the tool
 * @param {String} container name
+* @returns {void}
 */
 WineConsole.prototype.run = function (container) {
     new Wine()
@@ -21,6 +22,7 @@ WineConsole.prototype.run = function (container) {
 /**
 * runs the WineConsole tool
 * @param {String} container name
+* @returns {void}
 */
 function run(container) {
     var tool = new WineConsole();
