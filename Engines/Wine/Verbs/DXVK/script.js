@@ -3,10 +3,9 @@ include(["Utils", "Functions", "Net", "Resource"]);
 include(["Utils", "Functions", "Filesystem", "Files"]);
 
 /**
-* Setup DXVK
-* -> https://github.com/doitsujin/dxvk/
-* @returns {Wine}
-*/
+ * Setup DXVK-> https://github.com/doitsujin/dxvk/
+ * @returns {Wine}
+ */
 Wine.prototype.DXVK = function() {
     print("NOTE: you need a driver that support Vulkan enough to run DXVK");
     print("NOTE: wine version should be greater or equal to 3.5");
