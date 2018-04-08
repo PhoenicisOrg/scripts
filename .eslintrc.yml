@@ -7,6 +7,9 @@ env:
 
 rules:
   valid-jsdoc: 2
+  keyword-spacing:
+    - 2
+    - {before: true, after: true}
   indent: 
     - 2
     - 4

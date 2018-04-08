@@ -12,7 +12,7 @@ new LocalInstallerScript()
         var exeName, url, sha1;
         var originDirectory = wine.prefixDirectory + "drive_c/users/Public/Documents/";
         
-        switch(selectedRegion.text){
+        switch (selectedRegion.text){
             case "France":
                 exeName = "RVSPatch_1.0_To_1.60_FRA.exe";
                 url = "http://ftp.ubi.com/us/games/ravenshield/RVSPatch_1.0_To_1.60_FRA.exe";

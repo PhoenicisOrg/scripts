@@ -42,7 +42,7 @@ var Downloader = function () {
             that._message = tr("Please wait while {0} is downloaded ...", that._fetchFileNameFromUrl(that._url));
         }
 
-        if(that._wizard) {
+        if (that._wizard) {
             var progressBar = that._wizard.progressBar(that._message);
         }
 

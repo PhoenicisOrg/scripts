@@ -55,10 +55,10 @@ var WineShortcut = function () {
     * @returns {WineShortcut}
     */
     that.miniature = function(miniature) {
-        if(isArray(miniature)) {
+        if (isArray(miniature)) {
             // application of miniature given
             var application = that._appsManager.getApplication(miniature);
-            if(application != null && application.getMainMiniature().isPresent()) {
+            if (application != null && application.getMainMiniature().isPresent()) {
                 that._miniature = application.getMainMiniature().get();
             }
         } else {
@@ -96,7 +96,7 @@ var WineShortcut = function () {
                 executable: executables[0].getAbsolutePath()
             }));
 
-        if(that._miniature) {
+        if (that._miniature) {
             builder.withMiniature(that._miniature);
         }
 

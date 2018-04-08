@@ -123,12 +123,12 @@ var Checksum = function () {
         return that;
     };
     that.get = function () {
-        if(that._wizard) {
+        if (that._wizard) {
             var progressBar = that._wizard.progressBar(tr("Checking file consistency ..."));
         }
 
         return that._checksumCalculator.calculate(that._file, that._method, function (progressEntity) {
-            if(progressBar) {
+            if (progressBar) {
                 progressBar.accept(progressEntity);
             }
         });

@@ -11,9 +11,9 @@ var AppResource = function() {
     this.get = function(resourceName) {
         var application = that._appsManager.getApplication(that._application);
         var foundResource = null;
-        if(application != null && application.resources != null) {
+        if (application != null && application.resources != null) {
             application.resources.forEach(function(resource) {
-                if(resource.name == resourceName) {
+                if (resource.name == resourceName) {
                     foundResource = resource.content;
                 }
             });

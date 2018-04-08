@@ -29,12 +29,12 @@ var CabExtract = function() {
             that._progressMessage = tr("Please wait while {0} is extracted ...", that._archive);
         }
 
-        if(that._wizard) {
+        if (that._wizard) {
             var progressBar = that._wizard.progressBar(that._progressMessage);
         }
 
         var processArguments;
-        if(args) {
+        if (args) {
             processArguments = ["cabextract"].concat(args).concat([that._archive]);
         } else {
             processArguments = ["cabextract", that._archive];

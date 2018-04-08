@@ -60,7 +60,7 @@ var Resource = function () {
                 .method(that._algorithm)
                 .get();
 
-            if(fileChecksum == that._checksum) {
+            if (fileChecksum == that._checksum) {
                 return resourcePath;
             }
         }
