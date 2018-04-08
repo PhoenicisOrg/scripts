@@ -5,12 +5,12 @@ include(["utils", "functions", "net", "resource"]);
 * Verb to install D3DX10
 * @returns {Wine} Wine object
 */
-Wine.prototype.d3dx10 = function() {
+Wine.prototype.d3dx10 = function () {
     var that = this;
 
-    var extractDirectXtoSystemDirectory = function(progressBar, filesToExtract, destination, pattern) {
+    var extractDirectXtoSystemDirectory = function (progressBar, filesToExtract, destination, pattern) {
         var numberOfExtractedFiles = 0;
-        filesToExtract.forEach(function(cabFile) {
+        filesToExtract.forEach(function (cabFile) {
             print(tr("Extracting {0} ...", cabFile));
             progressBar.setText(tr("Extracting {0} ...", "DirectX 10"));
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);

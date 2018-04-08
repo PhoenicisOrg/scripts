@@ -5,7 +5,7 @@ include(["utils", "functions", "net", "resource"]);
 * Verb to install mfc42.dll and mfc42u.dll
 * @returns {Wine} Wine object
 */
-Wine.prototype.mfc42 = function() {
+Wine.prototype.mfc42 = function () {
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("http://download.microsoft.com/download/vc60pro/Update/2/W9XNT4/EN-US/VC6RedistSetup_deu.exe")

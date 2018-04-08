@@ -6,7 +6,7 @@ include(["utils", "functions", "filesystem", "files"]);
 * Verb to install secur32
 * @returns {Wine} Wine object
 */
-Wine.prototype.secur32 = function() {
+Wine.prototype.secur32 = function () {
     var setupFilex86 = new Resource()
         .wizard(this._wizard)
         .url("https://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X86.exe")

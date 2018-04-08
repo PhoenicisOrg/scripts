@@ -29,7 +29,7 @@ var wine = new Wine()
     .do();
 
 ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"]
-    .forEach(function(dll) {
+    .forEach(function (dll) {
         remove(wine.prefixDirectory + "/drive_c/windows/system32/" + dll + ".dll");
     });
 
@@ -210,7 +210,7 @@ var librairiesToRegister = ["actxprxy.dll", "browseui.dll", "browsewm.dll", "cdf
 
 var progressBar = setupWizard.progressBar("Please wait ...");
 var i = 1;
-librairiesToRegister.forEach(function(dll) {
+librairiesToRegister.forEach(function (dll) {
     progressBar.setProgressPercentage(i * 100 / librairiesToRegister.length);
     progressBar.setText(tr("Installing {0} ...", dll));
     wine.regsvr32().install(dll);

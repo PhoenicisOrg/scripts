@@ -12,7 +12,7 @@ new SteamScript()
     .appId(203630)
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .preInstall(function(wine/*, wizard*/) {
+    .preInstall(function (wine/*, wizard*/) {
         wine.corefonts();
         wine.d3dx9();
         wine.tahoma();

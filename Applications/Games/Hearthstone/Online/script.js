@@ -12,7 +12,7 @@ new OnlineInstallerScript()
     .executable("Hearthstone.exe")
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .preInstall(function(wine/*, wizard*/) {
+    .preInstall(function (wine/*, wizard*/) {
         wine.windowsVersion("winxp");
         wine.vcrun2015();
         wine.corefonts();

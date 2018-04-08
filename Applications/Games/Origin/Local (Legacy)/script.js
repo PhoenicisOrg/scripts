@@ -10,10 +10,10 @@ new LocalInstallerScript()
     .category("Games")
     .executable("Origin.exe")
     .wineVersion(LATEST_DEVELOPMENT_VERSION)
-    .preInstall(function(wine, wizard) {
+    .preInstall(function (wine, wizard) {
         wizard.message(tr("When Origin launches, you will get an error message (\"Your update could not be completed.\"). This is ok. Just close the popup."));
     })
-    .postInstall(function(wine, wizard) {
+    .postInstall(function (wine, wizard) {
         var originDir = wine.prefixDirectory + "drive_c/" + wine.programFiles() + "/Origin/";
 
         new Downloader()

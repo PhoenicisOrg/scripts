@@ -11,7 +11,7 @@ new SteamScript()
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .wineArchitecture("amd64")
-    .preInstall(function(wine/*, wizard*/) {
+    .preInstall(function (wine/*, wizard*/) {
         wine.dotnet452();
         wine.corefonts();
         wine.quartz();

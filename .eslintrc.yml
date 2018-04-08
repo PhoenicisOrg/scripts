@@ -15,7 +15,7 @@ rules:
     - {before: true, after: true}
   space-before-function-paren:
     - 2
-    - never
+    - {anonymous: always, named: never, asyncArrow: always}
   no-trailing-spaces: 2
   indent:
     - 2

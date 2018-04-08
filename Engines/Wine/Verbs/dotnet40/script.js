@@ -7,7 +7,7 @@ include(["utils", "functions", "filesystem", "files"]);
 * Verb to install .NET 4.0
 * @returns {Wine} Wine object
 */
-Wine.prototype.dotnet40 = function() {
+Wine.prototype.dotnet40 = function () {
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("http://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe")

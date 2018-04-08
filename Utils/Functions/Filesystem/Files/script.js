@@ -120,7 +120,7 @@ function Checksum() {
 * @param {SetupWizard} wizard setup wizard
 * @returns {Checksum} Checksum object
 */
-Checksum.prototype.wizard = function(wizard) {
+Checksum.prototype.wizard = function (wizard) {
     this._wizard = wizard;
     return this;
 }
@@ -130,7 +130,7 @@ Checksum.prototype.wizard = function(wizard) {
 * @param {string} algorithm algorithm (e.g. "SHA")
 * @returns {Checksum} Checksum object
 */
-Checksum.prototype.method = function(algorithm) {
+Checksum.prototype.method = function (algorithm) {
     this._method = algorithm;
     return this;
 }
@@ -140,7 +140,7 @@ Checksum.prototype.method = function(algorithm) {
 * @param {string} file file for which the checksum shall be computed
 * @returns {Checksum} Checksum object
 */
-Checksum.prototype.of = function(file) {
+Checksum.prototype.of = function (file) {
     this._file = file;
     return this;
 }
@@ -149,12 +149,12 @@ Checksum.prototype.of = function(file) {
 * returns calculated checksum
 * @returns {string} calculated checksum
 */
-Checksum.prototype.get = function() {
+Checksum.prototype.get = function () {
     if (this._wizard) {
         var progressBar = this._wizard.progressBar(tr("Checking file consistency ..."));
     }
 
-    return this._checksumCalculator.calculate(this._file, this._method, function(progressEntity) {
+    return this._checksumCalculator.calculate(this._file, this._method, function (progressEntity) {
         if (progressBar) {
             progressBar.accept(progressEntity);
         }

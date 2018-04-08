@@ -4,7 +4,7 @@ include(["engines", "wine", "engine", "object"]);
  * tool to open a terminal in a Wine prefix
  * @constructor
  */
-var WineTerminalOpener = function() {
+var WineTerminalOpener = function () {
     this._TerminalOpener = Bean("terminalOpener");
 };
 
@@ -12,7 +12,7 @@ var WineTerminalOpener = function() {
 * runs the tool
 * @param {String} container name
 */
-WineTerminalOpener.prototype.run = function(container) {
+WineTerminalOpener.prototype.run = function (container) {
     var wine = new Wine()
         .prefix(container);
     var environment = [];

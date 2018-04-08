@@ -18,20 +18,20 @@ UplayScript.prototype = Object.create(QuickScript.prototype);
 
 UplayScript.prototype.constructor = UplayScript;
 
-UplayScript.prototype.appId = function(appId) {
+UplayScript.prototype.appId = function (appId) {
     this._appId = appId;
     return this;
 };
 
-UplayScript.prototype.downloadStarted = function(wine) {
+UplayScript.prototype.downloadStarted = function (wine) {
     return fileExists(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/data/" + this._appId + "/manifests");
 };
 
-UplayScript.prototype.downloadFinished = function(wine) {
+UplayScript.prototype.downloadFinished = function (wine) {
     return !fileExists(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/data/" + this._appId + "/manifests");
 };
 
-UplayScript.prototype.go = function() {
+UplayScript.prototype.go = function () {
     // default executable args if not specified
     if (!this._executableArgs) {
         this._executableArgs = ["uplay://launch/" + this._appId + "/0"];

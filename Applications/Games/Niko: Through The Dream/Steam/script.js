@@ -6,7 +6,7 @@ new SteamScript()
     .editor("Studio Paint")
     .author("Plata")
     .appId(296550)
-    .postInstall(function(wine/*, wizard*/) {
+    .postInstall(function (wine/*, wizard*/) {
         wine.dotnet40();
         wine.setManagedForApplication().set("NIKO.exe", false).do();
     })

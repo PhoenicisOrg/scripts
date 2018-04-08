@@ -7,7 +7,7 @@ include(["utils", "functions", "filesystem", "files"]);
 * Verb to install the Tahoma font
 * @returns {Wine} Wine object
 */
-Wine.prototype.tahoma = function() {
+Wine.prototype.tahoma = function () {
     var tahoma = new Resource()
         .wizard(this._wizard)
         .url("https://github.com/caarlos0/msfonts/blob/master/fonts/tahoma.ttf?raw=true")

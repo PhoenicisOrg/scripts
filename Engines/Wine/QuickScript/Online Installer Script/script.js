@@ -11,22 +11,22 @@ OnlineInstallerScript.prototype = Object.create(InstallerScript.prototype);
 
 OnlineInstallerScript.prototype.constructor = OnlineInstallerScript;
 
-OnlineInstallerScript.prototype.url = function(url) {
+OnlineInstallerScript.prototype.url = function (url) {
     this._url = url;
     return this;
 };
 
-OnlineInstallerScript.prototype.checksum = function(checksum) {
+OnlineInstallerScript.prototype.checksum = function (checksum) {
     this._checksum = checksum;
     return this;
 };
 
-OnlineInstallerScript.prototype.installationArgs = function(installationArgs) {
+OnlineInstallerScript.prototype.installationArgs = function (installationArgs) {
     this._installationArgs = installationArgs;
     return this;
 };
 
-OnlineInstallerScript.prototype._installationCommand = function(wizard) {
+OnlineInstallerScript.prototype._installationCommand = function (wizard) {
     // if no URL given, ask user
     if (!this._url) {
         this._url = wizard.textbox(tr("Please select the download URL."));

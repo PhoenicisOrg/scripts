@@ -14,7 +14,7 @@ function Downloader() {
 * @param {string} url URL
 * @returns {string} file name
 */
-Downloader.prototype._fetchFileNameFromUrl = function(url) {
+Downloader.prototype._fetchFileNameFromUrl = function (url) {
     return url.substring(url.lastIndexOf('/') + 1);
 }
 
@@ -23,7 +23,7 @@ Downloader.prototype._fetchFileNameFromUrl = function(url) {
 * @param {SetupWizard} wizard setup wizard
 * @returns {Downloader} Downloader object
 */
-Downloader.prototype.wizard = function(wizard) {
+Downloader.prototype.wizard = function (wizard) {
     this._wizard = wizard;
     return this;
 }
@@ -33,7 +33,7 @@ Downloader.prototype.wizard = function(wizard) {
 * @param {string} url URL
 * @returns {Downloader} Downloader object
 */
-Downloader.prototype.url = function(url) {
+Downloader.prototype.url = function (url) {
     this._url = url;
     return this;
 }
@@ -43,7 +43,7 @@ Downloader.prototype.url = function(url) {
 * @param {string} algorithm checksum algorithm (e.g. "SHA")
 * @returns {Downloader} Downloader object
 */
-Downloader.prototype.algorithm = function(algorithm) {
+Downloader.prototype.algorithm = function (algorithm) {
     this._algorithm = algorithm;
     return this;
 }
@@ -53,7 +53,7 @@ Downloader.prototype.algorithm = function(algorithm) {
 * @param {string} checksum checksum which shall be used to verify the download
 * @returns {Downloader} Downloader object
 */
-Downloader.prototype.checksum = function(checksum) {
+Downloader.prototype.checksum = function (checksum) {
     this._checksum = checksum;
     return this;
 }
@@ -63,7 +63,7 @@ Downloader.prototype.checksum = function(checksum) {
 * @param {string} message download message
 * @returns {Downloader} Downloader object
 */
-Downloader.prototype.message = function(message) {
+Downloader.prototype.message = function (message) {
     this._message = message;
     return this;
 }
@@ -73,7 +73,7 @@ Downloader.prototype.message = function(message) {
 * @param {string} localFile destination of the download
 * @returns {Downloader} Downloader object
 */
-Downloader.prototype.to = function(localFile) {
+Downloader.prototype.to = function (localFile) {
     this._localFile = localFile;
     return this;
 }
@@ -83,7 +83,7 @@ Downloader.prototype.to = function(localFile) {
 * @param {boolean} onlyIfUpdateAvailable true the download shall be executed only if a newer version is available
 * @returns {Downloader} Downloader object
 */
-Downloader.prototype.onlyIfUpdateAvailable = function(onlyIfUpdateAvailable) {
+Downloader.prototype.onlyIfUpdateAvailable = function (onlyIfUpdateAvailable) {
     this._onlyIfUpdateAvailable = onlyIfUpdateAvailable;
     return this;
 }
@@ -92,7 +92,7 @@ Downloader.prototype.onlyIfUpdateAvailable = function(onlyIfUpdateAvailable) {
 * returns downloaded file
 * @returns {String} content of downloaded file
 */
-Downloader.prototype.get = function() {
+Downloader.prototype.get = function () {
     if (!this._message) {
         this._message = tr("Please wait while {0} is downloaded ...", this._fetchFileNameFromUrl(this._url));
     }
@@ -109,7 +109,7 @@ Downloader.prototype.get = function() {
     }
 
     if (this._localFile) {
-        this._downloader.get(this._url, this._localFile, function(progressEntity) {
+        this._downloader.get(this._url, this._localFile, function (progressEntity) {
             if (progressBar) {
                 progressBar.accept(progressEntity);
             }
@@ -132,7 +132,7 @@ Downloader.prototype.get = function() {
             }
         }
     } else {
-        return this._downloader.get(this._url, function(progressEntity) {
+        return this._downloader.get(this._url, function (progressEntity) {
             if (progressBar) {
                 progressBar.accept(progressEntity);
             }

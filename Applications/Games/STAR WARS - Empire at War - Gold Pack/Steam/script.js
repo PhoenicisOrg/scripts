@@ -6,7 +6,7 @@ new SteamScript()
     .editor("Petroglyph")
     .author("ImperatorS79")
     .appId(32470)
-    .preInstall(function(wine/*, wizard*/) {
+    .preInstall(function (wine/*, wizard*/) {
         wine.d3dx9();
     })
     .go();

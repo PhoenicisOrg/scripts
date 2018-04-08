@@ -5,7 +5,7 @@ include(["utils", "functions", "net", "resource"]);
 * Verb to install QuickTime 7.6
 * @returns {Wine} Wine object
 */
-Wine.prototype.quicktime76 = function() {
+Wine.prototype.quicktime76 = function () {
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("http://appldnld.apple.com/QuickTime/041-0025.20101207.Ptrqt/QuickTimeInstaller.exe")

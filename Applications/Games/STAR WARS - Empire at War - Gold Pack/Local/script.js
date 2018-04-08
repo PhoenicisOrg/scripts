@@ -9,10 +9,10 @@ new LocalInstallerScript()
     .author("ImperatorS79")
     .category("Games")
     .executable("LaunchEAW.exe")
-    .preInstall(function(wine, wizard) {
+    .preInstall(function (wine, wizard) {
         wine.d3dx9();
     })
-    .postInstall(function(wine, wizard) {
+    .postInstall(function (wine, wizard) {
         new Downloader()
             .wizard(wizard)
             .url("http://static.dolimg.com/mh_netstorage/lucasfilm/patches/pc/EAW_RAM_MPLobby_update.exe")

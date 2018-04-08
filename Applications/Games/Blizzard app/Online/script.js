@@ -11,7 +11,7 @@ new OnlineInstallerScript()
     .category("Games")
     .executable("Battle.net.exe")
     .wineVersion(LATEST_DEVELOPMENT_VERSION)
-    .preInstall(function(wine/*, wizard*/) {
+    .preInstall(function (wine/*, wizard*/) {
         wine.windowsVersion("winxp");
         wine.vcrun2015();
         wine.corefonts();

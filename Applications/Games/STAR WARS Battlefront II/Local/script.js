@@ -8,7 +8,7 @@ new LocalInstallerScript()
     .author("ImperatorS79")
     .category("Games")
     .executable("LaunchBFII.exe")
-    .postInstall(function(wine, wizard) {
+    .postInstall(function (wine, wizard) {
     // Install the 1.1 update of the game
         new Downloader()
             .wizard(wizard)

@@ -10,7 +10,7 @@ new CustomInstallerScript()
     .editor("Riot Games")
     .applicationHomepage("http://leagueoflegends.com/")
     .author("Plata, feanor12, Thog")
-    .installationCommand(function(wizard) {
+    .installationCommand(function (wizard) {
         // Select the region and download the setup file
         ////////////////////////////////////////////////
         var regions = ["EU West",
@@ -90,7 +90,7 @@ new CustomInstallerScript()
     .category("Games")
     .wineDistribution("staging")
     .wineVersion(LATEST_STAGING_VERSION)
-    .preInstall(function(win /*, wizard*/) {
+    .preInstall(function (win /*, wizard*/) {
         wine.windowsVersion("winxp");
         wine.d3dx9();
         wine.overrideDLL().set("native, builtin", ["atl120", "msvcp120", "msvcr120", "vcomp120", "msvcp140"]).do();

@@ -6,7 +6,7 @@ include(["engines", "wine", "verbs", "luna"]);
 * Verb to install vcrun2010
 * @returns {Wine} Wine object
 */
-Wine.prototype.vcrun2010 = function() {
+Wine.prototype.vcrun2010 = function () {
     var setupFile32 = new Resource()
         .wizard(this._wizard)
         .url("http://download.microsoft.com/download/5/B/C/5BC5DBB3-652D-4DCE-B14A-475AB85EEF6E/vcredist_x86.exe")

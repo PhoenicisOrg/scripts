@@ -6,11 +6,11 @@ include(["utils", "functions", "net", "resource"]);
 * @param {string} fileToExtract path to file which shall be extracted
 * @returns {Wine} Wine object
 */
-Wine.prototype.sp3extract = function(fileToExtract) {
+Wine.prototype.sp3extract = function (fileToExtract) {
     var that = this;
     that._targetDirectory = this.system32directory();
 
-    this.targetDirectory = function(targetDirectory) {
+    this.targetDirectory = function (targetDirectory) {
         that._targetDirectory = targetDirectory;
         return that;
     };

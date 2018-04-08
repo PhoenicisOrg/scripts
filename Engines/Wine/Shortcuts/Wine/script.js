@@ -19,7 +19,7 @@ function WineShortcut() {
 * @param {string} name shortcut name
 * @returns {WineShortcut} WineShortcut object
 */
-WineShortcut.prototype.name = function(name) {
+WineShortcut.prototype.name = function (name) {
     this._name = name;
     return this;
 }
@@ -29,7 +29,7 @@ WineShortcut.prototype.name = function(name) {
 * @param {string} type shortcut type
 * @returns {WineShortcut} WineShortcut object
 */
-WineShortcut.prototype.type = function(type) {
+WineShortcut.prototype.type = function (type) {
     this._type = type;
     return this;
 }
@@ -39,7 +39,7 @@ WineShortcut.prototype.type = function(type) {
 * @param {string} category shortcut category
 * @returns {WineShortcut} WineShortcut object
 */
-WineShortcut.prototype.category = function(category) {
+WineShortcut.prototype.category = function (category) {
     this._category = category;
     return this;
 }
@@ -49,7 +49,7 @@ WineShortcut.prototype.category = function(category) {
 * @param {string} description shortcut description
 * @returns {WineShortcut} WineShortcut object
 */
-WineShortcut.prototype.description = function(description) {
+WineShortcut.prototype.description = function (description) {
     this._description = description;
     return this;
 }
@@ -59,7 +59,7 @@ WineShortcut.prototype.description = function(description) {
 * @param {array} args shortcut arguments
 * @returns {WineShortcut} WineShortcut object
 */
-WineShortcut.prototype.arguments = function(args) {
+WineShortcut.prototype.arguments = function (args) {
     this._arguments = args;
     return this;
 }
@@ -69,7 +69,7 @@ WineShortcut.prototype.arguments = function(args) {
 * @param {string} search executable name
 * @returns {WineShortcut} WineShortcut object
 */
-WineShortcut.prototype.search = function(search) {
+WineShortcut.prototype.search = function (search) {
     this._search = search;
     return this;
 }
@@ -79,7 +79,7 @@ WineShortcut.prototype.search = function(search) {
 * @param {string} prefix shortcut prefix
 * @returns {WineShortcut} WineShortcut object
 */
-WineShortcut.prototype.prefix = function(prefix) {
+WineShortcut.prototype.prefix = function (prefix) {
     this._prefix = prefix;
     return this;
 }
@@ -92,7 +92,7 @@ WineShortcut.prototype.prefix = function(prefix) {
 * URI of the miniature
 * @returns {WineShortcut} WineShortcut object
 */
-WineShortcut.prototype.miniature = function(miniature) {
+WineShortcut.prototype.miniature = function (miniature) {
     if (isArray(miniature)) {
         // application of miniature given
         var application = this._appsManager.getApplication(miniature);
@@ -111,7 +111,7 @@ WineShortcut.prototype.miniature = function(miniature) {
 * creates shortcut
 * @returns {void}
 */
-WineShortcut.prototype.create = function() {
+WineShortcut.prototype.create = function () {
     var _shortcutPrefixDirectory = this._winePrefixesDirectory + "/" + this._prefix;
 
     var executables = this._fileSearcher.search(_shortcutPrefixDirectory, this._search);
