@@ -16,7 +16,7 @@ Wine.prototype.DXVK = function() {
         .checksum("4bbcb3020ba12a5a0cb7c388264579068b307bc6")
         .name("dxvk-0.41.tar.gz")
         .get();
-	
+
     new Extractor()
         .wizard(this.wizard())
         .archive(setupFile)
