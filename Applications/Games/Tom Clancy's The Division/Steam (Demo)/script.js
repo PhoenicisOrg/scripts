@@ -1,5 +1,5 @@
-include(["Engines", "Wine", "QuickScript", "SteamScript"]);
-include(["Engines", "Wine", "Verbs", "uplay"]);
+include(["engines", "wine", "quick_script", "steam_script"]);
+include(["engines", "wine", "verbs", "uplay"]);
 
 new SteamScript()
     .name("Tom Clancy’s The Division™ (Demo)")
@@ -9,7 +9,7 @@ new SteamScript()
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .wineArchitecture("amd64")
-    .postInstall(function(wine, wizard) {
+    .postInstall(function(wine/*, wizard*/) {
         wine.uplay();
     })
     .go();

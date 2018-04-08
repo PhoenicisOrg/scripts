@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-13 17:35+0000\n"
+"POT-Creation-Date: 2018-04-08 09:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Applications/Games/League of Legends/BETA Client/script.js:41
+#: Applications/Games/League of Legends/Online/script.js:26
 msgid "Select your region:"
 msgstr ""
 
@@ -57,38 +57,44 @@ msgid ""
 "Rome2/scripts/preferences_script.txt "
 msgstr ""
 
-#: Applications/Games/Warcraft III TFT/Online/script.js:13
-msgid "Please install Warcraft III before installing The Frozen Throne."
+#: Applications/Games/Wildlife Park 2/Local/script.js:12
+#: Applications/Games/Wildlife Park 2/Steam/script.js:11
+msgid ""
+"On first run the game might not go into full screen. If that happens go to "
+"options and set the resolution to 1280x960. You will be asked to close the "
+"game in order to apply the new settings. Click Yes. Once you start the game "
+"again you should see a window where you can set your game resolution to "
+"match your screen."
 msgstr ""
 
 #: Applications/Internet/Internet Explorer 6.0/Online/script.js:71
 #: Engines/Wine/Engine/Object/script.js:309
-#: Engines/Wine/QuickScript/InstallerScript/script.js:96
-#: Engines/Wine/QuickScript/SteamScript/script.js:107
-#: Engines/Wine/QuickScript/SteamScript/script.js:112
-#: Engines/Wine/QuickScript/SteamScript/script.js:132
-#: Engines/Wine/QuickScript/SteamScript/script.js:147
-#: Engines/Wine/QuickScript/UplayScript/script.js:65
-#: Engines/Wine/QuickScript/UplayScript/script.js:70
-#: Engines/Wine/QuickScript/UplayScript/script.js:90
-#: Engines/Wine/QuickScript/ZipScript/script.js:44
-#: Engines/Wine/QuickScript/ZipScript/script.js:70
-#: Engines/Wine/Verbs/corefonts/script.js:79
-#: Engines/Wine/Verbs/d3dx10/script.js:30
-#: Engines/Wine/Verbs/d3dx9/script.js:30
-#: Engines/Wine/Verbs/dotnet40/script.js:17
-#: Engines/Wine/Verbs/dotnet40/script.js:33
-#: Engines/Wine/Verbs/dotnet40/script.js:35
-#: Engines/Wine/Verbs/dotnet452/script.js:29
-#: Engines/Wine/Verbs/dotnet45/script.js:30
-#: Engines/Wine/Verbs/xact/script.js:50
+#: Engines/Wine/QuickScript/Installer Script/script.js:96
+#: Engines/Wine/QuickScript/Steam Script/script.js:107
+#: Engines/Wine/QuickScript/Steam Script/script.js:112
+#: Engines/Wine/QuickScript/Steam Script/script.js:132
+#: Engines/Wine/QuickScript/Steam Script/script.js:147
+#: Engines/Wine/QuickScript/Uplay Script/script.js:65
+#: Engines/Wine/QuickScript/Uplay Script/script.js:70
+#: Engines/Wine/QuickScript/Uplay Script/script.js:90
+#: Engines/Wine/QuickScript/Zip Script/script.js:44
+#: Engines/Wine/QuickScript/Zip Script/script.js:70
+#: Engines/Wine/Verbs/corefonts/script.js:83
+#: Engines/Wine/Verbs/d3dx10/script.js:34
+#: Engines/Wine/Verbs/d3dx9/script.js:34
+#: Engines/Wine/Verbs/dotnet40/script.js:21
+#: Engines/Wine/Verbs/dotnet40/script.js:37
+#: Engines/Wine/Verbs/dotnet40/script.js:39
+#: Engines/Wine/Verbs/dotnet452/script.js:28
+#: Engines/Wine/Verbs/dotnet45/script.js:29
+#: Engines/Wine/Verbs/xact/script.js:49
 msgid "Please wait ..."
 msgstr ""
 
 #: Applications/Internet/Internet Explorer 6.0/Online/script.js:75
 #: Applications/Internet/Internet Explorer 7.0/Online/script.js:215
-#: Engines/Wine/Verbs/corefonts/script.js:80
-#: Engines/Wine/Verbs/corefonts/script.js:86
+#: Engines/Wine/Verbs/corefonts/script.js:84
+#: Engines/Wine/Verbs/corefonts/script.js:90
 msgid "Installing {0} ..."
 msgstr ""
 
@@ -122,39 +128,39 @@ msgstr ""
 msgid "Installing version: "
 msgstr ""
 
-#: Engines/Wine/Engine/Object/script.js:887
+#: Engines/Wine/Engine/Object/script.js:888
 msgid "Could not determine mimetype for file extension \"{0}\""
 msgstr ""
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js:23
+#: Engines/Wine/QuickScript/Installer Script/script.js:23
 msgid "Please enter the name of your application."
 msgstr ""
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js:38
+#: Engines/Wine/QuickScript/Installer Script/script.js:38
 msgid "Please select the wine architecture."
 msgstr ""
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js:52
+#: Engines/Wine/QuickScript/Installer Script/script.js:52
 msgid "Please select the wine distribution."
 msgstr ""
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js:66
+#: Engines/Wine/QuickScript/Installer Script/script.js:66
 msgid "Please select the wine version."
 msgstr ""
 
-#: Engines/Wine/QuickScript/InstallerScript/script.js:88
+#: Engines/Wine/QuickScript/Installer Script/script.js:88
 msgid "Please select the executable."
 msgstr ""
 
-#: Engines/Wine/QuickScript/LocalInstallerScript/script.js:23
+#: Engines/Wine/QuickScript/Local Installer Script/script.js:23
 msgid "Please select the installation file."
 msgstr ""
 
-#: Engines/Wine/QuickScript/OnlineInstallerScript/script.js:32
+#: Engines/Wine/QuickScript/Online Installer Script/script.js:32
 msgid "Please select the download URL."
 msgstr ""
 
-#: Engines/Wine/QuickScript/SteamScript/script.js:104
+#: Engines/Wine/QuickScript/Steam Script/script.js:104
 msgid ""
 "Please follow the steps of the Steam setup.\n"
 "\n"
@@ -162,11 +168,11 @@ msgid ""
 "installation of \"{0}\" can continue."
 msgstr ""
 
-#: Engines/Wine/QuickScript/SteamScript/script.js:116
+#: Engines/Wine/QuickScript/Steam Script/script.js:116
 msgid "Please wait until Steam has finished the download ..."
 msgstr ""
 
-#: Engines/Wine/QuickScript/UplayScript/script.js:60
+#: Engines/Wine/QuickScript/Uplay Script/script.js:60
 msgid ""
 "Please follow the steps of the Uplay setup.\n"
 "\n"
@@ -174,15 +180,15 @@ msgid ""
 "installation of \"{0}\" can continue."
 msgstr ""
 
-#: Engines/Wine/QuickScript/UplayScript/script.js:77
+#: Engines/Wine/QuickScript/Uplay Script/script.js:77
 msgid "Please wait until Uplay has finished the download ..."
 msgstr ""
 
-#: Engines/Wine/QuickScript/UplayScript/script.js:85
+#: Engines/Wine/QuickScript/Uplay Script/script.js:85
 msgid "Please close Uplay."
 msgstr ""
 
-#: Engines/Wine/QuickScript/ZipScript/script.js:48
+#: Engines/Wine/QuickScript/Zip Script/script.js:48
 msgid "Please select the .zip file."
 msgstr ""
 
@@ -192,52 +198,52 @@ msgid ""
 "Do you want to delete it?"
 msgstr ""
 
-#: Engines/Wine/Shortcuts/Wine/script.js:77
+#: Engines/Wine/Shortcuts/Wine/script.js:120
 msgid "Executable {0} not found!"
 msgstr ""
 
-#: Engines/Wine/Verbs/corefonts/script.js:80
-#: Engines/Wine/Verbs/corefonts/script.js:86
+#: Engines/Wine/Verbs/corefonts/script.js:84
+#: Engines/Wine/Verbs/corefonts/script.js:90
 msgid "fonts"
 msgstr ""
 
-#: Engines/Wine/Verbs/d3dx10/script.js:10
-#: Engines/Wine/Verbs/d3dx10/script.js:11
-#: Engines/Wine/Verbs/d3dx10/script.js:31
-#: Engines/Wine/Verbs/d3dx9/script.js:10 Engines/Wine/Verbs/d3dx9/script.js:11
-#: Engines/Wine/Verbs/d3dx9/script.js:31 Engines/Wine/Verbs/xact/script.js:16
-#: Engines/Wine/Verbs/xact/script.js:17 Engines/Wine/Verbs/xact/script.js:51
+#: Engines/Wine/Verbs/d3dx10/script.js:14
+#: Engines/Wine/Verbs/d3dx10/script.js:15
+#: Engines/Wine/Verbs/d3dx10/script.js:35
+#: Engines/Wine/Verbs/d3dx9/script.js:14 Engines/Wine/Verbs/d3dx9/script.js:15
+#: Engines/Wine/Verbs/d3dx9/script.js:35 Engines/Wine/Verbs/xact/script.js:15
+#: Engines/Wine/Verbs/xact/script.js:16 Engines/Wine/Verbs/xact/script.js:50
 msgid "Extracting {0} ..."
 msgstr ""
 
-#: Engines/Wine/Verbs/dotnet40/script.js:26
-#: Engines/Wine/Verbs/dotnet452/script.js:41
-#: Engines/Wine/Verbs/dotnet45/script.js:42
-#: Engines/Wine/Verbs/physx/script.js:14
-#: Engines/Wine/Verbs/quicktime76/script.js:10
-#: Engines/Wine/Verbs/vcrun2003/script.js:15
-#: Engines/Wine/Verbs/vcrun2005/script.js:14
-#: Engines/Wine/Verbs/vcrun2008/script.js:14
-#: Engines/Wine/Verbs/vcrun2008/script.js:25
-#: Engines/Wine/Verbs/vcrun2010/script.js:14
-#: Engines/Wine/Verbs/vcrun2010/script.js:25
-#: Engines/Wine/Verbs/vcrun2012/script.js:14
-#: Engines/Wine/Verbs/vcrun2012/script.js:25
-#: Engines/Wine/Verbs/vcrun2013/script.js:14
-#: Engines/Wine/Verbs/vcrun2013/script.js:25
-#: Engines/Wine/Verbs/vcrun2015/script.js:14
-#: Engines/Wine/Verbs/vcrun2015/script.js:25
+#: Engines/Wine/Verbs/dotnet40/script.js:30
+#: Engines/Wine/Verbs/dotnet452/script.js:40
+#: Engines/Wine/Verbs/dotnet45/script.js:41
+#: Engines/Wine/Verbs/PhysX/script.js:18
+#: Engines/Wine/Verbs/QuickTime 7.6/script.js:17
+#: Engines/Wine/Verbs/vcrun2003/script.js:19
+#: Engines/Wine/Verbs/vcrun2005/script.js:18
+#: Engines/Wine/Verbs/vcrun2008/script.js:18
+#: Engines/Wine/Verbs/vcrun2008/script.js:29
+#: Engines/Wine/Verbs/vcrun2010/script.js:18
+#: Engines/Wine/Verbs/vcrun2010/script.js:29
+#: Engines/Wine/Verbs/vcrun2012/script.js:18
+#: Engines/Wine/Verbs/vcrun2012/script.js:29
+#: Engines/Wine/Verbs/vcrun2013/script.js:18
+#: Engines/Wine/Verbs/vcrun2013/script.js:29
+#: Engines/Wine/Verbs/vcrun2015/script.js:18
+#: Engines/Wine/Verbs/vcrun2015/script.js:29
 msgid "Please wait while {0} is installed ..."
 msgstr ""
 
-#: Engines/Wine/Verbs/dotnet452/script.js:50
-#: Engines/Wine/Verbs/dotnet45/script.js:51
+#: Engines/Wine/Verbs/dotnet452/script.js:49
+#: Engines/Wine/Verbs/dotnet45/script.js:50
 msgid ""
 "{0} applications can have issues when windows version is not set to "
 "\"win2003\""
 msgstr ""
 
-#: Engines/Wine/Verbs/uplay/script.js:11
+#: Engines/Wine/Verbs/Uplay/script.js:16
 msgid ""
 "Please follow the steps of the Uplay setup.\n"
 "\n"
@@ -245,7 +251,7 @@ msgid ""
 "installation can continue."
 msgstr ""
 
-#: Engines/Wine/Verbs/xact/script.js:33 Engines/Wine/Verbs/xact/script.js:34
+#: Engines/Wine/Verbs/xact/script.js:32 Engines/Wine/Verbs/xact/script.js:33
 msgid "Registering {0} ..."
 msgstr ""
 
@@ -267,12 +273,14 @@ msgstr ""
 #: i18n/tmp/Applications/Accessories/Soundplant/Online/script.js:1
 #: i18n/tmp/Applications/Custom/OnlineInstaller/Online/script.js:1
 #: i18n/tmp/Applications/Games/Crayon Physics/Online/script.js:1
+#: i18n/tmp/Applications/Games/DC Universe Online/Online/script.js:1
 #: i18n/tmp/Applications/Games/Druid Soccer/Online/script.js:1
 #: i18n/tmp/Applications/Games/Earth Eternal - Valkal's Shadow/Online/script.js:1
 #: i18n/tmp/Applications/Games/Epic Games Launcher/Online/script.js:1
 #: i18n/tmp/Applications/Games/Guild Wars 2/Online/script.js:1
 #: i18n/tmp/Applications/Games/Hearthstone/Online/script.js:1
 #: i18n/tmp/Applications/Games/Heroes of the Storm/Online/script.js:1
+#: i18n/tmp/Applications/Games/League of Legends/Online/script.js:1
 #: i18n/tmp/Applications/Games/Origin/Online/script.js:1
 #: i18n/tmp/Applications/Games/Overwatch/Online/script.js:1
 #: i18n/tmp/Applications/Games/Prehistorik/Online/script.js:1
@@ -282,8 +290,7 @@ msgstr ""
 #: i18n/tmp/Applications/Games/STAR WARS: The Old Republic/Online/script.js:1
 #: i18n/tmp/Applications/Games/Steam/Online/script.js:1
 #: i18n/tmp/Applications/Games/Uplay/Online/script.js:1
-#: i18n/tmp/Applications/Games/Warcraft III/Online/script.js:1
-#: i18n/tmp/Applications/Games/Warcraft III TFT/Online/script.js:1
+#: i18n/tmp/Applications/Games/Warcraft III Expansion Set/Online/script.js:1
 #: i18n/tmp/Applications/Games/Xenon 2/Online/script.js:1
 #: i18n/tmp/Applications/Graphics/Photofiltre/Online/script.js:1
 #: i18n/tmp/Applications/Internet/Internet Explorer 6.0/Online/script.js:1
@@ -353,7 +360,9 @@ msgstr ""
 #: i18n/tmp/Applications/Games/STAR WARS Battlefront II/Local/script.js:1
 #: i18n/tmp/Applications/Games/STAR WARS - Empire at War - Gold Pack/Local/script.js:1
 #: i18n/tmp/Applications/Games/The Elder Scrolls IV: Oblivion/Local/script.js:1
+#: i18n/tmp/Applications/Games/The Sims/Local/script.js:1
 #: i18n/tmp/Applications/Games/Uplay/Local/script.js:1
+#: i18n/tmp/Applications/Games/Wildlife Park 2/Local/script.js:1
 #: i18n/tmp/Applications/Office/Microsoft Office 2010/Local/script.js:1
 #: i18n/tmp/Applications/Office/Microsoft Office 2013/Local/script.js:1
 msgid "Local"
@@ -461,6 +470,7 @@ msgstr ""
 #: i18n/tmp/Applications/Games/Hexcells Infinite/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Hexcells Plus/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Hexcells/Steam/script.js:1
+#: i18n/tmp/Applications/Games/It came from space and ate our brains/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Mafia II/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Mass Effect 2/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Mass Effect/Steam/script.js:1
@@ -514,6 +524,7 @@ msgstr ""
 #: i18n/tmp/Applications/Games/Unholy Heights/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Warface/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Warlock - Master of the Arcane/Steam/script.js:1
+#: i18n/tmp/Applications/Games/Wildlife Park 2/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Worms Armageddon/Steam/script.js:1
 #: i18n/tmp/Applications/Games/Worms Reloaded/Steam/script.js:1
 msgid "Steam"
@@ -694,6 +705,7 @@ msgstr ""
 #: i18n/tmp/Applications/Games/Rayman Origins/Uplay/script.js:1
 #: i18n/tmp/Applications/Games/Tom Clancy's Splinter Cell/Uplay/script.js:1
 #: i18n/tmp/Applications/Games/Uplay/application.js:1
+#: i18n/tmp/Engines/Wine/Verbs/Uplay/script.js:1
 msgid "Uplay"
 msgstr ""
 
@@ -946,6 +958,16 @@ msgstr ""
 msgid ""
 "Crayon Physics is a mouse arcade game. You will have to draw lines and "
 "squares to move a ball. The aim is to catch the stars in the level. "
+msgstr ""
+
+#: i18n/tmp/Applications/Games/DC Universe Online/application.js:1
+msgid "DC Universe Online"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/DC Universe Online/application.js:2
+msgid ""
+"Sony's new MMORPG based on the DC universe. Be a hero or villain in 2 "
+"humongous cities."
 msgstr ""
 
 #: i18n/tmp/Applications/Games/DOOM (2016)/application.js:1
@@ -1246,8 +1268,26 @@ msgstr ""
 msgid "v1.5"
 msgstr ""
 
+#: i18n/tmp/Applications/Games/It came from space and ate our brains/application.js:1
+msgid "It came from space, and ate our brains"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/It came from space and ate our brains/application.js:2
+msgid ""
+"‘It came from space, and ate our brains’ is an Arcade top down shooter with "
+"horde survival gameplay in a unique atmospheric setting with addicting "
+"gameplay elements, which all can be played cooperatively. You are a no-"
+"nonsense kind of guy equipped with a flashlight and a weapon. You somehow "
+"managed to survive the invasion of a merciless alien species, the kind that "
+"feeds on human brains. Things look bad when you wander the city and other "
+"locations, there is chaos everywhere! You are looking for gear and weapons "
+"to survive, as pink light emitting aliens try to corner you and eat your "
+"brain. You realize there is only one thing left to do: set a new high score "
+"and die like a badass."
+msgstr ""
+
 #: i18n/tmp/Applications/Games/League of Legends/application.js:1
-msgid "League of Legends BETA Client"
+msgid "League of Legends"
 msgstr ""
 
 #: i18n/tmp/Applications/Games/League of Legends/application.js:2
@@ -1258,10 +1298,6 @@ msgid ""
 "across multiple battlefields and game modes. With an ever-expanding roster "
 "of champions, frequent updates and a thriving tournament scene, League of "
 "Legends offers endless replayability for players of every skill level."
-msgstr ""
-
-#: i18n/tmp/Applications/Games/League of Legends/BETA Client/script.js:1
-msgid "BETA Client"
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Mafia II/application.js:1
@@ -1427,7 +1463,7 @@ msgid ""
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Prince Of Persia: Original/application.js:1
-msgid "Prince Of Persia: Original"
+msgid "Prince of Persia: Original"
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Prince of Persia: The Sands of Time/application.js:1
@@ -1820,6 +1856,19 @@ msgid ""
 "you into a compelling world of mystery and exploration."
 msgstr ""
 
+#: i18n/tmp/Applications/Games/The Sims/application.js:1
+msgid "The Sims"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/The Sims/application.js:2
+msgid ""
+"The Sims is a simulation game that simulates people. With various goals and "
+"objectives you control people called sims. These sims require the user to "
+"periodically replenish their needs, socialize, and buy new stuff. The game "
+"currently has 7 expansion packs, Livin Large, House Party, Hot Date, "
+"Vacation, Superstar, Makin Magic, and Unleashed. "
+msgstr ""
+
 #: i18n/tmp/Applications/Games/The Turing Test/application.js:1
 msgid "The Turing Test"
 msgstr ""
@@ -2103,29 +2152,18 @@ msgstr ""
 msgid "Uplay is Ubisoft's PC games portal."
 msgstr ""
 
-#: i18n/tmp/Applications/Games/Warcraft III/application.js:1
-msgid "Warcraft® III: Reign of Chaos®"
+#: i18n/tmp/Applications/Games/Warcraft III Expansion Set/application.js:1
+msgid "Warcraft® III: Expansion Set"
 msgstr ""
 
-#: i18n/tmp/Applications/Games/Warcraft III/application.js:2
+#: i18n/tmp/Applications/Games/Warcraft III Expansion Set/application.js:2
 msgid ""
-"A generation before the events of World of Warcraft begin... Cunning, "
-"sinister, and seemingly unstoppable, the demonic Burning Legion prepare to "
-"launch their long-awaited assault on the mortal world. Survival is a matter "
-"of strategy, as the Reign of Chaos begins..."
-msgstr ""
-
-#: i18n/tmp/Applications/Games/Warcraft III TFT/application.js:1
-msgid "Warcraft® III: The Frozen Throne®"
-msgstr ""
-
-#: i18n/tmp/Applications/Games/Warcraft III TFT/application.js:2
-msgid ""
-"Warcraft III: The Frozen Throne adds a host of new features to the game, "
-"including four new campaigns that take you across the frozen continent of "
-"Northrend. Explore new maps and master new units such as the Troll Bat "
-"Riders, the Blood Elf Spell Breakers, and the destructive Mountain Giants."
-"<br><br>Install Warcraft III first."
+"The war rages on. The demonic threat has been banished from the battle-"
+"scarred fields of Azeroth, but peace is still a distant dream. The epic "
+"conflict that began in Warcraft III: Reign of Chaos continues with more "
+"units, more missions, and more explosive strategic combat.<br><br>This set "
+"contains both Warcraft III: Reign of Chaos and Warcraft III: The Frozen "
+"Throne."
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Warface/application.js:1
@@ -2150,6 +2188,36 @@ msgid ""
 "warlord vying for ultimate power. Your mission is to build an empire, expand "
 "your borders, research new spells and conquer your enemies. Become the "
 "ultimate Warlock and rule over all of Ardania!"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Wildlife Park 2/application.js:1
+msgid "Wildlife Park 2"
+msgstr ""
+
+#: i18n/tmp/Applications/Games/Wildlife Park 2/application.js:2
+msgid ""
+"Become a zoo manager and take good care of your animals. Wildlife Park 2 "
+"brings you into up close and personal contact with more than 50 different "
+"animal species. Observe the lovingly animated interaction of the animals - "
+"with other animals, the landscape, the play equipment, or the visitors to "
+"the park! Just like in a real zoo, the animals must receive all-round care. "
+"This is as easy as winking in Wildlife Park 2: With a click of the mouse you "
+"can feed, doctor, pet, or even relocate animals, or get them moving. You "
+"will guide a team of landscape architects, gardeners, keepers, "
+"veterinarians, and scientists. If you manage your zoo carefully, you will "
+"soon be able to celebrate the birth of new animals! Construct your zoo using "
+"more than 100 animal houses, visitor facilities, staff buildings, decorative "
+"park elements, and enclosure equipment. Wildlife Park 2 is an ideal "
+"playground for amateur architects, too! Use the extensive terraforming "
+"options to create your own imaginative landscapes. Plenty of established "
+"plant species and botanical rarities such us underwater plants or cacti will "
+"thrive under your loving care, and all this is lavishly displayed by a "
+"dynamic plant system. Another specialty is the realistically simulated flow "
+"of water. By easily placing a water source, you can create thunderous "
+"waterfalls and rambling water worlds. Visitors to your zoo will expect a few "
+"treats, too - build restaurants and ice-cream parlors and provide "
+"spectacular entertainment. Employ advertising and marketing to attract new "
+"visitors. But don't forget to keep an eye on your zoo's budget at all times!"
 msgstr ""
 
 #: i18n/tmp/Applications/Games/Worms Armageddon/application.js:1
@@ -2323,19 +2391,95 @@ msgstr ""
 msgid "Wine"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/ConfigureWine/script.js:1
+#: i18n/tmp/Engines/Wine/Engine/application.js:1
+msgid "Wine Engine"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Engine/application.js:2
+msgid "The Wine engine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Engine/Object/script.js:1
+msgid "Wine engine"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/application.js:1
+msgid "QuickScript"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/application.js:2
+msgid "QuickScripts for Wine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Custom Installer Script/script.js:1
+msgid "Custom Installer Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Installer Script/script.js:1
+msgid "Installer Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Local Installer Script/script.js:1
+msgid "Local Installer Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Online Installer Script/script.js:1
+msgid "Online Installer Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Quick Script/script.js:1
+msgid "Quick Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Steam Script/script.js:1
+msgid "Steam Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Uplay Script/script.js:1
+msgid "Uplay Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/QuickScript/Zip Script/script.js:1
+msgid "Zip Script"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Shortcuts/application.js:1
+msgid "Wine Shortcuts"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Shortcuts/application.js:2
+msgid "Shortcuts for Wine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Shortcuts/Reader/script.js:1
+msgid "Shortcut Reader"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Shortcuts/Wine/script.js:1
+msgid "Wine Shortcut"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Tools/application.js:1
+msgid "Wine Tools"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Tools/application.js:2
+msgid "Tools for Wine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Tools/Configure Wine/script.js:1
 msgid "Configure Wine"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/KillWineProcesses/script.js:1
+#: i18n/tmp/Engines/Wine/Tools/Kill Wine Processes/script.js:1
 msgid "Kill processes"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/RebootWine/script.js:1
+#: i18n/tmp/Engines/Wine/Tools/Reboot Wine/script.js:1
 msgid "Windows reboot"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/RepairWinePrefix/script.js:1
+#: i18n/tmp/Engines/Wine/Tools/Repair Wine Prefix/script.js:1
 msgid "Repair virtual drive"
 msgstr ""
 
@@ -2343,41 +2487,197 @@ msgstr ""
 msgid "Command prompt"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/WineRegistryEditor/script.js:1
+#: i18n/tmp/Engines/Wine/Tools/Wine Registry Editor/script.js:1
 msgid "Registry Editor"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/WineTaskManager/script.js:1
+#: i18n/tmp/Engines/Wine/Tools/Wine Task Manager/script.js:1
 msgid "Task manager"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/WineTerminalOpener/script.js:1
+#: i18n/tmp/Engines/Wine/Tools/Wine Terminal Opener/script.js:1
 msgid "Open a terminal"
 msgstr ""
 
-#: i18n/tmp/Engines/Wine/Tools/WineUninstaller/script.js:1
+#: i18n/tmp/Engines/Wine/Tools/Wine Uninstaller/script.js:1
 msgid "Wine uninstaller"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/application.js:1
+msgid "Wine Verbs"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/application.js:2
+msgid "Verbs for Wine."
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/corefonts/script.js:1
+msgid "corefonts"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/crypt32/script.js:1
+msgid "crypt32"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/d3dx10/script.js:1
+msgid "d3dx10"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/d3dx9/script.js:1
+msgid "d3dx9"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/dotnet40/script.js:1
+msgid ".NET 4.0"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/dotnet452/script.js:1
+msgid ".NET 4.5.2"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/dotnet45/script.js:1
+msgid ".NET 4.5"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/luna/script.js:1
+msgid "luna"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/mfc42/script.js:1
+msgid "mfc42"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/msls31/script.js:1
+msgid "msls31"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/mspatcha/script.js:1
+msgid "mspatcha"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/PhysX/script.js:1
+msgid "PhysX"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/quartz/script.js:1
+msgid "quartz"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/QuickTime 7.6/script.js:1
+msgid "QuickTime 7.6"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/sandbox/script.js:1
+msgid "sandbox"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/secur32/script.js:1
+msgid "secur32"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/Tahoma/script.js:1
+msgid "Tahoma"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2003/script.js:1
+msgid "vcrun2003"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2005/script.js:1
+msgid "vcrun2005"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2008/script.js:1
+msgid "vcrun2008"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2010/script.js:1
+msgid "vcrun2010"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2012/script.js:1
+msgid "vcrun2012"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2013/script.js:1
+msgid "vcrun2013"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/vcrun2015/script.js:1
+msgid "vcrun2015"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/Windows XP SP 3/script.js:1
+msgid "Windows XP Service Pack 3"
+msgstr ""
+
+#: i18n/tmp/Engines/Wine/Verbs/xact/script.js:1
+msgid "xact"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Apps/application.js:1
+msgid "App Utils"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Apps/application.js:2
+msgid "Utils for apps."
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Apps/Resources/script.js:1
+msgid "App Resources"
 msgstr ""
 
 #: i18n/tmp/Utils/Functions/category.js:1
 msgid "Functions"
 msgstr ""
 
-#: Utils/Functions/Filesystem/Extract/script.js:28
-#: Utils/Functions/Filesystem/Extract/script.js:73
+#: i18n/tmp/Utils/Functions/Filesystem/application.js:1
+msgid "Filesystem Utils"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Filesystem/application.js:2
+msgid "Utils for file system interaction."
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Filesystem/Extract/script.js:1
+msgid "File Extractors"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Filesystem/Files/script.js:1
+msgid "File Utilities"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Net/application.js:1
+msgid "Net Utils"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Net/application.js:2
+msgid "Utils for interaction with the Internet."
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Net/Download/script.js:1
+msgid "Downloader"
+msgstr ""
+
+#: i18n/tmp/Utils/Functions/Net/Resource/script.js:1
+msgid "Internet Resource"
+msgstr ""
+
+#: Utils/Functions/Filesystem/Extract/script.js:57
+#: Utils/Functions/Filesystem/Extract/script.js:133
 msgid "Please wait while {0} is extracted ..."
 msgstr ""
 
-#: Utils/Functions/Filesystem/Files/script.js:69
+#: Utils/Functions/Filesystem/Files/script.js:154
 msgid "Checking file consistency ..."
 msgstr ""
 
-#: Utils/Functions/Net/Download/script.js:41
-#: Utils/Functions/Net/Resource/script.js:47
+#: Utils/Functions/Net/Download/script.js:97
+#: Utils/Functions/Net/Resource/script.js:80
 msgid "Please wait while {0} is downloaded ..."
 msgstr ""
 
-#: Utils/Functions/Net/Download/script.js:70
+#: Utils/Functions/Net/Download/script.js:126
 msgid ""
 "Error while calculating checksum. \n"
 "\n"

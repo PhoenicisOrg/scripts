@@ -1,0 +1,8 @@
+{
+	"scriptName": "mfc42",
+	"id": "mfc42",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

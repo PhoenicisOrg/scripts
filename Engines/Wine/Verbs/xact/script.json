@@ -1,0 +1,8 @@
+{
+	"scriptName": "xact",
+	"id": "xact",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

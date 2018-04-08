@@ -1,6 +1,6 @@
-include(["Engines", "Wine", "QuickScript", "OnlineInstallerScript"]);
-include(["Engines", "Wine", "Verbs", "vcrun2015"]);
-include(["Engines", "Wine", "Verbs", "corefonts"]);
+include(["engines", "wine", "quick_script", "online_installer_script"]);
+include(["engines", "wine", "verbs", "vcrun2015"]);
+include(["engines", "wine", "verbs", "corefonts"]);
 
 new OnlineInstallerScript()
     .name("Blizzard app")
@@ -11,7 +11,7 @@ new OnlineInstallerScript()
     .category("Games")
     .executable("Battle.net.exe")
     .wineVersion(LATEST_DEVELOPMENT_VERSION)
-    .preInstall(function(wine, wizard) {
+    .preInstall(function(wine/*, wizard*/) {
         wine.windowsVersion("winxp");
         wine.vcrun2015();
         wine.corefonts();

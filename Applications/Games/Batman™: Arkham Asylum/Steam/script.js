@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "QuickScript", "SteamScript"]);
+include(["engines", "wine", "quick_script", "steam_script"]);
 
 new SteamScript()
     .name("Batman™: Arkham Asylum")
@@ -11,4 +11,4 @@ new SteamScript()
         wine.UseGLSL("disabled");
         wine.enableCSMT();
     })
-    .go(); 
+    .go();

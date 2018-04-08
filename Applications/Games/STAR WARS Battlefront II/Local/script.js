@@ -1,13 +1,13 @@
-include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
-include(["Engines", "Wine", "Engine", "Object"]);
-include(["Utils", "Functions", "Filesystem", "Files"]);
+include(["engines", "wine", "quick_script", "local_installer_script"]);
+include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "filesystem", "files"]);
 
 new LocalInstallerScript()
-    .name("STAR WARS™ Battlefront™ II")                       
-    .editor("Pandemic Studio")                               
-    .author("ImperatorS79")                     
-    .category("Games")                           
-    .executable("LaunchBFII.exe")                  
+    .name("STAR WARS™ Battlefront™ II")
+    .editor("Pandemic Studio")
+    .author("ImperatorS79")
+    .category("Games")
+    .executable("LaunchBFII.exe")
     .postInstall(function(wine, wizard) {
     // Install the 1.1 update of the game
         new Downloader()
@@ -16,8 +16,8 @@ new LocalInstallerScript()
             .checksum("60eaddfaba1bc71fe8bbbb560f8da229748cfaa8")
             .to(wine.prefixDirectory + "drive_c/Program Files/LucasArts/Star Wars Battlefront II/BFIIUpdateInt1_1.exe")
             .get();
-            
+
         wine.runInsidePrefix("/Program Files/LucasArts/Star Wars Battlefront II/BFIIUpdateInt1_1.exe");
-        
+
     })
-    .go(); 
+    .go();

@@ -1,0 +1,8 @@
+{
+	"scriptName": "crypt32",
+	"id": "crypt32",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

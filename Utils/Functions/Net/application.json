@@ -1,0 +1,5 @@
+{
+	"name":	"Net Utils",
+	"id":	"net",
+	"description": "Utils for interaction with the Internet."
+}

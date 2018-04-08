@@ -1,12 +1,12 @@
-include(["Engines", "Wine", "QuickScript", "SteamScript"]);
-include(["Engines", "Wine", "Engine", "Object"]);
+include(["engines", "wine", "quick_script", "steam_script"]);
+include(["engines", "wine", "engine", "object"]);
 
 new SteamScript()
-    .name("Caesar III")              
-    .editor("Impressions Games")    
-    .author("ImperatorS79") 
+    .name("Caesar III")
+    .editor("Impressions Games")
+    .author("ImperatorS79")
     .appId(517790)
-    .postInstall(function(wine, wizard) {
+    .postInstall(function(wine/*, wizard*/) {
         wine.setVirtualDesktop(1280, 1024);
     })
-    .go(); 
+    .go();

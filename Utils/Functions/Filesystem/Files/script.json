@@ -1,0 +1,8 @@
+{
+  	"scriptName": "File Utilities",
+  	"id": "files",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}
