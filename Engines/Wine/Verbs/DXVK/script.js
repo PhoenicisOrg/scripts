@@ -22,12 +22,12 @@ Wine.prototype.DXVK = function() {
         .archive(setupFile)
         .to(this.prefixDirectory + "/TMP/")
         .extract();
-	
+
     if (this.architecture() == "x86") {
         cp(this.prefixDirectory + "/TMP/dxvk-0.41/x32/d3d11.dll", this.system32directory());
         cp(this.prefixDirectory + "/TMP/dxvk-0.41/x32/dxgi.dll", this.system32directory());
     }
-	
+
     if (this.architecture() == "amd64") {
         cp(this.prefixDirectory + "/TMP/dxvk-0.41/x32/d3d11.dll", this.system64directory());
         cp(this.prefixDirectory + "/TMP/dxvk-0.41/x32/dxgi.dll", this.system64directory());
@@ -35,12 +35,12 @@ Wine.prototype.DXVK = function() {
         cp(this.prefixDirectory + "/TMP/dxvk-0.41/x64/d3d11.dll", this.system32directory());
         cp(this.prefixDirectory + "/TMP/dxvk-0.41/x64/dxgi.dll", this.system32directory());
     }
-	
+
     this.overrideDLL()
         .set("native", ["d3d11", "dxgi"])
         .do();
 	
     remove(this.prefixDirectory + "/TMP/");
-	
+
     return this;
 }
