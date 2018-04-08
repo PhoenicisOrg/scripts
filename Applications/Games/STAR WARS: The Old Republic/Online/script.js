@@ -37,7 +37,7 @@ new OnlineInstallerScript()
                         '}'
         writeToFile(path, content)
     })
-    
-    .go(); 
-    
-    
+
+    .go();
+
+

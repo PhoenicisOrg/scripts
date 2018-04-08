@@ -11,7 +11,7 @@ function ZipScript() {
 
 ZipScript.prototype = Object.create(QuickScript.prototype);
 
-ZipScript.prototype.constructor = ZipScript;   
+ZipScript.prototype.constructor = ZipScript;
 
 ZipScript.prototype.url = function(url) {
     this._url = url;

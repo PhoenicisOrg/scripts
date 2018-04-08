@@ -66,7 +66,7 @@ Wine.prototype.d3dx10 = function () {
 
     this.overrideDLL()
         .set("native", [
-            "d3dx10_33", "d3dx10_34", "d3dx10_35", "d3dx10_36", "d3dx10_37", "d3dx10_38", 
+            "d3dx10_33", "d3dx10_34", "d3dx10_35", "d3dx10_36", "d3dx10_37", "d3dx10_38",
             "d3dx10_39", "d3dx10_40", "d3dx10_41", "d3dx10_42", "d3dx10_43"
         ])
         .do();

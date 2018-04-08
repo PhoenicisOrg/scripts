@@ -9,11 +9,11 @@ include(["engines", "wine", "verbs", "dotnet40"]);
 * @returns {Wine} Wine object
 */
 Wine.prototype.dotnet45 = function() {
-    
+
     if (this.architecture() == "amd64") {
         throw "{0} cannot be installed in a 64bit wine prefix!".format("dotnet45");
     }
-    
+
     var OSVersion = this.windowsVersion();
 
     var setupFile = new Resource()
@@ -24,12 +24,12 @@ Wine.prototype.dotnet45 = function() {
         .get();
 
     this.uninstall("Mono");
-    
+
     this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"])
         .wait(tr("Please wait ..."));
 
     remove(this.system32directory() + "/mscoree.dll");
-    
+
     this.dotnet40();
     this.windowsVersion("win7");
 
@@ -43,12 +43,12 @@ Wine.prototype.dotnet45 = function() {
     this.overrideDLL()
         .set("native", ["mscoree"])
         .do();
-        
+
     this.windowsVersion(OSVersion);
-    
+
     if(OSVersion != "win2003") {
         print(tr("{0} applications can have issues when windows version is not set to \"win2003\"", ".NET 4.5"));
     }
-    
+
     return this;
 };
