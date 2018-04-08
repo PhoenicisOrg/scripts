@@ -12,7 +12,7 @@ new SteamScript()
     .appId(292030)
     .preInstall(function(wine/*, wizard*/) {
         //Ensure Directx11 full features will work, and CSMT for performance
-        wine.setVersionGL(4,5);
+        wine.setVersionGL(4, 5);
         wine.enableCSMT();
         wine.UseGLSL("enabled");
         wine.DirectDrawRenderer("opengl");

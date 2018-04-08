@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
-include(["Engines","Wine", "Verbs", "d3dx9"]);
+include(["Engines", "Wine", "Verbs", "d3dx9"]);
 
 new SteamScript()
     .name("STAR WARS™ Empire at War: Gold Pack")              

@@ -11,7 +11,7 @@ new OnlineInstallerScript()
     .url("http://www.theanubianwar.com/sites/default/files/downloads/EarthEternal_Valkals_Shadow_Setup.exe")
     .installationArgs(["/S"])
     .category("Games")
-    .executable("Spark.exe",["http://live.theanubianwar.com/Release/Current/EarthEternal.car"])
+    .executable("Spark.exe", ["http://live.theanubianwar.com/Release/Current/EarthEternal.car"])
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .preInstall(function (wine/*, wizard*/) {
