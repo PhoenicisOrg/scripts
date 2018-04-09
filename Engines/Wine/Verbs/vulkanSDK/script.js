@@ -11,7 +11,7 @@ include(["Utils", "Functions", "Apps", "Resources"]);
 Wine.prototype.vulkanSDK = function () {
     print("NOTE: you need a driver that support Vulkan enough to run winevulkan");
     print("NOTE: Vulkan works in wine from version 3.3");
-	
+
     var setupFile = new Resource()
         .wizard(this.wizard())
         .url("https://sdk.lunarg.com/sdk/download/1.0.68.0/windows/VulkanSDK-1.0.68.0-Installer.exe")
@@ -28,7 +28,7 @@ Wine.prototype.vulkanSDK = function () {
                             '		"library_path": "c:\\windows\\system32\\winevulkan.dll",\n'    +
                             '		"api_version": "1.0.51"\n'				       +
                             '	}\n'								       +
-                            '}'					
+                            '}'
 
     writeToFile(pathVulkanJSON, contentVulkanJSON);
 	
