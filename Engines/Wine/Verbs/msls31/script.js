@@ -1,7 +1,11 @@
-include(["Engines", "Wine", "Engine", "Object"]);
-include(["Utils", "Functions", "Net", "Resource"]);
+include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "net", "resource"]);
 
-Wine.prototype.msls31 = function() {
+/**
+* Verb to install msls31.dll
+* @returns {Wine} Wine object
+*/
+Wine.prototype.msls31 = function () {
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("ftp://ftp.hp.com/pub/softlib/software/msi/InstMsiW.exe")

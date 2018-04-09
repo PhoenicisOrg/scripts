@@ -1,0 +1,8 @@
+{
+  	"scriptName": "App Resources",
+  	"id": "resources",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

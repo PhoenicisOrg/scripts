@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "QuickScript", "ZipScript"]);
+include(["engines", "wine", "quick_script", "zip_script"]);
 
 new ZipScript()
     .name("Xenon 2")

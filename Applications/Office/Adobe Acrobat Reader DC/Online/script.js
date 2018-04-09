@@ -1,5 +1,5 @@
-include(["Engines", "Wine", "QuickScript", "OnlineInstallerScript"]);
-include(["Engines", "Wine", "Verbs", "mspatcha"]);
+include(["engines", "wine", "quick_script", "online_installer_script"]);
+include(["engines", "wine", "verbs", "mspatcha"]);
 
 new OnlineInstallerScript()
     .name("Adobe Acrobat Reader DC")
@@ -12,7 +12,7 @@ new OnlineInstallerScript()
     .checksum("98b2b838e6c4663fefdfd341dfdc596b1eff355c")
     .category("Office")
     .executable("AcroRd32.exe")
-    .preInstall(function(wine, wizard) {
+    .preInstall(function (wine/*, wizard*/) {
         wine.mspatcha();
     })
     .go();

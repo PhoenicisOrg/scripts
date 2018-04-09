@@ -1,0 +1,8 @@
+{
+	"scriptName": "vcrun2012",
+	"id": "vcrun2012",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

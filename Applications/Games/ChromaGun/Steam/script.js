@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "QuickScript", "SteamScript"]);
+include(["engines", "wine", "quick_script", "steam_script"]);
 
 new SteamScript()
     .name("ChromaGun")

@@ -1,8 +1,12 @@
-include(["Engines", "Wine", "Engine", "Object"]);
-include(["Utils", "Functions", "Net", "Resource"]);
-include(["Engines", "Wine", "Verbs", "luna"]);
+include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "net", "resource"]);
+include(["engines", "wine", "verbs", "luna"]);
 
-Wine.prototype.vcrun2005 = function() {
+/**
+* Verb to install vcrun2005
+* @returns {Wine} Wine object
+*/
+Wine.prototype.vcrun2005 = function () {
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("http://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x86.EXE")
