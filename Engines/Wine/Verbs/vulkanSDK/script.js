@@ -18,7 +18,7 @@ Wine.prototype.vulkanSDK = function () {
         .checksum("fe85c637c3d55c2972a997fcec44212d55d41a98")
         .name("VulkanSDK-1.0.68.0-Installer.exe")
         .get();
-		
+
     this.run(setupFile, "/S");
 	
     var pathVulkanJSON = this.prefixDirectory + "drive_c/windows/winevulkan.json"
