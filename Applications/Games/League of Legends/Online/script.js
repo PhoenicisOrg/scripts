@@ -90,7 +90,7 @@ new CustomInstallerScript()
     .category("Games")
     .wineDistribution("staging")
     .wineVersion(LATEST_STAGING_VERSION)
-    .preInstall(function (win /*, wizard*/) {
+    .preInstall(function (wine /*, wizard*/) {
         wine.windowsVersion("winxp");
         wine.d3dx9();
         wine.overrideDLL().set("native, builtin", ["atl120", "msvcp120", "msvcr120", "vcomp120", "msvcp140"]).do();
