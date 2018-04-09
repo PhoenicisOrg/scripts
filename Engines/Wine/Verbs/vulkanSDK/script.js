@@ -6,14 +6,14 @@ include(["Utils", "Functions", "Apps", "Resources"]);
 /**
 * All the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
 * -> https://github.com/roderickc/wine-vulkan
-* @returns {Wine}
+* @returns {Wine} Wine object
 */
-Wine.prototype.vulkanSDK = function() {
+Wine.prototype.vulkanSDK = function () {
     print("NOTE: you need a driver that support Vulkan enough to run winevulkan");
     print("NOTE: Vulkan works in wine from version 3.3");
-		
+	
     var setupFile = new Resource()
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .url("https://sdk.lunarg.com/sdk/download/1.0.68.0/windows/VulkanSDK-1.0.68.0-Installer.exe")
         .checksum("fe85c637c3d55c2972a997fcec44212d55d41a98")
         .name("VulkanSDK-1.0.68.0-Installer.exe")
@@ -28,9 +28,9 @@ Wine.prototype.vulkanSDK = function() {
                             '		"library_path": "c:\\windows\\system32\\winevulkan.dll",\n'    +
                             '		"api_version": "1.0.51"\n'				       +
                             '	}\n'								       +
-                            '}'						
+                            '}'					
 
-    writeToFile(pathVulkanJSON,contentVulkanJSON);
+    writeToFile(pathVulkanJSON, contentVulkanJSON);
 	
     /*var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("vulkan.reg");
     this.regedit().patch(registrySettings);
@@ -41,7 +41,7 @@ Wine.prototype.vulkanSDK = function() {
     }
     */
 	
-    wizard.message(tr("Please add the following registery keys:\n\nFor 32bits and 64bits\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers\\]\n\"C:\\Windows\\winevulkan.json\"=dword:00000000\n\nFor 64bits\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers\\]\n\"C:\\Windows\\winevulkan.json\"=dword:00000000"));
+    this.wizard().message(tr("Please add the following registery keys:\n\nFor 32bits and 64bits\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers\\]\n\"C:\\Windows\\winevulkan.json\"=dword:00000000\n\nFor 64bits\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers\\]\n\"C:\\Windows\\winevulkan.json\"=dword:00000000"));
 	
     return this;
 	
