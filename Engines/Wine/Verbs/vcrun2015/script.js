@@ -1,8 +1,12 @@
-include(["Engines", "Wine", "Engine", "Object"]);
-include(["Utils", "Functions", "Net", "Resource"]);
-include(["Engines", "Wine", "Verbs", "luna"]);
+include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "net", "resource"]);
+include(["engines", "wine", "verbs", "luna"]);
 
-Wine.prototype.vcrun2015 = function() {
+/**
+* Verb to install vcrun2015
+* @returns {Wine} Wine object
+*/
+Wine.prototype.vcrun2015 = function () {
     var setupFile32 = new Resource()
         .wizard(this._wizard)
         .url("https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x86.exe")

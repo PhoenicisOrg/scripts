@@ -1,0 +1,8 @@
+{
+	"scriptName": ".NET 4.5.2",
+	"id": "dotnet452",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

@@ -1,3 +1,8 @@
 {
-  	"scriptName": "Command prompt"
+  	"scriptName": "Command prompt",
+  	"id": "command_prompt",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
 }

@@ -1,0 +1,8 @@
+{
+	"scriptName": "sandbox",
+	"id": "sandbox",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

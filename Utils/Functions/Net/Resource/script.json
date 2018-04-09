@@ -1,0 +1,8 @@
+{
+  	"scriptName": "Internet Resource",
+  	"id": "resource",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

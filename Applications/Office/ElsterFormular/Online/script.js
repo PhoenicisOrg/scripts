@@ -1,5 +1,5 @@
-include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
-include(["Engines", "Wine", "Verbs", "vcrun2013"]);
+include(["engines", "wine", "quick_script", "local_installer_script"]);
+include(["engines", "wine", "verbs", "vcrun2013"]);
 
 new LocalInstallerScript()
     .name("ElsterFormular")
@@ -9,7 +9,7 @@ new LocalInstallerScript()
     .author("Plata")
     .category("Office")
     .executable("pica.exe")
-    .preInstall(function(wine, wizard) {
+    .preInstall(function (wine/*, wizard*/) {
         wine.vcrun2013();
         wine.nativeApplication("pdf");
     })

@@ -1,4 +1,5 @@
 {
 	"name": "Local Installer",
+	"id": "local_installer",
 	"description": "The Local Installer allows you to install custom applications from your local computer."
 }

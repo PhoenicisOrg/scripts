@@ -1,0 +1,23 @@
+docs:
+  - title: "Develop"
+    children:
+      - title: "application.json"
+        url: /application-json/
+      - title: "script.json"
+        url: /script-json/  
+      - title: "script.js"
+        url: /script-js/
+      - title: "Utils"
+        url: /utils/
+      - title: "Verbs"
+        url: /verbs/
+      - title: "SetupWizard"
+        url: /setup-wizard/
+      - title: "JSDoc"
+        url: /jsdoc/
+  - title: "General"
+    children:
+      - title: "Translation"
+        url: /translation/
+      - title: "Best practices"
+        url: /best-practices/

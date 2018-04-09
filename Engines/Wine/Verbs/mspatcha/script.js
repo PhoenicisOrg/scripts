@@ -1,8 +1,12 @@
-include(["Engines", "Wine", "Engine", "Object"]);
-include(["Utils", "Functions", "Net", "Resource"]);
-include(["Utils", "Functions", "Filesystem", "Files"]);
+include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "net", "resource"]);
+include(["utils", "functions", "filesystem", "files"]);
 
-Wine.prototype.mspatcha = function() {
+/**
+* Verb to install mspatcha
+* @returns {Wine} Wine object
+*/
+Wine.prototype.mspatcha = function () {
     //Inspired from winetricks mspatcha, but with a link Phoenicis can understand
     var setupFile = new Resource()
         .wizard(this._wizard)
@@ -18,13 +22,13 @@ Wine.prototype.mspatcha = function() {
         .wizard(this._wizard)
         .to(this.system32directory())
         .extract();
-        
-     new CabExtract()
+
+    new CabExtract()
         .archive(this.system32directory() + "/i386/mspatcha.dl_")
         .wizard(this._wizard)
         .to(this.system32directory())
         .extract();
-    
+
     remove(this.system32directory() + "/i386/");
 
     this.overrideDLL()

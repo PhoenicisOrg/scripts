@@ -1,0 +1,8 @@
+{
+  	"scriptName": "Registry Editor",
+	"id": "wine_registry_editor",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

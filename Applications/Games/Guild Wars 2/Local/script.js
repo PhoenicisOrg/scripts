@@ -1,4 +1,4 @@
-include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
+include(["engines", "wine", "quick_script", "local_installer_script"]);
 
 new LocalInstallerScript()
     .name("Guild Wars 2")
@@ -9,7 +9,7 @@ new LocalInstallerScript()
     .executable("Gw2.exe")
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .preInstall(function(wine, wizard) {
+    .preInstall(function (wine/*, wizard*/) {
         // avoid that launcher freezes the complete system
         wine.setVirtualDesktop(1280, 1024);
         wine.enableCSMT();
