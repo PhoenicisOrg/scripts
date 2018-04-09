@@ -20,7 +20,7 @@ Wine.prototype.vulkanSDK = function () {
         .get();
 
     this.run(setupFile, "/S");
-	
+
     var pathVulkanJSON = this.prefixDirectory + "drive_c/windows/winevulkan.json"
     var contentVulkanJSON = '{\n'                                                                      +
                             '	"file_format_version": "1.0.0",\n'				       +
@@ -31,18 +31,18 @@ Wine.prototype.vulkanSDK = function () {
                             '}'
 
     writeToFile(pathVulkanJSON, contentVulkanJSON);
-	
+
     /*var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("vulkan.reg");
     this.regedit().patch(registrySettings);
-	
+
     if (this.architecture() == "amd64") {
         var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("vulkan64.reg");
         this.regedit().patch(registrySettings);
     }
     */
-	
+
     this.wizard().message(tr("Please add the following registery keys:\n\nFor 32bits and 64bits\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers\\]\n\"C:\\Windows\\winevulkan.json\"=dword:00000000\n\nFor 64bits\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers\\]\n\"C:\\Windows\\winevulkan.json\"=dword:00000000"));
-	
+
     return this;
-	
+
 }
