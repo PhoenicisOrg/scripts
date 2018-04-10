@@ -1,0 +1,8 @@
+{
+  	"scriptName": "Downloader",
+  	"id": "download",
+	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
+	"testingOperatingSystems": [],
+	"free": true,
+	"requiresPatch": false
+}

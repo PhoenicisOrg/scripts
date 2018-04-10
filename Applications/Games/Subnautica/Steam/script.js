@@ -1,11 +1,11 @@
-include(["Engines", "Wine", "QuickScript", "SteamScript"]);
-include(["Engines", "Wine", "Verbs", "vcrun2013"]);
-include(["Engines", "Wine", "Verbs", "vcrun2008"]);
-include(["Engines", "Wine", "Verbs", "xact"]);
-include(["Engines", "Wine", "Verbs", "corefonts"]);
-include(["Utils", "Functions", "Apps", "Resources"]);
-include(["Utils", "Functions", "Filesystem", "Files"]);
-include(["Engines", "Wine", "Engine", "Object"]);
+include(["engines", "wine", "quick_script", "steam_script"]);
+include(["engines", "wine", "verbs", "vcrun2013"]);
+include(["engines", "wine", "verbs", "vcrun2008"]);
+include(["engines", "wine", "verbs", "xact"]);
+include(["engines", "wine", "verbs", "corefonts"]);
+include(["utils", "functions", "apps", "resources"]);
+include(["utils", "functions", "filesystem", "files"]);
+include(["engines", "wine", "engine", "object"]);
 
 new SteamScript()
     .name("Subnautica")
@@ -16,7 +16,7 @@ new SteamScript()
     .wineVersion(3.1)
     .wineArchitecture("amd64")
     .appId(264710)
-    .preInstall(function(wine/*, wizard*/) {
+    .preInstall(function (wine/*, wizard*/) {
         wine.vcrun2013();
         wine.corefonts();
         wine.vcrun2008();

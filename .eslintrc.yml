@@ -5,7 +5,22 @@ extends:
 env:
   nashorn: true
 
-valid-jsdoc: 2
+rules:
+  valid-jsdoc: 2
+  comma-spacing:
+    - 2
+    - {before: false, after: true}
+  keyword-spacing:
+    - 2
+    - {before: true, after: true}
+  space-before-function-paren:
+    - 2
+    - {anonymous: always, named: never, asyncArrow: always}
+  no-trailing-spaces: 2
+  indent:
+    - 2
+    - 4
+    - {SwitchCase: 1, ArrayExpression: first}
 
 globals:
   include: false

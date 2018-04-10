@@ -1,6 +1,6 @@
-include(["Engines", "Wine", "QuickScript", "OnlineInstallerScript"]);
-include(["Engines", "Wine", "Verbs", "vcrun2012"]);
-include(["Engines", "Wine", "Verbs", "d3dx9"]);
+include(["engines", "wine", "quick_script", "online_installer_script"]);
+include(["engines", "wine", "verbs", "vcrun2012"]);
+include(["engines", "wine", "verbs", "d3dx9"]);
 
 new OnlineInstallerScript()
     .name("DC Universe Online")
@@ -10,8 +10,8 @@ new OnlineInstallerScript()
     .url("https://launch.daybreakgames.com/installer/DCUO_setup.exe")
     .category("Games")
     .executable("LaunchPad.exe")
-    .preInstall(function(wine/*, wizard*/) {
-	wine.vcrun2012();
-	wine.d3dx9();
+    .preInstall(function (wine/*, wizard*/) {
+        wine.vcrun2012();
+        wine.d3dx9();
     })
-.go();
+    .go();

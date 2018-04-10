@@ -1,4 +1,5 @@
 {
 	"name":	"Hexcells Infinite",
+	"id":	"hexcells_infinite",
 	"description": "Hexcells Infinite is the third game in the series of ambient logic puzzle games.<br><br>It includes a new set of 36 puzzles as well as a random puzzle generator and now supports mid-level saving and cross platform cloud saves.<br><br>The level generator uses an 8 digit seed number to generate each puzzle so they can easily be shared."
 }

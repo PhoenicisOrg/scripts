@@ -1,5 +1,5 @@
-include(["Engines", "Wine", "QuickScript", "SteamScript"]);
-include(["Engines", "Wine", "Verbs", "secur32"]);
+include(["engines", "wine", "quick_script", "steam_script"]);
+include(["engines", "wine", "verbs", "secur32"]);
 
 new SteamScript()
     .name("Far Cry® 2")
@@ -8,7 +8,7 @@ new SteamScript()
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .appId(19900)
-    .preInstall(function(wine/*, wizard*/) {
+    .preInstall(function (wine/*, wizard*/) {
         wine.secur32();
         wine.enableCSMT();
     })

@@ -1,7 +1,7 @@
-include(["Engines", "Wine", "QuickScript", "OnlineInstallerScript"]);
-include(["Engines", "Wine", "Verbs", "corefonts"]);
-include(["Engines", "Wine", "Verbs", "d3dx9"]);
-include(["Engines", "Wine", "Verbs", "vcrun2008"]);
+include(["engines", "wine", "quick_script", "online_installer_script"]);
+include(["engines", "wine", "verbs", "corefonts"]);
+include(["engines", "wine", "verbs", "d3dx9"]);
+include(["engines", "wine", "verbs", "vcrun2008"]);
 
 new OnlineInstallerScript()
     .name("Earth Eternal - Valkal's Shadow")
@@ -11,7 +11,7 @@ new OnlineInstallerScript()
     .url("http://www.theanubianwar.com/sites/default/files/downloads/EarthEternal_Valkals_Shadow_Setup.exe")
     .installationArgs(["/S"])
     .category("Games")
-    .executable("Spark.exe",["http://live.theanubianwar.com/Release/Current/EarthEternal.car"])
+    .executable("Spark.exe", ["http://live.theanubianwar.com/Release/Current/EarthEternal.car"])
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .preInstall(function (wine/*, wizard*/) {

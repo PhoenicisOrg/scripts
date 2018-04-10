@@ -1,6 +1,6 @@
-include(["Engines", "Wine", "Engine", "Object"]);
+include(["engines", "wine", "engine", "object"]);
 
-var _WineShortcutReader = function(shortcut) {
+var _WineShortcutReader = function (shortcut) {
     var that = this;
     that._shortcutManager = Bean("shortcutManager");
     that._libraryManager = Bean("libraryManager");
@@ -9,17 +9,17 @@ var _WineShortcutReader = function(shortcut) {
 
     this.shortcut = shortcut;
 
-    this.wineprefix = function() {
+    this.wineprefix = function () {
         var shortcutContent = JSON.parse(this.shortcut.script);
         return shortcutContent.winePrefix;
     };
 
     this.container = this.wineprefix;
 
-    this.run = function(userArguments) {
+    this.run = function (userArguments) {
         var shortcutContent = JSON.parse(this.shortcut.script);
 
-        if(!userArguments) {
+        if (!userArguments) {
             userArguments = [];
         }
 
@@ -33,7 +33,7 @@ var _WineShortcutReader = function(shortcut) {
     };
 
 
-    this.stop = function() {
+    this.stop = function () {
         var shortcutContent = JSON.parse(this.shortcut.script);
 
         new Wine()
@@ -41,16 +41,16 @@ var _WineShortcutReader = function(shortcut) {
             .kill()
     };
 
-    this.uninstall = function() {
+    this.uninstall = function () {
         var shortcutContent = JSON.parse(this.shortcut.script);
         var _winePrefix = shortcutContent.winePrefix;
 
         var _found = false;
-        this._libraryManager.fetchShortcuts().forEach(function(shortcutCategory) {
-            shortcutCategory.getShortcuts().forEach(function(shortcut) {
+        this._libraryManager.fetchShortcuts().forEach(function (shortcutCategory) {
+            shortcutCategory.getShortcuts().forEach(function (shortcut) {
                 var _otherShortcutContent = JSON.parse(shortcut.script);
 
-                if(_otherShortcutContent.winePrefix == _winePrefix && shortcut.name != that.shortcut.name) {
+                if (_otherShortcutContent.winePrefix == _winePrefix && shortcut.name != that.shortcut.name) {
                     _found = true;
                 }
             });
@@ -58,41 +58,65 @@ var _WineShortcutReader = function(shortcut) {
 
         this._shortcutManager.deleteShortcut(this.shortcut);
 
-        if(!_found) {
+        if (!_found) {
             this._uiQuestionFactory.create(tr("The container {0} is no longer used.\nDo you want to delete it?", _winePrefix),
-            function() {
-                remove(that._winePrefixesDirectory + _winePrefix);
-            });
+                function () {
+                    remove(that._winePrefixesDirectory + _winePrefix);
+                });
         }
     }
 };
 
-/* exported ShortcutReader */
-var ShortcutReader = function() {
-    var that = this;
+/**
+* ShortcutReader prototype
+* @constructor
+*/
+function ShortcutReader() {
+}
 
-    this.of = function(shortcut) {
-        this.shortcut = shortcut;
-        var shortcutContentParsed = JSON.parse(this.shortcut.script);
+/**
+* sets shortcut
+* @param {string} shortcut shortcut
+* @returns {void}
+*/
+ShortcutReader.prototype.of = function (shortcut) {
+    this.shortcut = shortcut;
+    var shortcutContentParsed = JSON.parse(this.shortcut.script);
 
-        if(shortcutContentParsed.type == "WINE") {
-            that._runner = new _WineShortcutReader(this.shortcut);
-        }
-    };
+    if (shortcutContentParsed.type == "WINE") {
+        this._runner = new _WineShortcutReader(this.shortcut);
+    }
+}
 
-    this.run = function(userArguments) {
-        that._runner.run(userArguments);
-    };
+/**
+* runs shortcut
+* @param {array} userArguments arguments
+* @returns {void}
+*/
+ShortcutReader.prototype.run = function (userArguments) {
+    this._runner.run(userArguments);
+}
 
-    this.stop = function() {
-        that._runner.stop();
-    };
+/**
+* stops running shortcut
+* @returns {void}
+*/
+ShortcutReader.prototype.stop = function () {
+    this._runner.stop();
+}
 
-    this.uninstall = function() {
-        that._runner.uninstall();
-    };
+/**
+* uninstalls shortcut
+* @returns {void}
+*/
+ShortcutReader.prototype.uninstall = function () {
+    this._runner.uninstall();
+}
 
-    this.container = function() {
-        return that._runner.container();
-    };
-};
+/**
+* returns container of shortcut
+* @returns {string} container
+*/
+ShortcutReader.prototype.container = function () {
+    return this._runner.container();
+}

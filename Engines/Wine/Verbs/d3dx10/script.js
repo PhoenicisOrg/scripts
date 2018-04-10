@@ -1,12 +1,16 @@
-include(["Engines", "Wine", "Engine", "Object"]);
-include(["Utils", "Functions", "Net", "Resource"]);
+include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "net", "resource"]);
 
+/**
+* Verb to install D3DX10
+* @returns {Wine} Wine object
+*/
 Wine.prototype.d3dx10 = function () {
     var that = this;
 
-    var extractDirectXtoSystemDirectory = function(progressBar, filesToExtract, destination, pattern) {
+    var extractDirectXtoSystemDirectory = function (progressBar, filesToExtract, destination, pattern) {
         var numberOfExtractedFiles = 0;
-        filesToExtract.forEach(function(cabFile) {
+        filesToExtract.forEach(function (cabFile) {
             print(tr("Extracting {0} ...", cabFile));
             progressBar.setText(tr("Extracting {0} ...", "DirectX 10"));
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
@@ -62,7 +66,7 @@ Wine.prototype.d3dx10 = function () {
 
     this.overrideDLL()
         .set("native", [
-            "d3dx10_33", "d3dx10_34", "d3dx10_35", "d3dx10_36", "d3dx10_37", "d3dx10_38", 
+            "d3dx10_33", "d3dx10_34", "d3dx10_35", "d3dx10_36", "d3dx10_37", "d3dx10_38",
             "d3dx10_39", "d3dx10_40", "d3dx10_41", "d3dx10_42", "d3dx10_43"
         ])
         .do();
