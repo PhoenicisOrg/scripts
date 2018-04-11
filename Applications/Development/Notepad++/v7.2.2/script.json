@@ -1,8 +1,11 @@
 {
-	"scriptName": "v.7.2.2",
-	"id": "v_7_2_2",
-	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": [],
-	"free": true,
-	"requiresPatch": false
+    "scriptName"                 : "v.7.2.2",
+    "id"                         : "v_7_2_2",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
 }

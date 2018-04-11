@@ -1,8 +1,11 @@
 {
-  	"scriptName": "Repair virtual drive",
-	"id": "repair_wine_prefix",
-	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": [],
-	"free": true,
-	"requiresPatch": false
+    "scriptName"                 : "Repair virtual drive",
+    "id"                         : "repair_wine_prefix",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
 }

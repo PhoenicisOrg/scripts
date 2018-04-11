@@ -1,5 +1,5 @@
 {
-	"name":	"Wine Tools",
-	"id":	"tools",
-	"description": "Tools for Wine."
+    "name"        : "Wine Tools",
+    "id"          : "tools",
+    "description" : "Tools for Wine."
 }

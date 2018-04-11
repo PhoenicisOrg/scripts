@@ -1,8 +1,12 @@
 {
-	"scriptName": "DXVK",
-	"id": "dxvk",
-	"compatibleOperatingSystems": ["LINUX"],
-	"testingOperatingSystems": ["LINUX"],
-	"free": true,
-	"requiresPatch": false
-} 
+    "scriptName"                 : "DXVK",
+    "id"                         : "dxvk",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "LINUX"
+    ],
+    "free"          : true,
+    "requiresPatch" : false
+}

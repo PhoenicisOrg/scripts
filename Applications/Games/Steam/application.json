@@ -1,5 +1,5 @@
 {
-	"name":	"Steam",
-	"id":	"steam",
-	"description": "Steam is a digital distribution platform developed by Valve Corporation, which offers digital rights management (DRM), multiplayer gaming, video streaming and social networking services."
+    "name"        : "Steam",
+    "id"          : "steam",
+    "description" : "Steam is a digital distribution platform developed by Valve Corporation, which offers digital rights management (DRM), multiplayer gaming, video streaming and social networking services."
 }

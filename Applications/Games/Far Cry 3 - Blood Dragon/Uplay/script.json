@@ -1,8 +1,12 @@
 {
-	"scriptName": "Uplay",
-	"id": "uplay",
-	"compatibleOperatingSystems": ["LINUX"],
-	"testingOperatingSystems": ["LINUX"],
-	"free": false,
-	"requiresPatch": false
+    "scriptName"                 : "Uplay",
+    "id"                         : "uplay",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "LINUX"
+    ],
+    "free"          : false,
+    "requiresPatch" : false
 }

@@ -1,8 +1,11 @@
 {
-	"scriptName": "Windows XP Service Pack 3",
-	"id": "sp3extract",
-	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": [],
-	"free": true,
-	"requiresPatch": false
+    "scriptName"                 : "Windows XP Service Pack 3",
+    "id"                         : "sp3extract",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
 }

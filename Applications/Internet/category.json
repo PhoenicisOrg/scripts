@@ -1,5 +1,5 @@
 {
-	"name": "Internet",
-	"id": "internet",
-	"type": "INSTALLERS"
+    "name" : "Internet",
+    "id"   : "internet",
+    "type" : "INSTALLERS"
 }

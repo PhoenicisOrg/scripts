@@ -1,5 +1,5 @@
 {
-	"name": "Office",
-	"id": "office",
-	"type": "INSTALLERS"
+    "name" : "Office",
+    "id"   : "office",
+    "type" : "INSTALLERS"
 }

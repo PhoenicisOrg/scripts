@@ -1,8 +1,11 @@
 {
-  	"scriptName": "Open a terminal",
-	"id": "wine_terminal_opener",
-	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": [],
-	"free": true,
-	"requiresPatch": false
+    "scriptName"                 : "Open a terminal",
+    "id"                         : "wine_terminal_opener",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
 }
