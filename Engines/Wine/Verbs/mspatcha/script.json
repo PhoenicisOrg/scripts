@@ -1,8 +1,11 @@
 {
-	"scriptName": "mspatcha",
-	"id": "mspatcha",
-	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": [],
-	"free": true,
-	"requiresPatch": false
+    "scriptName"                 : "mspatcha",
+    "id"                         : "mspatcha",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
 }

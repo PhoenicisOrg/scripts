@@ -1,5 +1,5 @@
 {
-	"name":	"The Turing Test",
-	"id":	"the_turing_test",
-	"description": "The Turing Test is a challenging first-person puzzle game set on Jupiter’s moon, Europa. You are Ava Turing, an engineer for the International Space Agency (ISA) sent to discover the cause behind the disappearance of the ground crew stationed there."
+    "name"        : "The Turing Test",
+    "id"          : "the_turing_test",
+    "description" : "The Turing Test is a challenging first-person puzzle game set on Jupiter’s moon, Europa. You are Ava Turing, an engineer for the International Space Agency (ISA) sent to discover the cause behind the disappearance of the ground crew stationed there."
 }

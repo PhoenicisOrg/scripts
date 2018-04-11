@@ -1,5 +1,5 @@
 {
-	"name":	"Civilization V",
-	"id":	"civilization_5",
-	"description": "In Civilization V, the player leads a civilization from prehistoric times into the future on a procedurally generated map, achieving one of a number of different victory conditions through research, exploration, diplomacy, expansion, economic development, government and military conquest."
+    "name"        : "Civilization V",
+    "id"          : "civilization_5",
+    "description" : "In Civilization V, the player leads a civilization from prehistoric times into the future on a procedurally generated map, achieving one of a number of different victory conditions through research, exploration, diplomacy, expansion, economic development, government and military conquest."
 }

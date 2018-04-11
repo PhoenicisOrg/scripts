@@ -1,8 +1,11 @@
 {
-	"scriptName": "Zip Script",
-	"id": "zip_script",
-	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": [],
-	"free": true,
-	"requiresPatch": false
+    "scriptName"                 : "Zip Script",
+    "id"                         : "zip_script",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
 }

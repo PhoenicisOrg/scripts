@@ -1,5 +1,5 @@
 {
-	"name":	"Druid Soccer",
-	"id":	"druid_soccer",
-	"description": "You take part in the ancient traditional game of Druid Soccer."
+    "name"        : "Druid Soccer",
+    "id"          : "druid_soccer",
+    "description" : "You take part in the ancient traditional game of Druid Soccer."
 }

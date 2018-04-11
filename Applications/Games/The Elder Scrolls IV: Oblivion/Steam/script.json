@@ -1,8 +1,10 @@
 {
-	"scriptName": "Steam (GOTY)",
-	"id": "steam_goty",
-	"compatibleOperatingSystems": ["LINUX"],
-	"testingOperatingSystems": [],
-	"free": false,
-	"requiresPatch": false
-}  
+    "scriptName"                 : "Steam (GOTY)",
+    "id"                         : "steam_goty",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}

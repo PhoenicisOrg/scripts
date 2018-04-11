@@ -1,8 +1,10 @@
 {
-	"scriptName": "Local (1.0->1.6)",
-  	"id": "local_1_0_to_1_6",
-	"compatibleOperatingSystems": ["LINUX"],
-	"testingOperatingSystems": [],
-	"free": false,
-	"requiresPatch": false
-} 
+    "scriptName"                 : "Local (1.0->1.6)",
+    "id"                         : "local_1_0_to_1_6",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}

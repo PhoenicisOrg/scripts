@@ -1,5 +1,5 @@
 {
-	"name": "Online Installer",
-	"id": "online_installer",
-	"description": "The Online Installer allows you to install custom applications from the Internet."
+    "name"        : "Online Installer",
+    "id"          : "online_installer",
+    "description" : "The Online Installer allows you to install custom applications from the Internet."
 }

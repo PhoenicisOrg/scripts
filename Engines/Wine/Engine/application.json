@@ -1,5 +1,5 @@
 {
-	"name":	"Wine Engine",
-	"id":	"engine",
-	"description": "The Wine engine."
+    "name"        : "Wine Engine",
+    "id"          : "engine",
+    "description" : "The Wine engine."
 }

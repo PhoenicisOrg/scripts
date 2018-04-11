@@ -1,9 +1,11 @@
 {
-	"scriptName": "Online",
-	"id": "online",
-	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": [],
-	"free": true,
-	"requiresPatch": false
-} 
- 
+    "scriptName"                 : "Online",
+    "id"                         : "online",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

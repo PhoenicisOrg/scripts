@@ -1,8 +1,11 @@
 {
-	"scriptName": "Configure Wine",
-	"id": "configure_wine",
-	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": [],
-	"free": true,
-	"requiresPatch": false
+    "scriptName"                 : "Configure Wine",
+    "id"                         : "configure_wine",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
 }

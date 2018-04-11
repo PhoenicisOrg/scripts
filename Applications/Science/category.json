@@ -1,5 +1,5 @@
 {
-	"name": "Science",
-	"id": "science",
-	"type": "INSTALLERS"
+    "name" : "Science",
+    "id"   : "science",
+    "type" : "INSTALLERS"
 }

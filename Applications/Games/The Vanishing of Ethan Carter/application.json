@@ -1,5 +1,5 @@
 {
-	"name":	"The Vanishing of Ethan Carter",
-	"id":	"the_vanishing_of_ethan_carter",
-	"description": "The Vanishing of Ethan Carter is a first-person story-driven mystery."
+    "name"        : "The Vanishing of Ethan Carter",
+    "id"          : "the_vanishing_of_ethan_carter",
+    "description" : "The Vanishing of Ethan Carter is a first-person story-driven mystery."
 }
