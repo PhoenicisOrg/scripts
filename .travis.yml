@@ -10,7 +10,9 @@ matrix:
       script:
         - find . -name "*.json" -print0 | xargs -0 json-align -i
         - git diff-index --quiet HEAD
-      after_failure: echo "Some JSON files are not aligned. Please run json-align."
+      after_failure:
+        - echo "Some JSON files are not aligned. Please run json-align."
+        - git diff --name-only
 
     - stage: Update translations
       before_install:
