@@ -5,6 +5,12 @@ branches:
 
 matrix:
   include:
+    - stage: Check JSON format
+      before_install: npm install -g json-align
+      script:
+        - find . -name "*.json" -print0 | xargs -0 json-align -i
+        - if [ ! `git diff-index --quiet HEAD --` ]; then echo "Some JSON files are not aligned. Please run json-align."; exit 1; fi
+
     - stage: Update translations
       before_install:
         - sudo apt-get -qq update
