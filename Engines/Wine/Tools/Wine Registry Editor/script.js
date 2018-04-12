@@ -2,29 +2,15 @@ include(["engines", "wine", "engine", "object"]);
 
 /**
  * tool to open the Wine registry editor
- * @constructor
- */
-var WineRegistryEditor = function () {
+*/
+var toolImplementation = {
+    run: function (container) {
+        new Wine()
+            .prefix(container)
+            .run("regedit")
+            .wait();
+    }
 };
 
-/**
-* runs the tool
-* @param {String} container name
-* @returns {void}
-*/
-WineRegistryEditor.prototype.run = function (container) {
-    new Wine()
-        .prefix(container)
-        .run("regedit")
-        .wait();
-};
-
-/**
-* runs the WineRegistryEditor tool
-* @param {String} container name
-* @returns {void}
-*/
-function run(container) { // eslint-disable-line no-unused-vars
-    var tool = new WineRegistryEditor();
-    tool.run(container);
-}
+/* exported Tool */
+var Tool = Java.extend(org.phoenicis.engines.EngineTool, toolImplementation);
