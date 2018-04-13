@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-08 12:28+0000\n"
+"POT-Creation-Date: 2018-04-13 18:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Applications/Games/League of Legends/Online/script.js:26
+#: Applications/Games/League of Legends/Online/script.js:28
 msgid "Select your region:"
 msgstr ""
 
-#: Applications/Games/Mass Effect/Steam/script.js:9
+#: Applications/Games/Mass Effect/Steam/script.js:11
 msgid ""
 "If you have sound issues, please edit the BIOEngine.ini and/or BaseEngine."
 "ini file in {0}/drive_c/Program Files/Steam/steamapps/common/Mass Effect/"
@@ -34,18 +34,18 @@ msgid ""
 "\n"
 msgstr ""
 
-#: Applications/Games/Origin/Local (Legacy)/script.js:14
-#: Applications/Games/Origin/Online (Legacy)/script.js:13
+#: Applications/Games/Origin/Local (Legacy)/script.js:16
+#: Applications/Games/Origin/Online (Legacy)/script.js:15
 msgid ""
 "When Origin launches, you will get an error message (\"Your update could not "
 "be completed.\"). This is ok. Just close the popup."
 msgstr ""
 
-#: Applications/Games/Tom Clancy's Rainbow Six 3 : Raven Shield/Local (1.0->1.6)/script.js:11
+#: Applications/Games/Tom Clancy's Rainbow Six 3 : Raven Shield/Local (1.0->1.6)/script.js:13
 msgid "Select your region for the patch (1.0 to 1.60)."
 msgstr ""
 
-#: Applications/Games/Total War Rome II/Steam/script.js:19
+#: Applications/Games/Total War Rome II/Steam/script.js:21
 msgid ""
 "If you are experiencing issues with game (e.g. it crashes at start or "
 "rendering is broken), you can try to enable de OpenGL renderer, by "
@@ -57,8 +57,8 @@ msgid ""
 "Rome2/scripts/preferences_script.txt "
 msgstr ""
 
-#: Applications/Games/Wildlife Park 2/Local/script.js:12
-#: Applications/Games/Wildlife Park 2/Steam/script.js:11
+#: Applications/Games/Wildlife Park 2/Local/script.js:14
+#: Applications/Games/Wildlife Park 2/Steam/script.js:13
 msgid ""
 "On first run the game might not go into full screen. If that happens go to "
 "options and set the resolution to 1280x960. You will be asked to close the "
@@ -67,7 +67,7 @@ msgid ""
 "match your screen."
 msgstr ""
 
-#: Applications/Internet/Internet Explorer 6.0/Online/script.js:71
+#: Applications/Internet/Internet Explorer 6.0/Online/script.js:73
 #: Engines/Wine/Engine/Object/script.js:309
 #: Engines/Wine/QuickScript/Installer Script/script.js:96
 #: Engines/Wine/QuickScript/Steam Script/script.js:107
@@ -91,18 +91,18 @@ msgstr ""
 msgid "Please wait ..."
 msgstr ""
 
-#: Applications/Internet/Internet Explorer 6.0/Online/script.js:75
-#: Applications/Internet/Internet Explorer 7.0/Online/script.js:215
+#: Applications/Internet/Internet Explorer 6.0/Online/script.js:77
+#: Applications/Internet/Internet Explorer 7.0/Online/script.js:217
 #: Engines/Wine/Verbs/corefonts/script.js:84
 #: Engines/Wine/Verbs/corefonts/script.js:90
 msgid "Installing {0} ..."
 msgstr ""
 
-#: Applications/Internet/Internet Explorer 7.0/Online/script.js:62
+#: Applications/Internet/Internet Explorer 7.0/Online/script.js:64
 msgid "Which language version would you like to install?"
 msgstr ""
 
-#: Applications/Office/ElsterFormular/Online/script.js:8
+#: Applications/Office/ElsterFormular/Online/script.js:10
 msgid ""
 "Please select the installation file.\n"
 "You can download it from https://www.elster.de/elfo_down.php."
