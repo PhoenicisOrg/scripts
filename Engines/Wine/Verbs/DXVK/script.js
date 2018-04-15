@@ -22,7 +22,7 @@ Wine.prototype.DXVK = function() {
         .archive(setupFile)
         .to(this.prefixDirectory + "/TMP/")
         .extract();
-    
+
     var dxvkTmpDir = this.prefixDirectory + "/TMP/dxvk-0.42";
 
     if (this.architecture() == "x86") {
