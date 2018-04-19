@@ -27,7 +27,7 @@ if [ $? == 0 ];  then
         exit 1
     fi
     git checkout master
-    git add *.pot
+    git add *.pot *.properties
     git commit --message "Update translations"
     if ! git push https://$GH_TOKEN@github.com/PhoenicisOrg/scripts.git > /dev/null 2>&1; then
         echo "could not push translation updates"
