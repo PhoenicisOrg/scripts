@@ -3,6 +3,7 @@ import errno
 import fnmatch
 import json
 import os
+import re
 import shutil
 import subprocess
 
@@ -15,7 +16,10 @@ print "write xgettext input files to {}".format(out_dir)
 json_file_names = []
 for root, dir_names, file_names in os.walk(cwd):
     for file_name in fnmatch.filter(file_names, '*.json'):
-        json_file_names.append(os.path.join(root, file_name))
+        path = os.path.join(root, file_name)
+        # filter json's (we don't want jsdoc_conf.json etc.)
+        if re.search(r'^' + cwd + '/(Applications|Engines|Utils).*\.json$', path):
+            json_file_names.append(path)
 
 data = {}
 for file_name in json_file_names:
@@ -55,9 +59,40 @@ for key, value in data.iteritems():
                 out_file.write(translated_message.encode('utf-8'))
 
 # update the .pot
-print "\nrun xgettext to update the .pot"
-xgettext = 'find . -iname "*.js" | sort | xargs -d \'\n\' xgettext --from-code=UTF-8 --language=Javascript -ktr -o i18n/keys.pot'
+print "\nrun xgettext to update the .properties"
+# get list of Javascript files (exclude docs folder)
+find = 'find . -iname "*.js" -not -path "./docs/*" -print0'
+find = 'find . -iname "*.js" -not -path "./docs/*"'
+
+ps = subprocess.Popen(find, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+files = ps.communicate()[0]
+
+# load all .js files (including generated)
+js_file_names = []
+for root, dir_names, file_names in os.walk(cwd):
+    for file_name in fnmatch.filter(file_names, '*.js'):
+        path = os.path.join(root, file_name)
+        # filter json's (we don't want .js files in doc etc.)
+        if re.search(r'^' + cwd + '/(Applications|Engines|Utils|i18n/tmp).*\.js$', path):
+            js_file_names.append(path)
+
+# run xgettext to get .properties
+properties_file = cwd + '/i18n/Messages.properties'
+input = ' '.join(['"{0}"'.format(file) for file in js_file_names])
+# sort output for better traceability of changes in git
+opts = '--sort-output --properties-output --from-code=UTF-8 --language=Javascript -ktr'
+xgettext = 'xgettext ' + opts + ' -o ' + properties_file + ' ' + input
 ps = subprocess.Popen(xgettext, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 ps.communicate()[0]
 
 shutil.rmtree(out_dir)
+
+# delete date to avoid changes in git
+lines = []
+regex = re.compile(r"POT-Creation-Date\\:.*\\nPO-Revision-Date")
+with open(properties_file) as input:
+    for line in input:
+        lines.append(regex.sub("POT-Creation-Date\: YEAR-MO-DA HO\:MI+ZONE\\\\nPO-Revision-Date", line))
+with open(properties_file, 'w') as output:
+    for line in lines:
+        output.write(line)
