@@ -58,15 +58,6 @@ for key, value in data.iteritems():
                 translated_message = u'tr("{0}")\n'.format(message)
                 out_file.write(translated_message.encode('utf-8'))
 
-# update the .pot
-print "\nrun xgettext to update the .properties"
-# get list of Javascript files (exclude docs folder)
-find = 'find . -iname "*.js" -not -path "./docs/*" -print0'
-find = 'find . -iname "*.js" -not -path "./docs/*"'
-
-ps = subprocess.Popen(find, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-files = ps.communicate()[0]
-
 # load all .js files (including generated)
 js_file_names = []
 for root, dir_names, file_names in os.walk(cwd):
@@ -76,14 +67,15 @@ for root, dir_names, file_names in os.walk(cwd):
         if re.search(r'^' + cwd + '/(Applications|Engines|Utils|i18n/tmp).*\.js$', path):
             js_file_names.append(path)
 
-# run xgettext to get .properties
+# run xgettext to update .properties
+print "\nrun xgettext to update the .properties"
 properties_file = cwd + '/i18n/Messages.properties'
 input = ' '.join(['"{0}"'.format(file_name) for file_name in js_file_names])
 # sort output for better traceability of changes in git
 opts = '--sort-output --properties-output --from-code=UTF-8 --language=Javascript -ktr'
 xgettext = 'xgettext ' + opts + ' -o ' + properties_file + ' ' + input
 ps = subprocess.Popen(xgettext, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-ps.communicate()[0]
+print ps.communicate()[0]
 
 shutil.rmtree(out_dir)
 
