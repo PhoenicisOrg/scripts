@@ -66,7 +66,7 @@ shutil.rmtree(out_dir)
 print "\nupdate .properties for all available languages"
 languages = []
 for root, dir_names, file_names in os.walk(cwd + '/i18n'):
-    # the .po's are named lanuage.po (e.g. de.po)
+    # the .po's are named language.po (e.g. de.po)
     # therefore we can get the available languages by finding all .po's and removing the file extension
     for file_name in fnmatch.filter(file_names, '*.po'):
         languages.append(os.path.splitext(file_name)[0])
