@@ -78,7 +78,7 @@ for root, dir_names, file_names in os.walk(cwd):
 
 # run xgettext to get .properties
 properties_file = cwd + '/i18n/Messages.properties'
-input = ' '.join(['"{0}"'.format(file) for file in js_file_names])
+input = ' '.join(['"{0}"'.format(file_name) for file_name in js_file_names])
 # sort output for better traceability of changes in git
 opts = '--sort-output --properties-output --from-code=UTF-8 --language=Javascript -ktr'
 xgettext = 'xgettext ' + opts + ' -o ' + properties_file + ' ' + input
