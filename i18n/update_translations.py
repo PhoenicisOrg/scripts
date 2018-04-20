@@ -70,10 +70,10 @@ for root, dir_names, file_names in os.walk(cwd):
 # run xgettext to update .properties
 print "\nrun xgettext to update the .properties"
 properties_file = cwd + '/i18n/Messages.properties'
-input = ' '.join(['"{0}"'.format(file_name) for file_name in js_file_names])
+input_files = ' '.join(['"{0}"'.format(file_name) for file_name in js_file_names])
 # sort output for better traceability of changes in git
 opts = '--sort-output --properties-output --from-code=UTF-8 --language=Javascript -ktr'
-xgettext = 'xgettext ' + opts + ' -o ' + properties_file + ' ' + input
+xgettext = 'xgettext ' + opts + ' -o ' + properties_file + ' ' + input_files
 ps = subprocess.Popen(xgettext, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 print ps.communicate()[0]
 
@@ -82,9 +82,9 @@ shutil.rmtree(out_dir)
 # delete date to avoid changes in git
 lines = []
 regex = re.compile(r"POT-Creation-Date\\:.*\\nPO-Revision-Date")
-with open(properties_file) as input:
-    for line in input:
+with open(properties_file) as input_file:
+    for line in input_file:
         lines.append(regex.sub("POT-Creation-Date\: YEAR-MO-DA HO\:MI+ZONE\\\\nPO-Revision-Date", line))
-with open(properties_file, 'w') as output:
+with open(properties_file, 'w') as output_file:
     for line in lines:
-        output.write(line)
+        output_file.write(line)
