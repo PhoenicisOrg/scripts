@@ -63,8 +63,9 @@ js_file_names = []
 for root, dir_names, file_names in os.walk(cwd):
     for file_name in fnmatch.filter(file_names, '*.js'):
         path = os.path.join(root, file_name)
+        path = os.path.relpath(path, cwd)
         # filter json's (we don't want .js files in doc etc.)
-        if re.search(r'^' + cwd + '/(Applications|Engines|Utils|i18n/tmp).*\.js$', path):
+        if re.search(r'^(Applications|Engines|Utils|i18n/tmp).*\.js$', path):
             js_file_names.append(path)
 
 # run xgettext to update .properties
