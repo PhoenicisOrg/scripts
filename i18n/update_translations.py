@@ -88,3 +88,18 @@ with open(properties_file) as input_file:
 with open(properties_file, 'w') as output_file:
     for line in lines:
         output_file.write(line)
+
+# delete comments (why are they here?)
+lines = []
+regex = re.compile(r"^\!")
+regex_header = re.compile(r"^\!=Project-Id-Version")
+with open(properties_file) as input_file:
+    for line in input_file:
+        # keep the header comment
+        if regex_header.match(line):
+            lines.append(line)
+        else:
+            lines.append(regex.sub("", line))
+with open(properties_file, 'w') as output_file:
+    for line in lines:
+        output_file.write(line)
