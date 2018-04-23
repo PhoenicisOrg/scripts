@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["engines", "wine", "verbs", "vcrun2013"]);
+include(["engines", "wine", "verbs", "vcrun2017"]);
 
 var installerImplementation = {
     run: function () {
@@ -12,7 +12,7 @@ var installerImplementation = {
             .category("Office")
             .executable("pica.exe")
             .preInstall(function (wine/*, wizard*/) {
-                wine.vcrun2013();
+                wine.vcrun2017();
                 wine.nativeApplication("pdf");
             })
             .go();
