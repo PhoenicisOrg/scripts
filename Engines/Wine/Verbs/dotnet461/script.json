@@ -1,0 +1,13 @@
+{
+    "scriptName"                 : ".NET 4.6.1",
+    "id"                         : "dotnet461",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [        
+        "MACOSX",
+        "LINUX"],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
