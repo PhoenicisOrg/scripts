@@ -1,5 +1,5 @@
 {
-	"name":	"Filesystem Utils",
-	"id":	"filesystem",
-	"description": "Utils for file system interaction."
+    "name"        : "Filesystem Utils",
+    "id"          : "filesystem",
+    "description" : "Utils for file system interaction."
 }

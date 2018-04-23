@@ -1,8 +1,10 @@
 {
-	"scriptName": "Steam (Demo)",
-	"id": "steam_demo",
-	"compatibleOperatingSystems": ["LINUX"],
-	"testingOperatingSystems": [],
-	"free": true,
-	"requiresPatch": false
+    "scriptName"                 : "Steam (Demo)",
+    "id"                         : "steam_demo",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
 }

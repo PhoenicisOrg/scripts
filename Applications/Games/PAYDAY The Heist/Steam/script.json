@@ -1,8 +1,13 @@
 {
-	"scriptName": "Steam",
-	"id": "steam",
-	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": ["MACOSX"],
-	"free": false,
-	"requiresPatch": false
+    "scriptName"                 : "Steam",
+    "id"                         : "steam",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "MACOSX"
+    ],
+    "free"          : false,
+    "requiresPatch" : false
 }

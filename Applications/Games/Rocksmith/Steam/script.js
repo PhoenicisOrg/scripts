@@ -21,14 +21,21 @@ function fixIni(ini) {
     writeToFile(ini, content);
 }
 
-new SteamScript()
-    .name("Rocksmith™")
-    .editor("Ubisoft - San Francisco")
-    .author("Plata")
-    .appId(205190)
-    .postInstall(function (wine/*, wizard*/) {
-        wine.setSoundDriver("alsa");
-        wine.setOsForApplication().set("Rocksmith.exe", "win7").do();
-        fixIni(wine.prefixDirectory + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Rocksmith/Rocksmith.ini");
-    })
-    .go();
+var installerImplementation = {
+    run: function () {
+        new SteamScript()
+            .name("Rocksmith™")
+            .editor("Ubisoft - San Francisco")
+            .author("Plata")
+            .appId(205190)
+            .postInstall(function (wine/*, wizard*/) {
+                wine.setSoundDriver("alsa");
+                wine.setOsForApplication().set("Rocksmith.exe", "win7").do();
+                fixIni(wine.prefixDirectory + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Rocksmith/Rocksmith.ini");
+            })
+            .go();
+    }
+};
+
+/* exported Installer */
+var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

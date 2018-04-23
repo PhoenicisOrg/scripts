@@ -1,17 +1,24 @@
 include(["engines", "wine", "quick_script", "local_installer_script"]);
 
-new LocalInstallerScript()
-    .name("Guild Wars 2")
-    .editor("ArenaNet")
-    .applicationHomepage("https://www.guildwars2.com")
-    .author("Plata")
-    .category("Games")
-    .executable("Gw2.exe")
-    .wineVersion(LATEST_STAGING_VERSION)
-    .wineDistribution("staging")
-    .preInstall(function (wine/*, wizard*/) {
-        // avoid that launcher freezes the complete system
-        wine.setVirtualDesktop(1280, 1024);
-        wine.enableCSMT();
-    })
-    .go();
+var installerImplementation = {
+    run: function () {
+        new LocalInstallerScript()
+            .name("Guild Wars 2")
+            .editor("ArenaNet")
+            .applicationHomepage("https://www.guildwars2.com")
+            .author("Plata")
+            .category("Games")
+            .executable("Gw2.exe")
+            .wineVersion(LATEST_STAGING_VERSION)
+            .wineDistribution("staging")
+            .preInstall(function (wine/*, wizard*/) {
+                // avoid that launcher freezes the complete system
+                wine.setVirtualDesktop(1280, 1024);
+                wine.enableCSMT();
+            })
+            .go();
+    }
+};
+
+/* exported Installer */
+var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

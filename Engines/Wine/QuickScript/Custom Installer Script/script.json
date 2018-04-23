@@ -1,8 +1,11 @@
 {
-	"scriptName": "Custom Installer Script",
-	"id": "custom_installer_script",
-	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": [],
-	"free": true,
-	"requiresPatch": false
+    "scriptName"                 : "Custom Installer Script",
+    "id"                         : "custom_installer_script",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
 }
