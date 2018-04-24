@@ -87,12 +87,12 @@ print(ps.communicate()[0])
 
 shutil.rmtree(out_dir)
 
-# delete date to avoid changes in git
+# delete header (Crowdin interprets it as context of first string)
 lines = []
-regex = re.compile(r"POT-Creation-Date\\:.*\\nPO-Revision-Date")
+regex = re.compile(r"\A.*Content-Transfer-Encoding\\: 8bit\\n\n\n", re.MULTILINE|re.DOTALL)
+orig = ""
 with open(properties_file) as input_file:
-    for line in input_file:
-        lines.append(regex.sub("POT-Creation-Date\: YEAR-MO-DA HO\:MI+ZONE\\\\nPO-Revision-Date", line))
+    orig = regex.sub("", input_file.read())
 with open(properties_file, 'w') as output_file:
-    for line in lines:
+    for line in orig:
         output_file.write(line)
