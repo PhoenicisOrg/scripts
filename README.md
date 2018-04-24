@@ -51,7 +51,10 @@
   }
   ```
   
-  4. Create a pull request
+  4. Verify changes:
+  * Ensure that the changes fulfill the code quality requirements and the files are formatted correctly (see [tools](https://phoenicisorg.github.io/scripts/tools/)).
+  
+  5. Create a pull request:
   * Please create one pull request per script if you want to commit multiple scripts.
   * use the following naming convention  
        * for a new script: "Add \<application name\>" (e.g. "Add 7-zip")
