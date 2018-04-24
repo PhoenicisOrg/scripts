@@ -2,7 +2,6 @@ include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "verbs", "luna"]);
 include(["utils", "functions", "filesystem", "files"]);
-include(["engines", "wine", "verbs", "dotnet40"]);
 include(["engines", "wine", "verbs", "dotnet452"]);
 
 /**
@@ -31,7 +30,6 @@ Wine.prototype.dotnet461 = function () {
 
     remove(this.system32directory() + "/mscoree.dll");
 
-    this.dotnet40();
     this.dotnet452()
     this.windowsVersion("win7");
 
@@ -40,7 +38,7 @@ Wine.prototype.dotnet461 = function () {
         .do();
 
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""])
-        .wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.5"));
+        .wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.6.1"));
 
     this.overrideDLL()
         .set("native", ["mscoree"])
@@ -49,9 +47,7 @@ Wine.prototype.dotnet461 = function () {
     this.windowsVersion(OSVersion);
     this.windowsVersion("win7");
 
-    if (OSVersion != "win2003") {
-        print(tr("{0} applications can have issues when windows version is not set to \"win2003\"", ".NET 4.5"));
-    }
+
 
     return this;
 };
