@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Wine engine (Java interface)",
+    "id"                         : "java",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

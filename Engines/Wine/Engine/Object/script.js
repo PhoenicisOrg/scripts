@@ -1,3 +1,4 @@
+include(["engines", "wine", "engine", "java"]);
 include(["utils", "functions", "filesystem", "files"]);
 include(["utils", "functions", "filesystem", "extract"]);
 include(["utils", "functions", "net", "download"]);
@@ -15,6 +16,7 @@ WINE_PREFIX_DIR = "wineprefix"
  * @constructor
  */
 function Wine() {
+    this._java = new Engine();
     this._wineWebServiceUrl = Bean("propertyReader").getProperty("webservice.wine.url");
     this._wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines") + "/wine";
     this._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
@@ -322,22 +324,6 @@ Wine.prototype.kill = function () {
 };
 
 /**
-*
-* @returns available Wine versions
-*/
-Wine.prototype.getAvailableVersions = function () {
-    var versionsFile = this._wineEnginesDirectory + "/availableVersions.json";
-    touch(versionsFile);
-    new Downloader()
-        .wizard(this._wizard)
-        .url(this._wineWebServiceUrl)
-        .to(versionsFile)
-        .onlyIfUpdateAvailable(true)
-        .get();
-    return cat(versionsFile);
-};
-
-/**
 * install
 * @param {string} category
 * @param {string} subCategory
@@ -385,7 +371,7 @@ Wine.prototype.delete = function (category, subCategory, version, userData) {
 */
 Wine.prototype.availableDistributions = function (architectureName) {
     var distributions = [];
-    var wineJson = JSON.parse(this.getAvailableVersions());
+    var wineJson = JSON.parse(this._java.getAvailableVersions());
     var architecture = architectureName || this._architecture;
     var architectureRegExp = new RegExp(architecture);
     wineJson.forEach(function (distribution) {
@@ -406,7 +392,7 @@ Wine.prototype.availableDistributions = function (architectureName) {
 Wine.prototype.availableVersions = function (distributionName) {
     var versions = [];
     var fullDistributionName = distributionName || this._fetchFullDistributionName();
-    var wineJson = JSON.parse(this.getAvailableVersions());
+    var wineJson = JSON.parse(this._java.getAvailableVersions());
     wineJson.forEach(function (distribution) {
         if (distribution.name == fullDistributionName) {
             distribution.packages.forEach(function (winePackage) {
@@ -479,7 +465,7 @@ Wine.prototype._installVersion = function () {
     if (!fileExists(localDirectory)) {
         print(tr("Installing version: ", this._version));
 
-        var wineJson = JSON.parse(this.getAvailableVersions());
+        var wineJson = JSON.parse(this._java.getAvailableVersions());
 
         var that = this;
         wineJson.forEach(function (distribution) {
