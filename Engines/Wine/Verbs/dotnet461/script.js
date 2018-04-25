@@ -10,12 +10,6 @@ include(["engines", "wine", "verbs", "dotnet452"]);
 */
 Wine.prototype.dotnet461 = function () {
 
-    /*if (this.architecture() == "amd64") {
-        throw "{0} cannot be installed in a 64bit wine prefix!".format("dotnet461");
-    }*/
-
-    var OSVersion = this.windowsVersion();
-
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("https://download.microsoft.com/download/E/4/1/E4173890-A24A-4936-9FC9-AF930FE3FA40/NDP461-KB3102436-x86-x64-AllOS-ENU.exe")
@@ -30,8 +24,8 @@ Wine.prototype.dotnet461 = function () {
 
     remove(this.system32directory() + "/mscoree.dll");
 
+    this.windowsVersion("win7");    
     this.dotnet452()
-    this.windowsVersion("win7");
 
     this.overrideDLL()
         .set("builtin", ["fusion"])
@@ -43,11 +37,6 @@ Wine.prototype.dotnet461 = function () {
     this.overrideDLL()
         .set("native", ["mscoree"])
         .do();
-
-    this.windowsVersion(OSVersion);
-    this.windowsVersion("win7");
-
-
 
     return this;
 };
