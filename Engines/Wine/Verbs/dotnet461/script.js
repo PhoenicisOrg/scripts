@@ -23,8 +23,7 @@ Wine.prototype.dotnet461 = function () {
         .wait(tr("Please wait ..."));
 
     remove(this.system32directory() + "/mscoree.dll");
-
-    this.windowsVersion("win7");    
+   
     this.dotnet452()
 
     this.overrideDLL()
