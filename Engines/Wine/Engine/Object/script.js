@@ -4,7 +4,7 @@ include(["utils", "functions", "net", "download"]);
 include(["utils", "functions", "net", "resource"]);
 
 LATEST_STABLE_VERSION = "3.0";
-LATEST_DEVELOPMENT_VERSION = "3.6";
+LATEST_DEVELOPMENT_VERSION = "3.7";
 LATEST_STAGING_VERSION = "2.21";
 
 WINE_PREFIX_DIR = "wineprefix"
