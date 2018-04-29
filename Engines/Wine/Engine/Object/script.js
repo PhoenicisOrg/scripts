@@ -165,14 +165,6 @@ Wine.prototype.workingDirectory = function (directory) {
 };
 
 /**
-* checks if the Wine version is installed
-* @returns {boolean}
-*/
-Wine.prototype.installed = function () {
-    return fileExists(this._fetchLocalDirectory());
-};
-
-/**
 * returns the path to the engine binary directory
 * @returns {String}
 */
@@ -218,7 +210,8 @@ Wine.prototype.run = function (executable, args, captureOutput) {
         }
     }
 
-    this._installVersion();
+    var subCategory = this._distribution + "-" + this._operatingSystemFetcher.fetchCurrentOperationSystem() + "-" + this._architecture;
+    _java.install(subCategory, this._version);
 
     var wineBinary = this._fetchLocalDirectory() + "/bin/wine";
     var processBuilder = new java.lang.ProcessBuilder(Java.to([wineBinary, executable].concat(args), "java.lang.String[]"));
@@ -324,47 +317,6 @@ Wine.prototype.kill = function () {
 };
 
 /**
-* install
-* @param {string} category
-* @param {string} subCategory
-* @param {string} version
-* @param {json} userData
-*/
-Wine.prototype.install = function (category, subCategory, version, userData) {
-    var parts = subCategory.split("-");
-    var distribution = parts[0];
-    var architecture = parts[2];
-    this.distribution(distribution);
-    this.architecture(architecture);
-    this.version(version);
-    if (!this.installed()) {
-        var wizard = SetupWizard(InstallationType.ENGINES, "Wine " + version + " " + distribution + " (" + architecture + ")", java.util.Optional.empty());
-        this.wizard(wizard);
-        this._installVersion();
-        wizard.close();
-    }
-};
-
-/**
-* delete
-* @param {string} category
-* @param {string} subCategory
-* @param {string} version
-* @param {json} userData
-*/
-Wine.prototype.delete = function (category, subCategory, version, userData) {
-    var parts = subCategory.split("-");
-    var distribution = parts[0];
-    var architecture = parts[2];
-    this.distribution(distribution);
-    this.architecture(architecture);
-    this.version(version);
-    if (this.installed()) {
-        remove(this._fetchLocalDirectory());
-    }
-};
-
-/**
 *
 * @param {string} [architecture = current architecture]
 * @returns {string[]}
@@ -454,83 +406,6 @@ Wine.prototype.system64directory = function () {
 */
 Wine.prototype.fontDirectory = function () {
     return this.prefixDirectory + "/drive_c/windows/Fonts";
-};
-
-Wine.prototype._installVersion = function () {
-    var version = this._version;
-    var fullDistributionName = this._fetchFullDistributionName();
-    var localDirectory = this._fetchLocalDirectory();
-    var wizard = this._wizard;
-
-    if (!fileExists(localDirectory)) {
-        print(tr("Installing version: ", this._version));
-
-        var wineJson = JSON.parse(this._java.getAvailableVersions());
-
-        var that = this;
-        wineJson.forEach(function (distribution) {
-            if (distribution.name == fullDistributionName) {
-                distribution.packages.forEach(function (winePackage) {
-                    if (winePackage.version == version) {
-                        that._installWinePackage(wizard, winePackage, localDirectory);
-                        that._installGecko(wizard, winePackage, localDirectory);
-                        that._installMono(wizard, winePackage, localDirectory);
-                    }
-                });
-            }
-        });
-
-        // FIXME : Not found case!
-
-    }
-};
-
-
-Wine.prototype._installWinePackage = function (setupWizard, winePackage, localDirectory) {
-    var tmpFile = createTempFile("tar.gz");
-
-    new Downloader()
-        .wizard(setupWizard)
-        .url(winePackage.url)
-        .checksum(winePackage.sha1sum)
-        .to(tmpFile)
-        .get();
-
-    new Extractor()
-        .wizard(setupWizard)
-        .archive(tmpFile)
-        .to(localDirectory)
-        .extract();
-};
-
-Wine.prototype._installGecko = function (setupWizard, winePackage, localDirectory) {
-    var gecko = new Resource()
-        .wizard(setupWizard)
-        .url(winePackage.geckoUrl)
-        .checksum(winePackage.geckoMd5)
-        .algorithm("md5")
-        .name(winePackage.geckoFile)
-        .directory("gecko")
-        .get();
-
-    var wineGeckoDir = localDirectory + "/share/wine/gecko";
-
-    lns(new java.io.File(gecko).getParent(), wineGeckoDir);
-};
-
-Wine.prototype._installMono = function (setupWizard, winePackage, localDirectory) {
-    var mono = new Resource()
-        .wizard(setupWizard)
-        .url(winePackage.monoUrl)
-        .checksum(winePackage.monoMd5)
-        .algorithm("md5")
-        .name(winePackage.monoFile)
-        .directory("mono")
-        .get();
-
-    var wineMonoDir = localDirectory + "/share/wine/mono";
-
-    lns(new java.io.File(mono).getParent(), wineMonoDir);
 };
 
 Wine.prototype._silentWait = function () {
