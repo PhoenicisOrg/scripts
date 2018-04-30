@@ -37,7 +37,7 @@ Wine.prototype.d3dx9 = function () {
 
     new CabExtract()
         .archive(setupFile)
-        .to(this.prefixDirectory + "/drive_c/d3dx9/")
+        .to(this.prefixDirectory() + "/drive_c/d3dx9/")
         .extract(["-L", "-F", "*d3dx9*x86*"]);
 
     var filesToExtractx86 = [
@@ -54,7 +54,7 @@ Wine.prototype.d3dx9 = function () {
     if (this.architecture() == "amd64") {
         new CabExtract()
             .archive(setupFile)
-            .to(this.prefixDirectory + "/drive_c/d3dx9/")
+            .to(this.prefixDirectory() + "/drive_c/d3dx9/")
             .extract(["-L", "-F", "*d3dx9*x64*"]);
 
         var filesToExtractx64 = [

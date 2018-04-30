@@ -20,10 +20,10 @@ Wine.prototype.DXVK = function() {
     new Extractor()
         .wizard(this.wizard())
         .archive(setupFile)
-        .to(this.prefixDirectory + "/TMP/")
+        .to(this.prefixDirectory() + "/TMP/")
         .extract();
 
-    var dxvkTmpDir = this.prefixDirectory + "/TMP/dxvk-0.42";
+    var dxvkTmpDir = this.prefixDirectory() + "/TMP/dxvk-0.42";
 
     if (this.architecture() == "x86") {
         cp(dxvkTmpDir + "/x32/d3d11.dll", this.system32directory());
@@ -42,7 +42,7 @@ Wine.prototype.DXVK = function() {
         .set("native", ["d3d11", "dxgi"])
         .do();
 
-    remove(this.prefixDirectory + "/TMP/");
+    remove(this.prefixDirectory() + "/TMP/");
 
     return this;
 }

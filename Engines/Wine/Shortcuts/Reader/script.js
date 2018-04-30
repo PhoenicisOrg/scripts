@@ -27,9 +27,8 @@ var _WineShortcutReader = function (shortcut) {
 
         new Wine()
             .prefix(shortcutContent.winePrefix)
-            .debug(shortcutContent.wineDebug)
-            .workingDirectory(shortcutContent.workingDirectory)
-            .run(shortcutContent.executable, args)
+            // TODO .debug(shortcutContent.wineDebug)
+            .run(shortcutContent.executable, args, shortcutContent.workingDirectory)
     };
 
 

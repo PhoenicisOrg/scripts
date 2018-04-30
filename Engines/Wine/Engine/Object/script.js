@@ -34,11 +34,11 @@ function Wine() {
 Wine.prototype.wizard = function (wizard) {
     // get
     if (arguments.length == 0) {
-        return this._wizard;
+        return this._java.getWizard();
     }
 
     // set
-    this._wizard = wizard;
+    this._java.setWizard(wizard);
     return this;
 };
 
@@ -47,7 +47,7 @@ Wine.prototype.wizard = function (wizard) {
  * @returns {String}
  */
 Wine.prototype.winepath = function (path) {
-    return this._java.run(this.prefixDirectory, "winepath", ["-w", path], true);
+    return this.run("winepath", ["-w", path], this.prefixDirectory(), true, true);
 }
 
 /**
@@ -68,70 +68,37 @@ Wine.prototype.debug = function (debug) {
 
 /**
 *
-* @param {string} [architecture]
-* @returns {string|Wine}
-*/
-Wine.prototype.architecture = function (architecture) {
-    // get
-    if (arguments.length == 0) {
-        return this._architecture;
-    }
-
-    // set
-    if (this._prefixConfiguration) {
-        this._prefixConfiguration.writeValue("wineArchitecture", architecture);
-    }
-
-    this._architecture = architecture;
-    return this;
-};
-
-/**
-*
-* @param {string} [distribution]
-* @returns {string|Wine}
-*/
-Wine.prototype.distribution = function (distribution) {
-    // get
-    if (arguments.length == 0) {
-        return this._distribution;
-    }
-
-    // set
-    if (this._prefixConfiguration) {
-        this._prefixConfiguration.writeValue("wineDistribution", distribution);
-    }
-
-    this._distribution = distribution;
-    return this;
-};
-
-/**
-*
 * @param {string} [prefix]
+* @param {string} [distribution]
+* @param {string} [architecture]
+* @param {string} [version]
 * @returns {string|Wine}
 */
-Wine.prototype.prefix = function (prefix) {
+Wine.prototype.prefix = function (prefix, distribution, architecture, version) {
     // get
     if (arguments.length == 0) {
-        return this._prefix;
+        return this._java.getWorkingContainer();
+    }
+    // set
+    else if (arguments.length == 1) {
+	    this._java.setWorkingContainer(prefix);
+	    return this;
+    }
+    else {
+        var operatingSystem = this._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+        var subCategory = distribution + "-" + operatingSystem + "-" + architecture;
+        this._java.createContainer(subCategory, version, prefix);
+	    this._java.setWorkingContainer(prefix);
+	    return this;
     }
 };
 
 /**
-*
-* @param {string} [directory]
-* @returns {string|Wine}
+* returns prefix directory
+* @returns {string}
 */
-Wine.prototype.workingDirectory = function (directory) {
-    // get
-    if (arguments.length == 0) {
-        return this._directory;
-    }
-
-    // set
-    this._directory = directory;
-    return this;
+Wine.prototype.prefixDirectory = function () {
+    return this._java.getContainerDirectory(this._java.getWorkingContainer());
 };
 
 /**
@@ -139,7 +106,7 @@ Wine.prototype.workingDirectory = function (directory) {
 * @returns {String}
 */
 Wine.prototype.binPath = function () {
-    return this._fetchLocalDirectory() + "/bin/";
+    return this._java.getLocalDirectory() + "/bin/";
 };
 
 /**
@@ -148,8 +115,32 @@ Wine.prototype.binPath = function () {
 * @param args
 */
 Wine.prototype.runInsidePrefix = function (executable, args) {
-    return this._java.run(this.prefixDirectory, this.prefixDirectory + "/drive_c/" + executable, args);
+    return this.run(this.prefixDirectory() + "/drive_c/" + executable, args, this.prefixDirectory(), false, false);
 };
+
+/**
+*
+* @param executable
+* @param {array} [args = []]
+* @param {boolean} [captureOutput=false]
+* @returns {String} output
+*/
+Wine.prototype.run = function (executable, args, workingDirectory, captureOutput, wait) {
+    if (!args) {
+        args = [];
+    }
+    if (!workingDirectory) {
+        workingDirectory = this._java.getContainerDirectory(this._java.getWorkingContainer());
+    }
+    if (!captureOutput) {
+        captureOutput = false;
+    }
+    if (!wait) {
+        wait = false;
+    }
+
+    return this._java.run(executable, args, workingDirectory, captureOutput, wait);
+}
 
 /**
 * uninstall application
@@ -157,13 +148,13 @@ Wine.prototype.runInsidePrefix = function (executable, args) {
 * @returns {Wine}
 */
 Wine.prototype.uninstall = function (application) {
-    var list = this._java.run(this.prefixDirectory, "uninstaller", ["--list"], true);
+    var list = this.run("uninstaller", ["--list"], this.prefixDirectory(), true, true);
     var appEscaped = application.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     var re = new RegExp("(.*)\\|\\|\\|.*" + appEscaped);
     var uuid = list.match(re);
     if (uuid) {
-        this._java.run(this.prefixDirectory, "uninstaller", ["--remove", uuid[1]])
-            .wait(tr("Please wait while {0} is uninstalled ...", application));
+        this._java.getWizard.wait(tr("Please wait while {0} is uninstalled ...", application));
+        this.run("uninstaller", ["--remove", uuid[1]], this.prefixDirectory(), false, true);
     } else {
         print(tr("Could not uninstall {0}!", application));
     }
@@ -174,7 +165,7 @@ Wine.prototype.uninstall = function (application) {
 * runs "wineboot"
 */
 Wine.prototype.create = function () {
-    this._java.run(this.prefixDirectory, "wineboot");
+    this.run("wineboot", [], this.prefixDirectory(), false, false);
     return this;
 };
 
@@ -183,25 +174,12 @@ Wine.prototype.create = function () {
 * @returns {string} name of "Program Files"
 */
 Wine.prototype.programFiles = function () {
-    var programFilesName = this._java.run(this.prefixDirectory, "cmd", ["/c", "echo", "%ProgramFiles%"], true).trim();
+    var programFilesName = this.run("cmd", ["/c", "echo", "%ProgramFiles%"], this.prefixDirectory(), true, true).trim();
     if (programFilesName == "%ProgramFiles%") {
         return "Program Files"
     } else {
         return org.apache.commons.io.FilenameUtils.getBaseName(programFilesName);
     }
-};
-
-/**
-*
-* @param {string} [wait message = "Please wait ..."]
-* @returns {Wine}
-*/
-Wine.prototype.wait = function (message) {
-    if (this._wizard) {
-        this._wizard.wait(typeof message !== 'undefined' ? message : tr("Please wait ..."));
-    }
-
-    return this._silentWait();
 };
 
 /**
@@ -256,33 +234,13 @@ Wine.prototype.availableVersions = function (distributionName) {
 
 /**
 *
-* @param {string} [version = LATEST_STABLE_VERSION]
-* @returns {string|Wine}
-*/
-Wine.prototype.version = function (version) {
-    // get
-    if (arguments.length == 0) {
-        return this._version;
-    }
-
-    // set
-    if (this._prefixConfiguration) {
-        this._prefixConfiguration.writeValue("wineVersion", version);
-    }
-
-    this._version = version;
-    return this;
-};
-
-/**
-*
 * @returns {string} system32 directory
 */
 Wine.prototype.system32directory = function () {
-    if (fileExists(this.prefixDirectory + "/drive_c/windows/syswow64")) {
-        return this.prefixDirectory + "/drive_c/windows/syswow64";
+    if (fileExists(this.prefixDirectory() + "/drive_c/windows/syswow64")) {
+        return this.prefixDirectory() + "/drive_c/windows/syswow64";
     } else {
-        return this.prefixDirectory + "/drive_c/windows/system32";
+        return this.prefixDirectory() + "/drive_c/windows/system32";
     }
 };
 
@@ -291,8 +249,8 @@ Wine.prototype.system32directory = function () {
 * @returns {string} system64 directory
 */
 Wine.prototype.system64directory = function () {
-    if (fileExists(this.prefixDirectory + "/drive_c/windows/syswow64")) {
-        return this.prefixDirectory + "/drive_c/windows/system32";
+    if (fileExists(this.prefixDirectory() + "/drive_c/windows/syswow64")) {
+        return this.prefixDirectory() + "/drive_c/windows/system32";
     }
     throw tr("Prefix seems to be 32bits");
 };
@@ -302,37 +260,7 @@ Wine.prototype.system64directory = function () {
 * @returns {string} font directory
 */
 Wine.prototype.fontDirectory = function () {
-    return this.prefixDirectory + "/drive_c/windows/Fonts";
-};
-
-Wine.prototype._silentWait = function () {
-    if (this._process) {
-        this._process.waitFor();
-    }
-    this._wineServer("-w");
-    return this;
-};
-
-Wine.prototype._fetchFullDistributionName = function () {
-    var operatingSystem = this._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
-    return this._distribution + "-" + operatingSystem + "-" + this._architecture;
-};
-
-Wine.prototype._fetchLocalDirectory = function () {
-    return this._wineEnginesDirectory + "/" + this._fetchFullDistributionName() + "/" + this._version;
-};
-
-Wine.prototype._fetchWineServerBinary = function () {
-    return this._fetchLocalDirectory() + "/bin/wineserver";
-};
-
-Wine.prototype._wineServer = function (parameter) {
-    var processBuilder = new java.lang.ProcessBuilder(Java.to([this._fetchWineServerBinary(), parameter], "java.lang.String[]"));
-    var environment = processBuilder.environment();
-    environment.put("WINEPREFIX", this.prefixDirectory);
-    processBuilder.inheritIO();
-    var wineServerProcess = processBuilder.start();
-    wineServerProcess.waitFor();
+    return this.prefixDirectory() + "/drive_c/windows/Fonts";
 };
 
 /**
@@ -343,7 +271,7 @@ Wine.prototype.regsvr32 = function () {
     var _wine = this;
 
     this.install = function (dll) {
-        _wine.run(this.prefixDirectory, "regsvr32", ["/i", dll])._silentWait();
+        _wine.run("regsvr32", ["/i", dll], this.prefixDirectory(), false, true);
         return _wine;
     };
 
@@ -359,7 +287,7 @@ Wine.prototype.regedit = function () {
     var _wine = this;
 
     this.open = function (args) {
-        _wine.run(this.prefixDirectory, "regedit", args)._silentWait();
+        _wine.run("regedit", [args], this.prefixDirectory(), false, true);
         return _wine;
     };
 
@@ -369,7 +297,7 @@ Wine.prototype.regedit = function () {
         }
         var tmpFile = createTempFile("reg");
         writeToFile(tmpFile, patchContent);
-        _wine.run(this.prefixDirectory, "regedit", [tmpFile])._silentWait();
+        _wine.run("regedit", [tmpFile], this.prefixDirectory(), false, true);
         return _wine;
     };
 
@@ -389,7 +317,7 @@ Wine.prototype.regedit = function () {
 
         keyPath.shift();
 
-        var registryValue = Bean("registryParser").parseFile(new java.io.File(this.prefixDirectory + "/" + registryFile), root).getChild(keyPath);
+        var registryValue = Bean("registryParser").parseFile(new java.io.File(this.prefixDirectory() + "/" + registryFile), root).getChild(keyPath);
 
         if (registryValue == null) {
             return null;

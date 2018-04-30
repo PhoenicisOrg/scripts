@@ -68,24 +68,19 @@ InstallerScript.prototype.go = function () {
     }
 
     // setup the prefix
-    wine.architecture(this._wineArchitecture)
-        .distribution(this._wineDistribution)
-        .version(this._wineVersion)
-        .prefix(this._name) // important that architecture, distribution and version are before this!
-        .luna()
-        .wait();
+    wine.prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
+        .luna();
 
     this._preInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in preInstall)
-    setupWizard.wait("Please wait ...");
+    setupWizard.wait(tr("Please wait ..."));
 
-    wine.run(installationCommand.command, installationCommand.args)
-        .wait();
+    wine.run(installationCommand.command, installationCommand.args, false, true);
 
     // if no executable given, ask user
     if (!this._executable) {
-        this._executable = fileName(setupWizard.browse(tr("Please select the executable."), wine.prefixDirectory, ["exe"]));
+        this._executable = fileName(setupWizard.browse(tr("Please select the executable."), wine.prefixDirectory(), ["exe"]));
     }
 
     this._createShortcut(wine.prefix());
