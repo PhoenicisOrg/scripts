@@ -30,5 +30,5 @@ sudo npm install -g json-align
 ### Execution
 in the local git repository:
 ```
-find . -name "*.js" -print0 | xargs -0 json-align -i
+find . -name "*.json" -print0 | xargs -0 json-align -i
 ```
