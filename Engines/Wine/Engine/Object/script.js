@@ -11,9 +11,6 @@ var LATEST_DEVELOPMENT_VERSION = "3.7";
 /* exported LATEST_STAGING_VERSION */
 var LATEST_STAGING_VERSION = "2.21";
 
-/* exported WINE_PREFIX_DIR */
-var WINE_PREFIX_DIR = "wineprefix";
-
 
 /**
  * Wine main prototype
@@ -21,13 +18,7 @@ var WINE_PREFIX_DIR = "wineprefix";
  */
 function Wine() {
     this._implementation = new Engine();
-    this._wineWebServiceUrl = Bean("propertyReader").getProperty("webservice.wine.url");
-    this._wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines") + "/wine";
-    this._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
-    this._configFactory = Bean("compatibleConfigFileFormatFactory");
     this._OperatingSystemFetcher = Bean("operatingSystemFetcher");
-    this._wineDebug = "-all";
-    this._ldPath = Bean("propertyReader").getProperty("application.environment.ld");
 }
 
 /**
@@ -53,22 +44,6 @@ Wine.prototype.wizard = function (wizard) {
 Wine.prototype.winepath = function (path) {
     return this.run("winepath", ["-w", path], this.prefixDirectory(), true, true);
 }
-
-/**
-*
-* @param {string} [debug]
-* @returns {string|Wine}
-*/
-Wine.prototype.debug = function (debug) {
-    // get
-    if (arguments.length == 0) {
-        return this._wineDebug;
-    }
-
-    // set
-    this._wineDebug = debug;
-    return this;
-};
 
 /**
 *

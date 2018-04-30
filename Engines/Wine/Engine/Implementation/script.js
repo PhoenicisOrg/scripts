@@ -13,6 +13,7 @@ var engineImplementation = {
     _configFactory: Bean("compatibleConfigFileFormatFactory"),
     _containerRegex: /[^a-z0-9_\- ]/gi,
     _ExeAnalyser: Bean("exeAnalyser"),
+    _ldPath: Bean("propertyReader").getProperty("application.environment.ld"),
     _operatingSystemFetcher: Bean("operatingSystemFetcher"),
     _wineEnginesDirectory: Bean("propertyReader").getProperty("application.user.engines") + "/wine",
     _winePrefixesDirectory: Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/",
@@ -231,9 +232,9 @@ var engineImplementation = {
             environment.put("WINEDEBUG", userData.wineDebug);
         }
 
-        var ldPath = ""
+        var ldPath = this._ldPath;
         if (userData.ldPath) {
-            ldPath = userData.ldPath;
+            ldPath = userData.ldPath + ldPath;
         }
         if (architecture == "amd64") {
             ldPath = this.getLocalDirectory(subCategory, version) + "/lib64/:" + ldPath
