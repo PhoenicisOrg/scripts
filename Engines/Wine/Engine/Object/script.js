@@ -126,10 +126,13 @@ Wine.prototype.runInsidePrefix = function (executable, args) {
 *
 * @param executable
 * @param {array} [args = []]
+* @param {string} [workingDirectory = working container]
 * @param {boolean} [captureOutput=false]
+* @param {boolean} [wait=false]
+* @param {map} [userData=empty]
 * @returns {String} output
 */
-Wine.prototype.run = function (executable, args, workingDirectory, captureOutput, wait) {
+Wine.prototype.run = function (executable, args, workingDirectory, captureOutput, wait, userData) {
     if (!args) {
         args = [];
     }
@@ -142,8 +145,11 @@ Wine.prototype.run = function (executable, args, workingDirectory, captureOutput
     if (!wait) {
         wait = false;
     }
+    if (!userData) {
+        userData = [];
+    }
 
-    return this._implementation.run(executable, args, workingDirectory, captureOutput, wait);
+    return this._implementation.run(executable, args, workingDirectory, captureOutput, wait, userData);
 }
 
 /**

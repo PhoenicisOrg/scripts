@@ -164,7 +164,7 @@ var engineImplementation = {
         containerConfiguration.writeValue("wineDistribution", distribution);
         containerConfiguration.writeValue("wineArchitecture", architecture);
     },
-    run: function (executable, args, workingDir, captureOutput, wait) {
+    run: function (executable, args, workingDir, captureOutput, wait, userData) {
         var subCategory = "";
         var version = "";
         var architecture = "";
@@ -227,12 +227,14 @@ var engineImplementation = {
         environment.put("WINEDLLOVERRIDES", "winemenubuilder.exe=d");
         environment.put("WINEPREFIX", workingContainerDirectory);
 
-        // TODO
-        /*if (this._wineDebug) {
-            environment.put("WINEDEBUG", this._wineDebug);
-        }*/
+        if (userData.wineDebug) {
+            environment.put("WINEDEBUG", userData.wineDebug);
+        }
 
-        var ldPath = "" // TODO = this._ldPath
+        var ldPath = ""
+        if (userData.ldPath) {
+            ldPath = userData.ldPath;
+        }
         if (architecture == "amd64") {
             ldPath = this.getLocalDirectory(subCategory, version) + "/lib64/:" + ldPath
         } else {

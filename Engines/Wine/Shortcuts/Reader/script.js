@@ -25,10 +25,11 @@ var _WineShortcutReader = function (shortcut) {
 
         var args = (shortcutContent.arguments ? shortcutContent.arguments : []).concat(Java.from(userArguments));
 
+        var userData = {};
+        userData["wineDebug"] = shortcutContent.wineDebug;
         new Wine()
             .prefix(shortcutContent.winePrefix)
-            // TODO .debug(shortcutContent.wineDebug)
-            .run(shortcutContent.executable, args, shortcutContent.workingDirectory)
+            .run(shortcutContent.executable, args, shortcutContent.workingDirectory, false, false, userData)
     };
 
 
