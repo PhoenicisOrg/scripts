@@ -47,6 +47,7 @@ globals:
   CabExtract: false
   Checksum: false
   Downloader: false
+  Engine: false
   Extractor: false
   Resource: false
   SetupWizard: false

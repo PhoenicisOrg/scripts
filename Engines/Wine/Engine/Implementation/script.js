@@ -3,13 +3,14 @@ include(["utils", "functions", "filesystem", "extract"]);
 include(["utils", "functions", "net", "download"]);
 include(["utils", "functions", "net", "resource"]);
 
-WINE_PREFIX_DIR = "wineprefix"
+var WINE_PREFIX_DIR = "wineprefix";
 
 /**
  * Wine engine
 */
 var engineImplementation = {
     _configFactory: Bean("compatibleConfigFileFormatFactory"),
+    _containerRegex: /[^a-z0-9_\-\ ]/gi,
     _ExeAnalyser: Bean("exeAnalyser"),
     _operatingSystemFetcher: Bean("operatingSystemFetcher"),
     _wineEnginesDirectory: Bean("propertyReader").getProperty("application.user.engines") + "/wine",
@@ -139,20 +140,20 @@ var engineImplementation = {
         return this._workingContainer;
     },
     setWorkingContainer: function (workingContainer) {
-        var workingContainerCleaned = workingContainer.replace(/[^a-z0-9_\-\ ]/gi, '');
+        var workingContainerCleaned = workingContainer.replace(this._containerRegex, '');
         this._workingContainer = workingContainerCleaned;
     },
     getContainerDirectory: function (containerName) {
-        var containerNameCleaned = containerName.replace(/[^a-z0-9_\-\ ]/gi, '');
-        return containerDirectory = this._winePrefixesDirectory + "/" + containerNameCleaned + "/";
+        var containerNameCleaned = containerName.replace(this._containerRegex, '');
+        return this._winePrefixesDirectory + "/" + containerNameCleaned + "/";
     },
     createContainer: function (subCategory, version, containerName) {
         var parts = subCategory.split("-");
         var distribution = parts[0];
         var architecture = parts[2];
 
-        var containerNameCleaned = containerName.replace(/[^a-z0-9_\-\ ]/gi, '');
-        containerDirectory = this._winePrefixesDirectory + "/" + containerNameCleaned + "/";
+        var containerNameCleaned = containerName.replace(this._containerRegex, '');
+        var containerDirectory = this._winePrefixesDirectory + "/" + containerNameCleaned + "/";
 
         mkdir(containerDirectory);
 

@@ -1,14 +1,14 @@
-include(["engines", "wine", "engine", "java"]);
+include(["engines", "wine", "engine", "implementation"]);
 include(["utils", "functions", "filesystem", "files"]);
 include(["utils", "functions", "filesystem", "extract"]);
 include(["utils", "functions", "net", "download"]);
 include(["utils", "functions", "net", "resource"]);
 
-LATEST_STABLE_VERSION = "3.0";
-LATEST_DEVELOPMENT_VERSION = "3.6";
-LATEST_STAGING_VERSION = "2.21";
+var LATEST_STABLE_VERSION = "3.0";
+var LATEST_DEVELOPMENT_VERSION = "3.6";
+var LATEST_STAGING_VERSION = "2.21";
 
-WINE_PREFIX_DIR = "wineprefix"
+var WINE_PREFIX_DIR = "wineprefix";
 
 
 /**
@@ -81,7 +81,7 @@ Wine.prototype.prefix = function (prefix, distribution, architecture, version) {
     }
     // set
     else if (arguments.length == 1) {
-	    this._implementation.setWorkingContainer(prefix);
+        this._implementation.setWorkingContainer(prefix);
 	    return this;
     }
     else {
