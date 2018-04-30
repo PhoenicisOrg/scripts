@@ -5,7 +5,7 @@ include(["utils", "functions", "net", "download"]);
 include(["utils", "functions", "net", "resource"]);
 
 var LATEST_STABLE_VERSION = "3.0";
-var LATEST_DEVELOPMENT_VERSION = "3.6";
+var LATEST_DEVELOPMENT_VERSION = "3.7";
 var LATEST_STAGING_VERSION = "2.21";
 
 var WINE_PREFIX_DIR = "wineprefix";
