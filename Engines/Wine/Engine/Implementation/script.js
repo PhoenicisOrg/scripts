@@ -120,10 +120,10 @@ var engineImplementation = {
         lns(new java.io.File(mono).getParent(), wineMonoDir);
     },
     delete: function (subCategory, version) {
-         if (this.isInstalled(subCategory, version)) {
-             remove(this.getLocalDirectory(subCategory, version));
-         }
-     },
+        if (this.isInstalled(subCategory, version)) {
+            remove(this.getLocalDirectory(subCategory, version));
+        }
+    },
     getAvailableVersions: function () {
         var versionsFile = this._wineEnginesDirectory + "/availableVersions.json";
         touch(versionsFile);
@@ -255,13 +255,13 @@ var engineImplementation = {
         } else {
             return "";
         }
-      },
-      getWizard: function () {
+    },
+    getWizard: function () {
         return this._wizard;
-      },
-      setWizard: function (wizard) {
+    },
+    setWizard: function (wizard) {
         this._wizard = wizard;
-      }
+    }
 };
 
 /* exported Engine */
