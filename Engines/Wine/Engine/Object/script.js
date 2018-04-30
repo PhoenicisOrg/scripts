@@ -16,7 +16,7 @@ WINE_PREFIX_DIR = "wineprefix"
  * @constructor
  */
 function Wine() {
-    this._java = new Engine();
+    this._implementation = new Engine();
     this._wineWebServiceUrl = Bean("propertyReader").getProperty("webservice.wine.url");
     this._wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines") + "/wine";
     this._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
@@ -34,11 +34,11 @@ function Wine() {
 Wine.prototype.wizard = function (wizard) {
     // get
     if (arguments.length == 0) {
-        return this._java.getWizard();
+        return this._implementation.getWizard();
     }
 
     // set
-    this._java.setWizard(wizard);
+    this._implementation.setWizard(wizard);
     return this;
 };
 
@@ -77,18 +77,18 @@ Wine.prototype.debug = function (debug) {
 Wine.prototype.prefix = function (prefix, distribution, architecture, version) {
     // get
     if (arguments.length == 0) {
-        return this._java.getWorkingContainer();
+        return this._implementation.getWorkingContainer();
     }
     // set
     else if (arguments.length == 1) {
-	    this._java.setWorkingContainer(prefix);
+	    this._implementation.setWorkingContainer(prefix);
 	    return this;
     }
     else {
         var operatingSystem = this._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
         var subCategory = distribution + "-" + operatingSystem + "-" + architecture;
-        this._java.createContainer(subCategory, version, prefix);
-	    this._java.setWorkingContainer(prefix);
+        this._implementation.createContainer(subCategory, version, prefix);
+	    this._implementation.setWorkingContainer(prefix);
 	    return this;
     }
 };
@@ -98,7 +98,7 @@ Wine.prototype.prefix = function (prefix, distribution, architecture, version) {
 * @returns {string}
 */
 Wine.prototype.prefixDirectory = function () {
-    return this._java.getContainerDirectory(this._java.getWorkingContainer());
+    return this._implementation.getContainerDirectory(this._implementation.getWorkingContainer());
 };
 
 /**
@@ -106,7 +106,7 @@ Wine.prototype.prefixDirectory = function () {
 * @returns {String}
 */
 Wine.prototype.binPath = function () {
-    return this._java.getLocalDirectory() + "/bin/";
+    return this._implementation.getLocalDirectory() + "/bin/";
 };
 
 /**
@@ -130,7 +130,7 @@ Wine.prototype.run = function (executable, args, workingDirectory, captureOutput
         args = [];
     }
     if (!workingDirectory) {
-        workingDirectory = this._java.getContainerDirectory(this._java.getWorkingContainer());
+        workingDirectory = this._implementation.getContainerDirectory(this._implementation.getWorkingContainer());
     }
     if (!captureOutput) {
         captureOutput = false;
@@ -139,7 +139,7 @@ Wine.prototype.run = function (executable, args, workingDirectory, captureOutput
         wait = false;
     }
 
-    return this._java.run(executable, args, workingDirectory, captureOutput, wait);
+    return this._implementation.run(executable, args, workingDirectory, captureOutput, wait);
 }
 
 /**
@@ -153,7 +153,7 @@ Wine.prototype.uninstall = function (application) {
     var re = new RegExp("(.*)\\|\\|\\|.*" + appEscaped);
     var uuid = list.match(re);
     if (uuid) {
-        this._java.getWizard.wait(tr("Please wait while {0} is uninstalled ...", application));
+        this._implementation.getWizard.wait(tr("Please wait while {0} is uninstalled ...", application));
         this.run("uninstaller", ["--remove", uuid[1]], this.prefixDirectory(), false, true);
     } else {
         print(tr("Could not uninstall {0}!", application));
@@ -198,7 +198,7 @@ Wine.prototype.kill = function () {
 */
 Wine.prototype.availableDistributions = function (architectureName) {
     var distributions = [];
-    var wineJson = JSON.parse(this._java.getAvailableVersions());
+    var wineJson = JSON.parse(this._implementation.getAvailableVersions());
     var architecture = architectureName || this._architecture;
     var architectureRegExp = new RegExp(architecture);
     wineJson.forEach(function (distribution) {
@@ -219,7 +219,7 @@ Wine.prototype.availableDistributions = function (architectureName) {
 Wine.prototype.availableVersions = function (distributionName) {
     var versions = [];
     var fullDistributionName = distributionName || this._fetchFullDistributionName();
-    var wineJson = JSON.parse(this._java.getAvailableVersions());
+    var wineJson = JSON.parse(this._implementation.getAvailableVersions());
     wineJson.forEach(function (distribution) {
         if (distribution.name == fullDistributionName) {
             distribution.packages.forEach(function (winePackage) {
