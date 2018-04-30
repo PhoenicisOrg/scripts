@@ -4,10 +4,14 @@ include(["utils", "functions", "filesystem", "extract"]);
 include(["utils", "functions", "net", "download"]);
 include(["utils", "functions", "net", "resource"]);
 
+/* exported LATEST_STABLE_VERSION */
 var LATEST_STABLE_VERSION = "3.0";
+/* exported LATEST_DEVELOPMENT_VERSION */
 var LATEST_DEVELOPMENT_VERSION = "3.7";
+/* exported LATEST_STAGING_VERSION */
 var LATEST_STAGING_VERSION = "2.21";
 
+/* exported WINE_PREFIX_DIR */
 var WINE_PREFIX_DIR = "wineprefix";
 
 
@@ -82,14 +86,14 @@ Wine.prototype.prefix = function (prefix, distribution, architecture, version) {
     // set
     else if (arguments.length == 1) {
         this._implementation.setWorkingContainer(prefix);
-	    return this;
+        return this;
     }
     else {
         var operatingSystem = this._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
         var subCategory = distribution + "-" + operatingSystem + "-" + architecture;
         this._implementation.createContainer(subCategory, version, prefix);
-	    this._implementation.setWorkingContainer(prefix);
-	    return this;
+        this._implementation.setWorkingContainer(prefix);
+        return this;
     }
 };
 

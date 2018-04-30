@@ -49,6 +49,7 @@ globals:
   Downloader: false
   Engine: false
   Extractor: false
+  InstallationType: false
   Resource: false
   SetupWizard: false
   Wine: false

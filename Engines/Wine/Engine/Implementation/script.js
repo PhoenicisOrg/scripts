@@ -3,6 +3,7 @@ include(["utils", "functions", "filesystem", "extract"]);
 include(["utils", "functions", "net", "download"]);
 include(["utils", "functions", "net", "resource"]);
 
+/* exported WINE_PREFIX_DIR */
 var WINE_PREFIX_DIR = "wineprefix";
 
 /**
@@ -10,7 +11,7 @@ var WINE_PREFIX_DIR = "wineprefix";
 */
 var engineImplementation = {
     _configFactory: Bean("compatibleConfigFileFormatFactory"),
-    _containerRegex: /[^a-z0-9_\-\ ]/gi,
+    _containerRegex: /[^a-z0-9_\- ]/gi,
     _ExeAnalyser: Bean("exeAnalyser"),
     _operatingSystemFetcher: Bean("operatingSystemFetcher"),
     _wineEnginesDirectory: Bean("propertyReader").getProperty("application.user.engines") + "/wine",
