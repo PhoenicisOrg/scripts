@@ -4,6 +4,7 @@ include(["engines", "wine", "plugins", "regedit"]);
 /**
  * default windows version
  * @param {string} [version (win7, vista, win2003, winxp, win2k, winnt, winme, win98, win95, win31)]
+ * @param {string] servicePack e.g. sp3
  * @returns {string|Wine} get: Windows version, set: Wine object
  */
 Wine.prototype.windowsVersion = function (version, servicePack) {

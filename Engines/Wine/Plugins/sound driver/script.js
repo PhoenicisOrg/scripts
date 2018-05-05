@@ -3,7 +3,7 @@ include(["engines", "wine", "plugins", "regedit"]);
 
 /**
  * sets sound driver
- * @param driver (alsa, pulse)
+ * @param {string} driver (alsa, pulse)
  * @returns {Wine} Wine object
  */
 Wine.prototype.setSoundDriver = function (driver) {

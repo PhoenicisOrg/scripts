@@ -3,7 +3,7 @@ include(["engines", "wine", "plugins", "regedit"]);
 
 /**
  * enable command stream multi-threading
- * @returns {Wine}
+ * @returns {Wine} Wine object
  */
 Wine.prototype.enableCSMT = function () {
     var regeditFileContent =

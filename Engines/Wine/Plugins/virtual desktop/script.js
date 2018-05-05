@@ -2,8 +2,8 @@ include(["engines", "wine", "engine", "object"]);
 
 /**
  * sets Virtual Desktop with window resolution
- * @param {number} width
- * @param {number} height
+ * @param {number} width width of virtual desktop (in px)
+ * @param {number} height height of virtual desktop (in px)
  * @returns {Wine} Wine object
  */
 Wine.prototype.setVirtualDesktop = function (width, height) {

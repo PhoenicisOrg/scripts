@@ -3,8 +3,8 @@ include(["engines", "wine", "plugins", "regedit"]);
 
 /**
  * sets OpenGL max core version
- * @param {number} major
- * @param {number} minor
+ * @param {number} major major version
+ * @param {number} minor minor version
  * @returns {Wine} Wine object
  */
 Wine.prototype.setVersionGL = function (major, minor) {

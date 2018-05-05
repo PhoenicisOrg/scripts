@@ -3,7 +3,7 @@ include(["engines", "wine", "plugins", "regedit"]);
 
 /**
  * use native application for a certain file extension
- * @param {string} [file extension (pdf, txt, rtf)]
+ * @param {string} [extension] file extension (pdf, txt, rtf)
  * @returns {string|Wine} get: native application, set: Wine object
  */
 Wine.prototype.nativeApplication = function (extension) {
