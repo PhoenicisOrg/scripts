@@ -4,7 +4,7 @@ include(["engines", "wine", "plugins", "regedit"]);
 /**
 *
 * @param {boolean} [managed]
-* @returns {boolean|Wine}
+* @returns {boolean|Wine} get: if is managed, set: Wine object
 */
 Wine.prototype.managed = function (managed) {
     // get

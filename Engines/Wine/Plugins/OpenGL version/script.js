@@ -5,7 +5,7 @@ include(["engines", "wine", "plugins", "regedit"]);
  * sets OpenGL max core version
  * @param {number} major
  * @param {number} minor
- * @returns {Wine}
+ * @returns {Wine} Wine object
  */
 Wine.prototype.setVersionGL = function (major, minor) {
     var regeditFileContent =

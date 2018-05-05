@@ -2,7 +2,7 @@ include(["engines", "wine", "engine", "object"]);
 
 /**
 * runs "regsvr32"
-* @returns {Wine}
+* @returns {Wine} Wine object
 */
 Wine.prototype.regsvr32 = function () {
     var _wine = this;

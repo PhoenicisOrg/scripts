@@ -2,8 +2,8 @@ include(["engines", "wine", "engine", "object"]);
 
 /**
  * Regedit support
- * @param args
- * @returns {Wine}
+ * @param args arguments
+ * @returns {Wine} Wine object
  */
 Wine.prototype.regedit = function () {
     var _wine = this;

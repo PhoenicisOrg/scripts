@@ -3,7 +3,7 @@ include(["engines", "wine", "engine", "object"]);
 /**
  * force the DirectDrawRenderer
  * @param {string} mode (gdi or opengl)
- * @returns {Wine}
+ * @returns {Wine} Wine object
  */
 Wine.prototype.DirectDrawRenderer = function (mode) {
     var regeditFileContent =

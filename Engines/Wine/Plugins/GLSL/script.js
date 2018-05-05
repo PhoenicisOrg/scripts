@@ -4,7 +4,7 @@ include(["engines", "wine", "plugins", "regedit"]);
 /**
  * force the Use of GLSL
  * @param {string} mode (enabled or disabled)
- * @returns {Wine}
+ * @returns {Wine} Wine object
  */
 Wine.prototype.UseGLSL = function (mode) {
     var regeditFileContent =

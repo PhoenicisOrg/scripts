@@ -4,7 +4,7 @@ include(["engines", "wine", "engine", "object"]);
  * sets Virtual Desktop with window resolution
  * @param {number} width
  * @param {number} height
- * @returns {Wine}
+ * @returns {Wine} Wine object
  */
 Wine.prototype.setVirtualDesktop = function (width, height) {
     var regeditFileContent =

@@ -4,7 +4,7 @@ include(["engines", "wine", "plugins", "regedit"]);
 /**
  * sets sound driver
  * @param driver (alsa, pulse)
- * @returns {Wine}
+ * @returns {Wine} Wine object
  */
 Wine.prototype.setSoundDriver = function (driver) {
     var regeditFileContent =
