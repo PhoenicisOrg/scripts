@@ -1,6 +1,7 @@
 include(["engines", "wine", "quick_script", "quick_script"]);
 include(["utils", "functions", "net", "download"]);
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
 include(["utils", "functions", "filesystem", "extract"]);
 include(["utils", "functions", "filesystem", "files"]);
 include(["engines", "wine", "verbs", "luna"]);

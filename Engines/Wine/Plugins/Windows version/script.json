@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Windows version",
+    "id"                         : "windows_version",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

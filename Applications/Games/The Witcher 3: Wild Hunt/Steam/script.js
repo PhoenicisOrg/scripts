@@ -1,4 +1,8 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
+include(["engines", "wine", "plugins", "csmt"]);
+include(["engines", "wine", "plugins", "directdraw_renderer"]);
+include(["engines", "wine", "plugins", "glsl"]);
+include(["engines", "wine", "plugins", "opengl_version"]);
 include(["utils", "functions", "filesystem", "files"]);
 
 var installerImplementation = {
