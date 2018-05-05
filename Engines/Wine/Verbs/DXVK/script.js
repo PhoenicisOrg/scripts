@@ -6,7 +6,7 @@ include(["utils", "functions", "filesystem", "files"]);
 * Setup DXVK-> https://github.com/doitsujin/dxvk/
 * @returns {Wine} Wine object
 */
-Wine.prototype.DXVK = function() {
+Wine.prototype.DXVK = function () {
     print("NOTE: you need a driver that support Vulkan enough to run DXVK");
     print("NOTE: wine version should be greater or equal to 3.5");
 
@@ -20,10 +20,10 @@ Wine.prototype.DXVK = function() {
     new Extractor()
         .wizard(this.wizard())
         .archive(setupFile)
-        .to(this.prefixDirectory + "/TMP/")
+        .to(this.prefixDirectory() + "/TMP/")
         .extract();
 
-    var dxvkTmpDir = this.prefixDirectory + "/TMP/dxvk-0.42";
+    var dxvkTmpDir = this.prefixDirectory() + "/TMP/dxvk-0.42";
 
     if (this.architecture() == "x86") {
         cp(dxvkTmpDir + "/x32/d3d11.dll", this.system32directory());
@@ -42,7 +42,7 @@ Wine.prototype.DXVK = function() {
         .set("native", ["d3d11", "dxgi"])
         .do();
 
-    remove(this.prefixDirectory + "/TMP/");
+    remove(this.prefixDirectory() + "/TMP/");
 
     return this;
 }

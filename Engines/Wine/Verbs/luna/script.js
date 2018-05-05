@@ -22,8 +22,8 @@ Wine.prototype.luna = function () {
         .get();
 
 
-    mkdir(this.prefixDirectory + "/drive_c/windows/Resources/Themes/luna/");
-    cp(lunaStyle, this.prefixDirectory + "/drive_c/windows/Resources/Themes/luna/");
+    mkdir(this.prefixDirectory() + "/drive_c/windows/Resources/Themes/luna/");
+    cp(lunaStyle, this.prefixDirectory() + "/drive_c/windows/Resources/Themes/luna/");
     this.regedit().open(lunaReg);
 
     return this;
