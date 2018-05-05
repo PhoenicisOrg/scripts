@@ -1,4 +1,5 @@
 include(["engines", "wine", "quick_script", "online_installer_script"]);
+include(["engines", "wine", "plugins", "windows_version"]);
 include(["engines", "wine", "verbs", "corefonts"]);
 include(["engines", "wine", "verbs", "d3dx9"]);
 include(["engines", "wine", "verbs", "vcrun2008"]);

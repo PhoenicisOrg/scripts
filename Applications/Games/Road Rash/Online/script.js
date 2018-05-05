@@ -1,4 +1,5 @@
 include(["engines", "wine", "quick_script", "zip_script"]);
+include(["engines", "wine", "plugins", "regedit"]);
 
 var installerImplementation = {
     run: function () {

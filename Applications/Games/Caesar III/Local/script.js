@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "virtual_desktop"]);
 
 var installerImplementation = {
     run: function () {

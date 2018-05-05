@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "native application",
+    "id"                         : "native_application",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
