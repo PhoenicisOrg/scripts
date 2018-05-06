@@ -2,14 +2,14 @@ include(["engines", "wine", "engine", "object"]);
 include(["engines", "wine", "plugins", "regedit"]);
 
 /**
- * setting to enable/disable GLSL
+ * setting to set the render target lock mode
 */
 var settingImplementation = {
-    _options: [tr("Default"), tr("Disabled"), tr("Enabled")],
+    _options: [tr("Default"), tr("Disabled"), tr("readdraw"), tr("readtext")],
     // values which are written into the registry, do not translate!
-    _registryValues: ["", "disabled", "enabled"],
+    _registryValues: ["", "disabled", "readdraw", "readtext"],
     getText: function () {
-        return tr("GLSL support");
+        return tr("Render target lock mode");
     },
     getOptions: function () {
         return this._options;
@@ -18,7 +18,7 @@ var settingImplementation = {
         var currentValue = new Wine()
                                .prefix(container)
                                .regedit()
-                               .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Direct3D", "UseGLSL"]);
+                               .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Direct3D", "RenderTargetModeLock"]);
         // find matching option
         var index = this._registryValues.indexOf(currentValue);
         return this._options[index];
@@ -28,7 +28,7 @@ var settingImplementation = {
             "REGEDIT4\n" +
             "\n" +
             "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-            "\"UseGLSL\"=\"" + this._registryValues[optionIndex] + "\"\n";
+            "\"RenderTargetModeLock\"=\"" + this._registryValues[optionIndex] + "\"\n";
         new Wine()
             .prefix(container)
             .regedit()
