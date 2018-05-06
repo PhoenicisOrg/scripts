@@ -19,8 +19,8 @@ var settingImplementation = {
             .prefix(container)
             .regedit()
             .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Direct3D", "AlwaysOffscreen"]);
-        // find matching option
-        var index = this._registryValues.indexOf(currentValue);
+        // find matching option (use default if not found)
+        var index = Math.max(this._registryValues.indexOf(currentValue), 0);
         return this._options[index];
     },
     setOption: function (container, optionIndex) {
