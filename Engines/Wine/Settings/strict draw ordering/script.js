@@ -16,9 +16,9 @@ var settingImplementation = {
     },
     getCurrentOption: function (container) {
         var currentValue = new Wine()
-                               .prefix(container)
-                               .regedit()
-                               .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Direct3D", "StrictDrawOrdering"]);
+            .prefix(container)
+            .regedit()
+            .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Direct3D", "StrictDrawOrdering"]);
         // find matching option
         var index = this._registryValues.indexOf(currentValue);
         return this._options[index];
