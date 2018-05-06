@@ -5,23 +5,30 @@ include(["engines", "wine", "plugins", "regedit"]);
  * setting to enable/disable GLSL
 */
 var settingImplementation = {
+    _options: [tr("default"), tr("disabled"), tr("enabled")],
+    // values which are written into the registry, do not translate!
+    _registryValues: ["", "disabled", "enabled"],
     getText: function () {
         return tr("GLSL support");
     },
     getOptions: function () {
-        // TODO: handle translations
-        return ["default", "disabled", "enabled"];
+        return this._options;
     },
-    getCurrentOption: function () {
-        // TODO: get from registry
-        return "default";
+    getCurrentOption: function (container) {
+        var currentValue = new Wine()
+                               .prefix(container)
+                               .regedit()
+                               .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Direct3D", "UseGLSL"]);
+        // find matching option
+        var index = this._registryValues.indexOf(currentValue);
+        return this._options[index];
     },
-    setOption: function (container, option) {
+    setOption: function (container, optionIndex) {
         var regeditFileContent =
             "REGEDIT4\n" +
             "\n" +
             "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-            "\"UseGLSL\"=\"" + option + "\"\n";
+            "\"UseGLSL\"=\"" + this._registryValues[optionIndex] + "\"\n";
         new Wine()
             .prefix(container)
             .regedit()
