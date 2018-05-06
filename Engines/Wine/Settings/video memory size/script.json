@@ -1,6 +1,6 @@
 {
-    "scriptName"                 : "GLSL",
-    "id"                         : "glsl",
+    "scriptName"                 : "video memory size",
+    "id"                         : "video_memory_size",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

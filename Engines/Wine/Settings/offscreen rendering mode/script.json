@@ -1,6 +1,6 @@
 {
-    "scriptName"                 : "GLSL",
-    "id"                         : "glsl",
+    "scriptName"                 : "offscreen rendering mode",
+    "id"                         : "offscreen_rendering_mode",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

@@ -1,6 +1,6 @@
 {
-    "scriptName"                 : "GLSL",
-    "id"                         : "glsl",
+    "scriptName"                 : "render target lock mode",
+    "id"                         : "render_target_lock_mode",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

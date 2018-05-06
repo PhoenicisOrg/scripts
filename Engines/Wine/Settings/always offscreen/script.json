@@ -1,6 +1,6 @@
 {
-    "scriptName"                 : "GLSL",
-    "id"                         : "glsl",
+    "scriptName"                 : "always offscreen",
+    "id"                         : "always_offscreen",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

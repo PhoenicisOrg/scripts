@@ -1,6 +1,6 @@
 {
-    "scriptName"                 : "GLSL",
-    "id"                         : "glsl",
+    "scriptName"                 : "DirectDraw renderer",
+    "id"                         : "directdraw_renderer",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
