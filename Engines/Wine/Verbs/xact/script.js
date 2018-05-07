@@ -18,7 +18,7 @@ Wine.prototype.xact = function () {
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
 
             new CabExtract()
-                .archive(that.prefixDirectory + "/drive_c/"+ directory + cabFile)
+                .archive(that.prefixDirectory() + "/drive_c/"+ directory + cabFile)
                 .to(destination)
                 .extract(["-L", "-F", pattern]);
 

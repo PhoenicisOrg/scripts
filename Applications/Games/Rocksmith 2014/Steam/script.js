@@ -44,7 +44,7 @@ var installerImplementation = {
             .postInstall(function (wine/*, wizard*/) {
                 wine.setSoundDriver("alsa");
                 wine.setOsForApplication().set("Rocksmith2014.exe", "win7").do();
-                fixIni(wine.prefixDirectory + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Rocksmith2014/Rocksmith.ini");
+                fixIni(wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Rocksmith2014/Rocksmith.ini");
             })
             .go();
     }
