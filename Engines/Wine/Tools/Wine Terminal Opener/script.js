@@ -11,7 +11,7 @@ var toolImplementation = {
         var environment = [];
         environment["WINEPREFIX"] = wine.prefixDirectory;
         environment["PATH"] = wine.binPath() + ":$PATH";
-        this._TerminalOpener.openTerminal(wine.prefixDirectory, environment);
+        this._TerminalOpener.openTerminal(wine.prefixDirectory(), environment);
     }
 };
 
