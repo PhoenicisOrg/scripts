@@ -28,7 +28,7 @@ var settingImplementation = {
             new Wine()
                 .prefix(container)
                 .regedit()
-                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D\\StrictDrawOrdering");
+                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D", "StrictDrawOrdering");
         }
         else {
             var regeditFileContent =

@@ -28,7 +28,7 @@ var settingImplementation = {
             new Wine()
                 .prefix(container)
                 .regedit()
-                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D\\VideoMemorySize");
+                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D", "VideoMemorySize");
         } else {
             var regeditFileContent =
             "REGEDIT4\n" +

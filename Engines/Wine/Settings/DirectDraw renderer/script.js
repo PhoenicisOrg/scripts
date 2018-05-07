@@ -28,7 +28,7 @@ var settingImplementation = {
             new Wine()
                 .prefix(container)
                 .regedit()
-                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D\\DirectDrawRenderer");
+                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D", "DirectDrawRenderer");
         }
         else {
             var regeditFileContent =

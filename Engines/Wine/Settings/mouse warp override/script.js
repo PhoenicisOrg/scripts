@@ -28,7 +28,7 @@ var settingImplementation = {
             new Wine()
                 .prefix(container)
                 .regedit()
-                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\DirectInput\\MouseWarpOverride");
+                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\DirectInput", "MouseWarpOverride");
         }
         else {
             var regeditFileContent =
