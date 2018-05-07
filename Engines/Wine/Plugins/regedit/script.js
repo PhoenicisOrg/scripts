@@ -22,6 +22,16 @@ Wine.prototype.regedit = function () {
         return _wine;
     };
 
+    this.deleteKey = function (keyPath) {
+        _wine.run("reg", ["delete", keyPath, "/f"], this.prefixDirectory(), false, true);
+        return _wine;
+    };
+
+    this.deleteValue = function (keyPath, value) {
+        _wine.run("reg", ["delete", keyPath, "/v", value, "/f"], this.prefixDirectory(), false, true);
+        return _wine;
+    };
+
     this.fetchValue = function (keyPath) {
         var root = keyPath[0];
         var registryFile;
