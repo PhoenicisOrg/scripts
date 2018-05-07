@@ -24,15 +24,23 @@ var settingImplementation = {
         return this._options[index];
     },
     setOption: function (container, optionIndex) {
-        var regeditFileContent =
+        if (0 == optionIndex) {
+            new Wine()
+                .prefix(container)
+                .regedit()
+                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\DirectInput\\MouseWarpOverride");
+        }
+        else {
+            var regeditFileContent =
             "REGEDIT4\n" +
             "\n" +
             "[HKEY_CURRENT_USER\\Software\\Wine\\DirectInput]\n" +
             "\"MouseWarpOverride\"=\"" + this._registryValues[optionIndex] + "\"\n";
-        new Wine()
-            .prefix(container)
-            .regedit()
-            .patch(regeditFileContent);
+            new Wine()
+                .prefix(container)
+                .regedit()
+                .patch(regeditFileContent);
+        }
     }
 };
 
