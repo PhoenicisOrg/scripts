@@ -1,4 +1,5 @@
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "register_font"]);
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "verbs", "luna"]);
 

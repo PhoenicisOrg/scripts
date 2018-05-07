@@ -1,4 +1,5 @@
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
 include(["utils", "functions", "net", "resource"]);
 
 /**
@@ -16,7 +17,7 @@ Wine.prototype.d3dx10 = function () {
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
 
             new CabExtract()
-                .archive(that.prefixDirectory + "/drive_c/d3dx10/" + cabFile)
+                .archive(that.prefixDirectory() + "/drive_c/d3dx10/" + cabFile)
                 .to(destination)
                 .extract(["-L", "-F", pattern]);
 
@@ -37,7 +38,7 @@ Wine.prototype.d3dx10 = function () {
 
     new CabExtract()
         .archive(setupFile)
-        .to(this.prefixDirectory + "/drive_c/d3dx10/")
+        .to(this.prefixDirectory() + "/drive_c/d3dx10/")
         .extract(["-L", "-F", "*d3dx10*x86*"]);
 
     var filesToExtractx86 = [
@@ -51,7 +52,7 @@ Wine.prototype.d3dx10 = function () {
     if (this.architecture() == "amd64") {
         new CabExtract()
             .archive(setupFile)
-            .to(this.prefixDirectory + "/drive_c/d3dx10/")
+            .to(this.prefixDirectory() + "/drive_c/d3dx10/")
             .extract(["-L", "-F", "*d3dx10*x64*"]);
 
         var filesToExtractx64 = [

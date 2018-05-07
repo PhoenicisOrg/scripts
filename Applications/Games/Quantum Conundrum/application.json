@@ -1,5 +1,5 @@
 {
-	"name":	"Quantum Conundrum",
-	"id":	"quantum_conundrum",
-	"description": "Find and rescue your uncle by using his newest invention to work your way through a crazy complex mansion as you switch between dimensions and solve puzzles!"
+    "name"        : "Quantum Conundrum",
+    "id"          : "quantum_conundrum",
+    "description" : "Find and rescue your uncle by using his newest invention to work your way through a crazy complex mansion as you switch between dimensions and solve puzzles!"
 }

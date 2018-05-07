@@ -1,5 +1,5 @@
 {
-	"name":	"App Utils",
-	"id":	"apps",
-	"description": "Utils for apps."
+    "name"        : "App Utils",
+    "id"          : "apps",
+    "description" : "Utils for apps."
 }

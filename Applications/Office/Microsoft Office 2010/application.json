@@ -1,5 +1,5 @@
 {
-	"name":	"Microsoft Office 2010",
-	"id":	"microsoft_office_2010",
-	"description": "Microsoft Office 2010 is a version of Microsoft Office, a productivity suite for Microsoft Windows. It is the successor to Microsoft Office 2007."
+    "name"        : "Microsoft Office 2010",
+    "id"          : "microsoft_office_2010",
+    "description" : "Microsoft Office 2010 is a version of Microsoft Office, a productivity suite for Microsoft Windows. It is the successor to Microsoft Office 2007."
 }

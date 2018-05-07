@@ -1,5 +1,5 @@
 {
-	"name": "Games",
-	"id": "games",
-	"type": "INSTALLERS"
+    "name" : "Games",
+    "id"   : "games",
+    "type" : "INSTALLERS"
 }

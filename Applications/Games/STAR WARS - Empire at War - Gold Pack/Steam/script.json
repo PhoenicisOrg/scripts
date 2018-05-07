@@ -1,9 +1,10 @@
 {
-	"scriptName": "Steam",
-	"id": "steam",
-	"compatibleOperatingSystems": ["LINUX"],
-	"testingOperatingSystems": [],
-	"free": false,
-	"requiresPatch": false
-} 
- 
+    "scriptName"                 : "Steam",
+    "id"                         : "steam",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}

@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "managed",
+    "id"                         : "managed",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

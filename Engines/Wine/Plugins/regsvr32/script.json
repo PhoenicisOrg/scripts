@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "regsvr32",
+    "id"                         : "regsvr32",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

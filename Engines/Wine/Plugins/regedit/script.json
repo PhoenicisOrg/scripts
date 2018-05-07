@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "regedit",
+    "id"                         : "regedit",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

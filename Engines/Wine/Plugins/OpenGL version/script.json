@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "OpenGL_version",
+    "id"                         : "opengl_version",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

@@ -1,8 +1,14 @@
 {
-	"scriptName": "Online (Demo)",
-	"id": "online_demo",
-	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": ["MACOSX", "LINUX"],
-	"free": true,
-	"requiresPatch": false
+    "scriptName"                 : "Online (Demo)",
+    "id"                         : "online_demo",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "free"          : true,
+    "requiresPatch" : false
 }

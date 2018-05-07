@@ -17,6 +17,8 @@ docs:
         url: /jsdoc/
   - title: "General"
     children:
+      - title: "Tools"
+        url: /tools/
       - title: "Translation"
         url: /translation/
       - title: "Best practices"

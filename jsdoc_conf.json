@@ -1,24 +1,25 @@
 {
-    "opts": {
-        "destination": "./docs/jsdoc/",
-        "recurse": true
+    "opts" : {
+        "destination" : "./docs/jsdoc/",
+        "recurse"     : true
     },
-    "plugins": [],
-    "recurseDepth": 10,
-    "source": {
-        "includePattern": ".+\\.js(doc|x)?$",
-        "excludePattern": "(^|\\/|\\\\)_"
+    "plugins"      : [],
+    "recurseDepth" : 10,
+    "source"       : {
+        "includePattern" : ".+\\.js(doc|x)?$",
+        "excludePattern" : "(^|\\/|\\\\)_"
     },
-    "sourceType": "module",
-    "tags": {
-        "allowUnknownTags": true,
-        "dictionaries": ["jsdoc","closure"]
+    "sourceType" : "module",
+    "tags"       : {
+        "allowUnknownTags" : true,
+        "dictionaries"     : [
+            "jsdoc",
+            "closure"
+        ]
     },
-    "templates": {
-        "default": {
-            "includeDate": false
+    "templates" : {
+        "default" : {
+            "includeDate" : false
         }
     }
 }
-
-

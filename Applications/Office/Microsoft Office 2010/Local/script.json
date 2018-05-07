@@ -1,8 +1,12 @@
 {
-	"scriptName": "Local",
-	"id": "local",
-	"compatibleOperatingSystems": ["LINUX"],
-	"testingOperatingSystems": ["LINUX"],
-	"free": false,
-	"requiresPatch": false
-} 
+    "scriptName"                 : "Local",
+    "id"                         : "local",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "LINUX"
+    ],
+    "free"          : false,
+    "requiresPatch" : false
+}

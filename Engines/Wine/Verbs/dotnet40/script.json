@@ -1,8 +1,11 @@
 {
-	"scriptName": ".NET 4.0",
-	"id": "dotnet40",
-	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": [],
-	"free": true,
-	"requiresPatch": false
+    "scriptName"                 : ".NET 4.0",
+    "id"                         : "dotnet40",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
 }

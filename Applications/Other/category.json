@@ -1,5 +1,5 @@
 {
-	"name": "Other",
-	"id": "other",
-	"type": "INSTALLERS"
+    "name" : "Other",
+    "id"   : "other",
+    "type" : "INSTALLERS"
 }

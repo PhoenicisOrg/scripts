@@ -1,8 +1,11 @@
 {
-  	"scriptName": "Local (Legacy)",
-	"id": "local_legacy",
-  	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-  	"testingOperatingSystems": [],
-  	"free": true,
-  	"requiresPatch": false
+    "scriptName"                 : "Local (Legacy)",
+    "id"                         : "local_legacy",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
 }
