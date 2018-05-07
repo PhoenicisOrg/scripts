@@ -82,10 +82,28 @@ Wine.prototype.prefixDirectory = function () {
 
 /**
 * returns the path to the engine binary directory
-* @returns {String}
+* if no parameters are given, the Wine version of the current prefix is used
+* @param {string} [subCategory] Wine sub-category
+* @param {string} [version] Wine version
+* @returns {string} path to "wine" binary
 */
-Wine.prototype.binPath = function () {
-    return this._implementation.getLocalDirectory() + "/bin/";
+Wine.prototype.binPath = function (subCategory, version) {
+    if (0 == arguments.length) {
+        if (fileExists(this.prefixDirectory())) {
+            var configFactory = Bean("compatibleConfigFileFormatFactory");
+            var containerConfiguration = configFactory.open(this.prefixDirectory() + "/phoenicis.cfg");
+            var distribution = containerConfiguration.readValue("wineDistribution", "upstream");
+            var architecture = containerConfiguration.readValue("wineArchitecture", "x86");
+            var operatingSystem = this._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+            subCategory = distribution + "-" + operatingSystem + "-" + architecture;
+            version = containerConfiguration.readValue("wineVersion");
+        }
+        else {
+            print("Wine prefix \"" + this.prefixDirectory() + "\" does not exist!");
+            return "";
+        }
+    }
+    return this._implementation.getLocalDirectory(subCategory, version) + "/bin/";
 };
 
 /**

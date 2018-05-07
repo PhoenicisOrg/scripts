@@ -180,7 +180,7 @@ var engineImplementation = {
             this.install(subCategory, version);
         }
         else {
-            print("Wine prefix " + this.getWorkingContainer() + " does not exist!");
+            print("Wine prefix \"" + this.getWorkingContainer() + "\" does not exist!");
             return "";
         }
 
