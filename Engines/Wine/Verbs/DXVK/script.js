@@ -15,7 +15,7 @@ Wine.prototype.DXVK = function () {
 
     var setupFile = new Resource()
         .wizard(this.wizard())
-        .url("https://github.com/doitsujin/dxvk/releases/download/v0.50/dxvk-" + dxvkVersion + ".tar.gz")
+        .url("https://github.com/doitsujin/dxvk/releases/download/v" + dxvkVersion + "/dxvk-" + dxvkVersion + ".tar.gz")
         .checksum("4bbcb3020ba12a5a0cb7c388264579068b307bc6")
         .name("dxvk-" + dxvkVersion + ".tar.gz")
         .get();
