@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "always offscreen",
+    "id"                         : "always_offscreen",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

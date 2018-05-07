@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "offscreen rendering mode",
+    "id"                         : "offscreen_rendering_mode",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
