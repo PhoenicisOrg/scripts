@@ -15,7 +15,7 @@ var installerImplementation = {
                 wizard.message(tr("When Origin launches, you will get an error message (\"Your update could not be completed.\"). This is ok. Just close the popup."));
             })
             .postInstall(function (wine, wizard) {
-                var originDir = wine.prefixDirectory()+ "drive_c/" + wine.programFiles() + "/Origin/";
+                var originDir = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Origin/";
 
                 new Downloader()
                     .wizard(wizard)
