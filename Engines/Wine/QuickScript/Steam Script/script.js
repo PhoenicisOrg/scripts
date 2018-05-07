@@ -38,7 +38,7 @@ SteamScript.prototype.gameOverlay = function (gameOverlay) {
 SteamScript.prototype.manifest = function (wine) {
     if (!this._manifest) {
         // cache manifest path (will not change during the installation)
-        this._manifest = wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf";
+        this._manifest = wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf";
     }
     return this._manifest;
 };

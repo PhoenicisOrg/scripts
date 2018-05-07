@@ -32,7 +32,7 @@ var installerImplementation = {
             .postInstall(function (wine/*, wizard*/) {
                 wine.setSoundDriver("alsa");
                 wine.setOsForApplication().set("Rocksmith.exe", "win7").do();
-                fixIni(wine.prefixDirectory + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Rocksmith/Rocksmith.ini");
+                fixIni(wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Rocksmith/Rocksmith.ini");
             })
             .go();
     }

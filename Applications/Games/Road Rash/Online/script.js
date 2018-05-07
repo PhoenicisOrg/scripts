@@ -13,7 +13,7 @@ var installerImplementation = {
             .category("Games")
             .executable("RASHME.EXE")
             .postInstall(function (wine/*, wizard*/) {
-                var registryFile = Bean("fileSearcher").search(wine.prefixDirectory, "RASH.REG")
+                var registryFile = Bean("fileSearcher").search(wine.prefixDirectory(), "RASH.REG")
                 wine.regedit().open(registryFile[0]);
             })
             .go();
