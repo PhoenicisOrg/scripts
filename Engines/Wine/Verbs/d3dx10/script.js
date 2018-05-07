@@ -17,7 +17,7 @@ Wine.prototype.d3dx10 = function () {
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
 
             new CabExtract()
-                .archive(that.prefixDirectory + "/drive_c/d3dx10/" + cabFile)
+                .archive(that.prefixDirectory()+ "/drive_c/d3dx10/" + cabFile)
                 .to(destination)
                 .extract(["-L", "-F", pattern]);
 

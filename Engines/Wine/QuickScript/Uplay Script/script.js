@@ -24,11 +24,11 @@ UplayScript.prototype.appId = function (appId) {
 };
 
 UplayScript.prototype.downloadStarted = function (wine) {
-    return fileExists(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/data/" + this._appId + "/manifests");
+    return fileExists(wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/data/" + this._appId + "/manifests");
 };
 
 UplayScript.prototype.downloadFinished = function (wine) {
-    return !fileExists(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/data/" + this._appId + "/manifests");
+    return !fileExists(wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/data/" + this._appId + "/manifests");
 };
 
 UplayScript.prototype.go = function () {
