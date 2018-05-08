@@ -44,4 +44,9 @@ matrix:
 
 env:
   global:
+    # to create secure for travis-ci.com
+    # 1. create personal access token with public_repo permissions
+    # 2. clone this repo (not a fork)
+    # 3. run in the clone: travis encrypt GH_TOKEN="<access_token>" --pro (GH_TOKEN is the variable which is used e.g. in push_jsdoc.sh)
+    # 4. set output below
     - secure: "HZ7wbZdwnp3iUJwfL42HnH8fnTcVz/9y9HKFy2MXw38ZtZMoXMB1a3duM0a+UFY59biFVb2PgvqEzl5e8i1fygCN2gYtyWNvvMsNTD0Iq9eOo6nzSkWjWoWIn1TMUEjDS4xZdJLHkmnp7E4h4xc4CNt3HZA5rRbiko8wXCLeWh0UM3YXjs/b14tDlZRy29Sn4LuMSdGWi8lqqTF+4rAAFJ7aQOZDJfse/lZr2FTxRtOdsxPSizU3wJ/Hk/uQvOtp6CizC0c53r49ODqDuFeHj0AOeAR9DpM0B7MojZiFKW2h74vMMcCBKdeyX3K7iLn55Z65p/9bwWCPWwAbwy4Vrbi4OMKc4WdD0RE5h0OOXCdw7xuCA1nPg5+xk5l/0TAXjmb/luklyFbNBXyGKjF5CeEaUhrn9LFmOuyoqYoVf4BD2TA32kqMGxVchf8bnTeM25slI/wi5Sgjpj6GXuxay9bUt13QPQLcT3sNp1Jftvm4gZPdY9TR9m+nPK7nhIZjFWeHJu2nIzcfJdqMTcmLV+iKqZSSL2CJqCUbPEIVwtIj3ZytFrWTX88H97K/9UMDPQ+YbyT1I9XwkXY2PT66F5WE1UVMW/3SKw/jZON8AjYKD4mTd24kRMNfNhXGsg3L+NS8dsDXz1cfSZpLGxe4rvguZInoziJGLN27jGwyN0I="
