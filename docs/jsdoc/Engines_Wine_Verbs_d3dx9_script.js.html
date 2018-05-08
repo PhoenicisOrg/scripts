@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Engines/Wine/Verbs/d3dx9/script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Engines/Wine/Verbs/d3dx9/script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
+include(["utils", "functions", "net", "resource"]);
+
+/**
+* Verb to install D3DX9
+* @returns {Wine} Wine object
+*/
+Wine.prototype.d3dx9 = function () {
+    var that = this;
+
+    var extractDirectXtoSystemDirectory = function (progressBar, filesToExtract, destination, pattern) {
+        var numberOfExtractedFiles = 0;
+        filesToExtract.forEach(function (cabFile) {
+            print(tr("Extracting {0} ...", cabFile));
+            progressBar.setText(tr("Extracting {0} ...", "DirectX 9"));
+            progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
+
+            new CabExtract()
+                .archive(that.prefixDirectory() + "/drive_c/d3dx9/" + cabFile)
+                .to(destination)
+                .extract(["-L", "-F", pattern]);
+
+            numberOfExtractedFiles++;
+        });
+    };
+
+    var setupFile = new Resource()
+        .wizard(this._wizard)
+        .url("http://download.microsoft.com/download/8/4/A/84A35BF1-DAFE-4AE8-82AF-AD2AE20B6B14/directx_Jun2010_redist.exe")
+        .checksum("f8f1217f666bf2f6863631a7d5e5fb3a8d1542df")
+        .name("directx_Jun2010_redist.exe")
+        .get();
+
+    var progressBar = this._wizard.progressBar(tr("Please wait ..."));
+    progressBar.setText(tr("Extracting {0} ...", "DirectX 9"));
+    progressBar.setProgressPercentage(0.);
+
+    new CabExtract()
+        .archive(setupFile)
+        .to(this.prefixDirectory() + "/drive_c/d3dx9/")
+        .extract(["-L", "-F", "*d3dx9*x86*"]);
+
+    var filesToExtractx86 = [
+        "apr2007_d3dx9_33_x86.cab", "aug2007_d3dx9_35_x86.cab", "apr2005_d3dx9_25_x86.cab",
+        "apr2006_d3dx9_30_x86.cab", "aug2005_d3dx9_27_x86.cab", "aug2008_d3dx9_39_x86.cab",
+        "aug2009_d3dx9_42_x86.cab", "dec2006_d3dx9_32_x86.cab", "dec2005_d3dx9_28_x86.cab",
+        "feb2005_d3dx9_24_x86.cab", "feb2006_d3dx9_29_x86.cab", "jun2007_d3dx9_34_x86.cab",
+        "jun2008_d3dx9_38_x86.cab", "jun2005_d3dx9_26_x86.cab", "jun2010_d3dx9_43_x86.cab",
+        "mar2008_d3dx9_37_x86.cab", "mar2009_d3dx9_41_x86.cab", "nov2007_d3dx9_36_x86.cab",
+        "nov2008_d3dx9_40_x86.cab", "oct2006_d3dx9_31_x86.cab"
+    ];
+    extractDirectXtoSystemDirectory(progressBar, filesToExtractx86, that.system32directory(), "d3dx9*.dll");
+
+    if (this.architecture() == "amd64") {
+        new CabExtract()
+            .archive(setupFile)
+            .to(this.prefixDirectory() + "/drive_c/d3dx9/")
+            .extract(["-L", "-F", "*d3dx9*x64*"]);
+
+        var filesToExtractx64 = [
+            "APR2007_d3dx9_33_x64.cab", "AUG2007_d3dx9_35_x64.cab", "Apr2005_d3dx9_25_x64.cab",
+            "Apr2006_d3dx9_30_x64.cab", "Aug2005_d3dx9_27_x64.cab", "Aug2008_d3dx9_39_x64.cab",
+            "Aug2009_d3dx9_42_x64.cab", "DEC2006_d3dx9_32_x64.cab", "Dec2005_d3dx9_28_x64.cab",
+            "Feb2005_d3dx9_24_x64.cab", "Feb2006_d3dx9_29_x64.cab", "JUN2007_d3dx9_34_x64.cab",
+            "JUN2008_d3dx9_38_x64.cab", "Jun2005_d3dx9_26_x64.cab", "Jun2010_d3dx9_43_x64.cab",
+            "Mar2008_d3dx9_37_x64.cab", "Mar2009_d3dx9_41_x64.cab", "Nov2007_d3dx9_36_x64.cab",
+            "Nov2008_d3dx9_40_x64.cab", "OCT2006_d3dx9_31_x64.cab"
+        ];
+
+        extractDirectXtoSystemDirectory(progressBar, filesToExtractx64, that.system64directory(), "d3dx9*.dll");
+    }
+
+    this.overrideDLL()
+        .set("native", [
+            "d3dx9_24", "d3dx9_25", "d3dx9_26", "d3dx9_27", "d3dx9_28", "d3dx9_29", "d3dx9_30",
+            "d3dx9_31", "d3dx9_32", "d3dx9_33", "d3dx9_34", "d3dx9_35", "d3dx9_36", "d3dx9_37",
+            "d3dx9_38", "d3dx9_39", "d3dx9_40", "d3dx9_41", "d3dx9_42", "d3dx9_43"
+        ])
+        .do();
+    return this;
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

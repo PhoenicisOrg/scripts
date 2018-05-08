@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Utils/Functions/Filesystem/Extract/script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Utils/Functions/Filesystem/Extract/script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>include(["utils", "functions", "filesystem", "files"]);
+
+/**
+* CabExtract prototype
+* @constructor
+*/
+function CabExtract() {
+}
+
+/**
+* sets wizard
+* @param {SetupWizard} wizard setup wizard
+* @returns {CabExtract} CabExtract object
+*/
+CabExtract.prototype.wizard = function (wizard) {
+    this._wizard = wizard;
+    return this;
+}
+
+/**
+* sets archive
+* @param {string} archive archive which shall be extracted
+* @returns {CabExtract} CabExtract object
+*/
+CabExtract.prototype.archive = function (archive) {
+    this._archive = archive;
+    return this;
+}
+
+/**
+* sets progress message text
+* @param {string} progressMessage progress message
+* @returns {CabExtract} CabExtract object
+*/
+CabExtract.prototype.message = function (progressMessage) {
+    this._progressMessage = progressMessage;
+    return this;
+}
+
+/**
+* sets destination
+* @param {string} destination place where the archive shall be extracted
+* @returns {CabExtract} CabExtract object
+*/
+CabExtract.prototype.to = function (destination) {
+    this._destination = destination;
+    return this;
+}
+
+/**
+* extracts archive
+* @param {string} args arguments for the extraction
+* @returns {void}
+*/
+CabExtract.prototype.extract = function (args) {
+    if (!this._progressMessage) {
+        this._progressMessage = tr("Please wait while {0} is extracted ...", this._archive);
+    }
+
+    if (this._wizard) {
+        var progressBar = this._wizard.progressBar(this._progressMessage);
+    }
+
+    var processArguments;
+    if (args) {
+        processArguments = ["cabextract"].concat(args).concat([this._archive]);
+    } else {
+        processArguments = ["cabextract", this._archive];
+    }
+
+    print("Extracting to: " + this._destination);
+    mkdir(this._destination);
+    var processBuilder = new java.lang.ProcessBuilder(Java.to(processArguments, "java.lang.String[]"));
+    processBuilder.directory(new java.io.File(this._destination));
+    processBuilder.inheritIO();
+    processBuilder.start().waitFor();
+}
+
+/**
+* Extractor prototype
+* @constructor
+*/
+function Extractor() {
+    this._extractor = Bean("extractor");
+}
+
+/**
+* sets wizard
+* @param {SetupWizard} wizard setup wizard
+* @returns {Extractor} Extractor object
+*/
+Extractor.prototype.wizard = function (wizard) {
+    this._wizard = wizard;
+    return this;
+}
+
+/**
+* sets archive
+* @param {string} archive archive which shall be extracted
+* @returns {Extractor} Extractor object
+*/
+Extractor.prototype.archive = function (archive) {
+    this._archive = archive;
+    return this;
+}
+
+/**
+* sets progress message text
+* @param {string} progressMessage progress message
+* @returns {Extractor} Extractor object
+*/
+Extractor.prototype.message = function (progressMessage) {
+    this._progressMessage = progressMessage;
+    return this;
+}
+
+/**
+* sets destination
+* @param {string} destination place where the archive shall be extracted
+* @returns {Extractor} Extractor object
+*/
+Extractor.prototype.to = function (destination) {
+    this._destination = destination;
+    return this;
+}
+
+/**
+* extracts archive
+* @returns {void}
+*/
+Extractor.prototype.extract = function () {
+    if (!this._progressMessage) {
+        this._progressMessage = tr("Please wait while {0} is extracted ...", this._archive);
+    }
+
+    var progressBar = this._wizard.progressBar(this._progressMessage);
+
+    mkdir(this._destination);
+    this._extractor.uncompress(this._archive, this._destination, function (progress) {
+        progressBar.accept(progress);
+    });
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
