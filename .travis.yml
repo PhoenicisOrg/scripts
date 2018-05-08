@@ -26,6 +26,7 @@ matrix:
 
     # Update JSDoc
     - stage: Update JSDoc
+      before_install: npm install -g jsdoc
       script:
         # push JSDoc updates only for master (PR changes must be committed to master before they are taken into account)
         - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./push_jsdoc.sh; fi
