@@ -93,6 +93,16 @@ var engineImplementation = {
             .archive(tmpFile)
             .to(localDirectory)
             .extract();
+
+        var files = ls(localDirectory);
+        if (files.length == 1) {
+            // probably the archive contained a folder (e.g. for Lutris Wine version)
+            // link folders so Phoenicis can find them
+            var dir = files[0];
+            lns(localDirectory + "/" + dir + "/bin", localDirectory + "/bin");
+            lns(localDirectory + "/" + dir + "/lib", localDirectory + "/lib");
+            lns(localDirectory + "/" + dir + "/share", localDirectory + "/share");
+        }
     },
     _installGecko: function (setupWizard, winePackage, localDirectory) {
         var gecko = new Resource()
