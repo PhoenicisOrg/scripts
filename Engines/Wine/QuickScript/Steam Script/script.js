@@ -96,10 +96,7 @@ SteamScript.prototype.go = function () {
 
     var wine = new Wine()
         .wizard(setupWizard)
-        .architecture(this._wineArchitecture)
-        .distribution(this._wineDistribution)
-        .version(this._wineVersion)
-        .prefix(this._name)
+        .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
         .luna()
         .run(tempFile)
         .wait(tr("Please follow the steps of the Steam setup.\n\nUncheck \"Run Steam\" or close Steam completely after the setup so that the installation of \"{0}\" can continue.", this._name));

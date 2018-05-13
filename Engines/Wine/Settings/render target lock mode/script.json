@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "render target lock mode",
+    "id"                         : "render_target_lock_mode",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

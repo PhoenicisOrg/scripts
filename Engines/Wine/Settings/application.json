@@ -1,0 +1,5 @@
+{
+    "name"        : "Wine Settings",
+    "id"          : "settings",
+    "description" : "Settings for Wine."
+}
