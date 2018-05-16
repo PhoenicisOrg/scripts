@@ -1,4 +1,6 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
+include(["engines", "wine", "plugins", "regedit"]);
+include(["engines", "wine", "plugins", "virtual_desktop"]);
 include(["engines", "wine", "verbs", "vcrun2013"]);
 include(["engines", "wine", "verbs", "vcrun2008"]);
 include(["engines", "wine", "verbs", "xact"]);

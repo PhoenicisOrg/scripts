@@ -1,4 +1,7 @@
 include(["engines", "wine", "quick_script", "custom_installer_script"]);
+include(["engines", "wine", "plugins", "csmt"]);
+include(["engines", "wine", "plugins", "override_dll"]);
+include(["engines", "wine", "plugins", "windows_version"]);
 include(["engines", "wine", "shortcuts", "wine"]);
 include(["engines", "wine", "verbs", "sandbox"]);
 include(["engines", "wine", "verbs", "d3dx9"]);
@@ -98,11 +101,11 @@ var installerImplementation = {
                 wine.overrideDLL().set("native, builtin", ["atl120", "msvcp120", "msvcr120", "vcomp120", "msvcp140"]).do();
                 wine.enableCSMT();
 
-                mkdir(wine.prefixDirectory + "drive_c/LoL");
+                mkdir(wine.prefixDirectory() + "drive_c/LoL");
 
                 // Create run script to start the right exe
                 /////////////////////////////////////////
-                var client = wine.prefixDirectory + "drive_c/LoL/run.bat";
+                var client = wine.prefixDirectory() + "drive_c/LoL/run.bat";
                 var batContent = "start C:\\LoL\\LeagueClient.exe";
                 writeToFile(client, batContent);
             })

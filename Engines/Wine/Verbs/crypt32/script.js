@@ -1,3 +1,5 @@
+include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
 include(["engines", "wine", "verbs", "sp3extract"]);
 
 /**

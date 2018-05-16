@@ -1,4 +1,6 @@
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
+include(["engines", "wine", "plugins", "regsvr32"]);
 include(["utils", "functions", "net", "resource"]);
 include(["utils", "functions", "filesystem", "files"]);
 
@@ -17,16 +19,16 @@ Wine.prototype.quartz = function (){
     new CabExtract()
         .archive(setupFile)
         .wizard(this._wizard)
-        .to(this.prefixDirectory + "/TMP/")
+        .to(this.prefixDirectory() + "/TMP/")
         .extract(["-L", "-F", "dxnt.cab"]);
 
     new CabExtract()
-        .archive(this.prefixDirectory + "/TMP/dxnt.cab")
+        .archive(this.prefixDirectory() + "/TMP/dxnt.cab")
         .wizard(this._wizard)
         .to(this.system32directory())
         .extract(["-L", "-F", "quartz.dll"]);
 
-    remove(this.prefixDirectory + "/TMP/");
+    remove(this.prefixDirectory() + "/TMP/");
 
     this.regsvr32().install("quartz.dll");
 

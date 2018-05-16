@@ -19,7 +19,7 @@ var installerImplementation = {
                     .wizard(wizard)
                     .url("http://static.dolimg.com/mh_netstorage/lucasfilm/patches/pc/EAW_RAM_MPLobby_update.exe")
                     .checksum("63233107fab4c58413df04ce1d07fe65e7145329")
-                    .to(wine.prefixDirectory + "drive_c/users/Public/Documents/EAW_RAM_MPLobby_update.exe")
+                    .to(wine.prefixDirectory() + "drive_c/users/Public/Documents/EAW_RAM_MPLobby_update.exe")
                     .get();
 
                 wine.runInsidePrefix("/users/Public/Documents/EAW_RAM_MPLobby_update.exe");

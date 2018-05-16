@@ -1,4 +1,5 @@
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "regsvr32"]);
 include(["utils", "functions", "net", "resource"]);
 include(["utils", "functions", "filesystem", "files"]);
 
@@ -17,7 +18,7 @@ Wine.prototype.xact = function () {
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
 
             new CabExtract()
-                .archive(that.prefixDirectory + "/drive_c/"+ directory + cabFile)
+                .archive(that.prefixDirectory() + "/drive_c/"+ directory + cabFile)
                 .to(destination)
                 .extract(["-L", "-F", pattern]);
 
@@ -55,7 +56,7 @@ Wine.prototype.xact = function () {
     //---------------------------------------------------------Extract xactengine*.dll--------------------------------------------
     new CabExtract()
         .archive(setupFile)
-        .to(this.prefixDirectory + "/drive_c/xact_x86/")
+        .to(this.prefixDirectory() + "/drive_c/xact_x86/")
         .extract(["-L", "-F", "*_xact_*x86*"]);
 
     filesToExtract = [
@@ -73,7 +74,7 @@ Wine.prototype.xact = function () {
     //---------------------------------------------------------Extract X3Daudio*.dll----------------------------------------------
     new CabExtract()
         .archive(setupFile)
-        .to(this.prefixDirectory + "/drive_c/x3daudio_x86/")
+        .to(this.prefixDirectory() + "/drive_c/x3daudio_x86/")
         .extract(["-L", "-F", "*_x3daudio_*x86*"]);
 
     filesToExtract = [
@@ -86,7 +87,7 @@ Wine.prototype.xact = function () {
     //---------------------------------------------------------Extract XAudio*.dll and XAPOFX*.dll---------------------------------
     new CabExtract()
         .archive(setupFile)
-        .to(this.prefixDirectory + "/drive_c/xaudio_x86/")
+        .to(this.prefixDirectory() + "/drive_c/xaudio_x86/")
         .extract(["-L", "-F", "*_xaudio_*x86*"]);
 
     filesToExtract = [
@@ -113,16 +114,16 @@ Wine.prototype.xact = function () {
     regsvr32Xact(progressBar, xactToRegserv);
     regsvr32Xact(progressBar, xaudioToRegserv);
 
-    remove(this.prefixDirectory + "/drive_c/xact_x86/");
-    remove(this.prefixDirectory + "/drive_c/x3daudio_x86/");
-    remove(this.prefixDirectory + "/drive_c/xaudio_x86/");
+    remove(this.prefixDirectory() + "/drive_c/xact_x86/");
+    remove(this.prefixDirectory() + "/drive_c/x3daudio_x86/");
+    remove(this.prefixDirectory() + "/drive_c/xaudio_x86/");
 
 
     if (this.architecture() == "amd64") {
         //---------------------------------------------------------Extract xactengine*.dll (x64)--------------------------------------------
         new CabExtract()
             .archive(setupFile)
-            .to(this.prefixDirectory + "/drive_c/xact_x64/")
+            .to(this.prefixDirectory() + "/drive_c/xact_x64/")
             .extract(["-L", "-F", "*_xact_*x64*"]);
 
         filesToExtract = [
@@ -140,7 +141,7 @@ Wine.prototype.xact = function () {
         //---------------------------------------------------------Extract X3Daudio*.dll (x64)----------------------------------------------
         new CabExtract()
             .archive(setupFile)
-            .to(this.prefixDirectory + "/drive_c/x3daudio_x64/")
+            .to(this.prefixDirectory() + "/drive_c/x3daudio_x64/")
             .extract(["-L", "-F", "*_x3daudio_*x64*"]);
 
         filesToExtract = [
@@ -153,7 +154,7 @@ Wine.prototype.xact = function () {
         //---------------------------------------------------------Extract XAudio*.dll and XAPOFX*.dll (x64)---------------------------------
         new CabExtract()
             .archive(setupFile)
-            .to(this.prefixDirectory + "/drive_c/xaudio_x64/")
+            .to(this.prefixDirectory() + "/drive_c/xaudio_x64/")
             .extract(["-L", "-F", "*_xaudio_*64*"]);
 
         filesToExtract = [
@@ -164,9 +165,9 @@ Wine.prototype.xact = function () {
         extractFiles(progressBar, filesToExtract, that.system64directory(), "XAudio*.dll", "xaudio_x64/");
         extractFiles(progressBar, filesToExtract, that.system64directory(), "XAPOFX*.dll", "xaudio_x64/");
 
-        remove(this.prefixDirectory + "/drive_c/xact_x64/");
-        remove(this.prefixDirectory + "/drive_c/x3daudio_x64/");
-        remove(this.prefixDirectory + "/drive_c/xaudio_x64/");
+        remove(this.prefixDirectory() + "/drive_c/xact_x64/");
+        remove(this.prefixDirectory() + "/drive_c/x3daudio_x64/");
+        remove(this.prefixDirectory() + "/drive_c/xaudio_x64/");
 
     }
 

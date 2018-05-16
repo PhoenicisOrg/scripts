@@ -123,8 +123,10 @@ Downloader.prototype.get = function () {
                 .get();
 
             if (fileChecksum != this._checksum) {
-                var checksumErrorMessage = tr("Error while calculating checksum. \n\nExpected = {0}\nActual = {1}",
-                    this._checksum, fileChecksum);
+                var checksumErrorMessage = tr("Error while calculating checksum for \"{0}\". \n\nExpected = {1}\nActual = {2}",
+                    this._localFile,
+                    this._checksum,
+                    fileChecksum);
 
                 this._wizard.message(checksumErrorMessage);
 

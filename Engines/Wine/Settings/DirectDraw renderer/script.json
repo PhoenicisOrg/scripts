@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "DirectDraw renderer",
+    "id"                         : "directdraw_renderer",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

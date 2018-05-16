@@ -26,6 +26,7 @@ matrix:
 
     # Update JSDoc
     - stage: Update JSDoc
+      before_install: npm install -g jsdoc
       script:
         # push JSDoc updates only for master (PR changes must be committed to master before they are taken into account)
         - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./push_jsdoc.sh; fi
@@ -35,7 +36,7 @@ matrix:
       os: linux
       language: ruby
       rvm:
-        - 2.1
+        - 2.5
       before_install: cd docs
       script:
         - bundle exec jekyll build
@@ -43,4 +44,9 @@ matrix:
 
 env:
   global:
-    - secure: "G4stg+1ko5gyBf7q4d3BPmpHKKNkNjEFJOjE83JAe+3aJFYUSh+bwQKizc6+0BaekhyQcQB2CxtknkVGk/xnio2fNNuahxYV1QJmEDxNeBmwF4LS8rQcidoxOPfCVHQ/DXCqtJrCjof7BrWGJKsnhIVHtkQFwo369XATCNIZdsjhuM4ROT35HykoGE+us2qWsoU5C/j+F3dD+9LC8y8ye7SljC9EJVCjZ7HrW77ghS7aulZ+tcrQiHeFwRGJ9Oppwq+XbViflMmPxsp1z3Sg829dWA0Fv9+ejZo7ys0KJauh0H00J8druy3X/QncibzOqy2FCbwXm3e8k3WHgUpYihN3x2Up4PmhEysrlctnR1s3VFDr2cUHYbmeh4eqjSy9O3ejPu9th7Z0pjAJxJae8BWx3Gg2oA+tuIeMAxvGQScQkj93g2moAq2n1wSaa5wCEzoLTV+gheqojRIMc/E9O5VQB+oXgDv1xUKfJ5ZmB7nPGoVBbw2YimGTeICbLjydH6ErKTnxdia1EVn5OX5OOss5H6u/jxg8wJALp4+Qq/7EwMj9f6j6J8JuZSNMAqlvSovdqNPlrywPsqtGEJlB6GU3Sqc5cWW/qlefXNZzXHJkZGGQCqhQiQljNxzRm8lgh0u9/uAH4RhOFhtJnBbE/yo7Exe0yIH6eadBaMl+xTQ="
+    # to create secure for travis-ci.com
+    # 1. create personal access token with public_repo permissions
+    # 2. clone this repo (not a fork)
+    # 3. run in the clone: travis encrypt GH_TOKEN="<access_token>" --pro (GH_TOKEN is the variable which is used e.g. in push_jsdoc.sh)
+    # 4. set output below
+    - secure: "HZ7wbZdwnp3iUJwfL42HnH8fnTcVz/9y9HKFy2MXw38ZtZMoXMB1a3duM0a+UFY59biFVb2PgvqEzl5e8i1fygCN2gYtyWNvvMsNTD0Iq9eOo6nzSkWjWoWIn1TMUEjDS4xZdJLHkmnp7E4h4xc4CNt3HZA5rRbiko8wXCLeWh0UM3YXjs/b14tDlZRy29Sn4LuMSdGWi8lqqTF+4rAAFJ7aQOZDJfse/lZr2FTxRtOdsxPSizU3wJ/Hk/uQvOtp6CizC0c53r49ODqDuFeHj0AOeAR9DpM0B7MojZiFKW2h74vMMcCBKdeyX3K7iLn55Z65p/9bwWCPWwAbwy4Vrbi4OMKc4WdD0RE5h0OOXCdw7xuCA1nPg5+xk5l/0TAXjmb/luklyFbNBXyGKjF5CeEaUhrn9LFmOuyoqYoVf4BD2TA32kqMGxVchf8bnTeM25slI/wi5Sgjpj6GXuxay9bUt13QPQLcT3sNp1Jftvm4gZPdY9TR9m+nPK7nhIZjFWeHJu2nIzcfJdqMTcmLV+iKqZSSL2CJqCUbPEIVwtIj3ZytFrWTX88H97K/9UMDPQ+YbyT1I9XwkXY2PT66F5WE1UVMW/3SKw/jZON8AjYKD4mTd24kRMNfNhXGsg3L+NS8dsDXz1cfSZpLGxe4rvguZInoziJGLN27jGwyN0I="

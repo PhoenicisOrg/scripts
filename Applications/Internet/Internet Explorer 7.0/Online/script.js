@@ -1,5 +1,7 @@
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
+include(["engines", "wine", "plugins", "regsvr32"]);
 include(["utils", "functions", "filesystem", "files"]);
 include(["engines", "wine", "shortcuts", "wine"]);
 include(["utils", "functions", "apps", "resources"]);
@@ -32,7 +34,7 @@ var installerImplementation = {
 
         ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"]
             .forEach(function (dll) {
-                remove(wine.prefixDirectory + "/drive_c/windows/system32/" + dll + ".dll");
+                remove(wine.prefixDirectory() + "/drive_c/windows/system32/" + dll + ".dll");
             });
 
         var languages = [
@@ -219,7 +221,7 @@ var installerImplementation = {
             i++;
         });
 
-        remove(wine.prefixDirectory + "/drive_c/windows/system32/iexplore.exe");
+        remove(wine.prefixDirectory() + "/drive_c/windows/system32/iexplore.exe");
 
         new WineShortcut()
             .name("Internet Explorer 7.0")

@@ -27,21 +27,22 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
+include(["engines", "wine", "plugins", "windows_version"]);
 include(["utils", "functions", "net", "resource"]);
-include(["Engines", "Wine", "Verbs", "luna"]);
-include(["Utils", "Functions", "filesystem", "files"]);
-include(["Engines", "Wine", "Verbs", "dotnet40"]);
+include(["engines", "wine", "verbs", "luna"]);
+include(["utils", "functions", "filesystem", "files"]);
+include(["engines", "wine", "verbs", "dotnet40"]);
 
 /**
-* Inspired from dotnet40 verb, winetricks dotnet452 and POL4 POL_install_dotnet45
-* -> https://github.com/Winetricks/winetricks/blob/63bc6dbe612d017a0cb6bf6e4cde265162d75bca/src/winetricks#L6938
-* @returns {Wine}
+* Verb to install .NET 4.5.2
+* @returns {Wine} Wine object
 */
-Wine.prototype.dotnet452 = function() {
+Wine.prototype.dotnet452 = function () {
     if (this.architecture() == "amd64") {
         throw "{0} cannot be installed in a 64bit wine prefix!".format("dotnet452");
     }
-    
+
     var OSVersion = this.windowsVersion();
 
     var setupFile = new Resource()
@@ -52,12 +53,12 @@ Wine.prototype.dotnet452 = function() {
         .get();
 
     this.uninstall("Mono");
-    
+
     this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"])
         .wait(tr("Please wait ..."));
 
     remove(this.system32directory() + "/mscoree.dll");
-    
+
     this.dotnet40();
     this.windowsVersion("win7");
 
@@ -71,13 +72,13 @@ Wine.prototype.dotnet452 = function() {
     this.overrideDLL()
         .set("native", ["mscoree"])
         .do();
-      
+
     this.windowsVersion(OSVersion);
-    
-    if(OSVersion != "win2003") {
+
+    if (OSVersion != "win2003") {
         print(tr("{0} applications can have issues when windows version is not set to \"win2003\"", ".NET 4.5.2"));
     }
-    
+
     return this;
 };
 </code></pre>
@@ -90,7 +91,7 @@ Wine.prototype.dotnet452 = function() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ConfigureWine.html">ConfigureWine</a></li><li><a href="KillWineProcesses.html">KillWineProcesses</a></li><li><a href="RebootWine.html">RebootWine</a></li><li><a href="RepairWinePrefix.html">RepairWinePrefix</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineConsole.html">WineConsole</a></li><li><a href="WineRegistryEditor.html">WineRegistryEditor</a></li><li><a href="WineTaskManager.html">WineTaskManager</a></li><li><a href="WineTerminalOpener.html">WineTerminalOpener</a></li><li><a href="WineUninstaller.html">WineUninstaller</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">

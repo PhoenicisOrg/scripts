@@ -27,41 +27,43 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
+include(["engines", "wine", "plugins", "regsvr32"]);
 include(["utils", "functions", "net", "resource"]);
-include(["Utils", "Functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "files"]);
 
 /**
- * Inspired from winetricks quartz -> https://github.com/Winetricks/winetricks/blob/63bc6dbe612d017a0cb6bf6e4cde265162d75bca/src/winetricks#L8523
- * @returns {Wine}
- */
-Wine.prototype.quartz = function(){
+* Verb to install quartz
+* @returns {Wine} Wine object
+*/
+Wine.prototype.quartz = function (){
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("https://download.microsoft.com/download/E/E/1/EE17FF74-6C45-4575-9CF4-7FC2597ACD18/directx_feb2010_redist.exe")
         .checksum("a97c820915dc20929e84b49646ec275760012a42")
         .name("directx_feb2010_redist.exe")
         .get();
-        
+
     new CabExtract()
         .archive(setupFile)
         .wizard(this._wizard)
-        .to(this.prefixDirectory + "/TMP/")
+        .to(this.prefixDirectory() + "/TMP/")
         .extract(["-L", "-F", "dxnt.cab"]);
-        
+
     new CabExtract()
-        .archive(this.prefixDirectory + "/TMP/dxnt.cab")
+        .archive(this.prefixDirectory() + "/TMP/dxnt.cab")
         .wizard(this._wizard)
         .to(this.system32directory())
         .extract(["-L", "-F", "quartz.dll"]);
-        
-    remove(this.prefixDirectory + "/TMP/");
-    
+
+    remove(this.prefixDirectory() + "/TMP/");
+
     this.regsvr32().install("quartz.dll");
-    
+
     this.overrideDLL()
         .set("native, builtin", ["quartz"])
         .do()
-    
+
     return this;
 }
 </code></pre>
@@ -74,7 +76,7 @@ Wine.prototype.quartz = function(){
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ConfigureWine.html">ConfigureWine</a></li><li><a href="KillWineProcesses.html">KillWineProcesses</a></li><li><a href="RebootWine.html">RebootWine</a></li><li><a href="RepairWinePrefix.html">RepairWinePrefix</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineConsole.html">WineConsole</a></li><li><a href="WineRegistryEditor.html">WineRegistryEditor</a></li><li><a href="WineTaskManager.html">WineTaskManager</a></li><li><a href="WineTerminalOpener.html">WineTerminalOpener</a></li><li><a href="WineUninstaller.html">WineUninstaller</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">

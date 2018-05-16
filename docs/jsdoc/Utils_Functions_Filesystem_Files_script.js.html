@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Utils/Functions/Filesystem/Files/script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Utils/Functions/Filesystem/Files/script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var fileAnalyser = Bean("fileAnalyser");
+var fileUtilities = Bean("fileUtilities");
+
+/**
+* creates directory
+* @param {string} directoryPath directory path
+* @returns {void}
+*/
+function mkdir(directoryPath) { // eslint-disable-line no-unused-vars
+    fileUtilities.mkdir(new java.io.File(directoryPath))
+}
+
+/**
+* check if file exists
+* @param {string} filePath file path
+* @returns {boolean} true if file exists
+*/
+function fileExists(filePath) { // eslint-disable-line no-unused-vars
+    return new java.io.File(filePath).exists();
+}
+
+/**
+* returns file content
+* @param {string} filePath file path
+* @returns {string} content
+*/
+function cat(filePath) { // eslint-disable-line no-unused-vars
+    return Bean("fileUtilities").getFileContent(new java.io.File(filePath));
+}
+
+/**
+* copies file
+* @param {string} source source
+* @param {string} target target
+* @returns {void}
+*/
+function cp(source, target) { // eslint-disable-line no-unused-vars
+    return Bean("fileUtilities").copy(new java.io.File(source), new java.io.File(target));
+}
+
+/**
+* returns file size
+* @param {string} filePath file path
+* @returns {number} file size
+*/
+function getFileSize(filePath) { // eslint-disable-line no-unused-vars
+    return Bean("fileUtilities").getSize(new java.io.File(filePath));
+}
+
+/**
+* returns file name
+* @param {string} filePath file path
+* @returns {string} file name
+*/
+function fileName(filePath) { // eslint-disable-line no-unused-vars
+    return new java.io.File(filePath).getName();
+}
+
+/**
+* creates link
+* @param {string} target target
+* @param {string} destination destination
+* @returns {void}
+*/
+function lns(target, destination) { // eslint-disable-line no-unused-vars
+    return Bean("fileUtilities").createSymbolicLink(new java.io.File(destination), new java.io.File(target));
+}
+
+/**
+* removes file
+* @param {string} filePath file path
+* @returns {void}
+*/
+function remove(filePath) { // eslint-disable-line no-unused-vars
+    return Bean("fileUtilities").remove(new java.io.File(filePath));
+}
+
+/**
+* creates empty file
+* @param {string} filePath file path
+* @returns {void}
+*/
+function touch(filePath) { // eslint-disable-line no-unused-vars
+    if (!fileExists(filePath)) {
+        Bean("fileUtilities").writeToFile(new java.io.File(filePath), "");
+    }
+}
+
+/**
+* writes content into file
+* @param {string} filePath file path
+* @param {string} content content which shall be written
+* @returns {void}
+*/
+function writeToFile(filePath, content) { // eslint-disable-line no-unused-vars
+    Bean("fileUtilities").writeToFile(new java.io.File(filePath), content);
+}
+
+/**
+* creates temporary file
+* @param {string} extension file extension
+* @returns {string} file path of created temporary file
+*/
+function createTempFile(extension) { // eslint-disable-line no-unused-vars
+    var tmpFile = Bean("fileUtilities").createTmpFile(extension);
+    return tmpFile.getAbsolutePath();
+}
+
+/**
+* Checksum prototype
+* @constructor
+*/
+function Checksum() {
+    this._method = "SHA";
+    this._checksumCalculator = Bean("checksumCalculator");
+}
+
+/**
+* sets wizard
+* @param {SetupWizard} wizard setup wizard
+* @returns {Checksum} Checksum object
+*/
+Checksum.prototype.wizard = function (wizard) {
+    this._wizard = wizard;
+    return this;
+}
+
+/**
+* sets checksum algorithm
+* @param {string} algorithm algorithm (e.g. "SHA")
+* @returns {Checksum} Checksum object
+*/
+Checksum.prototype.method = function (algorithm) {
+    this._method = algorithm;
+    return this;
+}
+
+/**
+* sets file for which the checksum shall be computed
+* @param {string} file file for which the checksum shall be computed
+* @returns {Checksum} Checksum object
+*/
+Checksum.prototype.of = function (file) {
+    this._file = file;
+    return this;
+}
+
+/**
+* returns calculated checksum
+* @returns {string} calculated checksum
+*/
+Checksum.prototype.get = function () {
+    if (this._wizard) {
+        var progressBar = this._wizard.progressBar(tr("Checking file consistency ..."));
+    }
+
+    return this._checksumCalculator.calculate(this._file, this._method, function (progressEntity) {
+        if (progressBar) {
+            progressBar.accept(progressEntity);
+        }
+    });
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

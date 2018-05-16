@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "GLSL",
+    "id"                         : "glsl",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "sound driver",
+    "id"                         : "sound_driver",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

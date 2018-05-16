@@ -1,5 +1,9 @@
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
+include(["engines", "wine", "plugins", "regedit"]);
+include(["engines", "wine", "plugins", "regsvr32"]);
+include(["engines", "wine", "plugins", "windows_version"]);
 include(["utils", "functions", "filesystem", "files"]);
 include(["engines", "wine", "shortcuts", "wine"]);
 include(["utils", "functions", "apps", "resources"]);
@@ -32,20 +36,20 @@ var installerImplementation = {
 
         wine.windowsVersion("win2k");
 
-        remove(wine.prefixDirectory + "/drive_c/IE 6.0 Full/");
-        remove(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Internet Explorer/iexplore.exe");
+        remove(wine.prefixDirectory() + "/drive_c/IE 6.0 Full/");
+        remove(wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Internet Explorer/iexplore.exe");
 
         ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon", "browseui", "iseng", "inetcpl"]
             .forEach(function (dll) {
-                remove(wine.prefixDirectory + "/drive_c/windows/system32/" + dll + ".dll");
+                remove(wine.prefixDirectory() + "/drive_c/windows/system32/" + dll + ".dll");
             });
 
         wine.run(setupFile).wait();
 
         new CabExtract()
             .wizard(setupWizard)
-            .archive(wine.prefixDirectory + "/drive_c/IE 6.0 Full/ACTSETUP.CAB")
-            .to(wine.prefixDirectory + "/drive_c/windows/system32/")
+            .archive(wine.prefixDirectory() + "/drive_c/IE 6.0 Full/ACTSETUP.CAB")
+            .to(wine.prefixDirectory() + "/drive_c/windows/system32/")
             .extract(["-F", "inseng.dll"]);
 
         wine.run("iexplore", ["-unregserver"])
@@ -79,7 +83,7 @@ var installerImplementation = {
             i++;
         });
 
-        remove(wine.prefixDirectory + "/drive_c/windows/system32/iexplore.exe");
+        remove(wine.prefixDirectory() + "/drive_c/windows/system32/iexplore.exe");
 
         new WineShortcut()
             .name("Internet Explorer 6.0")

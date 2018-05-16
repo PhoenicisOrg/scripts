@@ -1,4 +1,5 @@
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
 include(["utils", "functions", "net", "resource"]);
 include(["utils", "functions", "filesystem", "files"]);
 
@@ -17,12 +18,12 @@ Wine.prototype.secur32 = function () {
     new CabExtract()
         .archive(setupFilex86)
         .wizard(this._wizard)
-        .to(this.prefixDirectory + "/TMP/")
+        .to(this.prefixDirectory() + "/TMP/")
         .extract(["-L", "-F", "x86_microsoft-windows-lsa_31bf3856ad364e35_6.1.7601.17514_none_a851f4adbb0d5141/secur32.dll"]);
 
-    cp(this.prefixDirectory + "/TMP/" + "x86_microsoft-windows-lsa_31bf3856ad364e35_6.1.7601.17514_none_a851f4adbb0d5141/secur32.dll", this.system32directory());
+    cp(this.prefixDirectory() + "/TMP/" + "x86_microsoft-windows-lsa_31bf3856ad364e35_6.1.7601.17514_none_a851f4adbb0d5141/secur32.dll", this.system32directory());
 
-    remove(this.prefixDirectory + "/TMP/");
+    remove(this.prefixDirectory() + "/TMP/");
 
     if (this.architecture() == "amd64") {
         var setupFilex64 = new Resource()
@@ -35,12 +36,12 @@ Wine.prototype.secur32 = function () {
         new CabExtract()
             .archive(setupFilex64)
             .wizard(this._wizard)
-            .to(this.prefixDirectory + "/TMP/")
+            .to(this.prefixDirectory() + "/TMP/")
             .extract(["-L", "-F", "amd64_microsoft-windows-lsa_31bf3856ad364e35_6.1.7601.17514_none_04709031736ac277/secur32.dll"]);
 
-        cp(this.prefixDirectory + "/TMP/" + "amd64_microsoft-windows-lsa_31bf3856ad364e35_6.1.7601.17514_none_04709031736ac277/secur32.dll", this.system64directory());
+        cp(this.prefixDirectory() + "/TMP/" + "amd64_microsoft-windows-lsa_31bf3856ad364e35_6.1.7601.17514_none_04709031736ac277/secur32.dll", this.system64directory());
 
-        remove(this.prefixDirectory + "/TMP/");
+        remove(this.prefixDirectory() + "/TMP/");
     }
 
     this.overrideDLL()

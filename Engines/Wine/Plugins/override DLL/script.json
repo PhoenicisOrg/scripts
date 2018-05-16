@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "override DLL",
+    "id"                         : "override_dll",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

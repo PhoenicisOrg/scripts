@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "register font",
+    "id"                         : "register_font",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
