@@ -7,7 +7,7 @@ include(["utils", "functions", "net", "resource"]);
 */
 Wine.prototype.msls31 = function () {
     var setupFile = new Resource()
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .url("ftp://ftp.hp.com/pub/softlib/software/msi/InstMsiW.exe")
         .checksum("4fc3bf0dc96b5cf5ab26430fac1c33c5c50bd142")
         .name("InstMsiW.exe")
@@ -17,7 +17,7 @@ Wine.prototype.msls31 = function () {
 
     new CabExtract()
         .archive(setupFile)
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .to(this.system32directory())
         .extract(["-F", "msls31.dll"]);
 

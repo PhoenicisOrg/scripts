@@ -23,6 +23,26 @@ function Wine() {
 
 /**
 *
+* @returns {string} architecture ("x86" or "amd64")
+*/
+Wine.prototype.architecture = function () {
+    // get
+    if (arguments.length == 0) {
+        if (fileExists(this.prefixDirectory())) {
+            var configFactory = Bean("compatibleConfigFileFormatFactory");
+            var containerConfiguration = configFactory.open(this.prefixDirectory() + "/phoenicis.cfg");
+            var architecture = containerConfiguration.readValue("wineArchitecture", "x86");
+            return architecture;
+        }
+        else {
+            print("Wine prefix \"" + this.prefixDirectory() + "\" does not exist!");
+            return "";
+        }
+    }
+};
+
+/**
+*
 * @param {SetupWizard} [wizard]
 * @returns {SetupWizard|Wine}
 */
@@ -128,6 +148,8 @@ Wine.prototype.runInsidePrefix = function (executable, args) {
 Wine.prototype.run = function (executable, args, workingDirectory, captureOutput, wait, userData) {
     if (!args) {
         args = [];
+    } else if (typeof args === 'string' || args instanceof String) {
+        args = [args];
     }
     if (!workingDirectory) {
         workingDirectory = this._implementation.getContainerDirectory(this._implementation.getWorkingContainer());
