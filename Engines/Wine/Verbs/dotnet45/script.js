@@ -19,7 +19,7 @@ Wine.prototype.dotnet45 = function () {
     var OSVersion = this.windowsVersion();
 
     var setupFile = new Resource()
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .url("http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe")
         .checksum("b2ff712ca0947040ca0b8e9bd7436a3c3524bb5d")
         .name("dotnetfx45_full_x86_x64.exe")
@@ -27,8 +27,8 @@ Wine.prototype.dotnet45 = function () {
 
     this.uninstall("Mono");
 
-    this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"])
-        .wait(tr("Please wait ..."));
+    this.wizard().wait(tr("Please wait ..."));
+    this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"], null, false, true);
 
     remove(this.system32directory() + "/mscoree.dll");
 
@@ -39,8 +39,8 @@ Wine.prototype.dotnet45 = function () {
         .set("builtin", ["fusion"])
         .do();
 
-    this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""])
-        .wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.5"));
+    this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.5"));
+    this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
     this.overrideDLL()
         .set("native", ["mscoree"])
