@@ -37,14 +37,14 @@ include(["engines", "wine", "verbs", "luna"]);
 */
 Wine.prototype.vcrun2003 = function () {
     var setupFile = new Resource()
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .url("https://sourceforge.net/projects/bzflag/files/bzedit%20win32/1.6.5/BZEditW32_1.6.5.exe")
         .checksum("bdd1b32c4202fd77e6513fd507c8236888b09121")
         .name("BZEditW32_1.6.5.exe")
         .get();
 
-    this.run(setupFile, "/S")
-        .wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2003 Redistributable (x86)"));
+    this.wizard().wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2003 Redistributable (x86)"));
+    this.run(setupFile, "/S", null, false, true);
 
     var dlls = [
         "msvcp71",
