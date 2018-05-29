@@ -20,7 +20,8 @@ var installerImplementation = {
             .version(LATEST_STABLE_VERSION)
             .distribution("upstream")
             .architecture("x86")
-            .prefix("InternetExplorer7")
+            .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
+            .luna()
             .create()
             .sandbox()
             .run("iexplore", ["-unregserver"])
@@ -31,6 +32,8 @@ var installerImplementation = {
             ])
             .set("builtin", ["updspapi"])
             .do();
+        
+        wine.run(tempFile, [], null, false, true);
 
         ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"]
             .forEach(function (dll) {
