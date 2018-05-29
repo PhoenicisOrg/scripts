@@ -16,7 +16,7 @@ Wine.prototype.sp3extract = function (fileToExtract) {
     };
 
     var setupFile = new Resource()
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .url("http://freeware.epsc.wustl.edu/Win/XP_SP3/WindowsXP-KB936929-SP3-x86-ENU.exe")// Just a test, the URL needs to be fixed
         .checksum("c81472f7eeea2eca421e116cd4c03e2300ebfde4")
         .name("WindowsXP-KB936929-SP3-x86-ENU.exe")
@@ -24,7 +24,7 @@ Wine.prototype.sp3extract = function (fileToExtract) {
 
     new CabExtract()
         .archive(setupFile)
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .to(this.prefixDirectory() + "/drive_c/sp3/")
         .extract(["-F", "i386/" + fileToExtract.slice(0, -1) + "_"]);
 
@@ -32,7 +32,7 @@ Wine.prototype.sp3extract = function (fileToExtract) {
 
     new CabExtract()
         .archive(this.prefixDirectory() + "/drive_c/sp3/i386/" + fileToExtract.slice(0, -1) + "_")
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .to(that._targetDirectory)
         .extract();
 
