@@ -18,8 +18,6 @@ var installerImplementation = {
         var wine = new Wine()
             .wizard(setupWizard)
             .version(LATEST_STABLE_VERSION)
-            .distribution("upstream")
-            .architecture("x86")
             .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
             .luna()
             .create()
@@ -32,7 +30,6 @@ var installerImplementation = {
             ])
             .set("builtin", ["updspapi"])
             .do();
-        
         wine.run(setupFile, [], null, false, true);
 
         ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"]
