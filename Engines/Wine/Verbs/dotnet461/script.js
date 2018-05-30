@@ -22,7 +22,7 @@ Wine.prototype.dotnet461 = function () {
     this.wizard().wait(tr("Please wait ..."));
     this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"], null, false, true);
 
-    remove(this.system32directory() + "/mscoree.dll");   
+    remove(this.system32directory() + "/mscoree.dll");
     this.dotnet452()
     this.windowsVersion("win7");
 
@@ -36,11 +36,11 @@ Wine.prototype.dotnet461 = function () {
     this.overrideDLL()
         .set("native", ["mscoree"])
         .do();
-    
+
     this.windowsVersion(OSVersion);
 
     if (OSVersion != "win2003") {
         print(tr("{0} applications can have issues when windows version is not set to \"win2003\"", ".NET 4.6.1"));
-}
+    }
     return this;
 };
