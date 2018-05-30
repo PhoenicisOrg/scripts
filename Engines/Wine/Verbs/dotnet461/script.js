@@ -10,7 +10,6 @@ include(["engines", "wine", "verbs", "dotnet452"]);
 */
 Wine.prototype.dotnet461 = function () {
     var OSVersion = this.windowsVersion();
-    
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("https://download.microsoft.com/download/E/4/1/E4173890-A24A-4936-9FC9-AF930FE3FA40/NDP461-KB3102436-x86-x64-AllOS-ENU.exe")
@@ -44,6 +43,5 @@ Wine.prototype.dotnet461 = function () {
     if (OSVersion != "win2003") {
         print(tr("{0} applications can have issues when windows version is not set to \"win2003\"", ".NET 4.6.1"));
 }
-
     return this;
 };
