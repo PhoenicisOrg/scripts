@@ -99,8 +99,9 @@ SteamScript.prototype.go = function () {
     var wine = new Wine()
         .wizard(setupWizard)
         .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
-        .luna()
-        .run(tempFile, [], null, false, true);
+        .luna();
+
+    wine.run(tempFile, [], null, false, true);
 
     // Steam installation has finished
     setupWizard.wait(tr("Please wait ..."));
