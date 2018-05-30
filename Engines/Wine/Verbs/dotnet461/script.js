@@ -22,8 +22,7 @@ Wine.prototype.dotnet461 = function () {
     this.wizard().wait(tr("Please wait ..."));
     this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"], null, false, true);
 
-    remove(this.system32directory() + "/mscoree.dll");
-   
+    remove(this.system32directory() + "/mscoree.dll");   
     this.dotnet452()
     this.windowsVersion("win7");
 
