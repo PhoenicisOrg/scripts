@@ -33,7 +33,7 @@ var installerImplementation = {
             .set("builtin", ["updspapi"])
             .do();
         
-        wine.run(tempFile, [], null, false, true);
+        wine.run(setupFile, [], null, false, true);
 
         ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"]
             .forEach(function (dll) {
