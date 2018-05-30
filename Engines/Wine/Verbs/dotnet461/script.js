@@ -32,7 +32,7 @@ Wine.prototype.dotnet461 = function () {
         .set("builtin", ["fusion"])
         .do();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.5.2"));
+    this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.6.1"));
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
     this.overrideDLL()
@@ -42,7 +42,7 @@ Wine.prototype.dotnet461 = function () {
     this.windowsVersion(OSVersion);
 
     if (OSVersion != "win2003") {
-        print(tr("{0} applications can have issues when windows version is not set to \"win2003\"", ".NET 4.5.2"));
+        print(tr("{0} applications can have issues when windows version is not set to \"win2003\"", ".NET 4.6.1"));
 }
 
     return this;
