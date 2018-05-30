@@ -22,15 +22,13 @@ var installerImplementation = {
             .luna()
             .create()
             .sandbox()
-            .run("iexplore", ["-unregserver"])
-            .wait()
+            .run("iexplore", ["-unregserver"], null, false, true);
             .overrideDLL()
             .set("native,builtin", [
                 "iexplore.exe", "itircl", "itss", "jscript", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon", "xmllite"
             ])
             .set("builtin", ["updspapi"])
             .do();
-        wine.run(setupFile, [], null, false, true);
 
         ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"]
             .forEach(function (dll) {
