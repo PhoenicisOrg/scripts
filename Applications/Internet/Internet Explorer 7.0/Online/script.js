@@ -19,16 +19,15 @@ var installerImplementation = {
             .wizard(setupWizard)
             .version(LATEST_STABLE_VERSION)
             .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
-            .luna()
             .create()
-            .sandbox()
-            .run("iexplore", ["-unregserver"], null, false, true);
-            .overrideDLL()
-            .set("native,builtin", [
+            .sandbox();
+    wine.run("iexplore", ["-unregserver"], null, false, true);
+    wine.overrideDLL()
+        .set("native,builtin", [
                 "iexplore.exe", "itircl", "itss", "jscript", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon", "xmllite"
             ])
-            .set("builtin", ["updspapi"])
-            .do();
+        .set("builtin", ["updspapi"])
+        .do();
 
         ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"]
             .forEach(function (dll) {
