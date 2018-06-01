@@ -2,3 +2,9 @@ REGEDIT4
         
 [HKEY_CURRENT_USER\Software\Wine\X11 Driver]
 "UseTakeFocus"="N"
+
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\Steam.exe]
+"Version"="winxp64"
+ 
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\steamwebhelper.exe]
+"Version"="winxp64"
