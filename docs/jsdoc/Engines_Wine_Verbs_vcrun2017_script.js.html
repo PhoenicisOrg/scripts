@@ -37,25 +37,25 @@ include(["engines", "wine", "verbs", "luna"]);
 */
 Wine.prototype.vcrun2017 = function () {
     var setupFile32 = new Resource()
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .url("https://download.visualstudio.microsoft.com/download/pr/11100229/78c1e864d806e36f6035d80a0e80399e/VC_redist.x86.exe")
         .checksum("370583c380c26064885289037380af7d8d5f4e81")
         .name("vc_redist.x86.exe")
         .get();
 
-    this.run(setupFile32, "/q")
-        .wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2017 Redistributable (x86)"));
+    this.wizard().wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2017 Redistributable (x86)"));
+    this.run(setupFile32, "/q", null, false, true);
 
     if (this.architecture() == "amd64") {
         var setupFile64 = new Resource()
-            .wizard(this._wizard)
+            .wizard(this.wizard())
             .url("https://download.visualstudio.microsoft.com/download/pr/11100230/15ccb3f02745c7b206ad10373cbca89b/VC_redist.x64.exe")
             .checksum("bdb645ebaf3c91eceb1a143be6793ca57e6435c3")
             .name("vc_redist.x64.exe")
             .get();
 
-        this.run(setupFile64, "/q")
-            .wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2017 Redistributable (x64)"));
+        this.wizard().wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2017 Redistributable (x64)"));
+        this.run(setupFile64, "/q", null, false, true);
     }
 
     var dlls = [
@@ -90,7 +90,7 @@ Wine.prototype.vcrun2017 = function () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">

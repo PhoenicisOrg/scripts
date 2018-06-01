@@ -7,7 +7,7 @@ include(["utils", "functions", "net", "resource"]);
 /* exported LATEST_STABLE_VERSION */
 var LATEST_STABLE_VERSION = "3.0";
 /* exported LATEST_DEVELOPMENT_VERSION */
-var LATEST_DEVELOPMENT_VERSION = "3.7";
+var LATEST_DEVELOPMENT_VERSION = "3.8";
 /* exported LATEST_STAGING_VERSION */
 var LATEST_STAGING_VERSION = "2.21";
 
@@ -20,6 +20,26 @@ function Wine() {
     this._implementation = new Engine();
     this._OperatingSystemFetcher = Bean("operatingSystemFetcher");
 }
+
+/**
+*
+* @returns {string} architecture ("x86" or "amd64")
+*/
+Wine.prototype.architecture = function () {
+    // get
+    if (arguments.length == 0) {
+        if (fileExists(this.prefixDirectory())) {
+            var configFactory = Bean("compatibleConfigFileFormatFactory");
+            var containerConfiguration = configFactory.open(this.prefixDirectory() + "/phoenicis.cfg");
+            var architecture = containerConfiguration.readValue("wineArchitecture", "x86");
+            return architecture;
+        }
+        else {
+            print("Wine prefix \"" + this.prefixDirectory() + "\" does not exist!");
+            return "";
+        }
+    }
+};
 
 /**
 *
@@ -128,6 +148,8 @@ Wine.prototype.runInsidePrefix = function (executable, args) {
 Wine.prototype.run = function (executable, args, workingDirectory, captureOutput, wait, userData) {
     if (!args) {
         args = [];
+    } else if (typeof args === 'string' || args instanceof String) {
+        args = [args];
     }
     if (!workingDirectory) {
         workingDirectory = this._implementation.getContainerDirectory(this._implementation.getWorkingContainer());

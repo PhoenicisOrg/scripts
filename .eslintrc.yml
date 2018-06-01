@@ -30,6 +30,7 @@ globals:
   # java
   Bean: false
   # files
+  ls: false
   mkdir: false
   fileExists: false
   cat: false

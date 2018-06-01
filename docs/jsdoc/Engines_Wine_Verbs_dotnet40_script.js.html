@@ -38,7 +38,7 @@ include(["utils", "functions", "filesystem", "files"]);
 */
 Wine.prototype.dotnet40 = function () {
     var setupFile = new Resource()
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .url("http://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe")
         .checksum("58da3d74db353aad03588cbb5cea8234166d8b99")
         .name("dotNetFx40_Full_x86_x64.exe")
@@ -46,8 +46,8 @@ Wine.prototype.dotnet40 = function () {
 
     this.uninstall("Mono");
 
-    this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"])
-        .wait(tr("Please wait ..."));
+    this.wizard().wait(tr("Please wait ..."));
+    this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"], null, false, true);
 
     remove(this.system32directory() + "/mscoree.dll");
 
@@ -55,17 +55,17 @@ Wine.prototype.dotnet40 = function () {
         .set("builtin", ["fusion"])
         .do();
 
-    this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""])
-        .wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.0"));
+    this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.0"));
+    this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
     this.overrideDLL()
         .set("native", ["mscoree"])
         .do();
 
-    this.run("reg", ["add", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4\Full", "/v", "Install", "/t", "REG_DWORD", "/d", "0001", "/f"])
-        .wait(tr("Please wait ..."));
-    this.run("reg", ["add", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4\Full", "/v", "Version", "/t", "REG_SZ", "/d", "4.0.30319", "/f"])
-        .wait(tr("Please wait ..."));
+    this.wizard().wait(tr("Please wait ..."));
+    this.run("reg", ["add", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4\Full", "/v", "Install", "/t", "REG_DWORD", "/d", "0001", "/f"], null, false, true);
+    this.wizard().wait(tr("Please wait ..."));
+    this.run("reg", ["add", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4\Full", "/v", "Version", "/t", "REG_SZ", "/d", "4.0.30319", "/f"], null, false, true);
 
     return this;
 };
@@ -79,7 +79,7 @@ Wine.prototype.dotnet40 = function () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">

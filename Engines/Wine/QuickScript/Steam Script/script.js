@@ -90,16 +90,18 @@ SteamScript.prototype.go = function () {
     new Downloader()
         .wizard(setupWizard)
         .url("http://media.steampowered.com/client/installer/SteamSetup.exe")
-        .checksum("e930dbdb3bc638f772a8fcd92dbcd0919c924318")
+        .checksum("4b1b85ec2499a4ce07c89609b256923a4fc479e5")
         .to(tempFile)
         .get();
+
+    setupWizard.wait(tr("Please follow the steps of the Steam setup.\n\nUncheck \"Run Steam\" or close Steam completely after the setup so that the installation of \"{0}\" can continue.", this._name));
 
     var wine = new Wine()
         .wizard(setupWizard)
         .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
-        .luna()
-        .run(tempFile)
-        .wait(tr("Please follow the steps of the Steam setup.\n\nUncheck \"Run Steam\" or close Steam completely after the setup so that the installation of \"{0}\" can continue.", this._name));
+        .luna();
+
+    wine.run(tempFile, [], null, false, true);
 
     // Steam installation has finished
     setupWizard.wait(tr("Please wait ..."));

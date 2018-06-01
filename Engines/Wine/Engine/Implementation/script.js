@@ -93,34 +93,51 @@ var engineImplementation = {
             .archive(tmpFile)
             .to(localDirectory)
             .extract();
+
+        var files = ls(localDirectory);
+        if (files.length == 1) {
+            // probably the archive contained a folder (e.g. for Lutris Wine version)
+            // link folders so Phoenicis can find them
+            var extractedDir = files[0];
+
+            var forEach = Array.prototype.forEach;
+            forEach.call(ls(localDirectory + "/" + extractedDir), function (folder) {
+                lns(localDirectory + "/" + extractedDir + "/" + folder, localDirectory + "/" + folder);
+            }
+            );
+        }
     },
     _installGecko: function (setupWizard, winePackage, localDirectory) {
-        var gecko = new Resource()
-            .wizard(setupWizard)
-            .url(winePackage.geckoUrl)
-            .checksum(winePackage.geckoMd5)
-            .algorithm("md5")
-            .name(winePackage.geckoFile)
-            .directory("gecko")
-            .get();
+        if (winePackage.geckoUrl) {
+            var gecko = new Resource()
+                .wizard(setupWizard)
+                .url(winePackage.geckoUrl)
+                .checksum(winePackage.geckoMd5)
+                .algorithm("md5")
+                .name(winePackage.geckoFile)
+                .directory("gecko")
+                .get();
 
-        var wineGeckoDir = localDirectory + "/share/wine/gecko";
+            var wineGeckoDir = localDirectory + "/share/wine/gecko";
 
-        lns(new java.io.File(gecko).getParent(), wineGeckoDir);
+            lns(new java.io.File(gecko).getParent(), wineGeckoDir);
+        }
     },
     _installMono: function (setupWizard, winePackage, localDirectory) {
-        var mono = new Resource()
-            .wizard(setupWizard)
-            .url(winePackage.monoUrl)
-            .checksum(winePackage.monoMd5)
-            .algorithm("md5")
-            .name(winePackage.monoFile)
-            .directory("mono")
-            .get();
+        if (winePackage.monoUrl) {
+            var mono = new Resource()
+                .wizard(setupWizard)
+                .url(winePackage.monoUrl)
+                .checksum(winePackage.monoMd5)
+                .algorithm("md5")
+                .name(winePackage.monoFile)
+                .directory("mono")
+                .get();
 
-        var wineMonoDir = localDirectory + "/share/wine/mono";
+            var wineMonoDir = localDirectory + "/share/wine/mono";
 
-        lns(new java.io.File(mono).getParent(), wineMonoDir);
+            lns(new java.io.File(mono).getParent(), wineMonoDir);
+        }
     },
     delete: function (subCategory, version) {
         if (this.isInstalled(subCategory, version)) {
