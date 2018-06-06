@@ -7,8 +7,7 @@ var toolImplementation = {
     run: function (container) {
         new Wine()
             .prefix(container)
-            .run("wineconsole")
-            .wait();
+            .run("wineconsole", [], null, false, true);
     }
 };
 
