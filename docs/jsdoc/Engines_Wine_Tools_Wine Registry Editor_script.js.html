@@ -36,8 +36,7 @@ var toolImplementation = {
     run: function (container) {
         new Wine()
             .prefix(container)
-            .run("regedit")
-            .wait();
+            .run("regedit", [], null, false, true);
     }
 };
 
