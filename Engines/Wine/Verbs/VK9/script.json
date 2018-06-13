@@ -1,0 +1,12 @@
+{
+    "scriptName"                 : "VK9",
+    "id"                         : "vk9",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "LINUX"
+    ],
+    "free"          : true,
+    "requiresPatch" : false
+}
