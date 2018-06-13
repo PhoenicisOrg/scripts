@@ -1,0 +1,12 @@
+{
+    "scriptName"                 : "vulkanSDK",
+    "id"                         : "vulkansdk",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "LINUX"
+    ],
+    "free"          : true,
+    "requiresPatch" : false
+}
