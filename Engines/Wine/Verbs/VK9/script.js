@@ -20,7 +20,7 @@ Wine.prototype.VK9 = function () {
         .checksum("bc8970ae03e705b9871748a16ec6fa21dda5073e")
         .name(vk9Version + "-bin-x86-Debug")
         .get();
-	
+
     var setupFile64 = new Resource()
         .wizard(this.wizard())
         .url("https://github.com/disks86/VK9/releases/download/" + vk9Version +"/"+ vk9Version + "-bin-x86_64-Debug.zip")
