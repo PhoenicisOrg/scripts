@@ -10,7 +10,7 @@ include(["utils", "functions", "filesystem", "files"]);
 Wine.prototype.VK9 = function () {
     print("NOTE: you need a driver that supports Vulkan enough to run VK9");
     print("NOTE: wine version should be greater or equal to 3.5");
-	print("NOTE: this is a debug dll");
+    print("NOTE: this is a debug dll");
 	
     var vk9Version = "0.26.0";
 
@@ -21,7 +21,7 @@ Wine.prototype.VK9 = function () {
         .name(vk9Version + "-bin-x86-Debug")
         .get();
 		
-	var setupFile64 = new Resource()
+    var setupFile64 = new Resource()
         .wizard(this.wizard())
         .url("https://github.com/disks86/VK9/releases/download/" + vk9Version +"/"+ vk9Version + "-bin-x86_64-Debug.zip")
         .checksum("4a5bfbe0242a4ddc55702660a36902f68e98caef")
@@ -39,25 +39,25 @@ Wine.prototype.VK9 = function () {
     }
 
     if (this.architecture() == "amd64") {
-		new Extractor()
-			.wizard(this.wizard())
-			.archive(setupFile32)
-			.to(this.prefixDirectory() + "/TMP64/")
-			.extract();
+	new Extractor()
+		.wizard(this.wizard())
+		.archive(setupFile32)
+		.to(this.prefixDirectory() + "/TMP64/")
+		.extract();
 			
         cp("/TMP32/D3d9.dll", this.system64directory());
 
         cp("/TMP64/D3d9.dll", this.system32directory());
 		
-		remove(this.prefixDirectory() + "/TMP64/");
+	remove(this.prefixDirectory() + "/TMP64/");
     }
 
     this.overrideDLL()
         .set("native", ["d3d9"])
         .do();
 
-	// Need to copy VK9.conf and shader into executable directory
-	// var executables = this._fileSearcher.search(_shortcutPrefixDirectory, this._search);
+    // Need to copy VK9.conf and shader into executable directory
+    // var executables = this._fileSearcher.search(_shortcutPrefixDirectory, this._search);
 	
     remove(this.prefixDirectory() + "/TMP32/");
 	
