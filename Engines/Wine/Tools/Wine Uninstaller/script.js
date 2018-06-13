@@ -7,8 +7,7 @@ var toolImplementation = {
     run: function (container) {
         new Wine()
             .prefix(container)
-            .run("uninstaller")
-            .wait();
+            .run("uninstaller", [], null, false, true);
     }
 };
 
