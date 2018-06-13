@@ -2,29 +2,14 @@ include(["engines", "wine", "engine", "object"]);
 
 /**
  * tool to configure Wine
- * @constructor
- */
-var ConfigureWine = function () {
+*/
+var toolImplementation = {
+    run: function (container) {
+        new Wine()
+            .prefix(container)
+            .run("winecfg", [], null, false, true);
+    }
 };
 
-/**
-* runs the tool
-* @param {String} container name
-* @returns {void}
-*/
-ConfigureWine.prototype.run = function (container) {
-    new Wine()
-        .prefix(container)
-        .run("winecfg")
-        .wait();
-};
-
-/**
-* runs the ConfigureWine tool
-* @param {String} container name
-* @returns {void}
-*/
-function run(container) { // eslint-disable-line no-unused-vars
-    var tool = new ConfigureWine();
-    tool.run(container);
-}
+/* exported Tool */
+var Tool = Java.extend(org.phoenicis.engines.EngineTool, toolImplementation);

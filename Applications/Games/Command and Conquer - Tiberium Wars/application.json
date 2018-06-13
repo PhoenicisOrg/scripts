@@ -1,5 +1,5 @@
 {
-	"name":	"Command and Conquer - Tiberium Wars",
-	"id":	"command_and_conquer_tiberium_wars",
-	"description": "You are in command of the armies of either GDI or NOD with the fate of Earth in the balance."
+    "name"        : "Command and Conquer - Tiberium Wars",
+    "id"          : "command_and_conquer_tiberium_wars",
+    "description" : "You are in command of the armies of either GDI or NOD with the fate of Earth in the balance."
 }

@@ -1,0 +1,5 @@
+{
+    "name"        : "Wine Plugins",
+    "id"          : "plugins",
+    "description" : "Plugins for Wine."
+}

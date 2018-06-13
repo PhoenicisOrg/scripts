@@ -1,5 +1,5 @@
 {
-	"name": "Graphics",
-	"id": "graphics",
-	"type": "INSTALLERS"
+    "name" : "Graphics",
+    "id"   : "graphics",
+    "type" : "INSTALLERS"
 }

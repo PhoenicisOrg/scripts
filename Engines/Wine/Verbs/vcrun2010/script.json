@@ -1,8 +1,11 @@
 {
-	"scriptName": "vcrun2010",
-	"id": "vcrun2010",
-	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": [],
-	"free": true,
-	"requiresPatch": false
+    "scriptName"                 : "vcrun2010",
+    "id"                         : "vcrun2010",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
 }

@@ -1,8 +1,14 @@
 {
-	"scriptName": "Local (Demo)",
-	"id": "local_demo",
-	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": ["MACOSX", "LINUX"],
-	"free": true,
-	"requiresPatch": false
+    "scriptName"                 : "Local (Demo)",
+    "id"                         : "local_demo",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "free"          : true,
+    "requiresPatch" : false
 }

@@ -1,4 +1,5 @@
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "verbs", "luna"]);
 
@@ -8,14 +9,14 @@ include(["engines", "wine", "verbs", "luna"]);
 */
 Wine.prototype.vcrun2005 = function () {
     var setupFile = new Resource()
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .url("http://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x86.EXE")
         .checksum("b8fab0bb7f62a24ddfe77b19cd9a1451abd7b847")
         .name("vcredist_x86.EXE")
         .get();
 
-    this.run(setupFile, "/q")
-        .wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2005 Redistributable (x86)"));
+    this.wizard().wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2005 Redistributable (x86)"));
+    this.run(setupFile, "/q", null, false, true);
 
     var dlls = [
         "atl80",

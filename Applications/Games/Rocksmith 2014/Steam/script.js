@@ -1,4 +1,5 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
+include(["engines", "wine", "plugins", "sound_driver"]);
 include(["utils", "functions", "filesystem", "files"]);
 
 function fixIni(ini) {
@@ -33,14 +34,21 @@ function fixIni(ini) {
     writeToFile(ini, content);
 }
 
-new SteamScript()
-    .name("Rocksmith® 2014")
-    .editor("Ubisoft - San Francisco")
-    .author("Plata")
-    .appId(221680)
-    .postInstall(function (wine/*, wizard*/) {
-        wine.setSoundDriver("alsa");
-        wine.setOsForApplication().set("Rocksmith2014.exe", "win7").do();
-        fixIni(wine.prefixDirectory + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Rocksmith2014/Rocksmith.ini");
-    })
-    .go();
+var installerImplementation = {
+    run: function () {
+        new SteamScript()
+            .name("Rocksmith® 2014")
+            .editor("Ubisoft - San Francisco")
+            .author("Plata")
+            .appId(221680)
+            .postInstall(function (wine/*, wizard*/) {
+                wine.setSoundDriver("alsa");
+                wine.setOsForApplication().set("Rocksmith2014.exe", "win7").do();
+                fixIni(wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Rocksmith2014/Rocksmith.ini");
+            })
+            .go();
+    }
+};
+
+/* exported Installer */
+var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

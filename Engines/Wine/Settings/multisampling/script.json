@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "multisampling",
+    "id"                         : "multisampling",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

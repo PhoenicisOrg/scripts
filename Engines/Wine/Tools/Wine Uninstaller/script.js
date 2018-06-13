@@ -2,29 +2,15 @@ include(["engines", "wine", "engine", "object"]);
 
 /**
  * tool to uninstall Wine
- * @constructor
- */
-var WineUninstaller = function () {
+*/
+var toolImplementation = {
+    run: function (container) {
+        new Wine()
+            .prefix(container)
+            .run("uninstaller", [], null, false, true);
+    }
 };
 
-/**
-* runs the tool
-* @param {String} container name
-* @returns {void}
-*/
-WineUninstaller.prototype.run = function (container) {
-    new Wine()
-        .prefix(container)
-        .run("uninstaller")
-        .wait();
-};
+/* exported Tool */
+var Tool = Java.extend(org.phoenicis.engines.EngineTool, toolImplementation);
 
-/**
-* runs the WineUninstaller tool
-* @param {String} container name
-* @returns {void}
-*/
-function run(container) { // eslint-disable-line no-unused-vars
-    var tool = new WineUninstaller();
-    tool.run(container);
-}

@@ -1,8 +1,11 @@
 {
-  	"scriptName": "Windows reboot",
-	"id": "reboot_wine",
-	"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-	"testingOperatingSystems": [],
-	"free": true,
-	"requiresPatch": false
+    "scriptName"                 : "Windows reboot",
+    "id"                         : "reboot_wine",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
 }

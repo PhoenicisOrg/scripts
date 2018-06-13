@@ -1,8 +1,10 @@
 {
-	"scriptName": "Steam (Gold)",
-	"id": "steam_gold",
-	"compatibleOperatingSystems": ["LINUX"],
-	"testingOperatingSystems": [],
-	"free": false,
-	"requiresPatch": false
-} 
+    "scriptName"                 : "Steam (Gold)",
+    "id"                         : "steam_gold",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}
