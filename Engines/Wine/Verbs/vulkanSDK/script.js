@@ -34,11 +34,11 @@ Wine.prototype.vulkanSDK = function () {
     writeToFile(pathVulkanJSON, contentVulkanJSON);
 
     var registrySettings32 = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("vulkan.reg");
-    this.regedit().patch(registrySettings);
+    this.regedit().patch(registrySettings32);
 
     if (this.architecture() == "amd64") {
         var registrySettings64 = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("vulkan64.reg");
-        this.regedit().patch(registrySettings);
+        this.regedit().patch(registrySettings64);
     }
 
     return this;
