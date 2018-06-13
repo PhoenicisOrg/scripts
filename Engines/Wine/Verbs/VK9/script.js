@@ -11,7 +11,7 @@ Wine.prototype.VK9 = function () {
     print("NOTE: you need a driver that supports Vulkan enough to run VK9");
     print("NOTE: wine version should be greater or equal to 3.5");
     print("NOTE: this is a debug dll");
-	
+
     var vk9Version = "0.26.0";
 
     var setupFile32 = new Resource()
@@ -40,16 +40,16 @@ Wine.prototype.VK9 = function () {
 
     if (this.architecture() == "amd64") {
 	new Extractor()
-		.wizard(this.wizard())
-		.archive(setupFile32)
-		.to(this.prefixDirectory() + "/TMP64/")
-		.extract();
+            .wizard(this.wizard())
+            .archive(setupFile64)
+            .to(this.prefixDirectory() + "/TMP64/")
+            .extract();
 			
         cp("/TMP32/D3d9.dll", this.system64directory());
 
         cp("/TMP64/D3d9.dll", this.system32directory());
 		
-	remove(this.prefixDirectory() + "/TMP64/");
+        remove(this.prefixDirectory() + "/TMP64/");
     }
 
     this.overrideDLL()
