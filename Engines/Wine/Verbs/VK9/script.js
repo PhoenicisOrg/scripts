@@ -48,7 +48,7 @@ Wine.prototype.VK9 = function () {
         cp("/TMP32/D3d9.dll", this.system64directory());
 
         cp("/TMP64/D3d9.dll", this.system32directory());
-	
+
         remove(this.prefixDirectory() + "/TMP64/");
     }
 
@@ -58,8 +58,8 @@ Wine.prototype.VK9 = function () {
 
     // Need to copy VK9.conf and shader into executable directory
     // var executables = this._fileSearcher.search(_shortcutPrefixDirectory, this._search);
-	
+
     remove(this.prefixDirectory() + "/TMP32/");
-	
+
     return this;
 }
