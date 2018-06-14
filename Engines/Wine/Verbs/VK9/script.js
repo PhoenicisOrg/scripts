@@ -48,7 +48,7 @@ Wine.prototype.VK9 = function () {
         cp("/TMP32/D3d9.dll", this.system64directory());
 
         cp("/TMP64/D3d9.dll", this.system32directory());
-		
+	
         remove(this.prefixDirectory() + "/TMP64/");
     }
 
