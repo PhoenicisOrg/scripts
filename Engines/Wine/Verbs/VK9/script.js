@@ -35,7 +35,7 @@ Wine.prototype.VK9 = function () {
         .extract();
 
     if (this.architecture() == "x86") {
-        cp("/TMP32/D3d9.dll", this.system32directory());
+        cp(this.prefixDirectory() + "/TMP32/D3d9.dll", this.system32directory());
     }
 
     if (this.architecture() == "amd64") {
@@ -45,9 +45,9 @@ Wine.prototype.VK9 = function () {
             .to(this.prefixDirectory() + "/TMP64/")
             .extract();
 
-        cp("/TMP32/D3d9.dll", this.system64directory());
+        cp(this.prefixDirectory() + "/TMP32/D3d9.dll", this.system64directory());
 
-        cp("/TMP64/D3d9.dll", this.system32directory());
+        cp(this.prefixDirectory() + "/TMP64/D3d9.dll", this.system32directory());
 
         remove(this.prefixDirectory() + "/TMP64/");
     }
