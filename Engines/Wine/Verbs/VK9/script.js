@@ -56,7 +56,7 @@ Wine.prototype.VK9 = function () {
         .set("native", ["d3d9"])
         .do();
     
-    var userFilePath = this.wizard().browse("Please select the .exe directory");
+    var userFilePath = this.wizard().browse("Please select the .exe directory", this.prefixDirectory());
     print(userFilePath);
 
     // Need to copy VK9.conf and shader into executable directory
