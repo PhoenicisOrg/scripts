@@ -15,19 +15,19 @@ Wine.prototype.vulkanSDK = function () {
 
     var setupFile = new Resource()
         .wizard(this.wizard())
-        .url("https://sdk.lunarg.com/sdk/download/1.0.68.0/windows/VulkanSDK-1.0.68.0-Installer.exe")
-        .checksum("fe85c637c3d55c2972a997fcec44212d55d41a98")
-        .name("VulkanSDK-1.0.68.0-Installer.exe")
+        .url("https://sdk.lunarg.com/sdk/download/1.1.73.0/windows/VulkanSDK-1.1.73.0-Installer.exe")
+        .checksum("ac34f732818c409bcb283b5c6100b373ab6a2404")
+        .name("VulkanSDK-1.1.73.0-Installer.exe")
         .get();
 
     this.run(setupFile, "/S");
 
-    var pathVulkanJSON = this.prefixDirectory + "drive_c/windows/winevulkan.json"
-    var contentVulkanJSON = '{\n'                                                                      +
+    var pathVulkanJSON = this.prefixDirectory() + "drive_c/windows/winevulkan.json"
+    var contentVulkanJSON = '{\n'                                                                     +
                             '	"file_format_version": "1.0.0",\n'				       +
                             '	"ICD": {\n'							       +
                             '		"library_path": "c:\\windows\\system32\\winevulkan.dll",\n'    +
-                            '		"api_version": "1.0.51"\n'				       +
+                            '		"api_version": "1.1.73"\n'				       +
                             '	}\n'								       +
                             '}'
 
