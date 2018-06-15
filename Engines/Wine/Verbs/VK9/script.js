@@ -55,6 +55,9 @@ Wine.prototype.VK9 = function () {
     this.overrideDLL()
         .set("native", ["d3d9"])
         .do();
+    
+    var userFilePath = this.wizard().browse("Please select the .exe directory");
+    print(userFilePath);
 
     // Need to copy VK9.conf and shader into executable directory
     // var executables = this._fileSearcher.search(_shortcutPrefixDirectory, this._search);
