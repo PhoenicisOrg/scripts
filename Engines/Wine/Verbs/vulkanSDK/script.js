@@ -39,8 +39,6 @@ Wine.prototype.vulkanSDK = function () {
         "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers\\]\n" 	+
         "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000" ;
 
-    print(regeditFileContent);
-
     this.regedit().patch(regeditFileContent);
 
     if (this.architecture() == "amd64") {
