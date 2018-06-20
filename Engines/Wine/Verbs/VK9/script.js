@@ -9,7 +9,7 @@ include(["utils", "functions", "filesystem", "files"]);
 */
 Wine.prototype.VK9 = function () {
     if (this.architecture() == "amd64") {
-        throw "{0} cannot curreently be installed in a 64bit wine prefix.".format("VK9");
+        throw "{0} cannot currently be installed in a 64bit wine prefix.".format("VK9");
     }
 
     print("NOTE: you need a driver that supports Vulkan enough to run VK9");
