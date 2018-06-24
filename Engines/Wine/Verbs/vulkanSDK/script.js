@@ -10,14 +10,16 @@ include(["utils", "functions", "apps", "resources"]);
 * @returns {Wine} Wine object
 */
 Wine.prototype.vulkanSDK = function () {
-    print("NOTE: you need a driver that support Vulkan enough to run winevulkan");
-    print("NOTE: Vulkan works in wine from version 3.3");
+    print("NOTE: you need a graphic driver that supports Vulkan to run winevulkan");
+    print("NOTE: Vulkan works in wine from version 3.3 (if compiled with vulkan support)");
+
+    var sdkVersion = "1.1.73.0";
 
     var setupFile = new Resource()
         .wizard(this.wizard())
-        .url("https://sdk.lunarg.com/sdk/download/1.1.73.0/windows/VulkanSDK-1.1.73.0-Installer.exe")
+        .url("https://sdk.lunarg.com/sdk/download/" + sdkVersion +"/windows/VulkanSDK-" + sdkVersion + "-Installer.exe")
         .checksum("ac34f732818c409bcb283b5c6100b373ab6a2404")
-        .name("VulkanSDK-1.1.73.0-Installer.exe")
+        .name("VulkanSDK-" + sdkVersion + "-Installer.exe")
         .get();
 
     this.run(setupFile, "/S");
@@ -27,7 +29,7 @@ Wine.prototype.vulkanSDK = function () {
                             '	"file_format_version": "1.0.0",\n'				       +
                             '	"ICD": {\n'							       +
                             '		"library_path": "c:\\windows\\system32\\winevulkan.dll",\n'    +
-                            '		"api_version": "1.1.73"\n'				       +
+                            '		"api_version": "' + sdkVersion +'"\n'			       +
                             '	}\n'								       +
                             '}'
 
