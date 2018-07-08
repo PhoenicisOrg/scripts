@@ -5,11 +5,11 @@ include(["engines", "wine", "verbs", "vcrun2010"]);
 var installerImplementation = {
     run: function () {
         new SteamScript()
-        .name("Space Colony")
-        .editor("Firefly Studios")
-        .author("Zemogiter")
-        .appId(297920)
-        .go();
+            .name("Space Colony")
+            .editor("Firefly Studios")
+            .author("Zemogiter")
+            .appId(297920)
+            .go();
 
     }
 };
