@@ -17,7 +17,7 @@ var installerImplementation = {
                     .algorithm("MD5")
                     .name("Space_Colony_HD_Update.exe")
                     .get();
-                this.run(patch, [/q])              
+                this.run(patch, ["/q"])              
             .go();
     }
 };
