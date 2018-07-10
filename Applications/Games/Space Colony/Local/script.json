@@ -1,7 +1,10 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "space_colony_local",
-    "compatibleOperatingSystems" : ["MACOSX","LINUX"],
+    "id"                         : "space-colony-local",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
     "testingOperatingSystems" : [],
     "free"                    : false,
     "requiresPatch"           : false
