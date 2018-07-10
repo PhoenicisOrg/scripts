@@ -10,7 +10,6 @@ var installerImplementation = {
             .author("Zemogiter")
             .appId(297920)
             .go();
-
     }
 };
 
