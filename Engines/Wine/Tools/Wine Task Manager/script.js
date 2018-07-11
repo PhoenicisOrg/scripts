@@ -7,8 +7,7 @@ var toolImplementation = {
     run: function (container) {
         new Wine()
             .prefix(container)
-            .run("taskmgr")
-            .wait();
+            .run("taskmgr", [], null, false, true);
     }
 };
 

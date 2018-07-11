@@ -33,11 +33,11 @@ include(["utils", "functions", "net", "download"]);
 include(["utils", "functions", "net", "resource"]);
 
 /* exported LATEST_STABLE_VERSION */
-var LATEST_STABLE_VERSION = "3.0";
+var LATEST_STABLE_VERSION = "3.0.1";
 /* exported LATEST_DEVELOPMENT_VERSION */
-var LATEST_DEVELOPMENT_VERSION = "3.8";
+var LATEST_DEVELOPMENT_VERSION = "3.10";
 /* exported LATEST_STAGING_VERSION */
-var LATEST_STAGING_VERSION = "2.21";
+var LATEST_STAGING_VERSION = "3.2";
 
 
 /**
@@ -160,7 +160,7 @@ Wine.prototype.binPath = function (subCategory, version) {
 * @param args
 */
 Wine.prototype.runInsidePrefix = function (executable, args) {
-    return this.run(this.prefixDirectory() + "/drive_c/" + executable, args, this.prefixDirectory(), false, false);
+    return this.run(this.prefixDirectory() + "/drive_c/" + executable, args, this.prefixDirectory(), false, true);
 };
 
 /**
@@ -180,7 +180,7 @@ Wine.prototype.run = function (executable, args, workingDirectory, captureOutput
         args = [args];
     }
     if (!workingDirectory) {
-        workingDirectory = this._implementation.getContainerDirectory(this._implementation.getWorkingContainer());
+        workingDirectory = this._implementation.getContainerDirectory(this._implementation.getWorkingContainer()) + "/drive_c";
     }
     if (!captureOutput) {
         captureOutput = false;
@@ -218,7 +218,7 @@ Wine.prototype.uninstall = function (application) {
 * runs "wineboot"
 */
 Wine.prototype.create = function () {
-    this.run("wineboot", [], this.prefixDirectory(), false, false);
+    this.run("wineboot", [], this.prefixDirectory(), false, true);
     return this;
 };
 
