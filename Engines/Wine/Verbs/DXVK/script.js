@@ -9,14 +9,14 @@ include(["utils", "functions", "filesystem", "files"]);
 */
 Wine.prototype.DXVK = function () {
     print("NOTE: you need a driver that supports Vulkan enough to run DXVK");
-    print("NOTE: wine version should be greater or equal to 3.5");
+    print("NOTE: wine version should be greater or equal to 3.10");
 
-    var dxvkVersion = "0.53";
+    var dxvkVersion = "0.61";
 
     var setupFile = new Resource()
         .wizard(this.wizard())
         .url("https://github.com/doitsujin/dxvk/releases/download/v" + dxvkVersion + "/dxvk-" + dxvkVersion + ".tar.gz")
-        .checksum("df448f1a7b842773f4d826a86eeba44c937187b0")
+        .checksum("f3965e1eddaf96ee7bf7f6c1c3e71e59e8f90d10")
         .name("dxvk-" + dxvkVersion + ".tar.gz")
         .get();
 
