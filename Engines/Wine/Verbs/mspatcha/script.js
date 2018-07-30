@@ -1,4 +1,5 @@
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
 include(["utils", "functions", "net", "resource"]);
 include(["utils", "functions", "filesystem", "files"]);
 
@@ -9,7 +10,7 @@ include(["utils", "functions", "filesystem", "files"]);
 Wine.prototype.mspatcha = function () {
     //Inspired from winetricks mspatcha, but with a link Phoenicis can understand
     var setupFile = new Resource()
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .url("http://ftp.anadolu.edu.tr/Service_Packs/Windows_2000/W2ksp4_EN.exe")
         .checksum("fadea6d94a014b039839fecc6e6a11c20afa4fa8")
         .name("W2ksp4_EN.exe")
@@ -19,13 +20,13 @@ Wine.prototype.mspatcha = function () {
 
     new CabExtract()
         .archive(setupFile)
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .to(this.system32directory())
         .extract();
 
     new CabExtract()
         .archive(this.system32directory() + "/i386/mspatcha.dl_")
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .to(this.system32directory())
         .extract();
 

@@ -30,6 +30,7 @@ globals:
   # java
   Bean: false
   # files
+  ls: false
   mkdir: false
   fileExists: false
   cat: false
@@ -47,7 +48,9 @@ globals:
   CabExtract: false
   Checksum: false
   Downloader: false
+  Engine: false
   Extractor: false
+  InstallationType: false
   Resource: false
   SetupWizard: false
   Wine: false

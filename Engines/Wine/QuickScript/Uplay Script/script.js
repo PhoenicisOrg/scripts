@@ -24,11 +24,11 @@ UplayScript.prototype.appId = function (appId) {
 };
 
 UplayScript.prototype.downloadStarted = function (wine) {
-    return fileExists(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/data/" + this._appId + "/manifests");
+    return fileExists(wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/data/" + this._appId + "/manifests");
 };
 
 UplayScript.prototype.downloadFinished = function (wine) {
-    return !fileExists(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/data/" + this._appId + "/manifests");
+    return !fileExists(wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/data/" + this._appId + "/manifests");
 };
 
 UplayScript.prototype.go = function () {
@@ -49,6 +49,8 @@ UplayScript.prototype.go = function () {
         .to(tempFile)
         .get();
 
+    setupWizard.wait(tr("Please follow the steps of the Uplay setup.\n\nUncheck \"Run Uplay\" or close Uplay completely after the setup so that the installation of \"{0}\" can continue.", this._name));
+
     var wine = new Wine()
         .wizard(setupWizard)
         .architecture(this._wineArchitecture)
@@ -56,8 +58,7 @@ UplayScript.prototype.go = function () {
         .version(this._wineVersion)
         .prefix(this._name)
         .luna()
-        .run(tempFile)
-        .wait(tr("Please follow the steps of the Uplay setup.\n\nUncheck \"Run Uplay\" or close Uplay completely after the setup so that the installation of \"{0}\" can continue.", this._name));
+        .run(tempFile, [], null, false, true);
 
     wine.setOsForApplication().set("upc.exe", "winxp").do();
 

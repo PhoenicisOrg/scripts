@@ -1,4 +1,5 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
+include(["engines", "wine", "plugins", "csmt"]);
 include(["engines", "wine", "verbs", "secur32"]);
 
 var installerImplementation = {

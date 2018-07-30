@@ -16,7 +16,7 @@ var installerImplementation = {
                     .wizard(wizard)
                     .url("http://static.dolimg.com/mh_netstorage/lucasfilm/patches/pc/BFIIUpdateInt1_1.exe")
                     .checksum("60eaddfaba1bc71fe8bbbb560f8da229748cfaa8")
-                    .to(wine.prefixDirectory + "drive_c/Program Files/LucasArts/Star Wars Battlefront II/BFIIUpdateInt1_1.exe")
+                    .to(wine.prefixDirectory() + "drive_c/Program Files/LucasArts/Star Wars Battlefront II/BFIIUpdateInt1_1.exe")
                     .get();
 
                 wine.runInsidePrefix("/Program Files/LucasArts/Star Wars Battlefront II/BFIIUpdateInt1_1.exe");

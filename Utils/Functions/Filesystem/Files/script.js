@@ -2,12 +2,21 @@ var fileAnalyser = Bean("fileAnalyser");
 var fileUtilities = Bean("fileUtilities");
 
 /**
+* lists files and directories
+* @param {string} directoryPath directory path
+* @returns {string[]} list of files and directories
+*/
+function ls(directoryPath) { // eslint-disable-line no-unused-vars
+    return fileUtilities.ls(new java.io.File(directoryPath));
+}
+
+/**
 * creates directory
 * @param {string} directoryPath directory path
 * @returns {void}
 */
 function mkdir(directoryPath) { // eslint-disable-line no-unused-vars
-    fileUtilities.mkdir(new java.io.File(directoryPath))
+    fileUtilities.mkdir(new java.io.File(directoryPath));
 }
 
 /**

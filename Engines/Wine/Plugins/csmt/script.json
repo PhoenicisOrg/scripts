@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "csmt",
+    "id"                         : "csmt",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

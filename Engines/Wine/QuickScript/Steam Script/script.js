@@ -1,6 +1,7 @@
 include(["engines", "wine", "quick_script", "quick_script"]);
 include(["utils", "functions", "net", "download"]);
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
 include(["utils", "functions", "filesystem", "extract"]);
 include(["utils", "functions", "filesystem", "files"]);
 include(["engines", "wine", "verbs", "luna"]);
@@ -37,7 +38,7 @@ SteamScript.prototype.gameOverlay = function (gameOverlay) {
 SteamScript.prototype.manifest = function (wine) {
     if (!this._manifest) {
         // cache manifest path (will not change during the installation)
-        this._manifest = wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf";
+        this._manifest = wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Steam/steamapps/appmanifest_" + this._appId + ".acf";
     }
     return this._manifest;
 };
@@ -89,19 +90,18 @@ SteamScript.prototype.go = function () {
     new Downloader()
         .wizard(setupWizard)
         .url("http://media.steampowered.com/client/installer/SteamSetup.exe")
-        .checksum("e930dbdb3bc638f772a8fcd92dbcd0919c924318")
+        .checksum("4b1b85ec2499a4ce07c89609b256923a4fc479e5")
         .to(tempFile)
         .get();
 
+    setupWizard.wait(tr("Please follow the steps of the Steam setup.\n\nUncheck \"Run Steam\" or close Steam completely after the setup so that the installation of \"{0}\" can continue.", this._name));
+
     var wine = new Wine()
         .wizard(setupWizard)
-        .architecture(this._wineArchitecture)
-        .distribution(this._wineDistribution)
-        .version(this._wineVersion)
-        .prefix(this._name)
-        .luna()
-        .run(tempFile)
-        .wait(tr("Please follow the steps of the Steam setup.\n\nUncheck \"Run Steam\" or close Steam completely after the setup so that the installation of \"{0}\" can continue.", this._name));
+        .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
+        .luna();
+
+    wine.run(tempFile, [], null, false, true);
 
     // Steam installation has finished
     setupWizard.wait(tr("Please wait ..."));

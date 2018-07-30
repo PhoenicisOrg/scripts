@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Engines/Wine/Shortcuts/Reader/script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Engines/Wine/Shortcuts/Reader/script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>include(["engines", "wine", "engine", "object"]);
+
+var _WineShortcutReader = function (shortcut) {
+    var that = this;
+    that._shortcutManager = Bean("shortcutManager");
+    that._libraryManager = Bean("libraryManager");
+    that._uiQuestionFactory = Bean("uiQuestionFactory");
+    that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
+
+    this.shortcut = shortcut;
+
+    this.wineprefix = function () {
+        var shortcutContent = JSON.parse(this.shortcut.script);
+        return shortcutContent.winePrefix;
+    };
+
+    this.container = this.wineprefix;
+
+    this.run = function (userArguments) {
+        var shortcutContent = JSON.parse(this.shortcut.script);
+
+        if (!userArguments) {
+            userArguments = [];
+        }
+
+        var args = (shortcutContent.arguments ? shortcutContent.arguments : []).concat(Java.from(userArguments));
+
+        var userData = {};
+        userData["wineDebug"] = shortcutContent.wineDebug;
+        new Wine()
+            .prefix(shortcutContent.winePrefix)
+            .run(shortcutContent.executable, args, shortcutContent.workingDirectory, false, false, userData)
+    };
+
+
+    this.stop = function () {
+        var shortcutContent = JSON.parse(this.shortcut.script);
+
+        new Wine()
+            .prefix(shortcutContent.winePrefix)
+            .kill()
+    };
+
+    this.uninstall = function () {
+        var shortcutContent = JSON.parse(this.shortcut.script);
+        var _winePrefix = shortcutContent.winePrefix;
+
+        var _found = false;
+        this._libraryManager.fetchShortcuts().forEach(function (shortcutCategory) {
+            shortcutCategory.getShortcuts().forEach(function (shortcut) {
+                var _otherShortcutContent = JSON.parse(shortcut.script);
+
+                if (_otherShortcutContent.winePrefix == _winePrefix &amp;&amp; shortcut.name != that.shortcut.name) {
+                    _found = true;
+                }
+            });
+        });
+
+        this._shortcutManager.deleteShortcut(this.shortcut);
+
+        if (!_found) {
+            this._uiQuestionFactory.create(tr("The container {0} is no longer used.\nDo you want to delete it?", _winePrefix),
+                function () {
+                    remove(that._winePrefixesDirectory + _winePrefix);
+                });
+        }
+    }
+};
+
+/**
+* ShortcutReader prototype
+* @constructor
+*/
+function ShortcutReader() {
+}
+
+/**
+* sets shortcut
+* @param {string} shortcut shortcut
+* @returns {void}
+*/
+ShortcutReader.prototype.of = function (shortcut) {
+    this.shortcut = shortcut;
+    var shortcutContentParsed = JSON.parse(this.shortcut.script);
+
+    if (shortcutContentParsed.type == "WINE") {
+        this._runner = new _WineShortcutReader(this.shortcut);
+    }
+}
+
+/**
+* runs shortcut
+* @param {array} userArguments arguments
+* @returns {void}
+*/
+ShortcutReader.prototype.run = function (userArguments) {
+    this._runner.run(userArguments);
+}
+
+/**
+* stops running shortcut
+* @returns {void}
+*/
+ShortcutReader.prototype.stop = function () {
+    this._runner.stop();
+}
+
+/**
+* uninstalls shortcut
+* @returns {void}
+*/
+ShortcutReader.prototype.uninstall = function () {
+    this._runner.uninstall();
+}
+
+/**
+* returns container of shortcut
+* @returns {string} container
+*/
+ShortcutReader.prototype.container = function () {
+    return this._runner.container();
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,5 +1,9 @@
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
+include(["engines", "wine", "plugins", "regedit"]);
+include(["engines", "wine", "plugins", "regsvr32"]);
+include(["engines", "wine", "plugins", "windows_version"]);
 include(["utils", "functions", "filesystem", "files"]);
 include(["engines", "wine", "shortcuts", "wine"]);
 include(["utils", "functions", "apps", "resources"]);
@@ -8,7 +12,7 @@ include(["engines", "wine", "verbs", "msls31"]);
 var installerImplementation = {
     run: function () {
         var appsManager = Bean("repositoryManager");
-        var application = appsManager.getApplication(["Applications", "Internet", "Internet Explorer 6.0"]);
+        var application = appsManager.getApplication([TYPE_ID, CATEGORY_ID, APPLICATION_ID]);
         var setupWizard = SetupWizard(InstallationType.APPS, "Internet Explorer 6.0", application.getMainMiniature());
 
         setupWizard.presentation("Internet Explorer 6.0", "Microsoft", "http://www.microsoft.com", "Quentin PÂRIS");
@@ -22,42 +26,39 @@ var installerImplementation = {
 
         var wine = new Wine()
             .wizard(setupWizard)
-            .version(LATEST_STABLE_VERSION)
-            .distribution("upstream")
-            .architecture("x86")
-            .prefix("InternetExplorer6")
+            .prefix("InternetExplorer6", "upstream", "x86", LATEST_STABLE_VERSION)
             .create()
-            .msls31()
-            .wait();
+            .msls31();
 
         wine.windowsVersion("win2k");
 
-        remove(wine.prefixDirectory + "/drive_c/IE 6.0 Full/");
-        remove(wine.prefixDirectory + "/drive_c/" + wine.programFiles() + "/Internet Explorer/iexplore.exe");
+        remove(wine.prefixDirectory() + "/drive_c/IE 6.0 Full/");
+        remove(wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Internet Explorer/iexplore.exe");
 
         ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon", "browseui", "iseng", "inetcpl"]
             .forEach(function (dll) {
-                remove(wine.prefixDirectory + "/drive_c/windows/system32/" + dll + ".dll");
+                remove(wine.prefixDirectory() + "/drive_c/windows/system32/" + dll + ".dll");
             });
 
-        wine.run(setupFile).wait();
+        wine.run(setupFile, [], null, false, true);
 
         new CabExtract()
             .wizard(setupWizard)
-            .archive(wine.prefixDirectory + "/drive_c/IE 6.0 Full/ACTSETUP.CAB")
-            .to(wine.prefixDirectory + "/drive_c/windows/system32/")
+            .archive(wine.prefixDirectory() + "/drive_c/IE 6.0 Full/ACTSETUP.CAB")
+            .to(wine.prefixDirectory() + "/drive_c/windows/system32/")
             .extract(["-F", "inseng.dll"]);
 
-        wine.run("iexplore", ["-unregserver"])
-            .overrideDLL()
+        wine.run("iexplore", ["-unregserver"], null, false, true);
+        wine.overrideDLL()
             .set("native", ["inseng"])
-            .do()
-            .runInsidePrefix("IE 6.0 Full/IE6SETUP.EXE").wait()
-            .overrideDLL()
+            .do();
+        wine.runInsidePrefix("IE 6.0 Full/IE6SETUP.EXE");
+        wine.overrideDLL()
             .set("native,builtin", [
                 "inetcpl.cpl", "itircl", "itss", "jscript", "mlang",
                 "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"
-            ]).do();
+            ])
+            .do();
 
         var librariesToRegister = ["actxprxy.dll", "browseui.dll", "browsewm.dll", "cdfview.dll", "ddraw.dll",
                                    "dispex.dll", "dsound.dll", "iedkcs32.dll", "iepeers.dll", "iesetup.dll", "imgutil.dll",
@@ -79,16 +80,16 @@ var installerImplementation = {
             i++;
         });
 
-        remove(wine.prefixDirectory + "/drive_c/windows/system32/iexplore.exe");
+        remove(wine.prefixDirectory() + "/drive_c/windows/system32/iexplore.exe");
 
         new WineShortcut()
             .name("Internet Explorer 6.0")
             .prefix("InternetExplorer6")
             .search("iexplore.exe")
-            .miniature(["Applications", "Internet", "Internet Explorer 6.0"])
+            .miniature([TYPE_ID, CATEGORY_ID, APPLICATION_ID])
             .create();
 
-        var registrySettings = new AppResource().application(["Applications", "Internet", "Internet Explorer 6.0"]).get("ie6.reg");
+        var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("ie6.reg");
         wine.regedit().patch(registrySettings);
 
         setupWizard.close();

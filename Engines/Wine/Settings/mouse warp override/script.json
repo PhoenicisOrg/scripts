@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "mouse warp override",
+    "id"                         : "mouse_warp_override",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

@@ -1,4 +1,5 @@
 include(["engines", "wine", "quick_script", "local_installer_script"]);
+include(["engines", "wine", "plugins", "virtual_desktop"]);
 
 var installerImplementation = {
     run: function () {
@@ -12,7 +13,7 @@ var installerImplementation = {
                 var regions=[ "France", "England"];
                 var selectedRegion = wizard.menu(tr("Select your region for the patch (1.0 to 1.60)."), regions);
                 var exeName, url, sha1;
-                var originDirectory = wine.prefixDirectory + "drive_c/users/Public/Documents/";
+                var originDirectory = wine.prefixDirectory() + "drive_c/users/Public/Documents/";
 
                 switch (selectedRegion.text){
                     case "France":

@@ -1,4 +1,6 @@
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
+include(["engines", "wine", "plugins", "windows_version"]);
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "verbs", "luna"]);
 include(["utils", "functions", "filesystem", "files"]);
@@ -16,7 +18,7 @@ Wine.prototype.dotnet452 = function () {
     var OSVersion = this.windowsVersion();
 
     var setupFile = new Resource()
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .url("https://download.microsoft.com/download/E/2/1/E21644B5-2DF2-47C2-91BD-63C560427900/NDP452-KB2901907-x86-x64-AllOS-ENU.exe")
         .checksum("89f86f9522dc7a8a965facce839abb790a285a63")
         .name("NDP452-KB2901907-x86-x64-AllOS-ENU.exe")
@@ -24,8 +26,8 @@ Wine.prototype.dotnet452 = function () {
 
     this.uninstall("Mono");
 
-    this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"])
-        .wait(tr("Please wait ..."));
+    this.wizard().wait(tr("Please wait ..."));
+    this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"], null, false, true);
 
     remove(this.system32directory() + "/mscoree.dll");
 
@@ -36,8 +38,8 @@ Wine.prototype.dotnet452 = function () {
         .set("builtin", ["fusion"])
         .do();
 
-    this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""])
-        .wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.5.2"));
+    this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.5.2"));
+    this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
     this.overrideDLL()
         .set("native", ["mscoree"])

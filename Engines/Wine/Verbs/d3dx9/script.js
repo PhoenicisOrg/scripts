@@ -1,4 +1,5 @@
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
 include(["utils", "functions", "net", "resource"]);
 
 /**
@@ -16,7 +17,7 @@ Wine.prototype.d3dx9 = function () {
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
 
             new CabExtract()
-                .archive(that.prefixDirectory + "/drive_c/d3dx9/" + cabFile)
+                .archive(that.prefixDirectory() + "/drive_c/d3dx9/" + cabFile)
                 .to(destination)
                 .extract(["-L", "-F", pattern]);
 
@@ -25,19 +26,19 @@ Wine.prototype.d3dx9 = function () {
     };
 
     var setupFile = new Resource()
-        .wizard(this._wizard)
+        .wizard(this.wizard())
         .url("http://download.microsoft.com/download/8/4/A/84A35BF1-DAFE-4AE8-82AF-AD2AE20B6B14/directx_Jun2010_redist.exe")
         .checksum("f8f1217f666bf2f6863631a7d5e5fb3a8d1542df")
         .name("directx_Jun2010_redist.exe")
         .get();
 
-    var progressBar = this._wizard.progressBar(tr("Please wait ..."));
+    var progressBar = this.wizard().progressBar(tr("Please wait ..."));
     progressBar.setText(tr("Extracting {0} ...", "DirectX 9"));
     progressBar.setProgressPercentage(0.);
 
     new CabExtract()
         .archive(setupFile)
-        .to(this.prefixDirectory + "/drive_c/d3dx9/")
+        .to(this.prefixDirectory() + "/drive_c/d3dx9/")
         .extract(["-L", "-F", "*d3dx9*x86*"]);
 
     var filesToExtractx86 = [
@@ -54,7 +55,7 @@ Wine.prototype.d3dx9 = function () {
     if (this.architecture() == "amd64") {
         new CabExtract()
             .archive(setupFile)
-            .to(this.prefixDirectory + "/drive_c/d3dx9/")
+            .to(this.prefixDirectory() + "/drive_c/d3dx9/")
             .extract(["-L", "-F", "*d3dx9*x64*"]);
 
         var filesToExtractx64 = [
