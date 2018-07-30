@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "space-colony-local",
+    "id"                         : "space_colony_local",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
