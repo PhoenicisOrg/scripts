@@ -9,6 +9,10 @@ var installerImplementation = {
             .editor("Firefly Studios")
             .author("Zemogiter")
             .appId(297920)
+            .preInstall(function(wine,/* wizard*/) {
+                .wine.dotnet40;
+                .wine.vcrun2010;
+        })
             .go();
     }
 };
