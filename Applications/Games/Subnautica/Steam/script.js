@@ -17,7 +17,7 @@ var installerImplementation = {
             .author("Zemogiter")
             .applicationHomepage("https://unknownworlds.com/subnautica/")
             .wineDistribution("upstream")
-            .wineVersion(3.1)
+            .wineVersion(3.9)
             .wineArchitecture("amd64")
             .appId(264710)
             .preInstall(function (wine/*, wizard*/) {
@@ -32,7 +32,7 @@ var installerImplementation = {
 
             })
             .gameOverlay(false)
-            .executable("Steam.exe", ["-silent", "-applaunch", 264710, "-no-ces-sandbox", "-force-opengl"])
+            .executable("Steam.exe", ["-silent", "-applaunch", 264710, "-no-ces-sandbox"])
             .go();
     }
 };
