@@ -9,7 +9,7 @@ var installerImplementation = {
             .editor("Firefly Studios")
             .author("Zemogiter")
             .appId(297920)
-            .preInstall(function(wine,/* wizard*/) {
+            .preInstall(function(wine) {
                 wine.dotnet40();
                 wine.vcrun2010();
         })
