@@ -5,7 +5,9 @@
         "MACOSX",
         "LINUX"
     ],
-    "testingOperatingSystems" : [],
+    "testingOperatingSystems" : [
+        "LINUX"
+    ],
     "free"                    : false,
     "requiresPatch"           : false
 }
