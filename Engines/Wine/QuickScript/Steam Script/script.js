@@ -111,7 +111,6 @@ SteamScript.prototype.go = function () {
         .luna();
 
     wine.run(tempFile, [], null, false, true);
-    
     this.FixCertificateIssue(wine);
 
     // Steam installation has finished
