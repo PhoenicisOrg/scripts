@@ -70,7 +70,7 @@ SteamScript.prototype.downloadFinished = function (wine) {
     }
 };
 // Fix for the "content server unavaiable" error
-SteamScript.prototype.FixCertificateIssue = function (wine){
+SteamScript.prototype.fixCertificateIssue = function (wine){
     var steamConfigFile = wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Steam/config/config.vdf";
     var steamConfig = cat(steamConfigFile);
     var cmPos = steamConfig.indexOf("\"CM\"");
@@ -107,11 +107,11 @@ SteamScript.prototype.go = function () {
         .wizard(setupWizard)
         .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
         .luna();
-    
-    setupWizard.wait(tr("Please follow the steps of the Steam setup. After updating and loging in, shut down completly Steam client so the installation of \"{0}\" can continue.", this._name));
+
+    setupWizard.wait(tr("Please follow the steps of the Steam setup. Then, wait until Steam is updated, log in and finally close Steam completely so the installation of \"{0}\" can continue.", this._name));
 
     wine.run(tempFile, [], null, false, true);
-    this.FixCertificateIssue(wine);
+    this.fixCertificateIssue(wine);
 
     // Steam installation has finished
     setupWizard.wait(tr("Please wait ..."));
