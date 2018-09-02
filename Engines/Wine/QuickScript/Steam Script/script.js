@@ -69,6 +69,7 @@ SteamScript.prototype.downloadFinished = function (wine) {
         return false;
     }
 };
+
 // Fix for the "content server unavaiable" error
 SteamScript.prototype.fixCertificateIssue = function (wine){
     var steamConfigFile = wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Steam/config/config.vdf";
