@@ -70,7 +70,7 @@ SteamScript.prototype.downloadFinished = function (wine) {
     }
 };
 
-// Fix for the "content server unavaiable" error
+// Fix for the "content server unavaiable" error (Wine bug 45329)
 SteamScript.prototype.fixCertificateIssue = function (wine){
     var steamConfigFile = wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Steam/config/config.vdf";
     var steamConfig = cat(steamConfigFile);
