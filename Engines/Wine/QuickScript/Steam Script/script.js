@@ -123,7 +123,7 @@ SteamScript.prototype.go = function () {
     // back to generic wait (might have been changed in preInstall)
     setupWizard.wait(tr("Please wait ..."));
 
-    wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", ["steam://install/" + this._appId]);
+    wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", ["steam://install/" + this._appId], false);
 
     setupWizard.wait(tr("Please wait until Steam has finished the download ..."));
 
@@ -138,7 +138,7 @@ SteamScript.prototype.go = function () {
     }
 
     // close Steam
-    wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", "-shutdown");
+    wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", "-shutdown", true);
 
     // back to generic wait
     setupWizard.wait(tr("Please wait ..."));
