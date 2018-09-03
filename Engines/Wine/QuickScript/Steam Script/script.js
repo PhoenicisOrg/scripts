@@ -120,12 +120,8 @@ SteamScript.prototype.go = function () {
 
     this._preInstall(wine, setupWizard);
 
-    // back to generic wait (might have been changed in preInstall)
-    setupWizard.wait(tr("Please wait ..."));
-
-    wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", ["steam://install/" + this._appId]);
-
     setupWizard.wait(tr("Please wait until Steam has finished the download ..."));
+    wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", ["steam://install/" + this._appId]);
 
     // wait until download started
     while (!this.downloadStarted(wine)) {
