@@ -109,9 +109,10 @@ SteamScript.prototype.go = function () {
         .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
         .luna();
 
+    // Steam must be started once such that config.vdf is created (see fixCertificateIssue())
     setupWizard.wait(tr("Please follow the steps of the Steam setup. Then, wait until Steam is updated, log in and finally close Steam completely so the installation of \"{0}\" can continue.", this._name));
-
     wine.run(tempFile, [], null, false, true);
+
     this.fixCertificateIssue(wine);
 
     // Steam installation has finished
