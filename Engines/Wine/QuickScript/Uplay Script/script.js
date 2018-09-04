@@ -72,7 +72,7 @@ UplayScript.prototype.go = function () {
 
     this._createShortcut(wine.prefix());
 
-    wine.runInsidePrefix(wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/Uplay.exe", ["uplay://launch/" + this._appId + "/0"]);
+    wine.runInsidePrefix(wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/Uplay.exe", ["uplay://launch/" + this._appId + "/0"], true);
 
     // wait until download is finished
     setupWizard.wait(tr("Please wait until Uplay has finished the download ..."));

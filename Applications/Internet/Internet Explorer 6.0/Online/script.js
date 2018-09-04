@@ -52,7 +52,7 @@ var installerImplementation = {
         wine.overrideDLL()
             .set("native", ["inseng"])
             .do();
-        wine.runInsidePrefix("IE 6.0 Full/IE6SETUP.EXE");
+        wine.runInsidePrefix("IE 6.0 Full/IE6SETUP.EXE", [], true);
         wine.overrideDLL()
             .set("native,builtin", [
                 "inetcpl.cpl", "itircl", "itss", "jscript", "mlang",
