@@ -1,5 +1,5 @@
-include(["Engines", "Wine", "QuickScript", "LocalInstallerScript"]);
-include(["Utils", "Functions", "Filesystem", "Files"]);
+include(["engines", "wine", "quick_script", "local_installer_script"]);
+include(["utils", "functions", "net", "download"]);
 
 new LocalInstallerScript()
     .name("Lego Rock Raiders")
