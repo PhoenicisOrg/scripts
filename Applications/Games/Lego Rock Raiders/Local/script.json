@@ -1,5 +1,6 @@
 {
     "scriptName"                 : "Local",
+    "id"                         : "lego_rock_raiders",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
