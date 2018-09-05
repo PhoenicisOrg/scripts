@@ -1,3 +1,4 @@
+include(["engines", "wine", "quick_script", "quick_script"]);
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "engine", "object"]);
 include(["engines", "wine", "plugins", "override_dll"]);
@@ -17,8 +18,8 @@ var installerImplementation = {
 
         var wine = new Wine()
             .wizard(setupWizard)
-            .version(LATEST_STABLE_VERSION)
-            .prefix("InternetExplorer7", "upstream", "x86", LATEST_STABLE_VERSION)
+            .version(LATEST_DEVELOPMENT_VERSION)
+            .prefix("InternetExplorer7", "upstream", "x86", LATEST_DEVELOPMENT_VERSION)
             .create()
             .sandbox();
         wine.run("iexplore", ["-unregserver"], null, false, true);
