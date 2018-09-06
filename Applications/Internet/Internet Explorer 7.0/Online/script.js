@@ -18,8 +18,9 @@ var installerImplementation = {
 
         var wine = new Wine()
             .wizard(setupWizard)
-            .version(LATEST_DEVELOPMENT_VERSION)
-            .prefix("InternetExplorer7", "upstream", "x86", LATEST_DEVELOPMENT_VERSION)
+            .architecture("x86")
+            .version(LATEST_STABLE_VERSION)
+            .prefix("Internet Explorer 7.0")
             .create()
             .sandbox();
         wine.run("iexplore", ["-unregserver"], null, false, true);
