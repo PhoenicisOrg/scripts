@@ -9,6 +9,7 @@ var installerImplementation = {
             .applicationHomepage("http://www.spacecolonyhd.com/")
             .author("Zemogiter")
             .category("Games")
+            .installationArgs(["/q"])
             .executable("Space Colony.exe")
             .postInstall(function (wine, /*wizard*/){
                 var patch = new Resource()
