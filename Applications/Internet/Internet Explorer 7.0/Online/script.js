@@ -11,7 +11,7 @@ include(["engines", "wine", "verbs", "sandbox"]);
 var installerImplementation = {
     run: function () {
         var appsManager = Bean("repositoryManager");
-        var application = appsManager.getApplication(["Applications", "Internet", "Internet Explorer 7.0"]);
+        var application = appsManager.getApplication(["applications", "internet", "internet_explorer_7_0"]);
         var setupWizard = SetupWizard(InstallationType.APPS, "Internet Explorer 7.0", application.getMainMiniature());
 
         setupWizard.presentation("Internet Explorer 7.0", "Microsoft", "http://www.microsoft.com", "Quentin PÂRIS");
