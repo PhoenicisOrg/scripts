@@ -37,7 +37,11 @@ var installerImplementation = {
                 .archive(wine.prefixDirectory() + "/drive_c/RockRaidersCodec_490085.zip")
                 .to(wine.prefixDirectory() + "/drive_c/windows/system32/")
                 .extract(["-F", "ir50_32.dll"]);
-                .extract(["-F", "iv5setup.exe"]);
+                new Extract()
+                .wizard(wizard)
+                .archive(wine.prefixDirectory() + "/drive_c/RockRaidersCodec_490085.zip")
+                .to(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/")
+                .extract(["-F", "iv5setup.exe"])
             })
             .go();
     }
