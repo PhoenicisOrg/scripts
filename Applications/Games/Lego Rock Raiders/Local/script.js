@@ -1,5 +1,8 @@
 include(["engines", "wine", "quick_script", "local_installer_script"]);
 include(["utils", "functions", "net", "download"]);
+include(["utils", "functions", "net", "resource"]);
+include(["utils", "functions", "filesystem", "files"]);
+include(["engines", "wine", "verbs", "quartz"]);
 
 var installerImplementation = {
     run: function() {
@@ -9,6 +12,9 @@ var installerImplementation = {
             .author("Zemogiter")
             .category("Games")
             .executable("LegoRR.exe")
+            .preInstall(function(wine,wizard) {
+                wine.quartz();
+            })
             .postInstall(function(wine,wizard) {
                 var GameDir = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/LEGO Media/Games/Rock Raiders/d3drm.dll";
                 new Downloader()
@@ -18,6 +24,20 @@ var installerImplementation = {
                 .algorithm("MD5")
                 .to(GameDir)
                 .get();
+                var DiskCRoot = wine.prefixDirectory() + "drive_c/";
+                new Downloader()
+                .wizard(wizard)
+                .url("http://rrubucket.s3.amazonaws.com/RockRaidersCodec_490085.zip")
+                .checksum("991a343dc608c6a1914127a55f2e5b47")
+                .algorithm("MD5")
+                .to(DiskCRoot)
+                .get();
+                new Extract()
+                .wizard(wizard)
+                .archive(wine.prefixDirectory() + "/drive_c/RockRaidersCodec_490085.zip")
+                .to(wine.prefixDirectory() + "/drive_c/windows/system32/")
+                .extract(["-F", "ir50_32.dll"]);
+                .extract(["-F", "iv5setup.exe"]);
             })
             .go();
     }
