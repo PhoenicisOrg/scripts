@@ -1,7 +1,7 @@
 include(["engines", "wine", "quick_script", "local_installer_script"]);
 include(["utils", "functions", "net", "download"]);
 include(["utils", "functions", "net", "resource"]);
-include(["utils", "functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "extract"]);
 include(["engines", "wine", "verbs", "quartz"]);
 
 var installerImplementation = {
@@ -12,7 +12,7 @@ var installerImplementation = {
             .author("Zemogiter")
             .category("Games")
             .executable("LegoRR.exe")
-            .preInstall(function(wine,wizard) {
+            .preInstall(function(wine,/*wizard*/) {
                 wine.quartz();
             })
             .postInstall(function(wine,wizard) {
