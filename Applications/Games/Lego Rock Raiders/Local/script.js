@@ -13,7 +13,7 @@ var installerImplementation = {
             .author("Zemogiter")
             .category("Games")
             .executable("LegoRR.exe")
-            .preInstall(function(wine, wizard) {
+            .preInstall(function(wine) {
                 wine.quartz();
             })
             .postInstall(function(wine,wizard) {
