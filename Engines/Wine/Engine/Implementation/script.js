@@ -208,11 +208,13 @@ var engineImplementation = {
         var extensionFile = executable.split(".").pop();
 
         if (extensionFile == "msi") {
-            return this.run("msiexec", ["/i", executable].concat(args), captureOutput);
+            var msiArgs = org.apache.commons.lang.ArrayUtils.addAll(["/i", executable], args);
+            return this.run("msiexec", msiArgs, workingDir, captureOutput, wait, userData);
         }
 
         if (extensionFile == "bat") {
-            return this.run("start", ["/Unix", executable].concat(args), captureOutput);
+            var batArgs = org.apache.commons.lang.ArrayUtils.addAll(["/Unix", executable], args);
+            return this.run("start", batArgs, workingDir, captureOutput, wait, userData);
         }
 
         // do not run 64bit executable in 32bit prefix
