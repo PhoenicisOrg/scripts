@@ -25,7 +25,7 @@ var installerImplementation = {
                 .algorithm("MD5")
                 .to(GameDir)
                 .get();
-                var DiskCRoot = wine.prefixDirectory() + "drive_c/";
+                var DiskCRoot = wine.prefixDirectory() + "drive_c/RockRaidersCodec_490085.zip";
                 new Downloader()
                 .wizard(wizard)
                 .url("http://rrubucket.s3.amazonaws.com/RockRaidersCodec_490085.zip")
