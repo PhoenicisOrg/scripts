@@ -2,6 +2,7 @@ include(["engines", "wine", "quick_script", "local_installer_script"]);
 include(["utils", "functions", "net", "download"]);
 include(["utils", "functions", "net", "resource"]);
 include(["utils", "functions", "filesystem", "extract"]);
+include(["engines", "wine", "plugins", "regsvr32"]);
 include(["engines", "wine", "verbs", "quartz"]);
 
 var installerImplementation = {
@@ -12,7 +13,7 @@ var installerImplementation = {
             .author("Zemogiter")
             .category("Games")
             .executable("LegoRR.exe")
-            .preInstall(function(wine,/*wizard*/) {
+            .preInstall(function(wine, wizard) {
                 wine.quartz();
             })
             .postInstall(function(wine,wizard) {
@@ -35,13 +36,15 @@ var installerImplementation = {
                 new Extract()
                 .wizard(wizard)
                 .archive(wine.prefixDirectory() + "/drive_c/RockRaidersCodec_490085.zip")
-                .to(wine.prefixDirectory() + "/drive_c/windows/system32/")
-                .extract(["-F", "ir50_32.dll"]);
+                .to(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/")
+                .extract(["-F", "iv5setup.exe"])
+                wine.run("iv5setup.exe").wait();
                 new Extract()
                 .wizard(wizard)
                 .archive(wine.prefixDirectory() + "/drive_c/RockRaidersCodec_490085.zip")
-                .to(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/")
-                .extract(["-F", "iv5setup.exe"])
+                .to(wine.prefixDirectory() + "/drive_c/windows/system32/")
+                .extract(["-F", "ir50_32.dll"]);
+                this.regsvr32().install("ir50_32.dll");
             })
             .go();
     }
