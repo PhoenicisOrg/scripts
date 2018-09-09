@@ -20,15 +20,6 @@ var engineImplementation = {
     _wineWebServiceUrl : Bean("propertyReader").getProperty("webservice.wine.url"),
     _wizard: null,
     _workingContainer: "",
-    _wineServer: function (subCategory, version, parameter) {
-        var binary = this.getLocalDirectory(subCategory, version) + "/bin/wineserver";
-        var processBuilder = new java.lang.ProcessBuilder(Java.to([binary, parameter], "java.lang.String[]"));
-        var environment = processBuilder.environment();
-        environment.put("WINEPREFIX", this.getContainerDirectory(this.getWorkingContainer()));
-        processBuilder.inheritIO();
-        var wineServerProcess = processBuilder.start();
-        wineServerProcess.waitFor();
-    },
     getLocalDirectory: function (subCategory, version) {
         var parts = subCategory.split("-");
         var distribution = parts[0];
@@ -271,7 +262,6 @@ var engineImplementation = {
 
         if (wait) {
             process.waitFor();
-            this._wineServer(subCategory, version, "-w");
         }
 
         if (captureOutput) {
