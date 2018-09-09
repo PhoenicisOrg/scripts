@@ -2,6 +2,7 @@ include(["engines", "wine", "quick_script", "local_installer_script"]);
 include(["utils", "functions", "net", "download"]);
 include(["utils", "functions", "net", "resource"]);
 include(["utils", "functions", "filesystem", "extract"]);
+include(["utils", "functions", "filesystem", "files"]);
 include(["engines", "wine", "plugins", "regsvr32"]);
 include(["engines", "wine", "verbs", "quartz"]);
 
@@ -33,16 +34,16 @@ var installerImplementation = {
                 .algorithm("MD5")
                 .to(DiskCRoot)
                 .get();
-                new Extract()
+                new Extractor()
                 .wizard(wizard)
                 .archive(wine.prefixDirectory() + "/drive_c/RockRaidersCodec_490085.zip")
                 .to(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/")
                 .extract(["-F", "iv5setup.exe"])
-                wine.run("iv5setup.exe").wait();
-                new Extract()
+                wine.run(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/iv5setup.exe").wait();
+                new Extractor()
                 .wizard(wizard)
                 .archive(wine.prefixDirectory() + "/drive_c/RockRaidersCodec_490085.zip")
-                .to(wine.prefixDirectory() + "/drive_c/windows/system32/")
+                .to(wine.prefixDirectory() + "/drive_c/windows/system32/ir50_32.dll")
                 .extract(["-F", "ir50_32.dll"]);
                 this.regsvr32().install("ir50_32.dll");
             })
