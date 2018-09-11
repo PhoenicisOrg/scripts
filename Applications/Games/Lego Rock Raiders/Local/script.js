@@ -45,7 +45,7 @@ var installerImplementation = {
                 .archive(wine.prefixDirectory() + "/drive_c/RockRaidersCodec_490085.zip")
                 .to(wine.prefixDirectory() + "/drive_c/windows/system32/ir50_32.dll")
                 .extract(["-F", "ir50_32.dll"]);
-                this.regsvr32().install("ir50_32.dll");
+                wine.regsvr32().install("ir50_32.dll");
             })
             .go();
     }
