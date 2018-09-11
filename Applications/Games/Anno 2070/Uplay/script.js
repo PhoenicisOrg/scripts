@@ -16,7 +16,7 @@ var installerImplementation = {
             .wineVersion(3.10)
             .wineDistribution("staging")
             .appId(22)
-            .preInstall(function (wine, wizard){
+            .preInstall(function (wine){
                 wine.windowsVersion("win7");
                 wine.crypt32();
                 wine.corefonts();
