@@ -217,11 +217,47 @@ Wine.prototype.programFiles = function () {
 };
 
 /**
+* executes wineserver in current prefix
+* @param {string} wineserver parameter
+*/
+Wine.prototype.wineServer = function (parameter) {
+    var workingContainerDirectory = this._implementation.getContainerDirectory(this._implementation.getWorkingContainer());
+    if (fileExists(workingContainerDirectory)) {
+        var configFactory = Bean("compatibleConfigFileFormatFactory");
+        var containerConfiguration = configFactory.open(workingContainerDirectory + "/phoenicis.cfg");
+        var distribution = containerConfiguration.readValue("wineDistribution", "upstream");
+        var architecture = containerConfiguration.readValue("wineArchitecture", "x86");
+        var operatingSystem = this._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+        var subCategory = distribution + "-" + operatingSystem + "-" + architecture;
+        var version = containerConfiguration.readValue("wineVersion");
+        var binary = this._implementation.getLocalDirectory(subCategory, version) + "/bin/wineserver";
+        var processBuilder = new java.lang.ProcessBuilder(Java.to([binary, parameter], "java.lang.String[]"));
+        var environment = processBuilder.environment();
+        environment.put("WINEPREFIX", this._implementation.getContainerDirectory(this._implementation.getWorkingContainer()));
+        processBuilder.inheritIO();
+        var wineServerProcess = processBuilder.start();
+        wineServerProcess.waitFor();
+    }
+    else {
+        print("Wine prefix \"" + this.getWorkingContainer() + "\" does not exist!");
+    }
+};
+
+/**
+* wait until wineserver finishes
+* @returns {Wine}
+*/
+Wine.prototype.wait = function () {
+    this.wineServer("-w");
+    return this;
+};
+
+/**
 * kill wine server
 * @returns {Wine}
 */
 Wine.prototype.kill = function () {
-    this._wineServer("-k");
+    this.wineServer("-k");
     return this;
 };
 
