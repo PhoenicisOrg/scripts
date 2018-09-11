@@ -15,7 +15,7 @@ var installerImplementation = {
             .executable("Anno5.exe")
             .wineVersion(LATEST_DEVELOPMENT_VERSION)
             .wineDistribution("upstream")
-            .preInstall(function (wine, wizard){
+            .preInstall(function (wine){
                 wine.crypt32();
                 wine.UseGLSL("disabled");
             })
