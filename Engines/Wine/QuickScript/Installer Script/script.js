@@ -37,9 +37,8 @@ InstallerScript.prototype.go = function () {
         var shownArchitectures = ["x86 (recommended)", "amd64"];
         var selectedArchitecture = setupWizard.menu(tr("Please select the wine architecture."), shownArchitectures, "x86 (recommended)");
         this._wineArchitecture = architectures[selectedArchitecture.index];
-        wine.architecture(this._wineArchitecture); // do this here to show correct values for distribution
 
-        var distributions = wine.availableDistributions();
+        var distributions = wine.availableDistributions(this._wineArchitecture);
         var shownDistributions = [];
         for (var distributionIdx in distributions) {
             if (distributions[distributionIdx] == "upstream") {
@@ -51,9 +50,10 @@ InstallerScript.prototype.go = function () {
         }
         var selectedDistribution = setupWizard.menu(tr("Please select the wine distribution."), shownDistributions, "upstream (recommended)");
         this._wineDistribution = distributions[selectedDistribution.index];
-        wine.distribution(this._wineDistribution); // do this here to show correct values for version
 
-        var versions = wine.availableVersions();
+        var operatingSystemFetcher = Bean("operatingSystemFetcher");
+        var operatingSystem = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+        var versions = wine.availableVersions(this._wineDistribution + "-" + operatingSystem + "-" + this._wineArchitecture);
         var shownVersions = [];
         for (var versionIdx in versions) {
             if (versions[versionIdx] == LATEST_STABLE_VERSION) {

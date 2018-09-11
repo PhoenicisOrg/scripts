@@ -10,6 +10,7 @@ matrix:
       before_install: npm install -g json-align
       script:
         - find . -name "*.json" -print0 | xargs -0 json-align -i
+        - git diff
         - diffs=$(git diff --name-only | wc -l); if [ $diffs != 0 ]; then exit 1; fi
       after_failure:
         - echo "Some JSON files are not aligned. Please run json-align."

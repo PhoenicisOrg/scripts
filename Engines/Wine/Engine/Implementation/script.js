@@ -20,15 +20,6 @@ var engineImplementation = {
     _wineWebServiceUrl : Bean("propertyReader").getProperty("webservice.wine.url"),
     _wizard: null,
     _workingContainer: "",
-    _wineServer: function (subCategory, version, parameter) {
-        var binary = this.getLocalDirectory(subCategory, version) + "/bin/wineserver";
-        var processBuilder = new java.lang.ProcessBuilder(Java.to([binary, parameter], "java.lang.String[]"));
-        var environment = processBuilder.environment();
-        environment.put("WINEPREFIX", this.getContainerDirectory(this.getWorkingContainer()));
-        processBuilder.inheritIO();
-        var wineServerProcess = processBuilder.start();
-        wineServerProcess.waitFor();
-    },
     getLocalDirectory: function (subCategory, version) {
         var parts = subCategory.split("-");
         var distribution = parts[0];
@@ -208,11 +199,13 @@ var engineImplementation = {
         var extensionFile = executable.split(".").pop();
 
         if (extensionFile == "msi") {
-            return this.run("msiexec", ["/i", executable].concat(args), captureOutput);
+            var msiArgs = org.apache.commons.lang.ArrayUtils.addAll(["/i", executable], args);
+            return this.run("msiexec", msiArgs, workingDir, captureOutput, wait, userData);
         }
 
         if (extensionFile == "bat") {
-            return this.run("start", ["/Unix", executable].concat(args), captureOutput);
+            var batArgs = org.apache.commons.lang.ArrayUtils.addAll(["/Unix", executable], args);
+            return this.run("start", batArgs, workingDir, captureOutput, wait, userData);
         }
 
         // do not run 64bit executable in 32bit prefix
@@ -269,7 +262,6 @@ var engineImplementation = {
 
         if (wait) {
             process.waitFor();
-            this._wineServer(subCategory, version, "-w");
         }
 
         if (captureOutput) {
