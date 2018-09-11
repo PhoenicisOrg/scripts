@@ -1,0 +1,14 @@
+{
+    "scriptName"                 : "Uplay",
+    "id"                         : "anno_2070_uplay",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "free"          : false,
+    "requiresPatch" : false
+}
