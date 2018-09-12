@@ -39,7 +39,8 @@ var installerImplementation = {
                 .archive(wine.prefixDirectory() + "/drive_c/RockRaidersCodec_490085.zip")
                 .to(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/")
                 .extract(["-F", "iv5setup.exe"])
-                wine.run(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/iv5setup.exe").wait();
+                wine.run(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/iv5setup.exe");
+                wine.wait();
                 new Extractor()
                 .wizard(wizard)
                 .archive(wine.prefixDirectory() + "/drive_c/RockRaidersCodec_490085.zip")
