@@ -60,9 +60,9 @@ var engineImplementation = {
 
             var that = this;
             wineJson.forEach(function (distribution) {
-                if (distribution.name == subCategory) {
+                if (distribution.name === subCategory) {
                     distribution.packages.forEach(function (winePackage) {
-                        if (winePackage.version == version) {
+                        if (winePackage.version === version) {
                             that._installWinePackage(wizard, winePackage, localDirectory);
                             that._installGecko(wizard, winePackage, localDirectory);
                             that._installMono(wizard, winePackage, localDirectory);
