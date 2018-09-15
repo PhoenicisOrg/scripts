@@ -10,6 +10,8 @@ var installerImplementation = {
             .author("Zemogiter")
             .category("Games")
             .installationArgs(["/q"])
+            .wineDistribution("upstream")
+            .wineVersion("3.16")
             .executable("Space Colony.exe")
             .postInstall(function (wine, /*wizard*/){
                 var patch = new Resource()
