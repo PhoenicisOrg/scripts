@@ -14,7 +14,7 @@ var installerImplementation = {
             .wineVersion("3.16")
             .wineDistribution("upstream")
             .appId(22)
-            .preInstall(function (wine, wizard){
+            .preInstall(function (wine, /*wizard*/){
                 wine.windowsVersion("win7");
                 wine.corefonts();
                 wine.UseGLSL("disabled");
