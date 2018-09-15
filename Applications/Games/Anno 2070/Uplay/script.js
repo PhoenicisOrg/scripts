@@ -1,8 +1,6 @@
 include(["engines", "wine", "quick_script", "uplay_script"]);
-include(["engines", "wine", "plugins", "glsl"]);
-include(["engines", "wine", "plugins", "override_dll"]);
 include(["engines", "wine", "verbs", "corefonts"]);
-include(["engines", "wine", "plugins", "windows_version"]);
+include(["engines", "wine", "plugins", "virtual_desktop"]);
 
 var installerImplementation = {
     run: function () {
@@ -14,12 +12,10 @@ var installerImplementation = {
             .wineVersion("3.16")
             .wineDistribution("upstream")
             .appId(22)
-            .preInstall(function (wine, /*wizard*/){
-                wine.windowsVersion("win7");
+            .preInstall(function (wine, wizard){
+                var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+                wine.setVirtualDesktop(screenSize.width, screenSize.height);
                 wine.corefonts();
-                wine.UseGLSL("disabled");
-                wine.overrideDLL()
-                    .set("native,builtin", ["xaudio2_7"])
             })
             .go();
     }
