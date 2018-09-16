@@ -17,19 +17,17 @@ var installerImplementation = {
             .executable("Anno5.exe")
             .wineVersion("3.16")
             .wineDistribution("upstream")
-            .preInstall(function (wine, /*wizard*/){
+            .preInstall(function (wine, wizard){
                 var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
                 wine.setVirtualDesktop(screenSize.width, screenSize.height);
                 wine.crypt32();
                 wine.corefonts();
                 wine.d3dx10();
             })
-            .postInstall(function (wine, /*wizard*/){
-                var TxtLocation = wine.prefixDirectory() + "/drive_c/Program Files/Ubisoft/Related Designs/Anno 2070/update/update.txt";
-                var fso = new ActiveXObject("Scripting.FileSystemObject");
-                var a = fso.CreateTextFile(TxtLocation, true);
-                a.WriteLine("http://static11.cdn.ubi.com/anno2070/anno2070_2012_08_17_15_13 3bf6d9e4ab1bd7c399723af6491b2e21 Version: v2.00.7780");
-                a.Close();
+            .postInstall(function (wine, wizard){
+                var UpdateFile = wine.prefixDirectory() + "/drive_c/Program Files/Ubisoft/Related Designs/Anno 2070/update/update.txt";
+                touch(UpdateFile);
+                writeToFile(UpdateFile, "http://static11.cdn.ubi.com/anno2070/anno2070_2012_08_17_15_13 3bf6d9e4ab1bd7c399723af6491b2e21 Version: v2.00.7780");
                 this.overrideDLL()
                     .set("native, builtin", ["winhttp"])
                     .do();
