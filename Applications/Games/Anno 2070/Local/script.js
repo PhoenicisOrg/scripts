@@ -17,14 +17,14 @@ var installerImplementation = {
             .executable("Anno5.exe")
             .wineVersion("3.16")
             .wineDistribution("upstream")
-            .preInstall(function (wine, wizard){
+            .preInstall(function (wine, /*wizard*/){
                 var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
                 wine.setVirtualDesktop(screenSize.width, screenSize.height);
                 wine.crypt32();
                 wine.corefonts();
                 wine.d3dx10();
             })
-            .postInstall(function (wine, wizard){
+            .postInstall(function (wine, /*wizard*/){
                 var TxtLocation = wine.prefixDirectory() + "/drive_c/Program Files/Ubisoft/Related Designs/Anno 2070/update/update.txt";
                 var fso = new ActiveXObject("Scripting.FileSystemObject");
                 var a = fso.CreateTextFile(TxtLocation, true);
