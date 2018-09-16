@@ -1,8 +1,10 @@
 include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["engines", "wine", "plugins", "glsl"]);
+include(["engines", "wine", "plugins", "virtual_desktop"]);
 include(["engines", "wine", "plugins", "override_dll"]);
+include(["engines", "wine", "verbs", "corefonts"]);
 include(["engines", "wine", "verbs", "crypt32"]);
-//include(["utils", "functions", "net", "resource"]);
+include(["engines", "wine", "verbs", "d3dx10"]);
+include(["utils", "functions", "filesystem", "files"]);
 
 var installerImplementation = {
     run: function () {
@@ -13,11 +15,24 @@ var installerImplementation = {
             .author("Zemogiter")
             .category("Games")
             .executable("Anno5.exe")
-            .wineVersion(LATEST_DEVELOPMENT_VERSION)
+            .wineVersion("3.16")
             .wineDistribution("upstream")
-            .preInstall(function (wine){
+            .preInstall(function (wine, wizard){
+                var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+                wine.setVirtualDesktop(screenSize.width, screenSize.height);
                 wine.crypt32();
-                wine.UseGLSL("disabled");
+                wine.corefonts();
+                wine.d3dx10();
+            })
+            .postInstall(function (wine, wizard){
+                var TxtLocation = wine.prefixDirectory() + "/drive_c/Program Files/Ubisoft/Related Designs/Anno 2070/update/update.txt";
+                var fso = new ActiveXObject("Scripting.FileSystemObject");
+                var a = fso.CreateTextFile(TxtLocation, true);
+                a.WriteLine("http://static11.cdn.ubi.com/anno2070/anno2070_2012_08_17_15_13 3bf6d9e4ab1bd7c399723af6491b2e21 Version: v2.00.7780");
+                a.Close();
+                this.overrideDLL()
+                    .set("native, builtin", ["winhttp"])
+                    .do();
             })
             .go();
     }
