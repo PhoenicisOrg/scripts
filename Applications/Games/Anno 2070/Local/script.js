@@ -31,8 +31,8 @@ var installerImplementation = {
                 var UpdateFile = wine.prefixDirectory() + "/drive_c/Program Files/Ubisoft/Related Designs/ANNO 2070/update/update.txt";
                 touch(UpdateFile);
                 writeToFile(UpdateFile, "http://static11.cdn.ubi.com/anno2070/anno2070_2012_08_17_15_13 3bf6d9e4ab1bd7c399723af6491b2e21 Version: v2.00.7780");
-                var perms = java.nio.file.attribute.PosixFilePermissions.fromString("r--r--r--");
-                java.nio.file.attribute.PosixFilePermissions(UpdateFile, perms);
+                var permissions = java.nio.file.attribute.PosixFilePermissions.fromString("r--r--r--");
+                java.nio.file.Files.setPosixFilePermissions(UpdateFile, permissions);
 
             })
             .go();
