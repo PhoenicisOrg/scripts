@@ -13,7 +13,10 @@ var installerImplementation = {
             .wineDistribution("upstream")
             .wineVersion("3.16")
             .executable("Space Colony.exe")
-            .postInstall(function (wine, /*wizard*/){
+            .preInstall(function (wine, wizard) {
+                wizard.message(tr("Once the progress bar closes, an installation complete window should appear but in case it does not you should kill the process which name consist of just one dot."));
+            })
+            .postInstall(function (wine, wizard){
                 var patch = new Resource()
                     .wizard(this._wizard)
                     .url("https://d1ztm8591kdhlc.cloudfront.net/hdpatches/Space_Colony_HD_Update.exe")
