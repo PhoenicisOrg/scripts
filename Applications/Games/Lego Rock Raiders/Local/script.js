@@ -4,7 +4,6 @@ include(["utils", "functions", "net", "resource"]);
 include(["utils", "functions", "filesystem", "extract"]);
 include(["utils", "functions", "filesystem", "files"]);
 include(["engines", "wine", "plugins", "regsvr32"]);
-include(["engines", "wine", "verbs", "quartz"]);
 
 var installerImplementation = {
     run: function() {
@@ -14,37 +13,34 @@ var installerImplementation = {
             .author("Zemogiter")
             .category("Games")
             .executable("LegoRR.exe")
-            .preInstall(function(wine) {
-                wine.quartz();
-            })
             .postInstall(function(wine,wizard) {
-                var GameDir = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/LEGO Media/Games/Rock Raiders/d3drm.dll";
+                var dllDir = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/LEGO Media/Games/Rock Raiders/d3drm.dll";
                 new Downloader()
                 .wizard(wizard)
                 .url("http://s2.pliki.info/5709/d3drm.dll")
                 .checksum("dde9e3b8c264957ae0a017d371293123")
                 .algorithm("MD5")
-                .to(GameDir)
+                .to(dllDir)
                 .get();
-                var DiskCRoot = wine.prefixDirectory() + "drive_c/RockRaidersCodec_490085.zip";
+                var rootDir = wine.prefixDirectory() + "drive_c/RockRaidersCodec_490085.zip";
                 new Downloader()
                 .wizard(wizard)
                 .url("http://rrubucket.s3.amazonaws.com/RockRaidersCodec_490085.zip")
                 .checksum("991a343dc608c6a1914127a55f2e5b47")
                 .algorithm("MD5")
-                .to(DiskCRoot)
+                .to(rootDir)
                 .get();
                 new Extractor()
                 .wizard(wizard)
                 .archive(wine.prefixDirectory() + "/drive_c/RockRaidersCodec_490085.zip")
                 .to(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/")
-                .extract(["-F", "iv5setup.exe"])
+                .extract(["-F", "iv5setup.exe"]);
                 wine.run(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/iv5setup.exe");
                 wine.wait();
                 new Extractor()
                 .wizard(wizard)
                 .archive(wine.prefixDirectory() + "/drive_c/RockRaidersCodec_490085.zip")
-                .to(wine.prefixDirectory() + "/drive_c/windows/system32/ir50_32.dll")
+                .to(wine.prefixDirectory() + "/drive_c/windows/system32/")
                 .extract(["-F", "ir50_32.dll"]);
                 wine.regsvr32().install("ir50_32.dll");
             })
