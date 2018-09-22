@@ -27,6 +27,7 @@ var installerImplementation = {
             .set("native,builtin", [
                 "iexplore.exe", "itircl", "itss", "jscript", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon", "xmllite"
             ])
+            .set("native", ["iexplore.exe"])
             .set("builtin", ["updspapi"])
             .do();
 
