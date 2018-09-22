@@ -3,7 +3,7 @@
     "id"                         : "local",
     "compatibleOperatingSystems" : [
         "LINUX",
-        "MACOS"
+        "MACOSX"
     ],
     "testingOperatingSystems" : [],
     "free"                    : false,
