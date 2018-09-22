@@ -25,7 +25,7 @@ var installerImplementation = {
         wine.run("iexplore", ["-unregserver"], null, false, true);
         wine.overrideDLL()
             .set("native,builtin", [
-                "iexplore.exe", "itircl", "itss", "jscript", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon", "xmllite"
+                "itircl", "itss", "jscript", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon", "xmllite"
             ])
             .set("native", ["iexplore.exe"])
             .set("builtin", ["updspapi"])
