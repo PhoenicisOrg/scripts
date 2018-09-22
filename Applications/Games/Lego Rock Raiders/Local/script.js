@@ -14,21 +14,21 @@ var installerImplementation = {
             .category("Games")
             .executable("LegoRR.exe")
             .postInstall(function(wine,wizard) {
-                var dllDir = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/LEGO Media/Games/Rock Raiders/d3drm.dll";
+                var dllLocation = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/LEGO Media/Games/Rock Raiders/d3drm.dll";
                 new Downloader()
                 .wizard(wizard)
                 .url("http://s2.pliki.info/5709/d3drm.dll")
                 .checksum("dde9e3b8c264957ae0a017d371293123")
                 .algorithm("MD5")
-                .to(dllDir)
+                .to(dllLocation)
                 .get();
-                var rootDir = wine.prefixDirectory() + "drive_c/RockRaidersCodec_490085.zip";
+                var zipLocation = wine.prefixDirectory() + "drive_c/RockRaidersCodec_490085.zip";
                 new Downloader()
                 .wizard(wizard)
                 .url("http://rrubucket.s3.amazonaws.com/RockRaidersCodec_490085.zip")
                 .checksum("991a343dc608c6a1914127a55f2e5b47")
                 .algorithm("MD5")
-                .to(rootDir)
+                .to(zipLocation)
                 .get();
                 new Extractor()
                 .wizard(wizard)
