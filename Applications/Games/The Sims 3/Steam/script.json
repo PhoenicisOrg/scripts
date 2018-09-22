@@ -3,7 +3,7 @@
     "id"                         : "steam",
     "compatibleOperatingSystems" : [
         "LINUX",
-        "MACOS"
+        "MACOSX"
     ],
     "testingOperatingSystems" : [],
     "free"                    : false,
