@@ -19,7 +19,7 @@ var installerImplementation = {
 
         var wine = new Wine()
             .wizard(setupWizard)
-            .prefix("Internet Explorer 7.0", "upstream", "x86", LATEST_STABLE_VERSION)
+            .prefix("Internet Explorer 7.0", "upstream", "x86", "3.0.2")
             .windowsVersion("winxp", "sp2")
             .create()
             .sandbox();
@@ -198,7 +198,8 @@ var installerImplementation = {
             .name(ie7installer)
             .get();
 
-        wine.run(setupFile).wait();
+        wine.run(setupFile, [], null, false, true);
+        wine.wait();
 
         var librairiesToRegister = ["actxprxy.dll", "browseui.dll", "browsewm.dll", "cdfview.dll", "ddraw.dll",
                                     "dispex.dll", "dsound.dll", "iedkcs32.dll", "iepeers.dll", "iesetup.dll", "imgutil.dll",
