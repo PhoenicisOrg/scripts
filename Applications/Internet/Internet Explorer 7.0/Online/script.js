@@ -19,8 +19,7 @@ var installerImplementation = {
 
         var wine = new Wine()
             .wizard(setupWizard)
-            .prefix("Internet Explorer 7.0", "upstream", "x86", LATEST_STABLE_VERSION)
-            .windowsVersion("winxp", "sp3")
+            .prefix("InternetExplorer7", "upstream", "x86", LATEST_STABLE_VERSION)
             .create()
             .sandbox();
         wine.run("iexplore", ["-unregserver"], null, false, true);
@@ -30,6 +29,7 @@ var installerImplementation = {
             ])
             .set("builtin", ["updspapi"])
             .do();
+
         // delete existing IE, otherwise installer will abort with "newer IE installed"
         remove(wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Internet Explorer/iexplore.exe");
         ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"]
@@ -199,6 +199,8 @@ var installerImplementation = {
             .name(ie7installer)
             .get();
 
+        wine.windowsVersion("winxp", "sp3");
+        wine.wait();
         wine.run(setupFile, [], null, false, true);
         wine.wait();
 
@@ -228,7 +230,7 @@ var installerImplementation = {
             .name("Internet Explorer 7.0")
             .prefix("InternetExplorer7")
             .search("iexplore.exe")
-            .miniature(["Applications", "Internet", "Internet Explorer 7.0"])
+            .miniature(["applications", "internet", "internet_explorer_7_0"])
             .create();
 
         setupWizard.close();
