@@ -368,7 +368,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line224">line 224</a>
+        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line269">line 269</a>
     </li></ul></dd>
     
 
@@ -537,7 +537,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line244">line 244</a>
+        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line289">line 289</a>
     </li></ul></dd>
     
 
@@ -952,7 +952,7 @@ if no parameters are given, the Wine version of the current prefix is used
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line192">line 192</a>
+        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line201">line 201</a>
     </li></ul></dd>
     
 
@@ -2163,7 +2163,7 @@ if no parameters are given, the Wine version of the current prefix is used
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line287">line 287</a>
+        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line332">line 332</a>
     </li></ul></dd>
     
 
@@ -2271,7 +2271,7 @@ if no parameters are given, the Wine version of the current prefix is used
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line214">line 214</a>
+        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line259">line 259</a>
     </li></ul></dd>
     
 
@@ -3622,7 +3622,7 @@ if no parameters are given, the Wine version of the current prefix is used
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line201">line 201</a>
+        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line210">line 210</a>
     </li></ul></dd>
     
 
@@ -4413,7 +4413,7 @@ if no parameters are given, the Wine version of the current prefix is used
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line148">line 148</a>
+        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line157">line 157</a>
     </li></ul></dd>
     
 
@@ -4469,7 +4469,7 @@ if no parameters are given, the Wine version of the current prefix is used
     
 
     
-    <h4 class="name" id="runInsidePrefix"><span class="type-signature"></span>runInsidePrefix<span class="signature">(executable, args)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="runInsidePrefix"><span class="type-signature"></span>runInsidePrefix<span class="signature">(executable, args<span class="signature-attributes">opt</span>, wait<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
     
 
     
@@ -4497,7 +4497,11 @@ if no parameters are given, the Wine version of the current prefix is used
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -4514,10 +4518,27 @@ if no parameters are given, the Wine version of the current prefix is used
 
             <td class="type">
             
+                
+<span class="param-type">string</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last"></td>
@@ -4532,10 +4553,70 @@ if no parameters are given, the Wine version of the current prefix is used
 
             <td class="type">
             
+                
+<span class="param-type">array</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    []
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>wait</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
             
 
             <td class="description last"></td>
@@ -4579,7 +4660,7 @@ if no parameters are given, the Wine version of the current prefix is used
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line134">line 134</a>
+        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line135">line 135</a>
     </li></ul></dd>
     
 
@@ -5551,7 +5632,7 @@ if no parameters are given, the Wine version of the current prefix is used
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line264">line 264</a>
+        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line309">line 309</a>
     </li></ul></dd>
     
 
@@ -5655,7 +5736,7 @@ if no parameters are given, the Wine version of the current prefix is used
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line276">line 276</a>
+        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line321">line 321</a>
     </li></ul></dd>
     
 
@@ -5920,7 +6001,7 @@ if no parameters are given, the Wine version of the current prefix is used
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line175">line 175</a>
+        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line184">line 184</a>
     </li></ul></dd>
     
 
@@ -7209,6 +7290,110 @@ if no parameters are given, the Wine version of the current prefix is used
     
 
     
+    <h4 class="name" id="wait"><span class="type-signature"></span>wait<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Wine.html">Wine</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    wait until wineserver finishes
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line250">line 250</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Wine.html">Wine</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="windowsVersion"><span class="type-signature"></span>windowsVersion<span class="signature">(version, servicePack<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string|<a href="Wine.html">Wine</a>}</span></h4>
     
 
@@ -7562,6 +7747,141 @@ if no parameters are given, the Wine version of the current prefix is used
 </dl>
 
     
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="wineServer"><span class="type-signature"></span>wineServer<span class="signature">(wineserver)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    executes wineserver in current prefix
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>wineserver</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">parameter</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Engines_Wine_Engine_Object_script.js.html">Engines/Wine/Engine/Object/script.js</a>, <a href="Engines_Wine_Engine_Object_script.js.html#line223">line 223</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
