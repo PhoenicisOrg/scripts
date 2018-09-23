@@ -4,9 +4,7 @@ include(["engines", "wine", "plugins", "virtual_desktop"]);
 include(["engines", "wine", "verbs", "vcrun2013"]);
 include(["engines", "wine", "verbs", "d3dx11"]);
 include(["engines", "wine", "verbs", "corefonts"]);
-//include(["utils", "functions", "apps", "resources"]);
-//include(["utils", "functions", "filesystem", "files"]);
-//include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "apps", "resources"]);
 
 var installerImplementation = {
     run: function () {
