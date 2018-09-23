@@ -18,7 +18,7 @@ var installerImplementation = {
                 wine.dotnet40();
                 wine.mfc42();
                 wine.tahoma();
-                wine.vcrun2010
+                wine.vcrun2010();
             })
             .gameOverlay(false)
             .executable("Steam.exe", ["-silent", "-applaunch", 47890, "-no-ces-sandbox", "xgamma -gamma 1"])
