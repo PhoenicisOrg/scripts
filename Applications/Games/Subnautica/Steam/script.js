@@ -16,7 +16,7 @@ var installerImplementation = {
             .author("Zemogiter")
             .applicationHomepage("https://unknownworlds.com/subnautica/")
             .wineDistribution("upstream")
-            .wineVersion(3.16)
+            .wineVersion("3.16")
             .wineArchitecture("amd64")
             .appId(264710)
             .preInstall(function (wine/*, wizard*/) {
