@@ -51,7 +51,7 @@ Wine.prototype.d3dx11 = function () {
             .to(this.prefixDirectory() + "/drive_c/d3dx11/")
             .extract(["-L", "-F", "*d3dx11*x64*"]);
 
-        var filesToExtractx64 = ["Aug2009_d3dx11_42_x86.cab","Jun2010_d3dx11_43_x86.cab", "Aug2009_d3dx11_42_x64.cab"," Jun2010_d3dx11_43_x64.cab"];
+        var filesToExtractx64 = ["Aug2009_d3dx11_42_x86.cab", "Jun2010_d3dx11_43_x86.cab", "Aug2009_d3dx11_42_x64.cab", " Jun2010_d3dx11_43_x64.cab"];
         extractDirectXtoSystemDirectory(progressBar, filesToExtractx64, that.system64directory(), "*.dll");
     }
 
