@@ -12,14 +12,14 @@ var installerImplementation = {
             .applicationHomepage("http://www.thesims3.com/")
             .author("Zemogiter")
             .category("Games")
-            .executable("Sims3Launcher.exe", ["xgamma -gamma 1"])
+            .executable("Sims3Launcher.exe", "xgamma -gamma 1")
             .wineVersion("3.15")
             .wineDistribution("upstream")
             .preInstall(function (wine){
                 wine.dotnet40();
                 wine.mfc42();
                 wine.tahoma();
-                wine.vcrun2010
+                wine.vcrun2010();
             })
             .go();
     }
