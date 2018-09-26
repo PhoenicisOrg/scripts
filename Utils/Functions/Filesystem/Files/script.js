@@ -169,6 +169,7 @@ Checksum.prototype.get = function () {
         }
     });
 }
+
 /**
 * sets file permissions
 * @param {string} filePath file path
