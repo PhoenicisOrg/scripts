@@ -21,6 +21,8 @@ rules:
     - 2
     - 4
     - {SwitchCase: 1, ArrayExpression: first}
+  camelcase:
+    - {properties: always}
 
 globals:
   include: false

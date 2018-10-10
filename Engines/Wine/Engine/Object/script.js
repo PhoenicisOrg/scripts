@@ -5,11 +5,11 @@ include(["utils", "functions", "net", "download"]);
 include(["utils", "functions", "net", "resource"]);
 
 /* exported LATEST_STABLE_VERSION */
-var LATEST_STABLE_VERSION = "3.0";
+var LATEST_STABLE_VERSION = "3.0.3";
 /* exported LATEST_DEVELOPMENT_VERSION */
-var LATEST_DEVELOPMENT_VERSION = "3.8";
+var LATEST_DEVELOPMENT_VERSION = "3.17";
 /* exported LATEST_STAGING_VERSION */
-var LATEST_STAGING_VERSION = "2.21";
+var LATEST_STAGING_VERSION = "3.2";
 
 
 /**
@@ -128,11 +128,20 @@ Wine.prototype.binPath = function (subCategory, version) {
 
 /**
 *
-* @param executable
-* @param args
+* @param {string} executable
+* @param {array} [args = []]
+* @param {boolean} [wait=false]
 */
-Wine.prototype.runInsidePrefix = function (executable, args) {
-    return this.run(this.prefixDirectory() + "/drive_c/" + executable, args, this.prefixDirectory(), false, false);
+Wine.prototype.runInsidePrefix = function (executable, args, wait) {
+    if (!args) {
+        args = [];
+    } else if (typeof args === 'string' || args instanceof String) {
+        args = [args];
+    }
+    if (!wait) {
+        wait = false;
+    }
+    return this.run(this.prefixDirectory() + "/drive_c/" + executable, args, this.prefixDirectory(), false, wait);
 };
 
 /**
@@ -152,7 +161,7 @@ Wine.prototype.run = function (executable, args, workingDirectory, captureOutput
         args = [args];
     }
     if (!workingDirectory) {
-        workingDirectory = this._implementation.getContainerDirectory(this._implementation.getWorkingContainer());
+        workingDirectory = this._implementation.getContainerDirectory(this._implementation.getWorkingContainer()) + "/drive_c";
     }
     if (!captureOutput) {
         captureOutput = false;
@@ -178,7 +187,7 @@ Wine.prototype.uninstall = function (application) {
     var re = new RegExp("(.*)\\|\\|\\|.*" + appEscaped);
     var uuid = list.match(re);
     if (uuid) {
-        this._implementation.getWizard.wait(tr("Please wait while {0} is uninstalled ...", application));
+        this._implementation.getWizard().wait(tr("Please wait while {0} is uninstalled ...", application));
         this.run("uninstaller", ["--remove", uuid[1]], this.prefixDirectory(), false, true);
     } else {
         print(tr("Could not uninstall {0}!", application));
@@ -190,7 +199,7 @@ Wine.prototype.uninstall = function (application) {
 * runs "wineboot"
 */
 Wine.prototype.create = function () {
-    this.run("wineboot", [], this.prefixDirectory(), false, false);
+    this.run("wineboot", [], this.prefixDirectory(), false, true);
     return this;
 };
 
@@ -208,11 +217,47 @@ Wine.prototype.programFiles = function () {
 };
 
 /**
+* executes wineserver in current prefix
+* @param {string} wineserver parameter
+*/
+Wine.prototype.wineServer = function (parameter) {
+    var workingContainerDirectory = this._implementation.getContainerDirectory(this._implementation.getWorkingContainer());
+    if (fileExists(workingContainerDirectory)) {
+        var configFactory = Bean("compatibleConfigFileFormatFactory");
+        var containerConfiguration = configFactory.open(workingContainerDirectory + "/phoenicis.cfg");
+        var distribution = containerConfiguration.readValue("wineDistribution", "upstream");
+        var architecture = containerConfiguration.readValue("wineArchitecture", "x86");
+        var operatingSystem = this._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+        var subCategory = distribution + "-" + operatingSystem + "-" + architecture;
+        var version = containerConfiguration.readValue("wineVersion");
+        var binary = this._implementation.getLocalDirectory(subCategory, version) + "/bin/wineserver";
+        var processBuilder = new java.lang.ProcessBuilder(Java.to([binary, parameter], "java.lang.String[]"));
+        var environment = processBuilder.environment();
+        environment.put("WINEPREFIX", this._implementation.getContainerDirectory(this._implementation.getWorkingContainer()));
+        processBuilder.inheritIO();
+        var wineServerProcess = processBuilder.start();
+        wineServerProcess.waitFor();
+    }
+    else {
+        print("Wine prefix \"" + this.getWorkingContainer() + "\" does not exist!");
+    }
+};
+
+/**
+* wait until wineserver finishes
+* @returns {Wine}
+*/
+Wine.prototype.wait = function () {
+    this.wineServer("-w");
+    return this;
+};
+
+/**
 * kill wine server
 * @returns {Wine}
 */
 Wine.prototype.kill = function () {
-    this._wineServer("-k");
+    this.wineServer("-k");
     return this;
 };
 
