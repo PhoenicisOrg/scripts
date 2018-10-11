@@ -39,12 +39,12 @@ Wine.prototype.DXVK = function () {
     print("NOTE: you need a driver that supports Vulkan enough to run DXVK");
     print("NOTE: wine version should be greater or equal to 3.5");
 
-    var dxvkVersion = "0.53";
+    var dxvkVersion = "0.81";
 
     var setupFile = new Resource()
         .wizard(this.wizard())
         .url("https://github.com/doitsujin/dxvk/releases/download/v" + dxvkVersion + "/dxvk-" + dxvkVersion + ".tar.gz")
-        .checksum("df448f1a7b842773f4d826a86eeba44c937187b0")
+        .checksum("76af765dfeebc6ba7922ad32968babfa92e15fb1")
         .name("dxvk-" + dxvkVersion + ".tar.gz")
         .get();
 
@@ -59,18 +59,27 @@ Wine.prototype.DXVK = function () {
     if (this.architecture() == "x86") {
         cp(dxvkTmpDir + "/x32/d3d11.dll", this.system32directory());
         cp(dxvkTmpDir + "/x32/dxgi.dll", this.system32directory());
+        cp(dxvkTmpDir + "/x32/d3d10core.dll", this.system32directory());
+        cp(dxvkTmpDir + "/x32/d3d10.dll", this.system32directory());
+        cp(dxvkTmpDir + "/x32/d3d10_1.dll", this.system32directory());
     }
 
     if (this.architecture() == "amd64") {
         cp(dxvkTmpDir + "/x32/d3d11.dll", this.system64directory());
         cp(dxvkTmpDir + "/x32/dxgi.dll", this.system64directory());
+        cp(dxvkTmpDir + "/x32/d3d10core.dll", this.system64directory());
+        cp(dxvkTmpDir + "/x32/d3d10.dll", this.system64directory());
+        cp(dxvkTmpDir + "/x32/d3d10_1.dll", this.system64directory());
 
         cp(dxvkTmpDir + "/x64/d3d11.dll", this.system32directory());
         cp(dxvkTmpDir + "/x64/dxgi.dll", this.system32directory());
+        cp(dxvkTmpDir + "/x64/d3d10core.dll", this.system32directory());
+        cp(dxvkTmpDir + "/x64/d3d10.dll", this.system32directory());
+        cp(dxvkTmpDir + "/x64/d3d10_1.dll", this.system32directory());
     }
 
     this.overrideDLL()
-        .set("native", ["d3d11", "dxgi"])
+        .set("native", ["d3d11", "dxgi", "d3d10", "d3d10_1", "d3d10core"])
         .do();
 
     remove(this.prefixDirectory() + "/TMP/");
