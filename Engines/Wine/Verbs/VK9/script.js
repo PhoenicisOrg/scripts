@@ -26,16 +26,13 @@ Wine.prototype.VK9 = function () {
         .to(this.prefixDirectory() + "/TMP32/")
         .extract();
 
-    if (this.architecture() == "x86")
-    {
-        cp(this.prefixDirectory() + "/TMP32/d3d9.dll", this.system32directory());
-        
-        remove(this.prefixDirectory() + "/TMP32/");
-    }
+    cp(this.prefixDirectory() + "/TMP32/d3d9.dll", this.system32directory());
+
+    remove(this.prefixDirectory() + "/TMP32/");
     
     if (this.architecture() == "amd64")
     {
-        var setupFile32 = new Resource()
+        var setupFile64 = new Resource()
             .wizard(this.wizard())
             .url("https://github.com/disks86/VK9/releases/download/" + vk9Version +"/"+ vk9Version + "-bin-x86_64-Release.zip")
             .checksum("4f50beda158d50b9b0bb8d293838686e7225de18")
@@ -44,14 +41,12 @@ Wine.prototype.VK9 = function () {
 
         new Extractor()
             .wizard(this.wizard())
-            .archive(setupFile32)
+            .archive(setupFile64)
             .to(this.prefixDirectory() + "/TMP64/")
             .extract();
-        
-        cp(this.prefixDirectory() + "/TMP32/d3d9.dll", this.system64directory());
-        cp(this.prefixDirectory() + "/TMP64/d3d9.dll", this.system32directory());
-        
-        remove(this.prefixDirectory() + "/TMP32/");
+      
+        cp(this.prefixDirectory() + "/TMP64/d3d9.dll", this.system64directory());
+
         remove(this.prefixDirectory() + "/TMP64/");
     }
 
