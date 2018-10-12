@@ -29,7 +29,7 @@ Wine.prototype.VK9 = function () {
     cp(this.prefixDirectory() + "/TMP32/d3d9.dll", this.system32directory());
 
     remove(this.prefixDirectory() + "/TMP32/");
-    
+
     if (this.architecture() == "amd64")
     {
         var setupFile64 = new Resource()
