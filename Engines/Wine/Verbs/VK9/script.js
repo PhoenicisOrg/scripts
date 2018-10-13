@@ -32,7 +32,7 @@ Wine.prototype.VK9 = function (vk9Version) {
 
     remove(this.prefixDirectory() + "/TMP32/");
 
-    if (this.architecture() == "amd64")
+    if (this.architecture() === "amd64")
     {
         var setupFile64 = new Resource()
             .wizard(this.wizard())
