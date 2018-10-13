@@ -13,7 +13,7 @@ Wine.prototype.VK9 = function (vk9Version) {
     print("NOTE: wine version should be greater or equal to 3.5");
     print("NOTE: works from 0.28.0");
 
-    if (typeof vk9Version != ='string')
+    if (typeof vk9Version !== 'string')
         vk9Version = "0.28.1";
 
     var setupFile32 = new Resource()
