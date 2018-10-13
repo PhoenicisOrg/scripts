@@ -5,7 +5,7 @@ include(["utils", "functions", "filesystem", "files"]);
 
 /**
 * Setup VK9-> https://github.com/disks86/VK9
-* @param {String} VK9 version to install
+* @param {String} vk9Version VK9 version to install
 * @returns {Wine} Wine object
 */
 Wine.prototype.VK9 = function (vk9Version) {
