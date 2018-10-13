@@ -11,7 +11,7 @@ include(["utils", "functions", "filesystem", "files"]);
 Wine.prototype.VK9 = function (vk9Version) {
     print("NOTE: you need a driver that supports Vulkan enough to run VK9");
     print("NOTE: wine version should be greater or equal to 3.5");
-    print("NOTE: work from 0.28.0");
+    print("NOTE: works from 0.28.0");
 
     if (typeof vk9Version === 'undefined')
         vk9Version = "0.28.1";
