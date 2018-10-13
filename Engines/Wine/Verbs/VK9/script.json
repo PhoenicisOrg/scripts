@@ -5,6 +5,6 @@
         "LINUX"
     ],
     "testingOperatingSystems" : [],
-    "free"          : true,
-    "requiresPatch" : false
+    "free"                    : true,
+    "requiresPatch"           : false
 }
