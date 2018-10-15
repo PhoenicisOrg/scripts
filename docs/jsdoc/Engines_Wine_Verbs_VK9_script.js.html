@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Engines/Wine/Verbs/vulkanSDK/script.js</title>
+    <title>JSDoc: Source: Engines/Wine/Verbs/VK9/script.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Engines/Wine/Verbs/vulkanSDK/script.js</h1>
+    <h1 class="page-title">Source: Engines/Wine/Verbs/VK9/script.js</h1>
 
     
 
@@ -27,61 +27,63 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "regedit"]);
+include(["engines", "wine", "plugins", "override_dll"]);
 include(["utils", "functions", "net", "resource"]);
 include(["utils", "functions", "filesystem", "files"]);
 
 /**
-* All the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
-* -> https://github.com/roderickc/wine-vulkan
+* Setup VK9-> https://github.com/disks86/VK9
+* @param {String} vk9Version VK9 version to install
 * @returns {Wine} Wine object
 */
-Wine.prototype.vulkanSDK = function () {
-    print("NOTE: you need a graphic driver that supports Vulkan to run winevulkan");
-    print("NOTE: Vulkan works in wine from version 3.3 (if compiled with vulkan support)");
+Wine.prototype.VK9 = function (vk9Version) {
+    print("NOTE: you need a driver that supports Vulkan enough to run VK9");
+    print("NOTE: wine version should be greater or equal to 3.5");
+    print("NOTE: works from 0.28.0");
 
-    var sdkVersion = "1.1.73.0";
+    if (typeof vk9Version !== 'string')
+        vk9Version = "0.28.1";
 
-    var setupFile = new Resource()
+    var setupFile32 = new Resource()
         .wizard(this.wizard())
-        .url("https://sdk.lunarg.com/sdk/download/" + sdkVersion +"/windows/VulkanSDK-" + sdkVersion + "-Installer.exe")
-        .checksum("ac34f732818c409bcb283b5c6100b373ab6a2404")
-        .name("VulkanSDK-" + sdkVersion + "-Installer.exe")
+        .url("https://github.com/disks86/VK9/releases/download/" + vk9Version +"/"+ vk9Version + "-bin-x86-Release.zip")
+        .name(vk9Version + "-bin-x86-Realease.zip")
         .get();
 
-    this.run(setupFile, "/S");
+    new Extractor()
+        .wizard(this.wizard())
+        .archive(setupFile32)
+        .to(this.prefixDirectory() + "/TMP32/")
+        .extract();
 
-    var pathVulkanJSON = this.prefixDirectory() + "drive_c/windows/winevulkan.json"
-    var contentVulkanJSON = '{\n'                                                                     +
-                            '	"file_format_version": "1.0.0",\n'				       +
-                            '	"ICD": {\n'							       +
-                            '		"library_path": "c:\\windows\\system32\\winevulkan.dll",\n'    +
-                            '		"api_version": "' + sdkVersion +'"\n'			       +
-                            '	}\n'								       +
-                            '}'
+    cp(this.prefixDirectory() + "/TMP32/" + vk9Version + "-bin-x86-Release/" + "d3d9.dll", this.system32directory());
 
-    writeToFile(pathVulkanJSON, contentVulkanJSON);
+    remove(this.prefixDirectory() + "/TMP32/");
 
-    var regeditFileContent32 =
-	"REGEDIT4\n"                                              	+
-        "\n"                                                      	+
-        "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers\\]\n" 	+
-        "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000" ;
+    if (this.architecture() === "amd64")
+    {
+        var setupFile64 = new Resource()
+            .wizard(this.wizard())
+            .url("https://github.com/disks86/VK9/releases/download/" + vk9Version +"/"+ vk9Version + "-bin-x86_64-Release.zip")
+            .name(vk9Version + "-bin-x86_64-Realease.zip")
+            .get();
 
-    this.regedit().patch(regeditFileContent32);
+        new Extractor()
+            .wizard(this.wizard())
+            .archive(setupFile64)
+            .to(this.prefixDirectory() + "/TMP64/")
+            .extract();
 
-    if (this.architecture() == "amd64") {
-        var regeditFileContent64 =
-		"REGEDIT4\n"                                             	           +
-                "\n"                                                            	   +
-                "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Khronos\\Vulkan\\Drivers\\]n" +
-		"\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000" ;
+        cp(this.prefixDirectory() + "/TMP64/" + vk9Version + "-bin-x86_64-Release/" + "d3d9.dll", this.system64directory());
 
-        this.regedit().patch(regeditFileContent64);
+        remove(this.prefixDirectory() + "/TMP64/");
     }
 
-    return this;
+    this.overrideDLL()
+        .set("native", ["d3d9"])
+        .do();
 
+    return this;
 }
 </code></pre>
         </article>

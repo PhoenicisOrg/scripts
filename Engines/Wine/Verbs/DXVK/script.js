@@ -37,21 +37,22 @@ Wine.prototype.DXVK = function (dxvkVersion) {
 
     var dxvkTmpDir = this.prefixDirectory() + "/TMP/dxvk-" + dxvkVersion;
 
-    if (this.architecture() == "x86") {
-        cp(dxvkTmpDir + "/x32/d3d11.dll", this.system32directory());
-        cp(dxvkTmpDir + "/x32/dxgi.dll", this.system32directory());
-    }
+    cp(dxvkTmpDir + "/x32/d3d11.dll", this.system32directory());
+    cp(dxvkTmpDir + "/x32/dxgi.dll", this.system32directory());
+    cp(dxvkTmpDir + "/x32/d3d10core.dll", this.system32directory());
+    cp(dxvkTmpDir + "/x32/d3d10.dll", this.system32directory());
+    cp(dxvkTmpDir + "/x32/d3d10_1.dll", this.system32directory());
 
     if (this.architecture() == "amd64") {
-        cp(dxvkTmpDir + "/x32/d3d11.dll", this.system64directory());
-        cp(dxvkTmpDir + "/x32/dxgi.dll", this.system64directory());
-
-        cp(dxvkTmpDir + "/x64/d3d11.dll", this.system32directory());
-        cp(dxvkTmpDir + "/x64/dxgi.dll", this.system32directory());
+        cp(dxvkTmpDir + "/x64/d3d11.dll", this.system64directory());
+        cp(dxvkTmpDir + "/x64/dxgi.dll", this.system64directory());
+        cp(dxvkTmpDir + "/x64/d3d10core.dll", this.system64directory());
+        cp(dxvkTmpDir + "/x64/d3d10.dll", this.system64directory());
+        cp(dxvkTmpDir + "/x64/d3d10_1.dll", this.system64directory());
     }
 
     this.overrideDLL()
-        .set("native", ["d3d11", "dxgi"])
+        .set("native", ["d3d11", "dxgi", "d3d10", "d3d10_1", "d3d10core"])
         .do();
 
     remove(this.prefixDirectory() + "/TMP/");

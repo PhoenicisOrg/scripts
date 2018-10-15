@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Engines/Wine/Verbs/dotnet45/script.js</title>
+    <title>JSDoc: Source: Engines/Wine/Verbs/d3dx11/script.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Engines/Wine/Verbs/dotnet45/script.js</h1>
+    <h1 class="page-title">Source: Engines/Wine/Verbs/d3dx11/script.js</h1>
 
     
 
@@ -28,58 +28,64 @@
         <article>
             <pre class="prettyprint source linenums"><code>include(["engines", "wine", "engine", "object"]);
 include(["engines", "wine", "plugins", "override_dll"]);
-include(["engines", "wine", "plugins", "windows_version"]);
 include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "verbs", "luna"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["engines", "wine", "verbs", "dotnet40"]);
 
 /**
-* Verb to install .NET 4.5
+* Verb to install D3DX11
 * @returns {Wine} Wine object
 */
-Wine.prototype.dotnet45 = function () {
+Wine.prototype.d3dx11 = function () {
+    var that = this;
 
-    if (this.architecture() == "amd64") {
-        throw "{0} cannot be installed in a 64bit wine prefix!".format("dotnet45");
-    }
+    var extractDirectXtoSystemDirectory = function (progressBar, filesToExtract, destination, pattern) {
+        var numberOfExtractedFiles = 0;
+        filesToExtract.forEach(function (cabFile) {
+            print(tr("Extracting {0} ...", cabFile));
+            progressBar.setText(tr("Extracting {0} ...", "DirectX 11"));
+            progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
 
-    var OSVersion = this.windowsVersion();
+            new CabExtract()
+                .archive(that.prefixDirectory() + "/drive_c/d3dx11/" + cabFile)
+                .to(destination)
+                .extract(["-L", "-F", pattern]);
+
+            numberOfExtractedFiles++;
+        });
+    };
 
     var setupFile = new Resource()
         .wizard(this.wizard())
-        .url("http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe")
-        .checksum("b2ff712ca0947040ca0b8e9bd7436a3c3524bb5d")
-        .name("dotnetfx45_full_x86_x64.exe")
+        .url("http://download.microsoft.com/download/8/4/A/84A35BF1-DAFE-4AE8-82AF-AD2AE20B6B14/directx_Jun2010_redist.exe")
+        .checksum("7c1fc2021cf57fed3c25c9b03cd0c31a")
+        .algorithm("MD5")
+        .name("directx_Jun2010_redist.exe")
         .get();
 
-    this.uninstall("Mono");
+    var progressBar = this.wizard().progressBar(tr("Please wait ..."));
+    progressBar.setText(tr("Extracting {0} ...", "DirectX 11"));
+    progressBar.setProgressPercentage(0.);
 
-    this.wizard().wait(tr("Please wait ..."));
-    this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"], null, false, true);
+    new CabExtract()
+        .archive(setupFile)
+        .to(this.prefixDirectory() + "/drive_c/d3dx11/")
+        .extract(["-L", "-F", "*d3dx11*x86*"]);
 
-    remove(this.system32directory() + "/mscoree.dll");
+    var filesToExtractx86 = ["Aug2009_d3dx11_42_x86.cab", "Jun2010_d3dx11_43_x86.cab"];
+    extractDirectXtoSystemDirectory(progressBar, filesToExtractx86, that.system32directory(), "*.dll");
 
-    this.dotnet40();
-    this.windowsVersion("win7");
+    if (this.architecture() == "amd64") {
+        new CabExtract()
+            .archive(setupFile)
+            .to(this.prefixDirectory() + "/drive_c/d3dx11/")
+            .extract(["-L", "-F", "*d3dx11*x64*"]);
 
-    this.overrideDLL()
-        .set("builtin", ["fusion"])
-        .do();
-
-    this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.5"));
-    this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
-
-    this.overrideDLL()
-        .set("native", ["mscoree"])
-        .do();
-
-    this.windowsVersion(OSVersion);
-
-    if (OSVersion != "win2003") {
-        print(tr("{0} applications can have issues when windows version is not set to \"win2003\"", ".NET 4.5"));
+        var filesToExtractx64 = ["Aug2009_d3dx11_42_x86.cab", "Jun2010_d3dx11_43_x86.cab", "Aug2009_d3dx11_42_x64.cab", " Jun2010_d3dx11_43_x64.cab"];
+        extractDirectXtoSystemDirectory(progressBar, filesToExtractx64, that.system64directory(), "*.dll");
     }
 
+    this.overrideDLL()
+        .set("native, builtin", ["d3dx11_42", "d3dx11_43"])
+        .do();
     return this;
 };
 </code></pre>
