@@ -5,19 +5,23 @@ include(["utils", "functions", "filesystem", "files"]);
 
 /**
 * Setup DXVK-> https://github.com/doitsujin/dxvk/
+* @param dxvkVersion DXVK version to download
 * @returns {Wine} Wine object
 */
-Wine.prototype.DXVK = function () {
+Wine.prototype.DXVK = function (dxvkVersion) {
     print("NOTE: you need a driver that supports Vulkan enough to run DXVK");
     print("NOTE: wine version should be greater or equal to 3.10");
+
+    if(typeof dxvkVersion === 'undefined')
+    {
+        var releaseFile = new Resource()
+            .wizard(this.wizard())
+            .url("https://raw.githubusercontent.com/doitsujin/dxvk/master/RELEASE")
+            .name("RELEASE.txt")
+            .get();
     
-    var releaseFile = new Resource()
-        .wizzard(this.wizzard())
-        .url("https://github.com/doitsujin/dxvk/blob/master/RELEASE")
-        .name("RELEASE.txt")
-        .get();
-    
-    var dxvkVersion = function cat(this.prefixDirectory() + "RELEASE.txt");
+        dxvkVersion = cat(releaseFile).replaceAll("\\n", "");
+    }
 
     var setupFile = new Resource()
         .wizard(this.wizard())
