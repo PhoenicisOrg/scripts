@@ -255,7 +255,7 @@ var engineImplementation = {
         
         if(this._operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin") {
             environment.put("DYLD_FALLBACK_LIBRARY_PATH", ldPath);
-            environment.put("FREETYPE_PROPERTIES", "truetype:interpreter-version=3");
+            environment.put("FREETYPE_PROPERTIES", "truetype:interpreter-version=35");
         }
         
         if (!captureOutput) {
