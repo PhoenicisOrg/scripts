@@ -10,7 +10,7 @@ var installerImplementation = {
             .editor("Firefly Studios")
             .author("Zemogiter")
             .wineDistribution("upstream")
-            .wineVersion("3.15")
+            .wineVersion(LATEST_DEVELOPMENT_VERSION)
             .appId(297920)
             .preInstall(function (wine) {
                 wine.vcrun2010();
