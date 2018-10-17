@@ -46,6 +46,7 @@ globals:
   tr: false
   writeToFile: false
   createTempFile: false
+  chmod: false
   # classes
   AppResource: false
   CabExtract: false
