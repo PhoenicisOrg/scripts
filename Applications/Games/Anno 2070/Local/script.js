@@ -28,10 +28,10 @@ var installerImplementation = {
                     .do();
             })
             .postInstall(function (wine){
-                var UpdateFile = wine.prefixDirectory() + "/drive_c/Ubisoft/Related Designs/ANNO 2070/update/version.txt";
-                touch(UpdateFile);
-                writeToFile(UpdateFile, "http://static11.cdn.ubi.com/anno2070/anno2070_2012_08_17_15_13\n3bf6d9e4ab1bd7c399723af6491b2e21\nVersion: v2.00.7780");
-                chmod(UpdateFile, "r--r--r--");
+                var versionFile = wine.prefixDirectory() + "/drive_c/Ubisoft/Related Designs/ANNO 2070/update/version.txt";
+                touch(VersionFile);
+                writeToFile(VersionFile, "http://static11.cdn.ubi.com/anno2070/anno2070_2012_08_17_15_13\n3bf6d9e4ab1bd7c399723af6491b2e21\nVersion: v2.00.7780");
+                chmod(VersionFile, "r--r--r--");
             })
             .go();
     }
