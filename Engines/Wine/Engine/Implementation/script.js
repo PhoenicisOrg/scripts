@@ -253,11 +253,11 @@ var engineImplementation = {
         }
         environment.put("LD_LIBRARY_PATH", ldPath);
         
-        if(this._operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin") {
+        if (this._operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin") {
             environment.put("DYLD_FALLBACK_LIBRARY_PATH", ldPath);
             environment.put("FREETYPE_PROPERTIES", "truetype:interpreter-version=35");
         }
-        
+
         if (!captureOutput) {
             processBuilder.redirectErrorStream(true);
             processBuilder.redirectOutput(new java.io.File(workingContainerDirectory + "/wine.log"));
