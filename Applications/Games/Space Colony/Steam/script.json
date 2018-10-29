@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Steam",
+    "id"                         : "space_colony_steam",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}
