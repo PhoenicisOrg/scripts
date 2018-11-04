@@ -91,7 +91,7 @@ SteamScript.prototype.fixCertificateIssue = function (wine){
 SteamScript.prototype.go = function () {
     // default application homepage if not specified
     if (!this._applicationHomepage) {
-        this._applicationHomepage = "http://store.steampowered.com/app/" + this._appId;
+        this._applicationHomepage = "https://store.steampowered.com/app/" + this._appId;
     }
 
     // default executable args if not specified
@@ -107,7 +107,7 @@ SteamScript.prototype.go = function () {
 
     new Downloader()
         .wizard(setupWizard)
-        .url("http://media.steampowered.com/client/installer/SteamSetup.exe")
+        .url("https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe")
         .checksum("4b1b85ec2499a4ce07c89609b256923a4fc479e5")
         .to(tempFile)
         .get();
