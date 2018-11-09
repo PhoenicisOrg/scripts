@@ -11,7 +11,7 @@ Wine.prototype.mspatcha = function () {
     //Inspired from winetricks mspatcha, but with a link Phoenicis can understand
     var setupFile = new Resource()
         .wizard(this.wizard())
-        .url("https://web.archive.org/web/20060319175746/http://download.microsoft.com/download/e/6/a/e6a04295-d2a8-40d0-a0c5-241bfecd095e/w2ksp4_en.exe")
+        .url("https://web.archive.org/web/20060319175746if_/http://download.microsoft.com/download/e/6/a/e6a04295-d2a8-40d0-a0c5-241bfecd095e/w2ksp4_en.exe")
         .checksum("fadea6d94a014b039839fecc6e6a11c20afa4fa8")
         .name("W2ksp4_EN.exe")
         .get();
