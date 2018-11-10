@@ -12,7 +12,7 @@ var installerImplementation = {
             .wineVersion("3.20")
             .wineDistribution("upstream")
             .appId(22)
-            .preInstall(function (wine, /*wizard*/){
+            .preInstall(function (wine, wizard){
                 wizard.message(tr("Please install winbind before installing Uplay."));
                 var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
                 wine.setVirtualDesktop(screenSize.width, screenSize.height);
