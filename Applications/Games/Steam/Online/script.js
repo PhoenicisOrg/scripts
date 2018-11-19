@@ -1,4 +1,5 @@
 include(["engines", "wine", "quick_script", "online_installer_script"]);
+include(["utils", "functions", "filesystem", "files"]);
 
 var installerImplementation = {
     run: function () {
@@ -11,6 +12,7 @@ var installerImplementation = {
             .checksum("4b1b85ec2499a4ce07c89609b256923a4fc479e5")
             .category("Games")
             .executable("Steam.exe", ["-no-cef-sandbox"])
+            .wineVersion(LATEST_DEVELOPMENT_VERSION) // fixes "content server unavailable" error (Wine bug 45329), TODO: remove when fix is available in Wine stable
             .go();
     }
 };
