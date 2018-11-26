@@ -7,7 +7,7 @@ include(["utils", "functions", "net", "resource"]);
 /* exported LATEST_STABLE_VERSION */
 var LATEST_STABLE_VERSION = "3.0.3";
 /* exported LATEST_DEVELOPMENT_VERSION */
-var LATEST_DEVELOPMENT_VERSION = "3.18";
+var LATEST_DEVELOPMENT_VERSION = "3.21";
 /* exported LATEST_STAGING_VERSION */
 var LATEST_STAGING_VERSION = "3.2";
 
