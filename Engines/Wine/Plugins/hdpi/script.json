@@ -2,7 +2,7 @@
     "scriptName"                 : "hdpi",
     "id"                         : "hdpi",
     "compatibleOperatingSystems" : [
-        "LINUX"
+        "MACOSX"
     ],
     "testingOperatingSystems" : [],
     "free"                    : true,
