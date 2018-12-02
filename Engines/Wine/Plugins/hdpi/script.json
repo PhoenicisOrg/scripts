@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "hdpi",
+    "id"                         : "hdpi",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
