@@ -22,8 +22,8 @@ var settingImplementation = {
     },
     setOption: function (container, optionIndex) {
         new Wine()
-          .prefix(container)
-          .hdpi(1 == optionIndex);
+            .prefix(container)
+            .hdpi(1 == optionIndex);
     }
 };
 
