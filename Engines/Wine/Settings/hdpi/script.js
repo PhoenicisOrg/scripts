@@ -2,7 +2,7 @@ include(["engines", "wine", "engine", "object"]);
 include(["engines", "wine", "plugins", "hdpi"]);
 
 /**
- * setting to enable/disable GLSL
+ * setting to enable/disable Retina
 */
 var settingImplementation = {
     _options: [tr("Disabled"), tr("Enabled")],
