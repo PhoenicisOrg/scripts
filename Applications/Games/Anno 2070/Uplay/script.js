@@ -9,11 +9,10 @@ var installerImplementation = {
             .editor("Ubisoft")
             .applicationHomepage("http://anno-game.ubi.com/anno-2070/en-US/")
             .author("Zemogiter")
-            .wineVersion("3.20")
+            .wineVersion("3.18")
             .wineDistribution("upstream")
             .appId(22)
             .preInstall(function (wine, wizard){
-                wizard.message(tr("Please install winbind before installing Uplay."));
                 var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
                 wine.setVirtualDesktop(screenSize.width, screenSize.height);
                 wine.corefonts();
