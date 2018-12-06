@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["engines", "wine", "verbs", "dotnet40"]);
+include(["engines", "wine", "verbs", "dotnet45"]);
 include(["engines", "wine", "verbs", "vcrun2010"]);
 include(["engines", "wine", "verbs", "tahoma"]);
 include(["engines", "wine", "verbs", "mfc42"]);
@@ -12,11 +12,11 @@ var installerImplementation = {
             .applicationHomepage("http://www.thesims3.com/")
             .author("Zemogiter")
             .category("Games")
-            .executable("Sims3Launcher.exe", "xgamma -gamma 1")
-            .wineVersion("3.15")
+            .executable("Sims3Launcher.exe", ["xgamma -gamma 1"])
+            .wineVersion("3.18")
             .wineDistribution("upstream")
             .preInstall(function (wine){
-                wine.dotnet40();
+                wine.dotnet45();
                 wine.mfc42();
                 wine.tahoma();
                 wine.vcrun2010();
