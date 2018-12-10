@@ -17,7 +17,7 @@ var installerImplementation = {
                 wizard.message(tr("Please ensure you have the latest drivers (415.22 minimum for NVIDIA and mesa 19 for AMD) or else this game will not work."));
                 wine.dotnet461();
                 wine.vcrun2015();
-                wine.dxvk();
+                wine.DXVK();
             })
             .go();
     }
