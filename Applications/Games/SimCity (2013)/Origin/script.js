@@ -5,7 +5,7 @@ var installerImplementation = {
         new OnlineInstallerScript()
             .name("SimCity (2013)")
             .editor("Electronic Arts")
-            .applicationHomepage("http://www.origin.com/")
+            .applicationHomepage("https://www.ea.com/en-gb/games/simcity")
             .author("ZemoScripter")
             .url("https://origin-a.akamaihd.net/Origin-Client-Download/origin/live/OriginThinSetup.exe")
             .category("Games")
