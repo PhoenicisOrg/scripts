@@ -53,7 +53,7 @@ OriginScript.prototype.go = function () {
     // wait until Origin and Wine are closed
     wine.wait();
 
-    // Steam installation has finished
+    // Origin installation has finished
     setupWizard.wait(tr("Please wait ..."));
 
     this._preInstall(wine, setupWizard);
