@@ -61,7 +61,7 @@ OriginScript.prototype.go = function () {
     // back to generic wait (might have been changed in preInstall)
     setupWizard.wait(tr("Please wait ..."));
 
-    wine.runInsidePrefix(wine.programFiles() + "/Origin/Origin.exe", ["origin://launchgame/" + this._appId], false);
+    wine.runInsidePrefix(wine.programFiles() + "/Origin/Origin.exe", ["origin://install/" + this._appId], false);
 
     setupWizard.wait(tr("Please wait until Origin has finished the download ..."));
 
