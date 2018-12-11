@@ -27,7 +27,7 @@ OriginScript.prototype.go = function () {
 
     // default executable args if not specified
     if (!this._executableArgs) {
-        this._executableArgs = ["-applaunch", this._appId];
+        this._executableArgs = ["origin://launchgame/" + this._appId];
     }
 
     var setupWizard = SetupWizard(InstallationType.APPS, this._name, this.miniature());
