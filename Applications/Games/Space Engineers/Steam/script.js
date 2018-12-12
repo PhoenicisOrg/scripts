@@ -15,6 +15,7 @@ var installerImplementation = {
             .wineDistribution("staging")
             .wineArchitecture("amd64")
             .preInstall(function (wine, wizard) {
+                wizard.message(tr("This script will not work on Mac OS until MoltenVK is merged into Wine."));
                 wizard.message(tr("Please ensure you have the latest drivers (415.22 minimum for NVIDIA and mesa 19 for AMD) or else this game will not work."));
                 wine.dotnet461();
                 wine.vcrun2015();
