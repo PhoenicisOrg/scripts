@@ -29,7 +29,6 @@ var installerImplementation = {
                 wine.setVirtualDesktop(screenSize.width, screenSize.height);
                 var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("fix.reg");
                 wine.regedit().patch(registrySettings);
-
             })
             .gameOverlay(false)
             .go();
