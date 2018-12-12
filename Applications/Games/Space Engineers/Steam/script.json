@@ -2,11 +2,9 @@
     "scriptName"                 : "Steam",
     "id"                         : "steam",
     "compatibleOperatingSystems" : [
-        "MACOSX",
         "LINUX"
     ],
     "testingOperatingSystems" : [
-        "MACOSX",
         "LINUX"
     ],
     "free"          : false,
