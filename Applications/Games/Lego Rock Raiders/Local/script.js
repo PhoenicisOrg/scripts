@@ -4,6 +4,7 @@ include(["utils", "functions", "net", "resource"]);
 include(["utils", "functions", "filesystem", "extract"]);
 include(["utils", "functions", "filesystem", "files"]);
 include(["engines", "wine", "plugins", "regsvr32"]);
+include(["engines", "wine", "plugins", "virtual_desktop"]);
 
 var installerImplementation = {
     run: function() {
@@ -13,7 +14,13 @@ var installerImplementation = {
             .author("Zemogiter")
             .category("Games")
             .executable("LegoRR.exe")
-            .postInstall(function(wine,wizard) {
+            .wineVersion("2.22")
+            .wineDistribution("upstream")
+            .preInstall(function (wine /*, wizard*/){
+                var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+                wine.setVirtualDesktop(screenSize.width, screenSize.height);
+            })
+            .postInstall(function (wine,wizard){
                 var dllLocation = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/LEGO Media/Games/Rock Raiders/d3drm.dll";
                 new Downloader()
                 .wizard(wizard)
