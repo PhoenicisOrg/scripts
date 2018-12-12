@@ -1,8 +1,6 @@
 include(["engines", "wine", "quick_script", "quick_script"]);
 include(["utils", "functions", "net", "download"]);
 include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["utils", "functions", "filesystem", "extract"]);
 include(["utils", "functions", "filesystem", "files"]);
 include(["engines", "wine", "verbs", "luna"]);
 
@@ -48,6 +46,7 @@ OriginScript.prototype.go = function () {
         .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
         .luna();
 
+    setupWizard.message(tr("Origin does not have an install command so once it auto-launches after installation you ahve to manually download the game. Then shut down Origin."));
     wine.run(tempFile, [], null, false, true);
 
     // wait until Origin and Wine are closed
@@ -61,20 +60,10 @@ OriginScript.prototype.go = function () {
     // back to generic wait (might have been changed in preInstall)
     setupWizard.wait(tr("Please wait ..."));
 
-    wine.runInsidePrefix(wine.programFiles() + "/Origin/Origin.exe", ["origin://install/" + this._appId], false);
-
-    setupWizard.wait(tr("Please wait until Origin has finished the download ..."));
-
-    // close Origin
-    wine.runInsidePrefix(wine.programFiles() + "/Origin/Origin.exe", "-shutdown", true);
-
-    // back to generic wait
-    setupWizard.wait(tr("Please wait ..."));
+    this._postInstall(wine, setupWizard);
 
     // create shortcut after installation (if executable is specified, it does not exist earlier)
     this._createShortcut(wine.prefix());
-
-    this._postInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in postInstall)
     setupWizard.wait(tr("Please wait ..."));
