@@ -1,5 +1,4 @@
 include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["engines", "wine", "verbs", "corefonts"]);
 
 var installerImplementation = {
     run: function () {
@@ -12,9 +11,6 @@ var installerImplementation = {
             .checksum("fc20ea01bd98db48b2ff886709e95a4520cfd28c")
             .category("Development")
             .executable("Notepad++.exe")
-            .preInstall(function (wine, wizard) {
-                wine.corefonts();
-            })
             .go();
     }
 };
