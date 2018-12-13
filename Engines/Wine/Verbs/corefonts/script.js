@@ -144,7 +144,7 @@ var verbImplementation = {
     install: function (container/*, version*/) {
         var wine = new Wine();
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "corefonts");
+        var wizard = SetupWizard(InstallationType.VERBS, "corefonts", java.util.Optional.empty());
         installCorefonts(wine, wizard);
     }
 };
