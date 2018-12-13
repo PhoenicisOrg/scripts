@@ -5,6 +5,3 @@ REGEDIT4
 
 [HKEY_CURRENT_USER\Software\Wine]
 "HideWineExports"="Y"
-
-[HKEY_CURRENT_USER\Software\Wine\Direct3D]
-"csmt"="0x00000000"
