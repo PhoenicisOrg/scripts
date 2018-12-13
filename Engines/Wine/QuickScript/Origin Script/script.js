@@ -46,7 +46,8 @@ OriginScript.prototype.go = function () {
         .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
         .luna();
 
-    setupWizard.message(tr("Origin does not have an install command so once it auto-launches after installation you ahve to manually download the game. Then shut down Origin."));
+    //Origin does not have an install command
+    setupWizard.message(tr("Download \"{0}\" in Origin and shut it down once \"{0}\" is installed"));
     wine.run(tempFile, [], null, false, true);
 
     // wait until Origin and Wine are closed
