@@ -3,7 +3,7 @@
     "id"                         : "spore_steam",
     "compatibleOperatingSystems" : [
         "LINUX",
-        "MACOS"
+        "MACOSX"
     ],
     "testingOperatingSystems" : [],
     "free"                    : false,
