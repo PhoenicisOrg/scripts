@@ -48,8 +48,10 @@ var verbImplementation = {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "sp3extract", java.util.Optional.empty());
+        // query .dll file which shall be extracted
         var fileToExtract = fileName(wizard.browse(tr("Please select the SP3 file."), wine.prefixDirectory(), ["dll"]));
         wine.wizard(wizard);
+        // extract requested file
         wine.sp3extract(fileToExtract);
         wizard.close();
     }
