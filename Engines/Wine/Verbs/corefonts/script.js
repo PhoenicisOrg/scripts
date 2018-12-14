@@ -141,7 +141,7 @@ Wine.prototype.corefonts = function () {
  * Verb to install corefonts
 */
 var verbImplementation = {
-    install: function (container/*, version*/) {
+    install: function (container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "corefonts", java.util.Optional.empty());
