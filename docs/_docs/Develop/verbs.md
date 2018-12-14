@@ -12,7 +12,7 @@ Probably, the verb you want to add has already been implemented somewhere else. 
 * [winetricks](https://github.com/Winetricks/winetricks/blob/master/src/winetricks)
 * [playonlinux.com search](https://www.playonlinux.com/en/forums.html)
 
-Create a new folder in `Engines/Wine/Verbs` and add a `script.js`. The `script.js` must contain a function like this:
+Create a new folder in `Engines/Wine/Verbs` and add a `script.js`. The `script.js` must follow this template:
 ```javascript
 include(["engines", "wine", "engine", "object"]);
 
