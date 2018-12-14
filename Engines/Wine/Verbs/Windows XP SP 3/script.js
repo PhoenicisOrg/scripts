@@ -1,4 +1,5 @@
 include(["engines", "wine", "engine", "object"]);
+include(["utils", "functions", "filesystem", "files"]);
 include(["utils", "functions", "net", "resource"]);
 
 /**
@@ -38,3 +39,22 @@ Wine.prototype.sp3extract = function (fileToExtract) {
 
     return this;
 };
+
+/**
+ * Verb to install Windows XP Service Pack 3
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "sp3extract", java.util.Optional.empty());
+        var fileToExtract = fileName(wizard.browse(tr("Please select the SP3 file."), wine.prefixDirectory(), ["dll"]));
+        wine.wizard(wizard);
+        wine.sp3extract(fileToExtract);
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+
