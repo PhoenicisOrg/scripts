@@ -14,10 +14,33 @@ Probably, the verb you want to add has already been implemented somewhere else. 
 
 Create a new folder in `Engines/Wine/Verbs` and add a `script.js`. The `script.js` must contain a function like this:
 ```javascript
+include(["engines", "wine", "engine", "object"]);
+
+/**
+* Verb to install verb
+* @returns {Wine} Wine object
+*/
 Wine.prototype.verb = function() {
     ...
     return this;
 }
+
+/**
+* Verb to install verb
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "verb", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.verb();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
 ```
 
 The verb extends `Wine`. You can therefore access `Ẁine` methods via `this`.
