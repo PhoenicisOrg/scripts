@@ -4,7 +4,8 @@ include(["utils", "functions", "net", "resource"]);
 include(["utils", "functions", "filesystem", "files"]);
 
 /**
-* Setup VK9-> https://github.com/disks86/VK9
+* Verb to install VK9
+* see: https://github.com/disks86/VK9
 * @param {String} vk9Version VK9 version to install
 * @returns {Wine} Wine object
 */
@@ -57,3 +58,25 @@ Wine.prototype.VK9 = function (vk9Version) {
 
     return this;
 }
+
+/**
+ * Verb to install VK9
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "VK9", java.util.Optional.empty());
+        // query desired version (default: 0.28.1)
+        var versions = ["0.28.1", "0.28.0", "0.27.0", "0.26.0", "0.25.0", "0.23.0", "0.17.0", "0.16.0", "0.6.0", "0.4.0"];
+        var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.28.1");
+        wine.wizard(wizard);
+        // install selected version
+        wine.VK9(selectedVersion);
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+
