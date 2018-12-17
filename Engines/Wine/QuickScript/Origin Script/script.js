@@ -47,7 +47,7 @@ OriginScript.prototype.go = function () {
         .luna();
 
     //Origin does not have an install command
-    setupWizard.message(tr("Download \"{0}\" in Origin and shut it down once \"{0}\" is installed"));
+    setupWizard.message(tr("Download \"{0}\" in Origin and shut it down once \"{0}\" is installed", this._name));
     wine.run(tempFile, [], null, false, true);
 
     // wait until Origin and Wine are closed
