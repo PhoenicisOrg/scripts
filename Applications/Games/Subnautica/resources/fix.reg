@@ -2,6 +2,3 @@ REGEDIT4
         
 [HKEY_CURRENT_USER\Software\Wine\X11 Driver]
 "UseTakeFocus"="N"
-
-[HKEY_CURRENT_USER\Software\Wine]
-"HideWineExports"="Y"
