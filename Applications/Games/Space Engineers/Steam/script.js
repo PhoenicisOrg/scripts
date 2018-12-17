@@ -15,8 +15,12 @@ var installerImplementation = {
             .wineDistribution("staging")
             .wineArchitecture("amd64")
             .preInstall(function (wine, wizard) {
-                if (var operatingSystem != LINUX) {
-                    break;
+                    var operatingSystemFetcher = Bean("operatingSystemFetcher");
+                    if (operatingSystemFetcher.fetchCurrentOperationSystem() !== "Linux")
+                    {
+                        wizard.message(tr("This game will not work under your operating system due to missing MoltenVK implementation in Wine. Aborting the script."));
+                        break;
+                    }
                 }
                 wizard.message(tr("Please ensure you have the latest drivers (415.22 minimum for NVIDIA and mesa 19 for AMD) or else this game will not work."));
                 wine.dotnet461();
