@@ -10,7 +10,7 @@ include(["engines", "wine", "plugins", "windows_version"]);
 * @returns {Wine} Wine object
 */
 Wine.prototype.dotnet20 = function () {
-    if (this.architecture() = "x86") {
+    if (this._architecture() = "x86") {
         this.windowsVersion("win2k");
         var setupFile = new Resource()
             .wizard(this.wizard())
@@ -31,9 +31,9 @@ Wine.prototype.dotnet20 = function () {
     this.uninstall("Mono");
 
     this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 2.0"));
-    this.run(setupFile, [setupFile, "/q:a", "/c:\"install.exe /q\""], null, false, true);
+    this.run(setupFile, [setupFile, "/q:a", "/c:install.exe /q"], null, false, true);
 
-    if (this.architecture() = "x86"){
+    if (this._architecture = "x86"){
         remove(this.system32directory() + "/msvc" + "?" + "80.dll");
     }
 
