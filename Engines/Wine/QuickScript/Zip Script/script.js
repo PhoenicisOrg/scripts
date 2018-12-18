@@ -31,9 +31,7 @@ ZipScript.prototype.go = function () {
     var wine = new Wine()
         .wizard(setupWizard)
         .architecture(this._wineArchitecture)
-        .version(this._wineVersion)
-        .prefix(this._name)
-        .distribution("upstream")
+        .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
         .create()
         .luna()
         .wait();
