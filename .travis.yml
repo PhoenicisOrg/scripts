@@ -1,7 +1,8 @@
 # avoid double builds on pull requests
 branches:
   only:
-    master
+    - master
+    - release/5.0-alpha-2
 
 matrix:
   include:
