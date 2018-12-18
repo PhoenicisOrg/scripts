@@ -14,21 +14,14 @@ var installerImplementation = {
             .author("Zemogiter")
             .category("Games")
             .executable("LegoRR.exe")
-            .wineVersion("2.22")
+            .wineVersion("3.0.3")
             .wineDistribution("upstream")
             .preInstall(function (wine /*, wizard*/){
                 var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
                 wine.setVirtualDesktop(screenSize.width, screenSize.height);
             })
             .postInstall(function (wine,wizard){
-                var dllLocation = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/LEGO Media/Games/Rock Raiders/d3drm.dll";
-                new Downloader()
-                .wizard(wizard)
-                .url("http://s2.pliki.info/5709/d3drm.dll")
-                .checksum("dde9e3b8c264957ae0a017d371293123")
-                .algorithm("MD5")
-                .to(dllLocation)
-                .get();
+                wizard.message(tr("This game needs a copy protection patch to work. It may be illegal in your country to patch copy protection. You must patch the game yourself."));
                 var zipLocation = wine.prefixDirectory() + "drive_c/RockRaidersCodec_490085.zip";
                 new Downloader()
                 .wizard(wizard)
