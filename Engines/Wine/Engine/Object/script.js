@@ -5,11 +5,11 @@ include(["utils", "functions", "net", "download"]);
 include(["utils", "functions", "net", "resource"]);
 
 /* exported LATEST_STABLE_VERSION */
-var LATEST_STABLE_VERSION = "3.0.3";
+var LATEST_STABLE_VERSION = "3.0.4";
 /* exported LATEST_DEVELOPMENT_VERSION */
-var LATEST_DEVELOPMENT_VERSION = "3.21";
+var LATEST_DEVELOPMENT_VERSION = "4.0-rc2";
 /* exported LATEST_STAGING_VERSION */
-var LATEST_STAGING_VERSION = "3.2";
+var LATEST_STAGING_VERSION = "4.0-rc2";
 
 
 /**

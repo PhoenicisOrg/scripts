@@ -7,8 +7,8 @@ var installerImplementation = {
             .editor("Florian Heidenreich")
             .applicationHomepage("http://www.mp3tag.de/")
             .author("ImperatorS79")
-            .url("http://download.mp3tag.de/mp3tagv284asetup.exe")
-            .checksum("c1d677043ecc8a4edbb804f189b0f23bc7937066")
+            .url("https://download.mp3tag.de/mp3tagv291setup.exe")
+            .checksum("b3fe9ee9b3b65cc1de2e3056f0f7ed675bb2fca0")
             .category("Multimedia")
             .executable("mp3tag.exe")
             .go();
