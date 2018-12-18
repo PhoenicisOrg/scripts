@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Origin Script",
+    "id"                         : "origin_script",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
