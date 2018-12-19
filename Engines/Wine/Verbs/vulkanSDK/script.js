@@ -21,9 +21,9 @@ Wine.prototype.vulkanSDK = function () {
 
     this.run(setupFile, "/S");
 
-    var contentVulkanJSON = this.prefixDirectory() + "drive_c/windows/winevulkan.json";
-    touch(contentVulkanJSON);
-    writeToFile(contentVulkanJSON, "{\n	""file_format_version"": "1.0.0",\n	""ICD"": {\n		""library_path"": ""c:\windows\system32\winevulkan.dll"",\n		""api_version"": ""1.1.92.1""\n	}\n}");
+    var patchVulkanJSON = this.prefixDirectory() + "drive_c/windows/winevulkan.json";
+    touch(patchVulkanJSON);
+    writeToFile(patchVulkanJSON, "{\n	""file_format_version"": "1.0.0",\n	""ICD"": {\n		""library_path"": ""c:\windows\system32\winevulkan.dll"",\n		""api_version"": ""1.1.92.1""\n	}\n}");
     this.run("reg", ["add", "HKLM\Software\Khronos\Vulkan\Drivers", "/v", "C:\Windows\winevulkan.json", "/t", "REG_DWORD", "/d", "00000000", "/f"], null, false, true);
 
     if (this.architecture() == "amd64") {
