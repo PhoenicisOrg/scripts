@@ -19,3 +19,21 @@ Wine.prototype.physx = function () {
 
     return this;
 };
+
+/**
+ * Verb to install Nvidia PhysX
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "physx", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.physx();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+
