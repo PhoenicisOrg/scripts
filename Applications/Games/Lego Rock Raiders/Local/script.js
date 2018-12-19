@@ -17,7 +17,7 @@ var installerImplementation = {
             .executable("LegoRR.exe")
             .wineVersion("3.0.3")
             .wineDistribution("upstream")
-            .preInstall(function (wine /*, wizard*/){
+            .preInstall(function (wine, wizard){
                 wine.amstream();
                 wine.quartz();
                 wine.devenum();
@@ -26,7 +26,7 @@ var installerImplementation = {
                 wine.regedit().patch(registrySettings);
                 wizard.message(tr("When the game ask to install DirectX Media click yes. Click no when it ask for DirectX 6."));
             })
-            .postInstall(function (wine,wizard){
+            .postInstall(function (wine, wizard){
                 wizard.message(tr("This game needs a copy protection patch to work. It may be illegal in your country to patch copy protection. You must patch the game yourself."));
                 var zipLocation = wine.prefixDirectory() + "drive_c/RockRaidersCodec_490085.zip";
                 new Downloader()
