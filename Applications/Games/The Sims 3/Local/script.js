@@ -1,8 +1,8 @@
 include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["engines", "wine", "verbs", "dotnet45"]);
 include(["engines", "wine", "verbs", "vcrun2010"]);
 include(["engines", "wine", "verbs", "tahoma"]);
 include(["engines", "wine", "verbs", "mfc42"]);
+include(["engines", "wine", "verbs", "dotnet20"]);
 
 var installerImplementation = {
     run: function () {
@@ -13,13 +13,13 @@ var installerImplementation = {
             .author("Zemogiter")
             .category("Games")
             .executable("Sims3Launcher.exe", ["xgamma -gamma 1"])
-            .wineVersion("3.18")
+            .wineVersion("3.19")
             .wineDistribution("upstream")
             .preInstall(function (wine){
-                wine.dotnet45();
                 wine.mfc42();
                 wine.tahoma();
                 wine.vcrun2010();
+                wine.dotnet20();
             })
             .go();
     }
