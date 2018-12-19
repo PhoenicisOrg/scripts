@@ -22,7 +22,7 @@ var installerImplementation = {
                     .to(wine.prefixDirectory() + "drive_c/users/Public/Documents/EAW_RAM_MPLobby_update.exe")
                     .get();
 
-                wine.runInsidePrefix("/users/Public/Documents/EAW_RAM_MPLobby_update.exe");
+                wine.runInsidePrefix("/users/Public/Documents/EAW_RAM_MPLobby_update.exe", [], true);
             })
             .go();
     }

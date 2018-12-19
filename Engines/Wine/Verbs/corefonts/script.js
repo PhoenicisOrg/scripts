@@ -132,4 +132,21 @@ Wine.prototype.corefonts = function () {
         .set("Webdings", "Webdings.TTF")
         .do();
     return this;
+}
+
+/**
+ * Verb to install corefonts
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "corefonts", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.corefonts();
+        wizard.close();
+    }
 };
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
