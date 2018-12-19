@@ -23,10 +23,10 @@ Wine.prototype.windowsVersion = function (version, servicePack) {
 
     if (servicePack) {
         var servicePackNumber = servicePack.replace("sp", "");
-        that._regeditFileContent += "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion]";
-        that._regeditFileContent += "\"CSDVersion\"=\"Service Pack "+ servicePackNumber +"\"";
-        that._regeditFileContent += "[HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Windows]";
-        that._regeditFileContent += "\"CSDVersion\"=dword:00000"+servicePackNumber+"00";
+        regeditFileContent += "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion]\n";
+        regeditFileContent += "\"CSDVersion\"=\"Service Pack "+ servicePackNumber +"\"\n";
+        regeditFileContent += "[HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Windows]\n";
+        regeditFileContent += "\"CSDVersion\"=dword:00000"+servicePackNumber+"00\n";
     }
 
     this.regedit().patch(regeditFileContent);

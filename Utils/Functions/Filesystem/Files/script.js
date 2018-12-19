@@ -169,3 +169,15 @@ Checksum.prototype.get = function () {
         }
     });
 }
+
+/**
+* sets file permissions
+* @param {string} filePath file path
+* @param {string} permissions file permissions (e.g. "r--r--r--")
+* @returns {void}
+*/
+function chmod(filePath, permissions) { // eslint-disable-line no-unused-vars
+    var permissionsObj = java.nio.file.attribute.PosixFilePermissions.fromString(permissions);
+    var filePathObj = java.nio.file.Paths.get(filePath);
+    java.nio.file.Files.setPosixFilePermissions(filePathObj, permissionsObj);
+}

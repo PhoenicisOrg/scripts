@@ -11,7 +11,7 @@ Wine.prototype.mspatcha = function () {
     //Inspired from winetricks mspatcha, but with a link Phoenicis can understand
     var setupFile = new Resource()
         .wizard(this.wizard())
-        .url("http://ftp.anadolu.edu.tr/Service_Packs/Windows_2000/W2ksp4_EN.exe")
+        .url("https://ftp.gnome.org/mirror/archive/ftp.sunet.se/pub/security/vendor/microsoft/win2000/Service_Packs/usa/W2KSP4_EN.EXE")
         .checksum("fadea6d94a014b039839fecc6e6a11c20afa4fa8")
         .name("W2ksp4_EN.exe")
         .get();
@@ -37,3 +37,21 @@ Wine.prototype.mspatcha = function () {
         .do();
     return this;
 };
+
+/**
+ * Verb to install mspatcha
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "mspatcha", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.mspatcha();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

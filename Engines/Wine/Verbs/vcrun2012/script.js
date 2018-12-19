@@ -42,3 +42,21 @@ Wine.prototype.vcrun2012 = function () {
 
     return this;
 };
+
+/**
+ * Verb to install vcrun2012
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "vcrun2012", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.vcrun2012();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+
