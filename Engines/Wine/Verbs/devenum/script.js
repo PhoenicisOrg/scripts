@@ -6,7 +6,6 @@ include(["utils", "functions", "filesystem", "files"]);
 include(["utils", "functions", "filesystem", "extract"]);
 include(["engines", "wine", "plugins", "regsvr32"]);
 
-
 /**
 * Verb to install devenum
 * @returns {Wine} Wine object
@@ -28,6 +27,7 @@ Wine.prototype.devenum = function () {
         .to(this.system32directory())
         .extract(["-L", "-F", "devenum.dll"]);
     this.regsvr32().install("devenum.dll");
+  
     this.overrideDLL()
         .set("native", ["devenum"])
         .do();
