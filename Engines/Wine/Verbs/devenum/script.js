@@ -28,7 +28,6 @@ Wine.prototype.devenum = function () {
         .to(this.system32directory())
         .extract(["-L", "-F", "devenum.dll"]);
     this.regsvr32().install("devenum.dll");
-  
     this.overrideDLL()
         .set("native", ["devenum"])
         .do();
