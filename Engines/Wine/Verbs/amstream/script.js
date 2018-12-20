@@ -20,17 +20,15 @@ Wine.prototype.amstream = function () {
     this.wizard().wait(tr("Please wait while {0} is installed ...", "amstream"));
     new CabExtract()
         .archive(setupFile)
-        .to(this.prefixDirectory() + "/drive_c/amstream/")
-        .extract(["-L", "-F", "x86_microsoft-windows-directshow-other_31bf3856ad364e35_6.1.7601.17514_none_0f58f1e53efca91e"]);
-    cp(this.prefixDirectory() + "/drive_c/amstream/x86_microsoft-windows-directshow-other_31bf3856ad364e35_6.1.7601.17514_none_0f58f1e53efca91e/amstream.dll", this.system32directory());
+        .to(this.system32directory())
+        .extract(["-L", "-F", "amstream.dll"]);
     this.regsvr32().install("amstream.dll");    
     if (this.architecture() == "amd64") {
        this.wizard().wait(tr("Please wait while {0} is installed ...", "amstream"));
        new CabExtract()
             .archive(setupFile)
-            .to(this.prefixDirectory() + "/drive_c/amstream/")
+            .to(this.system32directory())
             .extract(["-L", "-F", "amstream.dll"]);
-       cp(this.prefixDirectory() + "/drive_c/amstream/amd64_microsoft-windows-directshow-other_31bf3856ad364e35_6.1.7601.17514_none_6b778d68f75a1a54/amstream.dll", this.system64directory());
        this.regsvr64().install("amstream.dll");
     }
     this.overrideDLL()
