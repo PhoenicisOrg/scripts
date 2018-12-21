@@ -22,7 +22,7 @@ Wine.prototype.d3drm = function () {
         .to(this.prefixDirectory() + "/drive_c/d3drm/")
         .extract(["-L", "-F", "dxnt.cab"]);
     new CabExtract()
-        .archive(this.prefixDirectory() + "/drive_c/devenum/dxnt.cab")
+        .archive(this.prefixDirectory() + "/drive_c/d3drm/dxnt.cab")
         .to(this.system32directory())
         .extract(["-L", "-F", "d3drm.dll"]);
   
