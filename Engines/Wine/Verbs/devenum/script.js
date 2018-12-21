@@ -33,3 +33,20 @@ Wine.prototype.devenum = function () {
 
     return this;
 };
+
+/**
+ * Verb to install all the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "devenum", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.devenum();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
