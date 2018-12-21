@@ -32,3 +32,20 @@ Wine.prototype.d3drm = function () {
 
     return this;
 };
+
+/**
+ * Verb to install all the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "d3drm", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.d3drm();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
