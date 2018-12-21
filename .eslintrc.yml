@@ -64,6 +64,7 @@ globals:
   InstallerScript: false
   LocalInstallerScript: false
   OnlineInstallerScript: false
+  OriginScript: false
   QuickScript: false
   SteamScript: false
   UplayScript: false
