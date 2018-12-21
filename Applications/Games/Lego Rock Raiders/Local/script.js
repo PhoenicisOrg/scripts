@@ -22,8 +22,6 @@ var installerImplementation = {
                 wine.quartz();
                 wine.devenum();
                 wine.d3drm();
-                var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("fix.reg");
-                wine.regedit().patch(registrySettings);
                 wizard.message(tr("When the game ask to install DirectX Media click yes. Click no when it ask for DirectX 6."));
             })
             .postInstall(function (wine, wizard){
