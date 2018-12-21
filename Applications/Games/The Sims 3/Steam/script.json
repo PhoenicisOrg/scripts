@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Steam",
+    "id"                         : "steam",
+    "compatibleOperatingSystems" : [
+        "LINUX",
+        "MACOSX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}
