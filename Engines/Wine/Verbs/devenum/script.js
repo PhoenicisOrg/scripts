@@ -35,7 +35,7 @@ Wine.prototype.devenum = function () {
 };
 
 /**
- * Verb to install all the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
+ * Verb to install all the necessary things to run devenum (even inside wine mainline or newest wine-staging)
 */
 var verbImplementation = {
     install: function (container) {
