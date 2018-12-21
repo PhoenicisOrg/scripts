@@ -34,7 +34,7 @@ Wine.prototype.d3drm = function () {
 };
 
 /**
- * Verb to install all the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
+ * Verb to install all the necessary things to run d3drm (even inside wine mainline or newest wine-staging)
 */
 var verbImplementation = {
     install: function (container) {
