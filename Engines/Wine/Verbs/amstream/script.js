@@ -23,7 +23,8 @@ Wine.prototype.amstream = function () {
     new CabExtract()
         .archive(setupFile)
         .to(this.system32directory())
-        .extract(["-L", "-F", "amstream.dll"]);
+        .extract(["-L", "-F", "x86_microsoft-windows-directshow-other_31bf3856ad364e35_6.1.7601.17514_none_0f58f1e53efca91e/amstream.dll"]);
+    cp(this.system32directory() + "/x86_microsoft-windows-directshow-other_31bf3856ad364e35_6.1.7601.17514_none_0f58f1e53efca91e/amstream.dll", this.system32directory());
     this.regsvr32().install("amstream.dll");
     if (this.architecture() == "amd64") {
         var setupFilex64 = new Resource()
@@ -38,6 +39,7 @@ Wine.prototype.amstream = function () {
             .archive(setupFilex64)
             .to(this.system64directory())
             .extract(["-L", "-F", "amd64_microsoft-windows-directshow-other_31bf3856ad364e35_6.1.7601.17514_none_6b778d68f75a1a54/amstream.dll"]);
+        cp(this.system64directory() + "/amd64_microsoft-windows-directshow-other_31bf3856ad364e35_6.1.7601.17514_none_6b778d68f75a1a54/amstream.dll", this.system64directory());
         this.regsvr64().install("amstream.dll");
     }
     this.overrideDLL()
