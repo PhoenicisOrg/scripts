@@ -9,7 +9,7 @@ var installerImplementation = {
             .author("ZemoScripter")
             .category("Category")
             .executable("Origin.exe")
-            .wineVersion("3.16")
+            .wineVersion("3.19")
             .wineDistribution("staging")
             .go();
 };
