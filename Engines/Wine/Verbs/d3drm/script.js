@@ -25,7 +25,6 @@ Wine.prototype.d3drm = function () {
         .archive(this.prefixDirectory() + "/drive_c/d3drm/dxnt.cab")
         .to(this.system32directory())
         .extract(["-L", "-F", "d3drm.dll"]);
-  
     this.overrideDLL()
         .set("native", ["d3drm"])
         .do();
