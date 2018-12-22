@@ -5,7 +5,7 @@ var installerImplementation = {
         new OriginScript()
             .name("SimCity (2013)")
             .editor("Electronic Arts")
-            .applicationHomepage("http://www.origin.com/")
+            .applicationHomepage("https://www.ea.com/en-gb/games/simcity")
             .author("ZemoScripter")
             .category("Games")
             .wineVersion("3.19")
