@@ -9,8 +9,8 @@ var installerImplementation = {
             .editor("Ubisoft")
             .applicationHomepage("http://anno-game.ubi.com/anno-2070/en-US/")
             .author("Zemogiter")
-            .wineVersion("3.21")
-            .wineDistribution("staging")
+            .wineVersion("4.0-rc3")
+            .wineDistribution("upstream")
             .appId(22)
             .preInstall(function (wine/*, wizard*/){
                 var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
