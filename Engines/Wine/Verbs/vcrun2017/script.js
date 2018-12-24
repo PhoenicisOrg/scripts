@@ -15,7 +15,7 @@ Wine.prototype.vcrun2017 = function () {
         .name("vc_redist.x86.exe")
         .get();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2017 Redistributable (x86)"));
+    this.wizard().wait(tr("Please wait while {0} is installed…", "Microsoft Visual C++ 2017 Redistributable (x86)"));
     this.run(setupFile32, "/q", null, false, true);
 
     if (this.architecture() == "amd64") {
@@ -26,7 +26,7 @@ Wine.prototype.vcrun2017 = function () {
             .name("vc_redist.x64.exe")
             .get();
 
-        this.wizard().wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2017 Redistributable (x64)"));
+        this.wizard().wait(tr("Please wait while {0} is installed…", "Microsoft Visual C++ 2017 Redistributable (x64)"));
         this.run(setupFile64, "/q", null, false, true);
     }
 
