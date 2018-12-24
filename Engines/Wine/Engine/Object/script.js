@@ -322,7 +322,7 @@ Wine.prototype.system64directory = function () {
     if (fileExists(this.prefixDirectory() + "/drive_c/windows/syswow64")) {
         return this.prefixDirectory() + "/drive_c/windows/system32";
     }
-    throw tr("Prefix seems to be 32bits");
+    throw tr("Prefix seems to be 32-bit");
 };
 
 /**
