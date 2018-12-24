@@ -54,7 +54,7 @@ CabExtract.prototype.to = function (destination) {
 */
 CabExtract.prototype.extract = function (args) {
     if (!this._progressMessage) {
-        this._progressMessage = tr("Please wait while {0} is extracted ...", this._archive);
+        this._progressMessage = tr("Please wait while {0} is extracted…", this._archive);
     }
 
     if (this._wizard) {
@@ -130,7 +130,7 @@ Extractor.prototype.to = function (destination) {
 */
 Extractor.prototype.extract = function () {
     if (!this._progressMessage) {
-        this._progressMessage = tr("Please wait while {0} is extracted ...", this._archive);
+        this._progressMessage = tr("Please wait while {0} is extracted…", this._archive);
     }
 
     var progressBar = this._wizard.progressBar(this._progressMessage);
