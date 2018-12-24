@@ -11,7 +11,7 @@ var installerImplementation = {
             .editor("Keen Software House")
             .author("Zemogiter")
             .appId(244850)
-            .wineVersion("3.20")
+            .wineVersion("4.0-rc3")
             .wineDistribution("staging")
             .wineArchitecture("amd64")
             .preInstall(function (wine, wizard) {
@@ -22,12 +22,13 @@ var installerImplementation = {
                         break;
                     }
                 }
-                wizard.message(tr("Please ensure you have the latest drivers (415.22 minimum for NVIDIA and mesa 19 for AMD) or else this game will not work."));
+                wizard.message(tr("Please ensure you have the latest drivers (415.25 minimum for NVIDIA and mesa 19 for AMD) or else this game will not work."));
                 wine.dotnet461();
                 wine.vcrun2015();
                 wine.DXVK();
                 wine.xact();
             })
+            .gameOverlay(false)
             .go();
     }
 };
