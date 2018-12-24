@@ -12,8 +12,8 @@ Wine.prototype.d3dx10 = function () {
     var extractDirectXtoSystemDirectory = function (progressBar, filesToExtract, destination, pattern) {
         var numberOfExtractedFiles = 0;
         filesToExtract.forEach(function (cabFile) {
-            print(tr("Extracting {0} ...", cabFile));
-            progressBar.setText(tr("Extracting {0} ...", "DirectX 10"));
+            print(tr("Extracting {0}…", cabFile));
+            progressBar.setText(tr("Extracting {0}…", "DirectX 10"));
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
 
             new CabExtract()
@@ -32,8 +32,8 @@ Wine.prototype.d3dx10 = function () {
         .name("directx_Jun2010_redist.exe")
         .get();
 
-    var progressBar = this.wizard().progressBar(tr("Please wait ..."));
-    progressBar.setText(tr("Extracting {0} ...", "DirectX 10"));
+    var progressBar = this.wizard().progressBar(tr("Please wait…"));
+    progressBar.setText(tr("Extracting {0}…", "DirectX 10"));
     progressBar.setProgressPercentage(0.);
 
     new CabExtract()
