@@ -12,7 +12,7 @@ include(["engines", "wine", "verbs", "dotnet40"]);
 */
 Wine.prototype.dotnet452 = function () {
     if (this.architecture() == "amd64") {
-        throw "{0} cannot be installed in a 64bit wine prefix!".format("dotnet452");
+        throw "{0} cannot be installed in a 64-bit wine prefix!".format("dotnet452");
     }
 
     var OSVersion = this.windowsVersion();
