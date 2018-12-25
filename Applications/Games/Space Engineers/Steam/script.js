@@ -12,7 +12,7 @@ var installerImplementation = {
             .author("Zemogiter")
             .appId(244850)
             .wineVersion("4.0-rc3")
-            .wineDistribution("staging")
+            .wineDistribution("upstream")
             .wineArchitecture("amd64")
             .preInstall(function (wine, wizard) {
                     var operatingSystemFetcher = Bean("operatingSystemFetcher");
@@ -27,6 +27,9 @@ var installerImplementation = {
                 wine.vcrun2015();
                 wine.DXVK();
                 wine.xact();
+                wine.overrideDLL()
+                    .set("", ["fusion"])
+                    .do();
             })
             .gameOverlay(false)
             .go();
