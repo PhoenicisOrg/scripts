@@ -160,7 +160,7 @@ Checksum.prototype.of = function (file) {
 */
 Checksum.prototype.get = function () {
     if (this._wizard) {
-        var progressBar = this._wizard.progressBar(tr("Checking file consistency…"));
+        var progressBar = this._wizard.progressBar(tr("Checking file consistency..."));
     }
 
     return this._checksumCalculator.calculate(this._file, this._method, function (progressEntity) {
