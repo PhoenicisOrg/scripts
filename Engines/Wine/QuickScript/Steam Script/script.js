@@ -160,7 +160,7 @@ SteamScript.prototype.go = function () {
     wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", "-shutdown", true);
 
     // back to generic wait
-    setupWizard.wait(tr("Please wait…"));
+    setupWizard.wait(tr("Please wait..."));
 
     // create shortcut after installation (if executable is specified, it does not exist earlier)
     this._createShortcut(wine.prefix());
@@ -175,7 +175,7 @@ SteamScript.prototype.go = function () {
     }
 
     // back to generic wait (might have been changed in postInstall)
-    setupWizard.wait(tr("Please wait…"));
+    setupWizard.wait(tr("Please wait..."));
 
     setupWizard.close();
 };
