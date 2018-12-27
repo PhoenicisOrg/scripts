@@ -50,7 +50,7 @@ Wine.prototype.amstream = function () {
 };
 
 /**
- * Verb to install all the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
+ * Verb to install amstream
 */
 var verbImplementation = {
     install: function (container) {
