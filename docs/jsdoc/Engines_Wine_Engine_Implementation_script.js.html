@@ -48,15 +48,6 @@ var engineImplementation = {
     _wineWebServiceUrl : Bean("propertyReader").getProperty("webservice.wine.url"),
     _wizard: null,
     _workingContainer: "",
-    _wineServer: function (subCategory, version, parameter) {
-        var binary = this.getLocalDirectory(subCategory, version) + "/bin/wineserver";
-        var processBuilder = new java.lang.ProcessBuilder(Java.to([binary, parameter], "java.lang.String[]"));
-        var environment = processBuilder.environment();
-        environment.put("WINEPREFIX", this.getContainerDirectory(this.getWorkingContainer()));
-        processBuilder.inheritIO();
-        var wineServerProcess = processBuilder.start();
-        wineServerProcess.waitFor();
-    },
     getLocalDirectory: function (subCategory, version) {
         var parts = subCategory.split("-");
         var distribution = parts[0];
@@ -88,9 +79,9 @@ var engineImplementation = {
 
             var that = this;
             wineJson.forEach(function (distribution) {
-                if (distribution.name == subCategory) {
+                if (distribution.name === subCategory) {
                     distribution.packages.forEach(function (winePackage) {
-                        if (winePackage.version == version) {
+                        if (winePackage.version === version) {
                             that._installWinePackage(wizard, winePackage, localDirectory);
                             that._installGecko(wizard, winePackage, localDirectory);
                             that._installMono(wizard, winePackage, localDirectory);
@@ -236,11 +227,13 @@ var engineImplementation = {
         var extensionFile = executable.split(".").pop();
 
         if (extensionFile == "msi") {
-            return this.run("msiexec", ["/i", executable].concat(args), captureOutput);
+            var msiArgs = org.apache.commons.lang.ArrayUtils.addAll(["/i", executable], args);
+            return this.run("msiexec", msiArgs, workingDir, captureOutput, wait, userData);
         }
 
         if (extensionFile == "bat") {
-            return this.run("start", ["/Unix", executable].concat(args), captureOutput);
+            var batArgs = org.apache.commons.lang.ArrayUtils.addAll(["/Unix", executable], args);
+            return this.run("start", batArgs, workingDir, captureOutput, wait, userData);
         }
 
         // do not run 64bit executable in 32bit prefix
@@ -288,6 +281,11 @@ var engineImplementation = {
         }
         environment.put("LD_LIBRARY_PATH", ldPath);
 
+        if (this._operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin") {
+            environment.put("DYLD_FALLBACK_LIBRARY_PATH", ldPath);
+            environment.put("FREETYPE_PROPERTIES", "truetype:interpreter-version=35");
+        }
+
         if (!captureOutput) {
             processBuilder.redirectErrorStream(true);
             processBuilder.redirectOutput(new java.io.File(workingContainerDirectory + "/wine.log"));
@@ -297,7 +295,6 @@ var engineImplementation = {
 
         if (wait) {
             process.waitFor();
-            this._wineServer(subCategory, version, "-w");
         }
 
         if (captureOutput) {
@@ -326,7 +323,7 @@ var Engine = Java.extend(org.phoenicis.engines.Engine, engineImplementation);
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
