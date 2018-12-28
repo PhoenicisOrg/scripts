@@ -10,6 +10,9 @@ var installerImplementation = {
             .wineVersion("4.0-rc1")
             .wineDistribution("staging")
             .appId("1003291,1005288,1003290,mass_effect_2_de,mass_effect_2_dd,mass_effect_2_fr,mass_effect_2_it,mass_effect_2_pl,mass_effect_2_ce")
+            .postInstall(function (wine, /*wizard*/) {
+                remove(this.prefixDirectory() + "/drive_c/Program Files/Origin Games/Mass Effect 2/__Installer/directx/redist/*.cab");
+            })
             .go();
     }
 };
