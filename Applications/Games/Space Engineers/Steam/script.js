@@ -15,11 +15,11 @@ var installerImplementation = {
             .wineDistribution("upstream")
             .wineArchitecture("amd64")
             .preInstall(function (wine, wizard) {
-                    var operatingSystemFetcher = Bean("operatingSystemFetcher");
-                    if (operatingSystemFetcher.fetchCurrentOperationSystem() !== "Linux")
-                    {
-                        throw "This game will not work under your OS due to MoltenVK not being implemented into Wine.".format("Space Engineers");
-                    }
+                var operatingSystemFetcher = Bean("operatingSystemFetcher");
+                if (operatingSystemFetcher.fetchCurrentOperationSystem() !== "Linux")
+                {
+                    throw "This game will not work under your OS due to MoltenVK not being implemented into Wine.".format("Space Engineers");
+                }
                 wizard.message(tr("Please ensure you have the latest drivers (415.25 minimum for NVIDIA and mesa 19 for AMD) or else this game will not work."));
                 wine.dotnet461();
                 wine.vcrun2015();
