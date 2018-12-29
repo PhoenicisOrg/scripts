@@ -13,7 +13,7 @@ Wine.prototype.dotnet461 = function () {
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("https://download.microsoft.com/download/E/4/1/E4173890-A24A-4936-9FC9-AF930FE3FA40/NDP461-KB3102436-x86-x64-AllOS-ENU.exe")
-        .checksum("864056903748706e251fec9f5d887ef9")
+        .checksum("83d048d171ff44a3cad9b422137656f585295866")
         .name("NDP461-KB3102436-x86-x64-AllOS-ENU.exe")
         .get();
 
@@ -44,3 +44,21 @@ Wine.prototype.dotnet461 = function () {
     }
     return this;
 };
+
+/**
+ * Verb to install .NET 4.6.1
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "dotnet461", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.dotnet461();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+
