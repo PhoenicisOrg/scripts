@@ -20,7 +20,7 @@ Wine.prototype.dotnet20 = function () {
             .get();
        this.uninstall("Mono");
        remove(this.system32directory() + "/mscoree.dll");
-       this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 2.0"));
+       this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
        this.run(setupFile, ["/q:a", "/c:install.exe /q"], null, false, true);
        this.windowsVersion("win7");
        remove(this.system32directory() + "/msvcr80.dll");
@@ -35,7 +35,7 @@ Wine.prototype.dotnet20 = function () {
             .name("NetFx64.exe")
             .get();
        this.uninstall("Mono");
-       this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 2.0"));
+       this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
        this.run(setupFile, ["/q:a", "/c:install.exe /q"], null, false, true)
     }
 

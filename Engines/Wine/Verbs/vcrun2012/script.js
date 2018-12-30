@@ -15,7 +15,7 @@ Wine.prototype.vcrun2012 = function () {
         .name("vcredist_x86.exe")
         .get();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2012 Redistributable (x86)"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", "Microsoft Visual C++ 2012 Redistributable (x86)"));
     this.run(setupFile32, "/q", null, false, true);
 
     if (this.architecture() == "amd64") {
@@ -26,7 +26,7 @@ Wine.prototype.vcrun2012 = function () {
             .name("vcredist_x64")
             .get();
 
-        this.wizard().wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2012 Redistributable (x64)"));
+        this.wizard().wait(tr("Please wait while {0} is installed...", "Microsoft Visual C++ 2012 Redistributable (x64)"));
         this.run(setupFile64, "/q", null, false, true);
     }
 
