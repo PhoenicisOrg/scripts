@@ -11,12 +11,13 @@ var installerImplementation = {
             .editor("Keen Software House")
             .author("Zemogiter")
             .appId(244850)
-            .wineVersion("4.0-rc3")
+            .wineVersion("4.0-rc4")
             .wineDistribution("upstream")
             .wineArchitecture("amd64")
             .preInstall(function (wine, wizard) {
                 var operatingSystemFetcher = Bean("operatingSystemFetcher");
-                if (operatingSystemFetcher.fetchCurrentOperationSystem() !== "Linux")
+                print("Debug output: " + operatingSystemFetcher.fetchCurrentOperationSystem());
+                if (operatingSystemFetcher.fetchCurrentOperationSystem() != "Linux")
                 {
                     throw "This game will not work under your OS due to MoltenVK not being implemented into Wine.".format("Space Engineers");
                 }
