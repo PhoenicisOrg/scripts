@@ -52,6 +52,31 @@ For a different shortcut (e.g. if you want to pass arguments):
     .executable("Steam.exe", ["-silent", "-applaunch", 123456, "-someArgument"]) 
 ```
 
+### OriginScript
+A basic script looks like:
+```javascript
+include(["engines", "wine", "quick_script", "origin_script"]);
+
+var installerImplementation = {
+    run: function () {
+        new OriginScript()
+            .name("A Game")              // name of the game
+            .editor("The developer")     // editor of the game
+            .author("Forename Surname")  // author of this script (you)
+            .appId(123456)               // Origin application ID
+            .go();
+    }
+};
+
+/* exported Installer */
+var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
+```
+This script will install the game for the category "Games" and create a shortcut for 
+```
+Origin.exe origin://launchgame/appId
+```
+You can determine the app ID by going into `C:\Origin Games\*name of the game*\ __Installer` and look for <ContentID> fields. Then write them down in `appId` field, separating them with comas. 
+    
 ### UplayScript
 A basic script looks like:
 
@@ -62,7 +87,7 @@ var installerImplementation = {
     run: function () {
         new UplayScript()
             .name("A Game")                                 // name of the game
-            .editor("The developer")                        // editor of the game (see Steam store: developer)
+            .editor("The developer")                        // editor of the game
             .applicationHomepage("http://www.someurl.com")  // application homepage
             .author("Forename Surname")                     // author of this script (you)
             .appId(123456)                                  // Uplay application ID

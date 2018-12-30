@@ -54,6 +54,7 @@ UplayScript.prototype.go = function () {
         .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
         .luna();
 
+    setupWizard.message(tr("Please ensure that winbind is installed before you continue."));
     setupWizard.wait(tr("Please follow the steps of the Uplay setup.\n\nUncheck \"Run Uplay\" or close Uplay completely after the setup so that the installation of \"{0}\" can continue.", this._name));
     wine.run(tempFile, [], null, false, true);
 

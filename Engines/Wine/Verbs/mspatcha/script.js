@@ -37,3 +37,21 @@ Wine.prototype.mspatcha = function () {
         .do();
     return this;
 };
+
+/**
+ * Verb to install mspatcha
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "mspatcha", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.mspatcha();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

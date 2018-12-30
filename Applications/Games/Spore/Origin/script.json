@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Origin",
+    "id"                         : "spore_origin",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}
