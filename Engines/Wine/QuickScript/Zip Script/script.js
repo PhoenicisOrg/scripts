@@ -59,9 +59,9 @@ ZipScript.prototype.go = function () {
         .to(wine.prefixDirectory() + "/drive_c/" + this._name)
         .extract();
 
-    this._createShortcut(wine.prefix());
-
     this._postInstall(wine, setupWizard);
+
+    this._createShortcut(wine.prefix());
 
     // back to generic wait (might have been changed in postInstall)
     setupWizard.wait(tr("Please wait ..."));
