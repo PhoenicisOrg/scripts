@@ -1,6 +1,10 @@
 include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "filesystem", "files"]);
 
+/**
+ * This extensions allows script to add extra settings to dos_support wine builds
+ * @returns {Wine}
+ */
 Wine.prototype.dosbox = function () {
     var _wine = this;
 
@@ -18,6 +22,7 @@ Wine.prototype.dosbox = function () {
      * @param {*} value The value (example: 64)
      */
     this.setSetting = function (key, value) {
+
         var settingsToWrite = this.getSettings();
         settingsToWrite[key] = value;
 
@@ -58,13 +63,31 @@ Wine.prototype.dosbox = function () {
     };
 
     /**
+     * Set or get one dosbox setting
+     * @param {string} key The key of the setting (example dosbox_memsize)
+     * @returns {*} The value (example: 64)
+     */
+    this.setting = function (key, value) {
+        if (arguments.length == 1) {
+            return this.getSettings()[key];
+        } else {
+            this.setSetting(key, value);
+        }
+    };
+
+
+    /**
      * Sets dosbox_memsize parameter in the current prefix
      * https://www.dosbox.com/wiki/dosbox.conf#.5Bdosbox.5D
      * @param {int} memSize The memory size
      */
-    this.setMemsize = function (memSize) {
-        this.setSetting("dosbox_memsize", memSize);
-        return this;
+    this.memSize = function (memSize) {
+        if (arguments.length == 0) {
+            return this.getSetting("dosbox_memsize")
+        } else {
+            this.setSetting("dosbox_memsize", memSize);
+            return this;
+        }
     };
 
     /**
@@ -72,9 +95,13 @@ Wine.prototype.dosbox = function () {
      * https://www.dosbox.com/wiki/dosbox.conf#.5Brender.5D
      * @param {boolean} renderAspect The render aspect
      */
-    this.setRenderAspect = function (renderAspect) {
-        this.setSetting("render_aspect", renderAspect);
-        return this;
+    this.renderAspect = function (renderAspect) {
+        if (arguments.length == 0) {
+            return this.getSetting("render_aspect")
+        } else {
+            this.setSetting("render_aspect", renderAspect);
+            return this;
+        }
     };
 
     /**
@@ -82,9 +109,13 @@ Wine.prototype.dosbox = function () {
      * https://www.dosbox.com/wiki/dosbox.conf#.5Brender.5D
      * @param {int} renderFrameSkip The render frameskip
      */
-    this.setRenderFrameSkip = function (renderFrameSkip) {
-        this.setSetting("render_frameskip", renderFrameSkip);
-        return this;
+    this.renderFrameSkip = function (renderFrameSkip) {
+        if (arguments.length == 0) {
+            return this.getSetting("render_frameskip")
+        } else {
+            this.setSetting("render_frameskip", renderFrameSkip);
+            return this;
+        }
     };
 
     /**
@@ -92,11 +123,14 @@ Wine.prototype.dosbox = function () {
      * https://www.dosbox.com/wiki/dosbox.conf#.5Bcpu.5D
      * @param {*} cpu_cycles (example: max 95% limit 33000)
      */
-    this.setCPUCycles = function (cpu_cycles) {
-        this.setSetting("cpu_cycles", cpu_cycles);
-        return this;
+    this.cpuCycles = function (cpu_cycles) {
+        if (arguments.length == 0) {
+            return this.getSetting("cpu_cycles")
+        } else {
+            this.setSetting("cpu_cycles", cpu_cycles);
+            return this;
+        }
     };
 
     return this;
 }
-

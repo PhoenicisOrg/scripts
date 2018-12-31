@@ -22,10 +22,10 @@ var installerImplementation = {
                     "EXIT");
 
                 wine.dosbox()
-                    .setMemsize(64)
-                    .setRenderAspect(true)
-                    .setCPUCycles("max 95% limit 33000")
-                    .setRenderFrameSkip(1);
+                    .memSize(64)
+                    .renderAspect(true)
+                    .cpuCycles("max 95% limit 33000")
+                    .renderFrameSkip(1);
             })
             .executable("ARENA.BAT")
             .go();
