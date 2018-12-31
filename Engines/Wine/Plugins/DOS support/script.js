@@ -36,7 +36,7 @@ Wine.prototype.dosbox = function () {
 
     /**
      * Fetch all prefix dosbox sttings
-     * @returns {{}}
+     * @returns {{}} All the settings
      */
     this.getSettings = function () {
         if (fileExists(this.dosConfigFile())) {
