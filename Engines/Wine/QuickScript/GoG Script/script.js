@@ -1,6 +1,7 @@
 include(["engines", "wine", "quick_script", "quick_script"]);
 include(["utils", "functions", "net", "download"]);
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "verbs", "gdiplus"]);
 
 function GogScript() {
     QuickScript.call(this);
@@ -10,7 +11,7 @@ GogScript.prototype = Object.create(QuickScript.prototype);
 
 GogScript.prototype.constructor = GogScript;
 
-GogScript.prototype.gogSetupFileName = function(setupFileName) {
+GogScript.prototype.gogSetupFileName = function (setupFileName) {
     this._setupFileName = setupFileName;
     return this;
 }
@@ -33,7 +34,7 @@ GogScript.prototype.loginToGog = function (setupWizard) {
     return this;
 }
 
-GogScript.prototype.download = function(setupWizard) {
+GogScript.prototype.download = function (setupWizard) {
     this._setupFile = createTempFile("exe");
 
     new Downloader()
@@ -60,6 +61,7 @@ GogScript.prototype.go = function () {
 
     this._preInstall(wine, setupWizard);
 
+    wine.gdiplus();
     wine.run(this._setupFile, [], wine.prefixDirectory() + "/drive_c/", true, true);
 
     this._postInstall(wine, setupWizard);

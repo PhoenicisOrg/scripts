@@ -157,6 +157,6 @@ Downloader.prototype.get = function () {
  * Gets the content and parse the JSON value
  * @returns {any} The json content
  */
-Downloader.prototype.json = function() {
+Downloader.prototype.json = function () {
     return JSON.parse(this.get());
 }
