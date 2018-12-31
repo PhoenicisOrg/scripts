@@ -20,6 +20,7 @@ Wine.prototype.dosbox = function () {
      * Set a setting in the prefix dosbox configuration file
      * @param {string} key The key (example: dosbox_memsize)
      * @param {*} value The value (example: 64)
+     * @returns {void}
      */
     this.setSetting = function (key, value) {
         var settingsToWrite = this.getSettings();
