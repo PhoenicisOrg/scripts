@@ -3,14 +3,14 @@ include(["utils", "functions", "filesystem", "files"]);
 
 /**
  * This extensions allows script to add extra settings to dos_support wine builds
- * @returns {Wine}
+ * @returns {Wine} Wine object
  */
 Wine.prototype.dosbox = function () {
     var _wine = this;
 
     /**
      * Fetch the prefix dosbox configuration file
-     * @returns {string}
+     * @returns {string} The dosbox configuration file path
      */
     this.dosConfigFile = function () {
         return _wine.prefixDirectory() + "/playonlinux_dos.cfg";
