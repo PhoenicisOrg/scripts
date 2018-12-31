@@ -22,7 +22,6 @@ Wine.prototype.dosbox = function () {
      * @param {*} value The value (example: 64)
      */
     this.setSetting = function (key, value) {
-
         var settingsToWrite = this.getSettings();
         settingsToWrite[key] = value;
 
@@ -32,7 +31,7 @@ Wine.prototype.dosbox = function () {
                 newFileString += keyToWrite + "=" + settingsToWrite[keyToWrite] + "\n"
             }
         }
-        return writeToFile(this.dosConfigFile(), newFileString);
+        writeToFile(this.dosConfigFile(), newFileString);
     }
 
     /**
@@ -80,6 +79,7 @@ Wine.prototype.dosbox = function () {
      * Sets dosbox_memsize parameter in the current prefix
      * https://www.dosbox.com/wiki/dosbox.conf#.5Bdosbox.5D
      * @param {int} memSize The memory size
+     * @returns {string} current memory size
      */
     this.memSize = function (memSize) {
         if (arguments.length == 0) {
@@ -94,6 +94,7 @@ Wine.prototype.dosbox = function () {
      * Sets render_aspect parameter in the current prefix
      * https://www.dosbox.com/wiki/dosbox.conf#.5Brender.5D
      * @param {boolean} renderAspect The render aspect
+     * @returns {string} current renderAspect
      */
     this.renderAspect = function (renderAspect) {
         if (arguments.length == 0) {
@@ -108,6 +109,7 @@ Wine.prototype.dosbox = function () {
      * Sets render_frameskip parameter in the current prefix
      * https://www.dosbox.com/wiki/dosbox.conf#.5Brender.5D
      * @param {int} renderFrameSkip The render frameskip
+     * @returns {string} current frameskip
      */
     this.renderFrameSkip = function (renderFrameSkip) {
         if (arguments.length == 0) {
@@ -122,6 +124,7 @@ Wine.prototype.dosbox = function () {
      * Sets CPU cycles in the current prefix
      * https://www.dosbox.com/wiki/dosbox.conf#.5Bcpu.5D
      * @param {*} cpuCycles (example: max 95% limit 33000)
+     * @returns {string} current cpuCycles
      */
     this.cpuCycles = function (cpuCycles) {
         if (arguments.length == 0) {
