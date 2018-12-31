@@ -73,7 +73,9 @@ globals:
   QuickScript: false
   SteamScript: false
   UplayScript: false
-  ZipScript: false  # wine
+  ZipScript: false
+  
+  # wine
   LATEST_DEVELOPMENT_VERSION: false
   LATEST_STABLE_VERSION: false
   LATEST_STAGING_VERSION: false
