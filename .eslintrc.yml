@@ -61,6 +61,7 @@ globals:
   WineShortcut: false
   # quick scripts
   CustomInstallerScript: false
+  GogScript: false
   InstallerScript: false
   LocalInstallerScript: false
   OnlineInstallerScript: false
@@ -68,9 +69,7 @@ globals:
   QuickScript: false
   SteamScript: false
   UplayScript: false
-  ZipScript: false
-  GogScript: false
-  # wine
+  ZipScript: false  # wine
   LATEST_DEVELOPMENT_VERSION: false
   LATEST_STABLE_VERSION: false
   LATEST_STAGING_VERSION: false
