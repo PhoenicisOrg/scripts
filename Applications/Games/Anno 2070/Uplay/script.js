@@ -4,7 +4,7 @@ include(["engines", "wine", "plugins", "virtual_desktop"]);
 
 var installerImplementation = {
     run: function () {
-        new UplayScript()
+        new GogScript()
             .name("Anno 2070")
             .editor("Ubisoft")
             .applicationHomepage("http://anno-game.ubi.com/anno-2070/en-US/")
