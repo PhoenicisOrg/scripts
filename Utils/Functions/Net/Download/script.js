@@ -7,6 +7,7 @@ include(["utils", "functions", "filesystem", "files"]);
 function Downloader() {
     this._downloader = Bean("downloader");
     this._algorithm = "SHA";
+    this._headers = {};
 }
 
 /**
@@ -59,12 +60,22 @@ Downloader.prototype.checksum = function (checksum) {
 }
 
 /**
-* sets message text
-* @param {string} message download message
-* @returns {Downloader} Downloader object
-*/
+ * sets message text
+ * @param {string} message download message
+ * @returns {Downloader} Downloader object
+ */
 Downloader.prototype.message = function (message) {
     this._message = message;
+    return this;
+}
+
+/**
+ * sets http headers
+ * @param {{}} headers headers
+ * @returns {Downloader} Downloader object
+ */
+Downloader.prototype.headers = function (headers) {
+    this._headers = headers;
     return this;
 }
 
@@ -86,7 +97,7 @@ Downloader.prototype.to = function (localFile) {
 Downloader.prototype.onlyIfUpdateAvailable = function (onlyIfUpdateAvailable) {
     this._onlyIfUpdateAvailable = onlyIfUpdateAvailable;
     return this;
-}
+};
 
 /**
 * returns downloaded file
@@ -109,7 +120,7 @@ Downloader.prototype.get = function () {
     }
 
     if (this._localFile) {
-        this._downloader.get(this._url, this._localFile, function (progressEntity) {
+        this._downloader.get(this._url, this._localFile, this._headers, function (progressEntity) {
             if (progressBar) {
                 progressBar.accept(progressEntity);
             }
@@ -134,10 +145,18 @@ Downloader.prototype.get = function () {
             }
         }
     } else {
-        return this._downloader.get(this._url, function (progressEntity) {
+        return this._downloader.get(this._url, this._headers, function (progressEntity) {
             if (progressBar) {
                 progressBar.accept(progressEntity);
             }
         });
     }
+}
+
+/**
+ * Gets the content and parse the JSON value
+ * @returns {any} The json content
+ */
+Downloader.prototype.json = function () {
+    return JSON.parse(this.get());
 }
