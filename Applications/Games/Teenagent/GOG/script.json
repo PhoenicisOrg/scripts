@@ -1,5 +1,5 @@
 {
-    "scriptName"                 : "GOG.Com",
+    "scriptName"                 : "GOG",
     "id"                         : "gog",
     "compatibleOperatingSystems" : [
         "MACOSX",

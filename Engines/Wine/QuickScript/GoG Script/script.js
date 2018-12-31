@@ -23,7 +23,7 @@ GogScript.prototype.gogSetupFileName = function (setupFileName) {
  * @returns {GogScript} This
  */
 GogScript.prototype.loginToGog = function (setupWizard) {
-    var browserWindow = setupWizard.createBrowser("Please login to your GoG.com account so that we can download the game for you:");
+    var browserWindow = setupWizard.createBrowser(tr("Please login to your GoG.com account so that we can download the game for you:"));
     browserWindow.goToUrl("https://auth.gog.com/auth?client_id=46899977096215655&redirect_uri=https%3A%2F%2Fembed.gog.com%2Fon_login_success%3Forigin%3Dclient&response_type=code&layout=client2");
     browserWindow.waitForUrl("https://embed.gog.com/*");
     var currentUrl = browserWindow.getCurrentUrl();
