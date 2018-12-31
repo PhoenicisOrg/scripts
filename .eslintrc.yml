@@ -69,6 +69,7 @@ globals:
   SteamScript: false
   UplayScript: false
   ZipScript: false
+  GogScript: false
   # wine
   LATEST_DEVELOPMENT_VERSION: false
   LATEST_STABLE_VERSION: false
