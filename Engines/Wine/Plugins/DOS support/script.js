@@ -135,4 +135,6 @@ Wine.prototype.dosbox = function () {
             return this;
         }
     }
+
+    return this;
 }
