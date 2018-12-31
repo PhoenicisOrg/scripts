@@ -11,6 +11,11 @@ GogScript.prototype = Object.create(QuickScript.prototype);
 
 GogScript.prototype.constructor = GogScript;
 
+/**
+ * Sets the setup file name so that the script can fetch it from gog.com
+ * @param {string} setupFileName The setup file name
+ * @returns {GogScript} This
+ */
 GogScript.prototype.gogSetupFileName = function (setupFileName) {
     this._setupFileName = setupFileName;
     return this;
