@@ -2,7 +2,7 @@ include(["engines", "wine", "quick_script", "uplay_script"]);
 
 var installerImplementation = {
     run: function () {
-        new GogScript()
+        new UplayScript()
             .name("Prince of Persia®: The Sands of Time")
             .applicationHomepage("http://store.ubi.com/de/prince-of-persia--sands-of-time/5704fac588a7e32b078b466a.html")
             .editor("Kudosoft")
