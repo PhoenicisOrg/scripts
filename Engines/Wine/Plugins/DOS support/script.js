@@ -65,7 +65,8 @@ Wine.prototype.dosbox = function () {
     /**
      * Set or get one dosbox setting
      * @param {string} key The key of the setting (example dosbox_memsize)
-     * @returns {*} The value (example: 64)
+     * @param {string} value: The value to be set
+     * @returns {*} The value (example: 64) if this is a getter, the same object otherwise
      */
     this.setting = function (key, value) {
         if (arguments.length == 1) {
@@ -121,13 +122,13 @@ Wine.prototype.dosbox = function () {
     /**
      * Sets CPU cycles in the current prefix
      * https://www.dosbox.com/wiki/dosbox.conf#.5Bcpu.5D
-     * @param {*} cpu_cycles (example: max 95% limit 33000)
+     * @param {*} cpuCycles (example: max 95% limit 33000)
      */
-    this.cpuCycles = function (cpu_cycles) {
+    this.cpuCycles = function (cpuCycles) {
         if (arguments.length == 0) {
             return this.getSetting("cpu_cycles")
         } else {
-            this.setSetting("cpu_cycles", cpu_cycles);
+            this.setSetting("cpu_cycles", cpuCycles);
             return this;
         }
     };
