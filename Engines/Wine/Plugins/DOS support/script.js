@@ -14,7 +14,7 @@ Wine.prototype.dosbox = function () {
      */
     this.dosConfigFile = function () {
         return _wine.prefixDirectory() + "/playonlinux_dos.cfg";
-    };
+    }
 
     /**
      * Set a setting in the prefix dosbox configuration file
@@ -33,7 +33,7 @@ Wine.prototype.dosbox = function () {
             }
         }
         return writeToFile(this.dosConfigFile(), newFileString);
-    };
+    }
 
     /**
      * Fetch all prefix dosbox sttings
@@ -51,7 +51,7 @@ Wine.prototype.dosbox = function () {
         } else {
             return {};
         }
-    };
+    }
 
     /**
      * Get one dosbox setting
@@ -60,7 +60,7 @@ Wine.prototype.dosbox = function () {
      */
     this.getSetting = function (key) {
         return this.getSettings()[key];
-    };
+    }
 
     /**
      * Set or get one dosbox setting
@@ -74,8 +74,7 @@ Wine.prototype.dosbox = function () {
         } else {
             this.setSetting(key, value);
         }
-    };
-
+    }
 
     /**
      * Sets dosbox_memsize parameter in the current prefix
@@ -89,7 +88,7 @@ Wine.prototype.dosbox = function () {
             this.setSetting("dosbox_memsize", memSize);
             return this;
         }
-    };
+    }
 
     /**
      * Sets render_aspect parameter in the current prefix
@@ -103,7 +102,7 @@ Wine.prototype.dosbox = function () {
             this.setSetting("render_aspect", renderAspect);
             return this;
         }
-    };
+    }
 
     /**
      * Sets render_frameskip parameter in the current prefix
@@ -117,7 +116,7 @@ Wine.prototype.dosbox = function () {
             this.setSetting("render_frameskip", renderFrameSkip);
             return this;
         }
-    };
+    }
 
     /**
      * Sets CPU cycles in the current prefix
@@ -131,5 +130,5 @@ Wine.prototype.dosbox = function () {
             this.setSetting("cpu_cycles", cpuCycles);
             return this;
         }
-    };
+    }
 }
