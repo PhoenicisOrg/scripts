@@ -16,13 +16,16 @@ var installerImplementation = {
             .wineDistribution("dos_support")
             .postInstall(function (wine) {
                 wine.run(wine.prefixDirectory() + "/drive_c/The Elder Scroll 1: Arena/Arena106.exe", [], wine.prefixDirectory(), false, true);
+
                 writeToFile(wine.prefixDirectory() + "/drive_c/ARENA/ARENA.BAT", "@ECHO OFF\r\n" +
                     "A -sa:220 -si:7 -sd:1 -ma:220 -mq:7 -md:1 -ssbdig.adv -msbfm.adv\n\n" +
                     "EXIT");
-                wine.dosbox_setMemsize(64);
-                wine.dosbox_setRenderAspect(true);
-                wine.dosbox_setCPUCycles("max 95% limit 33000");
-                wine.dosbox_setRenderFrameskip(1);
+
+                wine.dosbox()
+                    .setMemsize(64)
+                    .setRenderAspect(true)
+                    .setCPUCycles("max 95% limit 33000")
+                    .setRenderFrameSkip(1);
             })
             .executable("ARENA.BAT")
             .go();
