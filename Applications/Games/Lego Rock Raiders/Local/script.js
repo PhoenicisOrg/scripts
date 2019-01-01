@@ -8,7 +8,7 @@ include(["engines", "wine", "verbs", "devenum"]);
 include(["engines", "wine", "verbs", "d3drm"]);
 
 var installerImplementation = {
-    run: function() {
+    run: function () {
         new LocalInstallerScript()
             .name("Lego Rock Raiders")
             .editor("LEGO Media")
@@ -28,17 +28,17 @@ var installerImplementation = {
                 wizard.message(tr("This game needs a copy protection patch to work. It may be illegal in your country to patch copy protection. You must patch the game yourself."));
                 var zipLocation = wine.prefixDirectory() + "drive_c/RockRaidersCodec_490085.zip";
                 new Downloader()
-                .wizard(wizard)
-                .url("http://rrubucket.s3.amazonaws.com/RockRaidersCodec_490085.zip")
-                .checksum("991a343dc608c6a1914127a55f2e5b47")
-                .algorithm("MD5")
-                .to(zipLocation)
-                .get();
+                    .wizard(wizard)
+                    .url("http://rrubucket.s3.amazonaws.com/RockRaidersCodec_490085.zip")
+                    .checksum("991a343dc608c6a1914127a55f2e5b47")
+                    .algorithm("MD5")
+                    .to(zipLocation)
+                    .get();
                 new Extractor()
-                .wizard(wizard)
-                .archive(wine.prefixDirectory() + "/drive_c/RockRaidersCodec_490085.zip")
-                .to(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/")
-                .extract(["-F", "iv5setup.exe"]);
+                    .wizard(wizard)
+                    .archive(wine.prefixDirectory() + "/drive_c/RockRaidersCodec_490085.zip")
+                    .to(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/")
+                    .extract(["-F", "iv5setup.exe"]);
                 wizard.message(tr("When installing Indeo codecs you must choose custom installation type. Then uncheck ownload DirectShow filter and Indeo 5 Netscape Browser Extension or else the installer will crash."));
                 wine.run(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/iv5setup.exe");
                 wine.wait();
