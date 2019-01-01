@@ -5,12 +5,11 @@ var installerImplementation = {
         new GogScript()
             .name("XIII")
             .editor("Ubisoft")
-            .applicationHomepage("")
+            .applicationHomepage("https://support.ubi.com/fr-FR/Games/994")
             .author("Quentin PÂRIS")
-            .gogSetupFileName(["xiii/en1installer0", "xiii/en1installer1", "xiii/en1installer2"])
+            .gogSetupFileNames(["xiii/en1installer0", "xiii/en1installer1", "xiii/en1installer2"])
             .category("Games")
             .wineVersion(LATEST_STABLE_VERSION)
-            .wineDistribution("upstream")
             .executable("xiii.exe")
             .go();
     }
