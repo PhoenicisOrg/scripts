@@ -12,12 +12,12 @@ GogScript.prototype = Object.create(QuickScript.prototype);
 GogScript.prototype.constructor = GogScript;
 
 /**
- * Sets the setup(s file(s) name so that the script can fetch it from gog.com
- * @param {string|string[]} setupFileName The setup file name
+ * Sets the setup file(s) name so that the script can fetch it from gog.com
+ * @param {string|string[]} setupFileNames The setup file name
  * @returns {GogScript} This
  */
-GogScript.prototype.gogSetupFileName = function (setupFileName) {
-    this._setupFileName = setupFileName;
+GogScript.prototype.gogSetupFileName = function (setupFileNames) {
+    this._setupFileNames = setupFileNames;
     return this;
 }
 
@@ -62,12 +62,12 @@ GogScript.prototype._downloadSetupFile = function (setupWizard, setupFileName, t
  * @returns {*}
  */
 GogScript.prototype.download = function (setupWizard) {
-    var _setupDirectory = createTempDir();
+    var setupDirectory = createTempDir();
     var that = this;
-    if (Array.isArray(this._setupFileName)) {
+    if (Array.isArray(this._setupFileNames)) {
         var foundExecutable = null;
-        this._setupFileName.forEach(function(setupFileName) {
-            var downloadedFile = that._downloadSetupFile(setupWizard, setupFileName, _setupDirectory);
+        this._setupFileNames.forEach(function(setupFileName) {
+            var downloadedFile = that._downloadSetupFile(setupWizard, setupFileName, setupDirectory);
             if(downloadedFile.endsWith(".exe")) {
                 foundExecutable = downloadedFile;
             }
@@ -76,7 +76,7 @@ GogScript.prototype.download = function (setupWizard) {
         return foundExecutable;
     }
 
-    return this._downloadSetupFile(setupWizard, this._setupFileName, _setupDirectory);
+    return this._downloadSetupFile(setupWizard, this._setupFileNames, setupDirectory);
 }
 
 GogScript.prototype.go = function () {
@@ -85,7 +85,7 @@ GogScript.prototype.go = function () {
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
     this.loginToGog(setupWizard);
-    var _setupFile = this.download(setupWizard);
+    var setupFile = this.download(setupWizard);
 
     var wine = new Wine()
         .wizard(setupWizard)
@@ -96,7 +96,7 @@ GogScript.prototype.go = function () {
     this._preInstall(wine, setupWizard);
 
     wine.gdiplus();
-    wine.run(_setupFile, [], wine.prefixDirectory() + "/drive_c/", true, true);
+    wine.run(setupFile, [], wine.prefixDirectory() + "/drive_c/", true, true);
 
     this._postInstall(wine, setupWizard);
 
