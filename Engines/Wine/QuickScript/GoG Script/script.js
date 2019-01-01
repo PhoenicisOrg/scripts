@@ -13,7 +13,7 @@ GogScript.prototype.constructor = GogScript;
 
 /**
  * Sets one setup file name so that the script can fetch it from gog.com
- * @param {string|string[]} setupFileNames The setup file name(s)
+ * @param {string} setupFileName The setup file name
  * @returns {GogScript} This
  */
 GogScript.prototype.gogSetupFileName = function (setupFileName) {
@@ -23,7 +23,7 @@ GogScript.prototype.gogSetupFileName = function (setupFileName) {
 
 /**
  * Sets the setup file(s) name so that the script can fetch it from gog.com
- * @param {string|string[]} setupFileNames The setup file name(s)
+ * @param {string[]} setupFileNames The setup file name(s)
  * @returns {GogScript} This
  */
 GogScript.prototype.gogSetupFileNames = function (setupFileNames) {
