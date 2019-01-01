@@ -12,16 +12,23 @@ GogScript.prototype = Object.create(QuickScript.prototype);
 GogScript.prototype.constructor = GogScript;
 
 /**
+ * Sets one setup file name so that the script can fetch it from gog.com
+ * @param {string|string[]} setupFileNames The setup file name(s)
+ * @returns {GogScript} This
+ */
+GogScript.prototype.gogSetupFileName = function (setupFileName) {
+    this._setupFileNames = [setupFileName];
+    return this;
+}
+
+/**
  * Sets the setup file(s) name so that the script can fetch it from gog.com
  * @param {string|string[]} setupFileNames The setup file name(s)
  * @returns {GogScript} This
  */
-GogScript.prototype.gogSetupFileName = function (setupFileNames) {
+GogScript.prototype.gogSetupFileNames = function (setupFileNames) {
     this._setupFileNames = setupFileNames;
-    return this;
 }
-
-GogScript.prototype.gogSetupFileNames = GogScript.prototype.gogSetupFileName
 
 /**
  * Presents a Gog.com login window to the user, login to its account and return a token that can be used later.
@@ -64,19 +71,15 @@ GogScript.prototype._downloadSetupFile = function (setupWizard, setupFileName, t
 GogScript.prototype.download = function (setupWizard) {
     var setupDirectory = createTempDir();
     var that = this;
-    if (Array.isArray(this._setupFileNames)) {
-        var foundExecutable = null;
-        this._setupFileNames.forEach(function(setupFileName) {
-            var downloadedFile = that._downloadSetupFile(setupWizard, setupFileName, setupDirectory);
-            if(downloadedFile.endsWith(".exe")) {
-                foundExecutable = downloadedFile;
-            }
-        });
+    var foundExecutable = null;
+    this._setupFileNames.forEach(function (setupFileName) {
+        var downloadedFile = that._downloadSetupFile(setupWizard, setupFileName, setupDirectory);
+        if (downloadedFile.endsWith(".exe")) {
+            foundExecutable = downloadedFile;
+        }
+    });
 
-        return foundExecutable;
-    }
-
-    return this._downloadSetupFile(setupWizard, this._setupFileNames, setupDirectory);
+    return foundExecutable;
 }
 
 GogScript.prototype.go = function () {
