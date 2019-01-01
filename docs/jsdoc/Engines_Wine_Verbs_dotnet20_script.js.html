@@ -46,14 +46,14 @@ Wine.prototype.dotnet20 = function () {
             .checksum("a3625c59d7a2995fb60877b5f5324892a1693b2a")
             .name("dotnetfx.exe")
             .get();
-       this.uninstall("Mono");
-       remove(this.system32directory() + "/mscoree.dll");
-       this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
-       this.run(setupFile, ["/q:a", "/c:install.exe /q"], null, false, true);
-       this.windowsVersion("win7");
-       remove(this.system32directory() + "/msvcr80.dll");
-       remove(this.system32directory() + "/msvcm80.dll");
-       remove(this.system32directory() + "/msvcp80.dll");
+        this.uninstall("Mono");
+        remove(this.system32directory() + "/mscoree.dll");
+        this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
+        this.run(setupFile, ["/q:a", "/c:install.exe /q"], null, false, true);
+        this.windowsVersion("win7");
+        remove(this.system32directory() + "/msvcr80.dll");
+        remove(this.system32directory() + "/msvcm80.dll");
+        remove(this.system32directory() + "/msvcp80.dll");
     }
     else {
         var setupFile = new Resource()
@@ -62,9 +62,9 @@ Wine.prototype.dotnet20 = function () {
             .checksum("e59cca309463a5d98daeaada83d1b05fed5126c5")
             .name("NetFx64.exe")
             .get();
-       this.uninstall("Mono");
-       this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
-       this.run(setupFile, ["/q:a", "/c:install.exe /q"], null, false, true)
+        this.uninstall("Mono");
+        this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
+        this.run(setupFile, ["/q:a", "/c:install.exe /q"], null, false, true)
     }
 
     return this;
