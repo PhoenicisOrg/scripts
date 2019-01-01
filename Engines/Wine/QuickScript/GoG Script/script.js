@@ -28,6 +28,7 @@ GogScript.prototype.gogSetupFileName = function (setupFileName) {
  */
 GogScript.prototype.gogSetupFileNames = function (setupFileNames) {
     this._setupFileNames = setupFileNames;
+    return this;
 }
 
 /**
