@@ -24,6 +24,9 @@ rules:
   camelcase:
     - 2
     - {properties: always}
+  linebreak-style:
+    - 2
+    - unix
 
 globals:
   include: false
