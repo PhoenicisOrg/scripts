@@ -1,5 +1,4 @@
 include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["engines", "wine", "plugins", "windows_version"]);
 include(["engines", "wine", "verbs", "corefonts"]);
 include(["engines", "wine", "verbs", "vcrun2017"]);
 include(["engines", "wine", "verbs", "xact"]);
@@ -19,7 +18,6 @@ var installerImplementation = {
             .wineVersion(LATEST_STAGING_VERSION)
             .wineDistribution("staging")
             .preInstall(function (wine/*, wizard*/) {
-                wine.windowsVersion("win10");
                 wine.corefonts();
                 wine.vcrun2017(); // Probably needed for self-updater
                 wine.xact(); // Required by a couple of games
