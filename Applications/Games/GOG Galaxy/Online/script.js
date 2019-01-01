@@ -19,8 +19,7 @@ var installerImplementation = {
             .wineVersion(LATEST_STAGING_VERSION)
             .wineDistribution("staging")
             .preInstall(function (wine/*, wizard*/) {
-                print(wine);
-                wine.windowsVersion("win7");
+                wine.windowsVersion("win10");
                 wine.corefonts();
                 wine.vcrun2017(); // Probably needed for self-updater
                 wine.xact(); // Required by a couple of games
