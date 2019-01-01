@@ -120,7 +120,7 @@ Downloader.prototype.get = function () {
     }
 
     if (this._localFile) {
-        this._downloader.get(this._url, this._localFile, this._headers, function (progressEntity) {
+        var downloadFile = this._downloader.get(this._url, this._localFile, this._headers, function (progressEntity) {
             if (progressBar) {
                 progressBar.accept(progressEntity);
             }
@@ -144,6 +144,8 @@ Downloader.prototype.get = function () {
                 throw checksumErrorMessage;
             }
         }
+
+        return downloadFile.toString();
     } else {
         return this._downloader.get(this._url, this._headers, function (progressEntity) {
             if (progressBar) {
