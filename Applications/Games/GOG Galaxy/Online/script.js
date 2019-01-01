@@ -18,7 +18,7 @@ var installerImplementation = {
             .wineArchitecture("amd64")
             .wineVersion(LATEST_STAGING_VERSION)
             .wineDistribution("staging")
-            .preInstall(function(wine/*, wizard*/) {
+            .preInstall(function (wine/*, wizard*/) {
                 print(wine);
                 wine.windowsVersion("win7");
                 wine.corefonts();
@@ -29,7 +29,7 @@ var installerImplementation = {
                 // drive_c/ProgramData and drive_c/users/Public
                 remove(wine.prefixDirectory() + "/drive_c/users/Public");
                 lns(wine.prefixDirectory() + "/drive_c/ProgramData", wine.prefixDirectory() + "/drive_c/users/Public");
-             })
+            })
             .go();
     }
 };
