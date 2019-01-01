@@ -66,8 +66,8 @@ GogScript.prototype._downloadSetupFile = function (setupWizard, setupFileName, t
 
 /**
  * Download the setup resources in the same directory, and returns the path of the .exe
- * @param setupWizard
- * @returns {*}
+ * @param {SetupWizard} setupWizard The setup wizard
+ * @returns {String} The .exe file entry that can be used to continue the installation
  */
 GogScript.prototype.download = function (setupWizard) {
     var setupDirectory = createTempDir();
