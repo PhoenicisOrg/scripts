@@ -12,14 +12,16 @@ GogScript.prototype = Object.create(QuickScript.prototype);
 GogScript.prototype.constructor = GogScript;
 
 /**
- * Sets the setup file name so that the script can fetch it from gog.com
- * @param {string} setupFileName The setup file name
+ * Sets the setup(s file(s) name so that the script can fetch it from gog.com
+ * @param {string|string[]} setupFileName The setup file name
  * @returns {GogScript} This
  */
 GogScript.prototype.gogSetupFileName = function (setupFileName) {
     this._setupFileName = setupFileName;
     return this;
 }
+
+GogScript.prototype.gogSetupFileNames = GogScript.prototype.gogSetupFileName
 
 /**
  * Presents a Gog.com login window to the user, login to its account and return a token that can be used later.
@@ -34,20 +36,47 @@ GogScript.prototype.loginToGog = function (setupWizard) {
     var currentUrl = browserWindow.getCurrentUrl();
     var code = currentUrl.split("code=")[1].split("&")[0];
 
-    var tokenUrl = "https://auth.gog.com/token?client_id=46899977096215655&client_secret=9d85c43b1482497dbbce61f6e4aa173a433796eeae2ca8c5f6129f2dc4de46d9&grant_type=authorization_code&code="+code+"&redirect_uri=https%3A%2F%2Fembed.gog.com%2Fon_login_success%3Forigin%3Dclient";
+    var tokenUrl = "https://auth.gog.com/token?client_id=46899977096215655&client_secret=9d85c43b1482497dbbce61f6e4aa173a433796eeae2ca8c5f6129f2dc4de46d9&grant_type=authorization_code&code=" + code + "&redirect_uri=https%3A%2F%2Fembed.gog.com%2Fon_login_success%3Forigin%3Dclient";
     this._token = new Downloader().url(tokenUrl).json();
     return this;
 }
 
-GogScript.prototype.download = function (setupWizard) {
-    this._setupFile = createTempFile("exe");
+GogScript.prototype._downloadSetupFile = function (setupWizard, setupFileName, tmpDirectory) {
+    var url = "https://www.gog.com/downloads/" + setupFileName;
 
-    new Downloader()
-        .url("https://www.gog.com/downloads/" + this._setupFileName)
+    // We set a user agent so that GoG sends the filename of the executable
+    return new Downloader()
+        .url(url)
         .wizard(setupWizard)
-        .to(this._setupFile)
-        .headers({"Authorization": "Bearer " + this._token["access_token"]})
-        .get()
+        .to(tmpDirectory)
+        .headers({
+            "Authorization": "Bearer " + this._token["access_token"],
+            "User-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:64.0) Gecko/20100101 Firefox/64.0"
+        })
+        .get();
+}
+
+/**
+ * Download the setup resources in the same directory, and returns the path of the .exe
+ * @param setupWizard
+ * @returns {*}
+ */
+GogScript.prototype.download = function (setupWizard) {
+    var _setupDirectory = createTempDir();
+    var that = this;
+    if (Array.isArray(this._setupFileName)) {
+        var foundExecutable = null;
+        this._setupFileName.forEach(function(setupFileName) {
+            var downloadedFile = that._downloadSetupFile(setupWizard, setupFileName, _setupDirectory);
+            if(downloadedFile.endsWith(".exe")) {
+                foundExecutable = downloadedFile;
+            }
+        });
+
+        return foundExecutable;
+    }
+
+    return this._downloadSetupFile(setupWizard, this._setupFileName, _setupDirectory);
 }
 
 GogScript.prototype.go = function () {
@@ -56,7 +85,7 @@ GogScript.prototype.go = function () {
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
     this.loginToGog(setupWizard);
-    this.download(setupWizard);
+    var _setupFile = this.download(setupWizard);
 
     var wine = new Wine()
         .wizard(setupWizard)
@@ -67,7 +96,7 @@ GogScript.prototype.go = function () {
     this._preInstall(wine, setupWizard);
 
     wine.gdiplus();
-    wine.run(this._setupFile, [], wine.prefixDirectory() + "/drive_c/", true, true);
+    wine.run(_setupFile, [], wine.prefixDirectory() + "/drive_c/", true, true);
 
     this._postInstall(wine, setupWizard);
 
