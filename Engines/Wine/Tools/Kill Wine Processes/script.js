@@ -7,7 +7,7 @@ var toolImplementation = {
     run: function (container) {
         new Wine()
             .prefix(container)
-            .run("kill", [], null, false, true);
+            .kill()
     }
 };
 

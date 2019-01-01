@@ -17,7 +17,7 @@ Wine.prototype.devenum = function () {
         .checksum("a97c820915dc20929e84b49646ec275760012a42")
         .name("directx_feb2010_redist.exe")
         .get();
-    this.wizard().wait(tr("Please wait while {0} is installed ...", "devenum"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", "devenum"));
     new CabExtract()
         .archive(setupFile)
         .to(this.prefixDirectory() + "/drive_c/devenum/")

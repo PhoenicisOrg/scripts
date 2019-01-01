@@ -11,9 +11,6 @@ include(["engines", "wine", "verbs", "dotnet40"]);
 * @returns {Wine} Wine object
 */
 Wine.prototype.dotnet452 = function () {
-    if (this.architecture() == "amd64") {
-        throw "{0} cannot be installed in a 64bit wine prefix!".format("dotnet452");
-    }
 
     var OSVersion = this.windowsVersion();
 
@@ -26,7 +23,7 @@ Wine.prototype.dotnet452 = function () {
 
     this.uninstall("Mono");
 
-    this.wizard().wait(tr("Please wait ..."));
+    this.wizard().wait(tr("Please wait..."));
     this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"], null, false, true);
 
     remove(this.system32directory() + "/mscoree.dll");
@@ -38,7 +35,7 @@ Wine.prototype.dotnet452 = function () {
         .set("builtin", ["fusion"])
         .do();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.5.2"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 4.5.2"));
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
     this.overrideDLL()
@@ -70,4 +67,3 @@ var verbImplementation = {
 
 /* exported Verb */
 var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-

@@ -13,8 +13,8 @@ Wine.prototype.xact = function () {
     var extractFiles = function (progressBar, filesToExtract, destination, pattern, directory) {
         var numberOfExtractedFiles = 0;
         filesToExtract.forEach(function (cabFile) {
-            print(tr("Extracting {0} ...", cabFile));
-            progressBar.setText(tr("Extracting {0} ...", "Xact"));
+            print(tr("Extracting {0}...", cabFile));
+            progressBar.setText(tr("Extracting {0}...", "Xact"));
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
 
             new CabExtract()
@@ -30,8 +30,8 @@ Wine.prototype.xact = function () {
     var regsvr32Xact = function (progressBar, dllToRegsvr) {
         var numberOfExtractedFiles = 0;
         dllToRegsvr.forEach(function (dll) {
-            print(tr("Registering {0} ...", dll));
-            progressBar.setText(tr("Registering {0} ...", "Xact"));
+            print(tr("Registering {0}...", dll));
+            progressBar.setText(tr("Registering {0}...", "Xact"));
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
 
             that.regsvr32().install(dll);
@@ -47,8 +47,8 @@ Wine.prototype.xact = function () {
         .name("directx_Jun2010_redist.exe")
         .get();
 
-    var progressBar = this.wizard().progressBar(tr("Please wait ..."));
-    progressBar.setText(tr("Extracting {0} ...", "Xact"));
+    var progressBar = this.wizard().progressBar(tr("Please wait..."));
+    progressBar.setText(tr("Extracting {0}...", "Xact"));
     progressBar.setProgressPercentage(0.);
 
     var filesToExtract = []
