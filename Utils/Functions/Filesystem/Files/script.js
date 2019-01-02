@@ -116,6 +116,15 @@ function createTempFile(extension) { // eslint-disable-line no-unused-vars
 }
 
 /**
+ * creates temporary directory
+ * @returns {string} file path of created temporary directory
+ */
+function createTempDir() { // eslint-disable-line no-unused-vars
+    var tmpFile = Bean("fileUtilities").createTmpDir();
+    return tmpFile.getAbsolutePath();
+}
+
+/**
 * Checksum prototype
 * @constructor
 */

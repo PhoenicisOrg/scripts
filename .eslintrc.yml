@@ -24,6 +24,9 @@ rules:
   camelcase:
     - 2
     - {properties: always}
+  linebreak-style:
+    - 2
+    - unix
 
 globals:
   include: false
@@ -48,6 +51,7 @@ globals:
   tr: false
   writeToFile: false
   createTempFile: false
+  createTempDir: false
   chmod: false
 
   # classes
