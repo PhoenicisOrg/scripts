@@ -6,17 +6,6 @@ include(["engines", "wine", "shortcuts", "wine"]);
 include(["engines", "wine", "verbs", "sandbox"]);
 include(["engines", "wine", "verbs", "d3dx9"]);
 
-// ChangeLog - Kreyren
-/// Reference https://github.com/PhoenicisOrg/scripts/issues/777
-/// Replaced installer URL with working
-/// Replaced naming of installers by naming used by Riot Games
-/// BUG: Latin America North not working
-/// BUG: Latin America Sounth not working
-/// BUG: Oceania not working
-/// Updated SHA-1
-
-
-
 // Installs League of Legends
 
 var installerImplementation = {
