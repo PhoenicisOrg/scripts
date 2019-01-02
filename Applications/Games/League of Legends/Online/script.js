@@ -6,6 +6,17 @@ include(["engines", "wine", "shortcuts", "wine"]);
 include(["engines", "wine", "verbs", "sandbox"]);
 include(["engines", "wine", "verbs", "d3dx9"]);
 
+// ChangeLog - Kreyren
+/// Reference https://github.com/PhoenicisOrg/scripts/issues/777
+/// Replaced installer URL with working
+/// Replaced naming of installers by naming used by Riot Games
+/// BUG: Latin America North not working
+/// BUG: Latin America Sounth not working
+/// BUG: Oceania not working
+/// Updated SHA-1
+
+
+
 // Installs League of Legends
 
 var installerImplementation = {
@@ -14,7 +25,7 @@ var installerImplementation = {
             .name("League of Legends")
             .editor("Riot Games")
             .applicationHomepage("http://leagueoflegends.com/")
-            .author("Plata, feanor12, Thog")
+            .author("Plata, feanor12, Thog, kreyren")
             .installationCommand(function (wizard) {
                 // Select the region and download the setup file
                 ////////////////////////////////////////////////
@@ -30,57 +41,42 @@ var installerImplementation = {
                                "Russia"];
                 var selectedRegion = wizard.menu(tr("Select your region:"), regions);
                 var regionID, url, sha1;
-                var baseUrl = "https://riotgamespatcher-a.akamaihd.net/ShellInstaller/";
+                var baseUrl = "https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20";
                 switch (selectedRegion.text){
                     case "EU West":
                         regionID = "EUW";
-                        url = baseUrl+"EUW/LeagueofLegends_EUW_Installer_2016_11_10.exe";
-                        sha1 = "e8cb081395849f3753f8c00d558901b8c3df69e3";
-                        break;
-                    case "Latin America North":
-                        regionID = "LA1";
-                        url = baseUrl+"LA1/LeagueofLegends_LA1_Installer_2016_05_26.exe";
-                        sha1 = "996ece64ba2ba9c8b9195c3519a6d7637d82b8d3";
-                        break;
-                    case "Latin America South":
-                        regionID = "LA2";
-                        url = baseUrl+"LA2/LeagueofLegends_LA2_Installer_2016_05_27.exe";
-                        sha1 = "5c5e007ee266315b6433dd87e6692753170aab78";
-                        break;
-                    case "Oceania":
-                        regionID = "OC1";
-                        url = baseUrl+"OC1/LeagueofLegends_OC1_Installer_2016_05_13.exe";
-                        sha1 = "74b9a327e66fc527edb86e9ea45c9798bdffec5f";
+                        url = baseUrl+"EUW.exe";
+                        sha1 = "9c5507d6416d32e7442597c74a92e63a19fbb60b";
                         break;
                     case "Japan":
                         regionID = "JP";
-                        url = baseUrl+"JP/LeagueofLegends_JP_Installer_2016_05_31.exe";
-                        sha1 = "da25b973358837ef9abbb9cb3d55aae214a75de0";
+                        url = baseUrl+"JP.exe";
+                        sha1 = "9476c1441841c761c0025cbd24ae3ee02728ad98";
                         break;
                     case "Turkey":
                         regionID = "TR";
-                        url = baseUrl+"TR/LeagueofLegends_TR_Installer_2016_11_08.exe";
-                        sha1 = "93fe9b3e581fa5cd41c504ef91ce55e4227b43e3";
+                        url = baseUrl+"TR.exe";
+                        sha1 = "a70c755f7425753b31f4f703d9d324c7bf419636";
                         break;
                     case "Brasil":
                         regionID = "BR";
-                        url = baseUrl+"BR/LeagueofLegends_BR_Installer_2016_05_13.exe";
-                        sha1 = "fbef6186cb690b4259e63d53d8c73e556e1d5ddc";
+                        url = baseUrl+"BR.exe";
+                        sha1 = "f8dbe7b5fcb0b635cebdedffed1de90818a7f797";
                         break;
                     case "EU Nordic & East":
                         regionID = "EUNE";
-                        url = baseUrl+"EUNE/LeagueofLegends_EUNE_Installer_2016_11_10.exe";
-                        sha1 = "17727c665ce59e3faf95c2c0db2fe5509383e750";
+                        url = baseUrl+"EUNE.exe";
+                        sha1 = "689bcb1e0a04e9beda64ce42b50c1d73f22cbe75";
                         break;
                     case "North America":
                         regionID = "NA";
-                        url = baseUrl+"NA/LeagueofLegends_NA_Installer_2016_05_13.exe";
-                        sha1 = "70a253f29351f1d6952fa1af39fb8b2b01bc6cde";
+                        url = baseUrl+"NA.exe";
+                        sha1 = "947be3aad794fdb865971afe1db36b6aa114b4c7";
                         break;
                     case "Russia":
                         regionID = "RU";
-                        url = baseUrl+"RU/LeagueofLegends_RU_Installer_2016_05_13.exe";
-                        sha1 = "2d462decf629cab880386407598f9c5ea6db2ef5";
+                        url = baseUrl+"RU.exe";
+                        sha1 = "ff2803494f9a62b7faea303fd1894b660c6360ea";
                         break;
                 }
                 var setupFile = new Resource()
