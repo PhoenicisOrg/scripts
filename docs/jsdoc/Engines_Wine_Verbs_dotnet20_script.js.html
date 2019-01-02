@@ -46,14 +46,14 @@ Wine.prototype.dotnet20 = function () {
             .checksum("a3625c59d7a2995fb60877b5f5324892a1693b2a")
             .name("dotnetfx.exe")
             .get();
-       this.uninstall("Mono");
-       remove(this.system32directory() + "/mscoree.dll");
-       this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
-       this.run(setupFile, ["/q:a", "/c:install.exe /q"], null, false, true);
-       this.windowsVersion("win7");
-       remove(this.system32directory() + "/msvcr80.dll");
-       remove(this.system32directory() + "/msvcm80.dll");
-       remove(this.system32directory() + "/msvcp80.dll");
+        this.uninstall("Mono");
+        remove(this.system32directory() + "/mscoree.dll");
+        this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
+        this.run(setupFile, ["/q:a", "/c:install.exe /q"], null, false, true);
+        this.windowsVersion("win7");
+        remove(this.system32directory() + "/msvcr80.dll");
+        remove(this.system32directory() + "/msvcm80.dll");
+        remove(this.system32directory() + "/msvcp80.dll");
     }
     else {
         var setupFile = new Resource()
@@ -62,9 +62,9 @@ Wine.prototype.dotnet20 = function () {
             .checksum("e59cca309463a5d98daeaada83d1b05fed5126c5")
             .name("NetFx64.exe")
             .get();
-       this.uninstall("Mono");
-       this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
-       this.run(setupFile, ["/q:a", "/c:install.exe /q"], null, false, true)
+        this.uninstall("Mono");
+        this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
+        this.run(setupFile, ["/q:a", "/c:install.exe /q"], null, false, true)
     }
 
     return this;
@@ -79,7 +79,7 @@ Wine.prototype.dotnet20 = function () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">

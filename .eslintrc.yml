@@ -51,6 +51,7 @@ globals:
   tr: false
   writeToFile: false
   createTempFile: false
+  createTempDir: false
   chmod: false
 
   # classes
