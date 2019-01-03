@@ -6,7 +6,7 @@
         "LINUX"
     ],
     "testingOperatingSystems" : [
-        "MACOS",
+        "MACOSX",
         "LINUX"
     ],
     "free"                    : true,
