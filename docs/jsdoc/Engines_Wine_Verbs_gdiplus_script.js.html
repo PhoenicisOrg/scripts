@@ -43,7 +43,7 @@ Wine.prototype.gdiplus = function () {
         .name("WindowsXP-KB975337-x86-ENU.exe")
         .get();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", "GDI+"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", "GDI+"));
     this.run(setupFile, ["/extract:C:\\Tmp", "/q"], null, true, true);
 
     this.overrideDLL()
