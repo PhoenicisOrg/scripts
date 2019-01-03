@@ -4,10 +4,13 @@
 
 # How to add a script
 1. Clone this repository
+    ```
+    git clone https://github.com/PhoenicisOrg/scripts.git
+    ```
 
-2. Add the local checkout as local repository in Phoenicis (see [instructions](https://phoenicisorg.github.io/phoenicis/Users/repository/#local-directory))
+2. Add the local checkout as a local repository in Phoenicis (see [instructions](https://phoenicisorg.github.io/phoenicis/Users/repository/#local-directory))
 
-3. Select the right category
+3. Select the right category for the application
   * Accessories
   * Development
   * Games
