@@ -105,7 +105,7 @@ Downloader.prototype.onlyIfUpdateAvailable = function (onlyIfUpdateAvailable) {
  */
 Downloader.prototype.get = function () {
     if (!this._message) {
-        this._message = tr("Please wait while {0} is downloaded ...", this._fetchFileNameFromUrl(this._url));
+        this._message = tr("Please wait while {0} is downloaded...", this._fetchFileNameFromUrl(this._url));
     }
 
     if (this._wizard) {
