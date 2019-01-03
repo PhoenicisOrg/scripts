@@ -3,7 +3,11 @@
 [![Crowdin Badge](https://d322cqt584bo4o.cloudfront.net/phoenicis-scripts/localized.svg)](https://crowdin.com/project/phoenicis-scripts)
 
 # How to add a script
-1. Select the right category
+1. Clone this repository
+
+2. Add the local checkout as local repository in Phoenicis (see [instructions](https://phoenicisorg.github.io/phoenicis/Users/repository/#local-directory))
+
+3. Select the right category
   * Accessories
   * Development
   * Games
@@ -14,7 +18,7 @@
   * Other
   * Science
   
-2. Create a new folder for your script inside that category. The folder structure should be:
+4. Create a new folder for your script inside that category. The folder structure should be:
     ```
     category
     └── application-name
@@ -30,7 +34,7 @@
     
     Even if the application name contains ®, ™ or the like, you should not use it in the folder name.
 
-3. Fill the files:
+5. Fill the files:
   * [script.js](https://phoenicisorg.github.io/scripts/Develop/script-js/): actual installation script
   * [script.json](https://phoenicisorg.github.io/scripts/Develop/script-json/): describes the installation script
   ```json
@@ -51,10 +55,10 @@
   }
   ```
   
-  4. Verify changes:
+  6. Verify changes:
   * Ensure that the changes fulfill the code quality requirements and the files are formatted correctly (see [tools](https://phoenicisorg.github.io/scripts/General/tools/)).
   
-  5. Create a pull request:
+  7. Create a pull request:
   * Please create one pull request per script if you want to commit multiple scripts.
   * use the following naming convention  
        * for a new script: "Add \<application name\>" (e.g. "Add 7-zip")
