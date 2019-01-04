@@ -42,23 +42,23 @@
 5. Fill the files:
     * [script.js](https://phoenicisorg.github.io/scripts/Develop/script-js/): actual installation script
     * [script.json](https://phoenicisorg.github.io/scripts/Develop/script-json/): describes the installation script
-    ```json
-    {
+        ```json
+        {
 		"scriptName": "Online",
 		"compatibleOperatingSystems": ["MACOSX", "LINUX"],
 		"testingOperatingSystems": [],
 		"free": true,
 		"requiresPatch": false
-    }
-    ```
+        }
+        ```
     * main.png: application icon (400px x 300px)
     * [application.json](https://phoenicisorg.github.io/scripts/Develop/application-json/): describes the application
-    ```json
-    {
+        ```json
+        {
  		"name":	"Steam",
 		"description": "Application description"
-    }
-    ```
+        }
+        ```
   
   6. Verify changes:
     * Ensure that the changes fulfill the code quality requirements and the files are formatted correctly (see [tools](https://phoenicisorg.github.io/scripts/General/tools/)).
