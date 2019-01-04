@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Lutris Wine Steam",
+    "id"                         : "lutris_wine_steam",
+    "compatibleOperatingSystems" : [
+        "LINUX",
+        "MACOSX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}
