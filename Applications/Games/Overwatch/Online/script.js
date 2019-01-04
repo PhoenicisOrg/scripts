@@ -10,7 +10,7 @@ var installerImplementation = {
             .name("Overwatch")
             .editor("Blizzard")
             .applicationHomepage("http://www.playoverwatch.com/")
-            .author("ImperatorS79")
+            .author("ImperatorS79, kreyren")
             .url("https://eu.battle.net/download/getInstaller?os=win&installer=Overwatch-Setup.exe")
         //The checksum is different each time you download
             .wineVersion(LATEST_STAGING_VERSION)
@@ -19,10 +19,12 @@ var installerImplementation = {
             .category("Games")
             .executable("Overwatch.exe")
             .preInstall(function (wine/*, wizard*/) {
-                wine.windowsVersion("winxp");
+                wine.windowsVersion("win7");
                 wine.vcrun2015();
                 wine.corefonts();
                 wine.enableCSMT();
+                wine.DXVK(); // Needs approval, improves performance, DXVK 0.94 tested
+                // WINEDEBUG="-all" is mandatory for performance
             })
             .go();
     }
