@@ -89,8 +89,6 @@ SteamScript.prototype.fixCertificateIssue = function (wine){
 }
 
 SteamScript.prototype.go = function () {
-    java.lang.System.out.println("Ici");
-
     // default application homepage if not specified
     if (!this._applicationHomepage) {
         this._applicationHomepage = "https://store.steampowered.com/app/" + this._appId;
@@ -102,6 +100,7 @@ SteamScript.prototype.go = function () {
     }
 
     var setupWizard = SetupWizard(InstallationType.APPS, this._name, this.miniature());
+
     setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
     var tempFile = createTempFile("exe");
