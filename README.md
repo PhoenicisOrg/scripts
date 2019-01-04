@@ -3,9 +3,11 @@
 [![Crowdin Badge](https://d322cqt584bo4o.cloudfront.net/phoenicis-scripts/localized.svg)](https://crowdin.com/project/phoenicis-scripts)
 
 # How to add a script
-1. Clone this repository
+1. Fork this repository, create a new branch and clone it 
     ```
-    git clone https://github.com/PhoenicisOrg/scripts.git
+    git clone https://github.com/<user>/scripts.git
+    cd scripts
+    git checkout <branch>
     ```
 
 2. Add the local checkout as a local repository in Phoenicis (see [instructions](https://phoenicisorg.github.io/phoenicis/Users/repository/#local-directory))
