@@ -25,6 +25,8 @@ var installerImplementation = {
                 wine.enableCSMT();
                 wine.DXVK(); // Needs approval, improves performance, DXVK 0.94 tested
                 // WINEDEBUG="-all" is mandatory for performance
+                wine.overrideDLL().set("builtin", ["d3d10", "d3d10_1", "d3d11", "dxgi", "d3d10core"]).do(); // Needs approval
+
             })
             .go();
     }
