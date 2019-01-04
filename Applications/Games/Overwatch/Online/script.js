@@ -14,8 +14,8 @@ var installerImplementation = {
             .url("https://eu.battle.net/download/getInstaller?os=win&installer=Overwatch-Setup.exe")
         //The checksum is different each time you download
             .wineVersion(LATEST_STAGING_VERSION)
-            .wineDistribution("staging")
-            .wineArchitecture("amd64")
+            .wineDistribution("staging") // ESYNC required
+            .wineArchitecture("amd64") // Multilib preffered? (without setting wine architecture)
             .category("Games")
             .executable("Overwatch.exe")
             .preInstall(function (wine/*, wizard*/) {
@@ -23,8 +23,7 @@ var installerImplementation = {
                 wine.vcrun2015();
                 wine.corefonts();
                 wine.enableCSMT();
-                wine.DXVK(); // Needs approval, improves performance, DXVK 0.94 tested
-                // WINEDEBUG="-all" is mandatory for performance
+                wine.DXVK(); // Relevant: https://github.com/doitsujin/dxvk/issues/846
             })
             .go();
     }
