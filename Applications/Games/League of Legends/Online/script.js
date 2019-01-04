@@ -79,12 +79,17 @@ var installerImplementation = {
             })
             .category("Games")
             .wineDistribution("staging")
-            .wineVersion(LATEST_STAGING_VERSION)
+            .wineVersion(LATEST_STAGING_VERSION) // TODO: Gallium9 patchset
             .preInstall(function (wine /*, wizard*/) {
                 wine.windowsVersion("winxp");
                 wine.d3dx9();
-                wine.overrideDLL().set("native, builtin", ["atl120", "msvcp120", "msvcr120", "vcomp120", "msvcp140"]).do();
+                // wine.overrideDLL().set("native, builtin", ["atl120", "msvcp120", "msvcr120", "vcomp120", "msvcp140"]).do(); // Obsolete?
                 wine.enableCSMT();
+                wine.disableGLSL(); // Needs approval + recommended by WineHQ
+                wine.corefonts(); // Needs approval + mandatory for fonts
+                wine.vcrun2008(); // Needs approval
+                wine.vcrun2017(); // Needs approval
+                wine.adobeair(); // Needs approval + mandatory for launcher
 
                 mkdir(wine.prefixDirectory() + "drive_c/LoL");
 
