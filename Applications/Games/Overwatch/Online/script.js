@@ -17,7 +17,7 @@ var installerImplementation = {
             .wineDistribution("staging") // ESYNC required
             .wineArchitecture("amd64") // Multilib preffered? (without setting wine architecture)
             .category("Games")
-            .executable("Overwatch.exe")
+            .executable("Battle.net.exe")
             .preInstall(function (wine/*, wizard*/) {
                 wine.windowsVersion("win7");
                 wine.vcrun2015();
