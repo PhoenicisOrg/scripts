@@ -67,6 +67,16 @@ var installerImplementation = {
                         url = baseUrl+"RU.exe";
                         sha1 = "ff2803494f9a62b7faea303fd1894b660c6360ea";
                         break;
+                    case "Oceania":
+                        regionID = "OCE1";
+                        url = baseUrl+"OCE1.exe";
+                        sha1 = "0a8d29e8a71de4638a797a563fcc689a969930f0";
+                        break;
+                    case "Latin America North":
+                        regionID = "LA1";
+                        url = baseUrl+"LA1.exe";
+                        sha1 = "73208f6e3c9e46faf2294958bf3dde0f3df95b36";
+                        break;
                 }
                 var setupFile = new Resource()
                     .wizard(wizard)
