@@ -7,6 +7,7 @@ include(["engines", "wine", "verbs", "sandbox"]);
 include(["engines", "wine", "verbs", "d3dx9"]);
 
 // Installs League of Legends
+// Source may became obsolete, needs to updated regulary. 
 
 var installerImplementation = {
     run: function () {
@@ -89,17 +90,16 @@ var installerImplementation = {
             })
             .category("Games")
             .wineDistribution("staging")
-            .wineVersion(LATEST_STAGING_VERSION) // TODO: Gallium9 patchset
+            .wineVersion(LATEST_STAGING_VERSION) // TODO: Gallium9 patchset, improves performance // Using Master is insane for league of legends // confirmed working on wine-4.0-rc2
             .preInstall(function (wine /*, wizard*/) {
-                wine.windowsVersion("winxp");
-                wine.d3dx9();
-                // wine.overrideDLL().set("native, builtin", ["atl120", "msvcp120", "msvcr120", "vcomp120", "msvcp140"]).do(); // Obsolete?
-                wine.enableCSMT();
-                wine.disableGLSL(); // Needs approval + recommended by WineHQ
-                wine.corefonts(); // Needs approval + mandatory for fonts
-                wine.vcrun2008(); // Needs approval
-                wine.vcrun2017(); // Needs approval
-                wine.adobeair(); // Needs approval + mandatory for launcher
+                wine.windowsVersion("winxp"); // Required to disable DirectX10+ since DXVK causes anti-cheat to trigger (https://github.com/doitsujin/dxvk/issues/835)
+                wine.d3dx9(); // Not tested
+                wine.enableCSMT(); // Not tested
+                wine.disableGLSL(); // Recommended by WineHQ, not tested
+                wine.corefonts(); // Mandatory for fonts
+                wine.vcrun2008(); // May be required for some compatibility, improves performance
+                wine.vcrun2017(); // Mandatory for Game window, triggers anti-cheat of not included
+                wine.adobeair(); // Mandatory for launcher, causes freezes if not included
 
                 mkdir(wine.prefixDirectory() + "drive_c/LoL");
 
