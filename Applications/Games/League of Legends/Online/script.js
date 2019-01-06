@@ -7,7 +7,6 @@ include(["engines", "wine", "verbs", "sandbox"]);
 include(["engines", "wine", "verbs", "d3dx9"]);
 
 // Installs League of Legends
-// Source may became obsolete, needs to updated regulary. 
 
 var installerImplementation = {
     run: function () {
