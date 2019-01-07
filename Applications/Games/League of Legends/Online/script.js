@@ -89,16 +89,16 @@ var installerImplementation = {
             })
             .category("Games")
             .wineDistribution("staging")
-            .wineVersion(LATEST_STAGING_VERSION)
+            .wineVersion(LATEST_STAGING_VERSION) // TODO: Gallium9 patchset, improves performance // Using Master is insane for league of legends // confirmed working on wine-4.0-rc2
             .preInstall(function (wine /*, wizard*/) {
-                wine.windowsVersion("winxp");
-                wine.d3dx9();
-                wine.enableCSMT();
-                wine.disableGLSL();
-                wine.corefonts();
-                wine.vcrun2008();
-                wine.vcrun2017();
-                wine.adobeair();
+                wine.windowsVersion("winxp"); // Required to disable DirectX10+ since DXVK causes anti-cheat to trigger (https://github.com/doitsujin/dxvk/issues/835)
+                wine.d3dx9(); // Not tested
+                wine.enableCSMT(); // Not tested
+                wine.disableGLSL(); // Recommended by WineHQ, not tested
+                wine.corefonts(); // Mandatory for fonts
+                wine.vcrun2008(); // May be required for some compatibility, improves performance
+                wine.vcrun2017(); // Mandatory for Game window, triggers anti-cheat of not included
+                wine.adobeair(); // Mandatory for launcher, causes freezes if not included
 
                 mkdir(wine.prefixDirectory() + "drive_c/LoL");
 
