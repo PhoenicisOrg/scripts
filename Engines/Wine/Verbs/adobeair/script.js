@@ -8,18 +8,14 @@ include(["engines", "wine", "verbs", "luna"]);
 * @returns {Wine} Wine object // Verify
 */
 Wine.prototype.adobeair = function () {
-    var setupFile = new Resource()
+    var adobeair = new Resource()
         .wizard(this.wizard())
         .url("https://airdownload.adobe.com/air/win/download/latest/AdobeAIRInstaller.exe")
         .checksum("24532d41ef2588c0daac4b6f8b7f863ee3c1a1b1e90b2d8d8b3eb4faa657e5e3")
         .name("AdobeAIRInstaller.exe")
         .get();
-  
-        this.wizard().wait(tr("Please wait while {0} is installed...", "Adobe air"));
-        this.run(setupFile, "/S", null, false, true);
-
-        return this;
-    };
+    return this;
+};
 
 /**
  * Verb to install adobeair
