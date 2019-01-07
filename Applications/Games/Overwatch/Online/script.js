@@ -3,6 +3,7 @@ include(["engines", "wine", "plugins", "csmt"]);
 include(["engines", "wine", "plugins", "windows_version"]);
 include(["engines", "wine", "verbs", "vcrun2015"]);
 include(["engines", "wine", "verbs", "corefonts"]);
+include(["engines", "wine", "verbs", "dxvk"]);
 
 var installerImplementation = {
     run: function () {
