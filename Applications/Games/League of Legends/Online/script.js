@@ -23,7 +23,7 @@ var installerImplementation = {
                 ////////////////////////////////////////////////
                 var regions = ["EU West",
                                "Latin America North",
-                               "Latin America South",
+                               // "Latin America South", URL not found
                                "Oceania",
                                "Japan",
                                "Turkey",
