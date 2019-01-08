@@ -5,7 +5,7 @@ include(["engines", "wine", "verbs", "luna"]);
 
 /**
 * Verb to install adobeair
-* @returns {Wine} Wine object // Verify
+* @returns {Wine} Wine object
 */
 Wine.prototype.adobeair = function () {
     var adobeair = new Resource()
