@@ -13,7 +13,7 @@ Wine.prototype.adobeair = function () {
         .name("AdobeAIRInstaller.exe")
         .get();
 
-    this.run(adobeair).wait();
+    this.run(adobeair, ["-q"]).wait();
 
     return this;
 };
