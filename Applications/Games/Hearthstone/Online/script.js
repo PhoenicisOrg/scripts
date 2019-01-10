@@ -2,9 +2,8 @@ include(["engines", "wine", "quick_script", "online_installer_script"]);
 include(["engines", "wine", "verbs", "vcrun2015"]);
 include(["engines", "wine", "verbs", "corefonts"]);
 
-// BUG: https://github.com/PhoenicisOrg/scripts/issues/792
-
 // TODO: OSX support, needs verification
+// TOOD: Fix executable (https://github.com/PhoenicisOrg/scripts/issues/792)
 
 var installerImplementation = {
     run: function () {
