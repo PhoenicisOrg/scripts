@@ -14,11 +14,11 @@ Wine.prototype.adobeair = function () {
         .name("AdobeAIRInstaller.exe")
         .get();
 
+    // Using Windows XP to workaround the wine bug 43506
+    // See https://bugs.winehq.org/show_bug.cgi?id=43506
     var currentWindowsVersion = this.windowsVersion();
-
     this.windowsVersion("winxp");
     this.run(adobeair).wait();
-
     this.windowsVersion(currentWindowsVersion);
 
     return this;
