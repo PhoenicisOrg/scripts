@@ -1,11 +1,11 @@
 {
-  "scriptName"                 : "adobeair",
-  "id"                         : "adobeair",
-  "compatibleOperatingSystems" : [
-    "MACOSX",
-    "LINUX"
-  ],
-  "testingOperatingSystems" : [],
-  "free"                    : true,
-  "requiresPatch"           : false
+    "scriptName"                 : "adobeair",
+    "id"                         : "adobeair",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
 }
