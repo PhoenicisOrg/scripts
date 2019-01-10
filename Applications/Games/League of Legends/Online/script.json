@@ -2,10 +2,11 @@
     "scriptName"                 : "Online",
     "id"                         : "online",
     "compatibleOperatingSystems" : [
-        "MACOSX",
         "LINUX"
     ],
-    "testingOperatingSystems" : [],
+    "testingOperatingSystems" : [
+        "MACOSX"
+    ],
     "free"                    : true,
     "requiresPatch"           : false
 }
