@@ -1,5 +1,6 @@
 include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "net", "resource"]);
+include(["engines", "wine", "plugins", "windows_version"]);
 
 /**
  * Verb to install adobeair
@@ -13,7 +14,12 @@ Wine.prototype.adobeair = function () {
         .name("AdobeAIRInstaller.exe")
         .get();
 
-    this.run(adobeair, ["-silent"]).wait();
+    var currentWindowsVersion = this.windowsVersion();
+
+    this.windowsVersion("winxp");
+    this.run(adobeair).wait();
+
+    this.windowsVersion(currentWindowsVersion);
 
     return this;
 };
