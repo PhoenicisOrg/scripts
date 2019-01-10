@@ -15,16 +15,16 @@ var installerImplementation = {
             .url("https://eu.battle.net/download/getInstaller?os=win&installer=Overwatch-Setup.exe")
         //The checksum is different each time you download
             .wineVersion(LATEST_STAGING_VERSION)
-            .wineDistribution("staging") // ESYNC required
+            .wineDistribution("staging")
             .wineArchitecture("amd64") // Multilib preffered? (without setting wine architecture)
             .category("Games")
-            .executable("Overwatch.exe") // Needs verification
+            .executable("Battle.net.exe")
             .preInstall(function (wine/*, wizard*/) {
                 wine.windowsVersion("win7");
                 wine.vcrun2015();
                 wine.corefonts();
                 wine.enableCSMT();
-                wine.DXVK(); // Relevant: https://github.com/doitsujin/dxvk/issues/846
+                wine.DXVK(); 
             })
             .go();
     }
