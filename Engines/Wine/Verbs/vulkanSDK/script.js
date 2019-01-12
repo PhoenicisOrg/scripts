@@ -4,8 +4,8 @@ include(["utils", "functions", "net", "resource"]);
 include(["utils", "functions", "filesystem", "files"]);
 
 /**
-* All the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
-* -> https://github.com/roderickc/wine-vulkan
+* Verb to install all the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
+* see: https://github.com/roderickc/wine-vulkan
 * @returns {Wine} Wine object
 */
 Wine.prototype.vulkanSDK = function () {
@@ -53,5 +53,22 @@ Wine.prototype.vulkanSDK = function () {
     }
 
     return this;
-
 }
+
+/**
+ * Verb to install all the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "vulkanSDK", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.vulkanSDK();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

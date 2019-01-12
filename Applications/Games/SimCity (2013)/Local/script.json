@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Local",
+    "id"                         : "simcity_2013_local",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}

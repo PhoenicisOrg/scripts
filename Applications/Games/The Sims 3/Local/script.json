@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Local",
+    "id"                         : "local",
+    "compatibleOperatingSystems" : [
+        "LINUX",
+        "MACOSX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}

@@ -1,5 +1,4 @@
 include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["engines", "wine", "plugins", "windows_version"]);
 include(["engines", "wine", "verbs", "vcrun2015"]);
 include(["engines", "wine", "verbs", "corefonts"]);
 
@@ -14,8 +13,9 @@ var installerImplementation = {
         // The checksum changes each time you download
             .category("Games")
             .executable("StarCraft II.exe")
+            .wineVersion("3.19")
+            .wineDistribution("staging")
             .preInstall(function (wine/*, wizard*/) {
-                wine.windowsVersion("winxp");
                 wine.vcrun2015();
                 wine.corefonts();
             })

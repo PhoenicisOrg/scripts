@@ -15,7 +15,7 @@ Wine.prototype.vcrun2008 = function () {
         .name("vcredist_x86.exe")
         .get();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2008 Redistributable (x86)"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", "Microsoft Visual C++ 2008 Redistributable (x86)"));
     this.run(setupFile32, "/q", null, false, true);
 
     if (this.architecture() == "amd64") {
@@ -26,7 +26,7 @@ Wine.prototype.vcrun2008 = function () {
             .name("vcredist_x64.exe")
             .get();
 
-        this.wizard().wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2008 Redistributable (x64)"));
+        this.wizard().wait(tr("Please wait while {0} is installed...", "Microsoft Visual C++ 2008 Redistributable (x64)"));
         this.run(setupFile64, "/q", null, false, true);
     }
 
@@ -43,3 +43,21 @@ Wine.prototype.vcrun2008 = function () {
 
     return this;
 };
+
+/**
+ * Verb to install vcrun2008
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "vcrun2008", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.vcrun2008();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

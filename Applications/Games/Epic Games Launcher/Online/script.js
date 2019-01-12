@@ -8,7 +8,7 @@ var installerImplementation = {
             .applicationHomepage("https://www.unrealengine.com/download")
             .author("Plata")
             .url("https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi")
-            .checksum("08ee775d59a142032f179baa9a85464ae5dc5940")
+            .checksum("d608bfb4eec073df9a76cfe58877dcc86364d428")
             .installationArgs(["/q"])
             .category("Games")
             .executable("EpicGamesLauncher.exe", ["-SkipBuildPatchPrereq", "-OpenGL"])

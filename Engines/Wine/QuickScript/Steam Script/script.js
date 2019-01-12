@@ -91,7 +91,7 @@ SteamScript.prototype.fixCertificateIssue = function (wine){
 SteamScript.prototype.go = function () {
     // default application homepage if not specified
     if (!this._applicationHomepage) {
-        this._applicationHomepage = "http://store.steampowered.com/app/" + this._appId;
+        this._applicationHomepage = "https://store.steampowered.com/app/" + this._appId;
     }
 
     // default executable args if not specified
@@ -107,7 +107,7 @@ SteamScript.prototype.go = function () {
 
     new Downloader()
         .wizard(setupWizard)
-        .url("http://media.steampowered.com/client/installer/SteamSetup.exe")
+        .url("https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe")
         .checksum("4b1b85ec2499a4ce07c89609b256923a4fc479e5")
         .to(tempFile)
         .get();
@@ -135,16 +135,16 @@ SteamScript.prototype.go = function () {
     this.fixCertificateIssue(wine);
 
     // Steam installation has finished
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     this._preInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in preInstall)
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", ["steam://install/" + this._appId], false);
 
-    setupWizard.wait(tr("Please wait until Steam has finished the download ..."));
+    setupWizard.wait(tr("Please wait until Steam has finished the download..."));
 
     // wait until download started
     while (!this.downloadStarted(wine)) {
@@ -160,7 +160,7 @@ SteamScript.prototype.go = function () {
     wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", "-shutdown", true);
 
     // back to generic wait
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     // create shortcut after installation (if executable is specified, it does not exist earlier)
     this._createShortcut(wine.prefix());
@@ -175,7 +175,7 @@ SteamScript.prototype.go = function () {
     }
 
     // back to generic wait (might have been changed in postInstall)
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     setupWizard.close();
 };

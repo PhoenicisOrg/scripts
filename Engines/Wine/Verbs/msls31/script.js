@@ -23,3 +23,21 @@ Wine.prototype.msls31 = function () {
 
     return this;
 };
+
+/**
+ * Verb to install msls31.dll
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "msls31", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.msls31();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

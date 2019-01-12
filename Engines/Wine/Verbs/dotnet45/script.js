@@ -27,7 +27,7 @@ Wine.prototype.dotnet45 = function () {
 
     this.uninstall("Mono");
 
-    this.wizard().wait(tr("Please wait ..."));
+    this.wizard().wait(tr("Please wait..."));
     this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"], null, false, true);
 
     remove(this.system32directory() + "/mscoree.dll");
@@ -39,7 +39,7 @@ Wine.prototype.dotnet45 = function () {
         .set("builtin", ["fusion"])
         .do();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.5"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 4.5"));
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
     this.overrideDLL()
@@ -54,3 +54,21 @@ Wine.prototype.dotnet45 = function () {
 
     return this;
 };
+
+/**
+ * Verb to install .NET 4.5
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "dotnet45", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.dotnet45();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

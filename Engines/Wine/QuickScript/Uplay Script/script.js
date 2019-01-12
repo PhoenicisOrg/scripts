@@ -54,25 +54,26 @@ UplayScript.prototype.go = function () {
         .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
         .luna();
 
+    setupWizard.message(tr("Please ensure that winbind is installed before you continue."));
     setupWizard.wait(tr("Please follow the steps of the Uplay setup.\n\nUncheck \"Run Uplay\" or close Uplay completely after the setup so that the installation of \"{0}\" can continue.", this._name));
     wine.run(tempFile, [], null, false, true);
 
     wine.setOsForApplication().set("upc.exe", "winxp").do();
 
     // Uplay installation has finished
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     this._preInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in preInstall)
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     this._createShortcut(wine.prefix());
 
     wine.runInsidePrefix(wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/Uplay.exe", ["uplay://launch/" + this._appId + "/0"], true);
 
     // wait until download is finished
-    setupWizard.wait(tr("Please wait until Uplay has finished the download ..."));
+    setupWizard.wait(tr("Please wait until Uplay has finished the download..."));
     while (!this.downloadStarted(wine)) {
         java.lang.Thread.sleep(100);
     }
@@ -85,7 +86,7 @@ UplayScript.prototype.go = function () {
     this._postInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in postInstall)
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     setupWizard.close();
 };
