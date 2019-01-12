@@ -1,0 +1,12 @@
+{
+    "scriptName"                 : "faudio",
+    "id"                         : "faudio",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "LINUX"
+    ],
+    "free"          : true,
+    "requiresPatch" : false
+}
