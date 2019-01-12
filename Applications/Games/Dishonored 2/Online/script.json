@@ -1,6 +1,6 @@
 {
-    "scriptName"                 : "Online", // Sane?
-    "id"                         : "online", // Sane?
+    "scriptName"                 : "Online",
+    "id"                         : "online",
     "compatibleOperatingSystems" : [],
     "testingOperatingSystems" : [
     	"MACOSX",
