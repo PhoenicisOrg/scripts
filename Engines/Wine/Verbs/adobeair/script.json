@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Adobe Air",
+    "id"                         : "adobeair",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
