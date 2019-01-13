@@ -1,4 +1,5 @@
 include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
 include(["utils", "functions", "net", "resource"]);
 include(["utils", "functions", "filesystem", "files"]);
 
@@ -8,10 +9,12 @@ include(["utils", "functions", "filesystem", "files"]);
 * @returns {Wine} Wine object
 */
 Wine.prototype.faudio = function () {
+    var faudioVersion = "19.01";
+
     var setupFile = new Resource()
         .wizard(this.wizard())
-        .url("https://github.com/Kron4ek/FAudio-Builds/releases/download/19.01/faudio-19.01.tar.xz")
-        .name("faudio-19.01.tar.xz")
+        .url("https://github.com/Kron4ek/FAudio-Builds/releases/download/" + faudioVersion + "/faudio-" + faudioVersion + ".tar.xz")
+        .name("faudio-" + faudioVersion + ".tar.xz")
         .get();
 
     new Extractor()
@@ -20,7 +23,23 @@ Wine.prototype.faudio = function () {
         .to(this.prefixDirectory() + "/FAudio/")
         .extract();
 
-    this.runInsidePrefix("/FAudio/faudio-19.01/wine_setup_faudio.sh")
+    ls(this.prefixDirectory() + "/FAudio/faudio-" + faudioVersion + "/x32").forEach(function (file) {
+  		if (file.endsWith(".dll")) {
+    		cp(file, this.system32directory());
+    		this.overrideDLL()
+       			.set("native", [file]) // not sure here, if file is an absolute path, we may need to introduce a basename() function
+       			.do();
+  		}
+    });
+
+    if (this.architecture() == "amd64")
+    {
+	    ls(this.prefixDirectory() + "/FAudio/faudio-" + faudioVersion + "/x64").forEach(function (file) {
+  			if (file.endsWith(".dll")) {
+    			cp(file, this.system64directory());
+    		}
+        });
+    }
 
     return this;
 }
