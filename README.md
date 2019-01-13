@@ -44,19 +44,19 @@
     * [script.json](https://phoenicisorg.github.io/scripts/Develop/script-json/): describes the installation script
         ```json
         {
-		"scriptName": "Online",
-		"compatibleOperatingSystems": ["MACOSX", "LINUX"],
-		"testingOperatingSystems": [],
-		"free": true,
-		"requiresPatch": false
+        "scriptName": "Online",
+        "compatibleOperatingSystems": ["MACOSX", "LINUX"],
+        "testingOperatingSystems": [],
+        "free": true,
+        "requiresPatch": false
         }
         ```
     * main.png: application icon (400px x 300px)
     * [application.json](https://phoenicisorg.github.io/scripts/Develop/application-json/): describes the application
         ```json
         {
- 		"name":	"Steam",
-		"description": "Application description"
+        "name": "Steam",
+        "description": "Application description"
         }
         ```
   
@@ -65,6 +65,25 @@
   
 7. Create a pull request:
     * Please create one pull request per script if you want to commit multiple scripts.
-    * use the following naming convention  
-        * for a new script: "Add \<application name\>" (e.g. "Add 7-zip")
-        * for an updated script: "Update \<application name\> \<what changed\>" (e.g. "Update 7-zip to use Wine 2.1")
+    * use the following naming convention   
+```
+<application_category>/<application_name> : <short summary>
+
+<Reference/Fixes/Dependant/...> : <ISSUE_URL> (relevant to a reference)
+<Full (brief) list of changes (and reasoning if relevant)>
+Signed-off-by : Your Name <Your e-mail>
+```
+
+Example of the pull request (https://github.com/PhoenicisOrg/scripts/pull/797) :
+```
+Games/League Of Legends : Update and fixes
+
+Fixes: #777
+BUG: Latin America South installer is missing
+Updated SHA-1 for EUW, LAN, OCE, JP, TR, BR, EUNE, NA, RU
+Expected the game to run on platinum.
+pick 61ce52e Update script.js
+pick 6fdf980 Update script.js
+Signed-off-by: Jacob Hrbek werifgx@gmail.com
+```
+    * Once the changes are approved squash the merge request.
