@@ -1,6 +1,7 @@
 include(["engines", "wine", "quick_script", "online_installer_script"]);
 // include(["engines", "wine", "plugins", "csmt"]);
 include(["engines", "wine", "plugins", "windows_version"]);
+include(["engines", "wine", "plugins", "override_dll"]);
 include(["engines", "wine", "verbs", "vcrun2015"]);
 include(["engines", "wine", "verbs", "corefonts"]);
 include(["engines", "wine", "verbs", "dxvk"]);
@@ -20,12 +21,13 @@ var installerImplementation = {
             .wineDistribution("staging")
             .wineArchitecture("amd64") // Multilib preffered? (without setting wine architecture)
             .category("Games")
-            .executable("Battle.net.exe") // affected by bug 
+            .executable("Battle.net.exe") // affect ed by bug 
             .preInstall(function (wine/*, wizard*/) {
                 wine.windowsVersion("win7");
                 wine.vcrun2015(); // untested, should be mandatory
                 wine.corefonts(); // Untested, for fonts?
                 // wine.enableCSMT(); // Commented out since it's not tested
+                wine.overrideDLL().set("disabled", ["nvapi", "nvapi64"]).do();
                 wine.DXVK();  // Mandatory for graphics
             })
             .go();
