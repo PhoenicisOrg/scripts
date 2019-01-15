@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "GOG",
+    "id"                         : "gog",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

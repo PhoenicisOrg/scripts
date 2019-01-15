@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Engines/Wine/Verbs/amstream/script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Engines/Wine/Verbs/amstream/script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>include(["engines", "wine", "engine", "object"]);
+include(["engines", "wine", "plugins", "override_dll"]);
+include(["utils", "functions", "net", "resource"]);
+include(["engines", "wine", "verbs", "luna"]);
+include(["utils", "functions", "filesystem", "files"]);
+include(["utils", "functions", "filesystem", "extract"]);
+include(["engines", "wine", "plugins", "regsvr32"]);
+
+
+/**
+* Verb to install amstream
+* @returns {Wine} Wine object
+*/
+Wine.prototype.amstream = function () {
+    var setupFile = new Resource()
+        .wizard(this.wizard())
+        .url("https://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X86.exe")
+        .checksum("c3516bc5c9e69fee6d9ac4f981f5b95977a8a2fa")
+        .name("windows6.1-KB976932-X86.exe")
+        .get();
+    this.wizard().wait(tr("Please wait while {0} is installed...", "amstream"));
+    remove(this.system32directory() + "/amstream.dll");
+    new CabExtract()
+        .archive(setupFile)
+        .to(this.system32directory())
+        .extract(["-L", "-F", "x86_microsoft-windows-directshow-other_31bf3856ad364e35_6.1.7601.17514_none_0f58f1e53efca91e/amstream.dll"]);
+    cp(this.system32directory() + "/x86_microsoft-windows-directshow-other_31bf3856ad364e35_6.1.7601.17514_none_0f58f1e53efca91e/amstream.dll", this.system32directory());
+    this.regsvr32().install("amstream.dll");
+    if (this.architecture() == "amd64") {
+        var setupFilex64 = new Resource()
+            .wizard(this.wizard())
+            .url("https://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X64.exe")
+            .checksum("74865ef2562006e51d7f9333b4a8d45b7a749dab")
+            .name("windows6.1-KB976932-X64.exe")
+            .get();
+        this.wizard().wait(tr("Please wait while {0} is installed...", "amstream"));
+        remove(this.system64directory() + "/amstream.dll");
+        new CabExtract()
+            .archive(setupFilex64)
+            .to(this.system64directory())
+            .extract(["-L", "-F", "amd64_microsoft-windows-directshow-other_31bf3856ad364e35_6.1.7601.17514_none_6b778d68f75a1a54/amstream.dll"]);
+        cp(this.system64directory() + "/amd64_microsoft-windows-directshow-other_31bf3856ad364e35_6.1.7601.17514_none_6b778d68f75a1a54/amstream.dll", this.system64directory());
+        this.regsvr64().install("amstream.dll");
+    }
+    this.overrideDLL()
+        .set("native,builtin", ["amstream"])
+        .do();
+
+    return this;
+};
+
+/**
+ * Verb to install amstream
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "amstream", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.amstream();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

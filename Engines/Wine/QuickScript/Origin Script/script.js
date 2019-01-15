@@ -54,12 +54,12 @@ OriginScript.prototype.go = function () {
     wine.wait();
 
     // Origin installation has finished
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     this._preInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in preInstall)
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     this._postInstall(wine, setupWizard);
 
@@ -67,7 +67,7 @@ OriginScript.prototype.go = function () {
     this._createShortcut(wine.prefix());
 
     // back to generic wait (might have been changed in postInstall)
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     setupWizard.close();
 };

@@ -45,7 +45,7 @@ To disable the game overlay:
 ```
 If you need a different category, use:
 ```javascript
-    .catgory("Category") 
+    .category("Category") 
 ```
 For a different shortcut (e.g. if you want to pass arguments):
 ```javascript

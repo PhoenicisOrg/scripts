@@ -24,14 +24,19 @@ rules:
   camelcase:
     - 2
     - {properties: always}
+  linebreak-style:
+    - 2
+    - unix
 
 globals:
   include: false
   TYPE_ID: false
   CATEGORY_ID: false
   APPLICATION_ID: false
+
   # java
   Bean: false
+
   # files
   ls: false
   mkdir: false
@@ -46,7 +51,9 @@ globals:
   tr: false
   writeToFile: false
   createTempFile: false
+  createTempDir: false
   chmod: false
+
   # classes
   AppResource: false
   CabExtract: false
@@ -59,17 +66,22 @@ globals:
   SetupWizard: false
   Wine: false
   WineShortcut: false
+
   # quick scripts
   CustomInstallerScript: false
+  GogScript: false
   InstallerScript: false
   LocalInstallerScript: false
   OnlineInstallerScript: false
+  OriginScript: false
   QuickScript: false
   SteamScript: false
   UplayScript: false
   ZipScript: false
+  
   # wine
   LATEST_DEVELOPMENT_VERSION: false
   LATEST_STABLE_VERSION: false
   LATEST_STAGING_VERSION: false
+  LATEST_DOS_SUPPORT_VERSION: false
   WINE_PREFIX_DIR: false
