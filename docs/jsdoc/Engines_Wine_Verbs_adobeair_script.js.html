@@ -46,7 +46,8 @@ Wine.prototype.adobeair = function () {
     // See https://bugs.winehq.org/show_bug.cgi?id=43506
     var currentWindowsVersion = this.windowsVersion();
     this.windowsVersion("winxp");
-    this.run(adobeair).wait();
+    this.run(adobeair);
+    this.wait();
     this.windowsVersion(currentWindowsVersion);
 
     return this;
