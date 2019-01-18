@@ -1,0 +1,10 @@
+{
+    "scriptName"                 : "gallium9",
+    "id"                         : "gallium9",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
