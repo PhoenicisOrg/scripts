@@ -68,3 +68,7 @@
     * use the following naming convention  
         * for a new script: "Add \<application name\>" (e.g. "Add 7-zip")
         * for an updated script: "Update \<application name\> \<what changed\>" (e.g. "Update 7-zip to use Wine 2.1")
+
+# Translate
+Phoenicis scripts are localized using Crowdin: https://crowdin.com/project/phoenicis-scripts
+If your language is not listed, please create an [issue](https://github.com/PhoenicisOrg/scripts/issues).
