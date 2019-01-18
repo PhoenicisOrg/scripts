@@ -20,8 +20,6 @@ Wine.prototype.gallium9 = function () {
     var d3d9adapter32Path = this.wizard().textbox(message + message32);
     var d3d9adapter64Path = this.wizard().textbox(message + message64);
 
-    this.run("reg", ["add", "HKLM\\Software\\Wine\\Direct3DNine", "/v", "ModulePath", "/t", "REG_SZ", "/d", d3d9adapter32Path + ":" + d3d9adapter64Path, "/f"], null, false, true);
-
     var regeditFileContent =
             "REGEDIT4\n" +
             "\n" +
