@@ -45,15 +45,17 @@ Wine.prototype.gallium9 = function () {
     cp(this.prefixDirectory() + "/TMP/nine/lib32/d3d9-nine.dll.so", this.system32directory());
     cp(this.prefixDirectory() + "/TMP/nine/bin32/ninewinecfg.exe.so", this.system32directory());
 
-    //ln -sf this.system32directory() + d3d9-nine.dll.so, d3d9-nine.dll
-    //ln -sf this.system32directory() + ninewinecfg.exe.so, ninewinecfg.exe
+    lns(this.system32directory() + "/d3d9-nine.dll.so", this.system32directory() + "/d3d9-nine.dll");
+    lns(this.system32directory() + "/ninewinecfg.exe.so", this.system32directory() + "/ninewinecfg.exe");
 
     if (this.architecture() == "amd64") {
         cp(this.prefixDirectory() + "/TMP/nine/lib64/d3d9-nine.dll.so", this.system64directory());
-	    cp(this.prefixDirectory() + "/TMP/nine/bin64/ninewinecfg.exe.so", this.system64directory());
-        //ln -sf this.system64directory() + d3d9-nine.dll.so, d3d9-nine.dll
-	    //ln -sf this.system64directory() + ninewinecfg.exe.so, ninewinecfg.exe
-        this.run(this.system64directory() + "ninewinecfg.exe", "-e"); //normally wine 64
+	cp(this.prefixDirectory() + "/TMP/nine/bin64/ninewinecfg.exe.so", this.system64directory());
+	    
+        lns(this.system64directory() + "/d3d9-nine.dll.so", this.system64directory() + "/d3d9-nine.dll");
+        lns(this.system64directory() + "/ninewinecfg.exe.so", this.system64directory() + "/ninewinecfg.exe");
+	    
+	this.run(this.system64directory() + "ninewinecfg.exe", "-e"); //normally wine 64
     }
     else {
         this.run(this.system32directory() + "ninewinecfg.exe", "-e");
