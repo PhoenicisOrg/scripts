@@ -79,4 +79,3 @@ var verbImplementation = {
 
 /* exported Verb */
 var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
