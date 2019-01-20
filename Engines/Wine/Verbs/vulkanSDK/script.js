@@ -12,7 +12,7 @@ Wine.prototype.vulkanSDK = function () {
     print("NOTE: you need a graphic driver that supports Vulkan to run winevulkan");
     print("NOTE: Vulkan works in wine from version 3.3 (if compiled with vulkan support)");
 
-    sdkVersion="1.1.92.1";
+    var sdkVersion="1.1.92.1";
 
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -53,16 +53,6 @@ Wine.prototype.vulkanSDK = function () {
 
         this.regedit().patch(regeditFileContent64);
     }
-    
-    //Seems there is a bug in regedit.
-    var message = "Please add the following keys to the regsitry after the instalation:\n\n"    +
-                  "[HKEY_LOCAL_MACHINE\\Software\\Khronos\\Vulkan\\Drivers]\n"                  +
-                  "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000"                         +
-                  "\n\n"                                                            	        +
-                  "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Khronos\\Vulkan\\Drivers\\]\n"    +
-                  "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000" ;
-
-    this.wizard().message(message);
 
     return this;
 }
