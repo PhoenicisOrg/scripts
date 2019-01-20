@@ -22,10 +22,15 @@ Wine.prototype.faudio = function () {
         .archive(setupFile)
         .to(this.prefixDirectory() + "/FAudio/")
         .extract();
-
-    ls(this.prefixDirectory() + "/FAudio/faudio-" + faudioVersion + "/x32").forEach(function (file) {
-  		if (file.endsWith(".dll")) {
-    		cp(file, this.system32directory());
+    
+    var forEach = Array.prototype.forEach;
+    var sys32dir = this.system32directory();
+    var sys64dir = this.system64directory();
+    var faudioDir = this.prefixDirectory() + "/FAudio/faudio-" + faudioVersion;
+    
+    forEach.call(ls(faudioDir + "/x32"), function (file) {
+        if (file.endsWith(".dll")) {
+    		cp(faudioDir + "/x32/" + file, sys32dir);
     		this.overrideDLL()
        			.set("native", [file]) // not sure here, if file is an absolute path, we may need to introduce a basename() function
        			.do();
@@ -34,29 +39,12 @@ Wine.prototype.faudio = function () {
 
     if (this.architecture() == "amd64")
     {
-	    ls(this.prefixDirectory() + "/FAudio/faudio-" + faudioVersion + "/x64").forEach(function (file) {
-  			if (file.endsWith(".dll")) {
-    			cp(file, this.system64directory());
-    		}
+	    forEach.call(ls(faudioDir + "/x64"), function (file) {
+        	if (file.endsWith(".dll")) {
+    			cp(faudioDir + "/x64/" + file, sys64dir);
+  			}
         });
     }
 
     return this;
 }
-
-/**
- * Verb to install FAudio
-*/
-var verbImplementation = {
-    install: function (container) {
-        var wine = new Wine();
-        wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "FAudio", java.util.Optional.empty());
-        wine.wizard(wizard);
-        wine.faudio();
-        wizard.close();
-    }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
