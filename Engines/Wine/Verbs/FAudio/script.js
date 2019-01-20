@@ -33,7 +33,7 @@ Wine.prototype.faudio = function () {
         if (file.endsWith(".dll")) {
             cp(faudioDir + "/x32/" + file, sys32dir);
             self.overrideDLL()
-                .set("native", [file]) // not sure here, if file is an absolute path, we may need to introduce a basename() function
+                .set("native", [file])
                 .do();
         }
     });
