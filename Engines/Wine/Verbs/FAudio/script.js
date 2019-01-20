@@ -27,11 +27,12 @@ Wine.prototype.faudio = function () {
     var sys32dir = this.system32directory();
     var sys64dir = this.system64directory();
     var faudioDir = this.prefixDirectory() + "/FAudio/faudio-" + faudioVersion;
+    var self = this;
     
     forEach.call(ls(faudioDir + "/x32"), function (file) {
         if (file.endsWith(".dll")) {
     		cp(faudioDir + "/x32/" + file, sys32dir);
-    		this.overrideDLL()
+    		self.overrideDLL()
        			.set("native", [file]) // not sure here, if file is an absolute path, we may need to introduce a basename() function
        			.do();
   		}
