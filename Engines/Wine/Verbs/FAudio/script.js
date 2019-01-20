@@ -22,7 +22,7 @@ Wine.prototype.faudio = function () {
         .archive(setupFile)
         .to(this.prefixDirectory() + "/FAudio/")
         .extract();
-    
+
     var forEach = Array.prototype.forEach;
     var sys32dir = this.system32directory();
     var sys64dir = this.system64directory();
