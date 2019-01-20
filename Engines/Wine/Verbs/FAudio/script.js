@@ -28,22 +28,22 @@ Wine.prototype.faudio = function () {
     var sys64dir = this.system64directory();
     var faudioDir = this.prefixDirectory() + "/FAudio/faudio-" + faudioVersion;
     var self = this;
-    
+
     forEach.call(ls(faudioDir + "/x32"), function (file) {
         if (file.endsWith(".dll")) {
-    		cp(faudioDir + "/x32/" + file, sys32dir);
-    		self.overrideDLL()
-       			.set("native", [file]) // not sure here, if file is an absolute path, we may need to introduce a basename() function
-       			.do();
-  		}
+            cp(faudioDir + "/x32/" + file, sys32dir);
+            self.overrideDLL()
+                .set("native", [file]) // not sure here, if file is an absolute path, we may need to introduce a basename() function
+                .do();
+        }
     });
 
     if (this.architecture() == "amd64")
     {
-	    forEach.call(ls(faudioDir + "/x64"), function (file) {
-        	if (file.endsWith(".dll")) {
-    			cp(faudioDir + "/x64/" + file, sys64dir);
-  			}
+        forEach.call(ls(faudioDir + "/x64"), function (file) {
+            if (file.endsWith(".dll")) {
+                cp(faudioDir + "/x64/" + file, sys64dir);
+            }
         });
     }
 
