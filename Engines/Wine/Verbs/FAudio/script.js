@@ -48,3 +48,20 @@ Wine.prototype.faudio = function () {
 
     return this;
 }
+
+/**
+ * Verb to install FAudio
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "FAudio", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.faudio();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
