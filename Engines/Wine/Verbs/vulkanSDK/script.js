@@ -54,6 +54,7 @@ Wine.prototype.vulkanSDK = function () {
         this.regedit().patch(regeditFileContent64);
     }
     
+    //Seems there is a bug in regedit.
     var message = "Please add the following keys to the regsitry after the instalation:\n\n"    +
                   "[HKEY_LOCAL_MACHINE\\Software\\Khronos\\Vulkan\\Drivers]\n"                  +
                   "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000"                         +
