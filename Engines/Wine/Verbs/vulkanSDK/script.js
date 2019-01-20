@@ -37,9 +37,9 @@ Wine.prototype.vulkanSDK = function () {
     writeToFile(pathVulkanJSON, contentVulkanJSON);
 
     var regeditFileContent32 =
-    "Windows Registry Editor Version 5.00\n"                        +
+    "REGEDIT4\n"                                                    +
     "\n"                                                      	    +
-    "[HKEY_LOCAL_MACHINE\\Software\\Khronos\\Vulkan\\Drivers]\n"    +
+    "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers]\n"    +
     "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000" ;
 
     this.regedit().patch(regeditFileContent32);
