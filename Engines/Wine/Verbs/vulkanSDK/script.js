@@ -12,6 +12,8 @@ Wine.prototype.vulkanSDK = function () {
     print("NOTE: you need a graphic driver that supports Vulkan to run winevulkan");
     print("NOTE: Vulkan works in wine from version 3.3 (if compiled with vulkan support)");
 
+    sdkVersion="1.1.92.1";
+
     var setupFile = new Resource()
         .wizard(this.wizard())
         .url("https://sdk.lunarg.com/sdk/download/latest/windows/vulkan-sdk.exe?u=")
@@ -20,18 +22,48 @@ Wine.prototype.vulkanSDK = function () {
         .get();
 
     this.run(setupFile, "/S");
+    this.wait();
 
-    var patchVulkanJSON = this.prefixDirectory() + "drive_c/windows/winevulkan.json";
-    touch(patchVulkanJSON);
-    writeToFile(patchVulkanJSON, "{\n	\"file_format_version\": \"1.0.0\",\n	\"ICD\": {\n		\"library_path\": \"c:\\windows\\system32\\winevulkan.dll\",\n		\"api_version\": \"1.1.92.1\"\n	}\n}");
-    this.run("reg", ["add", "HKLM\\Software\\Khronos\\Vulkan\\Drivers", "/v", "C:\\Windows\\winevulkan.json", "/t", "REG_DWORD", "/d", "00000000", "/f"], null, false, true);
+    var pathVulkanJSON = this.prefixDirectory() + "drive_c/windows/winevulkan.json";
+    touch(pathVulkanJSON);
+    var contentVulkanJSON = '{\n'                                                                  +
+                            '	"file_format_version": "1.0.0",\n'                                 +
+                            '	"ICD": {\n'                                                        +
+                            '		"library_path": "c:\\windows\\system32\\winevulkan.dll",\n'    +
+                            '		"api_version": "' + sdkVersion +'"\n'                          +
+                            '	}\n'                                                               +
+                            '}' ;
+
+    writeToFile(pathVulkanJSON, contentVulkanJSON);
+
+    var regeditFileContent32 =
+    "Windows Registry Editor Version 5.00\n"                        +
+    "\n"                                                      	    +
+    "[HKEY_LOCAL_MACHINE\\Software\\Khronos\\Vulkan\\Drivers]\n"    +
+    "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000" ;
+
+    this.regedit().patch(regeditFileContent32);
 
     if (this.architecture() == "amd64") {
-        this.run("reg", ["add", "HKLM\\Software\\Wow6432Node\\Khronos\\Vulkan\\Drivers", "/v", "C:\\Windows\\winevulkan.json", "/t", "REG_DWORD", "/d", "00000000", "/f"], null, false, true);
+        var regeditFileContent64 =
+        "REGEDIT4\n"                                                                  +
+        "\n"                                                                          +
+        "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Khronos\\Vulkan\\Drivers\\]n"    +
+		"\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000" ;
+
+        this.regedit().patch(regeditFileContent64);
     }
+    
+    var message = "Please add the following keys to the regsitry after the instalation:\n\n"    +
+                  "[HKEY_LOCAL_MACHINE\\Software\\Khronos\\Vulkan\\Drivers]\n"                  +
+                  "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000"                         +
+                  "\n\n"                                                            	        +
+                  "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Khronos\\Vulkan\\Drivers\\]n"    +
+                  "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000" ;
+
+    this.wizard().message(message);
 
     return this;
-
 }
 
 /**
