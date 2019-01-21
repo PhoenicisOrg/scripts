@@ -49,3 +49,20 @@ Wine.prototype.dotnet46 = function () {
 
     return this;
 };
+
+/**
+ * Verb to install xact
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "dotnet46", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.dotnet46();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
