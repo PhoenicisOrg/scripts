@@ -49,7 +49,7 @@ Wine.prototype.dotnet462 = function () {
 };
 
 /**
- * Verb to install xact
+ * Verb to install dotnet462
 */
 var verbImplementation = {
     install: function (container) {

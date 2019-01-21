@@ -55,7 +55,7 @@ Wine.prototype.dotnet45 = function () {
 };
 
 /**
- * Verb to install xact
+ * Verb to install dotnet45
 */
 var verbImplementation = {
     install: function (container) {
