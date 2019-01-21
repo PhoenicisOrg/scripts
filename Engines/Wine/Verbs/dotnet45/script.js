@@ -35,7 +35,7 @@ Wine.prototype.dotnet45 = function () {
         .set("builtin", ["fusion"])
         .do();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.5"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 4.5"));
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
     this.wizard().wait(tr("Please wait ..."));

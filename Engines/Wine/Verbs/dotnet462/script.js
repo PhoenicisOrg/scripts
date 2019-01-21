@@ -33,7 +33,7 @@ Wine.prototype.dotnet462 = function () {
         .set("builtin", ["fusion"])
         .do();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.6.2"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 4.6.2"));
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
     this.wizard().wait(tr("Please wait ..."));
