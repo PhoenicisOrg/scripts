@@ -2,15 +2,17 @@ include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "verbs", "luna"]);
 include(["utils", "functions", "filesystem", "files"]);
-include(["engines", "wine", "verbs", "dotnet46"]);
+include(["engines", "wine", "verbs", "dotnet462"]);
+include(["engines", "wine", "plugins", "override_dll"]);
+include(["engines", "wine", "plugins", "windows_version"]);
 
 /**
-* Verb to install .NET 4.6.1
+* Verb to install .NET 4.7.2
 * @returns {Wine} Wine object
 */
-Wine.prototype.dotnet461 = function () {
-    if (this.architecture = "amd64") {
-        print(tr("This package ({0}) may not fully work on a 64-bit installation. 32-bit prefixes may work better.", "dotnet461"));
+Wine.prototype.dotnet471 = function () {
+    if (this.architecture = "x86") {
+        print(tr("This package ({0}) may not fully work on a 32-bit installation. 64-bit prefixes may work better.", "dotnet472"));
     }
 
     var OSVersion = this.windowsVersion();
@@ -19,21 +21,21 @@ Wine.prototype.dotnet461 = function () {
 
     var setupFile = new Resource()
         .wizard(this._wizard)
-        .url("https://download.microsoft.com/download/E/4/1/E4173890-A24A-4936-9FC9-AF930FE3FA40/NDP461-KB3102436-x86-x64-AllOS-ENU.exe")
-        .checksum("83d048d171ff44a3cad9b422137656f585295866")
-        .name("NDP461-KB3102436-x86-x64-AllOS-ENU.exe")
+        .url("https://download.microsoft.com/download/6/E/4/6E48E8AB-DC00-419E-9704-06DD46E5F81D/NDP472-KB4054530-x86-x64-AllOS-ENU.exe")
+        .checksum("31fc0d305a6f651c9e892c98eb10997ae885eb1e")
+        .name("NDP472-KB4054530-x86-x64-AllOS-ENU.exe")
         .get();
 
     this.uninstall("Mono");
 
-    this.dotnet46();
+    this.dotnet462();
     this.windowsVersion("win7");
 
     this.overrideDLL()
         .set("builtin", ["fusion"])
         .do();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.6.1"));
+    this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.7.2"));
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
     this.wizard().wait(tr("Please wait ..."));
