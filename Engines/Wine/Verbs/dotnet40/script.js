@@ -57,7 +57,7 @@ Wine.prototype.dotnet40 = function () {
 };
 
 /**
- * Verb to install dotnet40
+ * Verb to install .NET 4.0
 */
 var verbImplementation = {
     install: function (container) {

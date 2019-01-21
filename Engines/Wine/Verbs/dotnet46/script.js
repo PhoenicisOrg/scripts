@@ -51,7 +51,7 @@ Wine.prototype.dotnet46 = function () {
 };
 
 /**
- * Verb to install dotnet46
+ * Verb to install .NET 4.6
 */
 var verbImplementation = {
     install: function (container) {

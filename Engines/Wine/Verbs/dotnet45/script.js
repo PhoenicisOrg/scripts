@@ -55,7 +55,7 @@ Wine.prototype.dotnet45 = function () {
 };
 
 /**
- * Verb to install dotnet45
+ * Verb to install .NET 4.5
 */
 var verbImplementation = {
     install: function (container) {
