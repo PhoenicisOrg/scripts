@@ -10,7 +10,7 @@ include(["engines", "wine", "plugins", "windows_version"]);
 * Verb to install .NET 4.7.2
 * @returns {Wine} Wine object
 */
-Wine.prototype.dotnet471 = function () {
+Wine.prototype.dotnet472 = function () {
     if (this.architecture = "x86") {
         print(tr("This package ({0}) may not fully work on a 32-bit installation. 64-bit prefixes may work better.", "dotnet472"));
     }
