@@ -1,22 +1,23 @@
-include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["engines", "wine", "verbs", "dotnet40"]);
+include(["engines", "wine", "quick_script", "online_installer_script"]);
+include(["engines", "wine", "verbs", "dotnet472"]);
 include(["engines", "wine", "verbs", "corefonts"]);
 
 var installerImplementation = {
     run: function () {
-        new LocalInstallerScript()
-        //Local because download failed due to "unable to find valid certification path to requested target"
+        new OnlineInstallerScript()
             .name("osu!")
-            .editor("Editor")
+            .editor("Dean « peppy » Herbert")
             .applicationHomepage("https://osu.ppy.sh/")
             .author("ImperatorS79")
             .category("Games")
             .executable("osu!.exe")
+            .wineVersion(LATEST_DEVELOPMENT_VERSION)                                        
+            .url("https://m1.ppy.sh/r/osu!install.exe")
             .preInstall(function (wine/*, wizard*/) {
                 //maybe needs cjkfonts or set sound driver to alsa
                 wine.corefonts();
-                wine.dotnet40();
-            })
+                wine.dotnet472();
+            })                                   
             .go();
     }
 };
