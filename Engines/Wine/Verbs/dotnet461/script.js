@@ -37,7 +37,7 @@ Wine.prototype.dotnet461 = function () {
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
     this.wizard().wait(tr("Please wait..."));
-    this.run("reg", ["delete", "HKCU\\Software\\Wine\\DllOverrides\\fusion", "/f"], null, false, true);
+    this.run("reg", ["delete", "HKCU\\Software\\Wine\\DllOverrides\\*fusion", "/f"], null, false, true);
 
     this.overrideDLL()
         .set("native", ["mscoree"])
