@@ -14,9 +14,9 @@ Wine.prototype.dotnet40 = function () {
         print(tr("This package ({0}) may not fully work on a 64-bit installation. 32-bit prefixes may work better.", "dotnet40"));
     }
 
-    var OSVersion = this.windowsVersion();
-    if (OSVersion == null)
-        OSVersion = "winxp";
+    var osVersion = this.windowsVersion();
+    if (osVersion == null)
+        osVersion = "winxp";
 
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -36,22 +36,23 @@ Wine.prototype.dotnet40 = function () {
     this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 4.0"));
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
-    this.wizard().wait(tr("Please wait ..."));
+    this.wizard().wait(tr("Please wait..."));
     this.run("reg", ["delete", "HKCU\\Software\\Wine\\DllOverrides", "/v", "*fusion", "/f"], null, false, true);
 
     this.overrideDLL()
         .set("native", ["mscoree"])
         .do();
 
-    this.wizard().wait(tr("Please wait ..."));
+    this.wizard().wait(tr("Please wait..."));
     this.run("reg", ["add", "HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full", "/v", "Install", "/t", "REG_DWORD", "/d", "0001", "/f"], null, false, true);
-    this.wizard().wait(tr("Please wait ..."));
+    this.wizard().wait(tr("Please wait..."));
     this.run("reg", ["add", "HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full", "/v", "Version", "/t", "REG_SZ", "/d", "4.0.30319", "/f"], null, false, true);
+    
+    //This is in winetricks source, but does not seem to work
+    //this.wizard().wait(tr("Please wait while executing ngen..."));
+    //this.run(this.prefixDirectory() + "/drive_c/windows/Microsoft.NET/Framework/v4.0.30319/ngen.exe", "executequeueditems", null, false, true);
 
-    this.wizard().wait(tr("Please wait while executing ngen..."));
-    this.run(this.prefixDirectory() + "/drive_c/windows/Microsoft.NET/Framework/v4.0.30319/ngen.exe", "executequeueditems", null, false, true);
-
-    this.windowsVersion(OSVersion);
+    this.windowsVersion(osVersion);
 
     return this;
 };
