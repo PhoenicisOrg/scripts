@@ -15,9 +15,9 @@ Wine.prototype.dotnet452 = function () {
         print(tr("This package ({0}) may not fully work on a 64-bit installation. 32-bit prefixes may work better.", "dotnet452"));
     }
 
-    var OSVersion = this.windowsVersion();
-    if (OSVersion == null)
-        OSVersion = "win7";
+    var osVersion = this.windowsVersion();
+    if (osVersion == null)
+        osVersion = "win7";
 
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -38,16 +38,16 @@ Wine.prototype.dotnet452 = function () {
     this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 4.5.2"));
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
-    this.wizard().wait(tr("Please wait ..."));
+    this.wizard().wait(tr("Please wait..."));
     this.run("reg", ["delete", "HKCU\\Software\\Wine\\DllOverrides\\fusion", "/f"], null, false, true);
 
     this.overrideDLL()
         .set("native", ["mscoree"])
         .do();
 
-    this.windowsVersion(OSVersion);
+    this.windowsVersion(osVersion);
 
-    if (OSVersion != "win2003") {
+    if (osVersion != "win2003") {
         print(tr("{0} applications can have issues when windows version is not set to \"win2003\"", ".NET 4.5.2"));
     }
 
