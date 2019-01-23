@@ -9,13 +9,13 @@ include(["engines", "wine", "verbs", "dotnet46"]);
 * @returns {Wine} Wine object
 */
 Wine.prototype.dotnet461 = function () {
-    if (this.architecture = "amd64") {
+    if (this.architecture == "amd64") {
         print(tr("This package ({0}) may not fully work on a 64-bit installation. 32-bit prefixes may work better.", "dotnet461"));
     }
 
-    var OSVersion = this.windowsVersion();
-    if (OSVersion == null)
-        OSVersion = "win7";
+    var osVersion = this.windowsVersion();
+    if (osVersion == null)
+        osVersion = "win7";
 
     var setupFile = new Resource()
         .wizard(this._wizard)
@@ -36,14 +36,14 @@ Wine.prototype.dotnet461 = function () {
     this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 4.6.1"));
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
-    this.wizard().wait(tr("Please wait ..."));
+    this.wizard().wait(tr("Please wait..."));
     this.run("reg", ["delete", "HKCU\\Software\\Wine\\DllOverrides\\fusion", "/f"], null, false, true);
 
     this.overrideDLL()
         .set("native", ["mscoree"])
         .do();
 
-    this.windowsVersion(OSVersion);
+    this.windowsVersion(osVersion);
 
     return this;
 };
