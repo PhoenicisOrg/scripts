@@ -6,10 +6,12 @@ include(["utils", "functions", "filesystem", "files"]);
 /**
 * Verb to install FAudio
 * see: https://github.com/Kron4ek/FAudio-Builds
+* @param {String} faudioVersion version of FAudio to downlaod
 * @returns {Wine} Wine object
 */
-Wine.prototype.faudio = function () {
-    var faudioVersion = "19.01";
+Wine.prototype.faudio = function (faudioVersion) {
+    if(typeof faudioVersion !== 'string') 
+        var faudioVersion = "19.01";
 
     var setupFile = new Resource()
         .wizard(this.wizard())
