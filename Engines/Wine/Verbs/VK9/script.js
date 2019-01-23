@@ -68,7 +68,7 @@ var verbImplementation = {
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "VK9", java.util.Optional.empty());
         // query desired version (default: 0.28.1)
-        var versions = ["0.29.0", "0.28.1", "0.28.0"]; //this script is not able to install older version (VK9.conf mandatory)
+        var versions = ["0.29.0", "0.28.1", "0.28.0"]; //this script is not able to install older versions (VK9.conf mandatory)
         var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.28.1");
         wine.wizard(wizard);
         // install selected version
