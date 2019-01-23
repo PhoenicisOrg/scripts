@@ -15,7 +15,7 @@ Wine.prototype.VK9 = function (vk9Version) {
     print("NOTE: works from 0.28.0");
 
     if (typeof vk9Version !== 'string')
-        vk9Version = "0.28.1";
+        vk9Version = "0.29.0";
 
     var setupFile32 = new Resource()
         .wizard(this.wizard())
@@ -68,7 +68,7 @@ var verbImplementation = {
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "VK9", java.util.Optional.empty());
         // query desired version (default: 0.28.1)
-        var versions = ["0.28.1", "0.28.0", "0.27.0", "0.26.0", "0.25.0", "0.23.0", "0.17.0", "0.16.0", "0.6.0", "0.4.0"];
+        var versions = ["0.29.0", "0.28.1", "0.28.0"]; //this script is not able to install older versions (VK9.conf mandatory)
         var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.28.1");
         wine.wizard(wizard);
         // install selected version
