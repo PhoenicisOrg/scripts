@@ -1,10 +1,8 @@
 {
     "scriptName"                 : ".NET 4.6",
     "id"                         : "dotnet46",
-    "compatibleOperatingSystems" : [
-    ],
-    "testingOperatingSystems" : [
-    ],
-    "free"          : true,
-    "requiresPatch" : false
+    "compatibleOperatingSystems" : [],
+    "testingOperatingSystems"    : [],
+    "free"                       : true,
+    "requiresPatch"              : false
 }

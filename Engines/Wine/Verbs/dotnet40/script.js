@@ -47,7 +47,7 @@ Wine.prototype.dotnet40 = function () {
     this.run("reg", ["add", "HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full", "/v", "Install", "/t", "REG_DWORD", "/d", "0001", "/f"], null, false, true);
     this.wizard().wait(tr("Please wait..."));
     this.run("reg", ["add", "HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full", "/v", "Version", "/t", "REG_SZ", "/d", "4.0.30319", "/f"], null, false, true);
-    
+
     //This is in winetricks source, but does not seem to work
     //this.wizard().wait(tr("Please wait while executing ngen..."));
     //this.run(this.prefixDirectory() + "/drive_c/windows/Microsoft.NET/Framework/v4.0.30319/ngen.exe", "executequeueditems", null, false, true);
