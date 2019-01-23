@@ -11,7 +11,7 @@ include(["utils", "functions", "filesystem", "files"]);
 */
 Wine.prototype.faudio = function (faudioVersion) {
     if(typeof faudioVersion !== 'string') 
-        var faudioVersion = "19.01";
+        faudioVersion = "19.01";
 
     var setupFile = new Resource()
         .wizard(this.wizard())
