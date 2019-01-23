@@ -11,13 +11,13 @@ var installerImplementation = {
             .author("ImperatorS79")
             .category("Games")
             .executable("osu!.exe")
-            .wineVersion(LATEST_DEVELOPMENT_VERSION)                                        
+            .wineVersion(LATEST_DEVELOPMENT_VERSION)
             .url("https://m1.ppy.sh/r/osu!install.exe")
             .preInstall(function (wine/*, wizard*/) {
                 //maybe needs cjkfonts or set sound driver to alsa
                 wine.corefonts();
                 wine.dotnet472();
-            })                                   
+            })
             .go();
     }
 };
