@@ -27,7 +27,6 @@ Wine.prototype.faudio = function (faudioVersion) {
 
     var forEach = Array.prototype.forEach;
     var sys32dir = this.system32directory();
-    var sys64dir = this.system64directory();
     var faudioDir = this.prefixDirectory() + "/FAudio/faudio-" + faudioVersion;
     var self = this;
 
@@ -42,6 +41,7 @@ Wine.prototype.faudio = function (faudioVersion) {
 
     if (this.architecture() == "amd64")
     {
+        var sys64dir = this.system64directory();
         forEach.call(ls(faudioDir + "/x64"), function (file) {
             if (file.endsWith(".dll")) {
                 cp(faudioDir + "/x64/" + file, sys64dir);
