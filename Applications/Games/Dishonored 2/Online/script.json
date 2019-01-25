@@ -1,0 +1,12 @@
+{
+    "scriptName"                 : "Online", // Sane?
+    "id"                         : "online", // Sane?
+    "compatibleOperatingSystems" : [],
+    "testingOperatingSystems" : [
+    	"MACOSX",
+        "LINUX"
+    ],
+    "free"                    : true,
+    "testing"				  : true,
+    "requiresPatch"           : false
+}
