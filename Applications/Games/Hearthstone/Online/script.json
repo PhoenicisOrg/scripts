@@ -2,7 +2,8 @@
     "scriptName"                 : "Online",
     "id"                         : "online",
     "compatibleOperatingSystems" : [
-        "LINUX"
+        "LINUX",
+        "MACOSX"
     ],
     "testingOperatingSystems" : [
         "LINUX",
