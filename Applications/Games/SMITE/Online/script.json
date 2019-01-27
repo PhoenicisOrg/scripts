@@ -9,6 +9,6 @@
     	"LINUX",
     	"MACOSX"
     ],
-    "free"                    : false,
+    "free"                    : true,
     "requiresPatch"           : false
 }
