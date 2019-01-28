@@ -14,8 +14,6 @@ Wine.prototype.dotnet45 = function () {
     }
 
     var osVersion = this.windowsVersion();
-    if (osVersion == null)
-        osVersion = "win7";
 
     var setupFile = new Resource()
         .wizard(this.wizard())

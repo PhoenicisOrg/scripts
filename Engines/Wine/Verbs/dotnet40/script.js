@@ -14,8 +14,6 @@ Wine.prototype.dotnet40 = function () {
     }
 
     var osVersion = this.windowsVersion();
-    if (osVersion == null)
-        osVersion = "winxp";
 
     var setupFile = new Resource()
         .wizard(this.wizard())
