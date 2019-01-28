@@ -12,13 +12,13 @@ Wine.prototype.vulkanSDK = function () {
     print("NOTE: you need a graphic driver that supports Vulkan to run winevulkan");
     print("NOTE: Vulkan works in wine from version 3.3 (if compiled with vulkan support)");
 
-    var sdkVersion="1.1.92.1";
+    var sdkVersion="1.1.97.0";
 
     var setupFile = new Resource()
         .wizard(this.wizard())
-        .url("https://sdk.lunarg.com/sdk/download/latest/windows/vulkan-sdk.exe?u=")
-        //checksum changes everytime a new version is released
-        .name("vulkan-sdk.exe")
+        .url("https://sdk.lunarg.com/sdk/download/" + sdkVersion + "/windows/VulkanSDK-" + sdkVersion + "-Installer.exe")
+        .checksum("6bab01f98473bfd550544bbe9773a6d05872a61a")
+        .name("VulkanSDK-" + sdkVersion + "-Installer.exe")
         .get();
 
     this.run(setupFile, "/S");
