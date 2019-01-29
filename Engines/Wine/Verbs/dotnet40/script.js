@@ -49,7 +49,7 @@ Wine.prototype.dotnet40 = function () {
 
     this.regedit().patch(regeditFileContent);
     print(regeditFileContent);
-    
+
     //This is in winetricks source, but does not seem to work
     //this.wizard().wait(tr("Please wait while executing ngen..."));
     //this.run(this.prefixDirectory() + "/drive_c/windows/Microsoft.NET/Framework/v4.0.30319/ngen.exe", "executequeueditems", null, false, true);
