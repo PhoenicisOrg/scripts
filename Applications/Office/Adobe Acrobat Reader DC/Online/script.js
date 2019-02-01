@@ -1,5 +1,6 @@
 include(["engines", "wine", "quick_script", "online_installer_script"]);
 include(["engines", "wine", "verbs", "mspatcha"]);
+include(["engines", "wine", "plugins", "windows_version"]);
 
 var installerImplementation = {
     run: function () {
@@ -16,6 +17,10 @@ var installerImplementation = {
             .executable("AcroRd32.exe")
             .preInstall(function (wine/*, wizard*/) {
                 wine.mspatcha();
+            })
+            .postInstall(function (wine/*, wizard*/) {
+                // fix broken dialogs (e.g. preferences)
+                wine.windowsVersion("winxp");
             })
             .go();
     }
