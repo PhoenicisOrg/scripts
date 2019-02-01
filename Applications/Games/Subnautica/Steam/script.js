@@ -31,7 +31,7 @@ var installerImplementation = {
                 wine.regedit().patch(registrySettings);
             })
             .postInstall(function (wine, wizard) {
-                wizard.message(tr("Due to potential confilct with Vulkan, shader mods break the game (the executable file works but no window is displayed)."));
+                wizard.message(tr("Due to a potential confilct with Vulkan, shader mods break the game (the executable file works but no window is displayed)."));
             })
             .gameOverlay(false)
             .go();
