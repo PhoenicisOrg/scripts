@@ -18,7 +18,6 @@ var installerImplementation = {
             .wineArchitecture("amd64")
             .appId(264710)
             .preInstall(function (wine, wizard) {
-                wizard.message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else this game might not work correctly."));
                 wizard.message(tr("You can make the game smoother by using this: https://github.com/lutris/lutris/wiki/How-to:-Esync"));
                 wine.vcrun2013();
                 wine.corefonts();
