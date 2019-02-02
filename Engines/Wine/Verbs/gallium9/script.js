@@ -9,24 +9,7 @@ include(["utils", "functions", "filesystem", "files"]);
 * @returns {Wine} Wine object
 */
 Wine.prototype.gallium9 = function () {
-    var message = "Using Gallium 9 requires to have a driver supporting the Gallium 9 state tracker, as well as d3dapater9.so installed (ex: libd3d9adapter-mesa package). Please be sure there are installed."
-				  + "\n\n\nGallium 9 needs to know the location of the d3dadapter.so lib. You can generally use for example the locate command:"
-				  + "\n\nlocate d3d9adapter.so";
-
-    var message32 = "\n\n\n Please enter the path for the 32 bits d3dadapter9.so";
-    var message64 = "\n\n\n Please enter the path for the 64 bits d3dadapter9.so";
-
-
-    var d3d9adapter32Path = this.wizard().textbox(message + message32);
-    var d3d9adapter64Path = this.wizard().textbox(message + message64);
-
-    var regeditFileContent =
-            "REGEDIT4\n" +
-            "\n" +
-            "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3DNine]\n" +
-            "\"ModulePath\"=\"" + d3d9adapter32Path + ":" + d3d9adapter64Path + "\"\n";
-
-    this.regedit().patch(regeditFileContent);
+    var message = "Using Gallium 9 requires to have a driver supporting the Gallium 9 state tracker, as well as d3dapater9.so installed (ex: libd3d9adapter-mesa package). Please be sure there are installed.";
 
     var setupFile = new Resource()
         .wizard(this.wizard())
