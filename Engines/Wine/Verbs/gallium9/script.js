@@ -34,7 +34,7 @@ Wine.prototype.gallium9 = function () {
         lns(this.prefixDirectory() + "/gallium-nine-standalone/bin64/ninewinecfg.exe.so", this.system64directory() + "/ninewinecfg.exe");
         lns(this.system64directory() + "/d3d9-nine.dll", this.system64directory() + "/d3d9.dll");
     }
-    
+
     this.overrideDLL()
         .set("native", ["d3d9"])
         .do();
