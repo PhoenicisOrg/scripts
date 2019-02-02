@@ -31,12 +31,12 @@ Wine.prototype.gallium9 = function () {
 
     if (this.architecture() == "amd64") {
         cp(this.prefixDirectory() + "/gallium-nine-standalone/lib64/d3d9-nine.dll.so", this.system64directory());
-	cp(this.prefixDirectory() + "/gallium-nine-standalone/bin64/ninewinecfg.exe.so", this.system64directory());
+        cp(this.prefixDirectory() + "/gallium-nine-standalone/bin64/ninewinecfg.exe.so", this.system64directory());
 	    
         lns(this.system64directory() + "/d3d9-nine.dll.so", this.system64directory() + "/d3d9-nine.dll");
         lns(this.system64directory() + "/ninewinecfg.exe.so", this.system64directory() + "/ninewinecfg.exe");
-	    
-	this.run(this.system64directory() + "ninewinecfg.exe", "-e"); //normally wine 64
+
+        this.run(this.system64directory() + "ninewinecfg.exe", "-e"); //normally wine 64
     }
     else {
         this.run(this.system32directory() + "ninewinecfg.exe", "-e");
@@ -52,6 +52,7 @@ var verbImplementation = {
     install: function (container) {
         var wine = new Wine();
         wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "gallium9", java.util.Optional.empty());
         wine.wizard(wizard);
         wine.gallium9();
         wizard.close();
