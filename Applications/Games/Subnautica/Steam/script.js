@@ -1,5 +1,4 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
-include(["engines", "wine", "plugins", "regedit"]);
 include(["engines", "wine", "plugins", "virtual_desktop"]);
 include(["engines", "wine", "verbs", "vcrun2013"]);
 include(["engines", "wine", "verbs", "corefonts"]);
@@ -24,8 +23,6 @@ var installerImplementation = {
                 wine.DXVK();
                 var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
                 wine.setVirtualDesktop(screenSize.width, screenSize.height);
-                var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("fix.reg");
-                wine.regedit().patch(registrySettings);
             })
             .postInstall(function (wine, wizard) {
                 wizard.message(tr("Due to a potential confilct with Vulkan, shader mods break the game (the executable file works but no window is displayed)."));
