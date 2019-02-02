@@ -23,24 +23,21 @@ Wine.prototype.gallium9 = function () {
         .to(this.prefixDirectory())
         .extract();
 
-    cp(this.prefixDirectory() + "/gallium-nine-standalone/lib32/d3d9-nine.dll.so", this.system32directory());
-    cp(this.prefixDirectory() + "/gallium-nine-standalone/bin32/ninewinecfg.exe.so", this.system32directory());
-
-    lns(this.system32directory() + "/d3d9-nine.dll.so", this.system32directory() + "/d3d9-nine.dll");
-    lns(this.system32directory() + "/ninewinecfg.exe.so", this.system32directory() + "/ninewinecfg.exe");
+    remove(this.system32directory() + "/d3d9.dll");
+    lns(this.prefixDirectory() + "/gallium-nine-standalone/lib32/d3d9-nine.dll.so", this.system32directory() + "/d3d9-nine.dll");
+    lns(this.prefixDirectory() + "/gallium-nine-standalone/bin32/ninewinecfg.exe.so", this.system32directory() + "/ninewinecfg.exe");
+    lns(this.system32directory() + "/d3d9-nine.dll", this.system32directory() + "/d3d9.dll");
 
     if (this.architecture() == "amd64") {
-        cp(this.prefixDirectory() + "/gallium-nine-standalone/lib64/d3d9-nine.dll.so", this.system64directory());
-        cp(this.prefixDirectory() + "/gallium-nine-standalone/bin64/ninewinecfg.exe.so", this.system64directory());
-
-        lns(this.system64directory() + "/d3d9-nine.dll.so", this.system64directory() + "/d3d9-nine.dll");
-        lns(this.system64directory() + "/ninewinecfg.exe.so", this.system64directory() + "/ninewinecfg.exe");
-
-        this.run(this.system64directory() + "ninewinecfg.exe", "-e"); //normally wine 64
+        remove(this.system64directory() + "/d3d9.dll");
+        lns(this.prefixDirectory() + "/gallium-nine-standalone/lib64/d3d9-nine.dll.so", this.system64directory() + "/d3d9-nine.dll");
+        lns(this.prefixDirectory() + "/gallium-nine-standalone/bin64/ninewinecfg.exe.so", this.system64directory() + "/ninewinecfg.exe");
+        lns(this.system64directory() + "/d3d9-nine.dll", this.system64directory() + "/d3d9.dll");
     }
-    else {
-        this.run(this.system32directory() + "ninewinecfg.exe", "-e");
-    }
+    
+    this.overrideDLL()
+        .set("native", ["d3d9"])
+        .do();
 
     return this;
 }
