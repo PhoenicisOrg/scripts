@@ -13,7 +13,7 @@ Wine.prototype.VK9 = function (vk9Version) {
     var operatingSystemFetcher = Bean("operatingSystemFetcher");
     if (operatingSystemFetcher.fetchCurrentOperationSystem() != "Linux")
     {
-        this.wizard().message(tr("DXVK might not work correctly on macOS. This depending on Metal api support and MoltenVK compatibility layer advancement"));    
+        this.wizard().message(tr("DXVK might not work correctly on macOS. This depending on Metal api support and MoltenVK compatibility layer advancement"));
     }
     else
     {
