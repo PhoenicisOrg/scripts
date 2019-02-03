@@ -10,7 +10,15 @@ include(["utils", "functions", "filesystem", "files"]);
 * @returns {Wine} Wine object
 */
 Wine.prototype.VK9 = function (vk9Version) {
-    print("NOTE: you need a driver that supports Vulkan enough to run VK9");
+    var operatingSystemFetcher = Bean("operatingSystemFetcher");
+    if (operatingSystemFetcher.fetchCurrentOperationSystem() != "Linux")
+    {
+        this.wizard().message(tr("VK9 might not work correctly on macOS. This is depending on Metal api support and MoltenVK compatibility layer advancement"));
+    }
+    else
+    {
+        this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else VK9 might not work correctly."));
+    }
     print("NOTE: wine version should be greater or equal to 3.5");
     print("NOTE: works from 0.28.0");
 
