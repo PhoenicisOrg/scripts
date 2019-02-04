@@ -10,7 +10,7 @@ include(["engines", "wine", "verbs", "dotnet462"]);
 * @returns {Wine} Wine object
 */
 Wine.prototype.dotnet472 = function () {
-    if (this.architecture == "x86") {
+    if (this.architecture() == "x86") {
         print(tr("This package ({0}) may not fully work on a 32-bit installation. 64-bit prefixes may work better.", "dotnet472"));
     }
 
