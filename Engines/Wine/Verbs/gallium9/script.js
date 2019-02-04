@@ -5,7 +5,7 @@ include(["utils", "functions", "filesystem", "files"]);
 
 /**
 * Verb to install Gallium 9 Standalone
-* see: https://github.com/dhewg/nine/
+* see: https://github.com/iXit/wine-nine-standalone/
 * @returns {Wine} Wine object
 */
 Wine.prototype.gallium9 = function () {
