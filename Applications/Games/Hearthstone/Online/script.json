@@ -10,5 +10,5 @@
         "MACOSX"
     ],
     "free"          : true,
-    "requiresPatch" : true
+    "requiresPatch" : false
 }
