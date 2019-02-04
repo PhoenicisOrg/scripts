@@ -200,6 +200,13 @@ var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementa
 ### Advanced
 This section describes some advanced methods which give you more possibilities to control your script.
 
+### Include mechanism
+When you want to use a certain functionality in your scripts, you need to include it in your scripts, for example:
+```javascript
+include(["engines", "wine", "quick_script", "steam_script"]);
+```
+allows you to execute a steam script. The content of the include can be determined from the path of the functionality (in the scripts repository) you want to use and the id of the functionality (check the `script.json` file near the `script.js` file containing the functionality).
+
 #### Executable arguments
 By default, the `.executable` runs the application without arguments. If you need arguments, pass an array as second parameter.
 
@@ -247,6 +254,8 @@ Specific wine architecture ("x86" or "amd64"):
 ```
 Specific windows version:
 ```javascript
+include(["engines", "wine", "plugins", "windows_version"]);
+        ...
     .preInstall(function(wine, wizard) {
         wine.windowsVersion("win7");
     })
@@ -258,6 +267,9 @@ If the script requires a special registry setting, there are 2 options:
 
 2. If the setting is special for this script, use a registry file. Create a `registry.reg` in `<scriptname>/resources` (see [IE6](https://github.com/PhoenicisOrg/scripts/blob/master/Applications/Internet/Internet%20Explorer%206.0/resources/ie6.reg)) and apply this in `pre/postInstall()` via
 ```javascript
+include(["utils", "functions", "apps", "resources"]);
+include(["engines", "wine", "plugins", "regedit"]);
+    ...
 var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
 wine.regedit().patch(registrySettings);
 ```
