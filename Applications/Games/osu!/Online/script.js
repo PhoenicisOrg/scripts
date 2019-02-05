@@ -1,5 +1,5 @@
 include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["engines", "wine", "verbs", "dotnet472"]);
+include(["engines", "wine", "verbs", "dotnet45"]);
 include(["engines", "wine", "verbs", "corefonts"]);
 
 var installerImplementation = {
@@ -16,7 +16,7 @@ var installerImplementation = {
             .preInstall(function (wine/*, wizard*/) {
                 //maybe needs cjkfonts or set sound driver to alsa
                 wine.corefonts();
-                wine.dotnet472();
+                wine.dotnet45();
             })
             .go();
     }
