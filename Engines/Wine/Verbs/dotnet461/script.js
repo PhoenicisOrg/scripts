@@ -32,7 +32,7 @@ Wine.prototype.dotnet461 = function () {
         .do();
 
     this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 4.6.1"));
-    this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
+    this.run(setupFile, [setupFile, "/sfxlang:1027", "/q", "/norestart"], null, false, true);
 
     this.wizard().wait(tr("Please wait..."));
     this.run("reg", ["delete", "HKCU\\Software\\Wine\\DllOverrides\\*fusion", "/f"], null, false, true);
