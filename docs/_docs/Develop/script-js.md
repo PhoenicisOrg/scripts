@@ -205,7 +205,7 @@ When you want to use a certain functionality in your scripts, you need to includ
 ```javascript
 include(["engines", "wine", "quick_script", "steam_script"]);
 ```
-allows you to execute a steam script. The content of the include can be determined from the path made up of the id's on the different folder levels leading to the functionality.
+allows you to execute a steam script. The content of the include can be determined from the path made up of the id's on the different folder levels leading to the functionality. Those id's are located in a .json file inside each directory which makes up the path.
 
 #### Executable arguments
 By default, the `.executable` runs the application without arguments. If you need arguments, pass an array as second parameter.
