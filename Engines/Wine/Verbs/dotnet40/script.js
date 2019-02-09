@@ -3,6 +3,7 @@ include(["engines", "wine", "plugins", "override_dll"]);
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "plugins", "regedit"]);
 include(["engines", "wine", "plugins", "windows_version"]);
+include(["engines", "wine", "verbs", "remove_mono"]);
 
 /**
 * Verb to install .NET 4.0
@@ -22,7 +23,7 @@ Wine.prototype.dotnet40 = function () {
         .name("dotNetFx40_Full_x86_x64.exe")
         .get();
 
-    this.uninstall("Mono");
+    this.remove_mono();
 
     this.windowsVersion("winxp");
 
@@ -45,7 +46,7 @@ Wine.prototype.dotnet40 = function () {
                              "\n"                                                                              +
                              "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full]\n" +
                              "\"Install\"=dword:0001\n"                                                        +
-                             "\"Version\"=\"4.0.30139\"";
+                             "\"Version\"=\"4.0.30319\"";
 
     this.regedit().patch(regeditFileContent);
 

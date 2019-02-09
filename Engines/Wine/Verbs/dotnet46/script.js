@@ -3,6 +3,7 @@ include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "plugins", "override_dll"]);
 include(["engines", "wine", "plugins", "windows_version"]);
 include(["engines", "wine", "verbs", "dotnet45"]);
+include(["engines", "wine", "verbs", "remove_mono"]);
 
 
 /**
@@ -23,7 +24,7 @@ Wine.prototype.dotnet46 = function () {
         .name("NDP46-KB3045557-x86-x64-AllOS-ENU.exe")
         .get();
 
-    this.uninstall("Mono");
+    this.remove_mono();
 
     this.dotnet45();
     this.windowsVersion("win7");

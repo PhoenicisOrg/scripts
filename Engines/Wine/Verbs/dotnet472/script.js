@@ -3,15 +3,15 @@ include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "plugins", "override_dll"]);
 include(["engines", "wine", "plugins", "windows_version"]);
 include(["engines", "wine", "verbs", "dotnet462"]);
-
+include(["engines", "wine", "verbs", "remove_mono"]);
 
 /**
 * Verb to install .NET 4.7.2
 * @returns {Wine} Wine object
 */
 Wine.prototype.dotnet472 = function () {
-    if (this.architecture() == "x86") {
-        print(tr("This package ({0}) may not fully work on a 32-bit installation. 64-bit prefixes may work better.", "dotnet472"));
+    if (this.architecture() == "amd64") {
+        print(tr("This package ({0}) may not fully work on a 64-bit installation. 32-bit prefixes may work better.", "dotnet472"));
     }
 
     var osVersion = this.windowsVersion();
@@ -23,7 +23,7 @@ Wine.prototype.dotnet472 = function () {
         .name("NDP472-KB4054530-x86-x64-AllOS-ENU.exe")
         .get();
 
-    this.uninstall("Mono");
+    this.remove_mono();
 
     this.dotnet462();
     this.windowsVersion("win7");
