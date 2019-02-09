@@ -3,7 +3,7 @@ include(["engines", "wine", "plugins", "override_dll"]);
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "plugins", "windows_version"]);
 include(["engines", "wine", "verbs", "dotnet46"]);
-include(["engines", "wine", "verbs", "remove_mono"]);
+include(["engines", "wine", "verbs", "removeMono"]);
 
 /**
 * Verb to install .NET 4.6.1
@@ -23,7 +23,7 @@ Wine.prototype.dotnet461 = function () {
         .name("NDP461-KB3102436-x86-x64-AllOS-ENU.exe")
         .get();
 
-    this.remove_mono();
+    this.removeMono();
 
     this.dotnet46();
     this.windowsVersion("win7");

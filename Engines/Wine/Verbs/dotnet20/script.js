@@ -3,7 +3,7 @@ include(["engines", "wine", "plugins", "override_dll"]);
 include(["utils", "functions", "net", "resource"]);
 include(["utils", "functions", "filesystem", "files"]);
 include(["engines", "wine", "plugins", "windows_version"]);
-include(["engines", "wine", "verbs", "remove_mono"]);
+include(["engines", "wine", "verbs", "removeMono"]);
 
 /**
 * Verb to install .NET 2.0
@@ -22,7 +22,7 @@ Wine.prototype.dotnet20 = function () {
             .name("dotnetfx.exe")
             .get();
 
-        this.remove_mono();
+        this.removeMono();
 
         this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
         this.run(setupFile, ["/q:a", "/c:install.exe /q"], null, false, true);
