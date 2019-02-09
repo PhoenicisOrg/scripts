@@ -23,7 +23,7 @@ Wine.prototype.dotnet40 = function () {
         .name("dotNetFx40_Full_x86_x64.exe")
         .get();
 
-    this.remove_mono();
+    this.removeMono();
 
     this.windowsVersion("winxp");
 
