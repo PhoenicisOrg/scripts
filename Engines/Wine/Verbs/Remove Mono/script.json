@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Remove Mono",
-    "id"                         : "removeMono",
+    "id"                         : "removemono",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

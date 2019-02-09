@@ -3,7 +3,7 @@ include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "plugins", "override_dll"]);
 include(["engines", "wine", "plugins", "windows_version"]);
 include(["engines", "wine", "verbs", "dotnet462"]);
-include(["engines", "wine", "verbs", "removeMono"]);
+include(["engines", "wine", "verbs", "removemono"]);
 
 /**
 * Verb to install .NET 4.7.2
@@ -23,7 +23,7 @@ Wine.prototype.dotnet472 = function () {
         .name("NDP472-KB4054530-x86-x64-AllOS-ENU.exe")
         .get();
 
-    this.removeMono();
+    this.removemono();
 
     this.dotnet462();
     this.windowsVersion("win7");

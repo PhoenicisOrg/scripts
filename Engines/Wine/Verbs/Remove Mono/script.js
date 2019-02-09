@@ -5,7 +5,7 @@ include(["utils", "functions", "filesystem", "files"]);
 * Verb to remove mono
 * @returns {Wine} Wine object
 */
-Wine.prototype.removeMono = function () {
+Wine.prototype.removemono = function () {
     this.uninstall("Mono");
 
     this.wizard().wait(tr("Please wait..."));
@@ -33,9 +33,9 @@ var verbImplementation = {
     install: function (container) {
         var wine = new Wine();
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "removeMono", java.util.Optional.empty());
+        var wizard = SetupWizard(InstallationType.VERBS, "removemono", java.util.Optional.empty());
         wine.wizard(wizard);
-        wine.removeMono();
+        wine.removemono();
         wizard.close();
     }
 };
