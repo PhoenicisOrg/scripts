@@ -4,6 +4,7 @@ include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "plugins", "windows_version"]);
 include(["engines", "wine", "verbs", "dotnet46"]);
 include(["engines", "wine", "verbs", "removemono"]);
+include(["engines", "wine", "plugins", "regedit"]);
 
 /**
 * Verb to install .NET 4.6.1
@@ -15,6 +16,8 @@ Wine.prototype.dotnet461 = function () {
     }
 
     var osVersion = this.windowsVersion();
+    if (osVersion == null)
+        osVersion = "win7";
 
     var setupFile = new Resource()
         .wizard(this._wizard)
@@ -33,10 +36,10 @@ Wine.prototype.dotnet461 = function () {
         .do();
 
     this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 4.6.1"));
-    this.run(setupFile, [setupFile, "/sfxlang:1027", "/q", "/norestart"], null, false, true);
+    this.run(setupFile, [setupFile, "/q", "/norestart"], null, false, true);
 
     this.wizard().wait(tr("Please wait..."));
-    this.run("reg", ["delete", "HKCU\\Software\\Wine\\DllOverrides\\*fusion", "/f"], null, false, true);
+    this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*fusion");
 
     this.overrideDLL()
         .set("native", ["mscoree"])

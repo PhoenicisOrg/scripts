@@ -1,5 +1,6 @@
 include(["engines", "wine", "engine", "object"]);
 include(["utils", "functions", "filesystem", "files"]);
+include(["engines", "wine", "plugins", "regedit"]);
 
 /**
 * Verb to remove mono
@@ -9,13 +10,13 @@ Wine.prototype.removemono = function () {
     this.uninstall("Mono");
 
     this.wizard().wait(tr("Please wait..."));
-    this.run("reg", ["delete", "HKLM\\Software\\Microsoft\\.NETFramework\\v2.0.50727\\SBSDisabled", "/f"], null, false, true);
+    this.regedit().deleteKey("HKLM\\Software\\Microsoft\\.NETFramework\\v2.0.50727\\SBSDisabled");
 
     this.wizard().wait(tr("Please wait..."));
-    this.run("reg", ["delete", "HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v3.5", "/f"], null, false, true);
+    this.regedit().deleteKey("HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v3.5");
 
     this.wizard().wait(tr("Please wait..."));
-    this.run("reg", ["delete", "HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v4", "/f"], null, false, true);
+    this.regedit().deleteKey("HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v4");
 
     remove(this.system32directory() + "/mscoree.dll");
     if (this.architecture() == "amd64")

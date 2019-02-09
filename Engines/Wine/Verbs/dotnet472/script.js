@@ -4,6 +4,7 @@ include(["engines", "wine", "plugins", "override_dll"]);
 include(["engines", "wine", "plugins", "windows_version"]);
 include(["engines", "wine", "verbs", "dotnet462"]);
 include(["engines", "wine", "verbs", "removemono"]);
+include(["engines", "wine", "plugins", "regedit"]);
 
 /**
 * Verb to install .NET 4.7.2
@@ -15,6 +16,8 @@ Wine.prototype.dotnet472 = function () {
     }
 
     var osVersion = this.windowsVersion();
+    if (osVersion == null)
+        osVersion = "win7";
 
     var setupFile = new Resource()
         .wizard(this._wizard)
@@ -36,7 +39,7 @@ Wine.prototype.dotnet472 = function () {
     this.run(setupFile, [setupFile, "/sfxlang:1027", "/q", "/norestart"], null, false, true);
 
     this.wizard().wait(tr("Please wait..."));
-    this.run("reg", ["delete", "HKCU\\Software\\Wine\\DllOverrides\\*fusion", "/f"], null, false, true);
+    this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*fusion");
 
     this.overrideDLL()
         .set("native", ["mscoree"])

@@ -11,11 +11,13 @@ include(["engines", "wine", "verbs", "removemono"]);
 */
 Wine.prototype.dotnet20 = function () {
     var osVersion = this.windowsVersion();
+    if (osVersion == null)
+        osVersion = "winxp";
 
     if (this.architecture() == "x86") {
         this.windowsVersion("win2k");
 
-        var setupFile = new Resource()
+        var setupFile32 = new Resource()
             .wizard(this.wizard())
             .url("https://download.lenovo.com/ibmdl/pub/pc/pccbbs/thinkvantage_en/dotnetfx.exe")
             .checksum("a3625c59d7a2995fb60877b5f5324892a1693b2a")
@@ -25,7 +27,7 @@ Wine.prototype.dotnet20 = function () {
         this.removemono();
 
         this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
-        this.run(setupFile, ["/q:a", "/c:install.exe /q"], null, false, true);
+        this.run(setupFile32, ["/q:a", "/c:install.exe /q"], null, false, true);
 
         this.windowsVersion(osVersion);
 
@@ -34,7 +36,7 @@ Wine.prototype.dotnet20 = function () {
         remove(this.system32directory() + "/msvcp80.dll");
     }
     else {
-        var setupFile = new Resource()
+        var setupFile64 = new Resource()
             .wizard(this.wizard())
             .url("https://download.microsoft.com/download/a/3/f/a3f1bf98-18f3-4036-9b68-8e6de530ce0a/NetFx64.exe")
             .checksum("e59cca309463a5d98daeaada83d1b05fed5126c5")
@@ -44,7 +46,7 @@ Wine.prototype.dotnet20 = function () {
         this.remove_mono();
 
         this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
-        this.run(setupFile, ["/q:a", "/c:install.exe /q"], null, false, true)
+        this.run(setupFile64, ["/q:a", "/c:install.exe /q"], null, false, true)
     }
 
     //This is in winetricks source, but does not seem to work

@@ -15,6 +15,8 @@ Wine.prototype.dotnet40 = function () {
     }
 
     var osVersion = this.windowsVersion();
+    if (osVersion == null)
+        osVersion = "winxp";
 
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -35,7 +37,7 @@ Wine.prototype.dotnet40 = function () {
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
     this.wizard().wait(tr("Please wait..."));
-    this.run("reg", ["delete", "HKCU\\Software\\Wine\\DllOverrides", "/v", "*fusion", "/f"], null, false, true);
+    this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*fusion");
 
     this.overrideDLL()
         .set("native", ["mscoree"])
