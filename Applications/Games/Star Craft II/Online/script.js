@@ -13,8 +13,6 @@ var installerImplementation = {
         // The checksum changes each time you download
             .category("Games")
             .executable("Battle.net.exe")
-            .wineVersion(LATEST_STABLE_VERSION)
-            .wineDistribution("upstream")
             .preInstall(function (wine/*, wizard*/) {
                 wine.vcrun2015();
                 wine.corefonts();
