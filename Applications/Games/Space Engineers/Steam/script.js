@@ -14,7 +14,7 @@ var installerImplementation = {
             .wineVersion("4.1")
             .wineDistribution("upstream")
             .wineArchitecture("amd64")
-            .preInstall(function (wine, wizard) {
+            .preInstall(function (wine, /*wizard*/) {
                 wine.dotnet472();
                 wine.vcrun2017();
                 wine.DXVK();
