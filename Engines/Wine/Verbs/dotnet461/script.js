@@ -11,9 +11,7 @@ include(["engines", "wine", "plugins", "regedit"]);
 * @returns {Wine} Wine object
 */
 Wine.prototype.dotnet461 = function () {
-    if (this.architecture() == "amd64") {
-        print(tr("This package ({0}) may not fully work on a 64-bit installation. 32-bit prefixes may work better.", "dotnet461"));
-    }
+    print(tr("This package ({0}) does not work currently. use it only for testing!", "dotnet461"));
 
     var osVersion = this.windowsVersion();
     if (osVersion == null)
@@ -58,6 +56,7 @@ var verbImplementation = {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "dotnet461", java.util.Optional.empty());
+        wizard.message(tr("This package ({0}) does not work currently. use it only for testing!", "dotnet461"));
         wine.wizard(wizard);
         wine.dotnet461();
         wizard.close();

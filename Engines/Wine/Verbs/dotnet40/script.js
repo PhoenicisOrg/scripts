@@ -69,6 +69,7 @@ var verbImplementation = {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "dotnet40", java.util.Optional.empty());
+        wizard.message(tr("This package ({0}) may not fully work on a 64-bit installation. 32-bit prefixes may work better.", "dotnet40"));
         wine.wizard(wizard);
         wine.dotnet40();
         wizard.close();
