@@ -1,6 +1,6 @@
 include(["engines", "wine", "quick_script", "steam_script"]);
 include(["engines", "wine", "verbs", "corefonts"]);
-include(["engines", "wine", "verbs", "dotnet40"]);
+include(["engines", "wine", "verbs", "dotnet452"]);
 include(["engines", "wine", "verbs", "vcrun2015"]);
 include(["engines", "wine", "verbs", "dxvk"]);
 
@@ -14,7 +14,7 @@ var installerImplementation = {
             .wineDistribution("upstream")
             .wineArchitecture("amd64")
             .preInstall(function (wine/*, wizard*/) {
-                wine.dotnet40();
+                wine.dotnet452();
                 wine.corefonts();
                 wine.vcrun2015();
                 wine.DXVK();
