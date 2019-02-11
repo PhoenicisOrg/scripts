@@ -10,8 +10,6 @@ var installerImplementation = {
             .name("Elite:Dangerous")
             .editor("Frontier Developments")
             .author("ImperatorS79")
-            .wineVersion(LATEST_STABLE_VERSION)
-            .wineDistribution("upstream")
             .wineArchitecture("amd64")
             .preInstall(function (wine/*, wizard*/) {
                 wine.dotnet45();
