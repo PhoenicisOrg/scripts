@@ -180,7 +180,7 @@ Wine.prototype.run = function (executable, args, workingDirectory, captureOutput
 /**
 * uninstall application
 * @param {string} name of the application which shall be uninstalled
-* @returns {Wine}
+* @returns {bool} true if an application has been uninstalled, false otherwise
 */
 Wine.prototype.uninstall = function (application) {
     var list = this.run("uninstaller", ["--list"], this.prefixDirectory(), true, true);
@@ -190,10 +190,11 @@ Wine.prototype.uninstall = function (application) {
     if (uuid) {
         this._implementation.getWizard().wait(tr("Please wait while {0} is uninstalled...", application));
         this.run("uninstaller", ["--remove", uuid[1]], this.prefixDirectory(), false, true);
+        return true;
     } else {
         print(tr("Could not uninstall {0}!", application));
+        return false;
     }
-    return this;
 };
 
 /**
