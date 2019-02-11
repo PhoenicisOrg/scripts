@@ -12,9 +12,7 @@ var installerImplementation = {
             .url("https://eu.battle.net/download/getInstaller?os=win&installer=StarCraft-II-Setup.exe")
         // The checksum changes each time you download
             .category("Games")
-            .executable("StarCraft II.exe")
-            .wineVersion("3.19")
-            .wineDistribution("staging")
+            .executable("Battle.net.exe")
             .preInstall(function (wine/*, wizard*/) {
                 wine.vcrun2015();
                 wine.corefonts();
