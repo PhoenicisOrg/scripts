@@ -1,3 +1,4 @@
+include(["engines", "wine", "quick_script", "quick_script"]);
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "engine", "object"]);
 include(["engines", "wine", "plugins", "override_dll"]);
@@ -6,32 +7,32 @@ include(["utils", "functions", "filesystem", "files"]);
 include(["engines", "wine", "shortcuts", "wine"]);
 include(["utils", "functions", "apps", "resources"]);
 include(["engines", "wine", "verbs", "sandbox"]);
+include(["engines", "wine", "plugins", "windows_version"]);
 
 var installerImplementation = {
     run: function () {
         var appsManager = Bean("repositoryManager");
-        var application = appsManager.getApplication(["Applications", "Internet", "Internet Explorer 7.0"]);
+        var application = appsManager.getApplication(["applications", "internet", "internet_explorer_7_0"]);
         var setupWizard = SetupWizard(InstallationType.APPS, "Internet Explorer 7.0", application.getMainMiniature());
 
         setupWizard.presentation("Internet Explorer 7.0", "Microsoft", "http://www.microsoft.com", "Quentin PÂRIS");
 
         var wine = new Wine()
             .wizard(setupWizard)
-            .version(LATEST_STABLE_VERSION)
-            .distribution("upstream")
-            .architecture("x86")
-            .prefix("InternetExplorer7")
+            .prefix("InternetExplorer7", "upstream", "x86", LATEST_STABLE_VERSION)
             .create()
-            .sandbox()
-            .run("iexplore", ["-unregserver"])
-            .wait()
-            .overrideDLL()
+            .sandbox();
+        wine.run("iexplore", ["-unregserver"], null, false, true);
+        wine.overrideDLL()
             .set("native,builtin", [
-                "iexplore.exe", "itircl", "itss", "jscript", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon", "xmllite"
+                "itircl", "itss", "jscript", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon", "xmllite"
             ])
+            .set("native", ["iexplore.exe"])
             .set("builtin", ["updspapi"])
             .do();
 
+        // delete existing IE, otherwise installer will abort with "newer IE installed"
+        remove(wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Internet Explorer/iexplore.exe");
         ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"]
             .forEach(function (dll) {
                 remove(wine.prefixDirectory() + "/drive_c/windows/system32/" + dll + ".dll");
@@ -199,7 +200,10 @@ var installerImplementation = {
             .name(ie7installer)
             .get();
 
-        wine.run(setupFile).wait();
+        wine.windowsVersion("winxp", "sp3");
+        wine.wait();
+        wine.run(setupFile, [], null, false, true);
+        wine.wait();
 
         var librairiesToRegister = ["actxprxy.dll", "browseui.dll", "browsewm.dll", "cdfview.dll", "ddraw.dll",
                                     "dispex.dll", "dsound.dll", "iedkcs32.dll", "iepeers.dll", "iesetup.dll", "imgutil.dll",
@@ -212,11 +216,11 @@ var installerImplementation = {
                                     "wshcon.dll", "wshext.dll", "asctrls.ocx", "hhctrl.ocx", "mscomct2.ocx",
                                     "plugin.ocx", "proctexe.ocx", "tdc.ocx", "webcheck.dll", "wshom.ocx"];
 
-        var progressBar = setupWizard.progressBar("Please wait ...");
+        var progressBar = setupWizard.progressBar("Please wait...");
         var i = 1;
         librairiesToRegister.forEach(function (dll) {
             progressBar.setProgressPercentage(i * 100 / librairiesToRegister.length);
-            progressBar.setText(tr("Installing {0} ...", dll));
+            progressBar.setText(tr("Installing {0}...", dll));
             wine.regsvr32().install(dll);
             i++;
         });
@@ -227,7 +231,7 @@ var installerImplementation = {
             .name("Internet Explorer 7.0")
             .prefix("InternetExplorer7")
             .search("iexplore.exe")
-            .miniature(["Applications", "Internet", "Internet Explorer 7.0"])
+            .miniature(["applications", "internet", "internet_explorer_7_0"])
             .create();
 
         setupWizard.close();

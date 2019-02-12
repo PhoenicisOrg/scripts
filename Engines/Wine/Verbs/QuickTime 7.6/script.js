@@ -13,8 +13,26 @@ Wine.prototype.quicktime76 = function () {
         .name("QuickTimeInstaller.exe")
         .get();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", "QuickTime"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", "QuickTime"));
     this.run(setupFile, ["ALLUSERS=1", "DESKTOP_SHORTCUTS=0", "QTTaskRunFlags=0", "QTINFO.BISQTPRO=1", "SCHEDULE_ASUW=0", "REBOOT_REQUIRED=No"], null, false, true);
 
     return this;
 };
+
+/**
+ * Verb to install QuickTime 7.6
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "quicktime76", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.quicktime76();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

@@ -39,9 +39,6 @@ include(["engines", "wine", "verbs", "dotnet40"]);
 * @returns {Wine} Wine object
 */
 Wine.prototype.dotnet452 = function () {
-    if (this.architecture() == "amd64") {
-        throw "{0} cannot be installed in a 64bit wine prefix!".format("dotnet452");
-    }
 
     var OSVersion = this.windowsVersion();
 
@@ -54,7 +51,7 @@ Wine.prototype.dotnet452 = function () {
 
     this.uninstall("Mono");
 
-    this.wizard().wait(tr("Please wait ..."));
+    this.wizard().wait(tr("Please wait..."));
     this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"], null, false, true);
 
     remove(this.system32directory() + "/mscoree.dll");
@@ -66,7 +63,7 @@ Wine.prototype.dotnet452 = function () {
         .set("builtin", ["fusion"])
         .do();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.5.2"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 4.5.2"));
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
     this.overrideDLL()
@@ -81,6 +78,23 @@ Wine.prototype.dotnet452 = function () {
 
     return this;
 };
+
+/**
+ * Verb to install .NET 4.5.2
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "dotnet452", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.dotnet452();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
 </code></pre>
         </article>
     </section>
@@ -91,7 +105,7 @@ Wine.prototype.dotnet452 = function () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">

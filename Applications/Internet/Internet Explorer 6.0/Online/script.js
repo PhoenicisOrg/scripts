@@ -52,7 +52,7 @@ var installerImplementation = {
         wine.overrideDLL()
             .set("native", ["inseng"])
             .do();
-        wine.runInsidePrefix("IE 6.0 Full/IE6SETUP.EXE");
+        wine.runInsidePrefix("IE 6.0 Full/IE6SETUP.EXE", [], true);
         wine.overrideDLL()
             .set("native,builtin", [
                 "inetcpl.cpl", "itircl", "itss", "jscript", "mlang",
@@ -71,11 +71,11 @@ var installerImplementation = {
                                    "wshcon.dll", "wshext.dll", "asctrls.ocx", "hhctrl.ocx", "mscomct2.ocx",
                                    "plugin.ocx", "proctexe.ocx", "tdc.ocx", "webcheck.dll", "wshom.ocx"];
 
-        var progressBar = setupWizard.progressBar(tr("Please wait ..."));
+        var progressBar = setupWizard.progressBar(tr("Please wait..."));
         var i = 1;
         librariesToRegister.forEach(function (dll) {
             progressBar.setProgressPercentage(i * 100 / librariesToRegister.length);
-            progressBar.setText(tr("Installing {0} ...", dll));
+            progressBar.setText(tr("Installing {0}...", dll));
             wine.regsvr32().install(dll);
             i++;
         });

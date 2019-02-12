@@ -1,0 +1,10 @@
+{
+    "scriptName"                 : "Retina",
+    "id"                         : "retina",
+    "compatibleOperatingSystems" : [
+        "MACOSX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

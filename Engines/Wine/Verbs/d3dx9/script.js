@@ -12,8 +12,8 @@ Wine.prototype.d3dx9 = function () {
     var extractDirectXtoSystemDirectory = function (progressBar, filesToExtract, destination, pattern) {
         var numberOfExtractedFiles = 0;
         filesToExtract.forEach(function (cabFile) {
-            print(tr("Extracting {0} ...", cabFile));
-            progressBar.setText(tr("Extracting {0} ...", "DirectX 9"));
+            print(tr("Extracting {0}...", cabFile));
+            progressBar.setText(tr("Extracting {0}...", "DirectX 9"));
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
 
             new CabExtract()
@@ -32,8 +32,8 @@ Wine.prototype.d3dx9 = function () {
         .name("directx_Jun2010_redist.exe")
         .get();
 
-    var progressBar = this.wizard().progressBar(tr("Please wait ..."));
-    progressBar.setText(tr("Extracting {0} ...", "DirectX 9"));
+    var progressBar = this.wizard().progressBar(tr("Please wait..."));
+    progressBar.setText(tr("Extracting {0}...", "DirectX 9"));
     progressBar.setProgressPercentage(0.);
 
     new CabExtract()
@@ -80,3 +80,21 @@ Wine.prototype.d3dx9 = function () {
         .do();
     return this;
 };
+
+/**
+ * Verb to install D3DX9
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "d3dx9", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.d3dx9();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

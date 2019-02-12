@@ -81,14 +81,14 @@ Wine.prototype.corefonts = function () {
             .get()
     ];
 
-    var progressBar = this.wizard().progressBar(tr("Please wait ..."));
-    progressBar.setText(tr("Installing {0} ...", tr("fonts")));
+    var progressBar = this.wizard().progressBar(tr("Please wait..."));
+    progressBar.setText(tr("Installing {0}...", tr("fonts")));
     progressBar.setProgressPercentage(0.);
     var numInstalledFonts = 0;
 
     var that = this;
     fontResources.forEach(function (fontResource) {
-        progressBar.setText(tr("Installing {0} ...", tr("fonts")));
+        progressBar.setText(tr("Installing {0}...", tr("fonts")));
         progressBar.setProgressPercentage(numInstalledFonts * 100 / fontResources.length);
 
         new CabExtract()
@@ -132,4 +132,21 @@ Wine.prototype.corefonts = function () {
         .set("Webdings", "Webdings.TTF")
         .do();
     return this;
+}
+
+/**
+ * Verb to install corefonts
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "corefonts", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.corefonts();
+        wizard.close();
+    }
 };
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);

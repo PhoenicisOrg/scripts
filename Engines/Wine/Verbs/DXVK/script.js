@@ -4,19 +4,36 @@ include(["utils", "functions", "net", "resource"]);
 include(["utils", "functions", "filesystem", "files"]);
 
 /**
-* Setup DXVK-> https://github.com/doitsujin/dxvk/
+* Verb to install DXVK
+* see: https://github.com/doitsujin/dxvk/
+* @param {String} dxvkVersion DXVK version to download
 * @returns {Wine} Wine object
 */
-Wine.prototype.DXVK = function () {
-    print("NOTE: you need a driver that supports Vulkan enough to run DXVK");
-    print("NOTE: wine version should be greater or equal to 3.5");
+Wine.prototype.DXVK = function (dxvkVersion) {
+    var operatingSystemFetcher = Bean("operatingSystemFetcher");
+    print("NOTE: wine version should be greater or equal to 3.10");
+    if (operatingSystemFetcher.fetchCurrentOperationSystem() != "Linux")
+    {
+        this.wizard().message(tr("DXVK might not work correctly on macOS. This is depending on Metal api support and MoltenVK compatibility layer advancement"));
+    }
+    else
+    {
+        this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
+    }
 
-    var dxvkVersion = "0.53";
+    if (typeof dxvkVersion !== 'string')
+    {
+        var releaseFile = new Resource()
+            .wizard(this.wizard())
+            .url("https://raw.githubusercontent.com/doitsujin/dxvk/master/RELEASE")
+            .name("RELEASE.txt")
+            .get();
+        dxvkVersion = cat(releaseFile).replaceAll("\\n", "");
+    }
 
     var setupFile = new Resource()
         .wizard(this.wizard())
         .url("https://github.com/doitsujin/dxvk/releases/download/v" + dxvkVersion + "/dxvk-" + dxvkVersion + ".tar.gz")
-        .checksum("df448f1a7b842773f4d826a86eeba44c937187b0")
         .name("dxvk-" + dxvkVersion + ".tar.gz")
         .get();
 
@@ -28,24 +45,60 @@ Wine.prototype.DXVK = function () {
 
     var dxvkTmpDir = this.prefixDirectory() + "/TMP/dxvk-" + dxvkVersion;
 
-    if (this.architecture() == "x86") {
-        cp(dxvkTmpDir + "/x32/d3d11.dll", this.system32directory());
-        cp(dxvkTmpDir + "/x32/dxgi.dll", this.system32directory());
-    }
+    cp(dxvkTmpDir + "/x32/d3d11.dll", this.system32directory());
+    cp(dxvkTmpDir + "/x32/dxgi.dll", this.system32directory());
+    cp(dxvkTmpDir + "/x32/d3d10core.dll", this.system32directory());
+    cp(dxvkTmpDir + "/x32/d3d10.dll", this.system32directory());
+    cp(dxvkTmpDir + "/x32/d3d10_1.dll", this.system32directory());
 
     if (this.architecture() == "amd64") {
-        cp(dxvkTmpDir + "/x32/d3d11.dll", this.system64directory());
-        cp(dxvkTmpDir + "/x32/dxgi.dll", this.system64directory());
-
-        cp(dxvkTmpDir + "/x64/d3d11.dll", this.system32directory());
-        cp(dxvkTmpDir + "/x64/dxgi.dll", this.system32directory());
+        cp(dxvkTmpDir + "/x64/d3d11.dll", this.system64directory());
+        cp(dxvkTmpDir + "/x64/dxgi.dll", this.system64directory());
+        cp(dxvkTmpDir + "/x64/d3d10core.dll", this.system64directory());
+        cp(dxvkTmpDir + "/x64/d3d10.dll", this.system64directory());
+        cp(dxvkTmpDir + "/x64/d3d10_1.dll", this.system64directory());
     }
 
     this.overrideDLL()
-        .set("native", ["d3d11", "dxgi"])
+        .set("native", ["d3d11", "dxgi", "d3d10", "d3d10_1", "d3d10core"])
         .do();
 
     remove(this.prefixDirectory() + "/TMP/");
 
     return this;
 }
+
+/**
+ * Verb to install DXVK
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "DXVK", java.util.Optional.empty());
+        // get latest release version
+        var releaseFile = new Resource()
+            .wizard(wizard)
+            .url("https://raw.githubusercontent.com/doitsujin/dxvk/master/RELEASE")
+            .name("RELEASE.txt")
+            .get();
+        var latestVersion = cat(releaseFile).replaceAll("\\n", "");
+        // query desired version (default: latest release version)
+        var versions = ["0.96", "0.95", "0.94", "0.93", "0.92", "0.91", "0.90",
+                        "0.81", "0.80", "0.72", "0.71", "0.70",
+                        "0.65", "0.64", "0.63", "0.62", "0.61", "0.60",
+                        "0.54", "0.53", "0.52", "0.51", "0.50",
+                        "0.42", "0.41", "0.40",
+                        "0.31", "0.30",
+                        "0.21", "0.20"];
+        var selectedVersion = wizard.menu(tr("Please select the version."), versions, latestVersion);
+        wine.wizard(wizard);
+        // install selected version
+        wine.DXVK(selectedVersion);
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

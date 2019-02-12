@@ -30,10 +30,7 @@ ZipScript.prototype.go = function () {
 
     var wine = new Wine()
         .wizard(setupWizard)
-        .architecture(this._wineArchitecture)
-        .version(this._wineVersion)
-        .prefix(this._name)
-        .distribution("upstream")
+        .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
         .create()
         .luna()
         .wait();
@@ -41,7 +38,7 @@ ZipScript.prototype.go = function () {
     this._preInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in preInstall)
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     var archive = "";
     if (!this._url) {
@@ -62,12 +59,12 @@ ZipScript.prototype.go = function () {
         .to(wine.prefixDirectory() + "/drive_c/" + this._name)
         .extract();
 
-    this._createShortcut(wine.prefix());
-
     this._postInstall(wine, setupWizard);
 
+    this._createShortcut(wine.prefix());
+
     // back to generic wait (might have been changed in postInstall)
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     setupWizard.close();
 };
