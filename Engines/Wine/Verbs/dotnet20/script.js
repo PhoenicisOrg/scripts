@@ -11,8 +11,6 @@ include(["engines", "wine", "verbs", "removemono"]);
 */
 Wine.prototype.dotnet20 = function () {
     var osVersion = this.windowsVersion();
-    if (osVersion == null)
-        osVersion = "winxp";
 
     if (this.architecture() == "x86") {
         this.windowsVersion("win2k");

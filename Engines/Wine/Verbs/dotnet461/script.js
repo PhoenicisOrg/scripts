@@ -14,8 +14,6 @@ Wine.prototype.dotnet461 = function () {
     print(tr("This package ({0}) does not work currently. use it only for testing!", "dotnet461"));
 
     var osVersion = this.windowsVersion();
-    if (osVersion == null)
-        osVersion = "win7";
 
     var setupFile = new Resource()
         .wizard(this._wizard)
