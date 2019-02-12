@@ -3,7 +3,7 @@ include(["engines", "wine", "plugins", "override_dll"]);
 include(["engines", "wine", "plugins", "windows_version"]);
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "verbs", "dotnet40"]);
-include(["engines", "wine", "verbs", "removemono"]);
+include(["engines", "wine", "verbs", "remove_mono"]);
 include(["engines", "wine", "plugins", "regedit"]);
 
 /**
@@ -22,7 +22,7 @@ Wine.prototype.dotnet452 = function () {
         .name("NDP452-KB2901907-x86-x64-AllOS-ENU.exe")
         .get();
 
-    this.removemono();
+    this.removeMono();
 
     this.dotnet40();
     this.windowsVersion("win7");

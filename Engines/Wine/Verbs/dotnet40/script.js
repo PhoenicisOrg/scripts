@@ -3,7 +3,7 @@ include(["engines", "wine", "plugins", "override_dll"]);
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "plugins", "regedit"]);
 include(["engines", "wine", "plugins", "windows_version"]);
-include(["engines", "wine", "verbs", "removemono"]);
+include(["engines", "wine", "verbs", "remove_mono"]);
 
 /**
 * Verb to install .NET 4.0
@@ -23,7 +23,7 @@ Wine.prototype.dotnet40 = function () {
         .name("dotNetFx40_Full_x86_x64.exe")
         .get();
 
-    this.removemono();
+    this.removeMono();
 
     this.windowsVersion("winxp");
 

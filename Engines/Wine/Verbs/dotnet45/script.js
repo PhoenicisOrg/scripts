@@ -3,7 +3,7 @@ include(["engines", "wine", "plugins", "override_dll"]);
 include(["engines", "wine", "plugins", "windows_version"]);
 include(["utils", "functions", "net", "resource"]);
 include(["engines", "wine", "verbs", "dotnet40"]);
-include(["engines", "wine", "verbs", "removemono"]);
+include(["engines", "wine", "verbs", "remove_mono"]);
 include(["engines", "wine", "plugins", "regedit"]);
 
 /**
@@ -24,7 +24,7 @@ Wine.prototype.dotnet45 = function () {
         .name("dotnetfx45_full_x86_x64.exe")
         .get();
 
-    this.removemono();
+    this.removeMono();
 
     this.dotnet40();
     this.windowsVersion("win7");
