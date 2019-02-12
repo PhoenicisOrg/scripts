@@ -180,7 +180,7 @@ Wine.prototype.run = function (executable, args, workingDirectory, captureOutput
 /**
 * uninstall application
 * @param {string} name of the application which shall be uninstalled
-* @returns {Wine}
+* @returns {WINE}
 */
 Wine.prototype.uninstall = function (application) {
     var list = this.run("uninstaller", ["--list"], this.prefixDirectory(), true, true);
@@ -193,6 +193,7 @@ Wine.prototype.uninstall = function (application) {
     } else {
         print(tr("Could not uninstall {0}!", application));
     }
+    
     return this;
 };
 
