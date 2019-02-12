@@ -5,13 +5,13 @@ include(["utils", "functions", "net", "download"]);
 include(["utils", "functions", "net", "resource"]);
 
 /* exported LATEST_STABLE_VERSION */
-var LATEST_STABLE_VERSION = "3.0.4";
+var LATEST_STABLE_VERSION = "4.0";
 /* exported LATEST_DEVELOPMENT_VERSION */
-var LATEST_DEVELOPMENT_VERSION = "4.0-rc6";
+var LATEST_DEVELOPMENT_VERSION = "4.1";
 /* exported LATEST_STAGING_VERSION */
-var LATEST_STAGING_VERSION = "4.0-rc4";
+var LATEST_STAGING_VERSION = "4.1";
 /* exported LATEST_DOS_SUPPORT_VERSION */
-var LATEST_DOS_SUPPORT_VERSION = "4.0-rc4";
+var LATEST_DOS_SUPPORT_VERSION = "4.0";
 
 /**
  * Wine main prototype

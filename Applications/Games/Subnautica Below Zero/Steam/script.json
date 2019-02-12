@@ -1,10 +1,10 @@
 {
-    "scriptName"                 : "Local",
-    "id"                         : "local",
+    "scriptName"                 : "Steam",
+    "id"                         : "steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],
     "testingOperatingSystems" : [],
-    "free"                    : true,
+    "free"                    : false,
     "requiresPatch"           : false
 }

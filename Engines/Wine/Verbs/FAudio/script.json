@@ -1,12 +1,11 @@
 {
-    "scriptName"                 : "Online",
-    "id"                         : "online",
+    "scriptName"                 : "faudio",
+    "id"                         : "faudio",
     "compatibleOperatingSystems" : [
-        "LINUX",
-        "MACOSX"
+        "LINUX"
     ],
     "testingOperatingSystems" : [
-        "MACOSX"
+        "LINUX"
     ],
     "free"          : true,
     "requiresPatch" : false
