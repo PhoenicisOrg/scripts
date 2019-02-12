@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "d3dx10",
-    "id"                         : "d3dx10",
+    "id"                         : "engines.wine.verbs.d3dx10",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

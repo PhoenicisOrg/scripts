@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "video memory size",
-    "id"                         : "video_memory_size",
+    "id"                         : "engines.wine.settings.video_memory_size",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

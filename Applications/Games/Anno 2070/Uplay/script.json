@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Uplay",
-    "id"                         : "anno_2070_uplay",
+    "id"                         : "applications.games.anno2070.uplay",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

@@ -1,5 +1,5 @@
 {
     "name"        : "Wine Verbs",
-    "id"          : "verbs",
+    "id"          : "engines.wine.verbs",
     "description" : "Verbs for Wine."
 }

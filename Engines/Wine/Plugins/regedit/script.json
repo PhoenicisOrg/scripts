@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "regedit",
-    "id"                         : "regedit",
+    "id"                         : "engines.wine.plugins.regedit",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

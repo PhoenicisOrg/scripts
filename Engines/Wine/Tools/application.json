@@ -1,5 +1,5 @@
 {
     "name"        : "Wine Tools",
-    "id"          : "tools",
+    "id"          : "engines.wine.tools",
     "description" : "Tools for Wine."
 }

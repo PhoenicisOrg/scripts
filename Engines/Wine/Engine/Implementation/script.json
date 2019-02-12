@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Wine engine (implementation of Java interface)",
-    "id"                         : "implementation",
+    "id"                         : "engines.wine.engine.implementation",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

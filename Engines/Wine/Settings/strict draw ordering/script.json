@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "strict draw ordering",
-    "id"                         : "strict_draw_ordering",
+    "id"                         : "engines.wine.settings.strict_draw_ordering",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

@@ -1,5 +1,5 @@
 {
     "name" : "Office",
-    "id"   : "office",
+    "id"   : "applications.office",
     "type" : "INSTALLERS"
 }

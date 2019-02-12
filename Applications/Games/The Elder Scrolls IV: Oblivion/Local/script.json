@@ -1,6 +1,6 @@
 {
-    "scriptName"                 : "Local",
-    "id"                         : "local",
+    "scriptName"                 : "local",
+    "id"                         : "applications.games.the_elder_scrolls_4_oblivion.local",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

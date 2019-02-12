@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.dr_langeskov_the_tiger_and_the_terribly_cursed_emerald_a_whirlwind_heist.steam",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

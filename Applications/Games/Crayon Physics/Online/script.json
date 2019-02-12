@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.crayon_physics.online",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

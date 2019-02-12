@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "corefonts",
-    "id"                         : "corefonts",
+    "id"                         : "engines.wine.verbs.corefonts",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

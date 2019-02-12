@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "simcity_2013_local",
+    "id"                         : "applications.games.simcity_2013.local",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

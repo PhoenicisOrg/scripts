@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.multimedia.mp3tag.online",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

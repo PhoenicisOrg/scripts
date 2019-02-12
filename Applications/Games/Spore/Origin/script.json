@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Origin",
-    "id"                         : "spore_origin",
+    "id"                         : "applications.games.spore.origin",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
