@@ -1,7 +1,7 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "regedit"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["utils", "functions", "net", "resource"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.regedit");
+include("utils.functions.filesystem.files");
+include("utils.functions.net.resource");
 
 /**
 * Verb to install luna

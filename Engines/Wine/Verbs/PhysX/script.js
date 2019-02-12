@@ -1,6 +1,6 @@
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "verbs", "luna"]);
+include("engines.wine.engine.object");
+include("utils.functions.net.resource");
+include("engines.wine.verbs.luna");
 
 /**
 * Verb to install Nvidia PhysX

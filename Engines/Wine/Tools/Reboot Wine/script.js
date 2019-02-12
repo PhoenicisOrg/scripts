@@ -1,4 +1,4 @@
-include(["engines", "wine", "engine", "object"]);
+include("engines.wine.engine.object");
 
 /**
  * tool to reboot Wine

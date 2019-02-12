@@ -1,9 +1,9 @@
-include(["engines", "wine", "quick_script", "steam_script"]);
-include(["engines", "wine", "plugins", "virtual_desktop"]);
-include(["engines", "wine", "verbs", "vcrun2013"]);
-include(["engines", "wine", "verbs", "corefonts"]);
-include(["engines", "wine", "verbs", "dxvk"]);
-include(["utils", "functions", "apps", "resources"]);
+include("engines.wine.quick_script.steam_script");
+include("engines.wine.plugins.virtual_desktop");
+include("engines.wine.verbs.vcrun2013");
+include("engines.wine.verbs.corefonts");
+include("engines.wine.verbs.dxvk");
+include("utils.functions.apps.resources");
 
 var installerImplementation = {
     run: function () {

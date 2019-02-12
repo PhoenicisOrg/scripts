@@ -1,8 +1,8 @@
-include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["engines", "wine", "plugins", "csmt"]);
-include(["engines", "wine", "plugins", "windows_version"]);
-include(["engines", "wine", "verbs", "vcrun2015"]);
-include(["engines", "wine", "verbs", "corefonts"]);
+include("engines.wine.quick_script.online_installer_script");
+include("engines.wine.plugins.csmt");
+include("engines.wine.plugins.windows_version");
+include("engines.wine.verbs.vcrun2015");
+include("engines.wine.verbs.corefonts");
 
 var installerImplementation = {
     run: function () {

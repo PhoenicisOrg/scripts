@@ -1,7 +1,7 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "regsvr32"]);
-include(["utils", "functions", "net", "resource"]);
-include(["utils", "functions", "filesystem", "files"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.regsvr32");
+include("utils.functions.net.resource");
+include("utils.functions.filesystem.files");
 
 /**
 * Verb to install xact

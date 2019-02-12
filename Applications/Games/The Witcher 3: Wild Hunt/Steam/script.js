@@ -1,5 +1,5 @@
-include(["engines", "wine", "quick_script", "steam_script"]);
-include(["engines", "wine", "verbs", "dxvk"]);
+include("engines.wine.quick_script.steam_script");
+include("engines.wine.verbs.dxvk");
 
 var installerImplementation = {
     run: function () {
