@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Engines/Wine/Plugins/Windows version/script.js</title>
+    <title>JSDoc: Source: Engines/Wine/Verbs/FAudio/script.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Engines/Wine/Plugins/Windows version/script.js</h1>
+    <h1 class="page-title">Source: Engines/Wine/Verbs/FAudio/script.js</h1>
 
     
 
@@ -27,77 +27,75 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "regedit"]);
+include(["engines", "wine", "plugins", "override_dll"]);
+include(["utils", "functions", "net", "resource"]);
+include(["utils", "functions", "filesystem", "files"]);
 
 /**
- * default windows version
- * @param {string} version (win7, vista, win2003, winxp, win2k, winnt, winme, win98, win95, win31)
- * @param {string} [servicePack] e.g. sp3
- * @returns {string|Wine} get: Windows version, set: Wine object
- */
-Wine.prototype.windowsVersion = function (version, servicePack) {
-    var that = this;
-    // get
-    if (arguments.length == 0) {
-        return this.regedit().fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Version"]);
-    }
+* Verb to install FAudio
+* see: https://github.com/Kron4ek/FAudio-Builds
+* @param {String} faudioVersion version of FAudio to downlaod
+* @returns {Wine} Wine object
+*/
+Wine.prototype.faudio = function (faudioVersion) {
+    if(typeof faudioVersion !== 'string') 
+        faudioVersion = "19.01";
 
-    // set
-    var regeditFileContent;
-    if (version == null) {
-        regeditFileContent =
-            "REGEDIT4\n" +
-            "\n" +
-            "[HKEY_CURRENT_USER\\Software\\Wine]\n" +
-            "\"Version\"=-\n";
-    } else {
-        regeditFileContent =
-            "REGEDIT4\n" +
-            "\n" +
-            "[HKEY_CURRENT_USER\\Software\\Wine]\n" +
-            "\"Version\"=\"" + version + "\"\n";
+    var setupFile = new Resource()
+        .wizard(this.wizard())
+        .url("https://github.com/Kron4ek/FAudio-Builds/releases/download/" + faudioVersion + "/faudio-" + faudioVersion + ".tar.xz")
+        .name("faudio-" + faudioVersion + ".tar.xz")
+        .get();
 
-        if (servicePack) {
-            var servicePackNumber = servicePack.replace("sp", "");
-            regeditFileContent += "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion]\n";
-            regeditFileContent += "\"CSDVersion\"=\"Service Pack " + servicePackNumber + "\"\n";
-            regeditFileContent += "[HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Windows]\n";
-            regeditFileContent += "\"CSDVersion\"=dword:00000" + servicePackNumber + "00\n";
+    new Extractor()
+        .wizard(this.wizard())
+        .archive(setupFile)
+        .to(this.prefixDirectory() + "/FAudio/")
+        .extract();
+
+    var forEach = Array.prototype.forEach;
+    var sys32dir = this.system32directory();
+    var faudioDir = this.prefixDirectory() + "/FAudio/faudio-" + faudioVersion;
+    var self = this;
+
+    forEach.call(ls(faudioDir + "/x32"), function (file) {
+        if (file.endsWith(".dll")) {
+            cp(faudioDir + "/x32/" + file, sys32dir);
+            self.overrideDLL()
+                .set("native", [file])
+                .do();
         }
+    });
+
+    if (this.architecture() == "amd64")
+    {
+        var sys64dir = this.system64directory();
+        forEach.call(ls(faudioDir + "/x64"), function (file) {
+            if (file.endsWith(".dll")) {
+                cp(faudioDir + "/x64/" + file, sys64dir);
+            }
+        });
     }
 
-    this.regedit().patch(regeditFileContent);
     return this;
-};
+}
 
-var SetOsForApplication = function () {
-    var that = this;
-    that._regeditFileContent =
-        "REGEDIT4\n" +
-        "\n";
-
-    that.wine = function (wine) {
-        that._wine = wine;
-        return that;
-    };
-
-    that.set = function (application, os) {
-        that._regeditFileContent += "[HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\" + application + "]\n";
-        that._regeditFileContent += "\"Version\"=\"" + os + "\"\n";
-
-        return that;
-    };
-
-    that.do = function () {
-        that._wine.regedit().patch(that._regeditFileContent);
-        return that._wine;
+/**
+ * Verb to install FAudio
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "FAudio", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.faudio();
+        wizard.close();
     }
 };
 
-Wine.prototype.setOsForApplication = function () {
-    return new SetOsForApplication()
-        .wine(this)
-};
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
 </code></pre>
         </article>
     </section>
