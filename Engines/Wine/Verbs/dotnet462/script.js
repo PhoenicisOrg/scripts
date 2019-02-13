@@ -14,7 +14,7 @@ Wine.prototype.dotnet462 = function () {
     print(tr("This package ({0}) does not work currently. use it only for testing!", "dotnet462"));
 
     var osVersion = this.windowsVersion();
-    
+
     var setupFile = new Resource()
         .wizard(this._wizard)
         .url("https://download.microsoft.com/download/F/9/4/F942F07D-F26F-4F30-B4E3-EBD54FABA377/NDP462-KB3151800-x86-x64-AllOS-ENU.exe")

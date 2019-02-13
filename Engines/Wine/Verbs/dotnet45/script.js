@@ -60,8 +60,8 @@ var verbImplementation = {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "dotnet45", java.util.Optional.empty());
-        if(wine.architecture() == "amd64")  
-        {      
+        if (wine.architecture() == "amd64")
+        {
             wizard.message(tr("This package ({0}) may not fully work on a 64-bit installation. 32-bit prefixes may work better.", "dotnet45"));
         }
         wine.wizard(wizard);
