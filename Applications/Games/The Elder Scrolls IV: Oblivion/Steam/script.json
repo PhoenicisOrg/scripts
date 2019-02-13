@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam (GOTY)",
-    "id"                         : ".steam_goty",
+    "id"                         : "applications.games.the_elder_scrolls_4_oblivion.steam_goty",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],
