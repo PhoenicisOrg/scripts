@@ -7,7 +7,7 @@ include(["engines", "wine", "plugins", "regedit"]);
 * @returns {Wine} Wine object
 */
 Wine.prototype.removeMono = function () {
-    if(this.uninstall("Mono"))
+    if (this.uninstall("Mono"))
     {
         this.wizard().wait(tr("Please wait..."));
         this.regedit().deleteKey("HKLM\\Software\\Microsoft\\.NETFramework\\v2.0.50727\\SBSDisabled");
@@ -24,9 +24,7 @@ Wine.prototype.removeMono = function () {
             remove(this.system64directory() + "/mscoree.dll");
         }
     }
-    else
-        print("COUCOU");
-    
+
     return this;
 };
 
