@@ -35,7 +35,7 @@ var verbImplementation = {
     install: function (container) {
         var wine = new Wine();
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "removemono", java.util.Optional.empty());
+        var wizard = SetupWizard(InstallationType.VERBS, "remove_mono", java.util.Optional.empty());
         wine.wizard(wizard);
         wine.removeMono();
         wizard.close();
