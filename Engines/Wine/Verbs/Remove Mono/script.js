@@ -29,7 +29,7 @@ Wine.prototype.removeMono = function () {
 };
 
 /**
- * Verb to install remove mono
+ * Verb to remove mono
 */
 var verbImplementation = {
     install: function (container) {

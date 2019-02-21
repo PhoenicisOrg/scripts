@@ -11,7 +11,7 @@ include(["engines", "wine", "plugins", "regedit"]);
 * @returns {Wine} Wine object
 */
 Wine.prototype.dotnet472 = function () {
-    print(tr("This package ({0}) does not work currently. use it only for testing!", "dotnet472"));
+    print(tr("This package ({0}) does not work currently. Use it only for testing!", "dotnet472"));
 
     var osVersion = this.windowsVersion();
 
@@ -54,7 +54,7 @@ var verbImplementation = {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "dotnet472", java.util.Optional.empty());
-        wizard.message(tr("This package ({0}) does not work currently. use it only for testing!", "dotnet472"));
+        wizard.message(tr("This package ({0}) does not work currently. Use it only for testing!", "dotnet472"));
         wine.wizard(wizard);
         wine.dotnet472();
         wizard.close();
