@@ -26,8 +26,8 @@ Wine.prototype.vulkanSDK = function () {
 
     var pathVulkanJSON = this.prefixDirectory() + "drive_c/windows/winevulkan.json";
     touch(pathVulkanJSON);
-    var contentVulkanJSON = JSON.stringify({file_format_version: "1.0.0", ICD: {library_path: "c:\\windows\\system32\\winevulkan.dll",
-        api_version: sdkVersion}}, null, 4);
+    var contentVulkanJSON = JSON.stringify({"file_format_version": "1.0.0", "ICD": {"library_path": "c:\\windows\\system32\\winevulkan.dll",
+        "api_version": sdkVersion}}, null, 4);
 
     writeToFile(pathVulkanJSON, contentVulkanJSON);
 
