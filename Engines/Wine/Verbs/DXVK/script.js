@@ -10,8 +10,16 @@ include(["utils", "functions", "filesystem", "files"]);
 * @returns {Wine} Wine object
 */
 Wine.prototype.DXVK = function (dxvkVersion) {
-    print("NOTE: you need a driver that supports Vulkan enough to run DXVK");
+    var operatingSystemFetcher = Bean("operatingSystemFetcher");
     print("NOTE: wine version should be greater or equal to 3.10");
+    if (operatingSystemFetcher.fetchCurrentOperationSystem() != "Linux")
+    {
+        this.wizard().message(tr("DXVK might not work correctly on macOS. This is depending on Metal api support and MoltenVK compatibility layer advancement"));
+    }
+    else
+    {
+        this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
+    }
 
     if (typeof dxvkVersion !== 'string')
     {
@@ -76,7 +84,7 @@ var verbImplementation = {
             .get();
         var latestVersion = cat(releaseFile).replaceAll("\\n", "");
         // query desired version (default: latest release version)
-        var versions = ["0.93", "0.92", "0.91", "0.90",
+        var versions = ["0.96", "0.95", "0.94", "0.93", "0.92", "0.91", "0.90",
                         "0.81", "0.80", "0.72", "0.71", "0.70",
                         "0.65", "0.64", "0.63", "0.62", "0.61", "0.60",
                         "0.54", "0.53", "0.52", "0.51", "0.50",
