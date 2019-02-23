@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.the_elder_scrolls_5_skyrim.steam",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

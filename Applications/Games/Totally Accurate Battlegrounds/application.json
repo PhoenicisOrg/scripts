@@ -1,5 +1,5 @@
 {
     "name"        : "Totally Accurate Battlegrounds",
-    "id"          : "totally_accurate_battlegrounds",
+    "id"          : "applications.games.totally_accurate_battlegrounds",
     "description" : "Totally Accurate Battlegrounds is a parody of the Battle Royale genre. A bunch of physics-based weirdos fight it out on an island, everything is silly and possibly a bit buggy."
 }

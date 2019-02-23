@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "native application",
-    "id"                         : "native_application",
+    "id"                         : "engines.wine.plugins.native_application",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "luna",
-    "id"                         : "luna",
+    "id"                         : "engines.wine.verbs.luna",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

@@ -1,5 +1,5 @@
 {
     "name"        : "Wine Shortcuts",
-    "id"          : "shortcuts",
+    "id"          : "engines.wine.shortcuts",
     "description" : "Shortcuts for Wine."
 }

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online (Demo)",
-    "id"                         : "online_demo",
+    "id"                         : "applications.games.tomb_raider_the_dagger_of_xian.online_demo",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

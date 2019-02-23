@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.dc_universe_online.online",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

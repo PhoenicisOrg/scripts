@@ -1,5 +1,5 @@
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "filesystem", "files"]);
+include("engines.wine.engine.object");
+include("utils.functions.filesystem.files");
 
 /**
  * This extensions allows script to add extra settings to dos_support wine builds

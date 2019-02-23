@@ -1,5 +1,5 @@
 {
     "name"        : "Microsoft Paint",
-    "id"          : "microsoftpaint",
+    "id"          : "applications.graphics.microsoftpaint",
     "description" : "Because we are nostalgic people."
 }

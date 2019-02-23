@@ -1,5 +1,5 @@
-include(["engines", "wine", "quick_script", "steam_script"]);
-include(["engines", "wine", "verbs", "uplay"]);
+include("engines.wine.quick_script.steam_script");
+include("engines.wine.verbs.uplay");
 
 var installerImplementation = {
     run: function () {

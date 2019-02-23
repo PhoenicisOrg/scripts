@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Wine Shortcut",
-    "id"                         : "wine",
+    "id"                         : "engines.wine.shortcuts.wine",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

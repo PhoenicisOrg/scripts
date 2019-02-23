@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "register font",
-    "id"                         : "register_font",
+    "id"                         : "engines.wine.plugins.register_font",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

@@ -1,8 +1,8 @@
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "verbs", "luna"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["engines", "wine", "verbs", "dotnet452"]);
+include("engines.wine.engine.object");
+include("utils.functions.net.resource");
+include("engines.wine.verbs.luna");
+include("utils.functions.filesystem.files");
+include("engines.wine.verbs.dotnet452");
 
 /**
 * Verb to install .NET 4.6.1

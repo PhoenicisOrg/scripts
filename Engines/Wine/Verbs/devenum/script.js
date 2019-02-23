@@ -1,10 +1,10 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "verbs", "luna"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["utils", "functions", "filesystem", "extract"]);
-include(["engines", "wine", "plugins", "regsvr32"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.override_dll");
+include("utils.functions.net.resource");
+include("engines.wine.verbs.luna");
+include("utils.functions.filesystem.files");
+include("utils.functions.filesystem.extract");
+include("engines.wine.plugins.regsvr32");
 
 /**
 * Verb to install devenum

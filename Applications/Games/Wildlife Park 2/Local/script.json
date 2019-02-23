@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "local",
+    "id"                         : "applications.games.wildlife_park_2.local",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

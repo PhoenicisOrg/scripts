@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Registry Editor",
-    "id"                         : "wine_registry_editor",
+    "id"                         : "engines.wine.tools.wine_registry_editor",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

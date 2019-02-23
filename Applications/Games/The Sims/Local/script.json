@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "local",
+    "id"                         : "applications.games.the_sims.local",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

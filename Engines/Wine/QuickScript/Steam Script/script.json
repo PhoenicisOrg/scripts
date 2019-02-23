@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam Script",
-    "id"                         : "steam_script",
+    "id"                         : "engines.wine.quick_script.steam_script",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

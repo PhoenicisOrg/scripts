@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.prehistorik.online",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
