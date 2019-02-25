@@ -1,10 +1,11 @@
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["engines", "wine", "plugins", "windows_version"]);
-include(["engines", "wine", "verbs", "dotnet461"]);
-include(["engines", "wine", "verbs", "remove_mono"]);
-include(["engines", "wine", "plugins", "regedit"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.override_dll");
+include("utils.functions.net.resource");
+include("engines.wine.plugins.windows_version");
+include("engines.wine.verbs.remove_mono");
+include("engines.wine.plugins.regedit");
+include("engines.wine.verbs.dotnet461");
+
 
 /**
 * Verb to install .NET 4.6.2
