@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Uplay",
-    "id"                         : "uplay",
+    "id"                         : "applications.games.beyond_good_and_evil.uplay",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "amstream",
-    "id"                         : "amstream",
+    "id"                         : "engines.wine.verbs.amstream",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

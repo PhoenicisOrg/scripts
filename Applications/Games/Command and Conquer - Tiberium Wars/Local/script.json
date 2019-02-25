@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "local",
+    "id"                         : "applications.games.command_and_conquer_tiberium_wars.local",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

@@ -1,11 +1,11 @@
-include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["utils", "functions", "net", "download"]);
-include(["utils", "functions", "filesystem", "extract"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["engines", "wine", "verbs", "amstream"]);
-include(["engines", "wine", "verbs", "quartz"]);
-include(["engines", "wine", "verbs", "devenum"]);
-include(["engines", "wine", "verbs", "d3drm"]);
+include("engines.wine.quick_script.local_installer_script");
+include("utils.functions.net.download");
+include("utils.functions.filesystem.extract");
+include("utils.functions.filesystem.files");
+include("engines.wine.verbs.amstream");
+include("engines.wine.verbs.quartz");
+include("engines.wine.verbs.devenum");
+include("engines.wine.verbs.d3drm");
 
 var installerImplementation = {
     run: function () {

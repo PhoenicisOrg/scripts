@@ -1,4 +1,3 @@
-include(["engines", "wine", "quick_script", "steam_script"]);
 include(["engines", "wine", "verbs", "corefonts"]);
 include(["engines", "wine", "verbs", "dotnet45"]);
 include(["engines", "wine", "verbs", "vcrun2015"]);

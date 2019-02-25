@@ -1,6 +1,6 @@
-include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["engines", "wine", "verbs", "mspatcha"]);
-include(["engines", "wine", "plugins", "windows_version"]);
+include("engines.wine.quick_script.online_installer_script");
+include("engines.wine.verbs.mspatcha");
+include("engines.wine.plugins.windows_version");
 
 var installerImplementation = {
     run: function () {

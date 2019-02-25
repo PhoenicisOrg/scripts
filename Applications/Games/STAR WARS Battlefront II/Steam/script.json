@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.star_wars_battlefront_2.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

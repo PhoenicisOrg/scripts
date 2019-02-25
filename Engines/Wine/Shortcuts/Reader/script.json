@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Shortcut Reader",
-    "id"                         : "reader",
+    "id"                         : "engines.wine.shortcuts.reader",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.star_wars_jedi_knight_mysteries_of_the_sith.steam",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

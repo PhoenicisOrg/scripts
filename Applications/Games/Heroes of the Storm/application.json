@@ -1,5 +1,5 @@
 {
     "name"        : "Heroes of the Storm",
-    "id"          : "heroes_of_the_storm",
+    "id"          : "applications.games.heroes_of_the_storm",
     "description" : "Heroes of the Storm (HotS) is a multiplayer online battle arena video game developed and published by Blizzard Entertainment."
 }

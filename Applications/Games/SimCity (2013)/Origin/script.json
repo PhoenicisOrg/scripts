@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Origin",
-    "id"                         : "simcity_2013_origin",
+    "id"                         : "applications.games.simcity_2013.origin",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

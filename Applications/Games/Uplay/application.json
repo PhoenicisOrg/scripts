@@ -1,5 +1,5 @@
 {
     "name"        : "Uplay",
-    "id"          : "uplay",
+    "id"          : "applications.games.uplay",
     "description" : "Uplay is Ubisoft's PC games portal."
 }

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "override DLL",
-    "id"                         : "override_dll",
+    "id"                         : "engines.wine.plugins.override_dll",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

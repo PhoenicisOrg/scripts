@@ -1,4 +1,4 @@
-include(["engines", "wine", "quick_script", "origin_script"]);
+include("engines.wine.quick_script.origin_script");
 
 var installerImplementation = {
     run: function () {

@@ -1,7 +1,7 @@
-include(["utils", "functions", "filesystem", "files"]);
-include(["utils", "functions", "filesystem", "extract"]);
-include(["utils", "functions", "net", "download"]);
-include(["utils", "functions", "net", "resource"]);
+include("utils.functions.filesystem.files");
+include("utils.functions.filesystem.extract");
+include("utils.functions.net.download");
+include("utils.functions.net.resource");
 
 /* exported WINE_PREFIX_DIR */
 var WINE_PREFIX_DIR = "wineprefix";

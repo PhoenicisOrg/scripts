@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.the_room_two.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

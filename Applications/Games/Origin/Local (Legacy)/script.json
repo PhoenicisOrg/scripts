@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local (Legacy)",
-    "id"                         : "local_legacy",
+    "id"                         : "applications.games.origin.local_legacy",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

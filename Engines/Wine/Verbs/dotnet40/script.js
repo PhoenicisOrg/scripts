@@ -1,8 +1,8 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "verbs", "luna"]);
-include(["utils", "functions", "filesystem", "files"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.override_dll");
+include("utils.functions.net.resource");
+include("engines.wine.verbs.luna");
+include("utils.functions.filesystem.files");
 
 /**
 * Verb to install .NET 4.0

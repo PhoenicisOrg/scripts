@@ -8505,7 +8505,7 @@ https://www.dosbox.com/wiki/dosbox.conf#.5Brender.5D
     
 
     
-    <h4 class="name" id="uninstall"><span class="type-signature"></span>uninstall<span class="signature">(name)</span><span class="type-signature"> &rarr; {WINE}</span></h4>
+    <h4 class="name" id="uninstall"><span class="type-signature"></span>uninstall<span class="signature">(name)</span><span class="type-signature"> &rarr; {bool}</span></h4>
     
 
     
@@ -8632,6 +8632,10 @@ https://www.dosbox.com/wiki/dosbox.conf#.5Brender.5D
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    true if an application has been uninstalled, false otherwise
+</div>
+
 
 
 <dl>
@@ -8640,7 +8644,7 @@ https://www.dosbox.com/wiki/dosbox.conf#.5Brender.5D
     </dt>
     <dd>
         
-<span class="param-type">WINE</span>
+<span class="param-type">bool</span>
 
 
     </dd>
@@ -9953,7 +9957,8 @@ see: https://github.com/disks86/VK9
 
 
 <div class="description">
-    All the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)-> https://github.com/roderickc/wine-vulkan
+    All the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
+-> https://github.com/roderickc/wine-vulkan
 </div>
 
 

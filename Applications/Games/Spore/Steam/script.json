@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "spore_steam",
+    "id"                         : "applications.games.spore.steam",
     "compatibleOperatingSystems" : [
         "LINUX",
         "MACOSX"
