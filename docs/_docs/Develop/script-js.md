@@ -203,9 +203,9 @@ This section describes some advanced methods which give you more possibilities t
 ### Include mechanism
 When you want to use a certain functionality in your scripts, you need to include it in your scripts, for example:
 ```javascript
-include(["engines", "wine", "quick_script", "steam_script"]);
+include("engines.wine.quick_script.steam_script");
 ```
-allows you to execute a steam script. The content of the include can be determined from the path made up of the id's on the different folder levels leading to the functionality. Those id's are located in a .json file inside each directory which makes up the path.
+allows you to execute a steam script. The content of the include is the id of the functionality, which can be found in the `script.json` file located next to the `script.js` file implementing the functionality.
 
 #### Executable arguments
 By default, the `.executable` runs the application without arguments. If you need arguments, pass an array as second parameter.
