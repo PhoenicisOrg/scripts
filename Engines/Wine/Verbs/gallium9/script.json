@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "gallium9",
-    "id"                         : "gallium9",
+    "id"                         : "engines.wine.verbs.gallium9",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],
