@@ -1,6 +1,6 @@
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["engines", "wine", "plugins", "regedit"]);
+include("engines.wine.engine.object");
+include("utils.functions.filesystem.files");
+include("engines.wine.plugins.regedit");
 
 /**
 * Verb to remove mono
