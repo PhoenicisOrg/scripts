@@ -41,7 +41,7 @@ Wine.prototype.dotnet20 = function () {
             .name("NetFx64.exe")
             .get();
 
-        this.remove_mono();
+        this.removeMono();
 
         this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
         this.run(setupFile64, ["/q:a", "/c:install.exe /q"], null, false, true)
