@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "space_colony_local",
+    "id"                         : "applications.games.space_colony.local",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

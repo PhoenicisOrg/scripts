@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "sandbox",
-    "id"                         : "sandbox",
+    "id"                         : "engines.wine.verbs.sandbox",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

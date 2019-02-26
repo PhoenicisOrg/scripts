@@ -1,7 +1,7 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "regedit"]);
-include(["utils", "functions", "net", "resource"]);
-include(["utils", "functions", "filesystem", "files"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.regedit");
+include("utils.functions.net.resource");
+include("utils.functions.filesystem.files");
 
 /**
 * All the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)

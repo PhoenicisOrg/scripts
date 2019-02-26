@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.far_cry.steam",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

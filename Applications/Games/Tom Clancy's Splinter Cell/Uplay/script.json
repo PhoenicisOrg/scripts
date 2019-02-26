@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Uplay",
-    "id"                         : "uplay",
+    "id"                         : "applications.games.tom_clancys_splinter_cell.uplay",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

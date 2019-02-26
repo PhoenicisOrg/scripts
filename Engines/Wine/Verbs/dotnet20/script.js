@@ -1,9 +1,9 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "verbs", "luna"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["engines", "wine", "plugins", "windows_version"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.override_dll");
+include("utils.functions.net.resource");
+include("engines.wine.verbs.luna");
+include("utils.functions.filesystem.files");
+include("engines.wine.plugins.windows_version");
 
 /**
 * Verb to install .NET 2.0

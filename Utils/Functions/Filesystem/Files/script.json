@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "File Utilities",
-    "id"                         : "files",
+    "id"                         : "utils.functions.filesystem.files",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

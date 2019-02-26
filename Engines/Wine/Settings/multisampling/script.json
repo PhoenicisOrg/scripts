@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "multisampling",
-    "id"                         : "multisampling",
+    "id"                         : "engines.wine.settings.multisampling",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

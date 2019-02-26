@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "devenum",
-    "id"                         : "devenum",
+    "id"                         : "engines.wine.verbs.devenum",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

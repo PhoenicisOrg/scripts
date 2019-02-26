@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local (Demo)",
-    "id"                         : "local_demo",
+    "id"                         : "applications.games.tomb_raider_the_dagger_of_xian.local_demo",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

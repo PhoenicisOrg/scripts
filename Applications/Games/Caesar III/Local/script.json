@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "local",
+    "id"                         : "applications.games.caesar_3.local",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "vcrun2010",
-    "id"                         : "vcrun2010",
+    "id"                         : "engines.wine.verbs.vcrun2010",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

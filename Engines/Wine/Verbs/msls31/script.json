@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "msls31",
-    "id"                         : "msls31",
+    "id"                         : "engines.wine.verbs.msls31",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

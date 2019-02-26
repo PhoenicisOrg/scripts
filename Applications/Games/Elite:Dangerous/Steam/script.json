@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.elite_dangerous.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

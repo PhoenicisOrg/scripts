@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.office.adobe_acrobat_reader_dc.online",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

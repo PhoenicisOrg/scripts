@@ -1,9 +1,9 @@
-include(["engines", "wine", "quick_script", "steam_script"]);
-include(["engines", "wine", "verbs", "corefonts"]);
-include(["engines", "wine", "verbs", "d3dx9"]);
-include(["engines", "wine", "verbs", "tahoma"]);
-include(["engines", "wine", "verbs", "vcrun2005"]);
-include(["engines", "wine", "verbs", "vcrun2008"]);
+include("engines.wine.quick_script.steam_script");
+include("engines.wine.verbs.corefonts");
+include("engines.wine.verbs.d3dx9");
+include("engines.wine.verbs.tahoma");
+include("engines.wine.verbs.vcrun2005");
+include("engines.wine.verbs.vcrun2008");
 
 var installerImplementation = {
     run: function () {

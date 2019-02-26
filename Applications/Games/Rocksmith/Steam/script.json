@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.rocksmith.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

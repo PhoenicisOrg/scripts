@@ -1,5 +1,5 @@
 {
     "name"        : "Internet Explorer 6.0",
-    "id"          : "internet_explorer_6_0",
+    "id"          : "applications.internet.internet_explorer_6_0",
     "description" : "Internet Explorer is an old web browser.<br />You may need it if you want to test a website compatibility, you should not use it to navigate."
 }

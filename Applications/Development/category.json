@@ -1,5 +1,5 @@
 {
     "name" : "Development",
-    "id"   : "development",
+    "id"   : "applications.development",
     "type" : "INSTALLERS"
 }

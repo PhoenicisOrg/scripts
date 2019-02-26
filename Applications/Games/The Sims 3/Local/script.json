@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "local",
+    "id"                         : "applications.games.sims_3.local",
     "compatibleOperatingSystems" : [
         "LINUX",
         "MACOSX"

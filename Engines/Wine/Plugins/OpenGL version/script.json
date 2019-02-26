@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "OpenGL_version",
-    "id"                         : "opengl_version",
+    "id"                         : "engines.wine.plugins.opengl_version",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

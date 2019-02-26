@@ -1,5 +1,5 @@
 {
     "name"        : "Net Utils",
-    "id"          : "net",
+    "id"          : "utils.functions.net",
     "description" : "Utils for interaction with the Internet."
 }

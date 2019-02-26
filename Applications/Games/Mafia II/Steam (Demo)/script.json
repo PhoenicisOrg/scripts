@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam (Demo)",
-    "id"                         : "steam_demo",
+    "id"                         : "applications.games.mafia_2.steam_demo",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

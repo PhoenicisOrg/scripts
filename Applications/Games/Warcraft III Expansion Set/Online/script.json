@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.warcraft_3_expansion_set.online",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

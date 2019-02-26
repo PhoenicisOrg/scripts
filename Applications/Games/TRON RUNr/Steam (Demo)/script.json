@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam (Demo)",
-    "id"                         : "steam_demo",
+    "id"                         : "applications.games.tron_runr.steam_demo",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "GOG",
-    "id"                         : "gog",
+    "id"                         : "applications.games.xiii.gog",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

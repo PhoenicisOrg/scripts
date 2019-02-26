@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "mfc42",
-    "id"                         : "mfc42",
+    "id"                         : "engines.wine.verbs.mfc42",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

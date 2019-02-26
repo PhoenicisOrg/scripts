@@ -1,9 +1,9 @@
-include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["engines", "wine", "plugins", "windows_version"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["engines", "wine", "verbs", "vcrun2015"]);
-include(["engines", "wine", "verbs", "corefonts"]);
-include(["engines", "wine", "verbs", "dxvk"]);
+include("engines.wine.quick_script.online_installer_script");
+include("engines.wine.plugins.windows_version");
+include("engines.wine.plugins.override_dll");
+include("engines.wine.verbs.vcrun2015");
+include("engines.wine.verbs.corefonts");
+include("engines.wine.verbs.dxvk");
 
 var installerImplementation = {
     run: function () {

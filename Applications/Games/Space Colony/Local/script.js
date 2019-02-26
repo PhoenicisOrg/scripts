@@ -1,5 +1,5 @@
-include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["utils", "functions", "net", "resource"]);
+include("engines.wine.quick_script.local_installer_script");
+include("utils.functions.net.resource");
 
 var installerImplementation = {
     run: function () {

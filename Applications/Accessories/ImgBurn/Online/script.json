@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.accessories.img_burn.online",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
