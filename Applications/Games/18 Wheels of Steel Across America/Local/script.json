@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "local",
+    "id"                         : "applications.games.18_wheels_of_steel_across_america.local",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

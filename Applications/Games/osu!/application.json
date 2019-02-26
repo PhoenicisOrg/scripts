@@ -1,5 +1,5 @@
 {
     "name"        : "osu!",
-    "id"          : "osu",
+    "id"          : "applications.games.osu",
     "description" : "osu! is a free-to-win online rhythm game."
 }

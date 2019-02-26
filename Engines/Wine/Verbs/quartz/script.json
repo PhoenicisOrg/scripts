@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "quartz",
-    "id"                         : "quartz",
+    "id"                         : "engines.wine.verbs.quartz",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

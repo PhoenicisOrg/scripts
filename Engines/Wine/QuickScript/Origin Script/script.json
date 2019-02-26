@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Origin Script",
-    "id"                         : "origin_script",
+    "id"                         : "engines.wine.quick_script.origin_script",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

@@ -1,5 +1,5 @@
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "net", "resource"]);
+include("engines.wine.engine.object");
+include("utils.functions.net.resource");
 
 /**
 * Verb to install Uplay

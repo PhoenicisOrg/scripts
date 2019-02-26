@@ -1,6 +1,6 @@
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["utils", "functions", "net", "resource"]);
+include("engines.wine.engine.object");
+include("utils.functions.filesystem.files");
+include("utils.functions.net.resource");
 
 /**
 * Verb to install Windows XP Service Pack 3

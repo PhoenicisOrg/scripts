@@ -1,5 +1,5 @@
 {
     "name"        : "App Utils",
-    "id"          : "apps",
+    "id"          : "utils.functions.apps",
     "description" : "Utils for apps."
 }

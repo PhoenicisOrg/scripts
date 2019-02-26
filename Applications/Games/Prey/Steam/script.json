@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.prey.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

@@ -1,4 +1,4 @@
-include(["engines", "wine", "quick_script", "steam_script"]);
+include("engines.wine.quick_script.steam_script");
 
 var installerImplementation = {
     run: function () {

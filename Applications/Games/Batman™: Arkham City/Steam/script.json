@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.batman_arkham_city.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

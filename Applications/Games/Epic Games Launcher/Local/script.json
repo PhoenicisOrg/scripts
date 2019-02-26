@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "local",
+    "id"                         : "applications.games.epic_games_launcher.local",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

@@ -1,6 +1,6 @@
-include(["engines", "wine", "quick_script", "zip_script"]);
-include(["engines", "wine", "plugins", "dos_support"]);
-include(["utils", "functions", "filesystem", "files"]);
+include("engines.wine.quick_script.zip_script");
+include("engines.wine.plugins.dos_support");
+include("utils.functions.filesystem.files");
 
 var installerImplementation = {
     run: function () {

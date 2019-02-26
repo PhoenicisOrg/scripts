@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.druid_soccer.online",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

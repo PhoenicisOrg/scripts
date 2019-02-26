@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Windows XP Service Pack 3",
-    "id"                         : "sp3extract",
+    "id"                         : "engines.wine.verbs.sp3extract",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

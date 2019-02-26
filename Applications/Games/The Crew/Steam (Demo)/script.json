@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam (Demo)",
-    "id"                         : "steam_demo",
+    "id"                         : "applications.games.the_crew.steam_demo",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

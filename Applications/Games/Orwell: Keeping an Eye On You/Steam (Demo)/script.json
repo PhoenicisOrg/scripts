@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam (Demo)",
-    "id"                         : "steam_demo",
+    "id"                         : "applications.games.orwell_keeping_an_eye_on_you.steam_demo",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

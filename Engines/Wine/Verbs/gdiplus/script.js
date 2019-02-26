@@ -1,7 +1,7 @@
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "net", "resource"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["engines", "wine", "plugins", "override_dll"]);
+include("engines.wine.engine.object");
+include("utils.functions.net.resource");
+include("utils.functions.filesystem.files");
+include("engines.wine.plugins.override_dll");
 
 /**
 * Verb to install gdiplus

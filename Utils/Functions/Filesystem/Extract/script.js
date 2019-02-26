@@ -1,4 +1,4 @@
-include(["utils", "functions", "filesystem", "files"]);
+include("utils.functions.filesystem.files");
 
 /**
 * CabExtract prototype

@@ -1,7 +1,7 @@
-include(["engines", "wine", "quick_script", "quick_script"]);
-include(["utils", "functions", "net", "download"]);
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "verbs", "gdiplus"]);
+include("engines.wine.quick_script.quick_script");
+include("utils.functions.net.download");
+include("engines.wine.engine.object");
+include("engines.wine.verbs.gdiplus");
 
 function GogScript() {
     QuickScript.call(this);

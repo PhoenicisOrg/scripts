@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "secur32",
-    "id"                         : "secur32",
+    "id"                         : "engines.wine.verbs.secur32",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
