@@ -1,8 +1,8 @@
 include("engines.wine.quick_script.steam_script");
-include("engines.wine.verbs.dotnet472"]);
-include("engines.wine.verbs.vcrun2017"]);
-include("engines.wine.verbs.dxvk"]);
-//include("engines.wine.verbs.faudio"]);
+include("engines.wine.verbs.dotnet472");
+include("engines.wine.verbs.vcrun2017");
+include("engines.wine.verbs.dxvk");
+include("engines.wine.verbs.faudio");
 
 var installerImplementation = {
     run: function () {
