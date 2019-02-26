@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Wine engine",
-    "id"                         : "object",
+    "id"                         : "engines.wine.engine.object",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

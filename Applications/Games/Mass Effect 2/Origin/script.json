@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Origin",
-    "id"                         : "mass_effect_2_origin",
+    "id"                         : "applications.games.mass_effect_2.origin",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

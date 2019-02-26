@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "DirectDraw renderer",
-    "id"                         : "directdraw_renderer",
+    "id"                         : "engines.wine.settings.directdraw_renderer",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

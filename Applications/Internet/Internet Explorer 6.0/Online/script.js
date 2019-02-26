@@ -1,13 +1,13 @@
-include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["engines", "wine", "plugins", "regedit"]);
-include(["engines", "wine", "plugins", "regsvr32"]);
-include(["engines", "wine", "plugins", "windows_version"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["engines", "wine", "shortcuts", "wine"]);
-include(["utils", "functions", "apps", "resources"]);
-include(["engines", "wine", "verbs", "msls31"]);
+include("utils.functions.net.resource");
+include("engines.wine.engine.object");
+include("engines.wine.plugins.override_dll");
+include("engines.wine.plugins.regedit");
+include("engines.wine.plugins.regsvr32");
+include("engines.wine.plugins.windows_version");
+include("utils.functions.filesystem.files");
+include("engines.wine.shortcuts.wine");
+include("utils.functions.apps.resources");
+include("engines.wine.verbs.msls31");
 
 var installerImplementation = {
     run: function () {

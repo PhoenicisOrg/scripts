@@ -1,5 +1,5 @@
 {
     "name"        : "Hexcells",
-    "id"          : "hexcells",
+    "id"          : "applications.games.hexcells",
     "description" : "Hexcells is an ambient logic puzzle game for PC, Mac and Linux."
 }

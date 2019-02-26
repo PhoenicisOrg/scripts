@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "csmt",
-    "id"                         : "csmt",
+    "id"                         : "engines.wine.plugins.csmt",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

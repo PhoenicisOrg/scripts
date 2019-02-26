@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Installer Script",
-    "id"                         : "installer_script",
+    "id"                         : "engines.wine.quick_script.installer_script",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

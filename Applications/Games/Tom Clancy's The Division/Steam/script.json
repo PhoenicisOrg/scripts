@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.tom_clancys_the_division.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

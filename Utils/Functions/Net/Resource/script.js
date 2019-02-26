@@ -1,5 +1,5 @@
-include(["utils", "functions", "net", "download"]);
-include(["utils", "functions", "filesystem", "files"]);
+include("utils.functions.net.download");
+include("utils.functions.filesystem.files");
 
 /**
 * Resource prototype

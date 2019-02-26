@@ -1,6 +1,6 @@
-include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["engines", "wine", "verbs", "d3dx9"]);
-include(["utils", "functions", "filesystem", "files"]);
+include("engines.wine.quick_script.online_installer_script");
+include("engines.wine.verbs.d3dx9");
+include("utils.functions.filesystem.files");
 
 var installerImplementation = {
     run: function () {

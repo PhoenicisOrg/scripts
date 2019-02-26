@@ -1,4 +1,4 @@
-include(["engines", "wine", "quick_script", "gog_script"]);
+include("engines.wine.quick_script.gog_script");
 
 var installerImplementation = {
     run: function () {

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Quick Script",
-    "id"                         : "quick_script",
+    "id"                         : "engines.wine.quick_script.quick_script",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

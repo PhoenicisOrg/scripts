@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.hexcells_infinite.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Custom Installer Script",
-    "id"                         : "custom_installer_script",
+    "id"                         : "engines.wine.quick_script.custom_installer_script",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

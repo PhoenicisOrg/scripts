@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.rayman_legends.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

@@ -1,4 +1,4 @@
-include(["engines", "wine", "engine", "object"]);
+include("engines.wine.engine.object");
 
 /**
 * WineShortcut prototype

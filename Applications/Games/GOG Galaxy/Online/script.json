@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.gog_galaxy.online",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

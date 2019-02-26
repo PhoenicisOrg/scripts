@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "xact",
-    "id"                         : "xact",
+    "id"                         : "engines.wine.verbs.xact",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

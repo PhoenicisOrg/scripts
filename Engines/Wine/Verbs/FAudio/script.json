@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "faudio",
-    "id"                         : "faudio",
+    "id"                         : "engines.wine.verbs.faudio",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],
