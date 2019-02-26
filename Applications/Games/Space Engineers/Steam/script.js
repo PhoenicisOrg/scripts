@@ -1,8 +1,8 @@
-include(["engines", "wine", "quick_script", "steam_script"]);
-include(["engines", "wine", "verbs", "dotnet472"]);
-include(["engines", "wine", "verbs", "vcrun2017"]);
-include(["engines", "wine", "verbs", "dxvk"]);
-//include(["engines", "wine", "verbs", "faudio"]);
+include("engines.wine.quick_script.steam_script");
+include("engines.wine.verbs.dotnet472"]);
+include("engines.wine.verbs.vcrun2017"]);
+include("engines.wine.verbs.dxvk"]);
+//include("engines.wine.verbs.faudio"]);
 
 var installerImplementation = {
     run: function () {
@@ -11,14 +11,14 @@ var installerImplementation = {
             .editor("Keen Software House")
             .author("Zemogiter")
             .appId(244850)
-            .wineVersion("4.1")
+            .wineVersion("4.2")
             .wineDistribution("upstream")
             .wineArchitecture("amd64")
             .preInstall(function (wine, /*wizard*/) {
                 wine.dotnet472();
                 wine.vcrun2017();
                 wine.DXVK();
-                //wine.faudio();
+                wine.faudio();
             })
             .gameOverlay(false)
             .go();
