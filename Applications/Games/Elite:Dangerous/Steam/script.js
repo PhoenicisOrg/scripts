@@ -1,7 +1,7 @@
-include(["engines", "wine", "verbs", "corefonts"]);
-include(["engines", "wine", "verbs", "dotnet45"]);
-include(["engines", "wine", "verbs", "vcrun2015"]);
-include(["engines", "wine", "verbs", "dxvk"]);
+include("engines.wine.verbs.corefonts");
+include("engines.wine.verbs.dotnet45");
+include("engines.wine.verbs.vcrun2015");
+include("engines.wine.verbs.dxvk");
 
 var installerImplementation = {
     run: function () {
