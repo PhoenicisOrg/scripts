@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.goodbye_deponia.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

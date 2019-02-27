@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Zip Script",
-    "id"                         : "zip_script",
+    "id"                         : "engines.wine.quick_script.zip_script",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

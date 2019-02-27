@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Uplay",
-    "id"                         : "uplay",
+    "id"                         : "engines.wine.verbs.uplay",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

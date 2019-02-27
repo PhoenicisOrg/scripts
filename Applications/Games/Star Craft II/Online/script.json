@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.star_craft_2.online",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

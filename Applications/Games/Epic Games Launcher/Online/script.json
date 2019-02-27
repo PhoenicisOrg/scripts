@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.epic_games_launcher.online",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

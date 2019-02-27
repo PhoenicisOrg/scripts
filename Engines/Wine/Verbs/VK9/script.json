@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "VK9",
-    "id"                         : "vk9",
+    "id"                         : "engines.wine.verbs.vk9",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

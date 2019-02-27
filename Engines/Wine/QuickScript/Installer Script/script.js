@@ -1,8 +1,8 @@
-include(["engines", "wine", "quick_script", "quick_script"]);
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "filesystem", "extract"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["engines", "wine", "verbs", "luna"]);
+include("engines.wine.quick_script.quick_script");
+include("engines.wine.engine.object");
+include("utils.functions.filesystem.extract");
+include("utils.functions.filesystem.files");
+include("engines.wine.verbs.luna");
 
 
 function InstallerScript() {

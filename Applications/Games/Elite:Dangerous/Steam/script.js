@@ -1,9 +1,9 @@
-include(["engines", "wine", "quick_script", "steam_script"]);
-include(["engines", "wine", "plugins", "csmt"]);
-include(["engines", "wine", "verbs", "corefonts"]);
-include(["engines", "wine", "verbs", "dotnet452"]);
-include(["engines", "wine", "verbs", "vcrun2012"]);
-include(["engines", "wine", "verbs", "quartz"]);
+include("engines.wine.quick_script.steam_script");
+include("engines.wine.plugins.csmt");
+include("engines.wine.verbs.corefonts");
+include("engines.wine.verbs.dotnet452");
+include("engines.wine.verbs.vcrun2012");
+include("engines.wine.verbs.quartz");
 
 var installerImplementation = {
     run: function () {

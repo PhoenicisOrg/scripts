@@ -1,6 +1,6 @@
-include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["engines", "wine", "verbs", "dotnet45"]);
-include(["engines", "wine", "verbs", "corefonts"]);
+include("engines.wine.quick_script.online_installer_script");
+include("engines.wine.verbs.dotnet45");
+include("engines.wine.verbs.corefonts");
 
 var installerImplementation = {
     run: function () {

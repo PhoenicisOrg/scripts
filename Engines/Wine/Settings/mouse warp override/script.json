@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "mouse warp override",
-    "id"                         : "mouse_warp_override",
+    "id"                         : "engines.wine.settings.mouse_warp_override",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
