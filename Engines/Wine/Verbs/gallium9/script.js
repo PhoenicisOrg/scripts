@@ -8,13 +8,16 @@ include("utils.functions.filesystem.files");
 * see: https://github.com/iXit/wine-nine-standalone/
 * @returns {Wine} Wine object
 */
-Wine.prototype.gallium9 = function () {
+Wine.prototype.gallium9 = function (gallium9Version) {
+    if(typeof gallium9Version !== 'string') 
+        gallium9Version = "0.3";
+    
     this.wizard().message(tr("Using Gallium 9 requires to have a driver supporting the Gallium 9 state tracker, as well as d3dapater9.so installed (ex: libd3d9adapter-mesa package). Please be sure it is installed (both 32 and 64 bits)."));
 
     var setupFile = new Resource()
         .wizard(this.wizard())
-        .url("https://github.com/iXit/wine-nine-standalone/releases/download/v0.2/gallium-nine-standalone-v0.2.tar.gz")
-        .name("gallium-nine-standalone-v0.2.tar.gz")
+        .url("https://github.com/iXit/wine-nine-standalone/releases/download/v" + gallium9Version + "/gallium-nine-standalone-v" + gallium9Version + ".tar.gz")
+        .name("gallium-nine-standalone-v" + gallium9Version + ".tar.gz")
         .get();
 
     new Extractor()
@@ -50,8 +53,11 @@ var verbImplementation = {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "gallium9", java.util.Optional.empty());
+        var versions = ["0.3", "0.2"];
+        var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.3");
         wine.wizard(wizard);
-        wine.gallium9();
+        // install selected version
+        wine.gallium9(selectedVersion);
         wizard.close();
     }
 };
