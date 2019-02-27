@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "crypt32",
-    "id"                         : "crypt32",
+    "id"                         : "engines.wine.verbs.crypt32",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

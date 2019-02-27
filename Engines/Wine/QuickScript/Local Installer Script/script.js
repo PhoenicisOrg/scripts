@@ -1,4 +1,4 @@
-include(["engines", "wine", "quick_script", "installer_script"]);
+include("engines.wine.quick_script.installer_script");
 
 function LocalInstallerScript() {
     InstallerScript.call(this);

@@ -1,5 +1,5 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "regedit"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.regedit");
 
 /**
  * sets sound driver

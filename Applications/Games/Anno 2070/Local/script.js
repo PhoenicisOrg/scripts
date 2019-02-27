@@ -1,10 +1,10 @@
-include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["engines", "wine", "plugins", "virtual_desktop"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["engines", "wine", "verbs", "corefonts"]);
-include(["engines", "wine", "verbs", "crypt32"]);
-include(["engines", "wine", "verbs", "d3dx10"]);
-include(["utils", "functions", "filesystem", "files"]);
+include("engines.wine.quick_script.local_installer_script");
+include("engines.wine.plugins.virtual_desktop");
+include("engines.wine.plugins.override_dll");
+include("engines.wine.verbs.corefonts");
+include("engines.wine.verbs.crypt32");
+include("engines.wine.verbs.d3dx10");
+include("utils.functions.filesystem.files");
 
 var installerImplementation = {
     run: function () {

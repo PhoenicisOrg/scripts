@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.civilization_5.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

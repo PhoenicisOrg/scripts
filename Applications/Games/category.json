@@ -1,5 +1,5 @@
 {
     "name" : "Games",
-    "id"   : "games",
+    "id"   : "applications.games",
     "type" : "INSTALLERS"
 }

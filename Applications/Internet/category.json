@@ -1,5 +1,5 @@
 {
     "name" : "Internet",
-    "id"   : "internet",
+    "id"   : "applications.internet",
     "type" : "INSTALLERS"
 }

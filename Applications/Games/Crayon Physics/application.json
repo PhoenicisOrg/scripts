@@ -1,5 +1,5 @@
 {
     "name"        : "Crayon Physics",
-    "id"          : "crayon_physics",
+    "id"          : "applications.games.crayon_physics",
     "description" : "Crayon Physics is a mouse arcade game. You will have to draw lines and squares to move a ball. The aim is to catch the stars in the level."
 }

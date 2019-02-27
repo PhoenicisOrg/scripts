@@ -1,8 +1,8 @@
-include(["engines", "wine", "quick_script", "steam_script"]);
-include(["engines", "wine", "verbs", "d3dx9"]);
-include(["engines", "wine", "verbs", "vcrun2005"]);
-include(["engines", "wine", "verbs", "vcrun2008"]);
-include(["engines", "wine", "verbs", "vcrun2010"]);
+include("engines.wine.quick_script.steam_script");
+include("engines.wine.verbs.d3dx9");
+include("engines.wine.verbs.vcrun2005");
+include("engines.wine.verbs.vcrun2008");
+include("engines.wine.verbs.vcrun2010");
 
 var installerImplementation = {
     run: function () {

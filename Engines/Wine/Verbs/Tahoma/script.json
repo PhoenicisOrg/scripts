@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Tahoma",
-    "id"                         : "tahoma",
+    "id"                         : "engines.wine.verbs.tahoma",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

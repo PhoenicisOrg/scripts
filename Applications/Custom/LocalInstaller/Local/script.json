@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "local",
+    "id"                         : "applications.custom.local_installer.local",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

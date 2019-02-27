@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.caesar_3.steam",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

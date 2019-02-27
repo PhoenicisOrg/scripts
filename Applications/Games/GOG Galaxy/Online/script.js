@@ -1,7 +1,7 @@
-include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["engines", "wine", "verbs", "corefonts"]);
-include(["engines", "wine", "verbs", "vcrun2017"]);
-include(["engines", "wine", "verbs", "xact"]);
+include("engines.wine.quick_script.online_installer_script");
+include("engines.wine.verbs.corefonts");
+include("engines.wine.verbs.vcrun2017");
+include("engines.wine.verbs.xact");
 
 var installerImplementation = {
     run: function () {

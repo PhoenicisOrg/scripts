@@ -1,11 +1,12 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.overwatch.online",
     "compatibleOperatingSystems" : [
-        "LINUX"
+        "LINUX",
+        "MACOSX"
     ],
     "testingOperatingSystems" : [
-        "LINUX"
+        "MACOSX"
     ],
     "free"          : false,
     "requiresPatch" : false

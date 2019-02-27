@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.tropico_4.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

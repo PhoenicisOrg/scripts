@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Internet Resource",
-    "id"                         : "resource",
+    "id"                         : "utils.functions.net.resource",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
