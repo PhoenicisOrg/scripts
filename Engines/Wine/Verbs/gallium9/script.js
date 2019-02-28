@@ -6,12 +6,13 @@ include("utils.functions.filesystem.files");
 /**
 * Verb to install Gallium 9 Standalone
 * see: https://github.com/iXit/wine-nine-standalone/
+* @param {String} gallium9Version Gallium 9 Standalone version to download
 * @returns {Wine} Wine object
 */
 Wine.prototype.gallium9 = function (gallium9Version) {
-    if(typeof gallium9Version !== 'string') 
+    if (typeof gallium9Version !== 'string')
         gallium9Version = "0.3";
-    
+
     this.wizard().message(tr("Using Gallium 9 requires to have a driver supporting the Gallium 9 state tracker, as well as d3dapater9.so installed (ex: libd3d9adapter-mesa package). Please be sure it is installed (both 32 and 64 bits)."));
 
     var setupFile = new Resource()
