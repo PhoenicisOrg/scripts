@@ -4,9 +4,7 @@
     "compatibleOperatingSystems" : [
         "LINUX"
     ],
-    "testingOperatingSystems" : [
-        "LINUX"
-    ],
+    "testingOperatingSystems" : [],
     "free"          : true,
     "requiresPatch" : false
 }
