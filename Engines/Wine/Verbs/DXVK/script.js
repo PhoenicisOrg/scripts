@@ -48,6 +48,7 @@ Wine.prototype.DXVK = function (dxvkVersion) {
     var dxvkTmpDir = this.prefixDirectory() + "/TMP/dxvk-" + dxvkVersion;
     var self = this;
 
+    //Copy 32 bits dll to system* and apply override
     forEach.call(ls(dxvkTmpDir + "/x32"), function (file) {
         if (file.endsWith(".dll")) {
             cp(dxvkTmpDir + "/x32/" + file, sys32dir);
@@ -60,6 +61,7 @@ Wine.prototype.DXVK = function (dxvkVersion) {
     if (this.architecture() == "amd64")
     {
         var sys64dir = this.system64directory();
+        //Copy 64 bits dll to system*
         forEach.call(ls(dxvkTmpDir + "/x64"), function (file) {
             if (file.endsWith(".dll")) {
                 cp(dxvkTmpDir + "/x64/" + file, sys64dir);
