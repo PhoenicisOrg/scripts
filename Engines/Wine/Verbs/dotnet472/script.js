@@ -4,36 +4,36 @@ include("utils.functions.net.resource");
 include("engines.wine.plugins.windows_version");
 include("engines.wine.verbs.remove_mono");
 include("engines.wine.plugins.regedit");
-include("engines.wine.verbs.dotnet46");
+include("engines.wine.verbs.dotnet462");
 
 
 /**
-* Verb to install .NET 4.6.1
+* Verb to install .NET 4.7.2
 * @returns {Wine} Wine object
 */
-Wine.prototype.dotnet461 = function () {
-    print(tr("This package ({0}) does not work currently. Use it only for testing!", "dotnet461"));
+Wine.prototype.dotnet472 = function () {
+    print(tr("This package ({0}) does not work currently. Use it only for testing!", "dotnet472"));
 
     var osVersion = this.windowsVersion();
 
     var setupFile = new Resource()
         .wizard(this._wizard)
-        .url("https://download.microsoft.com/download/E/4/1/E4173890-A24A-4936-9FC9-AF930FE3FA40/NDP461-KB3102436-x86-x64-AllOS-ENU.exe")
-        .checksum("83d048d171ff44a3cad9b422137656f585295866")
-        .name("NDP461-KB3102436-x86-x64-AllOS-ENU.exe")
+        .url("https://download.microsoft.com/download/6/E/4/6E48E8AB-DC00-419E-9704-06DD46E5F81D/NDP472-KB4054530-x86-x64-AllOS-ENU.exe")
+        .checksum("31fc0d305a6f651c9e892c98eb10997ae885eb1e")
+        .name("NDP472-KB4054530-x86-x64-AllOS-ENU.exe")
         .get();
 
     this.removeMono();
 
-    this.dotnet46();
+    this.dotnet462();
     this.windowsVersion("win7");
 
     this.overrideDLL()
         .set("builtin", ["fusion"])
         .do();
 
-    this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 4.6.1"));
-    this.run(setupFile, [setupFile, "/q", "/norestart"], null, false, true);
+    this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 4.7.2"));
+    this.run(setupFile, [setupFile, "/sfxlang:1027", "/q", "/norestart"], null, false, true);
 
     this.wizard().wait(tr("Please wait..."));
     this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*fusion");
@@ -48,16 +48,16 @@ Wine.prototype.dotnet461 = function () {
 };
 
 /**
- * Verb to install .NET 4.6.1
+ * Verb to install .NET 4.7.2
 */
 var verbImplementation = {
     install: function (container) {
         var wine = new Wine();
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "dotnet461", java.util.Optional.empty());
-        wizard.message(tr("This package ({0}) does not work currently. Use it only for testing!", "dotnet461"));
+        var wizard = SetupWizard(InstallationType.VERBS, "dotnet472", java.util.Optional.empty());
+        wizard.message(tr("This package ({0}) does not work currently. Use it only for testing!", "dotnet472"));
         wine.wizard(wizard);
-        wine.dotnet461();
+        wine.dotnet472();
         wizard.close();
     }
 };
