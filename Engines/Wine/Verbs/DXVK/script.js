@@ -42,7 +42,7 @@ Wine.prototype.DXVK = function (dxvkVersion) {
         .archive(setupFile)
         .to(this.prefixDirectory() + "/TMP/")
         .extract();
-    
+
     var forEach = Array.prototype.forEach;
     var sys32dir = this.system32directory();
     var dxvkTmpDir = this.prefixDirectory() + "/TMP/dxvk-" + dxvkVersion;
