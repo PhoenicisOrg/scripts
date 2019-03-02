@@ -1,6 +1,6 @@
 {
-    "scriptName"                 : ".NET 4.5.2",
-    "id"                         : "engines.wine.verbs.dotnet452",
+    "scriptName"                 : ".NET 4.6",
+    "id"                         : "engines.wine.verbs.dotnet46",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

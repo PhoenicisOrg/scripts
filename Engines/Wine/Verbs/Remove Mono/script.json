@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Remove Mono",
+    "id"                         : "engines.wine.verbs.remove_mono",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
