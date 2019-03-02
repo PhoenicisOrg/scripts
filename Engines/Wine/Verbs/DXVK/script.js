@@ -47,7 +47,6 @@ Wine.prototype.DXVK = function (dxvkVersion) {
     var sys32dir = this.system32directory();
     var dxvkTmpDir = this.prefixDirectory() + "/TMP/dxvk-" + dxvkVersion;
     var self = this;
-    
 
     forEach.call(ls(dxvkTmpDir + "/x32"), function (file) {
         if (file.endsWith(".dll")) {
