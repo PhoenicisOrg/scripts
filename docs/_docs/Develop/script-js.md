@@ -19,7 +19,7 @@ QuickScripts use the latest stable wine version by default (recommended).
 A basic script looks like:
 
 ```javascript
-include(["engines", "wine", "quick_script", "steam_script"]);
+include("engines.wine.quick_script.steam_script");
 
 var installerImplementation = {
     run: function () {
@@ -55,7 +55,7 @@ For a different shortcut (e.g. if you want to pass arguments):
 ### OriginScript
 A basic script looks like:
 ```javascript
-include(["engines", "wine", "quick_script", "origin_script"]);
+include("engines.wine.quick_script.origin_script");
 
 var installerImplementation = {
     run: function () {
@@ -81,7 +81,7 @@ You can determine the app ID by going into `C:\Origin Games\*name of the game*\ 
 A basic script looks like:
 
 ```javascript
-include(["engines", "wine", "quick_script", "uplay_script"]);
+include("engines.wine.quick_script.uplay_script");
 
 var installerImplementation = {
     run: function () {
@@ -105,7 +105,7 @@ Installs a local Windows executable. Shows a setup window browse step (see [Setu
 A basic script looks like:
 
 ```javascript
-include(["engines", "wine", "quick_script", "local_installer_script"]);
+include("engines.wine.quick_script.local_installer_script");
 
 var installerImplementation = {
     run: function () {
@@ -129,7 +129,7 @@ Downloads and installs a Windows executable.
 A basic script looks like:
 
 ```javascript
-include(["engines", "wine", "quick_script", "online_installer_script"]);
+include("engines.wine.quick_script.online_installer_script");
 
 var installerImplementation = {
     run: function () {
@@ -152,7 +152,7 @@ var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementa
 ### CustomInstallerScript
 Executes a custom installation command:
 ```javascript
-include(["engines", "wine", "quick_script", "custom_installer_script"]);
+include("engines.wine.quick_script.custom_installer_script");
 
 var installerImplementation = {
     run: function () {
@@ -177,7 +177,7 @@ var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementa
 A basic script looks like:
 
 ```javascript
-include(["engines", "wine", "quick_script", "zip_script"]);
+include("engines.wine.quick_script.zip_script");
 
 var installerImplementation = {
     run: function () {
@@ -200,6 +200,13 @@ var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementa
 ### Advanced
 This section describes some advanced methods which give you more possibilities to control your script.
 
+### Include mechanism
+When you want to use a certain functionality in your scripts, you need to include it in your scripts, for example:
+```javascript
+include("engines.wine.quick_script.steam_script");
+```
+allows you to execute a steam script. The content of the include is the id of the functionality, which can be found in the `script.json` file located next to the `script.js` file implementing the functionality.
+
 #### Executable arguments
 By default, the `.executable` runs the application without arguments. If you need arguments, pass an array as second parameter.
 
@@ -216,8 +223,8 @@ You can find the complete list of available verbs [here](https://github.com/Phoe
 
 For example, in the script for "Assassin’s Creed: Brotherhood":
 ```javascript
-include(["engines", "wine", "verbs", "d3dx9"]);
-include(["engines", "wine", "verbs", "crypt32"]);
+include("engines.wine.verbs.d3dx9");
+include("engines.wine.verbs.crypt32");
 
 new SteamScript()
          ...
@@ -247,6 +254,8 @@ Specific wine architecture ("x86" or "amd64"):
 ```
 Specific windows version:
 ```javascript
+include("engines.wine.plugins.windows_version");
+        ...
     .preInstall(function(wine, wizard) {
         wine.windowsVersion("win7");
     })
@@ -258,6 +267,9 @@ If the script requires a special registry setting, there are 2 options:
 
 2. If the setting is special for this script, use a registry file. Create a `registry.reg` in `<scriptname>/resources` (see [IE6](https://github.com/PhoenicisOrg/scripts/blob/master/Applications/Internet/Internet%20Explorer%206.0/resources/ie6.reg)) and apply this in `pre/postInstall()` via
 ```javascript
+include("utils.functions.apps.resources");
+include("engines.wine.plugins.regedit");
+    ...
 var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
 wine.regedit().patch(registrySettings);
 ```
@@ -267,8 +279,8 @@ If the QuickScript is not sufficient for you, you can still write a custom scrip
 
 The frame for a custom script looks like this:
 ```javascript
-include(["engines", "wine", "engines", "wine"]);
-include(["engines", "wine", "shortcuts", "wine"]);
+include("engines.wine.engines.wine");
+include("engines.wine.shortcuts.wine");
 
 var application = "application name"
 
