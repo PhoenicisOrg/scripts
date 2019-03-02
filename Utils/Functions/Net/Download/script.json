@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Downloader",
-    "id"                         : "download",
+    "id"                         : "utils.functions.net.download",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

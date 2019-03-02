@@ -1,5 +1,5 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "hdpi"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.hdpi");
 
 /**
  * setting to enable/disable Retina

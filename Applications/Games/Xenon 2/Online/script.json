@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.xenon_2.online",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

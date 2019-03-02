@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Uplay",
-    "id"                         : "uplay",
+    "id"                         : "applications.games.prince_of_persia_the_sands_of_time.uplay",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

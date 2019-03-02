@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.it_came_from_space_and_ate_our_brains.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

@@ -1,5 +1,5 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "regedit"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.regedit");
 
 /**
  * default windows version
@@ -20,7 +20,8 @@ Wine.prototype.windowsVersion = function (version, servicePack) {
         regeditFileContent =
             "REGEDIT4\n" +
             "\n" +
-            "[-HKEY_CURRENT_USER\\Software\\Wine]";
+            "[HKEY_CURRENT_USER\\Software\\Wine]\n" +
+            "\"Version\"=-\n";
     } else {
         regeditFileContent =
             "REGEDIT4\n" +

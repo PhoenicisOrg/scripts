@@ -1,5 +1,5 @@
-include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["engines", "wine", "plugins", "override_dll"]);
+include("engines.wine.quick_script.local_installer_script");
+include("engines.wine.plugins.override_dll");
 
 var installerImplementation = {
     run: function () {

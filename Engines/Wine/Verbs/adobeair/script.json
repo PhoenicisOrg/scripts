@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Adobe Air",
-    "id"                         : "adobeair",
+    "id"                         : "engines.wine.verbs.adobeair",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

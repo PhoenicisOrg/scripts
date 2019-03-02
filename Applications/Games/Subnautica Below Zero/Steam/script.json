@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.subnautica_below_zero.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

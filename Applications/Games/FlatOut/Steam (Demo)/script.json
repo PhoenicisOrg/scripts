@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam (Demo)",
-    "id"                         : "steam_demo",
+    "id"                         : "applications.games.flat_out.steam_demo",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

@@ -1,6 +1,6 @@
 {
-    "scriptName"                 : "Local",
-    "id"                         : "local",
+    "scriptName"                 : "Online",
+    "id"                         : "applications.games.osu.online",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

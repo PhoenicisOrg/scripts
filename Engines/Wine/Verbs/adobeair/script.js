@@ -1,6 +1,6 @@
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "plugins", "windows_version"]);
+include("engines.wine.engine.object");
+include("utils.functions.net.resource");
+include("engines.wine.plugins.windows_version");
 
 /**
  * Verb to install adobeair

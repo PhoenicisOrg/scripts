@@ -1,6 +1,6 @@
-include(["engines", "wine", "quick_script", "steam_script"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["engines", "wine", "verbs", "mfc42"]);
+include("engines.wine.quick_script.steam_script");
+include("engines.wine.plugins.override_dll");
+include("engines.wine.verbs.mfc42");
 
 var installerImplementation = {
     run: function () {

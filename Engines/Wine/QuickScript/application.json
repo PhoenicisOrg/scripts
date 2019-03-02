@@ -1,5 +1,5 @@
 {
     "name"        : "QuickScript",
-    "id"          : "quick_script",
+    "id"          : "engines.wine.quick_script",
     "description" : "QuickScripts for Wine."
 }

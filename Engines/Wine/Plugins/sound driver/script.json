@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "sound driver",
-    "id"                         : "sound_driver",
+    "id"                         : "engines.wine.plugins.sound_driver",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

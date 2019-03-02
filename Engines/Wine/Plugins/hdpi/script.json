@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "hdpi",
-    "id"                         : "hdpi",
+    "id"                         : "engines.wine.plugins.hdpi",
     "compatibleOperatingSystems" : [
         "MACOSX"
     ],

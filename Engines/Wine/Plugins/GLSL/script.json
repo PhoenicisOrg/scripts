@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "GLSL",
-    "id"                         : "glsl",
+    "id"                         : "engines.wine.plugins.glsl",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

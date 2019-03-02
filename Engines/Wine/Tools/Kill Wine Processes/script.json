@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Kill processes",
-    "id"                         : "kill_wine_processes",
+    "id"                         : "engines.wine.tools.kill_wine_processes",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

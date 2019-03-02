@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "anno_2070_local",
+    "id"                         : "applications.games.anno2070.local",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

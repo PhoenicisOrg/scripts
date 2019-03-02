@@ -1,5 +1,5 @@
 {
     "name" : "Custom",
-    "id"   : "custom",
+    "id"   : "applications.custom",
     "type" : "INSTALLERS"
 }
