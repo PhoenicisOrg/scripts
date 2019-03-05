@@ -10,7 +10,7 @@ LocalInstallerScript.prototype = Object.create(InstallerScript.prototype);
 LocalInstallerScript.prototype.constructor = LocalInstallerScript;
 
 LocalInstallerScript.prototype.installationArgs = function (installationArgs) {
-    if (typeof args === 'string' || args instanceof String) {
+    if (typeof installationArgs === 'string' || installationArgs instanceof String) {
         this._installationArgs = [installationArgs];
     } else {
         this._installationArgs = installationArgs;
