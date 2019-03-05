@@ -13,9 +13,6 @@ var installerImplementation = {
             .wineDistribution("upstream")
             .wineVersion(LATEST_DEVELOPMENT_VERSION)
             .executable("Space Colony.exe")
-            .preInstall(function (wine, wizard) {
-                wizard.message(tr("Once the progress bar closes, an installation complete window should appear but in case it does not you should kill the process which name consist of just one dot."));
-            })
             .postInstall(function (wine, /*wizard*/){
                 var patch = new Resource()
                     .wizard(this._wizard)
