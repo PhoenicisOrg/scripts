@@ -265,7 +265,6 @@ var engineImplementation = {
 
         if (!captureOutput) {
             processBuilder.redirectErrorStream(true);
-            var FileClass = Java.type('java.io.File');
             processBuilder.redirectOutput(new FileClass(workingContainerDirectory + "/wine.log"));
         }
 
