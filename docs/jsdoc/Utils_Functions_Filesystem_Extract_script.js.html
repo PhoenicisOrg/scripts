@@ -98,8 +98,10 @@ CabExtract.prototype.extract = function (args) {
 
     print("Extracting to: " + this._destination);
     mkdir(this._destination);
-    var processBuilder = new java.lang.ProcessBuilder(Java.to(processArguments, "java.lang.String[]"));
-    processBuilder.directory(new java.io.File(this._destination));
+    var ProcessBuilderClass = Java.type('java.lang.ProcessBuilder');
+    var processBuilder = new ProcessBuilderClass(Java.to(processArguments, "java.lang.String[]"));
+    var FileClass = Java.type('java.io.File');
+    processBuilder.directory(new FileClass(this._destination));
     processBuilder.inheritIO();
     processBuilder.start().waitFor();
 }

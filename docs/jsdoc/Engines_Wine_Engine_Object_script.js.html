@@ -261,7 +261,8 @@ Wine.prototype.wineServer = function (parameter) {
         var subCategory = distribution + "-" + operatingSystem + "-" + architecture;
         var version = containerConfiguration.readValue("wineVersion");
         var binary = this._implementation.getLocalDirectory(subCategory, version) + "/bin/wineserver";
-        var processBuilder = new java.lang.ProcessBuilder(Java.to([binary, parameter], "java.lang.String[]"));
+        var ProcessBuilderClass = Java.type('java.lang.ProcessBuilder');
+        var processBuilder = new ProcessBuilderClass(Java.to([binary, parameter], "java.lang.String[]"));
         var environment = processBuilder.environment();
         environment.put("WINEPREFIX", this._implementation.getContainerDirectory(this._implementation.getWorkingContainer()));
         processBuilder.inheritIO();
