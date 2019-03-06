@@ -1,8 +1,8 @@
-include(["engines", "wine", "quick_script", "quick_script"]);
-include(["utils", "functions", "net", "download"]);
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "filesystem", "extract"]);
-include(["engines", "wine", "verbs", "luna"]);
+include("engines.wine.quick_script.quick_script");
+include("utils.functions.net.download");
+include("engines.wine.engine.object");
+include("utils.functions.filesystem.extract");
+include("engines.wine.verbs.luna");
 
 
 function ZipScript() {
@@ -38,7 +38,7 @@ ZipScript.prototype.go = function () {
     this._preInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in preInstall)
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     var archive = "";
     if (!this._url) {
@@ -59,12 +59,12 @@ ZipScript.prototype.go = function () {
         .to(wine.prefixDirectory() + "/drive_c/" + this._name)
         .extract();
 
-    this._createShortcut(wine.prefix());
-
     this._postInstall(wine, setupWizard);
 
+    this._createShortcut(wine.prefix());
+
     // back to generic wait (might have been changed in postInstall)
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     setupWizard.close();
 };

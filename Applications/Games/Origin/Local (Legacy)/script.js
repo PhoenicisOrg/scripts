@@ -1,6 +1,6 @@
-include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["utils", "functions", "net", "download"]);
-include(["utils", "functions", "filesystem", "extract"]);
+include("engines.wine.quick_script.local_installer_script");
+include("utils.functions.net.download");
+include("utils.functions.filesystem.extract");
 
 var installerImplementation = {
     run: function () {

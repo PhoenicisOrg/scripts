@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.chroma_gun.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

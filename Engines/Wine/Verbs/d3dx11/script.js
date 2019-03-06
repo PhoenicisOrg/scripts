@@ -1,6 +1,6 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["utils", "functions", "net", "resource"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.override_dll");
+include("utils.functions.net.resource");
 
 /**
 * Verb to install D3DX11
@@ -12,8 +12,8 @@ Wine.prototype.d3dx11 = function () {
     var extractDirectXtoSystemDirectory = function (progressBar, filesToExtract, destination, pattern) {
         var numberOfExtractedFiles = 0;
         filesToExtract.forEach(function (cabFile) {
-            print(tr("Extracting {0} ...", cabFile));
-            progressBar.setText(tr("Extracting {0} ...", "DirectX 11"));
+            print(tr("Extracting {0}...", cabFile));
+            progressBar.setText(tr("Extracting {0}...", "DirectX 11"));
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
 
             new CabExtract()
@@ -33,8 +33,8 @@ Wine.prototype.d3dx11 = function () {
         .name("directx_Jun2010_redist.exe")
         .get();
 
-    var progressBar = this.wizard().progressBar(tr("Please wait ..."));
-    progressBar.setText(tr("Extracting {0} ...", "DirectX 11"));
+    var progressBar = this.wizard().progressBar(tr("Please wait..."));
+    progressBar.setText(tr("Extracting {0}...", "DirectX 11"));
     progressBar.setProgressPercentage(0.);
 
     new CabExtract()

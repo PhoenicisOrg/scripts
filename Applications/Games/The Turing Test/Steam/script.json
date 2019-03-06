@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.the_turing_test.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

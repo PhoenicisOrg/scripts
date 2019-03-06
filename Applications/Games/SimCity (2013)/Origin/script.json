@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Origin",
+    "id"                         : "applications.games.simcity_2013.origin",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}

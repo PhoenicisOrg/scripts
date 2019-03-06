@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "DOS support",
+    "id"                         : "engines.wine.plugins.dos_support",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

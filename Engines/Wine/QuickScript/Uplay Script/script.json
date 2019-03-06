@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Uplay Script",
-    "id"                         : "uplay_script",
+    "id"                         : "engines.wine.quick_script.uplay_script",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

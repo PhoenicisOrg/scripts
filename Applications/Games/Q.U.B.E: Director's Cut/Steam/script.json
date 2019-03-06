@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.qube_directors_cut.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

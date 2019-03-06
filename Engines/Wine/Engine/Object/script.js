@@ -1,16 +1,17 @@
-include(["engines", "wine", "engine", "implementation"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["utils", "functions", "filesystem", "extract"]);
-include(["utils", "functions", "net", "download"]);
-include(["utils", "functions", "net", "resource"]);
+include("engines.wine.engine.implementation");
+include("utils.functions.filesystem.files");
+include("utils.functions.filesystem.extract");
+include("utils.functions.net.download");
+include("utils.functions.net.resource");
 
 /* exported LATEST_STABLE_VERSION */
-var LATEST_STABLE_VERSION = "3.0.4";
+var LATEST_STABLE_VERSION = "4.0";
 /* exported LATEST_DEVELOPMENT_VERSION */
-var LATEST_DEVELOPMENT_VERSION = "4.0-rc2";
+var LATEST_DEVELOPMENT_VERSION = "4.3";
 /* exported LATEST_STAGING_VERSION */
-var LATEST_STAGING_VERSION = "4.0-rc2";
-
+var LATEST_STAGING_VERSION = "4.3";
+/* exported LATEST_DOS_SUPPORT_VERSION */
+var LATEST_DOS_SUPPORT_VERSION = "4.0";
 
 /**
  * Wine main prototype
@@ -179,7 +180,7 @@ Wine.prototype.run = function (executable, args, workingDirectory, captureOutput
 /**
 * uninstall application
 * @param {string} name of the application which shall be uninstalled
-* @returns {Wine}
+* @returns {bool} true if an application has been uninstalled, false otherwise
 */
 Wine.prototype.uninstall = function (application) {
     var list = this.run("uninstaller", ["--list"], this.prefixDirectory(), true, true);
@@ -187,12 +188,13 @@ Wine.prototype.uninstall = function (application) {
     var re = new RegExp("(.*)\\|\\|\\|.*" + appEscaped);
     var uuid = list.match(re);
     if (uuid) {
-        this._implementation.getWizard().wait(tr("Please wait while {0} is uninstalled ...", application));
+        this._implementation.getWizard().wait(tr("Please wait while {0} is uninstalled...", application));
         this.run("uninstaller", ["--remove", uuid[1]], this.prefixDirectory(), false, true);
+        return true;
     } else {
         print(tr("Could not uninstall {0}!", application));
+        return false;
     }
-    return this;
 };
 
 /**

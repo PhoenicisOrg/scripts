@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "local",
+    "id"                         : "applications.games.europa_universalis_2.local",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

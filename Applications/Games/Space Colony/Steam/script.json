@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "space_colony_steam",
+    "id"                         : "applications.games.space_colony.steam",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

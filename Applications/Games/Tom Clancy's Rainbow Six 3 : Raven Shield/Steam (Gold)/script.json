@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam (Gold)",
-    "id"                         : "steam_gold",
+    "id"                         : "applications.games.tom_clancys_rainbow_six_3_raven_shield.steam_gold",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

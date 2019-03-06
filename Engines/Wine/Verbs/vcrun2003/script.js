@@ -1,7 +1,7 @@
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "net", "resource"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["engines", "wine", "verbs", "luna"]);
+include("engines.wine.engine.object");
+include("utils.functions.net.resource");
+include("utils.functions.filesystem.files");
+include("engines.wine.verbs.luna");
 
 /**
 * Verb to install vcrun2003
@@ -15,7 +15,7 @@ Wine.prototype.vcrun2003 = function () {
         .name("BZEditW32_1.6.5.exe")
         .get();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2003 Redistributable (x86)"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", "Microsoft Visual C++ 2003 Redistributable (x86)"));
     this.run(setupFile, "/S", null, false, true);
 
     var dlls = [

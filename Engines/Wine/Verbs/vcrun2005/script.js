@@ -1,7 +1,7 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "verbs", "luna"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.override_dll");
+include("utils.functions.net.resource");
+include("engines.wine.verbs.luna");
 
 /**
 * Verb to install vcrun2005
@@ -15,7 +15,7 @@ Wine.prototype.vcrun2005 = function () {
         .name("vcredist_x86.EXE")
         .get();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2005 Redistributable (x86)"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", "Microsoft Visual C++ 2005 Redistributable (x86)"));
     this.run(setupFile, "/q", null, false, true);
 
     var dlls = [

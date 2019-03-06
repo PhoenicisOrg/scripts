@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "QuickTime 7.6",
-    "id"                         : "quicktime76",
+    "id"                         : "engines.wine.verbs.quicktime76",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

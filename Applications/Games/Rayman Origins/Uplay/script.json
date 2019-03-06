@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Uplay",
-    "id"                         : "uplay",
+    "id"                         : "applications.games.rayman_origins.uplay",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam (Demo)",
-    "id"                         : "steam_demo",
+    "id"                         : "applications.games.bio_shock.steam_demo",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

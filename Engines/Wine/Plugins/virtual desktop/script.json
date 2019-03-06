@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "virtual desktop",
-    "id"                         : "virtual_desktop",
+    "id"                         : "engines.wine.plugins.virtual_desktop",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

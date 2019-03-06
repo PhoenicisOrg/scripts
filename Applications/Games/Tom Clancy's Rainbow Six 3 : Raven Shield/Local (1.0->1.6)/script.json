@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local (1.0->1.6)",
-    "id"                         : "local_1_0_to_1_6",
+    "id"                         : "applications.games.tom_clancys_rainbow_six_3_raven_shield.local_1_0_to_1_6",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

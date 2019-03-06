@@ -1,13 +1,13 @@
-include(["engines", "wine", "quick_script", "quick_script"]);
-include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["engines", "wine", "plugins", "regsvr32"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["engines", "wine", "shortcuts", "wine"]);
-include(["utils", "functions", "apps", "resources"]);
-include(["engines", "wine", "verbs", "sandbox"]);
-include(["engines", "wine", "plugins", "windows_version"]);
+include("engines.wine.quick_script.quick_script");
+include("utils.functions.net.resource");
+include("engines.wine.engine.object");
+include("engines.wine.plugins.override_dll");
+include("engines.wine.plugins.regsvr32");
+include("utils.functions.filesystem.files");
+include("engines.wine.shortcuts.wine");
+include("utils.functions.apps.resources");
+include("engines.wine.verbs.sandbox");
+include("engines.wine.plugins.windows_version");
 
 var installerImplementation = {
     run: function () {
@@ -216,11 +216,11 @@ var installerImplementation = {
                                     "wshcon.dll", "wshext.dll", "asctrls.ocx", "hhctrl.ocx", "mscomct2.ocx",
                                     "plugin.ocx", "proctexe.ocx", "tdc.ocx", "webcheck.dll", "wshom.ocx"];
 
-        var progressBar = setupWizard.progressBar("Please wait ...");
+        var progressBar = setupWizard.progressBar("Please wait...");
         var i = 1;
         librairiesToRegister.forEach(function (dll) {
             progressBar.setProgressPercentage(i * 100 / librairiesToRegister.length);
-            progressBar.setText(tr("Installing {0} ...", dll));
+            progressBar.setText(tr("Installing {0}...", dll));
             wine.regsvr32().install(dll);
             i++;
         });

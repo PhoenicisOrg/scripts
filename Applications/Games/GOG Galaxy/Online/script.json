@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Online",
+    "id"                         : "applications.games.gog_galaxy.online",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

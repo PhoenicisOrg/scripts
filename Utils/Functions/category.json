@@ -1,5 +1,5 @@
 {
     "name" : "Functions",
-    "id"   : "functions",
+    "id"   : "utils.functions",
     "type" : "FUNCTIONS"
 }

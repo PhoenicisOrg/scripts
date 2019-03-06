@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.road_rash.online",
     "compatibleOperatingSystems" : [],
     "testingOperatingSystems"    : [],
     "free"                       : true,

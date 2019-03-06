@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Uplay",
-    "id"                         : "uplay",
+    "id"                         : "applications.games.far_cry_3_blood_dragon.uplay",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

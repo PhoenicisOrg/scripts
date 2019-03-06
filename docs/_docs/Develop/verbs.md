@@ -80,7 +80,11 @@ It is also possible to pass additional parameters to the `extract()`, e.g.
 ```
 
 If you extract many files, don't forget to add a progress bar like it is done for [d3dx9](https://github.com/PhoenicisOrg/scripts/blob/master/Engines/Wine/Verbs/d3dx9/script.js).
+### Copying DLL's to `C:\windows\sys*`
+On Windows 32 bits, 32 bits dll's go to `C:\windows\system32`.
+On Windows 64 bits, 32 bits dll's go to `C:\windows\syswow64` and 64 bits dll's go to system32.
 
+This is already handled inside the engine implementation if you use the functions `wine.system64directory()` for 64 bits dll's and bits and `wine.system32directory` for 32 bits dll's inside your scripts.  
 ### DLL Overrides
 ```javascript
 this.overrideDLL()

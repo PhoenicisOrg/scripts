@@ -1,7 +1,7 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "verbs", "luna"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.override_dll");
+include("utils.functions.net.resource");
+include("engines.wine.verbs.luna");
 
 /**
 * Verb to install vcrun2010
@@ -15,7 +15,7 @@ Wine.prototype.vcrun2010 = function () {
         .name("vcredist_x86.exe")
         .get();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2010 Redistributable (x86)"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", "Microsoft Visual C++ 2010 Redistributable (x86)"));
     this.run(setupFile32, "/q", null, false, true);
 
     if (this.architecture() == "amd64") {
@@ -26,7 +26,7 @@ Wine.prototype.vcrun2010 = function () {
             .name("vcredist_x64.exe")
             .get();
 
-        this.wizard().wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2010 Redistributable (x64)"));
+        this.wizard().wait(tr("Please wait while {0} is installed...", "Microsoft Visual C++ 2010 Redistributable (x64)"));
         this.run(setupFile64, "/q", null, false, true);
     }
 

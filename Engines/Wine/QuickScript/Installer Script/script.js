@@ -1,8 +1,8 @@
-include(["engines", "wine", "quick_script", "quick_script"]);
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "filesystem", "extract"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["engines", "wine", "verbs", "luna"]);
+include("engines.wine.quick_script.quick_script");
+include("engines.wine.engine.object");
+include("utils.functions.filesystem.extract");
+include("utils.functions.filesystem.files");
+include("engines.wine.verbs.luna");
 
 
 function InstallerScript() {
@@ -74,7 +74,7 @@ InstallerScript.prototype.go = function () {
     this._preInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in preInstall)
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     wine.run(installationCommand.command, installationCommand.args, false, true);
 
@@ -88,7 +88,7 @@ InstallerScript.prototype.go = function () {
     this._postInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in postInstall)
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     setupWizard.close();
 };

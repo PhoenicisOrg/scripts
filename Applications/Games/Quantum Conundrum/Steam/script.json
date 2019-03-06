@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.quantum_conundrum.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

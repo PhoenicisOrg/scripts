@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.prince_of_persia_original.online",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

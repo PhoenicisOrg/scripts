@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.burnout_paradise_the_ultimate_box.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

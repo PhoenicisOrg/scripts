@@ -26,56 +26,54 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "regedit"]);
-include(["utils", "functions", "net", "resource"]);
-include(["utils", "functions", "filesystem", "files"]);
+            <pre class="prettyprint source linenums"><code>
+include("engines.wine.engine.object");
+include("engines.wine.plugins.regedit");
+include("utils.functions.net.resource");
+include("utils.functions.filesystem.files");
 
 /**
-* Verb to install all the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
-* see: https://github.com/roderickc/wine-vulkan
+* All the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
+* -> https://github.com/roderickc/wine-vulkan
 * @returns {Wine} Wine object
 */
 Wine.prototype.vulkanSDK = function () {
     print("NOTE: you need a graphic driver that supports Vulkan to run winevulkan");
     print("NOTE: Vulkan works in wine from version 3.3 (if compiled with vulkan support)");
 
-    var sdkVersion = "1.1.73.0";
+    var sdkVersion="1.1.97.0";
 
     var setupFile = new Resource()
         .wizard(this.wizard())
-        .url("https://sdk.lunarg.com/sdk/download/" + sdkVersion +"/windows/VulkanSDK-" + sdkVersion + "-Installer.exe")
-        .checksum("ac34f732818c409bcb283b5c6100b373ab6a2404")
+        .url("https://sdk.lunarg.com/sdk/download/" + sdkVersion + "/windows/VulkanSDK-" + sdkVersion + "-Installer.exe")
+        .checksum("6bab01f98473bfd550544bbe9773a6d05872a61a")
         .name("VulkanSDK-" + sdkVersion + "-Installer.exe")
         .get();
 
     this.run(setupFile, "/S");
+    this.wait();
 
-    var pathVulkanJSON = this.prefixDirectory() + "drive_c/windows/winevulkan.json"
-    var contentVulkanJSON = '{\n'                                                                     +
-                            '	"file_format_version": "1.0.0",\n'				       +
-                            '	"ICD": {\n'							       +
-                            '		"library_path": "c:\\windows\\system32\\winevulkan.dll",\n'    +
-                            '		"api_version": "' + sdkVersion +'"\n'			       +
-                            '	}\n'								       +
-                            '}'
+    var pathVulkanJSON = this.prefixDirectory() + "drive_c/windows/winevulkan.json";
+    touch(pathVulkanJSON);
+    var contentVulkanJSON = JSON.stringify({"file_format_version": "1.0.0", "ICD": {"library_path": "c:\\windows\\system32\\winevulkan.dll",
+        "api_version": sdkVersion}}, null, 4);
 
     writeToFile(pathVulkanJSON, contentVulkanJSON);
 
     var regeditFileContent32 =
-	"REGEDIT4\n"                                              	+
-        "\n"                                                      	+
-        "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers\\]\n" 	+
-        "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000" ;
+    "REGEDIT4\n"                                                    +
+    "\n"                                                      	    +
+    "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers]\n"    +
+    "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000" ;
 
     this.regedit().patch(regeditFileContent32);
 
     if (this.architecture() == "amd64") {
         var regeditFileContent64 =
-		"REGEDIT4\n"                                             	           +
-                "\n"                                                            	   +
-                "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Khronos\\Vulkan\\Drivers\\]n" +
-		"\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000" ;
+        "REGEDIT4\n"                                                                  +
+        "\n"                                                                          +
+        "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Khronos\\Vulkan\\Drivers\\]\n"    +
+	"\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000" ;
 
         this.regedit().patch(regeditFileContent64);
     }
@@ -99,7 +97,6 @@ var verbImplementation = {
 
 /* exported Verb */
 var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
 </code></pre>
         </article>
     </section>
@@ -110,7 +107,7 @@ var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
