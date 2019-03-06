@@ -13,7 +13,7 @@ Wine.prototype.regedit = function () {
     };
 
     this.patch = function (patchContent) {
-        if (patchContent.getClass().getCanonicalName() == "byte[]") {
+        if (typeof patchContent.getClass !== "undefined" && patchContent.getClass().getCanonicalName() == "byte[]") {
             var StringClass = Java.type('java.lang.String');
             patchContent = new StringClass(patchContent);
         }
