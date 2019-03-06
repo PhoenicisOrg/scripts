@@ -13,7 +13,7 @@ Wine.prototype.regedit = function () {
     };
 
     this.patch = function (patchContent) {
-        if (patchContent.getClass().getCanonicalName() == "byte[]") {
+        if (typeof patchContent.getClass !== "undefined" && patchContent.getClass().getCanonicalName() == "byte[]") {
             patchContent = new java.lang.String(patchContent);
         }
         var tmpFile = createTempFile("reg");
