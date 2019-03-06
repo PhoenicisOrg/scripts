@@ -100,7 +100,7 @@ function remove(filePath) { // eslint-disable-line no-unused-vars
 */
 function touch(filePath) { // eslint-disable-line no-unused-vars
     if (!fileExists(filePath)) {
-    var FileClass = Java.type('java.io.File');
+        var FileClass = Java.type('java.io.File');
         Bean("fileUtilities").writeToFile(new FileClass(filePath), "");
     }
 }
