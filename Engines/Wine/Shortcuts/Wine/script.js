@@ -127,7 +127,8 @@ WineShortcut.prototype.create = function () {
         .withDescription(this._description)
         .build();
 
-    var builder = new ShortcutInfoDTOBuilderClass()
+    var ShortcutDTOBuilderClass = Java.type('org.phoenicis.library.dto.ShortcutDTO.Builder');
+    var builder = new ShortcutDTOBuilderClass()
         .withId(this._name)
         .withInfo(info)
         .withScript(JSON.stringify({
