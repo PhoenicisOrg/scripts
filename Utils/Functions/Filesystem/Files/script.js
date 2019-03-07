@@ -7,7 +7,8 @@ var fileUtilities = Bean("fileUtilities");
 * @returns {string[]} list of files and directories
 */
 function ls(directoryPath) { // eslint-disable-line no-unused-vars
-    return fileUtilities.ls(new java.io.File(directoryPath));
+    var FileClass = Java.type('java.io.File');
+    return fileUtilities.ls(new FileClass(directoryPath));
 }
 
 /**
@@ -16,7 +17,8 @@ function ls(directoryPath) { // eslint-disable-line no-unused-vars
 * @returns {void}
 */
 function mkdir(directoryPath) { // eslint-disable-line no-unused-vars
-    fileUtilities.mkdir(new java.io.File(directoryPath));
+    var FileClass = Java.type('java.io.File');
+    fileUtilities.mkdir(new FileClass(directoryPath));
 }
 
 /**
@@ -25,7 +27,8 @@ function mkdir(directoryPath) { // eslint-disable-line no-unused-vars
 * @returns {boolean} true if file exists
 */
 function fileExists(filePath) { // eslint-disable-line no-unused-vars
-    return new java.io.File(filePath).exists();
+    var FileClass = Java.type('java.io.File');
+    return new FileClass(filePath).exists();
 }
 
 /**
@@ -34,7 +37,8 @@ function fileExists(filePath) { // eslint-disable-line no-unused-vars
 * @returns {string} content
 */
 function cat(filePath) { // eslint-disable-line no-unused-vars
-    return Bean("fileUtilities").getFileContent(new java.io.File(filePath));
+    var FileClass = Java.type('java.io.File');
+    return Bean("fileUtilities").getFileContent(new FileClass(filePath));
 }
 
 /**
@@ -44,7 +48,8 @@ function cat(filePath) { // eslint-disable-line no-unused-vars
 * @returns {void}
 */
 function cp(source, target) { // eslint-disable-line no-unused-vars
-    return Bean("fileUtilities").copy(new java.io.File(source), new java.io.File(target));
+    var FileClass = Java.type('java.io.File');
+    return Bean("fileUtilities").copy(new FileClass(source), new FileClass(target));
 }
 
 /**
@@ -53,7 +58,8 @@ function cp(source, target) { // eslint-disable-line no-unused-vars
 * @returns {number} file size
 */
 function getFileSize(filePath) { // eslint-disable-line no-unused-vars
-    return Bean("fileUtilities").getSize(new java.io.File(filePath));
+    var FileClass = Java.type('java.io.File');
+    return Bean("fileUtilities").getSize(new FileClass(filePath));
 }
 
 /**
@@ -62,7 +68,8 @@ function getFileSize(filePath) { // eslint-disable-line no-unused-vars
 * @returns {string} file name
 */
 function fileName(filePath) { // eslint-disable-line no-unused-vars
-    return new java.io.File(filePath).getName();
+    var FileClass = Java.type('java.io.File');
+    return new FileClass(filePath).getName();
 }
 
 /**
@@ -72,7 +79,8 @@ function fileName(filePath) { // eslint-disable-line no-unused-vars
 * @returns {void}
 */
 function lns(target, destination) { // eslint-disable-line no-unused-vars
-    return Bean("fileUtilities").createSymbolicLink(new java.io.File(destination), new java.io.File(target));
+    var FileClass = Java.type('java.io.File');
+    return Bean("fileUtilities").createSymbolicLink(new FileClass(destination), new FileClass(target));
 }
 
 /**
@@ -81,7 +89,8 @@ function lns(target, destination) { // eslint-disable-line no-unused-vars
 * @returns {void}
 */
 function remove(filePath) { // eslint-disable-line no-unused-vars
-    return Bean("fileUtilities").remove(new java.io.File(filePath));
+    var FileClass = Java.type('java.io.File');
+    return Bean("fileUtilities").remove(new FileClass(filePath));
 }
 
 /**
@@ -91,7 +100,8 @@ function remove(filePath) { // eslint-disable-line no-unused-vars
 */
 function touch(filePath) { // eslint-disable-line no-unused-vars
     if (!fileExists(filePath)) {
-        Bean("fileUtilities").writeToFile(new java.io.File(filePath), "");
+        var FileClass = Java.type('java.io.File');
+        Bean("fileUtilities").writeToFile(new FileClass(filePath), "");
     }
 }
 
@@ -102,7 +112,8 @@ function touch(filePath) { // eslint-disable-line no-unused-vars
 * @returns {void}
 */
 function writeToFile(filePath, content) { // eslint-disable-line no-unused-vars
-    Bean("fileUtilities").writeToFile(new java.io.File(filePath), content);
+    var FileClass = Java.type('java.io.File');
+    Bean("fileUtilities").writeToFile(new FileClass(filePath), content);
 }
 
 /**

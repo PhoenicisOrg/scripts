@@ -13,8 +13,9 @@ Wine.prototype.regedit = function () {
     };
 
     this.patch = function (patchContent) {
-        if (patchContent.getClass().getCanonicalName() == "byte[]") {
-            patchContent = new java.lang.String(patchContent);
+        if (typeof patchContent.getClass !== "undefined" && patchContent.getClass().getCanonicalName() == "byte[]") {
+            var StringClass = Java.type('java.lang.String');
+            patchContent = new StringClass(patchContent);
         }
         var tmpFile = createTempFile("reg");
         writeToFile(tmpFile, patchContent);
@@ -55,7 +56,8 @@ Wine.prototype.regedit = function () {
             keyPathList.add(keyPath[level]);
         }
 
-        var registryValue = Bean("registryParser").parseFile(new java.io.File(this.prefixDirectory() + "/" + registryFile), root).getChild(keyPathList);
+        var FileClass = Java.type('java.io.File');
+        var registryValue = Bean("registryParser").parseFile(new FileClass(this.prefixDirectory() + "/" + registryFile), root).getChild(keyPath);
 
         if (registryValue == null) {
             return null;
