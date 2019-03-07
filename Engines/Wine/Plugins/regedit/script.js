@@ -57,7 +57,7 @@ Wine.prototype.regedit = function () {
         }
 
         var FileClass = Java.type('java.io.File');
-        var registryValue = Bean("registryParser").parseFile(new FileClass(this.prefixDirectory() + "/" + registryFile), root).getChild(keyPath);
+        var registryValue = Bean("registryParser").parseFile(new FileClass(this.prefixDirectory() + "/" + registryFile), root).getChild(keyPathList);
 
         if (registryValue == null) {
             return null;
