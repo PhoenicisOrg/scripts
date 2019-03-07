@@ -77,8 +77,15 @@ Wine.prototype.regedit = function () {
 
         keyPath.shift();
 
+        // ensure that correct type is passed to Java
+        var ArrayListClass = Java.type('java.util.ArrayList');
+        var keyPathList = new ArrayListClass();
+        for (var level in keyPath) {
+            keyPathList.add(keyPath[level]);
+        }
+
         var FileClass = Java.type('java.io.File');
-        var registryValue = Bean("registryParser").parseFile(new FileClass(this.prefixDirectory() + "/" + registryFile), root).getChild(keyPath);
+        var registryValue = Bean("registryParser").parseFile(new FileClass(this.prefixDirectory() + "/" + registryFile), root).getChild(keyPathList);
 
         if (registryValue == null) {
             return null;
