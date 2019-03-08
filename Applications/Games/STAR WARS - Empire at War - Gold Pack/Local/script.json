@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "local",
+    "id"                         : "applications.games.star_wars_empire_at_war_gold_pack.local",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

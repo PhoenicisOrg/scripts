@@ -1,8 +1,8 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "register_font"]);
-include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "verbs", "luna"]);
-include(["utils", "functions", "filesystem", "files"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.register_font");
+include("utils.functions.net.resource");
+include("engines.wine.verbs.luna");
+include("utils.functions.filesystem.files");
 
 /**
 * Verb to install the Tahoma font
@@ -32,3 +32,21 @@ Wine.prototype.tahoma = function () {
         .do();
     return this;
 };
+
+/**
+ * Verb to install the Tahoma font
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "tahoma", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.tahoma();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

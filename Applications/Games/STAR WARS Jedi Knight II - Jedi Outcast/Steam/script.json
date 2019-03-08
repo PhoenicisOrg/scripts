@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.star_wars_jedi_knight_2_jedi_outcast.steam",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

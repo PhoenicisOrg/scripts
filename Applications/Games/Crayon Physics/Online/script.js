@@ -1,4 +1,4 @@
-include(["engines", "wine", "quick_script", "zip_script"]);
+include("engines.wine.quick_script.zip_script");
 
 var installerImplementation = {
     run: function () {

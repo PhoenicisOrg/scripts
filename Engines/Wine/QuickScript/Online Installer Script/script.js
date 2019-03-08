@@ -1,5 +1,5 @@
-include(["engines", "wine", "quick_script", "installer_script"]);
-include(["utils", "functions", "net", "download"]);
+include("engines.wine.quick_script.installer_script");
+include("utils.functions.net.download");
 
 
 function OnlineInstallerScript() {
@@ -22,7 +22,11 @@ OnlineInstallerScript.prototype.checksum = function (checksum) {
 };
 
 OnlineInstallerScript.prototype.installationArgs = function (installationArgs) {
-    this._installationArgs = installationArgs;
+    if (typeof installationArgs === 'string' || installationArgs instanceof String) {
+        this._installationArgs = [installationArgs];
+    } else {
+        this._installationArgs = installationArgs;
+    }
     return this;
 };
 
@@ -43,5 +47,5 @@ OnlineInstallerScript.prototype._installationCommand = function (wizard) {
         .to(installationFile)
         .get();
 
-    return {command: installationFile, args: [this._installationArgs]};
+    return {command: installationFile, args: this._installationArgs};
 };

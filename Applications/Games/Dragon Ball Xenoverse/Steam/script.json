@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.dragon_ball_xenoverse.steam",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "GoG Script",
+    "id"                         : "engines.wine.quick_script.gog_script",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

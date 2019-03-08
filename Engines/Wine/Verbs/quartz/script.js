@@ -1,8 +1,8 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["engines", "wine", "plugins", "regsvr32"]);
-include(["utils", "functions", "net", "resource"]);
-include(["utils", "functions", "filesystem", "files"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.override_dll");
+include("engines.wine.plugins.regsvr32");
+include("utils.functions.net.resource");
+include("utils.functions.filesystem.files");
 
 /**
 * Verb to install quartz
@@ -38,3 +38,21 @@ Wine.prototype.quartz = function (){
 
     return this;
 }
+
+/**
+ * Verb to install quartz
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "quartz", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.quartz();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

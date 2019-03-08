@@ -1,4 +1,4 @@
-include(["utils", "functions", "filesystem", "files"]);
+include("utils.functions.filesystem.files");
 
 /**
 * CabExtract prototype
@@ -54,7 +54,7 @@ CabExtract.prototype.to = function (destination) {
 */
 CabExtract.prototype.extract = function (args) {
     if (!this._progressMessage) {
-        this._progressMessage = tr("Please wait while {0} is extracted ...", this._archive);
+        this._progressMessage = tr("Please wait while {0} is extracted...", this._archive);
     }
 
     if (this._wizard) {
@@ -70,8 +70,10 @@ CabExtract.prototype.extract = function (args) {
 
     print("Extracting to: " + this._destination);
     mkdir(this._destination);
-    var processBuilder = new java.lang.ProcessBuilder(Java.to(processArguments, "java.lang.String[]"));
-    processBuilder.directory(new java.io.File(this._destination));
+    var ProcessBuilderClass = Java.type('java.lang.ProcessBuilder');
+    var processBuilder = new ProcessBuilderClass(Java.to(processArguments, "java.lang.String[]"));
+    var FileClass = Java.type('java.io.File');
+    processBuilder.directory(new FileClass(this._destination));
     processBuilder.inheritIO();
     processBuilder.start().waitFor();
 }
@@ -130,7 +132,7 @@ Extractor.prototype.to = function (destination) {
 */
 Extractor.prototype.extract = function () {
     if (!this._progressMessage) {
-        this._progressMessage = tr("Please wait while {0} is extracted ...", this._archive);
+        this._progressMessage = tr("Please wait while {0} is extracted...", this._archive);
     }
 
     var progressBar = this._wizard.progressBar(this._progressMessage);

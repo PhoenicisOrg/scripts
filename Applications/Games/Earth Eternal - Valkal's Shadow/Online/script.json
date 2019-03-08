@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.earth_eternal_valkals_shadow.online",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

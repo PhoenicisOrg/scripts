@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.age_of_empires_2_hd.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

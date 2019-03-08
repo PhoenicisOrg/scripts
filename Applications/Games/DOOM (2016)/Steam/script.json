@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.doom_2016.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

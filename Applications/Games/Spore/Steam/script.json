@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Steam",
+    "id"                         : "applications.games.spore.steam",
+    "compatibleOperatingSystems" : [
+        "LINUX",
+        "MACOSX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}

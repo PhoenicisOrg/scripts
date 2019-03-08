@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.heroes_of_the_storm.online",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

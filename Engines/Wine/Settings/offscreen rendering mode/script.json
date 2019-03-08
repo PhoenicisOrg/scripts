@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "offscreen rendering mode",
-    "id"                         : "offscreen_rendering_mode",
+    "id"                         : "engines.wine.settings.offscreen_rendering_mode",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

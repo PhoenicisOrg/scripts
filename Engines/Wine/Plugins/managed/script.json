@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "managed",
-    "id"                         : "managed",
+    "id"                         : "engines.wine.plugins.managed",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

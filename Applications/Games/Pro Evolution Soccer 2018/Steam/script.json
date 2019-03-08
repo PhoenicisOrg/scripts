@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.pro_evolution_soccer_2018.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

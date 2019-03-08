@@ -1,7 +1,7 @@
-include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["engines", "wine", "verbs", "d3dx9"]);
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "filesystem", "files"]);
+include("engines.wine.quick_script.local_installer_script");
+include("engines.wine.verbs.d3dx9");
+include("engines.wine.engine.object");
+include("utils.functions.filesystem.files");
 
 var installerImplementation = {
     run: function () {
@@ -22,7 +22,7 @@ var installerImplementation = {
                     .to(wine.prefixDirectory() + "drive_c/users/Public/Documents/EAW_RAM_MPLobby_update.exe")
                     .get();
 
-                wine.runInsidePrefix("/users/Public/Documents/EAW_RAM_MPLobby_update.exe");
+                wine.runInsidePrefix("/users/Public/Documents/EAW_RAM_MPLobby_update.exe", [], true);
             })
             .go();
     }

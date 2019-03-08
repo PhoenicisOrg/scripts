@@ -1,12 +1,10 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.star_craft_2.online",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],
-    "testingOperatingSystems" : [
-        "LINUX"
-    ],
-    "free"          : false,
-    "requiresPatch" : false
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
 }

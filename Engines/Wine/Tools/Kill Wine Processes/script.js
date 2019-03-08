@@ -1,4 +1,4 @@
-include(["engines", "wine", "engine", "object"]);
+include("engines.wine.engine.object");
 
 /**
  * tool to kill running Wine processes
@@ -7,7 +7,7 @@ var toolImplementation = {
     run: function (container) {
         new Wine()
             .prefix(container)
-            .run("kill", [], null, false, true);
+            .kill()
     }
 };
 

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.the_vanishing_of_ethan_carter.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

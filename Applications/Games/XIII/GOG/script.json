@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "GOG",
+    "id"                         : "applications.games.xiii.gog",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

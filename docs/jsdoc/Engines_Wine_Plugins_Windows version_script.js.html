@@ -26,8 +26,8 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "regedit"]);
+            <pre class="prettyprint source linenums"><code>include("engines.wine.engine.object");
+include("engines.wine.plugins.regedit");
 
 /**
  * default windows version
@@ -43,18 +43,27 @@ Wine.prototype.windowsVersion = function (version, servicePack) {
     }
 
     // set
-    var regeditFileContent =
-        "REGEDIT4\n" +
-        "\n" +
-        "[HKEY_CURRENT_USER\\Software\\Wine]\n" +
-        "\"Version\"=\"" + version + "\"\n";
+    var regeditFileContent;
+    if (version == null) {
+        regeditFileContent =
+            "REGEDIT4\n" +
+            "\n" +
+            "[HKEY_CURRENT_USER\\Software\\Wine]\n" +
+            "\"Version\"=-\n";
+    } else {
+        regeditFileContent =
+            "REGEDIT4\n" +
+            "\n" +
+            "[HKEY_CURRENT_USER\\Software\\Wine]\n" +
+            "\"Version\"=\"" + version + "\"\n";
 
-    if (servicePack) {
-        var servicePackNumber = servicePack.replace("sp", "");
-        that._regeditFileContent += "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion]";
-        that._regeditFileContent += "\"CSDVersion\"=\"Service Pack "+ servicePackNumber +"\"";
-        that._regeditFileContent += "[HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Windows]";
-        that._regeditFileContent += "\"CSDVersion\"=dword:00000"+servicePackNumber+"00";
+        if (servicePack) {
+            var servicePackNumber = servicePack.replace("sp", "");
+            regeditFileContent += "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion]\n";
+            regeditFileContent += "\"CSDVersion\"=\"Service Pack " + servicePackNumber + "\"\n";
+            regeditFileContent += "[HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Windows]\n";
+            regeditFileContent += "\"CSDVersion\"=dword:00000" + servicePackNumber + "00\n";
+        }
     }
 
     this.regedit().patch(regeditFileContent);
@@ -79,7 +88,7 @@ var SetOsForApplication = function () {
         return that;
     };
 
-    that.do =  function () {
+    that.do = function () {
         that._wine.regedit().patch(that._regeditFileContent);
         return that._wine;
     }
@@ -88,7 +97,8 @@ var SetOsForApplication = function () {
 Wine.prototype.setOsForApplication = function () {
     return new SetOsForApplication()
         .wine(this)
-};</code></pre>
+};
+</code></pre>
         </article>
     </section>
 
@@ -98,7 +108,7 @@ Wine.prototype.setOsForApplication = function () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
