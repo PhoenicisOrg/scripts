@@ -61,7 +61,7 @@ var verbImplementation = {
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "FAudio", java.util.Optional.empty());
         var versions = ["19.03", "19.02", "19.01"];
-        var selectedVersion = wizard.menu(tr("Please select the version."), versions, "19.02");
+        var selectedVersion = wizard.menu(tr("Please select the version."), versions, "19.03");
         wine.wizard(wizard);
         // install selected version
         wine.faudio(selectedVersion);
