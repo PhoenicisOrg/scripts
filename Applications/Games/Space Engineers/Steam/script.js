@@ -20,7 +20,7 @@ var installerImplementation = {
                 wine.vcrun2017();
                 wine.DXVK();
                 wine.faudio();
-                this.overrideDLL()
+                wine.overrideDLL()
                     .set("native, builtin", ["xaudio2_0", "xaudio2_1", "xaudio2_2", "xaudio2_3", "xaudio2_4", "xaudio2_5", "xaudio2_6", "xaudio2_7", "xaudio2_8", "xaudio2_9"])
                     .do();
             })
