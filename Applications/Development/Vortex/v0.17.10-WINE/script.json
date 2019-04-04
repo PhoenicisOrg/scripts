@@ -1,0 +1,10 @@
+{
+    "scriptName"                 : "v0.17.10-WINE",
+    "id"                         : "applications.development.vortex.custom",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
