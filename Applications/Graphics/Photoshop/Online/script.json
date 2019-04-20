@@ -1,0 +1,14 @@
+{
+    "scriptName"                 : "Online",
+    "id"                         : "applications.graphics.photoshop.online",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "free"                    : false,
+    "requiresPatch"           : false
+}
