@@ -1,0 +1,12 @@
+{
+    "scriptName"                 : "Steam",
+    "id"                         : "applications.games.hitman_absolution.steam",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "LINUX"
+    ],
+    "free"          : false,
+    "requiresPatch" : false
+}
