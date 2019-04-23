@@ -10,6 +10,8 @@ var installerImplementation = {
             .url("https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe")
             .checksum("4b1b85ec2499a4ce07c89609b256923a4fc479e5")
             .category("Games")
+            .wineDistribution("staging")
+            .wineVersion(LATEST_STAGING_VERSION)
             .executable("Steam.exe", ["-no-cef-sandbox"])
             .go();
     }
