@@ -142,6 +142,7 @@ var engineImplementation = {
         touch(versionsFile);
         new Downloader()
             .wizard(this._wizard)
+            .message(tr("Fetching available Wine versions..."))
             .url(this._wineWebServiceUrl)
             .to(versionsFile)
             .onlyIfUpdateAvailable(true)
