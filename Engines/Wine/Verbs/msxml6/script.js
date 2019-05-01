@@ -30,12 +30,13 @@ Wine.prototype.msxml6 = function () {
         .set("native,builtin", ["msxml6"])
         .do();
     if (this.architecture() == "amd64") {
-    this.wizard().wait(tr("Please wait while {0} is installed...", "msxml6"));
-    this.run(setupFile64, ["/q:a", "/c:msxml6_x64.msi /q"], null, false, true);
+        remove(this.system64directory() + "/msxml6.dll")
+        this.wizard().wait(tr("Please wait while {0} is installed...", "msxml6"));
+        this.run(setupFile64, ["/q:a", "/c:msxml6_x64.msi /q"], null, false, true);
     }
     else {
-    this.wizard().wait(tr("Please wait while {0} is installed...", "msxml6"));
-    this.run(setupFile32, ["/q:a", "/c:msxml6_x86.msi /q"], null, false, true);
+        this.wizard().wait(tr("Please wait while {0} is installed...", "msxml6"));
+        this.run(setupFile32, ["/q:a", "/c:msxml6_x86.msi /q"], null, false, true);
     }
     return this;
 };
