@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "msxml6",
+    "id"                         : "engines.wine.verbs.msxml6",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
