@@ -11,7 +11,7 @@ include("utils.functions.filesystem.files");
 */
 Wine.prototype.gallium9 = function (gallium9Version) {
     if (typeof gallium9Version !== 'string')
-        gallium9Version = "0.3";
+        gallium9Version = "0.4";
 
     this.wizard().message(tr("Using Gallium 9 requires to have a driver supporting the Gallium 9 state tracker, as well as d3dapater9.so installed (ex: libd3d9adapter-mesa package). Please be sure it is installed (both 32 and 64 bits)."));
 
@@ -37,6 +37,11 @@ Wine.prototype.gallium9 = function (gallium9Version) {
         lns(this.prefixDirectory() + "/gallium-nine-standalone/lib64/d3d9-nine.dll.so", this.system64directory() + "/d3d9-nine.dll");
         lns(this.prefixDirectory() + "/gallium-nine-standalone/bin64/ninewinecfg.exe.so", this.system64directory() + "/ninewinecfg.exe");
         lns(this.system64directory() + "/d3d9-nine.dll", this.system64directory() + "/d3d9.dll");
+        this.run(this.system64directory() + "ninewinecfg.exe", ["-e"], null, false, true);
+    }
+    else
+    {
+        this.run(this.system32directory() + "ninewinecfg.exe", ["-e"], null, false, true);   
     }
 
     this.overrideDLL()
@@ -54,8 +59,8 @@ var verbImplementation = {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "gallium9", java.util.Optional.empty());
-        var versions = ["0.3", "0.2"];
-        var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.3");
+        var versions = ["0.4", "0.3", "0.2"];
+        var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.4");
         wine.wizard(wizard);
         // install selected version
         wine.gallium9(selectedVersion);
