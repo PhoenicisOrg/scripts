@@ -1,0 +1,12 @@
+{
+    "scriptName"                 : "Custom (Native)",
+    "id"                         : "applications.games.hearthstone.custom",
+    "compatibleOperatingSystems" : [
+        "LINUX",
+    ],
+    "testingOperatingSystems" : [
+        "MACOSX"
+    ],
+    "free"          : true,
+    "requiresPatch" : true
+}
