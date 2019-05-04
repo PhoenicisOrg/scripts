@@ -16,7 +16,6 @@ Wine.prototype.tahoma = function () {
         .checksum("40c3771ba4ce0811fe18a7a7903e40fcce46422d")
         .name("IELPKTH.CAB")
         .get();
-    
     new CabExtract()
         .archive(tahoma)
         .to(this.prefixDirectory() + "/drive_c/tahoma/")
