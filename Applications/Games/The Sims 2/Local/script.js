@@ -17,18 +17,18 @@ var installerImplementation = {
             .executable("Origin.exe")
             .wineVersion("4.5")
             .wineDistribution("staging")
-            .preInstall(function(wine) {
+            .preInstall(function (wine) {
                 wine.vcrun2010();
                 wine.vcrun2013();
                 wine.windowsVersion("winxp");
                 var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
                 wine.regedit().patch(registrySettings);
             })
-            .postInstall(function(wine) {
+            .postInstall(function (wine) {
                 var fixes = new Resource()
                     .wizard(this.wizard())
                     .url("https://raw.githubusercontent.com/tannisroot/installer-fixes/master/sims2_fixes.tar.xz")
-                    .name(sims2_fixes.tar.xz)
+                    .name("sims2_fixes.tar.xz")
                     .get();
 
                 new Extractor()
