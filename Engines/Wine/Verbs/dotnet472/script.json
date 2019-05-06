@@ -1,0 +1,14 @@
+{
+    "scriptName"                 : ".NET 4.7.2",
+    "id"                         : "engines.wine.verbs.dotnet472",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "free"          : true,
+    "requiresPatch" : false
+}

@@ -1,7 +1,7 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "regsvr32"]);
-include(["utils", "functions", "net", "resource"]);
-include(["utils", "functions", "filesystem", "files"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.regsvr32");
+include("utils.functions.net.resource");
+include("utils.functions.filesystem.files");
 
 /**
 * Verb to install xact
@@ -13,8 +13,8 @@ Wine.prototype.xact = function () {
     var extractFiles = function (progressBar, filesToExtract, destination, pattern, directory) {
         var numberOfExtractedFiles = 0;
         filesToExtract.forEach(function (cabFile) {
-            print(tr("Extracting {0} ...", cabFile));
-            progressBar.setText(tr("Extracting {0} ...", "Xact"));
+            print(tr("Extracting {0}...", cabFile));
+            progressBar.setText(tr("Extracting {0}...", "Xact"));
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
 
             new CabExtract()
@@ -30,8 +30,8 @@ Wine.prototype.xact = function () {
     var regsvr32Xact = function (progressBar, dllToRegsvr) {
         var numberOfExtractedFiles = 0;
         dllToRegsvr.forEach(function (dll) {
-            print(tr("Registering {0} ...", dll));
-            progressBar.setText(tr("Registering {0} ...", "Xact"));
+            print(tr("Registering {0}...", dll));
+            progressBar.setText(tr("Registering {0}...", "Xact"));
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
 
             that.regsvr32().install(dll);
@@ -47,8 +47,8 @@ Wine.prototype.xact = function () {
         .name("directx_Jun2010_redist.exe")
         .get();
 
-    var progressBar = this.wizard().progressBar(tr("Please wait ..."));
-    progressBar.setText(tr("Extracting {0} ...", "Xact"));
+    var progressBar = this.wizard().progressBar(tr("Please wait..."));
+    progressBar.setText(tr("Extracting {0}...", "Xact"));
     progressBar.setProgressPercentage(0.);
 
     var filesToExtract = []
@@ -172,5 +172,22 @@ Wine.prototype.xact = function () {
     }
 
     return this;
-
 };
+
+/**
+ * Verb to install xact
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "xact", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.xact();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

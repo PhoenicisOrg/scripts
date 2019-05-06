@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "d3drm",
+    "id"                         : "engines.wine.verbs.d3drm",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

@@ -1,7 +1,7 @@
-include(["utils", "functions", "filesystem", "files"]);
-include(["utils", "functions", "filesystem", "extract"]);
-include(["utils", "functions", "net", "download"]);
-include(["utils", "functions", "net", "resource"]);
+include("utils.functions.filesystem.files");
+include("utils.functions.filesystem.extract");
+include("utils.functions.net.download");
+include("utils.functions.net.resource");
 
 /* exported WINE_PREFIX_DIR */
 var WINE_PREFIX_DIR = "wineprefix";
@@ -20,15 +20,6 @@ var engineImplementation = {
     _wineWebServiceUrl : Bean("propertyReader").getProperty("webservice.wine.url"),
     _wizard: null,
     _workingContainer: "",
-    _wineServer: function (subCategory, version, parameter) {
-        var binary = this.getLocalDirectory(subCategory, version) + "/bin/wineserver";
-        var processBuilder = new java.lang.ProcessBuilder(Java.to([binary, parameter], "java.lang.String[]"));
-        var environment = processBuilder.environment();
-        environment.put("WINEPREFIX", this.getContainerDirectory(this.getWorkingContainer()));
-        processBuilder.inheritIO();
-        var wineServerProcess = processBuilder.start();
-        wineServerProcess.waitFor();
-    },
     getLocalDirectory: function (subCategory, version) {
         var parts = subCategory.split("-");
         var distribution = parts[0];
@@ -60,9 +51,9 @@ var engineImplementation = {
 
             var that = this;
             wineJson.forEach(function (distribution) {
-                if (distribution.name == subCategory) {
+                if (distribution.name === subCategory) {
                     distribution.packages.forEach(function (winePackage) {
-                        if (winePackage.version == version) {
+                        if (winePackage.version === version) {
                             that._installWinePackage(wizard, winePackage, localDirectory);
                             that._installGecko(wizard, winePackage, localDirectory);
                             that._installMono(wizard, winePackage, localDirectory);
@@ -120,7 +111,8 @@ var engineImplementation = {
 
             var wineGeckoDir = localDirectory + "/share/wine/gecko";
 
-            lns(new java.io.File(gecko).getParent(), wineGeckoDir);
+            var FileClass = Java.type('java.io.File');
+            lns(new FileClass(gecko).getParent(), wineGeckoDir);
         }
     },
     _installMono: function (setupWizard, winePackage, localDirectory) {
@@ -136,7 +128,8 @@ var engineImplementation = {
 
             var wineMonoDir = localDirectory + "/share/wine/mono";
 
-            lns(new java.io.File(mono).getParent(), wineMonoDir);
+            var FileClass = Java.type('java.io.File');
+            lns(new FileClass(mono).getParent(), wineMonoDir);
         }
     },
     delete: function (subCategory, version) {
@@ -149,6 +142,7 @@ var engineImplementation = {
         touch(versionsFile);
         new Downloader()
             .wizard(this._wizard)
+            .message(tr("Fetching available Wine versions..."))
             .url(this._wineWebServiceUrl)
             .to(versionsFile)
             .onlyIfUpdateAvailable(true)
@@ -208,16 +202,19 @@ var engineImplementation = {
         var extensionFile = executable.split(".").pop();
 
         if (extensionFile == "msi") {
-            return this.run("msiexec", ["/i", executable].concat(args), captureOutput);
+            var msiArgs = org.apache.commons.lang.ArrayUtils.addAll(["/i", executable], args);
+            return this.run("msiexec", msiArgs, workingDir, captureOutput, wait, userData);
         }
 
         if (extensionFile == "bat") {
-            return this.run("start", ["/Unix", executable].concat(args), captureOutput);
+            var batArgs = org.apache.commons.lang.ArrayUtils.addAll(["/Unix", executable], args);
+            return this.run("start", batArgs, workingDir, captureOutput, wait, userData);
         }
 
         // do not run 64bit executable in 32bit prefix
         if (extensionFile == "exe") {
-            if (architecture == "x86" && this._ExeAnalyser.is64Bits(new java.io.File(executable))) {
+            var FileClass = Java.type('java.io.File');
+            if (architecture == "x86" && this._ExeAnalyser.is64Bits(new FileClass(executable))) {
                 throw tr("Cannot run 64bit executable in a 32bit Wine prefix.");
             }
         }
@@ -230,14 +227,16 @@ var engineImplementation = {
         command[0] = wineBinary;
         command[1] = executable;
         java.lang.System.arraycopy(args, 0, command, 2, args.length);
-        var processBuilder = new java.lang.ProcessBuilder(command);
+        var ProcessBuilderClass = Java.type('java.lang.ProcessBuilder');
+        var processBuilder = new ProcessBuilderClass(command);
 
+        var FileClass = Java.type('java.io.File');
         if (workingDir) {
-            processBuilder.directory(new java.io.File(workingDir));
+            processBuilder.directory(new FileClass(workingDir));
         } else {
             var driveC = workingContainerDirectory + "/drive_c";
             mkdir(driveC);
-            processBuilder.directory(new java.io.File(driveC));
+            processBuilder.directory(new FileClass(driveC));
         }
 
         var environment = processBuilder.environment();
@@ -260,16 +259,20 @@ var engineImplementation = {
         }
         environment.put("LD_LIBRARY_PATH", ldPath);
 
+        if (this._operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin") {
+            environment.put("DYLD_FALLBACK_LIBRARY_PATH", ldPath);
+            environment.put("FREETYPE_PROPERTIES", "truetype:interpreter-version=35");
+        }
+
         if (!captureOutput) {
             processBuilder.redirectErrorStream(true);
-            processBuilder.redirectOutput(new java.io.File(workingContainerDirectory + "/wine.log"));
+            processBuilder.redirectOutput(new FileClass(workingContainerDirectory + "/wine.log"));
         }
 
         var process = processBuilder.start();
 
         if (wait) {
             process.waitFor();
-            this._wineServer(subCategory, version, "-w");
         }
 
         if (captureOutput) {

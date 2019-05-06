@@ -1,11 +1,12 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.hearthstone.online",
     "compatibleOperatingSystems" : [
-        "LINUX"
+        "LINUX",
+        "MACOSX"
     ],
     "testingOperatingSystems" : [
-        "LINUX"
+        "MACOSX"
     ],
     "free"          : true,
     "requiresPatch" : false

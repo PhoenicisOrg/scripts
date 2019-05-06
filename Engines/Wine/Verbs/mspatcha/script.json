@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "mspatcha",
-    "id"                         : "mspatcha",
+    "id"                         : "engines.wine.verbs.mspatcha",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

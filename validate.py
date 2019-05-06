@@ -15,7 +15,7 @@ scripts_dir = args.scripts_dir
 
 is_valid = True
 
-id_pattern = '^[a-z0-9_]+$'
+id_pattern = '^[a-z0-9_.]+$'
 
 # get type directories
 type_dirs = []

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.wildlife_park_2.steam",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

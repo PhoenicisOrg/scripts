@@ -26,19 +26,20 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>include(["engines", "wine", "engine", "implementation"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["utils", "functions", "filesystem", "extract"]);
-include(["utils", "functions", "net", "download"]);
-include(["utils", "functions", "net", "resource"]);
+            <pre class="prettyprint source linenums"><code>include("engines.wine.engine.implementation");
+include("utils.functions.filesystem.files");
+include("utils.functions.filesystem.extract");
+include("utils.functions.net.download");
+include("utils.functions.net.resource");
 
 /* exported LATEST_STABLE_VERSION */
-var LATEST_STABLE_VERSION = "3.0.1";
+var LATEST_STABLE_VERSION = "4.0";
 /* exported LATEST_DEVELOPMENT_VERSION */
-var LATEST_DEVELOPMENT_VERSION = "3.10";
+var LATEST_DEVELOPMENT_VERSION = "4.7";
 /* exported LATEST_STAGING_VERSION */
-var LATEST_STAGING_VERSION = "3.2";
-
+var LATEST_STAGING_VERSION = "4.7";
+/* exported LATEST_DOS_SUPPORT_VERSION */
+var LATEST_DOS_SUPPORT_VERSION = "4.0";
 
 /**
  * Wine main prototype
@@ -156,11 +157,20 @@ Wine.prototype.binPath = function (subCategory, version) {
 
 /**
 *
-* @param executable
-* @param args
+* @param {string} executable
+* @param {array} [args = []]
+* @param {boolean} [wait=false]
 */
-Wine.prototype.runInsidePrefix = function (executable, args) {
-    return this.run(this.prefixDirectory() + "/drive_c/" + executable, args, this.prefixDirectory(), false, true);
+Wine.prototype.runInsidePrefix = function (executable, args, wait) {
+    if (!args) {
+        args = [];
+    } else if (typeof args === 'string' || args instanceof String) {
+        args = [args];
+    }
+    if (!wait) {
+        wait = false;
+    }
+    return this.run(this.prefixDirectory() + "/drive_c/" + executable, args, this.prefixDirectory(), false, wait);
 };
 
 /**
@@ -198,7 +208,7 @@ Wine.prototype.run = function (executable, args, workingDirectory, captureOutput
 /**
 * uninstall application
 * @param {string} name of the application which shall be uninstalled
-* @returns {Wine}
+* @returns {bool} true if an application has been uninstalled, false otherwise
 */
 Wine.prototype.uninstall = function (application) {
     var list = this.run("uninstaller", ["--list"], this.prefixDirectory(), true, true);
@@ -206,12 +216,13 @@ Wine.prototype.uninstall = function (application) {
     var re = new RegExp("(.*)\\|\\|\\|.*" + appEscaped);
     var uuid = list.match(re);
     if (uuid) {
-        this._implementation.getWizard.wait(tr("Please wait while {0} is uninstalled ...", application));
+        this._implementation.getWizard().wait(tr("Please wait while {0} is uninstalled...", application));
         this.run("uninstaller", ["--remove", uuid[1]], this.prefixDirectory(), false, true);
+        return true;
     } else {
         print(tr("Could not uninstall {0}!", application));
+        return false;
     }
-    return this;
 };
 
 /**
@@ -236,11 +247,48 @@ Wine.prototype.programFiles = function () {
 };
 
 /**
+* executes wineserver in current prefix
+* @param {string} wineserver parameter
+*/
+Wine.prototype.wineServer = function (parameter) {
+    var workingContainerDirectory = this._implementation.getContainerDirectory(this._implementation.getWorkingContainer());
+    if (fileExists(workingContainerDirectory)) {
+        var configFactory = Bean("compatibleConfigFileFormatFactory");
+        var containerConfiguration = configFactory.open(workingContainerDirectory + "/phoenicis.cfg");
+        var distribution = containerConfiguration.readValue("wineDistribution", "upstream");
+        var architecture = containerConfiguration.readValue("wineArchitecture", "x86");
+        var operatingSystem = this._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+        var subCategory = distribution + "-" + operatingSystem + "-" + architecture;
+        var version = containerConfiguration.readValue("wineVersion");
+        var binary = this._implementation.getLocalDirectory(subCategory, version) + "/bin/wineserver";
+        var ProcessBuilderClass = Java.type('java.lang.ProcessBuilder');
+        var processBuilder = new ProcessBuilderClass(Java.to([binary, parameter], "java.lang.String[]"));
+        var environment = processBuilder.environment();
+        environment.put("WINEPREFIX", this._implementation.getContainerDirectory(this._implementation.getWorkingContainer()));
+        processBuilder.inheritIO();
+        var wineServerProcess = processBuilder.start();
+        wineServerProcess.waitFor();
+    }
+    else {
+        print("Wine prefix \"" + this.getWorkingContainer() + "\" does not exist!");
+    }
+};
+
+/**
+* wait until wineserver finishes
+* @returns {Wine}
+*/
+Wine.prototype.wait = function () {
+    this.wineServer("-w");
+    return this;
+};
+
+/**
 * kill wine server
 * @returns {Wine}
 */
 Wine.prototype.kill = function () {
-    this._wineServer("-k");
+    this.wineServer("-k");
     return this;
 };
 
@@ -325,7 +373,7 @@ Wine.prototype.fontDirectory = function () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">

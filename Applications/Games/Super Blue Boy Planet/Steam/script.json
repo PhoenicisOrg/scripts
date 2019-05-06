@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.super_blue_boy_planet.steam",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

@@ -1,6 +1,6 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["engines", "wine", "verbs", "sp3extract"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.override_dll");
+include("engines.wine.verbs.sp3extract");
 
 /**
 * Verb to install crypt32
@@ -14,3 +14,21 @@ Wine.prototype.crypt32 = function () {
         .set("native, builtin", ["crypt32"])
         .do()
 };
+
+/**
+ * Verb to install crypt32
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "crypt32", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.crypt32();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

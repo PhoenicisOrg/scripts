@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "v1.5",
-    "id"                         : "v1_5",
+    "id"                         : "applications.games.icy_tower.v1_5",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

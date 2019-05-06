@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.mass_effect.steam",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

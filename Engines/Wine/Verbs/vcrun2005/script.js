@@ -1,7 +1,7 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "verbs", "luna"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.override_dll");
+include("utils.functions.net.resource");
+include("engines.wine.verbs.luna");
 
 /**
 * Verb to install vcrun2005
@@ -15,7 +15,7 @@ Wine.prototype.vcrun2005 = function () {
         .name("vcredist_x86.EXE")
         .get();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", "Microsoft Visual C++ 2005 Redistributable (x86)"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", "Microsoft Visual C++ 2005 Redistributable (x86)"));
     this.run(setupFile, "/q", null, false, true);
 
     var dlls = [
@@ -31,3 +31,21 @@ Wine.prototype.vcrun2005 = function () {
 
     return this;
 };
+
+/**
+ * Verb to install vcrun2005
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "vcrun2005", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.vcrun2005();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

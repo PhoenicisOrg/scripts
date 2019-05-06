@@ -1,7 +1,7 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "regedit"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["utils", "functions", "net", "resource"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.regedit");
+include("utils.functions.filesystem.files");
+include("utils.functions.net.resource");
 
 /**
 * Verb to install luna
@@ -29,3 +29,21 @@ Wine.prototype.luna = function () {
 
     return this;
 };
+
+/**
+ * Verb to install luna
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "luna", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.luna();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

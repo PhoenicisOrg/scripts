@@ -1,0 +1,14 @@
+{
+    "scriptName"                 : "Local",
+    "id"                         : "applications.games.lego_rock_raiders.lego_rock_raiders",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "free"          : false,
+    "requiresPatch" : true
+}

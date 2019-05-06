@@ -1,6 +1,6 @@
-include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "filesystem", "files"]);
+include("engines.wine.quick_script.local_installer_script");
+include("engines.wine.engine.object");
+include("utils.functions.filesystem.files");
 
 var installerImplementation = {
     run: function () {
@@ -19,7 +19,7 @@ var installerImplementation = {
                     .to(wine.prefixDirectory() + "drive_c/Program Files/LucasArts/Star Wars Battlefront II/BFIIUpdateInt1_1.exe")
                     .get();
 
-                wine.runInsidePrefix("/Program Files/LucasArts/Star Wars Battlefront II/BFIIUpdateInt1_1.exe");
+                wine.runInsidePrefix("/Program Files/LucasArts/Star Wars Battlefront II/BFIIUpdateInt1_1.exe", [], true);
 
             })
             .go();

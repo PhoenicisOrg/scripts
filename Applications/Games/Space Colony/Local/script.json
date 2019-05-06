@@ -1,0 +1,14 @@
+{
+    "scriptName"                 : "Local",
+    "id"                         : "applications.games.space_colony.local",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "free"          : false,
+    "requiresPatch" : false
+}

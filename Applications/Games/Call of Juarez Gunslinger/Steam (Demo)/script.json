@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam (Demo)",
-    "id"                         : "steam_demo",
+    "id"                         : "applications.games.call_of_juarez_gunslinger.steam_demo",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],
