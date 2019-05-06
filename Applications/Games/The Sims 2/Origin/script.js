@@ -3,6 +3,7 @@ include("engines.wine.verbs.vcrun2010");
 include("engines.wine.verbs.vcrun2013");
 //include("engines.wine.plugins.windows_version");
 include("utils.functions.net.resource");
+include("utils.functions.apps.resources");
 include("utils.functions.filesystem.files");
 include("utils.functions.filesystem.extract");
 
@@ -11,7 +12,7 @@ var installerImplementation = {
         new OriginScript()
             .name("The Sims 2")
             .editor("Electronic Arts")
-            .applicationHomepage("https://www.ea.com/en-gb/games/simcity")
+            .applicationHomepage("http://thesims2.ea.com")
             .author("ZemoScripter")
             .category("Games")
             .wineVersion("4.5")
