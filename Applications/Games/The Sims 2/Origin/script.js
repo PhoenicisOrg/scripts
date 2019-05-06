@@ -17,19 +17,19 @@ var installerImplementation = {
             .wineVersion("4.5")
             .wineDistribution("staging")
             .appId("1014457,sims2_apt_life,sims2_bestofbusiness_dd,sims2_bonvoyage_na,sims2dd_remaster,sims2_freetime,sims2_funwpets_dd,sims2_stuffpackglamour_na,sims2_holiday2_na,sims2-holiday,sims2_inseason_na,sims2_collegepack_dd")
-            .preInstall(function(wine) {
+            .preInstall(function (wine) {
                 wine.vcrun2010();
                 wine.vcrun2013();
                 //wine.windowsVersion("winxp");
                 var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
                 wine.regedit().patch(registrySettings);
             })
-            .postInstall(function(wine, wizard) {
+            .postInstall(function (wine) {
                 var fixes = new Resource()
                     .wizard(wine.wizard())
                     .url("https://raw.githubusercontent.com/tannisroot/installer-fixes/master/sims2_fixes.tar.xz")
                     .checksum("601382327e9e89571ea600dd9dd8818297840c88")
-                    .name(sims2_fixes.tar.xz)
+                    .name("sims2_fixes.tar.xz")
                     .get();
 
                 new Extractor()
