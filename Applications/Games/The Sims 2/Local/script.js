@@ -1,7 +1,6 @@
 include("engines.wine.quick_script.local_installer_script");
 include("engines.wine.verbs.vcrun2010");
 include("engines.wine.verbs.vcrun2013");
-//include("engines.wine.plugins.windows_version");
 include("utils.functions.net.resource");
 include("utils.functions.filesystem.files");
 include("utils.functions.filesystem.extract");
@@ -21,7 +20,6 @@ var installerImplementation = {
             .preInstall(function (wine) {
                 wine.vcrun2010();
                 wine.vcrun2013();
-                //wine.windowsVersion("winxp");
                 var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
                 wine.regedit().patch(registrySettings);
             })
