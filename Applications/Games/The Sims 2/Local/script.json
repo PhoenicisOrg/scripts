@@ -1,0 +1,14 @@
+{
+    "scriptName"                 : "Local",
+    "id"                         : "applications.games.the_sims_2.local",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "free"          : false,
+    "requiresPatch" : false
+}
