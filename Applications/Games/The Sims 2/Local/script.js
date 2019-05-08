@@ -29,8 +29,6 @@ var installerImplementation = {
                     .url("https://raw.githubusercontent.com/tannisroot/installer-fixes/master/sims2_fixes.tar.xz")
                     .name("sims2_fixes.tar.xz")
                     .get();
-
-               
                 var username = java.lang.System.getenv("USERNAME")
                 new Extractor()
                     .wizard(wine.wizard())
