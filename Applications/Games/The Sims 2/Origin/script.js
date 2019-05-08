@@ -34,9 +34,9 @@ var installerImplementation = {
                 new Extractor()
                     .wizard(wine.wizard())
                     .archive(fixes)
-                    .to(wine.prefixDirectory() + "/drive_c/users/username/My Documents/EA Games/The Sims\u2122 2 Ultimate Collection/Downloads")
+                    .to(wine.prefixDirectory() + "/drive_c/users/" + username + "My Documents/EA Games/The Sims\u2122 2 Ultimate Collection/Downloads")
                     .extract();
-                var configFile = wine.prefixDirectory() + "drive_c/users/username/My Documents/EA Games/The Sims\u2122 2 Ultimate Collection/Config/userstartup.cheat";
+                var configFile = wine.prefixDirectory() + "drive_c/users/" + username + "My Documents/EA Games/The Sims\u2122 2 Ultimate Collection/Config/userstartup.cheat";
                 touch(configFile);
                 writeToFile(configFile, "boolprop useshaders true\nboolProp   createNVidiaWorkaroundTexture false\nboolProp   bumpMapping false");
             })
