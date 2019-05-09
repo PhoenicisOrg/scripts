@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "msxml3",
+    "id"                         : "engines.wine.verbs.msxml3",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

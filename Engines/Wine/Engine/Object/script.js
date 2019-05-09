@@ -7,9 +7,9 @@ include("utils.functions.net.resource");
 /* exported LATEST_STABLE_VERSION */
 var LATEST_STABLE_VERSION = "4.0";
 /* exported LATEST_DEVELOPMENT_VERSION */
-var LATEST_DEVELOPMENT_VERSION = "4.2";
+var LATEST_DEVELOPMENT_VERSION = "4.7";
 /* exported LATEST_STAGING_VERSION */
-var LATEST_STAGING_VERSION = "4.2";
+var LATEST_STAGING_VERSION = "4.7";
 /* exported LATEST_DOS_SUPPORT_VERSION */
 var LATEST_DOS_SUPPORT_VERSION = "4.0";
 
@@ -233,7 +233,8 @@ Wine.prototype.wineServer = function (parameter) {
         var subCategory = distribution + "-" + operatingSystem + "-" + architecture;
         var version = containerConfiguration.readValue("wineVersion");
         var binary = this._implementation.getLocalDirectory(subCategory, version) + "/bin/wineserver";
-        var processBuilder = new java.lang.ProcessBuilder(Java.to([binary, parameter], "java.lang.String[]"));
+        var ProcessBuilderClass = Java.type('java.lang.ProcessBuilder');
+        var processBuilder = new ProcessBuilderClass(Java.to([binary, parameter], "java.lang.String[]"));
         var environment = processBuilder.environment();
         environment.put("WINEPREFIX", this._implementation.getContainerDirectory(this._implementation.getWorkingContainer()));
         processBuilder.inheritIO();

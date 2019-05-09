@@ -11,7 +11,7 @@ include("utils.functions.filesystem.files");
 */
 Wine.prototype.faudio = function (faudioVersion) {
     if(typeof faudioVersion !== 'string') 
-        faudioVersion = "19.01";
+        faudioVersion = "19.05";
 
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -60,8 +60,11 @@ var verbImplementation = {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "FAudio", java.util.Optional.empty());
+        var versions = ["19.05", "19.04", "19.03", "19.02", "19.01"];
+        var selectedVersion = wizard.menu(tr("Please select the version."), versions, "19.05");
         wine.wizard(wizard);
-        wine.faudio();
+        // install selected version
+        wine.faudio(selectedVersion);
         wizard.close();
     }
 };

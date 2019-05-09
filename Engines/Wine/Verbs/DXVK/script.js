@@ -43,25 +43,31 @@ Wine.prototype.DXVK = function (dxvkVersion) {
         .to(this.prefixDirectory() + "/TMP/")
         .extract();
 
+    var forEach = Array.prototype.forEach;
+    var sys32dir = this.system32directory();
     var dxvkTmpDir = this.prefixDirectory() + "/TMP/dxvk-" + dxvkVersion;
+    var self = this;
 
-    cp(dxvkTmpDir + "/x32/d3d11.dll", this.system32directory());
-    cp(dxvkTmpDir + "/x32/dxgi.dll", this.system32directory());
-    cp(dxvkTmpDir + "/x32/d3d10core.dll", this.system32directory());
-    cp(dxvkTmpDir + "/x32/d3d10.dll", this.system32directory());
-    cp(dxvkTmpDir + "/x32/d3d10_1.dll", this.system32directory());
+    //Copy 32 bits dll to system* and apply override
+    forEach.call(ls(dxvkTmpDir + "/x32"), function (file) {
+        if (file.endsWith(".dll")) {
+            cp(dxvkTmpDir + "/x32/" + file, sys32dir);
+            self.overrideDLL()
+                .set("native", [file])
+                .do();
+        }
+    });
 
-    if (this.architecture() == "amd64") {
-        cp(dxvkTmpDir + "/x64/d3d11.dll", this.system64directory());
-        cp(dxvkTmpDir + "/x64/dxgi.dll", this.system64directory());
-        cp(dxvkTmpDir + "/x64/d3d10core.dll", this.system64directory());
-        cp(dxvkTmpDir + "/x64/d3d10.dll", this.system64directory());
-        cp(dxvkTmpDir + "/x64/d3d10_1.dll", this.system64directory());
+    if (this.architecture() == "amd64")
+    {
+        var sys64dir = this.system64directory();
+        //Copy 64 bits dll to system*
+        forEach.call(ls(dxvkTmpDir + "/x64"), function (file) {
+            if (file.endsWith(".dll")) {
+                cp(dxvkTmpDir + "/x64/" + file, sys64dir);
+            }
+        });
     }
-
-    this.overrideDLL()
-        .set("native", ["d3d11", "dxgi", "d3d10", "d3d10_1", "d3d10core"])
-        .do();
 
     remove(this.prefixDirectory() + "/TMP/");
 
@@ -84,7 +90,8 @@ var verbImplementation = {
             .get();
         var latestVersion = cat(releaseFile).replaceAll("\\n", "");
         // query desired version (default: latest release version)
-        var versions = ["0.96", "0.95", "0.94", "0.93", "0.92", "0.91", "0.90",
+        var versions = ["1.0",
+                        "0.96", "0.95", "0.94", "0.93", "0.92", "0.91", "0.90",
                         "0.81", "0.80", "0.72", "0.71", "0.70",
                         "0.65", "0.64", "0.63", "0.62", "0.61", "0.60",
                         "0.54", "0.53", "0.52", "0.51", "0.50",

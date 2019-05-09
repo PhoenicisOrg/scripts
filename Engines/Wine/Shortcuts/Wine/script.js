@@ -120,13 +120,15 @@ WineShortcut.prototype.create = function () {
         throw tr("Executable {0} not found!", this._search)
     }
 
-    var info = new org.phoenicis.library.dto.ShortcutInfoDTO.Builder()
+    var ShortcutInfoDTOBuilderClass = Java.type('org.phoenicis.library.dto.ShortcutInfoDTO.Builder');
+    var info = new ShortcutInfoDTOBuilderClass()
         .withCategory(this._category)
         .withName(this._name)
         .withDescription(this._description)
         .build();
 
-    var builder = new org.phoenicis.library.dto.ShortcutDTO.Builder()
+    var ShortcutDTOBuilderClass = Java.type('org.phoenicis.library.dto.ShortcutDTO.Builder');
+    var builder = new ShortcutDTOBuilderClass()
         .withId(this._name)
         .withInfo(info)
         .withScript(JSON.stringify({

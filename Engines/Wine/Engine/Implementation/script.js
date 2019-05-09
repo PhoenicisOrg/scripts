@@ -111,7 +111,8 @@ var engineImplementation = {
 
             var wineGeckoDir = localDirectory + "/share/wine/gecko";
 
-            lns(new java.io.File(gecko).getParent(), wineGeckoDir);
+            var FileClass = Java.type('java.io.File');
+            lns(new FileClass(gecko).getParent(), wineGeckoDir);
         }
     },
     _installMono: function (setupWizard, winePackage, localDirectory) {
@@ -127,7 +128,8 @@ var engineImplementation = {
 
             var wineMonoDir = localDirectory + "/share/wine/mono";
 
-            lns(new java.io.File(mono).getParent(), wineMonoDir);
+            var FileClass = Java.type('java.io.File');
+            lns(new FileClass(mono).getParent(), wineMonoDir);
         }
     },
     delete: function (subCategory, version) {
@@ -140,6 +142,7 @@ var engineImplementation = {
         touch(versionsFile);
         new Downloader()
             .wizard(this._wizard)
+            .message(tr("Fetching available Wine versions..."))
             .url(this._wineWebServiceUrl)
             .to(versionsFile)
             .onlyIfUpdateAvailable(true)
@@ -210,7 +213,8 @@ var engineImplementation = {
 
         // do not run 64bit executable in 32bit prefix
         if (extensionFile == "exe") {
-            if (architecture == "x86" && this._ExeAnalyser.is64Bits(new java.io.File(executable))) {
+            var FileClass = Java.type('java.io.File');
+            if (architecture == "x86" && this._ExeAnalyser.is64Bits(new FileClass(executable))) {
                 throw tr("Cannot run 64bit executable in a 32bit Wine prefix.");
             }
         }
@@ -223,14 +227,16 @@ var engineImplementation = {
         command[0] = wineBinary;
         command[1] = executable;
         java.lang.System.arraycopy(args, 0, command, 2, args.length);
-        var processBuilder = new java.lang.ProcessBuilder(command);
+        var ProcessBuilderClass = Java.type('java.lang.ProcessBuilder');
+        var processBuilder = new ProcessBuilderClass(command);
 
+        var FileClass = Java.type('java.io.File');
         if (workingDir) {
-            processBuilder.directory(new java.io.File(workingDir));
+            processBuilder.directory(new FileClass(workingDir));
         } else {
             var driveC = workingContainerDirectory + "/drive_c";
             mkdir(driveC);
-            processBuilder.directory(new java.io.File(driveC));
+            processBuilder.directory(new FileClass(driveC));
         }
 
         var environment = processBuilder.environment();
@@ -260,7 +266,7 @@ var engineImplementation = {
 
         if (!captureOutput) {
             processBuilder.redirectErrorStream(true);
-            processBuilder.redirectOutput(new java.io.File(workingContainerDirectory + "/wine.log"));
+            processBuilder.redirectOutput(new FileClass(workingContainerDirectory + "/wine.log"));
         }
 
         var process = processBuilder.start();
