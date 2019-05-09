@@ -41,7 +41,7 @@ Wine.prototype.gallium9 = function (gallium9Version) {
     }
     else
     {
-        this.run(this.system32directory() + "ninewinecfg.exe", ["-e"], null, false, true);   
+        this.run(this.system32directory() + "ninewinecfg.exe", ["-e"], null, false, true);
     }
 
     this.overrideDLL()
