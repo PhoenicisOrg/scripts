@@ -7,10 +7,9 @@ var installerImplementation = {
     run: function () {
         new SteamScript()
             .name("PC Building Simulator")
-            .editor(" Claudiu Kiss, The Irregular Corporation")
+            .editor("Claudiu Kiss, The Irregular Corporation")
             .author("Zemogiter")
             .applicationHomepage("http://www.pcbuildingsim.com/")
-            .wineDistribution("upstream")
             .wineVersion(LATEST_DEVELOPMENT_VERSION)
             .wineArchitecture("amd64")
             .appId(621060)
