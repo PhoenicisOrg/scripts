@@ -13,7 +13,8 @@ var installerImplementation = {
             .wineVersion(LATEST_DEVELOPMENT_VERSION)
             .wineArchitecture("amd64")
             .appId(621060)
-            .preInstall(function (wine) {
+            .preInstall(function (wine, wizard) {
+                wizard.message(tr("The game is functional but benchmark animations on the monitors are not displayed. Feel free to drop a feedback if you know how to fix this issue."));
                 wine.corefonts();
                 var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
                 wine.setVirtualDesktop(screenSize.width, screenSize.height);
