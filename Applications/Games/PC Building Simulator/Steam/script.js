@@ -13,7 +13,7 @@ var installerImplementation = {
             .wineVersion(LATEST_DEVELOPMENT_VERSION)
             .wineArchitecture("amd64")
             .appId(621060)
-            .preInstall(function (wine, wizard) {
+            .preInstall(function (wine) {
                 wine.corefonts();
                 var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
                 wine.setVirtualDesktop(screenSize.width, screenSize.height);
