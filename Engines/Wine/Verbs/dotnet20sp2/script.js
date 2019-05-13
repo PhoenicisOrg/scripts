@@ -4,6 +4,8 @@ include("utils.functions.net.resource");
 include("utils.functions.filesystem.files");
 include("engines.wine.plugins.windows_version");
 include("engines.wine.verbs.remove_mono");
+include("engines.wine.plugins.regedit");
+
 
 
 /**
@@ -55,10 +57,9 @@ Wine.prototype.dotnet20sp2 = function () {
     }
 
     this.windowsVersion(osVersion);
-    this.overrideDLL()
-        .set("", dlls)
-        .do();
-
+    this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "ngen.exe");
+    this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "regsvcs.exe");
+    this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "mscorsvw.exe");
     return this;
 };
 /**
