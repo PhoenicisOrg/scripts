@@ -35,7 +35,7 @@ Wine.prototype.dotnet20sp2 = function () {
 
 
         this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0 SP2"));
-        this.run(setupFile32, ["/q:a", "/c:install.exe /q"], null, false, true);
+        this.run(setupFile32, ["--unattended", "/c:install.exe /q"], null, false, true);
 
 
         remove(this.system32directory() + "/msvcr80.dll");
@@ -52,7 +52,7 @@ Wine.prototype.dotnet20sp2 = function () {
 
 
         this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0 SP2"));
-        this.run(setupFile64, ["/q:a", "/c:install.exe /q"], null, false, true)
+        this.run(setupFile64, ["--unattended", "/c:install.exe /q"], null, false, true)
     }
 
     this.windowsVersion(osVersion);
