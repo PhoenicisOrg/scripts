@@ -55,6 +55,9 @@ Wine.prototype.dotnet20sp2 = function () {
     }
 
     this.windowsVersion(osVersion);
+    this.overrideDLL()
+        .set("", dlls)
+        .do();
 
     return this;
 };
