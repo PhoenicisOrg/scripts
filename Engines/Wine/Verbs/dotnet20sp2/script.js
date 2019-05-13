@@ -22,6 +22,7 @@ Wine.prototype.dotnet20sp2 = function () {
     this.overrideDLL()
         .set("builtin", dlls)
         .do();
+    this.removeMono();
 
     if (this.architecture() == "x86") {
 
@@ -32,7 +33,6 @@ Wine.prototype.dotnet20sp2 = function () {
             .name("NetFx20SP2_x86.exe")
             .get();
 
-        this.removeMono();
 
         this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0 SP2"));
         this.run(setupFile32, ["/q:a", "/c:install.exe /q"], null, false, true);
@@ -50,7 +50,6 @@ Wine.prototype.dotnet20sp2 = function () {
             .name("NetFx20SP2_x64.exe")
             .get();
 
-        this.removeMono();
 
         this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0 SP2"));
         this.run(setupFile64, ["/q:a", "/c:install.exe /q"], null, false, true)
