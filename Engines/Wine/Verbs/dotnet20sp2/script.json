@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : ".NET 2.0 SP2",
+    "id"                         : "engines.wine.verbs.dotnet20sp2",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
