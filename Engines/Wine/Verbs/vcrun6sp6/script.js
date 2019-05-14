@@ -19,11 +19,11 @@ Wine.prototype.vcrun6sp6 = function () {
         .to(this.prefixDirectory() + "/drive_c/vcrun6sp6/")
         .extract(["-L", "-F", "vcredist.exe"]);
 
-    remove(this.system32directory() + "atl80.dll");
-    remove(this.system32directory() + "msvcm80.dll");
-    remove(this.system32directory() + "msvcp80.dll");
-    remove(this.system32directory() + "msvcr80.dll");
-    remove(this.system32directory() + "vcomp.dll");
+    remove(this.system32directory() + "comcat.dll");
+    remove(this.system32directory() + "msvcrt.dll");
+    remove(this.system32directory() + "oleaut32.dll");
+    remove(this.system32directory() + "olepro32.dll");
+    remove(this.system32directory() + "stdole2.dll");
 
     this.wizard().wait(tr("Please wait while {0} is installed...", "vcrun6sp6"));
     this.run(setupFile, "/q", null, false, true);
