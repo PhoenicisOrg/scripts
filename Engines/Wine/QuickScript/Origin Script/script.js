@@ -37,7 +37,6 @@ OriginScript.prototype.go = function () {
     new Downloader()
         .wizard(setupWizard)
         .url("https://origin-a.akamaihd.net/Origin-Client-Download/origin/live/OriginThinSetup.exe")
-        .checksum("01a8a14c7ea34d11eeb65bbc89beee3079638061")
         .to(tempFile)
         .get();
 
