@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Fonts Smoothing",
+    "id"                         : "engines.wine.settings.fonts_smoothing",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
