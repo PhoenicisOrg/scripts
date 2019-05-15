@@ -56,28 +56,28 @@ var settingImplementation = {
         var regeditFileContent;
         if (0 == optionIndex) {
             regeditFileContent =
-			"REGEDIT4\n"									+
-			"\n"											+
+			"REGEDIT4\n"					+
+			"\n"						+
 			"[HKEY_CURRENT_USER\\Control Panel\\Desktop]\n"	+
-			"\"FontSmoothing\"=\"1\"\n"						+
-			"\"FontSmoothingType\"=dword:00000001\n"		+
-			"\"FontSmoothingGamma\"=dword:00000000\n"		+
-			"\"FontSmoothingOrientation\"=dword:00000001"	+
+			"\"FontSmoothing\"=\"1\"\n"		 	+
+			"\"FontSmoothingType\"=dword:00000001\n"	+
+			"\"FontSmoothingGamma\"=dword:00000000\n"	+
+			"\"FontSmoothingOrientation\"=dword:00000001";
 
-	    new Wine()
-		.prefix(container)
-		.regedit()
-		.patch(regeditFileContent);
+            new Wine()
+                .prefix(container)
+                .regedit()
+                .patch(regeditFileContent);
         }
         else if (1 == optionIndex) {
             regeditFileContent =
-			"REGEDIT4\n"									+
-			"\n"											+
+			"REGEDIT4\n"					+
+			"\n"						+
 			"[HKEY_CURRENT_USER\\Control Panel\\Desktop]\n"	+
-			"\"FontSmoothing\"=\"2\"\n"						+
-			"\"FontSmoothingType\"=dword:00000002\n"		+
-			"\"FontSmoothingGamma\"=dword:00000578\n"		+
-			"\"FontSmoothingOrientation\"=dword:00000001"	+
+			"\"FontSmoothing\"=\"2\"\n"			+
+			"\"FontSmoothingType\"=dword:00000002\n"	+
+			"\"FontSmoothingGamma\"=dword:00000578\n"	+
+			"\"FontSmoothingOrientation\"=dword:00000001";
 
             new Wine()
                 .prefix(container)
@@ -86,13 +86,13 @@ var settingImplementation = {
         }
         else if (2 == optionIndex) {
             regeditFileContent =
-			"REGEDIT4\n"									+
-			"\n"											+
+			"REGEDIT4\n"					+
+			"\n"						+
 			"[HKEY_CURRENT_USER\\Control Panel\\Desktop]\n"	+
-			"\"FontSmoothing\"=\"2\"\n"						+
-			"\"FontSmoothingType\"=dword:00000002\n"		+
-			"\"FontSmoothingGamma\"=dword:00000578\n"		+
-			"\"FontSmoothingOrientation\"=dword:00000000"	+
+			"\"FontSmoothing\"=\"2\"\n"			+
+			"\"FontSmoothingType\"=dword:00000002\n"	+
+			"\"FontSmoothingGamma\"=dword:00000578\n"	+
+			"\"FontSmoothingOrientation\"=dword:00000000";
 
             new Wine()
                 .prefix(container)
@@ -101,13 +101,13 @@ var settingImplementation = {
         }
         else if (3 == optionIndex) {
             regeditFileContent =
-			"REGEDIT4\n"									+
-			"\n"											+
+			"REGEDIT4\n"					+
+			"\n"						+
 			"[HKEY_CURRENT_USER\\Control Panel\\Desktop]\n"	+
-			"\"FontSmoothing\"=\"2\"\n"						+
-			"\"FontSmoothingType\"=dword:00000001\n"		+
-			"\"FontSmoothingGamma\"=dword:00000578\n"		+
-			"\"FontSmoothingOrientation\"=dword:00000001"	+
+			"\"FontSmoothing\"=\"2\"\n"			+
+			"\"FontSmoothingType\"=dword:00000001\n"	+
+			"\"FontSmoothingGamma\"=dword:00000578\n"	+
+			"\"FontSmoothingOrientation\"=dword:00000001";
 
             new Wine()
                 .prefix(container)
