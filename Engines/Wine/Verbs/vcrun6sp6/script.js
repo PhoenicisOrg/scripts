@@ -14,7 +14,7 @@ Wine.prototype.vcrun6sp6 = function () {
         .name("Vs6sp6.exe")
         .get();
 
-     var setupFile = new CabExtract()
+    var setupFile = new CabExtract()
         .archive(toBeCabExtracted)
         .to(this.prefixDirectory() + "/drive_c/vcrun6sp6/")
         .extract(["-L", "-F", "vcredist.exe"]);
