@@ -14,7 +14,7 @@ Wine.prototype.D9VK = function (d9vkVersion) {
     print("NOTE: wine version should be greater or equal to 3.10");
     if (operatingSystemFetcher.fetchCurrentOperationSystem() != "Linux")
     {
-        this.wizard().message(tr("DXVK might not work correctly on macOS. This is depending on Metal api support and MoltenVK compatibility layer advancement"));
+        this.wizard().message(tr("D9VK might not work correctly on macOS. This is depending on Metal api support and MoltenVK compatibility layer advancement"));
     }
     else
     {
@@ -70,7 +70,7 @@ Wine.prototype.D9VK = function (d9vkVersion) {
 }
 
 /**
- * Verb to install DXVK
+ * Verb to install D9VK
 */
 var verbImplementation = {
     install: function (container) {
