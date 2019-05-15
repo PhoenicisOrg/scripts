@@ -90,7 +90,8 @@ var verbImplementation = {
             .get();
         var latestVersion = cat(releaseFile).replaceAll("\\n", "");
         // query desired version (default: latest release version)
-        var versions = ["1.0",
+        var versions = ["1.1.1",
+                        "1.0.3", "1.0.2", "1.0.1", "1.0",
                         "0.96", "0.95", "0.94", "0.93", "0.92", "0.91", "0.90",
                         "0.81", "0.80", "0.72", "0.71", "0.70",
                         "0.65", "0.64", "0.63", "0.62", "0.61", "0.60",

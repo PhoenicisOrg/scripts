@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Steam",
+    "id"                         : "pcbs_steam",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}
