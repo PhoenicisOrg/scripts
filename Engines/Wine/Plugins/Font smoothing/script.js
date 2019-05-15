@@ -13,16 +13,16 @@ Wine.prototype.FontSmoothing = function (mode) {
         FontSmoothingOrientation = "1";
     }
     else if (mode == "BGR") {
-	    FontSmoothingType = "2";
+        FontSmoothingType = "2";
         FontSmoothingOrientation = "0";
     }
     else if (mode == "Gray Scale"){
-	    FontSmoothingType = "1";
+        FontSmoothingType = "1";
         FontSmoothingOrientation = "1";
     }
 
     var regeditFileContent =
-	        "REGEDIT4\n"					+
+                        "REGEDIT4\n"					+
 			"\n"						+
 			"[HKEY_CURRENT_USER\\Control Panel\\Desktop]\n"	+
 			"\"FontSmoothing\"=\"2\"\n"			+
