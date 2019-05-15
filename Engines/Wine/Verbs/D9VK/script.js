@@ -23,7 +23,7 @@ Wine.prototype.D9VK = function (d9vkVersion) {
 
     if (typeof d9vkVersion !== 'string')
     {
-        d9vkVersion = "0.10"
+        d9vkVersion = "0.10";
     }
 
     var setupFile = new Resource()
