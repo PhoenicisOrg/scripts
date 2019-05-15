@@ -79,10 +79,10 @@ var settingImplementation = {
 			"\"FontSmoothingGamma\"=dword:00000578\n"		+
 			"\"FontSmoothingOrientation\"=dword:00000001"	+
 
-	    new Wine()
-		.prefix(container)
-		.regedit()
-		.patch(regeditFileContent);
+            new Wine()
+                .prefix(container)
+                .regedit()
+                .patch(regeditFileContent);
         }
         else if (2 == optionIndex) {
             regeditFileContent =
