@@ -73,7 +73,7 @@ var settingImplementation = {
         else {
             new Wine()
                 .prefix(container)
-                .FontSmoothing(this.options[optionIndex]);
+                .FontSmoothing(this._options[optionIndex]);
         }
     }
 };
