@@ -55,7 +55,7 @@ var settingImplementation = {
     setOption: function (container, optionIndex) {
         var regeditFileContent;
         if (0 == optionIndex) {
-    	    regeditFileContent =
+            regeditFileContent =
 			"REGEDIT4\n"									+
 			"\n"											+
 			"[HKEY_CURRENT_USER\\Control Panel\\Desktop]\n"	+
@@ -94,10 +94,10 @@ var settingImplementation = {
 			"\"FontSmoothingGamma\"=dword:00000578\n"		+
 			"\"FontSmoothingOrientation\"=dword:00000000"	+
 
-	    new Wine()
-		.prefix(container)
-		.regedit()
-		.patch(regeditFileContent);
+            new Wine()
+                .prefix(container)
+                .regedit()
+                .patch(regeditFileContent);
         }
         else if (3 == optionIndex) {
             regeditFileContent =
