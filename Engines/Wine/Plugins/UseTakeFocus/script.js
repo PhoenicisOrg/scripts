@@ -11,7 +11,7 @@ Wine.prototype.UseTakeFocus = function (mode) {
         "REGEDIT4\n" +
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver]\n" +
-        "\"UseTakeFocus\"=\"" + mode + "\"\n"
+        "\"UseTakeFocus\"=\"" + mode + "\"\n";
     this.regedit().patch(regeditFileContent);
     return this;
 };
