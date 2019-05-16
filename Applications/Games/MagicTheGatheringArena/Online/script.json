@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "applications.games.MagicTheGatheringArena.online",
+    "id"                         : "applications.games.magic_the_gathering_arena.online",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],
