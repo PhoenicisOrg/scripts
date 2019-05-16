@@ -1,0 +1,12 @@
+{
+    "scriptName"                 : "Online",
+    "id"                         : "applications.games.MagicTheGatheringArena.online",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "LINUX"
+    ],
+    "free"          : true,
+    "requiresPatch" : false
+}
