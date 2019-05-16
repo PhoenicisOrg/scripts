@@ -1,5 +1,6 @@
 include("engines.wine.engine.object");
 include("engines.wine.plugins.regedit");
+include("engines.wine.plugins.usetakefocus");
 
 /**
  * setting to enable/disable UseTakeFocus
@@ -31,15 +32,9 @@ var settingImplementation = {
                 .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver", "UseTakeFocus");
         }
         else {
-            var regeditFileContent =
-                "REGEDIT4\n" +
-                "\n" +
-                "[HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver]\n" +
-                "\"UseTakeFocus\"=\"" + this._registryValues[optionIndex] + "\"\n";
             new Wine()
                 .prefix(container)
-                .regedit()
-                .patch(regeditFileContent);
+                .UseTakeFocus(this._registryValues[optionIndex]);
         }
     }
 };
