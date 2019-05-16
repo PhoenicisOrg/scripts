@@ -16,7 +16,7 @@ var installerImplementation = {
             .wineDistribution("staging")
             .wineVersion(LATEST_STAGING_VERSION)
             .preInstall(function (wine, wizard) {
-                wine.dxvk();
+                wine.DXVK();
                 wine.UseTakeFocus("N");
             })
             .executable("MTGAInstaller.exe")
