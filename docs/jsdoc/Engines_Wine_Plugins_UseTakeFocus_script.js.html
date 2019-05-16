@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Engines/Wine/Settings/UseTakeFocus/script.js</title>
+    <title>JSDoc: Source: Engines/Wine/Plugins/UseTakeFocus/script.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Engines/Wine/Settings/UseTakeFocus/script.js</h1>
+    <h1 class="page-title">Source: Engines/Wine/Plugins/UseTakeFocus/script.js</h1>
 
     
 
@@ -28,47 +28,21 @@
         <article>
             <pre class="prettyprint source linenums"><code>include("engines.wine.engine.object");
 include("engines.wine.plugins.regedit");
-include("engines.wine.plugins.usetakefocus");
 
 /**
- * setting to enable/disable UseTakeFocus
-*/
-var settingImplementation = {
-    _options: [tr("Default"), tr("Disabled"), tr("Enabled")],
-    // values which are written into the registry, do not translate!
-    _registryValues: ["", "N", "Y"], // `Y` is blind code since it's enabled by default on wine-staging it seems
-    getText: function () {
-        return tr("UseTakeFocus");
-    },
-    getOptions: function () {
-        return this._options;
-    },
-    getCurrentOption: function (container) {
-        var currentValue = new Wine()
-            .prefix(container)
-            .regedit()
-            .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "X11 Driver", "UseTakeFocus"]);
-        // find matching option (use default if not found)
-        var index = Math.max(this._registryValues.indexOf(currentValue), 0);
-        return this._options[index];
-    },
-    setOption: function (container, optionIndex) {
-        if (0 == optionIndex) {
-            new Wine()
-                .prefix(container)
-                .regedit()
-                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver", "UseTakeFocus");
-        }
-        else {
-            new Wine()
-                .prefix(container)
-                .UseTakeFocus(this._registryValues[optionIndex]);
-        }
-    }
+ * force the UseTakeFocus
+ * @param {string} mode ("Y" or "N")
+ * @returns {Wine} Wine object
+ */
+Wine.prototype.UseTakeFocus = function (mode) {
+    var regeditFileContent =
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver]\n" +
+        "\"UseTakeFocus\"=\"" + mode + "\"\n";
+    this.regedit().patch(regeditFileContent);
+    return this;
 };
-
-/* exported Setting */
-var Setting = Java.extend(org.phoenicis.engines.EngineSetting, settingImplementation);
 </code></pre>
         </article>
     </section>
