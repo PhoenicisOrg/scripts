@@ -34,7 +34,7 @@ var settingImplementation = {
         else {
             new Wine()
                 .prefix(container)
-                .UseTakeFocus(this._registryValues[index]);
+                .UseTakeFocus(this._registryValues[optionIndex]);
         }
     }
 };
