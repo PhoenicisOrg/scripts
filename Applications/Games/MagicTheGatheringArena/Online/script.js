@@ -13,7 +13,7 @@ var installerImplementation = {
             .category("Games")
             .wineDistribution("staging")
             .wineVersion(LATEST_STAGING_VERSION)
-            .preInstall(function (wine, wizard) {
+            .preInstall(function (wine/*, wizard*/) {
                 wine.DXVK();
                 wine.UseTakeFocus("N");
             })
