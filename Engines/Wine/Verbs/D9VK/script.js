@@ -18,7 +18,7 @@ Wine.prototype.D9VK = function (d9vkVersion) {
     }
     else
     {
-        this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
+        this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else D9VK might not work correctly."));
     }
 
     if (typeof d9vkVersion !== 'string')
@@ -29,7 +29,7 @@ Wine.prototype.D9VK = function (d9vkVersion) {
     var setupFile = new Resource()
         .wizard(this.wizard())
         .url("https://github.com/Joshua-Ashton/d9vk/releases/download/" + d9vkVersion + "/d9vk-" + d9vkVersion + ".tar.gz")
-        .name("dxvk-" + d9vkVersion + ".tar.gz")
+        .name("d9vk-" + d9vkVersion + ".tar.gz")
         .get();
 
     new Extractor()
