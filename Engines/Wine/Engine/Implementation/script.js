@@ -135,7 +135,7 @@ var engineImplementation = {
             oldRuntimeJson.forEach(function (arch){
                 if (arch.arch == "amd64") {
                     oldCheckSumamd64 = arch.sha1sum;
-            	}
+                }
                 else {
                     oldCheckSumx86 = arch.sha1sum;
                 }
