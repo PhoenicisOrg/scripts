@@ -138,8 +138,7 @@ var engineImplementation = {
             	}
                 else {
                     oldCheckSumx86 = arch.sha1sum;
-            	}
-
+                }
             });
             runtimeJson.forEach(function (arch){
                 if (arch.arch == "amd64" && arch.sha1sum != oldCheckSumamd64){
