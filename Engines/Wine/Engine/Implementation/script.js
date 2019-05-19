@@ -105,7 +105,7 @@ var engineImplementation = {
         var downloadamd64 = false;
         var downloadx86 = false;
         if (!fileExists(runtimeJsonPath)) {
-        	mkdir(this._wineEnginesDirectory + "/runtime");
+            mkdir(this._wineEnginesDirectory + "/runtime");
             var runtimeJsonFile = new Downloader()
                 .wizard(this._wizard)
                 .message(tr("Downloading runtime json"))
@@ -114,14 +114,14 @@ var engineImplementation = {
                 .get();
 
             runtimeJson = JSON.parse(cat(runtimeJsonFile));
-            var downloadamd64 = true;
-            var downloadx86 = true;
+            downloadamd64 = true;
+            downloadx86 = true;
         }
         else {
-        	var oldRuntimeJsonFile = cat(this._wineEnginesDirectory + "/runtime.json");
-        	var oldRuntimeJson = JSON.parse(oldRuntimeJsonFile);
+            var oldRuntimeJsonFile = cat(this._wineEnginesDirectory + "/runtime.json");
+            var oldRuntimeJson = JSON.parse(oldRuntimeJsonFile);
 
-        	var runtimeJsonFile = new Downloader()
+            var runtimeJsonFile = new Downloader()
                 .wizard(this._wizard)
                 .message(tr("Downloading runtime json"))
                 .url("https://phoenicis.playonlinux.com/index.php/runtime?os=linux")
@@ -132,21 +132,21 @@ var engineImplementation = {
             var oldCheckSumamd64;
             var oldCheckSumx86;
             oldRuntimeJson.forEach(function (arch){
-            	if (arch.arch == "amd64") {
-            		oldCheckSumamd64 = arch.sha1sum;
+                if (arch.arch == "amd64") {
+                    oldCheckSumamd64 = arch.sha1sum;
             	}
-            	else {
+                else {
             		oldCheckSumx86 = arch.sha1sum;
             	}
 
             });
             runtimeJson.forEach(function (arch){
-            	if (arch.arch == "amd64" && arch.sha1sum != oldCheckSumamd64){
-            		downloadamd64 = true;
+                if (arch.arch == "amd64" && arch.sha1sum != oldCheckSumamd64){
+                    downloadamd64 = true;
             	}
-            	else if (arch.arch == "x86" && arch.sha1sum != oldCheckSumx86){
-            		downloadx86 = true;
-            	}
+                else if (arch.arch == "x86" && arch.sha1sum != oldCheckSumx86){
+                    downloadx86 = true;
+                }
             });
         }
 
@@ -177,9 +177,9 @@ var engineImplementation = {
             remove(this._wineEnginesDirectory + "/TMP");
         }
         if (downloadamd64 == true) {
-        	remove(this._wineEnginesDirectory + "/runtime/lib64");
-        	mkdir(this._wineEnginesDirectory + "/TMP");
-            that = this;
+            remove(this._wineEnginesDirectory + "/runtime/lib64");
+            mkdir(this._wineEnginesDirectory + "/TMP");
+            var that = this;
             runtimeJson.forEach(function (arch){
                 var runtime;
 
