@@ -102,11 +102,12 @@ var engineImplementation = {
     _installRuntime: function (setupWizard) {
         var runtimeJsonPath = this._wineEnginesDirectory + "/runtime.json";
         var runtimeJson;
+        var runtimeJsonFile;
         var downloadamd64 = false;
         var downloadx86 = false;
         if (!fileExists(runtimeJsonPath)) {
             mkdir(this._wineEnginesDirectory + "/runtime");
-            var runtimeJsonFile = new Downloader()
+            runtimeJsonFile = new Downloader()
                 .wizard(this._wizard)
                 .message(tr("Downloading runtime json"))
                 .url("https://phoenicis.playonlinux.com/index.php/runtime?os=linux")
@@ -121,7 +122,7 @@ var engineImplementation = {
             var oldRuntimeJsonFile = cat(this._wineEnginesDirectory + "/runtime.json");
             var oldRuntimeJson = JSON.parse(oldRuntimeJsonFile);
 
-            var runtimeJsonFile = new Downloader()
+            runtimeJsonFile = new Downloader()
                 .wizard(this._wizard)
                 .message(tr("Downloading runtime json"))
                 .url("https://phoenicis.playonlinux.com/index.php/runtime?os=linux")
@@ -136,14 +137,14 @@ var engineImplementation = {
                     oldCheckSumamd64 = arch.sha1sum;
             	}
                 else {
-            		oldCheckSumx86 = arch.sha1sum;
+                    oldCheckSumx86 = arch.sha1sum;
             	}
 
             });
             runtimeJson.forEach(function (arch){
                 if (arch.arch == "amd64" && arch.sha1sum != oldCheckSumamd64){
                     downloadamd64 = true;
-            	}
+                }
                 else if (arch.arch == "x86" && arch.sha1sum != oldCheckSumx86){
                     downloadx86 = true;
                 }
@@ -152,7 +153,7 @@ var engineImplementation = {
 
         if (downloadx86 == true) {
             remove(this._wineEnginesDirectory + "/runtime/lib");
-        	mkdir(this._wineEnginesDirectory + "/TMP");
+            mkdir(this._wineEnginesDirectory + "/TMP");
             that = this;
             runtimeJson.forEach(function (arch){
                 var runtime;
