@@ -2,8 +2,6 @@ include("engines.wine.quick_script.custom_installer_script");
 include("engines.wine.verbs.dxvk");
 include("engines.wine.plugins.UseTakeFocus")
 
-// Installs Magic: The Gathering Arena
-/// RELEVANT: https://github.com/PhoenicisOrg/scripts/issues/934
 
 var installerImplementation = {
     run: function () {
