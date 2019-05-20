@@ -1,6 +1,6 @@
-include("engines.wine.quick_script.custom_installer_script");
+include("engines.wine.quick_script.online_installer_script");
 include("engines.wine.verbs.dxvk");
-include("engines.wine.plugins.UseTakeFocus")
+include("engines.wine.plugins.usetakefocus")
 
 
 var installerImplementation = {
@@ -17,7 +17,7 @@ var installerImplementation = {
                 wine.DXVK();
                 wine.UseTakeFocus("N");
             })
-            .executable("MTGAInstaller.exe")
+            .executable("MtgaLauncher.exe")
             .go();
     }
 };
