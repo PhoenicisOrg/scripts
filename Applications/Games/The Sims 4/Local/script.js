@@ -20,7 +20,7 @@ var installerImplementation = {
             .wineArchitecture("amd64")
             .wineVersion(4.7)
             .wineDistribution("staging")
-            .preInstall(function (wine, wizard) {
+            .preInstall(function (wine) {
                 wine.dotnet20sp2();
                 wine.vcrun6sp6();
                 wine.mfc42();
