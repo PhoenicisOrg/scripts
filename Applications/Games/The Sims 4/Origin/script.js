@@ -20,7 +20,7 @@ var installerImplementation = {
             .wineDistribution("staging")
             .wineArchitecture("amd64")
             .appId("1011164,1015875,1015876,1015793,1015794,1015795,1015806,1015807,1015808,1018025,1018023,1015236,1015235,1015224")
-            .preInstall(function (wine, wizard) {
+            .preInstall(function (wine) {
                 wine.dotnet20sp2();
                 wine.vcrun6sp6();
                 wine.mfc42();
