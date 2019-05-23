@@ -26,24 +26,23 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["engines", "wine", "plugins", "windows_version"]);
-include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "verbs", "luna"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["engines", "wine", "verbs", "dotnet40"]);
+            <pre class="prettyprint source linenums"><code>include("engines.wine.engine.object");
+include("engines.wine.plugins.override_dll");
+include("utils.functions.net.resource");
+include("engines.wine.plugins.windows_version");
+include("engines.wine.verbs.remove_mono");
+include("engines.wine.plugins.regedit");
+include("engines.wine.verbs.dotnet40");
+
 
 /**
 * Verb to install .NET 4.5.2
 * @returns {Wine} Wine object
 */
 Wine.prototype.dotnet452 = function () {
-    if (this.architecture() == "amd64") {
-        throw "{0} cannot be installed in a 64bit wine prefix!".format("dotnet452");
-    }
+    print(tr("This package ({0}) does not work currently. Use it only for testing!", "dotnet452"));
 
-    var OSVersion = this.windowsVersion();
+    var osVersion = this.windowsVersion();
 
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -52,12 +51,7 @@ Wine.prototype.dotnet452 = function () {
         .name("NDP452-KB2901907-x86-x64-AllOS-ENU.exe")
         .get();
 
-    this.uninstall("Mono");
-
-    this.wizard().wait(tr("Please wait ..."));
-    this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"], null, false, true);
-
-    remove(this.system32directory() + "/mscoree.dll");
+    this.removeMono();
 
     this.dotnet40();
     this.windowsVersion("win7");
@@ -66,21 +60,42 @@ Wine.prototype.dotnet452 = function () {
         .set("builtin", ["fusion"])
         .do();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", ".NET Framework 4.5.2"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 4.5.2"));
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
+
+    this.wizard().wait(tr("Please wait..."));
+    this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*fusion");
 
     this.overrideDLL()
         .set("native", ["mscoree"])
         .do();
 
-    this.windowsVersion(OSVersion);
+    this.windowsVersion(osVersion);
 
-    if (OSVersion != "win2003") {
+    if (osVersion != "win2003") {
         print(tr("{0} applications can have issues when windows version is not set to \"win2003\"", ".NET 4.5.2"));
     }
 
     return this;
 };
+
+/**
+ * Verb to install .NET 4.5.2
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "dotnet452", java.util.Optional.empty());
+        wizard.message(tr("This package ({0}) does not work currently. Use it only for testing!", "dotnet452"));
+        wine.wizard(wizard);
+        wine.dotnet452();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
 </code></pre>
         </article>
     </section>
@@ -91,13 +106,13 @@ Wine.prototype.dotnet452 = function () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a>
 </footer>
 
 <script> prettyPrint(); </script>

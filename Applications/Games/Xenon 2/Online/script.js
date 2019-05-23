@@ -1,4 +1,4 @@
-include(["engines", "wine", "quick_script", "zip_script"]);
+include("engines.wine.quick_script.zip_script");
 
 var installerImplementation = {
     run: function () {
@@ -10,7 +10,8 @@ var installerImplementation = {
             .url("https://repository.playonlinux.com/divers/oldware/Xenon2.zip")
             .checksum("9b61e88cad02f663e76fe40a379319a4956546c2")
             .category("Games")
-            .wineVersion("1.8.6-dos_support")
+            .wineVersion(LATEST_DOS_SUPPORT_VERSION)
+            .wineDistribution("dos_support")
             .executable("XENON2.EXE")
             .go();
     }

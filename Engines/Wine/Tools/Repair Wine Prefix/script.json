@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Repair virtual drive",
-    "id"                         : "repair_wine_prefix",
+    "id"                         : "engines.wine.tools.repair_wine_prefix",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "render target lock mode",
-    "id"                         : "render_target_lock_mode",
+    "id"                         : "engines.wine.settings.render_target_lock_mode",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

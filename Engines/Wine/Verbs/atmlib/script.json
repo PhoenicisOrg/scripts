@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "atmlib",
+    "id"                         : "engines.wine.verbs.atmlib",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

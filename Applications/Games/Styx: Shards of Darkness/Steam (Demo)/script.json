@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam (Demo)",
-    "id"                         : "steam_demo",
+    "id"                         : "applications.games.styx_shards_of_darkness.steam_demo",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

@@ -1,6 +1,6 @@
-include(["engines", "wine", "quick_script", "steam_script"]);
-include(["engines", "wine", "plugins", "managed"]);
-include(["engines", "wine", "verbs", "dotnet40"]);
+include("engines.wine.quick_script.steam_script");
+include("engines.wine.plugins.managed");
+include("engines.wine.verbs.dotnet40");
 
 var installerImplementation = {
     run: function () {

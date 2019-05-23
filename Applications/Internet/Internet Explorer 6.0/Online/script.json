@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.internet.internet_explorer_6_0.online",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

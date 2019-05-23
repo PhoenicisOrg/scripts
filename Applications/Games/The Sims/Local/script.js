@@ -1,4 +1,4 @@
-include(["engines", "wine", "quick_script", "local_installer_script"]);
+include("engines.wine.quick_script.local_installer_script");
 
 var installerImplementation = {
     run: function () {
@@ -7,7 +7,7 @@ var installerImplementation = {
             .editor("Maxis")
             .applicationHomepage("http://www.thesims.com/")
             .wineDistribution("staging")
-            .wineVersion("2.19")
+            .wineVersion(LATEST_STAGING_VERSION)
             .author("Zemogiter")
             .category("Games")
             .executable("Sims.exe", ["-skip_intro"])

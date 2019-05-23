@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "always offscreen",
-    "id"                         : "always_offscreen",
+    "id"                         : "engines.wine.settings.always_offscreen",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.total_war_rome_2.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

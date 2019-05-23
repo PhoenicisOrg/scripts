@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "vulkanSDK",
-    "id"                         : "vulkansdk",
+    "id"                         : "engines.wine.verbs.vulkansdk",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

@@ -1,6 +1,6 @@
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "net", "resource"]);
-include(["engines", "wine", "verbs", "luna"]);
+include("engines.wine.engine.object");
+include("utils.functions.net.resource");
+include("engines.wine.verbs.luna");
 
 /**
 * Verb to install Nvidia PhysX
@@ -14,8 +14,26 @@ Wine.prototype.physx = function () {
         .name("PhysX-9.14.0702-SystemSoftware.msi")
         .get();
 
-    this.wizard().wait(tr("Please wait while {0} is installed ...", "PhysX"));
+    this.wizard().wait(tr("Please wait while {0} is installed...", "PhysX"));
     this.run("msiexec", ["/i", setupFile, "/q"], null, false, true);
 
     return this;
 };
+
+/**
+ * Verb to install Nvidia PhysX
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "physx", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.physx();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

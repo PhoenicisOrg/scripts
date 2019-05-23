@@ -12,12 +12,35 @@ Probably, the verb you want to add has already been implemented somewhere else. 
 * [winetricks](https://github.com/Winetricks/winetricks/blob/master/src/winetricks)
 * [playonlinux.com search](https://www.playonlinux.com/en/forums.html)
 
-Create a new folder in `Engines/Wine/Verbs` and add a `script.js`. The `script.js` must contain a function like this:
+Create a new folder in `Engines/Wine/Verbs` and add a `script.js`. The `script.js` must follow this template:
 ```javascript
+include(["engines", "wine", "engine", "object"]);
+
+/**
+* Verb to install verb
+* @returns {Wine} Wine object
+*/
 Wine.prototype.verb = function() {
     ...
     return this;
 }
+
+/**
+* Verb to install verb
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "verb", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.verb();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
 ```
 
 The verb extends `Wine`. You can therefore access `Ẁine` methods via `this`.
@@ -57,7 +80,11 @@ It is also possible to pass additional parameters to the `extract()`, e.g.
 ```
 
 If you extract many files, don't forget to add a progress bar like it is done for [d3dx9](https://github.com/PhoenicisOrg/scripts/blob/master/Engines/Wine/Verbs/d3dx9/script.js).
+### Copying DLL's to `C:\windows\sys*`
+On Windows 32 bits, 32 bits dll's go to `C:\windows\system32`.
+On Windows 64 bits, 32 bits dll's go to `C:\windows\syswow64` and 64 bits dll's go to system32.
 
+This is already handled inside the engine implementation if you use the functions `wine.system64directory()` for 64 bits dll's and bits and `wine.system32directory` for 32 bits dll's inside your scripts.  
 ### DLL Overrides
 ```javascript
 this.overrideDLL()

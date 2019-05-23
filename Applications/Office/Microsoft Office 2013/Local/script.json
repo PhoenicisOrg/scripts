@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "local",
+    "id"                         : "applications.office.microsoft_office_2013.local",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

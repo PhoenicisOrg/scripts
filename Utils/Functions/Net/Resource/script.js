@@ -1,5 +1,5 @@
-include(["utils", "functions", "net", "download"]);
-include(["utils", "functions", "filesystem", "files"]);
+include("utils.functions.net.download");
+include("utils.functions.filesystem.files");
 
 /**
 * Resource prototype
@@ -77,7 +77,7 @@ Resource.prototype.directory = function (directory) {
 */
 Resource.prototype.get = function () {
     if (!this._message) {
-        this._message = tr("Please wait while {0} is downloaded ...", this._name);
+        this._message = tr("Please wait while {0} is downloaded...", this._name);
     }
 
     var resourcesPath = this._resourcesPath + "/" + this._directory;

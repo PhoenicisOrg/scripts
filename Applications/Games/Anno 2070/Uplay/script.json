@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Uplay",
+    "id"                         : "applications.games.anno2070.uplay",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}
