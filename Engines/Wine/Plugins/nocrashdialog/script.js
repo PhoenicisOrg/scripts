@@ -2,7 +2,6 @@ include("engines.wine.engine.object");
 
 /**
  * disables the crashdialog
- * @param {string} 
  * @returns {Wine} Wine object
  */
 Wine.prototype.nocrashdialog = function () {
