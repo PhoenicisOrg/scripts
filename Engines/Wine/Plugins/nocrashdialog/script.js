@@ -9,7 +9,7 @@ Wine.prototype.nocrashdialog = function () {
         "REGEDIT4\n" +
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\WineDbg]\n" +
-        "\"ShowCrashDialog\"=\"" + 00000000 + "\""
+        "\"ShowCrashDialog\"=\""00000000"\""
     this.regedit().patch(regeditFileContent);
     return this;
 };
