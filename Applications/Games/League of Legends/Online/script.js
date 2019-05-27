@@ -2,7 +2,7 @@ include("engines.wine.quick_script.custom_installer_script");
 include("engines.wine.shortcuts.wine");
 include("engines.wine.verbs.sandbox");
 include("engines.wine.verbs.d3dx9");
-include("engines.wine.verbs.dxv9");
+//include("engines.wine.verbs.dxv9");
 
 // Install League Of Legends using DXV9
 
@@ -80,7 +80,7 @@ var installerImplementation = {
             .wineVersion(LATEST_STAGING_VERSION)
             .preInstall(function (wine /*, wizard*/) {
                 wine.d3dx9();
-                wine.DXV9();
+                ///wine.DXV9();
             })
             .go();
     }
