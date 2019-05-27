@@ -5,7 +5,7 @@ include("engines.wine.engine.object");
  * @param {string} 
  * @returns {Wine} Wine object
  */
-Wine.prototype.DirectDrawRenderer = function () {
+Wine.prototype.nocrashdialog = function () {
     var regeditFileContent =
         "REGEDIT4\n" +
         "\n" +
