@@ -7,6 +7,7 @@ include("engines.wine.verbs.vcrun2013");
 include("engines.wine.verbs.d9vk");
 include("utils.functions.apps.resources");
 include("engines.wine.plugins.regedit");
+include("engines.wine.plugins.override_dll");
 
 var installerImplementation = {
     run: function () {
