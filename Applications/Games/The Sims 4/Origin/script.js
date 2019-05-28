@@ -29,6 +29,9 @@ var installerImplementation = {
                 wine.D9VK();
                 var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
                 wine.regedit().patch(registrySettings);
+                this.overrideDLL()
+                    .set("disabled", ["nvapi","nvapi64"])
+                    .do();
             })
             .go();
     }
