@@ -26,7 +26,7 @@ var installerImplementation = {
                     .do();
             })
             .postInstall(function (wine) {
-                remove(wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Space Engineers/Content/KSH.wmv");
+                remove(wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Space Engineers/Content/Videos/KSH.wmv");
             })
             .gameOverlay(false)
             .go();
