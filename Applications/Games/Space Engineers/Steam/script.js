@@ -16,7 +16,7 @@ var installerImplementation = {
             .wineVersion("4.9")
             .wineDistribution("upstream")
             .wineArchitecture("amd64")
-            .preInstall(function (wine) {
+            .preInstall(function (wine, wizard) {
                 wine.dotnet472();
                 wine.vcrun2017();
                 wine.DXVK();
@@ -24,9 +24,10 @@ var installerImplementation = {
                 wine.overrideDLL()
                     .set("native, builtin", ["xaudio2_0", "xaudio2_1", "xaudio2_2", "xaudio2_3", "xaudio2_4", "xaudio2_5", "xaudio2_6", "xaudio2_7", "xaudio2_8", "xaudio2_9"])
                     .do();
+                wizard.message(tr("You have to install libjpeg62 and libjpeg62-dev or else the thumbnails in New Game menu will be dispalyed as magenta rectangles."));
             })
             .postInstall(function (wine) {
-                remove(wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Space Engineers/Content/Videos/KSH.wmv");
+                remove(wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Space Engineers/Content/KSH.wmv");
             })
             .gameOverlay(false)
             .go();
