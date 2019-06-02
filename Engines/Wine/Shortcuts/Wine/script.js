@@ -130,9 +130,9 @@ WineShortcut.prototype.create = function (environmentVar) {
 
     var myEnv = {WINEDEBUG: "-all"};
     if (typeof environmentVar !== 'undefined') {
-    	environmentVar.forEach(function (key) {
-    		myEnv[key[0]] = key[1];
-    	});
+        environmentVar.forEach(function (key) {
+            myEnv[key[0]] = key[1];
+        });
     }
 
     var ShortcutDTOBuilderClass = Java.type('org.phoenicis.library.dto.ShortcutDTO.Builder');
