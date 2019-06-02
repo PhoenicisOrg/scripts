@@ -127,10 +127,10 @@ WineShortcut.prototype.create = function (environmentVar) {
         .withName(this._name)
         .withDescription(this._description)
         .build();
-        
+
     var myEnv = {WINEDEBUG: "-all"};
-    if(true) {
-    	environmentVar.forEach(function(key) { 
+    if (typeof environmentVar !== 'undefined') {
+    	environmentVar.forEach(function (key) {
     		myEnv[key[0]] = key[1];
     	});
     }
