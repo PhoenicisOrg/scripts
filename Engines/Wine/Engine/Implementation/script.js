@@ -348,9 +348,12 @@ var engineImplementation = {
         // disable winemenubuilder (we manage our own shortcuts)
         environment.put("WINEDLLOVERRIDES", "winemenubuilder.exe=d");
         environment.put("WINEPREFIX", workingContainerDirectory);
-
-        if (userData.wineDebug) {
-            environment.put("WINEDEBUG", userData.wineDebug);
+        
+        if (userData.environment) {
+        	Object.keys(userData.environment).forEach(function(key) {
+  				print("Key: " + key + ", value: " + userData.environment[key]); 
+  				environment.put(key, userData.environment[key]);
+			});	            
         }
 
         var ldPath = this._ldPath;

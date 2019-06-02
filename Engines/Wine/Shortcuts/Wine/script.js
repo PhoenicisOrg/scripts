@@ -107,11 +107,12 @@ WineShortcut.prototype.miniature = function (miniature) {
     return this;
 }
 
+
 /**
 * creates shortcut
 * @returns {void}
 */
-WineShortcut.prototype.create = function () {
+WineShortcut.prototype.create = function (environmentVar) {
     var _shortcutPrefixDirectory = this._winePrefixesDirectory + "/" + this._prefix;
 
     var executables = this._fileSearcher.search(_shortcutPrefixDirectory, this._search);
@@ -126,6 +127,13 @@ WineShortcut.prototype.create = function () {
         .withName(this._name)
         .withDescription(this._description)
         .build();
+        
+    var myEnv = {WINEDEBUG: "-all"};
+    if(true) {
+    	environmentVar.forEach(function(key) { 
+    		myEnv[key[0]] = key[1];
+    	});
+    }
 
     var ShortcutDTOBuilderClass = Java.type('org.phoenicis.library.dto.ShortcutDTO.Builder');
     var builder = new ShortcutDTOBuilderClass()
@@ -133,7 +141,7 @@ WineShortcut.prototype.create = function () {
         .withInfo(info)
         .withScript(JSON.stringify({
             type: "WINE",
-            wineDebug: "-all",
+            environment: myEnv,
             winePrefix: this._prefix,
             arguments: this._arguments,
             workingDirectory:executables[0].getParentFile().getAbsolutePath(),
