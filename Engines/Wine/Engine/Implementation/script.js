@@ -350,9 +350,9 @@ var engineImplementation = {
         environment.put("WINEPREFIX", workingContainerDirectory);
 
         if (userData.environment) {
-        	Object.keys(userData.environment).forEach(function (key) {
-  				print("Key: " + key + ", value: " + userData.environment[key]);
-  				environment.put(key, userData.environment[key]);
+            Object.keys(userData.environment).forEach(function (key) {
+                print("Key: " + key + ", value: " + userData.environment[key]);
+                environment.put(key, userData.environment[key]);
             });
         }
 
