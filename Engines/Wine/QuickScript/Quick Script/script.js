@@ -76,6 +76,12 @@ QuickScript.prototype.executable = function (executable, args) {
     return this;
 };
 
+QuickScript.prototype.environment = function (environment) {
+    this._environment = environment;
+    return this;
+}
+
+
 QuickScript.prototype.wineArchitecture = function (wineArchitecture) {
     this._wineArchitecture = wineArchitecture;
     return this;
@@ -123,6 +129,7 @@ QuickScript.prototype._createShortcut = function (prefix) {
         .category(this._category)
         .prefix(prefix)
         .search(this._executable)
+        .environment(this._environment)
         .arguments(this._executableArgs);
 
     if (this.miniature().isPresent()) {
