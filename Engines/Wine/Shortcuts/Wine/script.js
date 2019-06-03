@@ -107,12 +107,22 @@ WineShortcut.prototype.miniature = function (miniature) {
     return this;
 }
 
+/**
+* sets shortcut environment
+* @param {JSON} environment variables
+* @returns {WineShortcut} WineShortcut object
+*/
+WineShortcut.prototype.environment = function (environment) {
+    this._environment = environment;
+    return this;
+}
+
 
 /**
 * creates shortcut
 * @returns {void}
 */
-WineShortcut.prototype.create = function (environmentVar) {
+WineShortcut.prototype.create = function () {
     var _shortcutPrefixDirectory = this._winePrefixesDirectory + "/" + this._prefix;
 
     var executables = this._fileSearcher.search(_shortcutPrefixDirectory, this._search);
@@ -129,9 +139,9 @@ WineShortcut.prototype.create = function (environmentVar) {
         .build();
 
     var myEnv = {WINEDEBUG: "-all"};
-    if (typeof environmentVar !== 'undefined') {
-        environmentVar.forEach(function (key) {
-            myEnv[key[0]] = key[1];
+    if (typeof this._environment !== 'undefined') {
+        Object.keys(this._environment).forEach(function(key){
+            myEnv[key] = this._environment[key];
         });
     }
 
