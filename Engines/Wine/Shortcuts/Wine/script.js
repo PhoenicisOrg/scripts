@@ -141,7 +141,7 @@ WineShortcut.prototype.create = function () {
     var myEnv = {WINEDEBUG: "-all"};
     if (typeof this._environment !== 'undefined') {
         var envJSON = JSON.parse(this._environment);
-        Object.keys(envJSON).forEach(function(key){
+        Object.keys(envJSON).forEach(function(key) {
             myEnv[key] = envJSON[key];
         });
     }
