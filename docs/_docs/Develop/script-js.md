@@ -15,6 +15,11 @@ The QuickScript should be sufficient for the vast majority of scripts. It provid
 
 QuickScripts use the latest stable wine version by default (recommended).
 
+If you wish to add environment variables to the execution of the program (not the installer), just add the following before the `.go();`
+```javascript
+    .environment('{ "var1": "value1", "var2": "value2"}')
+```
+
 ### SteamScript
 A basic script looks like:
 

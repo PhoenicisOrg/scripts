@@ -76,6 +76,11 @@ QuickScript.prototype.executable = function (executable, args) {
     return this;
 };
 
+/**
+ * set environment
+* @param {string} environment variables
+* @returns {QuickScript} QuickScript object
+ */
 QuickScript.prototype.environment = function (environment) {
     this._environment = environment;
     return this;

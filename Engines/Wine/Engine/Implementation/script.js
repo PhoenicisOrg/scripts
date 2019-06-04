@@ -124,7 +124,7 @@ var engineImplementation = {
 
             runtimeJsonFile = new Downloader()
                 .wizard(this._wizard)
-                .message(tr("Downloading runtime json"))
+                .message(tr("Downloading runtime json..."))
                 .url("https://phoenicis.playonlinux.com/index.php/runtime?os=linux")
                 .to(runtimeJsonPath)
                 .get();
@@ -161,7 +161,7 @@ var engineImplementation = {
                     runtime = new Downloader()
                         .wizard(setupWizard)
                         .url(arch.url)
-                        .message(tr("Downloading x86 runtime"))
+                        .message(tr("Downloading x86 runtime..."))
                         .checksum(arch.sha1sum)
                         .to(that._wineEnginesDirectory + "/TMP/" + arch.url.substring(arch.url.lastIndexOf('/')+1))
                         .get();
@@ -187,7 +187,7 @@ var engineImplementation = {
                     runtime = new Downloader()
                         .wizard(setupWizard)
                         .url(arch.url)
-                        .message(tr("Downloading amd64 runtime"))
+                        .message(tr("Downloading amd64 runtime..."))
                         .checksum(arch.sha1sum)
                         .to(that._wineEnginesDirectory + "/TMP/" + arch.url.substring(arch.url.lastIndexOf('/')+1))
                         .get();
@@ -351,7 +351,6 @@ var engineImplementation = {
 
         if (userData.environment) {
             Object.keys(userData.environment).forEach(function (key) {
-                print("Key: " + key + ", value: " + userData.environment[key]);
                 environment.put(key, userData.environment[key]);
             });
         }

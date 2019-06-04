@@ -109,7 +109,7 @@ WineShortcut.prototype.miniature = function (miniature) {
 
 /**
 * sets shortcut environment
-* @param {JSON} environment variables
+* @param {string} environment variables
 * @returns {WineShortcut} WineShortcut object
 */
 WineShortcut.prototype.environment = function (environment) {
@@ -140,8 +140,9 @@ WineShortcut.prototype.create = function () {
 
     var myEnv = {WINEDEBUG: "-all"};
     if (typeof this._environment !== 'undefined') {
-        Object.keys(this._environment).forEach(function(key){
-            myEnv[key] = this._environment[key];
+        var envJSON = JSON.parse(this._environment);
+        Object.keys(envJSON).forEach(function(key){
+            myEnv[key] = envJSON[key];
         });
     }
 
