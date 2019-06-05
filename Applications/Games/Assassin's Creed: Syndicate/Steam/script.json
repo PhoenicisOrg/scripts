@@ -1,0 +1,13 @@
+{
+    "scriptName"                 : "Steam",
+    "id"                         : "applications.games.assassins_creed_syndicate.steam",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "MACOSX"
+    ],
+    "free"          : false,
+    "requiresPatch" : false
+}
