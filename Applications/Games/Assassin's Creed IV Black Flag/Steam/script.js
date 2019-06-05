@@ -3,7 +3,7 @@ include("engines.wine.quick_script.steam_script");
 var installerImplementation = {
     run: function () {
         new SteamScript()
-            .name("Assassin’s Creed® IV Black Flag™")
+            .name("Assassin’s Creed IV Black Flag")
             .editor("Ubisoft Montreal")
             .author("Plata")
             .appId(242050)
