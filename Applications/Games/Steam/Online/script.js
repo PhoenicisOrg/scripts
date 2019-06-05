@@ -12,7 +12,7 @@ var installerImplementation = {
             .url("https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe")
             .checksum("4b1b85ec2499a4ce07c89609b256923a4fc479e5")
             .category("Games")
-            .wineVersion("4.8") // HOTFIX: https://github.com/PhoenicisOrg/scripts/issues/881
+            .wineVersion(LATEST_STAGING_VERSION)
             .wineDistribution("staging")
             .preInstall(function (wine/*, wizard*/) {
                wine.windowsVersion("winxp");
