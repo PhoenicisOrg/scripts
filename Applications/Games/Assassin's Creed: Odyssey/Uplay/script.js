@@ -3,7 +3,7 @@ include("engines.wine.quick_script.uplay_script");
 var installerImplementation = {
     run: function () {
         new UplayScript()
-            .name("Assassin's Creed")
+            .name("Assassin’s Creed Odyssey")
             .editor("Ubisoft, Gameloft, Ubisoft Montreal, Blue Byte, MORE")
             .applicationHomepage("https://www.ubisoft.com/en-us/game/assassins-creed")
             .author("KREYREN")

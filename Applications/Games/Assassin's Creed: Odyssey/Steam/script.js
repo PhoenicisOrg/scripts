@@ -4,7 +4,7 @@ include("engines.wine.verbs.uplay");
 var installerImplementation = {
     run: function () {
         new SteamScript()
-            .name("Assassin’s Creed® Brotherhood")
+            .name("Assassin’s Creed Odyssey")
             .editor("Ubisoft")
             .author("KREYREN")
             .appId(812140)
