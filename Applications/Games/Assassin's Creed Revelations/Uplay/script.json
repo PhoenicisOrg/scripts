@@ -1,0 +1,10 @@
+{
+    "scriptName"                 : "Uplay",
+    "id"                         : "applications.games.assassins_creed_revelations.uplay",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}

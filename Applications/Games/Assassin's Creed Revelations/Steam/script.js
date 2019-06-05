@@ -4,7 +4,7 @@ include("engines.wine.verbs.uplay");
 var installerImplementation = {
     run: function () {
         new SteamScript()
-            .name("Assassin's Creed® Revelations")
+            .name("Assassin's Creed Revelations")
             .editor("Ubisoft Montreal")
             .author("Plata")
             .appId(201870)
