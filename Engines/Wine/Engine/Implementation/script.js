@@ -389,44 +389,44 @@ var engineImplementation = {
         }
     },
     changeVersion: function (containerName) {
-    	var wizard = SetupWizard(InstallationType.ENGINES, "Change " + containerName + " container wine version" ,java.util.Optional.empty());
-    	this._wizard = wizard;
+        var wizard = SetupWizard(InstallationType.ENGINES, "Change " + containerName + " container wine version" ,java.util.Optional.empty());
+        this._wizard = wizard;
 		
-    	//this.kill();
-    	var workingContainerDirectory = this.getContainerDirectory(this.getWorkingContainer());
-    	var containerConfiguration = this._configFactory.open(workingContainerDirectory + "/phoenicis.cfg");
-    	var architecture = containerConfiguration.readValue("wineArchitecture", "x86");
-    	var operatingSystem = this._operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
-    	
-    	var wineJson = JSON.parse(this.getAvailableVersions());
-    	var distributions = new Array();
-    	var versions = new Array();
+        //this.kill();
+        var workingContainerDirectory = this.getContainerDirectory(this.getWorkingContainer());
+        var containerConfiguration = this._configFactory.open(workingContainerDirectory + "/phoenicis.cfg");
+        var architecture = containerConfiguration.readValue("wineArchitecture", "x86");
+        var operatingSystem = this._operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+
+        var wineJson = JSON.parse(this.getAvailableVersions());
+        var distributions = new Array();
+        var versions = new Array();
     	wineJson.forEach(function (subPart) {
-        	var parts = subPart.name.split("-");
-        	if(parts[2] == architecture) {
-            	distributions.push(parts[0]);
-            	versions.push(new Array()); 
-            	subPart.packages.forEach(function (winePackage) {
-        		versions[distributions.length-1].push(winePackage.version);
-            	});
-        	}
-    	});
+            var parts = subPart.name.split("-");
+            if(parts[2] == architecture) {
+                distributions.push(parts[0]);
+                versions.push(new Array()); 
+                subPart.packages.forEach(function (winePackage) {
+                    versions[distributions.length-1].push(winePackage.version);
+                });
+            }
+        });
     	
-    	var selectedDistribution = wizard.menu(tr("Please select the distribution of wine."), distributions);
-    	var selectedVersion = wizard.menu(tr("Please select the version of wine."), versions[distributions.indexOf(selectedDistribution.text)]);
-    	subCategory = selectedDistribution.text + "-" + operatingSystem + "-" + architecture;
+        var selectedDistribution = wizard.menu(tr("Please select the distribution of wine."), distributions);
+        var selectedVersion = wizard.menu(tr("Please select the version of wine."), versions[distributions.indexOf(selectedDistribution.text)]);
+        subCategory = selectedDistribution.text + "-" + operatingSystem + "-" + architecture;
     	
-    	this.install(subCategory, selectedVersion.text);
+        this.install(subCategory, selectedVersion.text);
 	
-    	var containerNameCleaned = containerName.replace(this._containerRegex, '');
-    	var containerDirectory = this._winePrefixesDirectory + "/" + containerNameCleaned + "/";
+        var containerNameCleaned = containerName.replace(this._containerRegex, '');
+        var containerDirectory = this._winePrefixesDirectory + "/" + containerNameCleaned + "/";
 	
-    	var containerConfiguration = this._configFactory.open(containerDirectory + "/phoenicis.cfg");
+        var containerConfiguration = this._configFactory.open(containerDirectory + "/phoenicis.cfg");
 	
-    	containerConfiguration.writeValue("wineVersion", selectedVersion.text);
-    	containerConfiguration.writeValue("wineDistribution", selectedDistribution.text);
-    	containerConfiguration.writeValue("wineArchitecture", architecture);
-    	wizard.close();
+        containerConfiguration.writeValue("wineVersion", selectedVersion.text);
+        containerConfiguration.writeValue("wineDistribution", selectedDistribution.text);
+        containerConfiguration.writeValue("wineArchitecture", architecture);
+        wizard.close();
     },
     getWizard: function () {
         return this._wizard;
