@@ -15,10 +15,10 @@ var installerImplementation = {
             .wineVersion(LATEST_STAGING_VERSION)
             .wineDistribution("staging")
             .preInstall(function (wine/*, wizard*/) {
-               wine.setOsForApplication().set("steam.exe", "winxp").do();
-               wine.setOsForApplication().set("steamwebhelper.exe", "winxp").do();
-               wine.corefonts();
-             })
+                wine.setOsForApplication().set("steam.exe", "winxp").do();
+                wine.setOsForApplication().set("steamwebhelper.exe", "winxp").do();
+                wine.corefonts();
+            })
             .executable("Steam.exe", ["-no-cef-sandbox"])
             .go();
     }
