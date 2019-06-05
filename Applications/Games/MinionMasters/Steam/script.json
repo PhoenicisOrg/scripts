@@ -1,0 +1,14 @@
+{
+    "scriptName"                 : "Steam",
+    "id"                         : "applications.games.minionmasters.steam",
+    "compatibleOperatingSystems" : [
+        "LINUX",
+        "MACOSX"
+    ],
+    "testingOperatingSystems" : [
+        "LINUX",
+        "MACOSX"
+    ],
+    "free"          : true,
+    "requiresPatch" : false
+}
