@@ -12,7 +12,7 @@ var installerImplementation = {
             .author("KREYREN")
             .category("Games")
             .wineDistribution("staging")
-            .wineVersion(LATEST_STAGING_VERSION)
+            .wineVersion("4.8") // HOTFIX: https://github.com/PhoenicisOrg/scripts/issues/881#issuecomment-499192059
             .preInstall(function (wine/*, wizard*/) {
                 wine.DXV9(); // Experimental: Hoping to improve performance
                 wine.UseTakeFocus("N"); // Mandatory to avoid focus issues
