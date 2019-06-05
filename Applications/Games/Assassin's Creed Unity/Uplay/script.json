@@ -1,0 +1,12 @@
+{
+    "scriptName"                 : "Steam",
+    "id"                         : "applications.games.assassins_creed_unity.steam",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "LINUX"
+    ],
+    "free"          : false,
+    "requiresPatch" : false
+}
