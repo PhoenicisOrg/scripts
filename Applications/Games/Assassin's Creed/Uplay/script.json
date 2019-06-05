@@ -1,0 +1,14 @@
+{
+    "scriptName"                 : "Uplay",
+    "id"                         : "applications.games.assassins_creed.uplay",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "free"          : false,
+    "requiresPatch" : false
+}
