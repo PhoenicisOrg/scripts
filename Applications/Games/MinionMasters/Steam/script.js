@@ -1,5 +1,6 @@
 include("engines.wine.quick_script.steam_script");
 include("engines.wine.plugins.usetakefocus")
+include("engines.wine.verbs.corefonts");
 
 
 var installerImplementation = {
@@ -14,6 +15,7 @@ var installerImplementation = {
             .wineVersion("4.8") // HOTFIX: https://github.com/PhoenicisOrg/scripts/issues/881#issuecomment-499192059
             .preInstall(function (wine/*, wizard*/) {
                 wine.UseTakeFocus("N"); // Mandatory to avoid focus issues
+                wine.corefonts(); // HOTFIX: https://github.com/PhoenicisOrg/scripts/issues/961
             })
             .go();
     }

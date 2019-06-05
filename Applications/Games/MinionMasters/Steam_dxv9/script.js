@@ -1,6 +1,7 @@
 include("engines.wine.quick_script.steam_script");
-include("engines.wine.verbs.dxv9");
 include("engines.wine.plugins.usetakefocus")
+include("engines.wine.verbs.dxv9");
+include("engines.wine.verbs.corefonts");
 
 
 var installerImplementation = {
@@ -16,6 +17,7 @@ var installerImplementation = {
             .preInstall(function (wine/*, wizard*/) {
                 wine.DXV9(); // Experimental: Hoping to improve performance
                 wine.UseTakeFocus("N"); // Mandatory to avoid focus issues
+                wine.corefonts(); // HOTFIX: https://github.com/PhoenicisOrg/scripts/issues/961
             })
             .go();
     }
