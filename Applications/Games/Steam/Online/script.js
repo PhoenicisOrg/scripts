@@ -15,8 +15,8 @@ var installerImplementation = {
             .wineVersion(LATEST_STAGING_VERSION)
             .wineDistribution("staging")
             .preInstall(function (wine/*, wizard*/) {
-               wine.windowsVersion("winxp");
-               // require winxp for steamwebhelper.exe for browser to work
+               wine.setOsForApplication().set("steam.exe", "winxp").do();
+               wine.setOsForApplication().set("steamwebhelper.exe", "winxp").do();
                wine.corefonts();
              })
             .executable("Steam.exe", ["-no-cef-sandbox"])
