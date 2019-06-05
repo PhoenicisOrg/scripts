@@ -1,0 +1,13 @@
+{
+    "scriptName"                 : "Uplay",
+    "id"                         : "applications.games.assassins_creed_brotherhood.uplay",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "MACOSX"
+    ],
+    "free"          : false,
+    "requiresPatch" : false
+}
