@@ -109,7 +109,7 @@ var engineImplementation = {
             mkdir(this._wineEnginesDirectory + "/runtime");
             runtimeJsonFile = new Downloader()
                 .wizard(this._wizard)
-                .message(tr("Downloading runtime json"))
+                .message(tr("Downloading runtime json..."))
                 .url("https://phoenicis.playonlinux.com/index.php/runtime?os=linux")
                 .to(runtimeJsonPath)
                 .get();
