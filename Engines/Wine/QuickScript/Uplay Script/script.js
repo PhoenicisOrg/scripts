@@ -54,7 +54,7 @@ UplayScript.prototype.go = function () {
         .wizard(setupWizard)
         .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
         .luna();
-    
+
     wine.corefonts();
 
     setupWizard.message(tr("Please ensure that winbind is installed before you continue."));
