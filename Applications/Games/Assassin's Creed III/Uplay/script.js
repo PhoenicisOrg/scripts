@@ -13,6 +13,7 @@ var installerImplementation = {
             .appId(54)
             .wineDistribution("staging")
             .wineVersion(LATEST_STAGING_VERSION)
+            .wineArchitecture("amd64")
             .preInstall(function (wine/*, wizard*/) {
                 wine.DXVK();
                 wine.corefonts();
