@@ -5,6 +5,7 @@ include("engines.wine.plugins.override_dll");
 include("utils.functions.filesystem.extract");
 include("utils.functions.filesystem.files");
 include("engines.wine.verbs.luna");
+include("engines.wine.verbs.corefonts");
 
 
 function SteamScript() {
