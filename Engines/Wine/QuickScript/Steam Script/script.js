@@ -6,6 +6,7 @@ include("utils.functions.filesystem.extract");
 include("utils.functions.filesystem.files");
 include("engines.wine.verbs.luna");
 include("engines.wine.verbs.corefonts");
+include("engines.wine.plugins.windows_version");
 
 
 function SteamScript() {
