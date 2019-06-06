@@ -396,7 +396,7 @@ var engineImplementation = {
         var containerNameCleaned = containerName.replace(this._containerRegex, '');
         var containerDirectory = this._winePrefixesDirectory + "/" + containerNameCleaned + "/";
         var containerConfiguration = this._configFactory.open(containerDirectory + "/phoenicis.cfg");
-	    
+
         var architecture = containerConfiguration.readValue("wineArchitecture", "x86");
         var operatingSystem = this._operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
 
