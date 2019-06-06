@@ -1,0 +1,10 @@
+{
+    "scriptName"                 : "Uplay (Proton+DXVK)",
+    "id"                         : "applications.games.assassins_creed_3.uplay_proton_dxvk",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}

@@ -11,7 +11,8 @@ var installerImplementation = {
             .applicationHomepage("https://www.ubisoft.com/en-us/game/assassins-creed")
             .author("KREYREN")
             .appId(54)
-            .wineDistribution("proton")
+            .wineDistribution("staging")
+            .wineVersion(LATEST_STAGING_VERSION)
             .preInstall(function (wine/*, wizard*/) {
                 wine.DXVK();
                 wine.corefonts();
