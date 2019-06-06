@@ -391,7 +391,7 @@ var engineImplementation = {
     changeVersion: function (containerName) {
         var wizard = SetupWizard(InstallationType.ENGINES, "Change " + containerName + " container wine version", java.util.Optional.empty());
         this._wizard = wizard;
-		
+
         //this.kill();
         var containerNameCleaned = containerName.replace(this._containerRegex, '');
         var containerDirectory = this._winePrefixesDirectory + "/" + containerNameCleaned + "/";
