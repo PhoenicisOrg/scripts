@@ -128,6 +128,10 @@ SteamScript.prototype.go = function () {
     wine.setOsForApplication().set("steam.exe", "winxp").do();
     wine.setOsForApplication().set("steamwebhelper.exe", "winxp").do();
 
+    // Fix for Uplay games that are executed on steam
+    wine.setOsForApplication().set("upc.exe", "winvista").do();
+    wine.setOsForApplication().set("UbisoftGameLauncher.exe", "winvista").do();
+
     // ensure that Steam is running (user might have unchecked "run Steam after installation finished")
     wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", ["steam://nav/games"], false);
 
