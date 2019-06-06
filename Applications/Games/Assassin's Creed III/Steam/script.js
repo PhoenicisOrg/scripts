@@ -4,7 +4,7 @@ include("engines.wine.verbs.dxvk");
 var installerImplementation = {
     run: function () {
         new SteamScript()
-            .name("Assassin’s Creed® III")
+            .name("Assassin’s Creed III")
             .editor("Ubisoft Montreal")
             .author("Plata")
             .appId(208480)
