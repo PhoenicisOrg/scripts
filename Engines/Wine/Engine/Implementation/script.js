@@ -415,7 +415,7 @@ var engineImplementation = {
         });
 
         var selectedDistribution = wizard.menu(tr("Please select the distribution of wine."), distributions);
-        var selectedVersion = wizard.menu(tr("Please select the version of wine."), versions[distributions.indexOf(selectedDistribution.text)]);
+        var selectedVersion = wizard.menu(tr("Please select the version of wine."), versions[distributions.indexOf(selectedDistribution.text)].sort());
         var subCategory = selectedDistribution.text + "-" + operatingSystem + "-" + architecture;
 
         this.install(subCategory, selectedVersion.text);
