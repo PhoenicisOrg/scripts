@@ -3,6 +3,8 @@ include("engines.wine.verbs.dxvk");
 include("engines.wine.verbs.corefonts");
 include("engines.wine.verbs.vcrun2008");
 
+// STATUS: crash on startup
+
 var installerImplementation = {
     run: function () {
         new UplayScript()
