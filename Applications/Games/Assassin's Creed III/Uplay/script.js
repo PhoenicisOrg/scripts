@@ -8,7 +8,7 @@ var installerImplementation = {
             .editor("Ubisoft, Gameloft, Ubisoft Montreal, Blue Byte, MORE")
             .applicationHomepage("https://www.ubisoft.com/en-us/game/assassins-creed")
             .author("KREYREN")
-            .appId(273)
+            .appId(54)
             .preInstall(function (wine/*, wizard*/) {
                 wine.DXVK();
             })
