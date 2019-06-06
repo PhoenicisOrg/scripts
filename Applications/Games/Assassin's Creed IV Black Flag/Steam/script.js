@@ -1,4 +1,5 @@
 include("engines.wine.quick_script.steam_script");
+include("engines.wine.verbs.dxvk");
 
 var installerImplementation = {
     run: function () {
@@ -12,6 +13,7 @@ var installerImplementation = {
             .postInstall(function (wine/*, wizard*/) {
                 // the automatically installed Uplay version does not update properly
                 wine.uplay();
+                wine.DXVK();
             })
             .go();
     }
