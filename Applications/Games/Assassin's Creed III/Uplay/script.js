@@ -1,13 +1,17 @@
 include("engines.wine.quick_script.uplay_script");
+include("engines.wine.verbs.dxvk");
 
 var installerImplementation = {
     run: function () {
         new UplayScript()
-            .name("Assassin's Creed III")
+            .name("Assassin's Creed")
             .editor("Ubisoft, Gameloft, Ubisoft Montreal, Blue Byte, MORE")
             .applicationHomepage("https://www.ubisoft.com/en-us/game/assassins-creed")
             .author("KREYREN")
-            .appId(54)
+            .appId(273)
+            .preInstall(function (wine/*, wizard*/) {
+                wine.DXVK();
+            })
             .go();
 };
 

@@ -1,4 +1,5 @@
 include("engines.wine.quick_script.steam_script");
+include("engines.wine.verbs.dxvk");
 
 var installerImplementation = {
     run: function () {
@@ -9,6 +10,9 @@ var installerImplementation = {
             .appId(208480)
             .wineVersion(LATEST_STAGING_VERSION)
             .wineDistribution("staging")
+            .preInstall(function (wine/*, wizard*/) {
+                wine.DXVK();
+            })
             .go();
     }
 };
