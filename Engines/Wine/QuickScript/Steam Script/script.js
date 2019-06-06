@@ -116,10 +116,15 @@ SteamScript.prototype.go = function () {
         .wizard(setupWizard)
         .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
         .luna();
+        .corefonts();
 
     // Steam must be started once such that config.vdf is created (see fixCertificateIssue())
     setupWizard.wait(tr("Please follow the steps of the Steam setup. Then, wait until Steam is updated, log in and finally close Steam completely so the installation of \"{0}\" can continue.", this._name));
     wine.run(tempFile, [], null, false, true);
+
+    // Set windows environment for executable that needs it
+    wine.setOsForApplication().set("steam.exe", "winxp").do();
+    wine.setOsForApplication().set("steamwebhelper.exe", "winxp").do();
 
     // ensure that Steam is running (user might have unchecked "run Steam after installation finished")
     wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", ["steam://nav/games"], false);
