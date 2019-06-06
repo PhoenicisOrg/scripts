@@ -4,6 +4,7 @@ include("engines.wine.engine.object");
 include("utils.functions.filesystem.extract");
 include("utils.functions.filesystem.files");
 include("engines.wine.verbs.luna");
+include("engines.wine.verbs.corefonts");
 include("engines.wine.plugins.windows_version");
 
 function UplayScript() {
@@ -54,11 +55,14 @@ UplayScript.prototype.go = function () {
         .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
         .luna();
 
+    wine.corefonts();
+
     setupWizard.message(tr("Please ensure that winbind is installed before you continue."));
     setupWizard.wait(tr("Please follow the steps of the Uplay setup.\n\nUncheck \"Run Uplay\" or close Uplay completely after the setup so that the installation of \"{0}\" can continue.", this._name));
     wine.run(tempFile, [], null, false, true);
 
-    wine.setOsForApplication().set("upc.exe", "winxp").do();
+    wine.setOsForApplication().set("upc.exe", "winvista").do();
+    wine.setOsForApplication().set("UbisoftGameLauncher.exe", "winvista").do();
 
     // Uplay installation has finished
     setupWizard.wait(tr("Please wait..."));
