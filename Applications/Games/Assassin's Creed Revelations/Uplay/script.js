@@ -1,4 +1,5 @@
 include("engines.wine.quick_script.uplay_script");
+include("engines.wine.verbs.dxvk");
 
 var installerImplementation = {
     run: function () {
@@ -8,6 +9,10 @@ var installerImplementation = {
             .applicationHomepage("https://www.ubisoft.com/en-us/game/assassins-creed")
             .author("KREYREN")
             .appId(82)
+            .postInstall(function (wine/*, wizard*/) {
+                wine.uplay();
+                wine.DXVK();
+            })
             .go();
 };
 
