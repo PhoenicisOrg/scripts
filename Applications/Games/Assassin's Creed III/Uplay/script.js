@@ -13,6 +13,7 @@ var installerImplementation = {
                 wine.DXVK();
             })
             .go();
+    }
 };
 
 /* exported Installer */
