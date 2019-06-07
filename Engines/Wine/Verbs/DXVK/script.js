@@ -102,7 +102,7 @@ var verbImplementation = {
         var selectedVersion = wizard.menu(tr("Please select the version."), versions, latestVersion);
         wine.wizard(wizard);
         // install selected version
-        wine.DXVK(selectedVersion);
+        wine.DXVK(selectedVersion.text);
         wizard.close();
     }
 };
