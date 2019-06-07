@@ -78,11 +78,21 @@ QuickScript.prototype.executable = function (executable, args) {
 
 /**
  * set environment
-* @param {string} environment variables
-* @returns {QuickScript} QuickScript object
+ * @param {string} environment variables
+ * @returns {QuickScript} QuickScript object
  */
 QuickScript.prototype.environment = function (environment) {
     this._environment = environment;
+    return this;
+}
+
+/**
+ * set trust level
+ * @param {string} trust level
+ * @returns {QuickScript} QuickScript object
+ */
+QuickScript.prototype.trustLevel = function (trustLevel) {
+    this._trustLevel = trustLevel;
     return this;
 }
 
@@ -135,6 +145,7 @@ QuickScript.prototype._createShortcut = function (prefix) {
         .prefix(prefix)
         .search(this._executable)
         .environment(this._environment)
+        .trustLevel(this._trustLevel)
         .arguments(this._executableArgs);
 
     if (this.miniature().isPresent()) {

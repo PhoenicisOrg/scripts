@@ -20,6 +20,11 @@ If you wish to add environment variables to the execution of the program (not th
     .environment('{ "var1": "value1", "var2": "value2"}')
 ```
 
+If you wish to change the trust level (if the application compalains about admin rights) just add the following before the `.go();`
+```javascript
+    .trustLevel("0x20000")
+```
+
 ### SteamScript
 A basic script looks like:
 

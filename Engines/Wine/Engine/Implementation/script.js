@@ -316,6 +316,12 @@ var engineImplementation = {
             return this.run("start", batArgs, workingDir, captureOutput, wait, userData);
         }
 
+        if (userData["trustLevel"] == "0x20000" && distribution == "staging") {
+            var runasArgs = org.apache.commons.lang.ArrayUtils.addAll(["/trustlevel:0x20000", executable], args);
+            userDate["trustLevel"] = "0"; //avoid infinite loop
+            return this.run("runas", runasArgs, workingDir, captureOutput, wait, userData);
+        }
+
         // do not run 64bit executable in 32bit prefix
         if (extensionFile == "exe") {
             var FileClass = Java.type('java.io.File');

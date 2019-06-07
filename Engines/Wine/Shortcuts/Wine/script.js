@@ -117,6 +117,16 @@ WineShortcut.prototype.environment = function (environment) {
     return this;
 }
 
+/**
+* sets trust level
+* @param {string} environment variables
+* @returns {WineShortcut} WineShortcut object
+*/
+WineShortcut.prototype.trustLevel = function (trustLevel) {
+    this._trustLevel = trustLevel;
+    return this;
+}
+
 
 /**
 * creates shortcut
@@ -146,6 +156,14 @@ WineShortcut.prototype.create = function () {
         });
     }
 
+    var trustLevel;
+    if (typeof this._trustLevel !== 'undefined') {
+        trustLevel = this._trustLevel;
+    }
+    else {
+        trustLevel = "0"; //dummy value
+    }
+
     var ShortcutDTOBuilderClass = Java.type('org.phoenicis.library.dto.ShortcutDTO.Builder');
     var builder = new ShortcutDTOBuilderClass()
         .withId(this._name)
@@ -153,6 +171,7 @@ WineShortcut.prototype.create = function () {
         .withScript(JSON.stringify({
             type: "WINE",
             environment: myEnv,
+            trustLevel: trustLevel,
             winePrefix: this._prefix,
             arguments: this._arguments,
             workingDirectory:executables[0].getParentFile().getAbsolutePath(),

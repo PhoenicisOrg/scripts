@@ -27,6 +27,7 @@ var _WineShortcutReader = function (shortcut) {
 
         var userData = {};
         userData["environment"] = shortcutContent.environment;
+        userData["trustLevel"] = shortcutContent.trustLevel;
         new Wine()
             .prefix(shortcutContent.winePrefix)
             .run(shortcutContent.executable, args, shortcutContent.workingDirectory, false, false, userData)
