@@ -108,7 +108,7 @@ var verbImplementation = {
         var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.28.1");
         wine.wizard(wizard);
         // install selected version
-        wine.VK9(selectedVersion);
+        wine.VK9(selectedVersion.text);
         wizard.close();
     }
 };
