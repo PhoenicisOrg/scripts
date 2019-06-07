@@ -392,7 +392,6 @@ var engineImplementation = {
         var wizard = SetupWizard(InstallationType.ENGINES, "Change " + containerName + " container wine version", java.util.Optional.empty());
         this._wizard = wizard;
 
-        //this.kill();
         var containerNameCleaned = containerName.replace(this._containerRegex, '');
         var containerDirectory = this._winePrefixesDirectory + "/" + containerNameCleaned + "/";
         var containerConfiguration = this._configFactory.open(containerDirectory + "/phoenicis.cfg");
