@@ -318,7 +318,7 @@ var engineImplementation = {
 
         if (userData["trustLevel"] == "0x20000" && distribution == "staging") {
             var runasArgs = org.apache.commons.lang.ArrayUtils.addAll(["/trustlevel:0x20000", executable], args);
-            userDate["trustLevel"] = "0"; //avoid infinite loop
+            userData["trustLevel"] = "0"; //avoid infinite loop
             return this.run("runas", runasArgs, workingDir, captureOutput, wait, userData);
         }
 
