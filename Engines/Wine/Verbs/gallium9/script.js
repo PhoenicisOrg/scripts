@@ -63,7 +63,7 @@ var verbImplementation = {
         var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.4");
         wine.wizard(wizard);
         // install selected version
-        wine.gallium9(selectedVersion);
+        wine.gallium9(selectedVersion.text);
         wizard.close();
     }
 };
