@@ -88,7 +88,7 @@ QuickScript.prototype.environment = function (environment) {
 
 /**
  * set trust level
- * @param {string} trust level
+ * @param {string} trustlevel
  * @returns {QuickScript} QuickScript object
  */
 QuickScript.prototype.trustLevel = function (trustLevel) {
