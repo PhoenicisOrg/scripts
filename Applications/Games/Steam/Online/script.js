@@ -1,5 +1,6 @@
 include("engines.wine.quick_script.online_installer_script");
 include("engines.wine.verbs.corefonts");
+include("engines.wine.verbs.dxvk");
 include("engines.wine.plugins.windows_version");
 
 var installerImplementation = {
@@ -18,6 +19,7 @@ var installerImplementation = {
                 wine.setOsForApplication().set("steam.exe", "winxp").do();
                 wine.setOsForApplication().set("steamwebhelper.exe", "winxp").do();
                 wine.corefonts();
+                wine.DXVK();
             })
             .executable("Steam.exe", ["-no-cef-sandbox"])
             .go();

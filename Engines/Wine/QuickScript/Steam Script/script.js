@@ -6,6 +6,7 @@ include("utils.functions.filesystem.extract");
 include("utils.functions.filesystem.files");
 include("engines.wine.verbs.luna");
 include("engines.wine.verbs.corefonts");
+include("engines.wine.verbs.dxvk");
 include("engines.wine.plugins.windows_version");
 
 
@@ -119,6 +120,7 @@ SteamScript.prototype.go = function () {
         .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
         .luna();
     wine.corefonts();
+    wine.DXVK(); // Required for big picture
 
     // Steam must be started once such that config.vdf is created (see fixCertificateIssue())
     setupWizard.wait(tr("Please follow the steps of the Steam setup. Then, wait until Steam is updated, log in and finally close Steam completely so the installation of \"{0}\" can continue.", this._name));
