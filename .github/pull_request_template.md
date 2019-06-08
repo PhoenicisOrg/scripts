@@ -1,8 +1,15 @@
-### Before the PR
-[ ] Script tested as a regular phoenicis user and working (if you have a problem -> draft and ask for help
-[ ] json-align and eslint run accorded to the .
+### Description
+
+### What works
+
+### What was not tested
+
+### Test
+Operating system (and linux kernel version): 
+Hardware (GPU/CPU)
 
 ### Ready for review
-Maintainers will only review your PR if codacy and travis runs perfectly (advise: first run eslint and json-align according to the doc). You can however ping them if you think there is a problem with those tools (use draft for this).
+[ ] Script tested as a regular phoenicis user and working (if you have a problem -> draft and ask for help)
+[ ] json-align and eslint run accorded to the .
 
-### PR content
+Codacy and travis must run perfectly for the Pr to be reviewed. You can however ping them if you think there is a problem with those tools (use draft for this).
