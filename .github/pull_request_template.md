@@ -10,4 +10,4 @@ Hardware (GPU/CPU):
 
 ### Ready for review
 [ ] Script tested as a regular phoenicis user and working (if you have a problem -> draft and ask for help)
-[ ] json-align and eslint run accorded to the README. You have checked why codacy and travis.
+[ ] json-align and eslint run accorded to the [documentation](https://phoenicisorg.github.io/scripts/General/tools/). You have checked why codacy and travis.
