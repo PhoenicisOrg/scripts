@@ -6,7 +6,7 @@
 
 ### Test
 Operating system (and linux kernel version): 
-Hardware (GPU/CPU)
+Hardware (GPU/CPU):
 
 ### Ready for review
 [ ] Script tested as a regular phoenicis user and working (if you have a problem -> draft and ask for help)
