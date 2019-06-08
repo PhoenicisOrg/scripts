@@ -10,7 +10,7 @@ include("utils.functions.filesystem.files");
 * @returns {Wine} Wine object
 */
 Wine.prototype.faudio = function (faudioVersion) {
-    if(typeof faudioVersion !== 'string') 
+    if (typeof faudioVersion !== 'string')
         faudioVersion = "19.05";
 
     var setupFile = new Resource()
