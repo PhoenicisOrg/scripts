@@ -10,8 +10,6 @@ var installerImplementation = {
             .editor("Ludeon Studios")
             .author("Zemogiter")
             .applicationHomepage("https://rimworldgame.com/")
-            .wineDistribution("upstream")
-            .wineVersion(LATEST_STABLE_VERSION)
             .wineArchitecture("amd64")
             .appId(294100)
             .preInstall(function (wine) {
