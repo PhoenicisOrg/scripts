@@ -1,8 +1,8 @@
-include(["engines", "wine", "quick_script", "quick_script"]);
-include(["engines", "wine", "engine", "object"]);
-include(["utils", "functions", "filesystem", "extract"]);
-include(["utils", "functions", "filesystem", "files"]);
-include(["engines", "wine", "verbs", "luna"]);
+include("engines.wine.quick_script.quick_script");
+include("engines.wine.engine.object");
+include("utils.functions.filesystem.extract");
+include("utils.functions.filesystem.files");
+include("engines.wine.verbs.luna");
 
 
 function InstallerScript() {
@@ -37,9 +37,8 @@ InstallerScript.prototype.go = function () {
         var shownArchitectures = ["x86 (recommended)", "amd64"];
         var selectedArchitecture = setupWizard.menu(tr("Please select the wine architecture."), shownArchitectures, "x86 (recommended)");
         this._wineArchitecture = architectures[selectedArchitecture.index];
-        wine.architecture(this._wineArchitecture); // do this here to show correct values for distribution
 
-        var distributions = wine.availableDistributions();
+        var distributions = wine.availableDistributions(this._wineArchitecture);
         var shownDistributions = [];
         for (var distributionIdx in distributions) {
             if (distributions[distributionIdx] == "upstream") {
@@ -51,9 +50,10 @@ InstallerScript.prototype.go = function () {
         }
         var selectedDistribution = setupWizard.menu(tr("Please select the wine distribution."), shownDistributions, "upstream (recommended)");
         this._wineDistribution = distributions[selectedDistribution.index];
-        wine.distribution(this._wineDistribution); // do this here to show correct values for version
 
-        var versions = wine.availableVersions();
+        var operatingSystemFetcher = Bean("operatingSystemFetcher");
+        var operatingSystem = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+        var versions = wine.availableVersions(this._wineDistribution + "-" + operatingSystem + "-" + this._wineArchitecture);
         var shownVersions = [];
         for (var versionIdx in versions) {
             if (versions[versionIdx] == LATEST_STABLE_VERSION) {
@@ -74,7 +74,7 @@ InstallerScript.prototype.go = function () {
     this._preInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in preInstall)
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     wine.run(installationCommand.command, installationCommand.args, false, true);
 
@@ -88,7 +88,7 @@ InstallerScript.prototype.go = function () {
     this._postInstall(wine, setupWizard);
 
     // back to generic wait (might have been changed in postInstall)
-    setupWizard.wait(tr("Please wait ..."));
+    setupWizard.wait(tr("Please wait..."));
 
     setupWizard.close();
 };

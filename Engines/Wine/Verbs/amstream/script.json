@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "amstream",
+    "id"                         : "engines.wine.verbs.amstream",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

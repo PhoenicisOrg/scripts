@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online Installer Script",
-    "id"                         : "online_installer_script",
+    "id"                         : "engines.wine.quick_script.online_installer_script",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

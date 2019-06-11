@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam (Demo)",
-    "id"                         : "steam_demo",
+    "id"                         : "applications.games.medieval_2_total_war.steam_demo",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

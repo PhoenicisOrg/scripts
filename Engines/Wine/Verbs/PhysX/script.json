@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "PhysX",
-    "id"                         : "physx",
+    "id"                         : "engines.wine.verbs.physx",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

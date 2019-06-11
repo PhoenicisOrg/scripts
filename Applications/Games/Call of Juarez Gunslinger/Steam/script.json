@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.call_of_juarez_gunslinger.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

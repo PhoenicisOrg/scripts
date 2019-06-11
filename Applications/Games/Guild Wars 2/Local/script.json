@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local",
-    "id"                         : "local",
+    "id"                         : "applications.games.guild_wars_2.local",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

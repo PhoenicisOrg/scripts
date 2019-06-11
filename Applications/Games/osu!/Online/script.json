@@ -1,0 +1,10 @@
+{
+    "scriptName"                 : "Online",
+    "id"                         : "applications.games.osu.online",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

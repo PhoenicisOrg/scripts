@@ -1,10 +1,12 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.assassins_creed_3.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],
-    "testingOperatingSystems" : [],
-    "free"                    : false,
-    "requiresPatch"           : false
+    "testingOperatingSystems" : [
+        "LINUX"
+    ],
+    "free"          : false,
+    "requiresPatch" : false
 }

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "DXVK",
-    "id"                         : "dxvk",
+    "id"                         : "engines.wine.verbs.dxvk",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

@@ -1,5 +1,5 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "regedit"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.regedit");
 
 /**
  * default windows version
@@ -15,18 +15,27 @@ Wine.prototype.windowsVersion = function (version, servicePack) {
     }
 
     // set
-    var regeditFileContent =
-        "REGEDIT4\n" +
-        "\n" +
-        "[HKEY_CURRENT_USER\\Software\\Wine]\n" +
-        "\"Version\"=\"" + version + "\"\n";
+    var regeditFileContent;
+    if (version == null) {
+        regeditFileContent =
+            "REGEDIT4\n" +
+            "\n" +
+            "[HKEY_CURRENT_USER\\Software\\Wine]\n" +
+            "\"Version\"=-\n";
+    } else {
+        regeditFileContent =
+            "REGEDIT4\n" +
+            "\n" +
+            "[HKEY_CURRENT_USER\\Software\\Wine]\n" +
+            "\"Version\"=\"" + version + "\"\n";
 
-    if (servicePack) {
-        var servicePackNumber = servicePack.replace("sp", "");
-        that._regeditFileContent += "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion]";
-        that._regeditFileContent += "\"CSDVersion\"=\"Service Pack "+ servicePackNumber +"\"";
-        that._regeditFileContent += "[HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Windows]";
-        that._regeditFileContent += "\"CSDVersion\"=dword:00000"+servicePackNumber+"00";
+        if (servicePack) {
+            var servicePackNumber = servicePack.replace("sp", "");
+            regeditFileContent += "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion]\n";
+            regeditFileContent += "\"CSDVersion\"=\"Service Pack " + servicePackNumber + "\"\n";
+            regeditFileContent += "[HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Windows]\n";
+            regeditFileContent += "\"CSDVersion\"=dword:00000" + servicePackNumber + "00\n";
+        }
     }
 
     this.regedit().patch(regeditFileContent);
@@ -51,7 +60,7 @@ var SetOsForApplication = function () {
         return that;
     };
 
-    that.do =  function () {
+    that.do = function () {
         that._wine.regedit().patch(that._regeditFileContent);
         return that._wine;
     }

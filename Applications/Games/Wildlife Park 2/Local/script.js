@@ -1,6 +1,6 @@
-include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["engines", "wine", "plugins", "virtual_desktop"]);
-include(["engines", "wine", "verbs", "quartz"]);
+include("engines.wine.quick_script.local_installer_script");
+include("engines.wine.plugins.virtual_desktop");
+include("engines.wine.verbs.quartz");
 
 var installerImplementation = {
     run: function () {

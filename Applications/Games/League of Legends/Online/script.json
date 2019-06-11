@@ -1,11 +1,14 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "online",
+    "id"                         : "applications.games.league_of_legends.online",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
     ],
-    "testingOperatingSystems" : [],
-    "free"                    : true,
-    "requiresPatch"           : false
+    "testingOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "free"          : true,
+    "requiresPatch" : false
 }

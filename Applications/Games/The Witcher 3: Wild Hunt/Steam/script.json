@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.the_witcher_3_wild_hunt.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

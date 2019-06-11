@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online (Legacy)",
-    "id"                         : "online_legacy",
+    "id"                         : "applications.games.origin.online_legacy",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

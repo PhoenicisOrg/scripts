@@ -1,0 +1,10 @@
+{
+    "scriptName"                 : "Retina",
+    "id"                         : "engines.wine.settings.retina",
+    "compatibleOperatingSystems" : [
+        "MACOSX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

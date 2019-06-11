@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "gdiplus",
+    "id"                         : "engines.wine.verbs.gdiplus",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

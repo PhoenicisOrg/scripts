@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Configure Wine",
-    "id"                         : "configure_wine",
+    "id"                         : "engines.wine.tools.configure_wine",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

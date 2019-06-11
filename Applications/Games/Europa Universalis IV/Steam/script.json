@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.europa_universalis_4.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

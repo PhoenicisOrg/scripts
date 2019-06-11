@@ -1,7 +1,7 @@
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "override_dll"]);
-include(["utils", "functions", "net", "resource"]);
-include(["utils", "functions", "filesystem", "files"]);
+include("engines.wine.engine.object");
+include("engines.wine.plugins.override_dll");
+include("utils.functions.net.resource");
+include("utils.functions.filesystem.files");
 
 /**
 * Verb to install secur32
@@ -50,3 +50,21 @@ Wine.prototype.secur32 = function () {
 
     return this;
 }
+
+/**
+ * Verb to install secur32
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "secur32", java.util.Optional.empty());
+        wine.wizard(wizard);
+        wine.secur32();
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+

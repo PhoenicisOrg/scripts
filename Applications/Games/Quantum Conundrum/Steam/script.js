@@ -1,5 +1,5 @@
-include(["engines", "wine", "quick_script", "steam_script"]);
-include(["engines", "wine", "verbs", "vcrun2008"]);
+include("engines.wine.quick_script.steam_script");
+include("engines.wine.verbs.vcrun2008");
 
 var installerImplementation = {
     run: function () {

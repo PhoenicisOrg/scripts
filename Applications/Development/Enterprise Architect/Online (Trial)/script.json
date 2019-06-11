@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Online (Trial)",
+    "id"                         : "applications.development.enterprise_architect.online_trial",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

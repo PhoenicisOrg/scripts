@@ -1,8 +1,8 @@
-include(["engines", "wine", "quick_script", "local_installer_script"]);
-include(["engines", "wine", "engine", "object"]);
-include(["engines", "wine", "plugins", "csmt"]);
-include(["engines", "wine", "plugins", "windows_version"]);
-include(["engines", "wine", "verbs", "d3dx9"]);
+include("engines.wine.quick_script.local_installer_script");
+include("engines.wine.engine.object");
+include("engines.wine.plugins.csmt");
+include("engines.wine.plugins.windows_version");
+include("engines.wine.verbs.d3dx9");
 
 var installerImplementation = {
     run: function () {

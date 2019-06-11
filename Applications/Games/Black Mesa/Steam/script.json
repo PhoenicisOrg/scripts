@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.black_mesa.steam",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

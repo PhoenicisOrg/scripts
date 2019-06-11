@@ -1,7 +1,6 @@
-include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["engines", "wine", "plugins", "windows_version"]);
-include(["engines", "wine", "verbs", "vcrun2015"]);
-include(["engines", "wine", "verbs", "corefonts"]);
+include("engines.wine.quick_script.online_installer_script");
+include("engines.wine.verbs.vcrun2015");
+include("engines.wine.verbs.corefonts");
 
 var installerImplementation = {
     run: function () {
@@ -13,9 +12,8 @@ var installerImplementation = {
             .url("https://eu.battle.net/download/getInstaller?os=win&installer=StarCraft-II-Setup.exe")
         // The checksum changes each time you download
             .category("Games")
-            .executable("StarCraft II.exe")
+            .executable("Battle.net.exe")
             .preInstall(function (wine/*, wizard*/) {
-                wine.windowsVersion("winxp");
                 wine.vcrun2015();
                 wine.corefonts();
             })

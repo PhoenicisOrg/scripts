@@ -1,6 +1,6 @@
-include(["engines", "wine", "quick_script", "steam_script"]);
-include(["engines", "wine", "plugins", "managed"]);
-include(["engines", "wine", "verbs", "physx"]);
+include("engines.wine.quick_script.steam_script");
+include("engines.wine.plugins.managed");
+include("engines.wine.verbs.physx");
 
 var installerImplementation = {
     run: function () {

@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Steam",
-    "id"                         : "steam",
+    "id"                         : "applications.games.ether_one_redux.steam",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],

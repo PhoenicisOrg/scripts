@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Windows version",
-    "id"                         : "windows_version",
+    "id"                         : "engines.wine.plugins.windows_version",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

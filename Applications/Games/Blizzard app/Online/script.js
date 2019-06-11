@@ -1,7 +1,6 @@
-include(["engines", "wine", "quick_script", "online_installer_script"]);
-include(["engines", "wine", "plugins", "windows_version"]);
-include(["engines", "wine", "verbs", "vcrun2015"]);
-include(["engines", "wine", "verbs", "corefonts"]);
+include("engines.wine.quick_script.online_installer_script");
+include("engines.wine.verbs.vcrun2015");
+include("engines.wine.verbs.corefonts");
 
 var installerImplementation = {
     run: function () {
@@ -13,9 +12,9 @@ var installerImplementation = {
             .url("https://www.battle.net/download/getInstallerForGame?os=win&locale=enGB&version=LIVE&gameProgram=BATTLENET_APP.exe")
             .category("Games")
             .executable("Battle.net.exe")
-            .wineVersion(LATEST_DEVELOPMENT_VERSION)
+            .wineVersion("3.19")
+            .wineDistribution("staging")
             .preInstall(function (wine/*, wizard*/) {
-                wine.windowsVersion("winxp");
                 wine.vcrun2015();
                 wine.corefonts();
             })
