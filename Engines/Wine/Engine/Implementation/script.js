@@ -358,11 +358,11 @@ var engineImplementation = {
             ldPath = userData.ldPath + ldPath;
         }
         if (architecture == "amd64") {
-            ldPath = this._wineEnginesDirectory + "runtime/lib64/:" + this._wineEnginesDirectory + "runtime/lib/:"
+            ldPath = this._wineEnginesDirectory + "/runtime/lib64/:" + this._wineEnginesDirectory + "/runtime/lib/:"
                    + this.getLocalDirectory(subCategory, version) + "/lib64/:"
                    + this.getLocalDirectory(subCategory, version) + "/lib/:"+ ldPath;
         } else {
-            ldPath = this._wineEnginesDirectory + "runtime/lib/:" + this.getLocalDirectory(subCategory, version) + "/lib/:" + ldPath;
+            ldPath = this._wineEnginesDirectory + "/runtime/lib/:" + this.getLocalDirectory(subCategory, version) + "/lib/:" + ldPath;
         }
         environment.put("LD_LIBRARY_PATH", ldPath);
 
