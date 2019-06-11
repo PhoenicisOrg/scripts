@@ -1,18 +1,20 @@
 include("engines.wine.engine.object");
 include("engines.wine.plugins.override_dll");
-include("engines.wine.plugins.windows_version");
 include("utils.functions.net.resource");
-include("engines.wine.verbs.luna");
-include("utils.functions.filesystem.files");
+include("engines.wine.plugins.windows_version");
+include("engines.wine.verbs.remove_mono");
+include("engines.wine.plugins.regedit");
 include("engines.wine.verbs.dotnet40");
+
 
 /**
 * Verb to install .NET 4.5.2
 * @returns {Wine} Wine object
 */
 Wine.prototype.dotnet452 = function () {
+    print(tr("This package ({0}) does not work currently. Use it only for testing!", "dotnet452"));
 
-    var OSVersion = this.windowsVersion();
+    var osVersion = this.windowsVersion();
 
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -21,12 +23,7 @@ Wine.prototype.dotnet452 = function () {
         .name("NDP452-KB2901907-x86-x64-AllOS-ENU.exe")
         .get();
 
-    this.uninstall("Mono");
-
-    this.wizard().wait(tr("Please wait..."));
-    this.run("reg", ["delete", "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4", "/f"], null, false, true);
-
-    remove(this.system32directory() + "/mscoree.dll");
+    this.removeMono();
 
     this.dotnet40();
     this.windowsVersion("win7");
@@ -38,13 +35,16 @@ Wine.prototype.dotnet452 = function () {
     this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 4.5.2"));
     this.run(setupFile, [setupFile, "/q", "/c:\"install.exe /q\""], null, false, true);
 
+    this.wizard().wait(tr("Please wait..."));
+    this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*fusion");
+
     this.overrideDLL()
         .set("native", ["mscoree"])
         .do();
 
-    this.windowsVersion(OSVersion);
+    this.windowsVersion(osVersion);
 
-    if (OSVersion != "win2003") {
+    if (osVersion != "win2003") {
         print(tr("{0} applications can have issues when windows version is not set to \"win2003\"", ".NET 4.5.2"));
     }
 
@@ -59,6 +59,7 @@ var verbImplementation = {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "dotnet452", java.util.Optional.empty());
+        wizard.message(tr("This package ({0}) does not work currently. Use it only for testing!", "dotnet452"));
         wine.wizard(wizard);
         wine.dotnet452();
         wizard.close();

@@ -2,10 +2,11 @@
     "scriptName"                 : "Online",
     "id"                         : "applications.games.dc_universe_online.online",
     "compatibleOperatingSystems" : [
-        "LINUX"
+        "LINUX",
+        "MACOSX"
     ],
     "testingOperatingSystems" : [
-        "LINUX"
+        "MACOSX"
     ],
     "free"          : true,
     "requiresPatch" : false
