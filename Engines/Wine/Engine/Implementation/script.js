@@ -141,12 +141,12 @@ var engineImplementation = {
 
             runtimeJson = JSON.parse(cat(runtimeJsonFile));
 
-            var maxVersion = 0;
+            var maxVersion2 = 0;
 
             runtimeJson.forEach(function (archive){
                 if (archive.arch == "amd64") {
-                    if (archive.name > maxVersion) {
-                        maxVersion = archive.name;
+                    if (archive.name > maxVersion2) {
+                        maxVersion2 = archive.name;
                     }
                 }
             });
@@ -161,8 +161,8 @@ var engineImplementation = {
                 }
             });
 
-            if (maxVersion > oldMaxVersion) {
-                name = maxVersion;
+            if (maxVersion2 > oldMaxVersion) {
+                name = maxVersion2;
                 download = true;
             }
 
@@ -178,8 +178,8 @@ var engineImplementation = {
                 if (archive.name == name) {
                     if (archive.arch == "x86") {
                         runtime = new Downloader()
-                        	.wizard(setupWizard)
-                        	.url(archive.url)
+                            .wizard(setupWizard)
+                            .url(archive.url)
                             .message(tr("Downloading x86 runtime..."))
                             .checksum(archive.sha1sum)
                             .to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/')+1))
