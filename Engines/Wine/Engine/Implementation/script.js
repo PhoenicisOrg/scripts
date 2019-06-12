@@ -146,7 +146,7 @@ var engineImplementation = {
             runtimeJson.forEach(function (archive){
                 if (archive.arch == "amd64") {
                     if (archive.name > maxVersion) {
-                    	maxVersion = archive.name;
+                        maxVersion = archive.name;
                     }
                 }
             });
@@ -156,7 +156,7 @@ var engineImplementation = {
             oldRuntimeJson.forEach(function (archive){
                 if (archive.arch == "amd64") {
                     if (archive.name > oldMaxVersion) {
-                    	oldMaxVersion = archive.name;
+                        oldMaxVersion = archive.name;
                     }
                 }
             });
@@ -172,7 +172,7 @@ var engineImplementation = {
             remove(this._wineEnginesDirectory + "/runtime/lib");
             remove(this._wineEnginesDirectory + "/runtime/lib64");
             mkdir(this._wineEnginesDirectory + "/TMP");
-            that = this;
+            var that = this;
             runtimeJson.forEach(function (archive){
                 var runtime;
                 if (archive.name == name) {
@@ -180,7 +180,7 @@ var engineImplementation = {
                     	runtime = new Downloader()
                         	.wizard(setupWizard)
                         	.url(archive.url)
-                        	.message(tr("Downloading x86 runtime..."))
+                            .message(tr("Downloading x86 runtime..."))
                         	.checksum(archive.sha1sum)
                         	.to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/')+1))
                         	.get();
@@ -191,21 +191,21 @@ var engineImplementation = {
                         	.to(that._wineEnginesDirectory + "/runtime")
                         	.extract();
                 	}
-                	else {
-                		runtime = new Downloader()
-                        		.wizard(setupWizard)
-                        		.url(archive.url)
-                        		.message(tr("Downloading amd64 runtime..."))
-                        		.checksum(archive.sha1sum)
-                        		.to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/')+1))
-                        		.get();
+                    else {
+                        runtime = new Downloader()
+                            .wizard(setupWizard)
+                            .url(archive.url)
+                            .message(tr("Downloading amd64 runtime..."))
+                            .checksum(archive.sha1sum)
+                            .to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/')+1))
+                            .get();
 
-                    		new Extractor()
-                        		.wizard(setupWizard)
-                        		.archive(runtime)
-                        		.to(that._wineEnginesDirectory + "/runtime")
-                        		.extract();
-                	}
+                        new Extractor()
+                            .wizard(setupWizard)
+                            .archive(runtime)
+                            .to(that._wineEnginesDirectory + "/runtime")
+                            .extract();
+                    }
                 }
             });
             remove(this._wineEnginesDirectory + "/TMP");
