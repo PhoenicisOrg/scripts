@@ -121,7 +121,7 @@ var engineImplementation = {
             runtimeJson.forEach(function (archive){
                 if (archive.arch == "amd64") {
                     if (archive.name > maxVersion) {
-                    	maxVersion = archive.name;
+                        maxVersion = archive.name;
                     }
                 }
             });
@@ -177,20 +177,20 @@ var engineImplementation = {
                 var runtime;
                 if (archive.name == name) {
                     if (archive.arch == "x86") {
-                    	runtime = new Downloader()
+                        runtime = new Downloader()
                         	.wizard(setupWizard)
                         	.url(archive.url)
                             .message(tr("Downloading x86 runtime..."))
-                        	.checksum(archive.sha1sum)
-                        	.to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/')+1))
-                        	.get();
+                            .checksum(archive.sha1sum)
+                            .to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/')+1))
+                            .get();
 
-                    	new Extractor()
-                        	.wizard(setupWizard)
-                        	.archive(runtime)
-                        	.to(that._wineEnginesDirectory + "/runtime")
-                        	.extract();
-                	}
+                        new Extractor()
+                            .wizard(setupWizard)
+                            .archive(runtime)
+                            .to(that._wineEnginesDirectory + "/runtime")
+                            .extract();
+                    }
                     else {
                         runtime = new Downloader()
                             .wizard(setupWizard)
