@@ -116,17 +116,17 @@ var engineImplementation = {
 
             runtimeJson = JSON.parse(cat(runtimeJsonFile));
             download=true;
-            
+
             var maxVersion = 0;
             runtimeJson.forEach(function (archive){
                 if (archive.arch == "amd64") {
-                    if(archive.name > maxVersion) {
+                    if (archive.name > maxVersion) {
                     	maxVersion = archive.name;
                     }
                 }
             });
-            
-            name = maxVersion; 
+
+            name = maxVersion;
         }
         else {
             var oldRuntimeJsonFile = cat(this._wineEnginesDirectory + "/runtime.json");
@@ -142,30 +142,30 @@ var engineImplementation = {
             runtimeJson = JSON.parse(cat(runtimeJsonFile));
 
             var maxVersion = 0;
-            
+
             runtimeJson.forEach(function (archive){
                 if (archive.arch == "amd64") {
-                    if(archive.name > maxVersion) {
+                    if (archive.name > maxVersion) {
                     	maxVersion = archive.name;
                     }
                 }
             });
-            
+
             var oldMaxVersion = 0;
-            
+
             oldRuntimeJson.forEach(function (archive){
                 if (archive.arch == "amd64") {
-                    if(archive.name > oldMaxVersion) {
+                    if (archive.name > oldMaxVersion) {
                     	oldMaxVersion = archive.name;
                     }
                 }
             });
 
-            if(maxVersion > oldMaxVersion) {
+            if (maxVersion > oldMaxVersion) {
                 name = maxVersion;
                 download = true;
             }
-            
+
         }
 
         if (download == true) {
@@ -184,7 +184,7 @@ var engineImplementation = {
                         	.checksum(archive.sha1sum)
                         	.to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/')+1))
                         	.get();
-	
+
                     	new Extractor()
                         	.wizard(setupWizard)
                         	.archive(runtime)
@@ -199,7 +199,7 @@ var engineImplementation = {
                         		.checksum(archive.sha1sum)
                         		.to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/')+1))
                         		.get();
-		
+
                     		new Extractor()
                         		.wizard(setupWizard)
                         		.archive(runtime)
