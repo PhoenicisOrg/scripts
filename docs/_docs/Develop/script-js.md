@@ -102,6 +102,7 @@ var installerImplementation = {
             .author("Forename Surname")                     // author of this script (you)
             .appId(123456)                                  // Uplay application ID
             .go();
+    }
 };
 
 /* exported Installer */

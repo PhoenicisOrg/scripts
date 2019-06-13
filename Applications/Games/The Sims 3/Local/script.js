@@ -13,8 +13,6 @@ var installerImplementation = {
             .author("Zemogiter")
             .category("Games")
             .executable("Sims3Launcher.exe", ["xgamma -gamma 1"])
-            .wineVersion("3.19")
-            .wineDistribution("upstream")
             .preInstall(function (wine){
                 wine.mfc42();
                 wine.tahoma();

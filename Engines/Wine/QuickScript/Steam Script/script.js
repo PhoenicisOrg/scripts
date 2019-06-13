@@ -5,6 +5,8 @@ include("engines.wine.plugins.override_dll");
 include("utils.functions.filesystem.extract");
 include("utils.functions.filesystem.files");
 include("engines.wine.verbs.luna");
+include("engines.wine.verbs.corefonts");
+include("engines.wine.plugins.windows_version");
 
 
 function SteamScript() {
@@ -116,10 +118,19 @@ SteamScript.prototype.go = function () {
         .wizard(setupWizard)
         .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
         .luna();
+    wine.corefonts();
 
     // Steam must be started once such that config.vdf is created (see fixCertificateIssue())
     setupWizard.wait(tr("Please follow the steps of the Steam setup. Then, wait until Steam is updated, log in and finally close Steam completely so the installation of \"{0}\" can continue.", this._name));
     wine.run(tempFile, [], null, false, true);
+
+    // Set windows environment for executable that needs it
+    wine.setOsForApplication().set("steam.exe", "winxp").do();
+    wine.setOsForApplication().set("steamwebhelper.exe", "winxp").do();
+
+    // Fix for Uplay games that are executed on steam
+    wine.setOsForApplication().set("upc.exe", "winvista").do();
+    wine.setOsForApplication().set("UbisoftGameLauncher.exe", "winvista").do();
 
     // ensure that Steam is running (user might have unchecked "run Steam after installation finished")
     wine.runInsidePrefix(wine.programFiles() + "/Steam/Steam.exe", ["steam://nav/games"], false);
