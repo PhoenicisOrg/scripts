@@ -12,7 +12,6 @@ var installerImplementation = {
             .category("Development")
             .executable("Notepad++.exe")
             .go();
-    }
 };
 
 /* exported Installer */
