@@ -5,8 +5,8 @@
 ### What was not tested
 
 ### Test
-Operating system (and linux kernel version): 
-Hardware (GPU/CPU):
+- Operating system (and linux kernel version): 
+- Hardware (GPU/CPU):
 
 ### Ready for review
 - [ ] Script tested as a regular phoenicis user and working (if you have a problem -> create as draft and ask for help).
