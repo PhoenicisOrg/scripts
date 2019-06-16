@@ -28,16 +28,20 @@ Wine.prototype.adobeair = function () {
 /**
  * Verb to install adobeair
  */
-var verbImplementation = {
-    install: function (container) {
-        var wine = new Wine();
+class AdobeAirVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
+        const wine = new Wine();
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "adobeair", java.util.Optional.empty());
+
+        const wizard = SetupWizard(InstallationType.VERBS, "adobeair", java.util.Optional.empty());
         wine.wizard(wizard);
+
         wine.adobeair();
+
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}
