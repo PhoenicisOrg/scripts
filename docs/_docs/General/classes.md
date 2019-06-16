@@ -6,7 +6,7 @@ toc: true
 ---
 
 Most components inside the scripts are implemented as JavaScript prototype classes. 
-To allow an easier understanding of the code and to be more inline with the Phoenicis application implementation classes should be implemented using the new [`ECMAScript 2015`]() syntax. 
+To allow an easier understanding of the code and to be more inline with the Phoenicis application implementation classes should be implemented using the new [`ECMAScript 2015`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/class) syntax. 
 
 
 ### Structure
