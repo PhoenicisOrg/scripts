@@ -59,7 +59,7 @@ globals:
   CabExtract: false
   Checksum: false
   Downloader: false
-  Engine: false
+  WineEngine: false
   Extractor: false
   InstallationType: false
   Resource: false

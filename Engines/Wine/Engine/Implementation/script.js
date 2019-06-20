@@ -349,7 +349,7 @@ class WineEngine {
         var wineBinary = this.getLocalDirectory(subCategory, version) + "/bin/wine";
         var command = [wineBinary, executable].concat(args);
         var ProcessBuilderClass = Java.type('java.lang.ProcessBuilder');
-        var processBuilder = new ProcessBuilderClass(Java.to(command, Java.type("java.lang.String[]")));
+        var processBuilder = new ProcessBuilderClass(Java.to(command, Java.type('java.lang.String[]')));
 
         var FileClass = Java.type('java.io.File');
         if (workingDir) {
