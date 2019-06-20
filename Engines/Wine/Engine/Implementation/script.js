@@ -9,29 +9,32 @@ var WINE_PREFIX_DIR = "wineprefix";
 /**
  * Wine engine
 */
-var engineImplementation = {
-    _configFactory: Bean("compatibleConfigFileFormatFactory"),
-    _containerRegex: /[^a-z0-9_\- ]/gi,
-    _ExeAnalyser: Bean("exeAnalyser"),
-    _ldPath: Bean("propertyReader").getProperty("application.environment.ld"),
-    _operatingSystemFetcher: Bean("operatingSystemFetcher"),
-    _wineEnginesDirectory: Bean("propertyReader").getProperty("application.user.engines") + "/wine",
-    _winePrefixesDirectory: Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/",
-    _wineWebServiceUrl : Bean("propertyReader").getProperty("webservice.wine.url"),
-    _wizard: null,
-    _workingContainer: "",
-    getLocalDirectory: function (subCategory, version) {
+class WineEngine {
+    constructor() {
+        this._configFactory = Bean("compatibleConfigFileFormatFactory");
+        this._containerRegex = /[^a-z0-9_\- ]/gi;
+        this._ExeAnalyser = Bean("exeAnalyser");
+        this._ldPath = Bean("propertyReader").getProperty("application.environment.ld");
+        this._operatingSystemFetcher = Bean("operatingSystemFetcher");
+        this._wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines") + "/wine";
+        this._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
+        this._wineWebServiceUrl = Bean("propertyReader").getProperty("webservice.wine.url");
+        this._wizard = null;
+        this._workingContainer = "";
+    }
+
+    getLocalDirectory(subCategory, version) {
         var parts = subCategory.split("-");
         var distribution = parts[0];
         var architecture = parts[2];
         var operatingSystem = this._operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
         var fullDistributionName = distribution + "-" + operatingSystem + "-" + architecture;
         return this._wineEnginesDirectory + "/" + fullDistributionName + "/" + version;
-    },
-    isInstalled: function (subCategory, version) {
+    }
+    isInstalled(subCategory, version) {
         return fileExists(this.getLocalDirectory(subCategory, version));
-    },
-    install: function (subCategory, version) {
+    }
+    install(subCategory, version) {
         this._installRuntime(this.getWizard());
         var parts = subCategory.split("-");
         var distribution = parts[0];
@@ -69,8 +72,8 @@ var engineImplementation = {
                 wizard.close();
             }
         }
-    },
-    _installWinePackage: function (setupWizard, winePackage, localDirectory) {
+    }
+    _installWinePackage(setupWizard, winePackage, localDirectory) {
         var tmpFile = createTempFile("tar.gz");
 
         new Downloader()
@@ -98,12 +101,12 @@ var engineImplementation = {
             }
             );
         }
-    },
-    _installRuntime: function (setupWizard) {
+    }
+    _installRuntime(setupWizard) {
         var runtimeJsonPath = this._wineEnginesDirectory + "/runtime.json";
         var runtimeJson;
         var runtimeJsonFile;
-        var download=false;
+        var download = false;
         var name;
         if (!fileExists(runtimeJsonPath)) {
             mkdir(this._wineEnginesDirectory + "/runtime");
@@ -115,10 +118,10 @@ var engineImplementation = {
                 .get();
 
             runtimeJson = JSON.parse(cat(runtimeJsonFile));
-            download=true;
+            download = true;
 
             var maxVersion = 0;
-            runtimeJson.forEach(function (archive){
+            runtimeJson.forEach(function (archive) {
                 if (archive.arch == "amd64") {
                     if (archive.name > maxVersion) {
                         maxVersion = archive.name;
@@ -143,7 +146,7 @@ var engineImplementation = {
 
             var maxVersion2 = 0;
 
-            runtimeJson.forEach(function (archive){
+            runtimeJson.forEach(function (archive) {
                 if (archive.arch == "amd64") {
                     if (archive.name > maxVersion2) {
                         maxVersion2 = archive.name;
@@ -153,7 +156,7 @@ var engineImplementation = {
 
             var oldMaxVersion = 0;
 
-            oldRuntimeJson.forEach(function (archive){
+            oldRuntimeJson.forEach(function (archive) {
                 if (archive.arch == "amd64") {
                     if (archive.name > oldMaxVersion) {
                         oldMaxVersion = archive.name;
@@ -173,7 +176,7 @@ var engineImplementation = {
             remove(this._wineEnginesDirectory + "/runtime/lib64");
             mkdir(this._wineEnginesDirectory + "/TMP");
             var that = this;
-            runtimeJson.forEach(function (archive){
+            runtimeJson.forEach(function (archive) {
                 var runtime;
                 if (archive.name == name) {
                     if (archive.arch == "x86") {
@@ -182,7 +185,7 @@ var engineImplementation = {
                             .url(archive.url)
                             .message(tr("Downloading x86 runtime..."))
                             .checksum(archive.sha1sum)
-                            .to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/')+1))
+                            .to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/') + 1))
                             .get();
 
                         new Extractor()
@@ -197,7 +200,7 @@ var engineImplementation = {
                             .url(archive.url)
                             .message(tr("Downloading amd64 runtime..."))
                             .checksum(archive.sha1sum)
-                            .to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/')+1))
+                            .to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/') + 1))
                             .get();
 
                         new Extractor()
@@ -210,8 +213,9 @@ var engineImplementation = {
             });
             remove(this._wineEnginesDirectory + "/TMP");
         }
-    },
-    _installGecko: function (setupWizard, winePackage, localDirectory) {
+    }
+
+    _installGecko(setupWizard, winePackage, localDirectory) {
         if (winePackage.geckoUrl) {
             var gecko = new Resource()
                 .wizard(setupWizard)
@@ -227,8 +231,9 @@ var engineImplementation = {
             var FileClass = Java.type('java.io.File');
             lns(new FileClass(gecko).getParent(), wineGeckoDir);
         }
-    },
-    _installMono: function (setupWizard, winePackage, localDirectory) {
+    }
+
+    _installMono(setupWizard, winePackage, localDirectory) {
         if (winePackage.monoUrl) {
             var mono = new Resource()
                 .wizard(setupWizard)
@@ -244,13 +249,15 @@ var engineImplementation = {
             var FileClass = Java.type('java.io.File');
             lns(new FileClass(mono).getParent(), wineMonoDir);
         }
-    },
-    delete: function (subCategory, version) {
+    }
+
+    delete(subCategory, version) {
         if (this.isInstalled(subCategory, version)) {
             remove(this.getLocalDirectory(subCategory, version));
         }
-    },
-    getAvailableVersions: function () {
+    }
+
+    getAvailableVersions() {
         var versionsFile = this._wineEnginesDirectory + "/availableVersions.json";
         touch(versionsFile);
         new Downloader()
@@ -261,19 +268,23 @@ var engineImplementation = {
             .onlyIfUpdateAvailable(true)
             .get();
         return cat(versionsFile);
-    },
-    getWorkingContainer: function () {
+    }
+
+    getWorkingContainer() {
         return this._workingContainer;
-    },
-    setWorkingContainer: function (workingContainer) {
+    }
+
+    setWorkingContainer(workingContainer) {
         var workingContainerCleaned = workingContainer.replace(this._containerRegex, '');
         this._workingContainer = workingContainerCleaned;
-    },
-    getContainerDirectory: function (containerName) {
+    }
+
+    getContainerDirectory(containerName) {
         var containerNameCleaned = containerName.replace(this._containerRegex, '');
         return this._winePrefixesDirectory + "/" + containerNameCleaned + "/";
-    },
-    createContainer: function (subCategory, version, containerName) {
+    }
+
+    createContainer(subCategory, version, containerName) {
         var parts = subCategory.split("-");
         var distribution = parts[0];
         var architecture = parts[2];
@@ -288,8 +299,9 @@ var engineImplementation = {
         containerConfiguration.writeValue("wineVersion", version);
         containerConfiguration.writeValue("wineDistribution", distribution);
         containerConfiguration.writeValue("wineArchitecture", architecture);
-    },
-    run: function (executable, args, workingDir, captureOutput, wait, userData) {
+    }
+
+    run(executable, args, workingDir, captureOutput, wait, userData) {
         var subCategory = "";
         var version = "";
         var architecture = "";
@@ -367,8 +379,8 @@ var engineImplementation = {
         }
         if (architecture == "amd64") {
             ldPath = this._wineEnginesDirectory + "/runtime/lib64/:" + this._wineEnginesDirectory + "/runtime/lib/:"
-                   + this.getLocalDirectory(subCategory, version) + "/lib64/:"
-                   + this.getLocalDirectory(subCategory, version) + "/lib/:"+ ldPath;
+                + this.getLocalDirectory(subCategory, version) + "/lib64/:"
+                + this.getLocalDirectory(subCategory, version) + "/lib/:" + ldPath;
         } else {
             ldPath = this._wineEnginesDirectory + "/runtime/lib/:" + this.getLocalDirectory(subCategory, version) + "/lib/:" + ldPath;
         }
@@ -395,8 +407,9 @@ var engineImplementation = {
         } else {
             return "";
         }
-    },
-    changeVersion: function (containerName) {
+    }
+
+    changeVersion(containerName) {
         var wizard = SetupWizard(InstallationType.ENGINES, "Change " + containerName + " container wine version", java.util.Optional.empty());
         this._wizard = wizard;
 
@@ -416,7 +429,7 @@ var engineImplementation = {
                 distributions.push(parts[0]);
                 versions.push(new Array());
                 subPart.packages.forEach(function (winePackage) {
-                    versions[distributions.length-1].push(winePackage.version);
+                    versions[distributions.length - 1].push(winePackage.version);
                 });
             }
         });
@@ -431,14 +444,13 @@ var engineImplementation = {
         containerConfiguration.writeValue("wineDistribution", selectedDistribution.text);
         containerConfiguration.writeValue("wineArchitecture", architecture);
         wizard.close();
-    },
-    getWizard: function () {
+    }
+
+    getWizard() {
         return this._wizard;
-    },
-    setWizard: function (wizard) {
+    }
+
+    setWizard(wizard) {
         this._wizard = wizard;
     }
-};
-
-/* exported Engine */
-var Engine = Java.extend(org.phoenicis.engines.Engine, engineImplementation);
+}

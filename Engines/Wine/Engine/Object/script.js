@@ -18,7 +18,7 @@ var LATEST_DOS_SUPPORT_VERSION = "4.0";
  * @constructor
  */
 function Wine() {
-    this._implementation = new Engine();
+    this._implementation = new WineEngine();
     this._OperatingSystemFetcher = Bean("operatingSystemFetcher");
 }
 
