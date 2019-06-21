@@ -37,8 +37,7 @@ class AlwaysOffscreenSetting {
                 .prefix(container)
                 .regedit()
                 .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D", "AlwaysOffscreen");
-        }
-        else {
+        } else {
             const regeditFileContent =
                 "REGEDIT4\n" +
                 "\n" +
