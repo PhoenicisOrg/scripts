@@ -3,6 +3,8 @@ include("engines.wine.verbs.vcrun2010");
 include("engines.wine.verbs.dotnet40");
 include("engines.wine.verbs.d3dx9");
 
+var installerImplementation = {
+    run: function () {
         new SteamScript()
             .name("Space Colony")
             .editor("Firefly Studios")
