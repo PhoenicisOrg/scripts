@@ -3,9 +3,10 @@ include("utils.functions.net.resource");
 include("engines.wine.verbs.luna");
 
 /**
-* Verb to install Nvidia PhysX
-* @returns {Wine} Wine object
-*/
+ * Verb to install Nvidia PhysX
+ * 
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.physx = function () {
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -22,9 +23,13 @@ Wine.prototype.physx = function () {
 
 /**
  * Verb to install Nvidia PhysX
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+class PhysXVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "physx", java.util.Optional.empty());
@@ -32,8 +37,4 @@ var verbImplementation = {
         wine.physx();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}

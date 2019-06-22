@@ -4,11 +4,12 @@ include("utils.functions.net.resource");
 include("utils.functions.filesystem.files");
 
 /**
-* Verb to install FAudio
-* see: https://github.com/Kron4ek/FAudio-Builds
-* @param {String} faudioVersion version of FAudio to downlaod
-* @returns {Wine} Wine object
-*/
+ * Verb to install FAudio
+ * see: https://github.com/Kron4ek/FAudio-Builds
+ * 
+ * @param {String} faudioVersion version of FAudio to downlaod
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.faudio = function (faudioVersion) {
     if (typeof faudioVersion !== 'string')
         faudioVersion = "19.05";
@@ -39,8 +40,7 @@ Wine.prototype.faudio = function (faudioVersion) {
         }
     });
 
-    if (this.architecture() == "amd64")
-    {
+    if (this.architecture() == "amd64") {
         var sys64dir = this.system64directory();
         forEach.call(ls(faudioDir + "/x64"), function (file) {
             if (file.endsWith(".dll")) {
@@ -54,9 +54,13 @@ Wine.prototype.faudio = function (faudioVersion) {
 
 /**
  * Verb to install FAudio
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+class FAudioVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "FAudio", java.util.Optional.empty());
@@ -67,7 +71,4 @@ var verbImplementation = {
         wine.faudio(selectedVersion.text);
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}

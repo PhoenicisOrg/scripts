@@ -2,9 +2,10 @@ include("engines.wine.engine.object");
 include("utils.functions.net.resource");
 
 /**
-* Verb to install Uplay
-* @returns {Wine} Wine object
-*/
+ * Verb to install Uplay
+ * 
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.uplay = function () {
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -20,9 +21,13 @@ Wine.prototype.uplay = function () {
 
 /**
  * Verb to install Uplay
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+class UplayVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "uplay", java.util.Optional.empty());
@@ -30,8 +35,4 @@ var verbImplementation = {
         wine.uplay();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}

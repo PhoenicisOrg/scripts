@@ -5,11 +5,11 @@ include("utils.functions.filesystem.files");
 
 
 /**
-* Verb to install msxml3
-* @returns {Wine} Wine object
-*/
+ * Verb to install msxml3
+ * 
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.msxml3 = function () {
-
     var setupFile32 = new Resource()
         .wizard(this.wizard())
         .url("https://media.codeweavers.com/pub/other/msxml3.msi")
@@ -27,11 +27,16 @@ Wine.prototype.msxml3 = function () {
 
     return this;
 };
+
 /**
  * Verb to install msxml3
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+class Msxml3Verb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "msxml3", java.util.Optional.empty());
@@ -39,7 +44,4 @@ var verbImplementation = {
         wine.msxml3();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}
