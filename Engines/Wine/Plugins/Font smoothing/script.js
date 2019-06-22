@@ -5,20 +5,20 @@ include("engines.wine.engine.object");
  * @param {string} mode ("RGB", "BGR" or "Gray Scale")
  * @returns {Wine} Wine object
  */
-Wine.prototype.FontSmoothing = function (mode) {
-    var FontSmoothingType;
-    var FontSmoothingOrientation;
+Wine.prototype.fontSmoothing = function (mode) {
+    var fontSmoothingType;
+    var fontSmoothingOrientation;
     if (mode == "RGB") {
-        FontSmoothingType = "2";
-        FontSmoothingOrientation = "1";
+        fontSmoothingType = "2";
+        fontSmoothingOrientation = "1";
     }
     else if (mode == "BGR") {
-        FontSmoothingType = "2";
-        FontSmoothingOrientation = "0";
+        fontSmoothingType = "2";
+        fontSmoothingOrientation = "0";
     }
     else if (mode == "Gray Scale"){
-        FontSmoothingType = "1";
-        FontSmoothingOrientation = "1";
+        fontSmoothingType = "1";
+        fontSmoothingOrientation = "1";
     }
 
     var regeditFileContent =
@@ -26,9 +26,9 @@ Wine.prototype.FontSmoothing = function (mode) {
 			"\n"						+
 			"[HKEY_CURRENT_USER\\Control Panel\\Desktop]\n"	+
 			"\"FontSmoothing\"=\"2\"\n"			+
-			"\"FontSmoothingType\"=dword:0000000" + FontSmoothingType + "\n"	+
+			"\"FontSmoothingType\"=dword:0000000" + fontSmoothingType + "\n"	+
 			"\"FontSmoothingGamma\"=dword:00000578\n"	+
-			"\"FontSmoothingOrientation\"=dword:0000000" + FontSmoothingOrientation + "\n";
+			"\"FontSmoothingOrientation\"=dword:0000000" + fontSmoothingOrientation + "\n";
 
     this.regedit().patch(regeditFileContent);
     return this;
