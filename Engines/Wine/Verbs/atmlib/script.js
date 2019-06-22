@@ -33,9 +33,13 @@ Wine.prototype.atmlib = function () {
 
 /**
  * Verb to install atmlib
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+class AtmlibVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "atmlib", java.util.Optional.empty());
@@ -43,8 +47,4 @@ var verbImplementation = {
         wine.atmlib();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}

@@ -34,9 +34,13 @@ Wine.prototype.d3drm = function () {
 
 /**
  * Verb to install d3drm
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+class D3drmVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "d3drm", java.util.Optional.empty());
@@ -44,7 +48,4 @@ var verbImplementation = {
         wine.d3drm();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}

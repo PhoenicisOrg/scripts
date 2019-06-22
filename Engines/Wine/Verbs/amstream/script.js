@@ -51,9 +51,13 @@ Wine.prototype.amstream = function () {
 
 /**
  * Verb to install amstream
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+class AmstreamVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "amstream", java.util.Optional.empty());
@@ -61,7 +65,4 @@ var verbImplementation = {
         wine.amstream();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}

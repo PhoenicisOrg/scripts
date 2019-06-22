@@ -7,9 +7,10 @@ include("utils.functions.filesystem.extract");
 include("engines.wine.plugins.regsvr32");
 
 /**
-* Verb to install devenum
-* @returns {Wine} Wine object
-*/
+ * Verb to install devenum
+ * 
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.devenum = function () {
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -35,10 +36,14 @@ Wine.prototype.devenum = function () {
 };
 
 /**
-  * Verb to install devenum
-*/
-var verbImplementation = {
-    install: function (container) {
+ * Verb to install devenum
+ */
+class DevenumVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "devenum", java.util.Optional.empty());
@@ -46,7 +51,4 @@ var verbImplementation = {
         wine.devenum();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}
