@@ -11,7 +11,7 @@ include("utils.functions.filesystem.files");
 */
 Wine.prototype.D9VK = function (d9vkVersion) {
     var operatingSystemFetcher = Bean("operatingSystemFetcher");
-    print("NOTE: wine version should be greater or equal to 3.10");
+    print("NOTE: Wine version should be greater or equal to 3.10");
     if (operatingSystemFetcher.fetchCurrentOperationSystem() != "Linux")
     {
         this.wizard().message(tr("D9VK might not work correctly on macOS. This is depending on Metal api support and MoltenVK compatibility layer advancement"));
