@@ -15,36 +15,36 @@ var settingImplementation = {
         return this._options;
     },
     getCurrentOption: function (container) {
-        var FontSmoothing = new Wine()
+        var fontSmoothing = new Wine()
             .prefix(container)
             .regedit()
             .fetchValue(["HKEY_CURRENT_USER", "Control Panel", "Desktop", "FontSmoothing"]);
 
-        var FontSmoothingType = new Wine()
+        var fontSmoothingType = new Wine()
             .prefix(container)
             .regedit()
             .fetchValue(["HKEY_CURRENT_USER", "Control Panel", "Desktop", "FontSmoothingType"]);
 
-        var FontSmoothingOrientation = new Wine()
+        var fontSmoothingOrientation = new Wine()
             .prefix(container)
             .regedit()
             .fetchValue(["HKEY_CURRENT_USER", "Control Panel", "Desktop", "FontSmoothingOrientation"]);
 
         var index;
 
-        if (FontSmoothing == 1) {
+        if (fontSmoothing == 1) {
             index = 0;
         }
         else {
-            if (FontSmoothingType == 2) {
-                if (FontSmoothingOrientation == 1) {
+            if (fontSmoothingType == 2) {
+                if (fontSmoothingOrientation == 1) {
                     index = 1;
                 }
                 else {
                     index = 2;
                 }
             }
-            else if (FontSmoothingType == 1) {
+            else if (fontSmoothingType == 1) {
                 index = 3;
             }
         }
@@ -71,7 +71,7 @@ var settingImplementation = {
         else {
             new Wine()
                 .prefix(container)
-                .FontSmoothing(this._options[optionIndex]);
+                .fontSmoothing(this._options[optionIndex]);
         }
     }
 };
