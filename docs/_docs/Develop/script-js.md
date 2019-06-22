@@ -21,18 +21,11 @@ A basic script looks like:
 ```javascript
 include("engines.wine.quick_script.steam_script");
 
-var installerImplementation = {
-    run: function () {
-        new SteamScript()
-            .name("A Game")              // name of the game
-            .editor("The developer")     // editor of the game (see Steam store: developer)
-            .author("Forename Surname")  // author of this script (you)
-            .appId(123456)               // Steam application ID
-            .go();
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
+new SteamScript()
+    .name("A Game")              // name of the game
+    .editor("The developer")     // editor of the game (see Steam store: developer)
+    .author("Forename Surname")  // author of this script (you)
+    .appId(123456);              // Steam application ID
 ```
 
 This script will install the game for the category "Games" and create a shortcut for 
@@ -57,19 +50,11 @@ A basic script looks like:
 ```javascript
 include("engines.wine.quick_script.origin_script");
 
-var installerImplementation = {
-    run: function () {
-        new OriginScript()
-            .name("A Game")              // name of the game
-            .editor("The developer")     // editor of the game
-            .author("Forename Surname")  // author of this script (you)
-            .appId(123456)               // Origin application ID
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
+new OriginScript()
+    .name("A Game")              // name of the game
+    .editor("The developer")     // editor of the game
+    .author("Forename Surname")  // author of this script (you)
+    .appId(123456);              // Origin application ID
 ```
 This script will install the game for the category "Games" and create a shortcut for 
 ```
@@ -83,20 +68,12 @@ A basic script looks like:
 ```javascript
 include("engines.wine.quick_script.uplay_script");
 
-var installerImplementation = {
-    run: function () {
-        new UplayScript()
-            .name("A Game")                                 // name of the game
-            .editor("The developer")                        // editor of the game
-            .applicationHomepage("http://www.someurl.com")  // application homepage
-            .author("Forename Surname")                     // author of this script (you)
-            .appId(123456)                                  // Uplay application ID
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
+new UplayScript()
+    .name("A Game")                                 // name of the game
+    .editor("The developer")                        // editor of the game
+    .applicationHomepage("http://www.someurl.com")  // application homepage
+    .author("Forename Surname")                     // author of this script (you)
+    .appId(123456);                                 // Uplay application ID
 ```
 You can determine the app ID by starting the download and checking the folders in `Ubisoft/Ubisoft Game Launcher/data/`.
 
@@ -108,20 +85,13 @@ A basic script looks like:
 ```javascript
 include("engines.wine.quick_script.local_installer_script");
 
-var installerImplementation = {
-    run: function () {
-        new LocalInstallerScript()
-            .name("Application-Name")                       // name of the application
-            .editor("Editor")                               // editor of the application
-            .applicationHomepage("http://www.someurl.com")  // application homepage
-            .author("Forename Surname")                     // author of this script (you)
-            .category("Category")                           // category
-            .executable("Application.exe")                  // exe name (for the shortcut)
-            .go();
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
+new LocalInstallerScript()
+    .name("Application-Name")                       // name of the application
+    .editor("Editor")                               // editor of the application
+    .applicationHomepage("http://www.someurl.com")  // application homepage
+    .author("Forename Surname")                     // author of this script (you)
+    .category("Category")                           // category
+    .executable("Application.exe");                 // exe name (for the shortcut)
 ```
 
 ### OnlineInstallerScript
@@ -132,22 +102,15 @@ A basic script looks like:
 ```javascript
 include("engines.wine.quick_script.online_installer_script");
 
-var installerImplementation = {
-    run: function () {
-        new OnlineInstallerScript()
-            .name("Application-Name")                       // name of the application
-            .editor("Editor")                               // editor of the application
-            .applicationHomepage("http://www.someurl.com")  // application homepage
-            .author("Forename Surname")                     // author of this script (you)
-            .url("http://url_to_exe")                       // where the exe can be downloaded
-            .checksum("exe_checksum")                       // sha1sum of the exe
-            .category("Category")                           // category
-            .executable("Application.exe")                  // exe name (for the shortcut)
-            .go();
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
+new OnlineInstallerScript()
+    .name("Application-Name")                       // name of the application
+    .editor("Editor")                               // editor of the application
+    .applicationHomepage("http://www.someurl.com")  // application homepage
+    .author("Forename Surname")                     // author of this script (you)
+    .url("http://url_to_exe")                       // where the exe can be downloaded
+    .checksum("exe_checksum")                       // sha1sum of the exe
+    .category("Category")                           // category
+    .executable("Application.exe");                 // exe name (for the shortcut)
 ```
 
 ### CustomInstallerScript
@@ -155,23 +118,16 @@ Executes a custom installation command:
 ```javascript
 include("engines.wine.quick_script.custom_installer_script");
 
-var installerImplementation = {
-    run: function () {
-        new CustomInstallerScript()
-            .name("Application-Name")                                           // name of the application
-            .editor("Editor")                                                   // editor of the application
-            .applicationHomepage("http://www.someurl.com")                      // application homepage
-            .author("Forename Surname")                                         // author of this script (you)
-            .installationCommand(function(wizard) {                             // function specifying the installation command
-                return {command: "msiexec", args: ["/i", "C://app.msi"]};
-            })
-            .category("Category")                                               // category
-            .executable("Application.exe")                                      // exe name (for the shortcut)
-            .go();
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
+new CustomInstallerScript()
+    .name("Application-Name")                                           // name of the application
+    .editor("Editor")                                                   // editor of the application
+    .applicationHomepage("http://www.someurl.com")                      // application homepage
+    .author("Forename Surname")                                         // author of this script (you)
+    .installationCommand(function(wizard) {                             // function specifying the installation command
+        return {command: "msiexec", args: ["/i", "C://app.msi"]};
+    })
+    .category("Category")                                               // category
+    .executable("Application.exe");                                     // exe name (for the shortcut)
 ```
 
 ### ZipScript
@@ -180,22 +136,15 @@ A basic script looks like:
 ```javascript
 include("engines.wine.quick_script.zip_script");
 
-var installerImplementation = {
-    run: function () {
-        new ZipScript()
-            .name("Application-Name")                       // name of the application
-            .editor("Editor")                               // editor of the application
-            .applicationHomepage("http://www.someurl.com")  // application homepage
-            .author("Forename Surname")                     // author of this script (you)
-            .url("http://url_to_exe")                       // where the .zip can be downloaded
-            .checksum("exe_checksum")                       // sha1sum of the zip
-            .category("Category")                           // category
-            .executable("Application.exe")                  // exe name (for the shortcut)
-            .go();
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
+new ZipScript()
+    .name("Application-Name")                       // name of the application
+    .editor("Editor")                               // editor of the application
+    .applicationHomepage("http://www.someurl.com")  // application homepage
+    .author("Forename Surname")                     // author of this script (you)
+    .url("http://url_to_exe")                       // where the .zip can be downloaded
+    .checksum("exe_checksum")                       // sha1sum of the zip
+    .category("Category")                           // category
+    .executable("Application.exe");                 // exe name (for the shortcut)
 ```
 
 ### Advanced
