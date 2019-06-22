@@ -1,7 +1,7 @@
 include("engines.wine.engine.object");
 
 /**
- * tool to configure Wine
+ * Tool to configure Wine
  */
 class ConfigureWineTool {
     constructor() {
