@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Engines/Wine/Verbs/D9VK/script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Engines/Wine/Verbs/D9VK/script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>include("engines.wine.engine.object");
+include("engines.wine.plugins.override_dll");
+include("utils.functions.net.resource");
+include("utils.functions.filesystem.files");
+
+/**
+* Verb to install D9VK
+* see: https://github.com/Joshua-Ashton/d9vk/
+* @param {String} d9vkVersion D9VK version to download
+* @returns {Wine} Wine object
+*/
+Wine.prototype.D9VK = function (d9vkVersion) {
+    var operatingSystemFetcher = Bean("operatingSystemFetcher");
+    print("NOTE: Wine version should be greater or equal to 3.10");
+    if (operatingSystemFetcher.fetchCurrentOperationSystem() != "Linux")
+    {
+        this.wizard().message(tr("D9VK might not work correctly on macOS. This is depending on Metal api support and MoltenVK compatibility layer advancement"));
+    }
+    else
+    {
+        this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else D9VK might not work correctly."));
+    }
+
+    if (typeof d9vkVersion !== 'string')
+    {
+        d9vkVersion = "0.12";
+    }
+
+    var setupFile = new Resource()
+        .wizard(this.wizard())
+        .url("https://github.com/Joshua-Ashton/d9vk/releases/download/" + d9vkVersion + "/d9vk-" + d9vkVersion + ".tar.gz")
+        .name("d9vk-" + d9vkVersion + ".tar.gz")
+        .get();
+
+    new Extractor()
+        .wizard(this.wizard())
+        .archive(setupFile)
+        .to(this.prefixDirectory() + "/TMP/")
+        .extract();
+
+    var forEach = Array.prototype.forEach;
+    var sys32dir = this.system32directory();
+    var d9vkTmpDir = this.prefixDirectory() + "/TMP/d9vk-" + d9vkVersion;
+    var self = this;
+
+    //Copy 32 bits dll to system* and apply override
+    forEach.call(ls(d9vkTmpDir + "/x32"), function (file) {
+        if (file.endsWith(".dll")) {
+            cp(d9vkTmpDir + "/x32/" + file, sys32dir);
+            self.overrideDLL()
+                .set("native", [file])
+                .do();
+        }
+    });
+
+    if (this.architecture() == "amd64")
+    {
+        var sys64dir = this.system64directory();
+        //Copy 64 bits dll to system*
+        forEach.call(ls(d9vkTmpDir + "/x64"), function (file) {
+            if (file.endsWith(".dll")) {
+                cp(d9vkTmpDir + "/x64/" + file, sys64dir);
+            }
+        });
+    }
+
+    remove(this.prefixDirectory() + "/TMP/");
+
+    return this;
+}
+
+/**
+ * Verb to install D9VK
+*/
+var verbImplementation = {
+    install: function (container) {
+        var wine = new Wine();
+        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "D9VK", java.util.Optional.empty());
+        var versions = ["0.12", "0.11", "0.10"];
+        var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.12");
+        wine.wizard(wizard);
+        // install selected version
+        wine.D9VK(selectedVersion.text);
+        wizard.close();
+    }
+};
+
+/* exported Verb */
+var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a>
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
