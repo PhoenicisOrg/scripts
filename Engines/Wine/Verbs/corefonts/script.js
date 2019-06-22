@@ -4,9 +4,10 @@ include("utils.functions.net.resource");
 include("engines.wine.verbs.luna");
 
 /**
-* Verb to install corefonts
-* @returns {Wine} Wine object
-*/
+ * Verb to install corefonts
+ * 
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.corefonts = function () {
     var fontResources =
         [
@@ -84,6 +85,7 @@ Wine.prototype.corefonts = function () {
     var progressBar = this.wizard().progressBar(tr("Please wait..."));
     progressBar.setText(tr("Installing {0}...", tr("fonts")));
     progressBar.setProgressPercentage(0.);
+
     var numInstalledFonts = 0;
 
     var that = this;

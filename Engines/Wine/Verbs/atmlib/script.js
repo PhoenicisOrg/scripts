@@ -3,9 +3,10 @@ include("utils.functions.net.resource");
 include("utils.functions.filesystem.files");
 
 /**
-* Verb to install atmlib
-* @returns {Wine} Wine object
-*/
+ * Verb to install atmlib
+ * 
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.atmlib = function () {
     var setupFile = new Resource()
         .wizard(this.wizard())
