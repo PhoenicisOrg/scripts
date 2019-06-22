@@ -8,8 +8,6 @@ include("engines.wine.plugins.font_smoothing");
 var settingImplementation = {
     _options: [tr("Default"), tr("RGB"), tr("BGR"), tr("Gray Scale")],
 
-    _registryValues: [],
-
     getText: function () {
         return tr("Fonts Smoothing");
     },
