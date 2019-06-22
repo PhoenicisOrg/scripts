@@ -4,14 +4,14 @@ include("engines.wine.verbs.d3dx9");
 include("engines.wine.verbs.corefonts");
 
 new SteamScript()
-	.name("RimWorld")
-	.editor("Ludeon Studios")
-	.author("Zemogiter")
-	.applicationHomepage("https://rimworldgame.com/")
-	.wineArchitecture("amd64")
-	.appId(294100)
-	.preInstall(function(wine) {
-		wine.corefonts();
-		wine.vcrun2017();
-		wine.d3dx9();
-	});
+    .name("RimWorld")
+    .editor("Ludeon Studios")
+    .author("Zemogiter")
+    .applicationHomepage("https://rimworldgame.com/")
+    .wineArchitecture("amd64")
+    .appId(294100)
+    .preInstall(function (wine) {
+        wine.corefonts();
+        wine.vcrun2017();
+        wine.d3dx9();
+    });

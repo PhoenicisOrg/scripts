@@ -3,8 +3,8 @@ include("engines.wine.plugins.sound_driver");
 include("utils.functions.filesystem.files");
 
 function fixIni(ini) {
-	var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	var content =
+    var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+    var content =
 		"[Audio]\n" +
 		"EnableMicrophone=0\n" +
 		"LatencyBuffer=4\n" +
@@ -24,21 +24,21 @@ function fixIni(ini) {
 		"MinScreenHeight=480\n" +
 		"Fullscreen=1\n" +
 		"VisualQuality=8";
-	writeToFile(ini, content);
+    writeToFile(ini, content);
 }
 
 new SteamScript()
-	.name("Rocksmith™")
-	.editor("Ubisoft - San Francisco")
-	.author("Plata")
-	.appId(205190)
-	.postInstall(function(wine /*, wizard*/) {
-		wine.setSoundDriver("alsa");
-		wine
-			.setOsForApplication()
-			.set("Rocksmith.exe", "win7")
-			.do();
-		fixIni(
-			wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Rocksmith/Rocksmith.ini"
-		);
-	});
+    .name("Rocksmith™")
+    .editor("Ubisoft - San Francisco")
+    .author("Plata")
+    .appId(205190)
+    .postInstall(function (wine /*, wizard*/) {
+        wine.setSoundDriver("alsa");
+        wine
+            .setOsForApplication()
+            .set("Rocksmith.exe", "win7")
+            .do();
+        fixIni(
+            wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Rocksmith/Rocksmith.ini"
+        );
+    });
