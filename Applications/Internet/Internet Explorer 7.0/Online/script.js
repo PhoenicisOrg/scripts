@@ -9,8 +9,6 @@ include("utils.functions.apps.resources");
 include("engines.wine.verbs.sandbox");
 include("engines.wine.plugins.windows_version");
 
-var installerImplementation = {
-    run: function () {
         var appsManager = Bean("repositoryManager");
         var application = appsManager.getApplication(["applications", "internet", "internet_explorer_7_0"]);
         var setupWizard = SetupWizard(InstallationType.APPS, "Internet Explorer 7.0", application.getMainMiniature());

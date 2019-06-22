@@ -1,7 +1,5 @@
 include("engines.wine.quick_script.online_installer_script");
 
-var installerImplementation = {
-    run: function () {
         new OnlineInstallerScript()
             .name("TeamSpeak 3")
             .editor("TeamSpeak")
@@ -11,9 +9,3 @@ var installerImplementation = {
             .checksum("b8534eb206dbaf595ef0c2bfa5f97048fde259f4")
             .category("Internet")
             .executable("ts3client_win32.exe")
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

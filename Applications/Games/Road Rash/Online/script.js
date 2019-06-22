@@ -1,8 +1,6 @@
 include("engines.wine.quick_script.zip_script");
 include("engines.wine.plugins.regedit");
 
-var installerImplementation = {
-    run: function () {
         new ZipScript()
             .name("Road Rash")
             .editor("")
@@ -16,9 +14,3 @@ var installerImplementation = {
                 var registryFile = Bean("fileSearcher").search(wine.prefixDirectory(), "RASH.REG")
                 wine.regedit().open(registryFile[0]);
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

@@ -5,8 +5,6 @@ include("engines.wine.verbs.tahoma");
 include("engines.wine.verbs.vcrun2005");
 include("engines.wine.verbs.vcrun2008");
 
-var installerImplementation = {
-    run: function () {
         new SteamScript()
             .name("Warlock - Master of the Arcane")
             .editor("Paradox Interactive")
@@ -21,9 +19,3 @@ var installerImplementation = {
                 wine.vcrun2005();
                 wine.vcrun2008();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

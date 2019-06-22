@@ -1,7 +1,5 @@
 include("engines.wine.quick_script.zip_script");
 
-var installerImplementation = {
-    run: function () {
         new ZipScript()
             .name("Xenon 2")
             .editor("")
@@ -13,9 +11,3 @@ var installerImplementation = {
             .wineVersion(LATEST_DOS_SUPPORT_VERSION)
             .wineDistribution("dos_support")
             .executable("XENON2.EXE")
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

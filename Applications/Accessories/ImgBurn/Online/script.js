@@ -1,7 +1,5 @@
 include("engines.wine.quick_script.online_installer_script");
 
-var installerImplementation = {
-    run: function () {
         new OnlineInstallerScript()
             .name("ImgBurn")
             .editor("Lightning UK!")
@@ -11,9 +9,3 @@ var installerImplementation = {
             .checksum("6fc013ed5944b13efc54648699ea80f304e37ad0")
             .category("Accessories")
             .executable("ImgBurn.exe")
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

@@ -1,7 +1,5 @@
 include("engines.wine.quick_script.local_installer_script");
 
-var installerImplementation = {
-    run: function () {
         new LocalInstallerScript()
             .name("SimCity (2013)")
             .editor("Electronic Arts")
@@ -11,9 +9,3 @@ var installerImplementation = {
             .executable("Origin.exe")
             .wineVersion("3.19")
             .wineDistribution("staging")
-            .go();
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
-

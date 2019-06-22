@@ -2,8 +2,6 @@ include("engines.wine.quick_script.steam_script");
 include("engines.wine.plugins.virtual_desktop");
 include("engines.wine.verbs.quartz");
 
-var installerImplementation = {
-    run: function () {
         new SteamScript()
             .name("Wildlife Park 2")
             .editor("B-Alive")
@@ -17,10 +15,4 @@ var installerImplementation = {
                 wine.setVirtualDesktop(screenSize.width, screenSize.height);
             })
             .gameOverlay(false)
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
 

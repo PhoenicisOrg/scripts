@@ -1,7 +1,5 @@
 include("engines.wine.quick_script.origin_script");
 
-var installerImplementation = {
-    run: function () {
         new OriginScript()
             .name("Mass Effect 2")
             .editor("Bioware")
@@ -14,9 +12,3 @@ var installerImplementation = {
                 //this must be done while Origin is on, otherwise Origin will simply redownload the .cab files
                 wizard.message(tr("If you get a DirectX internal error during installation, go to the installation folder and navigate to __Installer/directx/redist and delete all .cab files."));
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

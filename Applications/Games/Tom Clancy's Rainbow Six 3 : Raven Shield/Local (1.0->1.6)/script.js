@@ -1,8 +1,6 @@
 include("engines.wine.quick_script.local_installer_script");
 include("engines.wine.plugins.virtual_desktop");
 
-var installerImplementation = {
-    run: function () {
         new LocalInstallerScript()
             .name("Tom Clancy's Rainbow Six 3 : Raven Shield")
             .editor("Red Storm Entertainment")
@@ -41,9 +39,3 @@ var installerImplementation = {
                 wine.setVirtualDesktop(1280, 1024);
 
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

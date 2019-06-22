@@ -3,8 +3,6 @@ include("engines.wine.verbs.dxvk");
 include("engines.wine.plugins.usetakefocus")
 
 
-var installerImplementation = {
-    run: function () {
         new OnlineInstallerScript()
             .name("Magic: The Gathering Arena")
             .applicationHomepage("https://magic.wizards.com/")
@@ -18,9 +16,3 @@ var installerImplementation = {
                 wine.UseTakeFocus("N");
             })
             .executable("MtgaLauncher.exe")
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

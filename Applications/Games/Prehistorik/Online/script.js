@@ -1,7 +1,5 @@
 include("engines.wine.quick_script.zip_script");
 
-var installerImplementation = {
-    run: function () {
         new ZipScript()
             .name("Prehistorik")
             .editor("Titus")
@@ -13,9 +11,3 @@ var installerImplementation = {
             .wineVersion(LATEST_DOS_SUPPORT_VERSION)
             .wineDistribution("dos_support")
             .executable("HISTORIK.EXE")
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

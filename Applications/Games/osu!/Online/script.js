@@ -2,8 +2,6 @@ include("engines.wine.quick_script.online_installer_script");
 include("engines.wine.verbs.dotnet45");
 include("engines.wine.verbs.corefonts");
 
-var installerImplementation = {
-    run: function () {
         new OnlineInstallerScript()
             .name("osu!")
             .editor("Dean « peppy » Herbert")
@@ -18,9 +16,3 @@ var installerImplementation = {
                 wine.corefonts();
                 wine.dotnet45();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

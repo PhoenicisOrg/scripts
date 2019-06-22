@@ -3,8 +3,6 @@ include("engines.wine.verbs.quicktime76");
 include("engines.wine.verbs.corefonts");
 include("engines.wine.verbs.tahoma");
 
-var installerImplementation = {
-    run: function () {
         new SteamScript()
             .name("Audiosurf")
             .editor("Dylan Fitterer")
@@ -15,9 +13,3 @@ var installerImplementation = {
                 wine.corefonts();
                 wine.tahoma();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

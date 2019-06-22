@@ -2,8 +2,6 @@ include("engines.wine.quick_script.steam_script");
 include("engines.wine.plugins.csmt");
 include("engines.wine.plugins.glsl");
 
-var installerImplementation = {
-    run: function () {
         new SteamScript()
             .name("Batman™: Arkham Asylum")
             .editor("Rocksteady Studios")
@@ -15,9 +13,3 @@ var installerImplementation = {
                 wine.UseGLSL("disabled");
                 wine.enableCSMT();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

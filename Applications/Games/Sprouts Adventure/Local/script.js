@@ -1,8 +1,6 @@
 include("engines.wine.quick_script.local_installer_script");
 include("engines.wine.verbs.vcrun2005");
 
-var installerImplementation = {
-    run: function () {
         new LocalInstallerScript()
             .name("Sprouts Adventure")
             .editor("Big Fish Games")
@@ -14,9 +12,3 @@ var installerImplementation = {
                 wizard.message(tr("This game requires winebind (for Ubuntu) or samba and libwbclient/lib32-libwbclient (for Arch Linux)."));
                 wine.vcrun2005();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

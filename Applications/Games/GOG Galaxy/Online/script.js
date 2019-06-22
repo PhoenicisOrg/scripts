@@ -3,8 +3,6 @@ include("engines.wine.verbs.corefonts");
 include("engines.wine.verbs.vcrun2017");
 include("engines.wine.verbs.xact");
 
-var installerImplementation = {
-    run: function () {
         new OnlineInstallerScript()
             .name("GOG Galaxy")
             .category("Games")
@@ -27,9 +25,3 @@ var installerImplementation = {
                 remove(wine.prefixDirectory() + "/drive_c/users/Public");
                 lns(wine.prefixDirectory() + "/drive_c/ProgramData", wine.prefixDirectory() + "/drive_c/users/Public");
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

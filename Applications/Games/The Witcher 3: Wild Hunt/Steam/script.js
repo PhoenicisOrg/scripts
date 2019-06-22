@@ -1,8 +1,6 @@
 include("engines.wine.quick_script.steam_script");
 include("engines.wine.verbs.dxvk");
 
-var installerImplementation = {
-    run: function () {
         new SteamScript()
             .name("The Witcher 3: Wild Hunt")
             .editor("CD Projekt Red")
@@ -15,9 +13,3 @@ var installerImplementation = {
                 wizard.message(tr("Please ensure you have the latest drivers (415.25 minimum for NVIDIA and mesa 19 for AMD) or else this game will not work."));
                 wine.DXVK();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

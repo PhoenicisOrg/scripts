@@ -1,7 +1,5 @@
 include("engines.wine.quick_script.steam_script");
 
-var installerImplementation = {
-    run: function () {
         new SteamScript()
             .name("Assassin’s Creed® IV Black Flag™")
             .editor("Ubisoft Montreal")
@@ -13,9 +11,3 @@ var installerImplementation = {
                 // the automatically installed Uplay version does not update properly
                 wine.uplay();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

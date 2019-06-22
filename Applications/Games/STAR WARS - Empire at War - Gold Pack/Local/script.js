@@ -3,8 +3,6 @@ include("engines.wine.verbs.d3dx9");
 include("engines.wine.engine.object");
 include("utils.functions.filesystem.files");
 
-var installerImplementation = {
-    run: function () {
         new LocalInstallerScript()
             .name("STAR WARS™ Empire at War: Gold Pack")
             .editor("Petroglyph")
@@ -24,10 +22,4 @@ var installerImplementation = {
 
                 wine.runInsidePrefix("/users/Public/Documents/EAW_RAM_MPLobby_update.exe", [], true);
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
 

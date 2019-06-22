@@ -2,8 +2,6 @@ include("engines.wine.quick_script.local_installer_script");
 include("engines.wine.engine.object");
 include("utils.functions.filesystem.files");
 
-var installerImplementation = {
-    run: function () {
         new LocalInstallerScript()
             .name("STAR WARS™ Battlefront™ II")
             .editor("Pandemic Studio")
@@ -22,9 +20,3 @@ var installerImplementation = {
                 wine.runInsidePrefix("/Program Files/LucasArts/Star Wars Battlefront II/BFIIUpdateInt1_1.exe", [], true);
 
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

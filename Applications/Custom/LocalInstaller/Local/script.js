@@ -1,8 +1,6 @@
 include("engines.wine.quick_script.local_installer_script");
 include("engines.wine.plugins.windows_version");
 
-var installerImplementation = {
-    run: function () {
         new LocalInstallerScript()
             .editor("PlayOnLinux")
             .applicationHomepage("https://www.playonlinux.com/en/")
@@ -15,9 +13,3 @@ var installerImplementation = {
                 var selectedVersion = wizard.menu("Please select the wine windows version.", shownVersions, "winxp (recommended)");
                 wine.windowsVersion(versions[selectedVersion.index]);
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

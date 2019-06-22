@@ -5,8 +5,6 @@ include("engines.wine.verbs.corefonts");
 include("engines.wine.verbs.dxvk");
 include("utils.functions.apps.resources");
 
-var installerImplementation = {
-    run: function () {
         new SteamScript()
             .name("Subnautica Below Zero")
             .editor("Unknown Worlds Entertainment")
@@ -25,9 +23,3 @@ var installerImplementation = {
                 wine.setVirtualDesktop(screenSize.width, screenSize.height);
             })
             .gameOverlay(false)
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

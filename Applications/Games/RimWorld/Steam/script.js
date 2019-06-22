@@ -3,8 +3,6 @@ include("engines.wine.verbs.vcrun2017");
 include("engines.wine.verbs.d3dx9");
 include("engines.wine.verbs.corefonts");
 
-var installerImplementation = {
-    run: function () {
         new SteamScript()
             .name("RimWorld")
             .editor("Ludeon Studios")
@@ -17,9 +15,3 @@ var installerImplementation = {
                 wine.vcrun2017();
                 wine.d3dx9();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

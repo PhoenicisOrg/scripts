@@ -7,8 +7,6 @@ include("engines.wine.verbs.quartz");
 include("engines.wine.verbs.devenum");
 include("engines.wine.verbs.d3drm");
 
-var installerImplementation = {
-    run: function () {
         new LocalInstallerScript()
             .name("Lego Rock Raiders")
             .editor("LEGO Media")
@@ -43,9 +41,3 @@ var installerImplementation = {
                 wine.run(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/iv5setup.exe");
                 wine.wait();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

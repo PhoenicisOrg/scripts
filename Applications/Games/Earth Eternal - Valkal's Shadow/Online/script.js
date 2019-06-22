@@ -4,8 +4,6 @@ include("engines.wine.verbs.corefonts");
 include("engines.wine.verbs.d3dx9");
 include("engines.wine.verbs.vcrun2008");
 
-var installerImplementation = {
-    run: function () {
         new OnlineInstallerScript()
             .name("Earth Eternal - Valkal's Shadow")
             .editor("Team TAW")
@@ -23,9 +21,3 @@ var installerImplementation = {
                 wine.d3dx9();
                 wine.vcrun2008();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

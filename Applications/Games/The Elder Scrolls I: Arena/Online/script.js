@@ -2,8 +2,6 @@ include("engines.wine.quick_script.zip_script");
 include("engines.wine.plugins.dos_support");
 include("utils.functions.filesystem.files");
 
-var installerImplementation = {
-    run: function () {
         new ZipScript()
             .name("The Elder Scroll 1: Arena")
             .editor("Broderbund Softwared")
@@ -28,8 +26,3 @@ var installerImplementation = {
                     .renderFrameSkip(1);
             })
             .executable("ARENA.BAT")
-            .go();
-    }
-};
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

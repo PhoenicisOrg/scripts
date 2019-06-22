@@ -1,7 +1,5 @@
 include("engines.wine.quick_script.online_installer_script");
 
-var installerImplementation = {
-    run: function () {
         new OnlineInstallerScript()
             .name("Origin")
             .editor("Electronic Arts")
@@ -30,9 +28,3 @@ var installerImplementation = {
                     .to(originDir)
                     .extract();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

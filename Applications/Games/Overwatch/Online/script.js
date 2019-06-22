@@ -5,8 +5,6 @@ include("engines.wine.verbs.vcrun2015");
 include("engines.wine.verbs.corefonts");
 include("engines.wine.verbs.dxvk");
 
-var installerImplementation = {
-    run: function () {
         new OnlineInstallerScript()
             .name("Overwatch")
             .editor("Blizzard")
@@ -26,9 +24,3 @@ var installerImplementation = {
                 wine.overrideDLL().set("disabled", ["nvapi", "nvapi64"]).do();
                 wine.DXVK();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

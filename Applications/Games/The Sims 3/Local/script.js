@@ -4,8 +4,6 @@ include("engines.wine.verbs.tahoma");
 include("engines.wine.verbs.mfc42");
 include("engines.wine.verbs.dotnet20");
 
-var installerImplementation = {
-    run: function () {
         new LocalInstallerScript()
             .name("The Sims 3")
             .editor("Electronic Arts")
@@ -19,9 +17,3 @@ var installerImplementation = {
                 wine.vcrun2010();
                 wine.dotnet20();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

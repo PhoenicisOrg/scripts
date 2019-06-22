@@ -1,8 +1,6 @@
 include("engines.wine.quick_script.local_installer_script");
 include("engines.wine.plugins.override_dll");
 
-var installerImplementation = {
-    run: function () {
         new LocalInstallerScript()
             .name("Microsoft Office 2010")
             .editor("Microsoft")
@@ -49,9 +47,3 @@ var installerImplementation = {
                     .miniature(["Office", "Microsoft Office 2010"])
                     .create();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

@@ -2,8 +2,6 @@ include("engines.wine.quick_script.uplay_script");
 include("engines.wine.verbs.corefonts");
 include("engines.wine.plugins.virtual_desktop");
 
-var installerImplementation = {
-    run: function () {
         new UplayScript()
             .name("Anno 2070")
             .editor("Ubisoft")
@@ -17,9 +15,3 @@ var installerImplementation = {
                 wine.setVirtualDesktop(screenSize.width, screenSize.height);
                 wine.corefonts();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

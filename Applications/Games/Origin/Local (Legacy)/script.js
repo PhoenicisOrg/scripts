@@ -2,8 +2,6 @@ include("engines.wine.quick_script.local_installer_script");
 include("utils.functions.net.download");
 include("utils.functions.filesystem.extract");
 
-var installerImplementation = {
-    run: function () {
         new LocalInstallerScript()
             .name("Origin")
             .editor("Electronic Arts")
@@ -31,9 +29,3 @@ var installerImplementation = {
                     .to(originDir)
                     .extract();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

@@ -8,8 +8,6 @@ include("engines.wine.verbs.d3dx9");
 
 // Installs League of Legends
 
-var installerImplementation = {
-    run: function () {
         new CustomInstallerScript()
             .name("League of Legends")
             .editor("Riot Games")
@@ -110,9 +108,3 @@ var installerImplementation = {
                 writeToFile(client, batContent);
             })
             .executable("run.bat")
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

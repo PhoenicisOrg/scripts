@@ -5,8 +5,6 @@ include("engines.wine.verbs.corefonts");
 include("engines.wine.verbs.dxvk");
 include("utils.functions.apps.resources");
 
-var installerImplementation = {
-    run: function () {
         new SteamScript()
             .name("Subnautica")
             .editor("Unknown Worlds Entertainment")
@@ -28,9 +26,3 @@ var installerImplementation = {
                 wizard.message(tr("Due to a potential confilct with Vulkan, shader mods break the game (the executable file works but no window is displayed)."));
             })
             .gameOverlay(false)
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

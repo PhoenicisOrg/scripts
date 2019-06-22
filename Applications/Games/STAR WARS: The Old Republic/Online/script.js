@@ -2,8 +2,6 @@ include("engines.wine.quick_script.online_installer_script");
 include("engines.wine.verbs.d3dx9");
 include("utils.functions.filesystem.files");
 
-var installerImplementation = {
-    run: function () {
         new OnlineInstallerScript()
             .name("STAR WARS™: The Old Republic")
             .editor("BioWare")
@@ -39,11 +37,5 @@ var installerImplementation = {
                         '}'
                 writeToFile(path, content)
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
 
 

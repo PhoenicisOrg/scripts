@@ -2,8 +2,6 @@ include("engines.wine.quick_script.online_installer_script");
 include("engines.wine.plugins.csmt");
 include("engines.wine.plugins.virtual_desktop");
 
-var installerImplementation = {
-    run: function () {
         new OnlineInstallerScript()
             .name("Guild Wars 2")
             .editor("ArenaNet")
@@ -20,9 +18,3 @@ var installerImplementation = {
                 wine.setVirtualDesktop(1280, 1024);
                 wine.enableCSMT();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

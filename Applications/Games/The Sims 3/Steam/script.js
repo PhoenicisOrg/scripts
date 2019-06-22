@@ -4,8 +4,6 @@ include("engines.wine.verbs.vcrun2010");
 include("engines.wine.verbs.tahoma");
 include("engines.wine.verbs.mfc42");
 
-var installerImplementation = {
-    run: function () {
         new SteamScript()
             .name("The Sims 3")
             .editor("Electronic Arts")
@@ -22,9 +20,3 @@ var installerImplementation = {
             })
             .gameOverlay(false)
             .executable("Steam.exe", ["-silent", "-applaunch", 47890, "-no-ces-sandbox", "xgamma -gamma 1"])
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

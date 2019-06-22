@@ -2,8 +2,6 @@ include("engines.wine.quick_script.steam_script");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.verbs.mfc42");
 
-var installerImplementation = {
-    run: function () {
         new SteamScript()
             .name("Age of Empires® III: Complete Collection")
             .editor("Microsoft Studios")
@@ -15,9 +13,3 @@ var installerImplementation = {
                     .set("native, builtin", ["pidgen"])
                     .do();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

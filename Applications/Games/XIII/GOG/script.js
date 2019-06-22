@@ -1,7 +1,5 @@
 include("engines.wine.quick_script.gog_script");
 
-var installerImplementation = {
-    run: function () {
         new GogScript()
             .name("XIII")
             .editor("Ubisoft")
@@ -11,9 +9,3 @@ var installerImplementation = {
             .category("Games")
             .wineVersion(LATEST_STABLE_VERSION)
             .executable("xiii.exe")
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

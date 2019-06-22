@@ -1,8 +1,6 @@
 include("engines.wine.quick_script.steam_script");
 include("utils.functions.filesystem.files");
 
-var installerImplementation = {
-    run: function () {
         new SteamScript()
             .name("Enderal")
             .editor("SureAI")
@@ -28,9 +26,3 @@ var installerImplementation = {
                     .get();
             })
             .executable("Enderal Launcher.exe")
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

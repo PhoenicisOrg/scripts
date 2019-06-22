@@ -1,7 +1,5 @@
 include("engines.wine.quick_script.gog_script");
 
-var installerImplementation = {
-    run: function () {
         new GogScript()
             .name("Teenagent")
             .editor("")
@@ -12,9 +10,3 @@ var installerImplementation = {
             .wineVersion(LATEST_DOS_SUPPORT_VERSION)
             .wineDistribution("dos_support")
             .executable("TEENAGNT.EXE")
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

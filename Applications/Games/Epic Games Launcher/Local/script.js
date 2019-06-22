@@ -1,7 +1,5 @@
 include("engines.wine.quick_script.local_installer_script");
 
-var installerImplementation = {
-    run: function () {
         new LocalInstallerScript()
             .name("Epic Games Launcher")
             .editor("Epic Games")
@@ -13,9 +11,3 @@ var installerImplementation = {
             .wineVersion(LATEST_STAGING_VERSION)
             .wineDistribution("staging")
             .wineArchitecture("amd64")
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

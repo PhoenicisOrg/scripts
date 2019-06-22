@@ -2,8 +2,6 @@ include("engines.wine.quick_script.online_installer_script");
 include("engines.wine.verbs.vcrun2012");
 include("engines.wine.verbs.d3dx9");
 
-var installerImplementation = {
-    run: function () {
         new OnlineInstallerScript()
             .name("DC Universe Online")
             .editor("Sony Entertainment")
@@ -16,9 +14,3 @@ var installerImplementation = {
                 wine.vcrun2012();
                 wine.d3dx9();
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

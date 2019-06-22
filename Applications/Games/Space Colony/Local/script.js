@@ -1,8 +1,6 @@
 include("engines.wine.quick_script.local_installer_script");
 include("utils.functions.net.resource");
 
-var installerImplementation = {
-    run: function () {
         new LocalInstallerScript()
             .name("Space Colony")
             .editor("Firefly Studios")

@@ -22,8 +22,6 @@ function fixIni(ini) {
     writeToFile(ini, content);
 }
 
-var installerImplementation = {
-    run: function () {
         new SteamScript()
             .name("Rocksmith™")
             .editor("Ubisoft - San Francisco")
@@ -34,9 +32,3 @@ var installerImplementation = {
                 wine.setOsForApplication().set("Rocksmith.exe", "win7").do();
                 fixIni(wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Rocksmith/Rocksmith.ini");
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

@@ -2,8 +2,6 @@ include("engines.wine.quick_script.local_installer_script");
 include("engines.wine.plugins.native_application");
 include("engines.wine.verbs.vcrun2017");
 
-var installerImplementation = {
-    run: function () {
         new LocalInstallerScript()
             .name("ElsterFormular")
             .editor("ELSTER")
@@ -16,9 +14,3 @@ var installerImplementation = {
                 wine.vcrun2017();
                 wine.nativeApplication("pdf");
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

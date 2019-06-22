@@ -2,8 +2,6 @@ include("engines.wine.quick_script.local_installer_script");
 include("engines.wine.plugins.virtual_desktop");
 include("engines.wine.verbs.quartz");
 
-var installerImplementation = {
-    run: function () {
         new LocalInstallerScript()
             .name("Wildlife Park 2")
             .editor("B-Alive")
@@ -17,9 +15,3 @@ var installerImplementation = {
                 var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
                 wine.setVirtualDesktop(screenSize.width, screenSize.height);
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);

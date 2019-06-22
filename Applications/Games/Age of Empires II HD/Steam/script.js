@@ -1,8 +1,6 @@
 include("engines.wine.quick_script.steam_script");
 include("utils.functions.filesystem.files");
 
-var installerImplementation = {
-    run: function () {
         new SteamScript()
             .name("Age of Empires II HD")
             .editor("Skybox Labs, Hidden Path Entertainment, Ensemble Studios")
@@ -17,9 +15,4 @@ var installerImplementation = {
                 var aoe = installPath + "AoK HD.exe";
                 lns(aoe, launcher);
             })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
+            
