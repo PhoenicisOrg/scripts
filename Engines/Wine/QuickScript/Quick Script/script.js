@@ -46,7 +46,7 @@ class QuickScript {
         this._type = type;
         return this;
     }
-  
+
     category(category) {
         this._category = category;
         return this;
