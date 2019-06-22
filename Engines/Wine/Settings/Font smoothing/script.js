@@ -3,7 +3,7 @@ include("engines.wine.plugins.regedit");
 include("engines.wine.plugins.font_smoothing");
 
 /**
- * setting to set the Fonts Smoothing
+ * Setting to set the Fonts Smoothing
 */
 var settingImplementation = {
     _options: [tr("Default"), tr("RGB"), tr("BGR"), tr("Gray Scale")],
