@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.dummy_installer_script");
+include("utils.functions.apps.plain_installer");
 include("utils.functions.net.resource");
 include("engines.wine.engine.object");
 include("engines.wine.plugins.override_dll");
@@ -9,7 +9,7 @@ include("utils.functions.apps.resources");
 include("engines.wine.verbs.sandbox");
 include("engines.wine.plugins.windows_version");
 
-new DummyInstallerScript().withScript(() => {
+new PlainInstaller().withScript(() => {
 	var appsManager = Bean("repositoryManager");
 	var application = appsManager.getApplication([TYPE_ID, CATEGORY_ID, APPLICATION_ID]);
 	var setupWizard = SetupWizard(InstallationType.APPS, "Internet Explorer 7.0", application.getMainMiniature());

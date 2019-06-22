@@ -1,6 +1,6 @@
 {
-    "scriptName"                 : "Dummy Installer Script",
-    "id"                         : "engines.wine.quick_script.dummy_installer_script",
+    "scriptName"                 : "Plain Installer",
+    "id"                         : "utils.functions.apps.plain_installer",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
