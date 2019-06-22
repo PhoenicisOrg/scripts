@@ -36,9 +36,21 @@ var toolImplementation = {
     run: function (container) {
         var wine = new Wine()
             .prefix(container);
+        
         var environment = [];
         environment["WINEPREFIX"] = wine.prefixDirectory();
         environment["PATH"] = wine.binPath() + ":$PATH";
+        environment["LD_LIBRARY_PATH"] = Bean("propertyReader").getProperty("application.environment.ld");
+        environment["TERM"] = "xterm";
+        var wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines") + "/wine";
+        var winePath = wine.binPath().substring(0, wine.binPath().length - 5); //trim /bin/
+        if (wine.architecture() == "amd64") {
+            environment["LD_LIBRARY_PATH"] = wineEnginesDirectory + "/runtime/lib64/:" + wineEnginesDirectory + "/runtime/lib/:"
+                   + winePath + "/lib64/:"
+                   + winePath + "/lib/:" + environment["LD_LIBRARY_PATH"] ;
+        } else {
+            environment["LD_LIBRARY_PATH"] = wineEnginesDirectory + "/runtime/lib/:" + winePath + "/lib/:" + environment["LD_LIBRARY_PATH"] ;
+        }
         this._TerminalOpener.openTerminal(wine.prefixDirectory(), environment);
     }
 };
@@ -55,7 +67,7 @@ var Tool = Java.extend(org.phoenicis.engines.EngineTool, toolImplementation);
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
