@@ -1,7 +1,7 @@
 include("engines.wine.engine.object");
 
 /**
- * force the Font smothing
+ * force the Font smoothing
  * @param {string} mode ("RGB", "BGR" or "Gray Scale")
  * @returns {Wine} Wine object
  */
