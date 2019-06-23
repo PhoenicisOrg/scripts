@@ -7,7 +7,7 @@ include("engines.wine.verbs.remove_mono");
 
 /**
  * Verb to install .NET 2.0
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.dotnet20 = function () {
