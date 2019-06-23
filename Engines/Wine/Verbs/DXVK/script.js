@@ -96,7 +96,8 @@ class DXVKVerb {
         var latestVersion = cat(releaseFile).replaceAll("\\n", "");
         // query desired version (default: latest release version)
         var versions = [
-            "1.2.1", "1.2", "1.1.1",
+            "1.2.2", "1.2.1", "1.2",
+            "1.1.1",
             "1.0.3", "1.0.2", "1.0.1", "1.0",
             "0.96", "0.95", "0.94", "0.93", "0.92", "0.91", "0.90",
             "0.81", "0.80", "0.72", "0.71", "0.70",
@@ -106,7 +107,6 @@ class DXVKVerb {
             "0.31", "0.30",
             "0.21", "0.20"
         ];
-
         var selectedVersion = wizard.menu(tr("Please select the version."), versions, latestVersion);
         wine.wizard(wizard);
         // install selected version
