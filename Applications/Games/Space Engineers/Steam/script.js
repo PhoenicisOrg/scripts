@@ -13,7 +13,7 @@ var installerImplementation = {
             .editor("Keen Software House")
             .author("Zemogiter")
             .appId(244850)
-            .wineVersion("4.9")
+            .wineVersion("4.11")
             .wineDistribution("upstream")
             .wineArchitecture("amd64")
             .preInstall(function (wine, wizard) {
@@ -22,7 +22,7 @@ var installerImplementation = {
                 wine.DXVK();
                 wine.faudio();
                 wine.overrideDLL()
-                    .set("native, builtin", ["xaudio2_0", "xaudio2_1", "xaudio2_2", "xaudio2_3", "xaudio2_4", "xaudio2_5", "xaudio2_6", "xaudio2_7", "xaudio2_8", "xaudio2_9"])
+                    .set("native, builtin", ["msvcr120", "xaudio2_0", "xaudio2_1", "xaudio2_2", "xaudio2_3", "xaudio2_4", "xaudio2_5", "xaudio2_6", "xaudio2_7", "xaudio2_8", "xaudio2_9"])
                     .do();
                 wizard.message(tr("You have to install libjpeg62 and libjpeg62-dev or else the thumbnails in New Game menu will be dispalyed as magenta rectangles."));
             })
