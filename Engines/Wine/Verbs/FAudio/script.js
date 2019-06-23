@@ -26,14 +26,13 @@ Wine.prototype.faudio = function (faudioVersion) {
         .extract();
 
     var forEach = Array.prototype.forEach;
-    var sys32dir = this.system32directory();
+    var sys64dir = this.system64directory();
     var faudioDir = this.prefixDirectory() + "/FAudio/faudio-" + faudioVersion;
     var self = this;
 
-    var sys64dir = this.system64directory();
-        forEach.call(ls(faudioDir + "/x64"), function (file) {
-            if (file.endsWith(".dll")) {
-                cp(faudioDir + "/x64/" + file, sys64dir);
+    forEach.call(ls(faudioDir + "/x64"), function (file) {
+        if (file.endsWith(".dll")) {
+            cp(faudioDir + "/x64/" + file, sys64dir);
         }
     });
 
