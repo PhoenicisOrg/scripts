@@ -8,7 +8,7 @@ var toolImplementation = {
     run: function (container) {
         var wine = new Wine()
             .prefix(container);
-        
+
         var environment = [];
         environment["WINEPREFIX"] = wine.prefixDirectory();
         environment["PATH"] = wine.binPath() + ":$PATH";
