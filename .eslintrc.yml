@@ -4,6 +4,7 @@ extends:
 
 env:
   nashorn: true
+  es6: true
 
 rules:
   valid-jsdoc: 2
