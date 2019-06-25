@@ -12,6 +12,7 @@ include("utils.functions.filesystem.files");
 Wine.prototype.faudio = function (faudioVersion) {
     if (this.architecture() != "amd64")
         this.wizard().message(tr("FAudio does not support 32bit architecture."));
+        break;
     if (typeof faudioVersion !== 'string')
         faudioVersion = "19.06.07";
 
