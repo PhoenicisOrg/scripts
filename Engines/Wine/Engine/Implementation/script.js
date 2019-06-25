@@ -315,17 +315,17 @@ var engineImplementation = {
         var extensionFile = executable.split(".").pop();
 
         if (extensionFile == "msi") {
-            var msiArgs = org.apache.commons.lang.ArrayUtils.addAll(["/i", executable], args);
+            const msiArgs = ["/i", executable].concat(args);
             return this.run("msiexec", msiArgs, workingDir, captureOutput, wait, userData);
         }
 
         if (extensionFile == "bat") {
-            var batArgs = org.apache.commons.lang.ArrayUtils.addAll(["/Unix", executable], args);
+            const batArgs = ["/Unix", executable].concat(args);
             return this.run("start", batArgs, workingDir, captureOutput, wait, userData);
         }
 
         if (userData["trustLevel"] == "0x20000" && distribution == "staging") {
-            var runasArgs = org.apache.commons.lang.ArrayUtils.addAll(["/trustlevel:0x20000", executable], args);
+            const runAsArgs = ["/trustlevel:0x20000", executable].concat(args);
             userData["trustLevel"] = "0"; //avoid infinite loop
             return this.run("runas", runasArgs, workingDir, captureOutput, wait, userData);
         }
