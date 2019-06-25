@@ -119,7 +119,7 @@ WineShortcut.prototype.environment = function (environment) {
 
 /**
 * sets trust level
-* @param {string} trustLevel
+* @param {string} trustLevel trust level
 * @returns {WineShortcut} WineShortcut object
 */
 WineShortcut.prototype.trustLevel = function (trustLevel) {
