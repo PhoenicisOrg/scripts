@@ -6,8 +6,8 @@ include("engines.wine.engine.object");
  * @returns {Wine} Wine object
  */
 Wine.prototype.fontSmoothing = function (mode) {
-    var fontSmoothingType;
-    var fontSmoothingOrientation;
+    let fontSmoothingType;
+    let fontSmoothingOrientation;
     if (mode === "RGB") {
         fontSmoothingType = "2";
         fontSmoothingOrientation = "1";
@@ -21,11 +21,11 @@ Wine.prototype.fontSmoothing = function (mode) {
         fontSmoothingOrientation = "1";
     }
     else {
-        var errorMessage = "Unknown font smoothing mode: " + mode
+        const errorMessage = "Unknown font smoothing mode: " + mode
         throw errorMessage;
     }
 
-    var regeditFileContent =
+    const regeditFileContent =
                         "REGEDIT4\n"                                                            +
 			"\n"                                                                    +
 			"[HKEY_CURRENT_USER\\Control Panel\\Desktop]\n"                         +
