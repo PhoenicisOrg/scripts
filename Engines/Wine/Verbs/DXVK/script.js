@@ -12,9 +12,9 @@ include("utils.functions.filesystem.files");
 Wine.prototype.DXVK = function (dxvkVersion) {
     var operatingSystemFetcher = Bean("operatingSystemFetcher");
     print("NOTE: wine version should be greater or equal to 3.10");
-    if (operatingSystemFetcher.fetchCurrentOperationSystem() != "Linux")
+    if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
     {
-        this.wizard().message(tr("DXVK might not work correctly on macOS. This is depending on Metal api support and MoltenVK compatibility layer advancement"));
+        throw "DXVK might not work correctly on macOS. This is depending on Metal api support and MoltenVK compatibility layer advancement.";
     }
     else
     {
