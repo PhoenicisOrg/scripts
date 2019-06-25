@@ -11,10 +11,14 @@ include("utils.functions.filesystem.files");
 */
 Wine.prototype.DXVK = function (dxvkVersion) {
     var operatingSystemFetcher = Bean("operatingSystemFetcher");
+    var uiQuestionFactory = Bean("uiQuestionFactory");
     print("NOTE: wine version should be greater or equal to 3.10");
     if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
     {
-        throw "DXVK might not work correctly on macOS. This is depending on Metal api support and MoltenVK compatibility layer advancement.";
+        uiQuestionFactory.create(
+				tr("DXVK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Do you want to continue? Chosing no will delete the wineprefix.", winePrefix),
+				() => remove(this.winePrefixesDirectory + winePrefix)
+			);
     }
     else
     {
