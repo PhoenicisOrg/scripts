@@ -53,7 +53,7 @@ var settingImplementation = {
     },
     setOption: function (container, optionIndex) {
         var regeditFileContent;
-        if (0 == optionIndex) {
+        if (0 === optionIndex) {
             regeditFileContent =
 			"REGEDIT4\n"					+
 			"\n"						+
