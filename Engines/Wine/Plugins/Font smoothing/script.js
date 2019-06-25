@@ -22,7 +22,7 @@ Wine.prototype.fontSmoothing = function (mode) {
     }
     else {
         var errorMessage = "Unknown font smoothing mode: " + mode
-        throw mode;
+        throw errorMessage;
     }
 
     var regeditFileContent =
