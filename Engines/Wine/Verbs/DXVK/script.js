@@ -16,8 +16,8 @@ Wine.prototype.DXVK = function (dxvkVersion) {
     if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
     {
         uiQuestionFactory.create(
-				tr("DXVK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Do you want to continue? Chosing no will delete the wineprefix.", winePrefix),
-				() => remove(this.winePrefixesDirectory + winePrefix)
+				tr("DXVK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Do you want to continue? Chosing no will skip DXVK installation and continue with other verbs.", winePrefix),
+				() => 
 			);
     }
     else
