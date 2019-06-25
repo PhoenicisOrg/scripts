@@ -8,26 +8,30 @@ include("engines.wine.engine.object");
 Wine.prototype.fontSmoothing = function (mode) {
     var fontSmoothingType;
     var fontSmoothingOrientation;
-    if (mode == "RGB") {
+    if (mode === "RGB") {
         fontSmoothingType = "2";
         fontSmoothingOrientation = "1";
     }
-    else if (mode == "BGR") {
+    else if (mode === "BGR") {
         fontSmoothingType = "2";
         fontSmoothingOrientation = "0";
     }
-    else if (mode == "Gray Scale"){
+    else if (mode === "Gray Scale"){
         fontSmoothingType = "1";
         fontSmoothingOrientation = "1";
     }
+    else {
+        var errorMessage = "Unknown font smoothing mode: " + mode
+        throw mode;
+    }
 
     var regeditFileContent =
-                        "REGEDIT4\n"					+
-			"\n"						+
-			"[HKEY_CURRENT_USER\\Control Panel\\Desktop]\n"	+
-			"\"FontSmoothing\"=\"2\"\n"			+
-			"\"FontSmoothingType\"=dword:0000000" + fontSmoothingType + "\n"	+
-			"\"FontSmoothingGamma\"=dword:00000578\n"	+
+                        "REGEDIT4\n"                                                            +
+			"\n"                                                                    +
+			"[HKEY_CURRENT_USER\\Control Panel\\Desktop]\n"                         +
+			"\"FontSmoothing\"=\"2\"\n"                                             +
+			"\"FontSmoothingType\"=dword:0000000" + fontSmoothingType + "\n"        +
+			"\"FontSmoothingGamma\"=dword:00000578\n"                               +
 			"\"FontSmoothingOrientation\"=dword:0000000" + fontSmoothingOrientation + "\n";
 
     this.regedit().patch(regeditFileContent);
