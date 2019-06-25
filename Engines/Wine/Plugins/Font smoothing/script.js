@@ -21,8 +21,7 @@ Wine.prototype.fontSmoothing = function (mode) {
         fontSmoothingOrientation = "1";
     }
     else {
-        const errorMessage = "Unknown font smoothing mode: " + mode
-        throw errorMessage;
+        throw tr("Unknown font smoothing mode: \"{0}\"", mode);
     }
 
     const regeditFileContent =
