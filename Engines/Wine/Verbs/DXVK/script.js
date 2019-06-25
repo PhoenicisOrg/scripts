@@ -23,59 +23,60 @@ Wine.prototype.DXVK = function (dxvkVersion) {
     else
     {
         this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
-    }
-
-    if (typeof dxvkVersion !== 'string')
-    {
-        var releaseFile = new Resource()
-            .wizard(this.wizard())
-            .url("https://raw.githubusercontent.com/doitsujin/dxvk/master/RELEASE")
-            .name("RELEASE.txt")
-            .get();
-        dxvkVersion = cat(releaseFile).replaceAll("\\n", "");
-    }
-
-    var setupFile = new Resource()
-        .wizard(this.wizard())
-        .url("https://github.com/doitsujin/dxvk/releases/download/v" + dxvkVersion + "/dxvk-" + dxvkVersion + ".tar.gz")
-        .name("dxvk-" + dxvkVersion + ".tar.gz")
-        .get();
-
-    new Extractor()
-        .wizard(this.wizard())
-        .archive(setupFile)
-        .to(this.prefixDirectory() + "/TMP/")
-        .extract();
-
-    var forEach = Array.prototype.forEach;
-    var sys32dir = this.system32directory();
-    var dxvkTmpDir = this.prefixDirectory() + "/TMP/dxvk-" + dxvkVersion;
-    var self = this;
-
-    //Copy 32 bits dll to system* and apply override
-    forEach.call(ls(dxvkTmpDir + "/x32"), function (file) {
-        if (file.endsWith(".dll")) {
-            cp(dxvkTmpDir + "/x32/" + file, sys32dir);
-            self.overrideDLL()
-                .set("native", [file])
-                .do();
+	if (typeof dxvkVersion !== 'string')
+        {
+            var releaseFile = new Resource()
+                .wizard(this.wizard())
+                .url("https://raw.githubusercontent.com/doitsujin/dxvk/master/RELEASE")
+                .name("RELEASE.txt")
+                .get();
+            dxvkVersion = cat(releaseFile).replaceAll("\\n", "");
         }
-    });
 
-    if (this.architecture() == "amd64")
-    {
-        var sys64dir = this.system64directory();
-        //Copy 64 bits dll to system*
-        forEach.call(ls(dxvkTmpDir + "/x64"), function (file) {
+        var setupFile = new Resource()
+            .wizard(this.wizard())
+            .url("https://github.com/doitsujin/dxvk/releases/download/v" + dxvkVersion + "/dxvk-" + dxvkVersion + ".tar.gz")
+            .name("dxvk-" + dxvkVersion + ".tar.gz")
+            .get();
+
+        new Extractor()
+            .wizard(this.wizard())
+            .archive(setupFile)
+            .to(this.prefixDirectory() + "/TMP/")
+            .extract();
+
+        var forEach = Array.prototype.forEach;
+        var sys32dir = this.system32directory();
+        var dxvkTmpDir = this.prefixDirectory() + "/TMP/dxvk-" + dxvkVersion;
+        var self = this;
+
+        //Copy 32 bits dll to system* and apply override
+        forEach.call(ls(dxvkTmpDir + "/x32"), function (file) {
             if (file.endsWith(".dll")) {
-                cp(dxvkTmpDir + "/x64/" + file, sys64dir);
+                cp(dxvkTmpDir + "/x32/" + file, sys32dir);
+                self.overrideDLL()
+                    .set("native", [file])
+                    .do();
             }
         });
+
+        if (this.architecture() == "amd64")
+        {
+            var sys64dir = this.system64directory();
+            //Copy 64 bits dll to system*
+            forEach.call(ls(dxvkTmpDir + "/x64"), function (file) {
+                if (file.endsWith(".dll")) {
+                    cp(dxvkTmpDir + "/x64/" + file, sys64dir);
+                }
+            });
+        }
+
+        remove(this.prefixDirectory() + "/TMP/");
+
+        return this;
     }
 
-    remove(this.prefixDirectory() + "/TMP/");
-
-    return this;
+    
 }
 
 /**
