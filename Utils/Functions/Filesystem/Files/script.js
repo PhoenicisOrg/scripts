@@ -8,7 +8,7 @@ var fileUtilities = Bean("fileUtilities");
  * @returns {string[]} list of files and directories
  */
 function ls(directoryPath) {
-	return fileUtilities.ls(directoryPath);
+    return fileUtilities.ls(directoryPath);
 }
 
 /**
@@ -18,7 +18,7 @@ function ls(directoryPath) {
  * @returns {void}
  */
 function mkdir(directoryPath) {
-	fileUtilities.mkdir(directoryPath);
+    fileUtilities.mkdir(directoryPath);
 }
 
 /**
@@ -28,7 +28,7 @@ function mkdir(directoryPath) {
  * @returns {boolean} true if file exists
  */
 function fileExists(filePath) {
-	return fileUtilities.exists(filePath);
+    return fileUtilities.exists(filePath);
 }
 
 /**
@@ -38,7 +38,7 @@ function fileExists(filePath) {
  * @returns {string} content
  */
 function cat(filePath) {
-	return fileUtilities.getFileContent(filePath);
+    return fileUtilities.getFileContent(filePath);
 }
 
 /**
@@ -49,7 +49,7 @@ function cat(filePath) {
  * @returns {void}
  */
 function cp(source, target) {
-	return fileUtilities.copy(source, target);
+    return fileUtilities.copy(source, target);
 }
 
 /**
@@ -59,7 +59,7 @@ function cp(source, target) {
  * @returns {number} file size
  */
 function getFileSize(filePath) {
-	return fileUtilities.getSize(filePath);
+    return fileUtilities.getSize(filePath);
 }
 
 /**
@@ -69,7 +69,7 @@ function getFileSize(filePath) {
  * @returns {string} file name
  */
 function fileName(filePath) {
-	return fileUtilities.getFileName(filePath);
+    return fileUtilities.getFileName(filePath);
 }
 
 /**
@@ -80,7 +80,7 @@ function fileName(filePath) {
  * @returns {void}
  */
 function lns(target, link) {
-	return fileUtilities.createSymbolicLink(link, target);
+    return fileUtilities.createSymbolicLink(link, target);
 }
 
 /**
@@ -90,7 +90,7 @@ function lns(target, link) {
  * @returns {void}
  */
 function remove(filePath) {
-	return fileUtilities.remove(filePath);
+    return fileUtilities.remove(filePath);
 }
 
 /**
@@ -100,9 +100,9 @@ function remove(filePath) {
  * @returns {void}
  */
 function touch(filePath) {
-	if (!fileExists(filePath)) {
-		fileUtilities.writeToFile(filePath, "");
-	}
+    if (!fileExists(filePath)) {
+        fileUtilities.writeToFile(filePath, "");
+    }
 }
 
 /**
@@ -113,7 +113,7 @@ function touch(filePath) {
  * @returns {void}
  */
 function writeToFile(filePath, content) {
-	fileUtilities.writeToFile(filePath, content);
+    fileUtilities.writeToFile(filePath, content);
 }
 
 /**
@@ -123,7 +123,7 @@ function writeToFile(filePath, content) {
  * @returns {string} file path of created temporary file
  */
 function createTempFile(extension) {
-	return fileUtilities.createTmpFile(extension);
+    return fileUtilities.createTmpFile(extension);
 }
 
 /**
@@ -132,7 +132,7 @@ function createTempFile(extension) {
  * @returns {string} file path of created temporary directory
  */
 function createTempDir() {
-	return fileUtilities.createTmpDir();
+    return fileUtilities.createTmpDir();
 }
 
 /**
@@ -143,64 +143,64 @@ function createTempDir() {
  * @returns {void}
  */
 function chmod(filePath, permissions) {
-	fileUtilities.chmod(filePath, permissions);
+    fileUtilities.chmod(filePath, permissions);
 }
 
 /**
  * Checksum
  */
 class Checksum {
-	constructor() {
-		this.checksumCalculator = Bean("checksumCalculator");
-		this._method = "SHA";
-	}
+    constructor() {
+        this.checksumCalculator = Bean("checksumCalculator");
+        this._method = "SHA";
+    }
 
-	/**
+    /**
 	 * sets wizard
 	 * @param {SetupWizard} wizard setup wizard
 	 * @returns {Checksum} Checksum object
 	 */
-	wizard(wizard) {
-		this._wizard = wizard;
+    wizard(wizard) {
+        this._wizard = wizard;
 
-		return this;
-	}
+        return this;
+    }
 
-	/**
+    /**
 	 * sets checksum algorithm
 	 * @param {string} algorithm algorithm (e.g. "SHA")
 	 * @returns {Checksum} Checksum object
 	 */
-	method(algorithm) {
-		this._method = algorithm;
+    method(algorithm) {
+        this._method = algorithm;
 
-		return this;
-	}
+        return this;
+    }
 
-	/**
+    /**
 	 * sets file for which the checksum shall be computed
 	 * @param {string} file file for which the checksum shall be computed
 	 * @returns {Checksum} Checksum object
 	 */
-	of(file) {
-		this._file = file;
+    of(file) {
+        this._file = file;
 
-		return this;
-	}
+        return this;
+    }
 
-	/**
+    /**
 	 * returns calculated checksum
 	 * @returns {string} calculated checksum
 	 */
-	get() {
-		if (this._wizard) {
-			var progressBar = this._wizard.progressBar(tr("Checking file consistency..."));
-		}
+    get() {
+        if (this._wizard) {
+            var progressBar = this._wizard.progressBar(tr("Checking file consistency..."));
+        }
 
-		return this.checksumCalculator.calculate(this._file, this._method, function(progressEntity) {
-			if (progressBar) {
-				progressBar.accept(progressEntity);
-			}
-		});
-	}
+        return this.checksumCalculator.calculate(this._file, this._method, function (progressEntity) {
+            if (progressBar) {
+                progressBar.accept(progressEntity);
+            }
+        });
+    }
 }
