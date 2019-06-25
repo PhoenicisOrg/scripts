@@ -36,6 +36,8 @@ Wine.prototype.faudio = function (faudioVersion) {
         if (file.endsWith(".dll")) {
             cp(faudioDir + "/x64/" + file, sys64dir);
             self.overrideDLL()
+                .set("native", [file])
+                .do();
         }
     });
 
