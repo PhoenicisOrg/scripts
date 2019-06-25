@@ -35,6 +35,7 @@ Wine.prototype.faudio = function (faudioVersion) {
     forEach.call(ls(faudioDir + "/x64"), function (file) {
         if (file.endsWith(".dll")) {
             cp(faudioDir + "/x64/" + file, sys64dir);
+            self.overrideDLL()
         }
     });
 
