@@ -57,11 +57,11 @@ Wine.prototype.gallium9 = function (gallium9Version) {
  */
 var verbImplementation = {
     install: function (container) {
-        let wine = new Wine();
-        wine.prefix(container);
         const wizard = SetupWizard(InstallationType.VERBS, "gallium9", java.util.Optional.empty());
         const versions = ["0.4", "0.3", "0.2"];
         const selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.4");
+        const wine = new Wine();
+        wine.prefix(container);
         wine.wizard(wizard);
         // install selected version
         wine.gallium9(selectedVersion.text);
