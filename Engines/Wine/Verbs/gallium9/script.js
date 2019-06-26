@@ -4,10 +4,10 @@ include("utils.functions.net.resource");
 include("utils.functions.filesystem.files");
 
 /**
-* Verb to install Gallium 9 Standalone
-* see: https://github.com/iXit/wine-nine-standalone/
-* @param {String} gallium9Version Gallium 9 Standalone version to download
-* @returns {Wine} Wine object
+ * Verb to install Gallium 9 Standalone
+ * see: https://github.com/iXit/wine-nine-standalone/
+ * @param {String} gallium9Version Gallium 9 Standalone version to download
+ * @returns {Wine} Wine object
 */
 Wine.prototype.gallium9 = function (gallium9Version) {
     if (typeof gallium9Version !== 'string') {
