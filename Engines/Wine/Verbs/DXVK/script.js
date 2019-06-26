@@ -16,14 +16,13 @@ Wine.prototype.DXVK = function (dxvkVersion) {
     if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
     {
         uiQuestionFactory.create(
-				tr("XVK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Do you want to continue? Chosing yes will skip DXVK verb  installation and continue with other verbs. Chosing no will quit script installation.", winePrefix),
-				() => continue;
+				tr("DXVK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Do you want to continue? Chosing yes will skip DXVK verb  installation and continue with other verbs. Chosing no will quit script installation.", winePrefix),
+				() => return this;
 			);
     }
     else (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() == "Linux")
     {
         this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
-        continue = true;
     }
 
     if (typeof dxvkVersion !== 'string')
