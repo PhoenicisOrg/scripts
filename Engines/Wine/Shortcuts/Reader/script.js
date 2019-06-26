@@ -8,7 +8,7 @@ class WineShortcutReader {
         this.libraryManager = Bean("libraryManager");
         this.uiQuestionFactory = Bean("uiQuestionFactory");
         this.winePrefixesDirectory =
-			Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
+            Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
     }
 
     get wineprefix() {
@@ -73,11 +73,11 @@ class ShortcutReader {
     }
 
     /**
-	 * Sets shortcut
-	 *
-	 * @param {string} shortcut shortcut
-	 * @returns {void}
-	 */
+     * Sets shortcut
+     *
+     * @param {string} shortcut shortcut
+     * @returns {void}
+     */
     of(shortcut) {
         const shortcutContentParsed = JSON.parse(shortcut.script);
 
@@ -87,38 +87,38 @@ class ShortcutReader {
     }
 
     /**
-	 * Returns the name of the container belonging to a shortcut
-	 *
-	 * @returns {string} The container name
-	 */
+     * Returns the name of the container belonging to a shortcut
+     *
+     * @returns {string} The container name
+     */
     get container() {
         return this.runner.container();
     }
 
     /**
-	 * Runs a shortcut with the given user arguments
-	 *
-	 * @param {array} userArguments The user arguments
-	 * @returns {void}
-	 */
+     * Runs a shortcut with the given user arguments
+     *
+     * @param {array} userArguments The user arguments
+     * @returns {void}
+     */
     run(userArguments) {
         this.runner.run(userArguments);
     }
 
     /**
-	 * Stops the running shortcut
-	 *
-	 * @returns {void}
-	 */
+     * Stops the running shortcut
+     *
+     * @returns {void}
+     */
     stop() {
         this.runner.stop();
     }
 
     /**
-	 * Uninstalls the shortcut
-	 *
-	 * @returns {void}
-	 */
+     * Uninstalls the shortcut
+     *
+     * @returns {void}
+     */
     uninstall() {
         this.runner.uninstall();
     }
