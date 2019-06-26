@@ -73,7 +73,8 @@ class ShortcutReader {
     }
 
     /**
-	 * sets shortcut
+	 * Sets shortcut
+	 *
 	 * @param {string} shortcut shortcut
 	 * @returns {void}
 	 */
@@ -86,16 +87,18 @@ class ShortcutReader {
     }
 
     /**
-	 * returns container of shortcut
-	 * @returns {string} container
+	 * Returns the name of the container belonging to a shortcut
+	 *
+	 * @returns {string} The container name
 	 */
     get container() {
         return this.runner.container();
     }
 
     /**
-	 * runs shortcut
-	 * @param {array} userArguments arguments
+	 * Runs a shortcut with the given user arguments
+	 *
+	 * @param {array} userArguments The user arguments
 	 * @returns {void}
 	 */
     run(userArguments) {
@@ -103,7 +106,8 @@ class ShortcutReader {
     }
 
     /**
-	 * stops running shortcut
+	 * Stops the running shortcut
+	 *
 	 * @returns {void}
 	 */
     stop() {
@@ -111,7 +115,8 @@ class ShortcutReader {
     }
 
     /**
-	 * uninstalls shortcut
+	 * Uninstalls the shortcut
+	 *
 	 * @returns {void}
 	 */
     uninstall() {
