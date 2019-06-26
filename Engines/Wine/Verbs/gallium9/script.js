@@ -8,7 +8,7 @@ include("utils.functions.filesystem.files");
  * see: https://github.com/iXit/wine-nine-standalone/
  * @param {String} gallium9Version Gallium 9 Standalone version to download
  * @returns {Wine} Wine object
-*/
+ */
 Wine.prototype.gallium9 = function (gallium9Version) {
     if (typeof gallium9Version !== 'string') {
         gallium9Version = "0.4";
