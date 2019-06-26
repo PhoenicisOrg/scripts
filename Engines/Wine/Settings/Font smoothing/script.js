@@ -4,7 +4,7 @@ include("engines.wine.plugins.font_smoothing");
 
 /**
  * Setting to set the Fonts Smoothing
-*/
+ */
 var settingImplementation = {
     _options: [tr("Default"), tr("RGB"), tr("BGR"), tr("Gray Scale")],
 
@@ -15,22 +15,22 @@ var settingImplementation = {
         return this._options;
     },
     getCurrentOption: function (container) {
-        var fontSmoothing = new Wine()
+        const fontSmoothing = new Wine()
             .prefix(container)
             .regedit()
             .fetchValue(["HKEY_CURRENT_USER", "Control Panel", "Desktop", "FontSmoothing"]);
 
-        var fontSmoothingType = new Wine()
+        const fontSmoothingType = new Wine()
             .prefix(container)
             .regedit()
             .fetchValue(["HKEY_CURRENT_USER", "Control Panel", "Desktop", "FontSmoothingType"]);
 
-        var fontSmoothingOrientation = new Wine()
+        const fontSmoothingOrientation = new Wine()
             .prefix(container)
             .regedit()
             .fetchValue(["HKEY_CURRENT_USER", "Control Panel", "Desktop", "FontSmoothingOrientation"]);
 
-        var index;
+        let index;
 
         if (fontSmoothing == 1) {
             index = 0;
@@ -52,9 +52,8 @@ var settingImplementation = {
         return this._options[index];
     },
     setOption: function (container, optionIndex) {
-        var regeditFileContent;
         if (0 === optionIndex) {
-            regeditFileContent =
+            let regeditFileContent =
 			"REGEDIT4\n"					+
 			"\n"						+
 			"[HKEY_CURRENT_USER\\Control Panel\\Desktop]\n"	+
