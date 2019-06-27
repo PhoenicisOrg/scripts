@@ -20,7 +20,7 @@ Wine.prototype.DXVK = function (dxvkVersion) {
 				() => return this;
 			);
     }
-    else (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() == "Linux")
+    else
     {
         this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
     }
