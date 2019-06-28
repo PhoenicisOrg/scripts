@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Engines/Wine/Verbs/FAudio/script.js</title>
+    <title>JSDoc: Source: Engines/Wine/Verbs/gallium9/script.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Engines/Wine/Verbs/FAudio/script.js</h1>
+    <h1 class="page-title">Source: Engines/Wine/Verbs/gallium9/script.js</h1>
 
     
 
@@ -32,63 +32,67 @@ include("utils.functions.net.resource");
 include("utils.functions.filesystem.files");
 
 /**
-* Verb to install FAudio
-* see: https://github.com/Kron4ek/FAudio-Builds
-* @param {String} faudioVersion version of FAudio to downlaod
-* @returns {Wine} Wine object
-*/
-Wine.prototype.faudio = function (faudioVersion) {
-    if (this.architecture() != "amd64")
-    {
-        throw "FAudio does not support 32bit architecture.";
-    }
-    if (typeof faudioVersion !== 'string')
-    {
-        faudioVersion = "19.06.07";
+ * Verb to install Gallium 9 Standalone
+ * see: https://github.com/iXit/wine-nine-standalone/
+ * @param {String} gallium9Version Gallium 9 Standalone version to download
+ * @returns {Wine} Wine object
+ */
+Wine.prototype.gallium9 = function (gallium9Version) {
+    if (typeof gallium9Version !== 'string') {
+        gallium9Version = "0.4";
     }
 
-    var setupFile = new Resource()
+    this.wizard().message(tr("Using Gallium 9 requires to have a driver supporting the Gallium 9 state tracker, as well as d3dapater9.so installed (ex: libd3d9adapter-mesa package). Please be sure it is installed (both 32 and 64 bits)."));
+
+    const setupFile = new Resource()
         .wizard(this.wizard())
-        .url("https://github.com/Kron4ek/FAudio-Builds/releases/download/" + faudioVersion + "/faudio-" + faudioVersion + ".tar.xz")
-        .name("faudio-" + faudioVersion + ".tar.xz")
+        .url("https://github.com/iXit/wine-nine-standalone/releases/download/v" + gallium9Version + "/gallium-nine-standalone-v" + gallium9Version + ".tar.gz")
+        .name("gallium-nine-standalone-v" + gallium9Version + ".tar.gz")
         .get();
 
     new Extractor()
         .wizard(this.wizard())
         .archive(setupFile)
-        .to(this.prefixDirectory() + "/FAudio/")
+        .to(this.prefixDirectory())
         .extract();
 
-    var forEach = Array.prototype.forEach;
-    var sys64dir = this.system64directory();
-    var faudioDir = this.prefixDirectory() + "/FAudio/faudio-" + faudioVersion;
-    var self = this;
+    remove(this.system32directory() + "/d3d9.dll");
+    lns(this.prefixDirectory() + "/gallium-nine-standalone/lib32/d3d9-nine.dll.so", this.system32directory() + "/d3d9-nine.dll");
+    lns(this.prefixDirectory() + "/gallium-nine-standalone/bin32/ninewinecfg.exe.so", this.system32directory() + "/ninewinecfg.exe");
+    lns(this.system32directory() + "/d3d9-nine.dll", this.system32directory() + "/d3d9.dll");
 
-    forEach.call(ls(faudioDir + "/x64"), function (file) {
-        if (file.endsWith(".dll")) {
-            cp(faudioDir + "/x64/" + file, sys64dir);
-            self.overrideDLL()
-                .set("native", [file])
-                .do();
-        }
-    });
+    if (this.architecture() == "amd64") {
+        remove(this.system64directory() + "/d3d9.dll");
+        lns(this.prefixDirectory() + "/gallium-nine-standalone/lib64/d3d9-nine.dll.so", this.system64directory() + "/d3d9-nine.dll");
+        lns(this.prefixDirectory() + "/gallium-nine-standalone/bin64/ninewinecfg.exe.so", this.system64directory() + "/ninewinecfg.exe");
+        lns(this.system64directory() + "/d3d9-nine.dll", this.system64directory() + "/d3d9.dll");
+        this.run(this.system64directory() + "ninewinecfg.exe", ["-e"], null, false, true);
+    }
+    else
+    {
+        this.run(this.system32directory() + "ninewinecfg.exe", ["-e"], null, false, true);
+    }
+
+    this.overrideDLL()
+        .set("native", ["d3d9"])
+        .do();
 
     return this;
 }
 
 /**
- * Verb to install FAudio
-*/
+ * Verb to install Gallium 9 Standalone
+ */
 var verbImplementation = {
     install: function (container) {
-        var wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "gallium9", java.util.Optional.empty());
+        const versions = ["0.4", "0.3", "0.2"];
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.4");
+        const wine = new Wine();
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "FAudio", java.util.Optional.empty());
-        var versions = ["19.06.07", "19.06", "19.05", "19.04", "19.03", "19.02", "19.01"];
-        var selectedVersion = wizard.menu(tr("Please select the version."), versions, "19.06.07");
         wine.wizard(wizard);
         // install selected version
-        wine.faudio(selectedVersion.text);
+        wine.gallium9(selectedVersion.text);
         wizard.close();
     }
 };
