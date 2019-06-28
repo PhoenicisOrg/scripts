@@ -4,7 +4,7 @@ include("engines.wine.plugins.regedit");
 
 /**
  * Verb to remove mono
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.removeMono = function () {

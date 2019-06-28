@@ -5,7 +5,7 @@ include("engines.wine.verbs.luna");
 
 /**
  * Verb to install corefonts
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.corefonts = function () {

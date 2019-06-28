@@ -5,7 +5,7 @@ include("utils.functions.filesystem.files");
 
 /**
  * Verb to install msxml6
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.msxml6 = function () {

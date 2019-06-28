@@ -5,7 +5,7 @@ include("utils.functions.net.resource");
 
 /**
  * Verb to install luna
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.luna = function () {

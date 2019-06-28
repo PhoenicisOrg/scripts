@@ -10,7 +10,7 @@ include("engines.wine.plugins.regedit");
 
 /**
  * Verb to install .NET 2.0 SP2
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.dotnet20sp2 = function () {

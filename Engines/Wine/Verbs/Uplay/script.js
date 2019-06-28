@@ -3,7 +3,7 @@ include("utils.functions.net.resource");
 
 /**
  * Verb to install Uplay
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.uplay = function () {

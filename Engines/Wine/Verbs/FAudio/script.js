@@ -10,7 +10,7 @@ include("utils.functions.filesystem.files");
  * @param {String} faudioVersion version of FAudio to downlaod
  * @returns {Wine} Wine object
  */
-Wine.prototype.faudio = function(faudioVersion) {
+Wine.prototype.faudio = function (faudioVersion) {
     if (this.architecture() != "amd64") {
         throw "FAudio does not support 32bit architecture.";
     }
@@ -41,7 +41,7 @@ Wine.prototype.faudio = function(faudioVersion) {
     var faudioDir = this.prefixDirectory() + "/FAudio/faudio-" + faudioVersion;
     var self = this;
 
-    forEach.call(ls(faudioDir + "/x64"), function(file) {
+    forEach.call(ls(faudioDir + "/x64"), function (file) {
         if (file.endsWith(".dll")) {
             cp(faudioDir + "/x64/" + file, sys64dir);
             self.overrideDLL()

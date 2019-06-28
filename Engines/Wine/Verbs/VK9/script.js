@@ -6,7 +6,7 @@ include("utils.functions.filesystem.files");
 /**
  * Verb to install VK9
  * see: https://github.com/disks86/VK9
- * 
+ *
  * @param {String} vk9Version VK9 version to install
  * @returns {Wine} Wine object
  */

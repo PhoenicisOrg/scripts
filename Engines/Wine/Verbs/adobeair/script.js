@@ -4,7 +4,7 @@ include("utils.functions.net.resource");
 
 /**
  * Verb to install adobeair
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.adobeair = function () {

@@ -3,7 +3,7 @@ include("utils.functions.net.resource");
 
 /**
  * Verb to install a sandbox
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.sandbox = function () {

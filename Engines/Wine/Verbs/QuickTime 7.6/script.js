@@ -3,7 +3,7 @@ include("utils.functions.net.resource");
 
 /**
  * Verb to install QuickTime 7.6
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.quicktime76 = function () {

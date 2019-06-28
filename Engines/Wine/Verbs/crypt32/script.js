@@ -4,7 +4,7 @@ include("engines.wine.verbs.sp3extract");
 
 /**
  * Verb to install crypt32
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.crypt32 = function () {

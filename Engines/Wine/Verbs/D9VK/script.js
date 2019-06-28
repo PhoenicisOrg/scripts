@@ -6,7 +6,7 @@ include("utils.functions.filesystem.files");
 /**
  * Verb to install D9VK
  * see: https://github.com/Joshua-Ashton/d9vk/
- * 
+ *
  * @param {String} d9vkVersion D9VK version to download
  * @returns {Wine} Wine object
  */

@@ -7,7 +7,7 @@ include("utils.functions.filesystem.files");
 /**
  * All the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
  * see: https://github.com/roderickc/wine-vulkan
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.vulkanSDK = function () {

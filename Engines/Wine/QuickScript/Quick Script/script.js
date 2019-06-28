@@ -113,7 +113,7 @@ class QuickScript {
         this._preInstall = preInstall;
         return this;
     }
-    
+
     /**
      * set environment
      * @param {string} environment variables

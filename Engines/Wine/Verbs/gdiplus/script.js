@@ -5,7 +5,7 @@ include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install gdiplus
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.gdiplus = function () {

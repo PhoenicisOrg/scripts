@@ -7,7 +7,7 @@ include("utils.functions.filesystem.extract");
 
 /**
  * Verb to install the Tahoma font
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.tahoma = function () {

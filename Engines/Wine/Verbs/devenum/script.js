@@ -8,7 +8,7 @@ include("engines.wine.plugins.regsvr32");
 
 /**
  * Verb to install devenum
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.devenum = function () {

@@ -6,7 +6,7 @@ include("utils.functions.filesystem.files");
 
 /**
  * Verb to install msxml3
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.msxml3 = function () {

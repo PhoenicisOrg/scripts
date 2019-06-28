@@ -5,7 +5,7 @@ include("utils.functions.filesystem.files");
 
 /**
  * Verb to install secur32
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.secur32 = function () {

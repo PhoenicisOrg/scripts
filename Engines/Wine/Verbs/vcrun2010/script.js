@@ -5,7 +5,7 @@ include("engines.wine.verbs.luna");
 
 /**
  * Verb to install vcrun2010
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.vcrun2010 = function () {

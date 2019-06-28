@@ -4,7 +4,7 @@ include("engines.wine.verbs.luna");
 
 /**
  * Verb to install Nvidia PhysX
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.physx = function () {

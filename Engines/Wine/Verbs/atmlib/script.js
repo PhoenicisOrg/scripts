@@ -4,7 +4,7 @@ include("utils.functions.filesystem.files");
 
 /**
  * Verb to install atmlib
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.atmlib = function () {

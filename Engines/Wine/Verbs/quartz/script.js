@@ -6,7 +6,7 @@ include("utils.functions.filesystem.files");
 
 /**
  * Verb to install quartz
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.quartz = function () {

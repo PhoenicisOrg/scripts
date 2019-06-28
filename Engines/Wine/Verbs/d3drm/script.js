@@ -7,7 +7,7 @@ include("utils.functions.filesystem.extract");
 
 /**
  * Verb to install d3drm
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.d3drm = function () {

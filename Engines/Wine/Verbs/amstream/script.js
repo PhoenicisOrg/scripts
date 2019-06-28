@@ -9,7 +9,7 @@ include("engines.wine.plugins.regsvr32");
 
 /**
  * Verb to install amstream
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.amstream = function () {

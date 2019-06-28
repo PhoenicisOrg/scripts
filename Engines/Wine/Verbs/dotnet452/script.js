@@ -9,7 +9,7 @@ include("engines.wine.verbs.dotnet40");
 
 /**
  * Verb to install .NET 4.5.2
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.dotnet452 = function () {

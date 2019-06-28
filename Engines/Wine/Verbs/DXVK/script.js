@@ -6,7 +6,7 @@ include("utils.functions.filesystem.files");
 /**
  * Verb to install DXVK
  * see: https://github.com/doitsujin/dxvk/
- * 
+ *
  * @param {String} dxvkVersion DXVK version to download
  * @returns {Wine} Wine object
  */
@@ -107,7 +107,7 @@ class DXVKVerb {
             "0.31", "0.30",
             "0.21", "0.20"
         ];
-        
+
         var selectedVersion = wizard.menu(tr("Please select the version."), versions, latestVersion);
         wine.wizard(wizard);
         // install selected version

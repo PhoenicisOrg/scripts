@@ -5,7 +5,7 @@ include("utils.functions.filesystem.files");
 
 /**
  * Verb to install mspatcha
- * 
+ *
  * @returns {Wine} Wine object
  */
 Wine.prototype.mspatcha = function () {
