@@ -15,6 +15,16 @@ The QuickScript should be sufficient for the vast majority of scripts. It provid
 
 QuickScripts use the latest stable wine version by default (recommended).
 
+If you wish to add environment variables to the execution of the program (not the installer), just add the following before the `.go();`
+```javascript
+    .environment('{ "var1": "value1", "var2": "value2"}')
+```
+
+If you wish to change the trust level (if the application compalains about admin rights) just add the following before the `.go();`
+```javascript
+    .trustLevel("0x20000")
+```
+
 ### SteamScript
 A basic script looks like:
 
