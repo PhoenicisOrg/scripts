@@ -30,8 +30,8 @@ class WineShortcutReader {
         const args = shortcutArguments.concat(Java.from(userArguments));
 
         const userData = {
-            environment: shortcutContent.environment,
-            trustLevel: shortcutContent.trustLevel
+            environment: this.shortcutContent.environment,
+            trustLevel: this.shortcutContent.trustLevel
         };
 
         new Wine()
@@ -91,7 +91,7 @@ class ShortcutReader {
      *
      * @returns {string} The container name
      */
-    get container() {
+    getContainer() {
         return this.runner.container;
     }
 
