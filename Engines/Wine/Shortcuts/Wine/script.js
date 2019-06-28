@@ -108,6 +108,27 @@ WineShortcut.prototype.miniature = function (miniature) {
 }
 
 /**
+* sets shortcut environment
+* @param {string} environment variables
+* @returns {WineShortcut} WineShortcut object
+*/
+WineShortcut.prototype.environment = function (environment) {
+    this._environment = environment;
+    return this;
+}
+
+/**
+* sets trust level
+* @param {string} trustLevel trust level
+* @returns {WineShortcut} WineShortcut object
+*/
+WineShortcut.prototype.trustLevel = function (trustLevel) {
+    this._trustLevel = trustLevel;
+    return this;
+}
+
+
+/**
 * creates shortcut
 * @returns {void}
 */
@@ -127,13 +148,30 @@ WineShortcut.prototype.create = function () {
         .withDescription(this._description)
         .build();
 
+    var myEnv = {WINEDEBUG: "-all"};
+    if (typeof this._environment !== 'undefined') {
+        var envJSON = JSON.parse(this._environment);
+        Object.keys(envJSON).forEach(function (key){
+            myEnv[key] = envJSON[key];
+        });
+    }
+
+    var trustLevel;
+    if (typeof this._trustLevel !== 'undefined') {
+        trustLevel = this._trustLevel;
+    }
+    else {
+        trustLevel = "0"; //dummy value
+    }
+
     var ShortcutDTOBuilderClass = Java.type('org.phoenicis.library.dto.ShortcutDTO.Builder');
     var builder = new ShortcutDTOBuilderClass()
         .withId(this._name)
         .withInfo(info)
         .withScript(JSON.stringify({
             type: "WINE",
-            wineDebug: "-all",
+            environment: myEnv,
+            trustLevel: trustLevel,
             winePrefix: this._prefix,
             arguments: this._arguments,
             workingDirectory:executables[0].getParentFile().getAbsolutePath(),
