@@ -7,6 +7,7 @@ var fileUtilities = Bean("fileUtilities");
  * @param {string} directoryPath directory path
  * @returns {string[]} list of files and directories
  */
+// eslint-disable-next-line no-unused-vars
 function ls(directoryPath) {
     return fileUtilities.ls(directoryPath);
 }
@@ -17,6 +18,7 @@ function ls(directoryPath) {
  * @param {string} directoryPath directory path
  * @returns {void}
  */
+// eslint-disable-next-line no-unused-vars
 function mkdir(directoryPath) {
     fileUtilities.mkdir(directoryPath);
 }
@@ -27,6 +29,7 @@ function mkdir(directoryPath) {
  * @param {string} filePath file path
  * @returns {boolean} true if file exists
  */
+// eslint-disable-next-line no-unused-vars
 function fileExists(filePath) {
     return fileUtilities.exists(filePath);
 }
@@ -37,6 +40,7 @@ function fileExists(filePath) {
  * @param {string} filePath file path
  * @returns {string} content
  */
+// eslint-disable-next-line no-unused-vars
 function cat(filePath) {
     return fileUtilities.getFileContent(filePath);
 }
@@ -48,6 +52,7 @@ function cat(filePath) {
  * @param {string} target Target location
  * @returns {void}
  */
+// eslint-disable-next-line no-unused-vars
 function cp(source, target) {
     return fileUtilities.copy(source, target);
 }
@@ -58,6 +63,7 @@ function cp(source, target) {
  * @param {string} filePath file path
  * @returns {number} file size
  */
+// eslint-disable-next-line no-unused-vars
 function getFileSize(filePath) {
     return fileUtilities.getSize(filePath);
 }
@@ -68,6 +74,7 @@ function getFileSize(filePath) {
  * @param {string} filePath file path
  * @returns {string} file name
  */
+// eslint-disable-next-line no-unused-vars
 function fileName(filePath) {
     return fileUtilities.getFileName(filePath);
 }
@@ -79,6 +86,7 @@ function fileName(filePath) {
  * @param {string} link destination
  * @returns {void}
  */
+// eslint-disable-next-line no-unused-vars
 function lns(target, link) {
     return fileUtilities.createSymbolicLink(link, target);
 }
@@ -89,6 +97,7 @@ function lns(target, link) {
  * @param {string} filePath file path
  * @returns {void}
  */
+// eslint-disable-next-line no-unused-vars
 function remove(filePath) {
     return fileUtilities.remove(filePath);
 }
@@ -99,6 +108,7 @@ function remove(filePath) {
  * @param {string} filePath file path
  * @returns {void}
  */
+// eslint-disable-next-line no-unused-vars
 function touch(filePath) {
     if (!fileExists(filePath)) {
         fileUtilities.writeToFile(filePath, "");
@@ -112,6 +122,7 @@ function touch(filePath) {
  * @param {string} content content which shall be written
  * @returns {void}
  */
+// eslint-disable-next-line no-unused-vars
 function writeToFile(filePath, content) {
     fileUtilities.writeToFile(filePath, content);
 }
@@ -122,6 +133,7 @@ function writeToFile(filePath, content) {
  * @param {string} extension file extension
  * @returns {string} file path of created temporary file
  */
+// eslint-disable-next-line no-unused-vars
 function createTempFile(extension) {
     return fileUtilities.createTmpFile(extension);
 }
@@ -131,6 +143,7 @@ function createTempFile(extension) {
  *
  * @returns {string} file path of created temporary directory
  */
+// eslint-disable-next-line no-unused-vars
 function createTempDir() {
     return fileUtilities.createTmpDir();
 }
@@ -142,6 +155,7 @@ function createTempDir() {
  * @param {string} permissions file permissions (e.g. "r--r--r--")
  * @returns {void}
  */
+// eslint-disable-next-line no-unused-vars
 function chmod(filePath, permissions) {
     fileUtilities.chmod(filePath, permissions);
 }
@@ -149,6 +163,7 @@ function chmod(filePath, permissions) {
 /**
  * Checksum
  */
+// eslint-disable-next-line no-unused-vars
 class Checksum {
     constructor() {
         this.checksumCalculator = Bean("checksumCalculator");
@@ -156,10 +171,11 @@ class Checksum {
     }
 
     /**
-	 * sets wizard
-	 * @param {SetupWizard} wizard setup wizard
-	 * @returns {Checksum} Checksum object
-	 */
+     * Sets the setup wizard
+     *
+     * @param {SetupWizard} wizard The setup wizard
+     * @returns {Checksum} The Checksum object
+     */
     wizard(wizard) {
         this._wizard = wizard;
 
@@ -167,10 +183,11 @@ class Checksum {
     }
 
     /**
-	 * sets checksum algorithm
-	 * @param {string} algorithm algorithm (e.g. "SHA")
-	 * @returns {Checksum} Checksum object
-	 */
+     * Sets the used checksum algorithm
+     *
+     * @param {string} algorithm The used algorithm (e.g. "SHA")
+     * @returns {Checksum} The Checksum object
+     */
     method(algorithm) {
         this._method = algorithm;
 
@@ -178,10 +195,11 @@ class Checksum {
     }
 
     /**
-	 * sets file for which the checksum shall be computed
-	 * @param {string} file file for which the checksum shall be computed
-	 * @returns {Checksum} Checksum object
-	 */
+     * Sets the file for which the checksum shall be computed
+     *
+     * @param {string} file The file for which the checksum shall be computed
+     * @returns {Checksum} The Checksum object
+     */
     of(file) {
         this._file = file;
 
@@ -189,15 +207,16 @@ class Checksum {
     }
 
     /**
-	 * returns calculated checksum
-	 * @returns {string} calculated checksum
-	 */
+     * Calculates and returns the checksum for the previously set file
+     *
+     * @returns {string} The calculated checksum
+     */
     get() {
         if (this._wizard) {
             var progressBar = this._wizard.progressBar(tr("Checking file consistency..."));
         }
 
-        return this.checksumCalculator.calculate(this._file, this._method, function (progressEntity) {
+        return this.checksumCalculator.calculate(this._file, this._method, progressEntity => {
             if (progressBar) {
                 progressBar.accept(progressEntity);
             }
