@@ -327,7 +327,7 @@ var engineImplementation = {
         if (userData["trustLevel"] == "0x20000" && distribution == "staging") {
             const runAsArgs = ["/trustlevel:0x20000", executable].concat(args);
             userData["trustLevel"] = "0"; //avoid infinite loop
-            return this.run("runas", runasArgs, workingDir, captureOutput, wait, userData);
+            return this.run("runas", runAsArgs, workingDir, captureOutput, wait, userData);
         }
 
         // do not run 64bit executable in 32bit prefix
