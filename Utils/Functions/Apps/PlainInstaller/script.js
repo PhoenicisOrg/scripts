@@ -1,14 +1,14 @@
 class PlainInstaller {
-	constructor() {
-		// do nothing
-	}
+    constructor() {
+        // do nothing
+    }
 
-	withScript(command) {
-		this.command = command;
-		return this;
-	}
+    withScript(command) {
+        this.command = command;
+        return this;
+    }
 
-	go() {
-		this.command();
-	}
+    go() {
+        this.command();
+    }
 }
