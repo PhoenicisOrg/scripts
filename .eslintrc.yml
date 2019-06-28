@@ -69,6 +69,7 @@ globals:
   WineShortcut: false
 
   # quick scripts
+  PlainInstaller: false
   CustomInstallerScript: false
   GogScript: false
   InstallerScript: false
