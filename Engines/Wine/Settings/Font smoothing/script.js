@@ -53,7 +53,7 @@ var settingImplementation = {
     },
     setOption: function (container, optionIndex) {
         if (0 === optionIndex) {
-            let regeditFileContent =
+            const regeditFileContent =
 			"REGEDIT4\n"					+
 			"\n"						+
 			"[HKEY_CURRENT_USER\\Control Panel\\Desktop]\n"	+
