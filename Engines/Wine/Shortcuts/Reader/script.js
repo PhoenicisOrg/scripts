@@ -7,7 +7,8 @@ class WineShortcutReader {
         this.shortcutManager = Bean("shortcutManager");
         this.libraryManager = Bean("libraryManager");
         this.uiQuestionFactory = Bean("uiQuestionFactory");
-        this.winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
+        this.winePrefixesDirectory =
+            Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
     }
 
     get wineprefix() {
@@ -26,21 +27,19 @@ class WineShortcutReader {
         const args = (shortcutContent.arguments ? shortcutContent.arguments : []).concat(Java.from(userArguments));
 
         const userData = {
-            wineDebug: shortcutContent.wineDebug
+            environment: shortcutContent.environment,
+            trustLevel: shortcutContent.trustLevel
         };
 
         new Wine()
             .prefix(shortcutContent.winePrefix)
-            .run(shortcutContent.executable, args, shortcutContent.workingDirectory, false, false, userData)
+            .run(shortcutContent.executable, args, shortcutContent.workingDirectory, false, false, userData);
     }
-
 
     stop() {
         const shortcutContent = JSON.parse(this.shortcut.script);
 
-        new Wine()
-            .prefix(shortcutContent.winePrefix)
-            .kill()
+        new Wine().prefix(shortcutContent.winePrefix).kill();
     }
 
     uninstall() {
@@ -48,24 +47,23 @@ class WineShortcutReader {
 
         const winePrefix = shortcutContent.winePrefix;
 
-        let found = false;
-        this.libraryManager.fetchShortcuts().forEach(function (shortcutCategory) {
-            shortcutCategory.getShortcuts().forEach(function (shortcut) {
+        const found = Java.from(this.libraryManager.fetchShortcuts())
+            .flatMap(shortcutCategory => shortcutCategory.getShortcuts())
+            .some(shortcut => {
                 const otherShortcutContent = JSON.parse(shortcut.script);
 
-                if (otherShortcutContent.winePrefix == winePrefix && shortcut.name != that.shortcut.name) {
+                if (otherShortcutContent.winePrefix == winePrefix && shortcut.name != this.shortcut.name) {
                     found = true;
                 }
             });
-        });
 
         this.shortcutManager.deleteShortcut(this.shortcut);
 
         if (!found) {
-            this.uiQuestionFactory.create(tr("The container {0} is no longer used.\nDo you want to delete it?", winePrefix),
-                function () {
-                    remove(that.winePrefixesDirectory + winePrefix);
-                });
+            this.uiQuestionFactory.create(
+                tr("The container {0} is no longer used.\nDo you want to delete it?", winePrefix),
+                () => remove(this.winePrefixesDirectory + winePrefix)
+            );
         }
     }
 }
@@ -76,7 +74,8 @@ class ShortcutReader {
     }
 
     /**
-     * sets shortcut
+     * Sets shortcut
+     *
      * @param {string} shortcut shortcut
      * @returns {void}
      */
@@ -89,16 +88,18 @@ class ShortcutReader {
     }
 
     /**
-     * returns container of shortcut
-     * @returns {string} container
+     * Returns the name of the container belonging to a shortcut
+     *
+     * @returns {string} The container name
      */
     get container() {
         return this.runner.container();
     }
 
     /**
-     * runs shortcut
-     * @param {array} userArguments arguments
+     * Runs a shortcut with the given user arguments
+     *
+     * @param {array} userArguments The user arguments
      * @returns {void}
      */
     run(userArguments) {
@@ -106,7 +107,8 @@ class ShortcutReader {
     }
 
     /**
-     * stops running shortcut
+     * Stops the running shortcut
+     *
      * @returns {void}
      */
     stop() {
@@ -114,7 +116,8 @@ class ShortcutReader {
     }
 
     /**
-     * uninstalls shortcut
+     * Uninstalls the shortcut
+     *
      * @returns {void}
      */
     uninstall() {
