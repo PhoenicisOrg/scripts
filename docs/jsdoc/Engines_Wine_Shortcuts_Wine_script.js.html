@@ -136,6 +136,27 @@ WineShortcut.prototype.miniature = function (miniature) {
 }
 
 /**
+* sets shortcut environment
+* @param {string} environment variables
+* @returns {WineShortcut} WineShortcut object
+*/
+WineShortcut.prototype.environment = function (environment) {
+    this._environment = environment;
+    return this;
+}
+
+/**
+* sets trust level
+* @param {string} trustLevel trust level
+* @returns {WineShortcut} WineShortcut object
+*/
+WineShortcut.prototype.trustLevel = function (trustLevel) {
+    this._trustLevel = trustLevel;
+    return this;
+}
+
+
+/**
 * creates shortcut
 * @returns {void}
 */
@@ -155,13 +176,30 @@ WineShortcut.prototype.create = function () {
         .withDescription(this._description)
         .build();
 
+    var myEnv = {WINEDEBUG: "-all"};
+    if (typeof this._environment !== 'undefined') {
+        var envJSON = JSON.parse(this._environment);
+        Object.keys(envJSON).forEach(function (key){
+            myEnv[key] = envJSON[key];
+        });
+    }
+
+    var trustLevel;
+    if (typeof this._trustLevel !== 'undefined') {
+        trustLevel = this._trustLevel;
+    }
+    else {
+        trustLevel = "0"; //dummy value
+    }
+
     var ShortcutDTOBuilderClass = Java.type('org.phoenicis.library.dto.ShortcutDTO.Builder');
     var builder = new ShortcutDTOBuilderClass()
         .withId(this._name)
         .withInfo(info)
         .withScript(JSON.stringify({
             type: "WINE",
-            wineDebug: "-all",
+            environment: myEnv,
+            trustLevel: trustLevel,
             winePrefix: this._prefix,
             arguments: this._arguments,
             workingDirectory:executables[0].getParentFile().getAbsolutePath(),
@@ -184,7 +222,7 @@ WineShortcut.prototype.create = function () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
