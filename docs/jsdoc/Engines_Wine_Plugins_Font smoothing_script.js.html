@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Engines/Wine/Tools/Wine Terminal Opener/script.js</title>
+    <title>JSDoc: Source: Engines/Wine/Plugins/Font smoothing/script.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Engines/Wine/Tools/Wine Terminal Opener/script.js</h1>
+    <h1 class="page-title">Source: Engines/Wine/Plugins/Font smoothing/script.js</h1>
 
     
 
@@ -29,34 +29,41 @@
             <pre class="prettyprint source linenums"><code>include("engines.wine.engine.object");
 
 /**
- * tool to open a terminal in a Wine prefix
+ * Force the Font smoothing
+ * @param {string} mode ("RGB", "BGR" or "Gray Scale")
+ * @returns {Wine} Wine object
  */
-var toolImplementation = {
-    _TerminalOpener: Bean("terminalOpener"),
-    run: function (container) {
-        var wine = new Wine()
-            .prefix(container);
-
-        var environment = [];
-        environment["WINEPREFIX"] = wine.prefixDirectory();
-        environment["PATH"] = wine.binPath() + ":$PATH";
-        environment["LD_LIBRARY_PATH"] = Bean("propertyReader").getProperty("application.environment.ld");
-        environment["TERM"] = "xterm";
-        var wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines") + "/wine";
-        var winePath = wine.binPath().substring(0, wine.binPath().length - 5); //trim /bin/
-        if (wine.architecture() == "amd64") {
-            environment["LD_LIBRARY_PATH"] = wineEnginesDirectory + "/runtime/lib64/:" + wineEnginesDirectory + "/runtime/lib/:"
-                   + winePath + "/lib64/:"
-                   + winePath + "/lib/:" + environment["LD_LIBRARY_PATH"] ;
-        } else {
-            environment["LD_LIBRARY_PATH"] = wineEnginesDirectory + "/runtime/lib/:" + winePath + "/lib/:" + environment["LD_LIBRARY_PATH"] ;
-        }
-        this._TerminalOpener.openTerminal(wine.prefixDirectory(), environment);
+Wine.prototype.fontSmoothing = function (mode) {
+    let fontSmoothingType;
+    let fontSmoothingOrientation;
+    if (mode === "RGB") {
+        fontSmoothingType = "2";
+        fontSmoothingOrientation = "1";
     }
-};
+    else if (mode === "BGR") {
+        fontSmoothingType = "2";
+        fontSmoothingOrientation = "0";
+    }
+    else if (mode === "Gray Scale"){
+        fontSmoothingType = "1";
+        fontSmoothingOrientation = "1";
+    }
+    else {
+        throw tr("Unknown font smoothing mode: \"{0}\"", mode);
+    }
 
-/* exported Tool */
-var Tool = Java.extend(org.phoenicis.engines.EngineTool, toolImplementation);
+    const regeditFileContent =
+                        "REGEDIT4\n"                                                            +
+			"\n"                                                                    +
+			"[HKEY_CURRENT_USER\\Control Panel\\Desktop]\n"                         +
+			"\"FontSmoothing\"=\"2\"\n"                                             +
+			"\"FontSmoothingType\"=dword:0000000" + fontSmoothingType + "\n"        +
+			"\"FontSmoothingGamma\"=dword:00000578\n"                               +
+			"\"FontSmoothingOrientation\"=dword:0000000" + fontSmoothingOrientation + "\n";
+
+    this.regedit().patch(regeditFileContent);
+    return this;
+};
 </code></pre>
         </article>
     </section>
