@@ -55,7 +55,8 @@ class WineShortcutReader {
         const args = (shortcutContent.arguments ? shortcutContent.arguments : []).concat(Java.from(userArguments));
 
         const userData = {
-            wineDebug: shortcutContent.wineDebug
+            environment: shortcutContent.environment,
+            trustLevel: shortcutContent.trustLevel
         };
 
         new Wine()
