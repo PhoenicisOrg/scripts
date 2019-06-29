@@ -10,7 +10,7 @@ class PlainInstaller {
     /**
      * Sets the installation script consisting of a lambda function
      *
-     * @param {() => void} command The installation command
+     * @param {function} command The installation command
      * @returns {PlainInstaller} The PlainInstaller object
      */
     withScript(command) {
