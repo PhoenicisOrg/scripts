@@ -16,7 +16,7 @@ Wine.prototype.D9VK = function (d9vkVersion) {
     if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
     {
         uiQuestionFactory.create(
-				tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Do you want to continue? Chosing yes will skip DXVK verb  installation and continue with other verbs. Chosing no will quit script installation.", winePrefix),
+				tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Do you want to continue? Choosing yes will skip DXVK verb installation and continue with other verbs. Choosing no will quit script installation.", winePrefix),
 				() => return this;
 			);
     }
