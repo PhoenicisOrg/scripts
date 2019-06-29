@@ -8,7 +8,8 @@ var WINE_PREFIX_DIR = "wineprefix";
 
 /**
  * Wine engine
-*/
+ */
+// eslint-disable-next-line no-unused-vars
 class WineEngine {
     constructor() {
         this._configFactory = Bean("compatibleConfigFileFormatFactory");
