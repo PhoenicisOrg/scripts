@@ -40,6 +40,7 @@ Wine.prototype.d3drm = function () {
 /**
  * Verb to install d3drm
  */
+// eslint-disable-next-line no-unused-vars
 class D3drmVerb {
     constructor() {
         // do nothing

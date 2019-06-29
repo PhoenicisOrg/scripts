@@ -22,6 +22,7 @@ Wine.prototype.uplay = function () {
 /**
  * Verb to install Uplay
  */
+// eslint-disable-next-line no-unused-vars
 class UplayVerb {
     constructor() {
         // do nothing

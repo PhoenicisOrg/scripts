@@ -59,6 +59,7 @@ Wine.prototype.amstream = function () {
 /**
  * Verb to install amstream
  */
+// eslint-disable-next-line no-unused-vars
 class AmstreamVerb {
     constructor() {
         // do nothing

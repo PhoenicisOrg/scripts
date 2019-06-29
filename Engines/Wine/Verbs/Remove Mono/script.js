@@ -30,6 +30,7 @@ Wine.prototype.removeMono = function () {
 /**
  * Verb to remove mono
  */
+// eslint-disable-next-line no-unused-vars
 class RemoveMonoVerb {
     constructor() {
         // do nothing

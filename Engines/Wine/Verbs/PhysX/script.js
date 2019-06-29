@@ -24,6 +24,7 @@ Wine.prototype.physx = function () {
 /**
  * Verb to install Nvidia PhysX
  */
+// eslint-disable-next-line no-unused-vars
 class PhysXVerb {
     constructor() {
         // do nothing

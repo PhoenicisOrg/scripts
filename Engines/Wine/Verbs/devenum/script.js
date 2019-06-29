@@ -38,6 +38,7 @@ Wine.prototype.devenum = function () {
 /**
  * Verb to install devenum
  */
+// eslint-disable-next-line no-unused-vars
 class DevenumVerb {
     constructor() {
         // do nothing

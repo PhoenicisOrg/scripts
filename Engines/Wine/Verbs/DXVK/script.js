@@ -76,6 +76,7 @@ Wine.prototype.DXVK = function (dxvkVersion) {
 /**
  * Verb to install DXVK
  */
+// eslint-disable-next-line no-unused-vars
 class DXVKVerb {
     constructor() {
         // do nothing

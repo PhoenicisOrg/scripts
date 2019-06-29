@@ -85,6 +85,7 @@ Wine.prototype.d3dx9 = function () {
 /**
  * Verb to install D3DX9
  */
+// eslint-disable-next-line no-unused-vars
 class D3DX9Verb {
     constructor() {
         // do nothing

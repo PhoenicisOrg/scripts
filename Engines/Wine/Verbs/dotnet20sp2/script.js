@@ -65,6 +65,7 @@ Wine.prototype.dotnet20sp2 = function () {
 /**
  * Verb to install dotnet20sp2
  */
+// eslint-disable-next-line no-unused-vars
 class Dotnet20SP2Verb {
     constructor() {
         // do nothing

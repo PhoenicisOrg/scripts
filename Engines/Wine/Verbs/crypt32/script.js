@@ -13,12 +13,13 @@ Wine.prototype.crypt32 = function () {
 
     this.overrideDLL()
         .set("native, builtin", ["crypt32"])
-        .do()
+        .do();
 };
 
 /**
  * Verb to install crypt32
  */
+// eslint-disable-next-line no-unused-vars
 class Crypt32Verb {
     constructor() {
         // do nothing

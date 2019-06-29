@@ -51,6 +51,7 @@ Wine.prototype.dotnet461 = function () {
 /**
  * Verb to install .NET 4.6.1
  */
+// eslint-disable-next-line no-unused-vars
 class Dotnet461Verb {
     constructor() {
         // do nothing

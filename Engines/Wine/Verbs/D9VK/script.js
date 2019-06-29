@@ -71,6 +71,7 @@ Wine.prototype.D9VK = function (d9vkVersion) {
 /**
  * Verb to install D9VK
  */
+// eslint-disable-next-line no-unused-vars
 class D9VKVerb {
     constructor() {
         // do nothing

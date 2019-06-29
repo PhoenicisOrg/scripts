@@ -32,6 +32,7 @@ Wine.prototype.adobeair = function () {
 /**
  * Verb to install adobeair
  */
+// eslint-disable-next-line no-unused-vars
 class AdobeAirVerb {
     constructor() {
         // do nothing

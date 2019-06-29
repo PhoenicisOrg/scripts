@@ -70,6 +70,7 @@ Wine.prototype.VK9 = function (vk9Version) {
 /**
  * Verb to install VK9
  */
+// eslint-disable-next-line no-unused-vars
 class VK9Verb {
     constructor() {
         // do nothing

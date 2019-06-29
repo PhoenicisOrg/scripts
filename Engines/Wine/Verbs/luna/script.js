@@ -34,6 +34,7 @@ Wine.prototype.luna = function () {
 /**
  * Verb to install luna
  */
+// eslint-disable-next-line no-unused-vars
 class LunaVerb {
     constructor() {
         // do nothing

@@ -61,6 +61,7 @@ Wine.prototype.vulkanSDK = function () {
 /**
  * Verb to install all the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
  */
+// eslint-disable-next-line no-unused-vars
 class VulkanSDKVerb {
     constructor() {
         // do nothing

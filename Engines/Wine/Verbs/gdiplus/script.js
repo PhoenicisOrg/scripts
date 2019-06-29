@@ -31,6 +31,7 @@ Wine.prototype.gdiplus = function () {
 /**
  * Verb to install gdiplus
  */
+// eslint-disable-next-line no-unused-vars
 class GdiplusVerb {
     constructor() {
         // do nothing

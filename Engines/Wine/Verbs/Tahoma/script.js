@@ -37,6 +37,7 @@ Wine.prototype.tahoma = function () {
 /**
  * Verb to install the Tahoma font
  */
+// eslint-disable-next-line no-unused-vars
 class TahomaVerb {
     constructor() {
         // do nothing

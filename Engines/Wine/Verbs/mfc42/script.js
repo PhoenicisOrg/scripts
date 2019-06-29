@@ -40,6 +40,7 @@ Wine.prototype.mfc42 = function () {
 /**
  * Verb to install mfc42.dll and mfc42u.dll
  */
+// eslint-disable-next-line no-unused-vars
 class Mfc42Verb {
     constructor() {
         // do nothing

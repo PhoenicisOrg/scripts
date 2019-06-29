@@ -51,6 +51,7 @@ Wine.prototype.dotnet472 = function () {
 /**
  * Verb to install .NET 4.7.2
  */
+// eslint-disable-next-line no-unused-vars
 class Dotnet472Verb {
     constructor() {
         // do nothing

@@ -78,6 +78,7 @@ Wine.prototype.d3dx10 = function () {
 /**
  * Verb to install D3DX10
  */
+// eslint-disable-next-line no-unused-vars
 class D3DX10Verb {
     constructor() {
         // do nothing

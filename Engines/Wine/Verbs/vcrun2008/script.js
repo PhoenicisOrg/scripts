@@ -48,6 +48,7 @@ Wine.prototype.vcrun2008 = function () {
 /**
  * Verb to install vcrun2008
  */
+// eslint-disable-next-line no-unused-vars
 class Vcrun2008Verb {
     constructor() {
         // do nothing
