@@ -10,8 +10,8 @@ include("utils.functions.filesystem.files");
 * @returns {Wine} Wine object
 */
 Wine.prototype.DXVK = function (dxvkVersion) {
-    var operatingSystemFetcher = Bean("operatingSystemFetcher");
-    var uiQuestionFactory = Bean("uiQuestionFactory");
+    const operatingSystemFetcher = Bean("operatingSystemFetcher");
+    const uiQuestionFactory = Bean("uiQuestionFactory");
     print("NOTE: wine version should be greater or equal to 3.10");
     if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
     {
