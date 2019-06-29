@@ -169,8 +169,12 @@ var engineImplementation = {
         }
 
         if (download == true) {
-            remove(this._wineEnginesDirectory + "/runtime/lib");
-            remove(this._wineEnginesDirectory + "/runtime/lib64");
+            if(fileExists(this._wineEnginesDirectory + "/runtime/lib")) {
+                remove(this._wineEnginesDirectory + "/runtime/lib");
+            }
+            if(fileExists(this._wineEnginesDirectory + "/runtime/lib64")) {
+                remove(this._wineEnginesDirectory + "/runtime/lib64");
+            }
             mkdir(this._wineEnginesDirectory + "/TMP");
             var that = this;
             runtimeJson.forEach(function (archive){
