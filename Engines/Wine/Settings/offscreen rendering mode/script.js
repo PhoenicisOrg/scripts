@@ -4,6 +4,7 @@ include("engines.wine.plugins.regedit");
 /**
  * Setting to set the offscreen rendering mode
  */
+// eslint-disable-next-line no-unused-vars
 class OffscreenRenderingModeSetting {
     constructor() {
         this.options = [tr("Default"), tr("FBO"), tr("Backbuffer")];

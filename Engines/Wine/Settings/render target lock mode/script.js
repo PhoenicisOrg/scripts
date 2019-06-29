@@ -4,6 +4,7 @@ include("engines.wine.plugins.regedit");
 /**
  * Setting to set the render target lock mode
  */
+// eslint-disable-next-line no-unused-vars
 class RenderTargetModeLockSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("readdraw"), tr("readtext")];

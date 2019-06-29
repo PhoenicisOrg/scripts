@@ -4,6 +4,7 @@ include("engines.wine.plugins.regedit");
 /**
  * Setting to configure multisampling
  */
+// eslint-disable-next-line no-unused-vars
 class MultisamplingSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("Enabled")];

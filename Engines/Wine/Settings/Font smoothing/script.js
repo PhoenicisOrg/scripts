@@ -5,6 +5,7 @@ include("engines.wine.plugins.font_smoothing");
 /**
  * Setting to set the Fonts Smoothing
  */
+// eslint-disable-next-line no-unused-vars
 class FontSmoothingSetting {
     constructor() {
         this.options = [tr("Default"), tr("RGB"), tr("BGR"), tr("Gray Scale")];

@@ -4,6 +4,7 @@ include("engines.wine.plugins.regedit");
 /**
  * Setting to configure strict draw ordering
  */
+// eslint-disable-next-line no-unused-vars
 class StrictDrawOrderingSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("Enabled")];

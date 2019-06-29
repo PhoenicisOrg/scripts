@@ -4,6 +4,7 @@ include("engines.wine.plugins.regedit");
 /**
  * Setting to set the video memory size
  */
+// eslint-disable-next-line no-unused-vars
 class VideoMemorySizeSetting {
     constructor() {
         this.options = [tr("Default"), "64", "384", "1024", "4096", "7168"];

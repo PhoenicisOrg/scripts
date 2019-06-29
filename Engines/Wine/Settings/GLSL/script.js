@@ -3,7 +3,8 @@ include("engines.wine.plugins.regedit");
 
 /**
  * Setting to enable/disable GLSL
-*/
+ */
+// eslint-disable-next-line no-unused-vars
 class GLSLSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("Enabled")];

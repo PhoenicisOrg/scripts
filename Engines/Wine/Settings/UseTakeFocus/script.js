@@ -5,6 +5,7 @@ include("engines.wine.plugins.usetakefocus");
 /**
  * Setting to enable/disable UseTakeFocus
  */
+// eslint-disable-next-line no-unused-vars
 class UseTakeFocusSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("Enabled")];

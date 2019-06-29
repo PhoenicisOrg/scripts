@@ -3,7 +3,8 @@ include("engines.wine.plugins.regedit");
 
 /**
  * setting to set the DirectDraw renderer
-*/
+ */
+// eslint-disable-next-line no-unused-vars
 class DirectDrawRendererSetting {
     constructor() {
         this.options = [tr("Default"), tr("GDI"), tr("OpenGL")];

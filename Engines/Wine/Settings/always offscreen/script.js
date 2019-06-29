@@ -3,7 +3,8 @@ include("engines.wine.plugins.regedit");
 
 /**
  * setting to set always offscreen
-*/
+ */
+// eslint-disable-next-line no-unused-vars
 class AlwaysOffscreenSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("Enabled")];

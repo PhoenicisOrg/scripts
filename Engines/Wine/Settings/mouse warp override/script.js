@@ -3,7 +3,8 @@ include("engines.wine.plugins.regedit");
 
 /**
  * Setting to configure mouse warp override
-*/
+ */
+// eslint-disable-next-line no-unused-vars
 class MouseWarpOverrideSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("Enabled"), tr("Force")];
