@@ -17,6 +17,7 @@ var installerImplementation = {
             .appId(403640)
             .executable("Steam.exe", ["-silent", "-applaunch", 123456, "+com_showLoadingScreen 0"]) // Verify
             .wineDistribution("staging")
+            .wineArchitecture("amd64")
             .wineVersion(LATEST_STAGING_VERSION)
             .preInstall(function (wine /*, wizard*/) {
                 wine.windowsVersion("win7");
