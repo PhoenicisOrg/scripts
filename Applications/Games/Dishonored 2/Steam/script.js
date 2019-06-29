@@ -13,7 +13,6 @@ var installerImplementation = {
             .category("Games")
             .editor("Arkane Studios")
             .applicationHomepage("https://dishonored.bethesda.net/")
-            .publisher("Bethesda Softworks") // Not mensioned, but seems sane 
             .author("Kreyren")
             .appId(403640)
             .executable("Steam.exe", ["-silent", "-applaunch", 123456, "+com_showLoadingScreen 0"]) // Verify
@@ -22,9 +21,11 @@ var installerImplementation = {
             .preInstall(function (wine /*, wizard*/) {
                 wine.windowsVersion("win7");
                 wine.xact();
-                wine.dxvk();
+                wine.DXVK();
                 wine.corefonts();
+            })
             .go();
+    }
 };
 
 /* exported Installer */
