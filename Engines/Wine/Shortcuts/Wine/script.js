@@ -6,6 +6,7 @@ const ShortcutDTOBuilderClass = Java.type("org.phoenicis.library.dto.ShortcutDTO
 /**
  * WineShortcut prototype
  */
+// eslint-disable-next-line no-unused-vars
 class WineShortcut {
     constructor() {
         this._shortcutManager = Bean("shortcutManager");
