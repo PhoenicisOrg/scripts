@@ -231,7 +231,7 @@ class WineEngine {
                 remove(this._wineEnginesDirectory + "/runtime/lib");
             }
             mkdir(this._wineEnginesDirectory + "/TMP");
-            var that = this;
+            var that2 = this;
             runtimeJson.forEach(function (archive) {
                 var runtime;
                 if (archive.name == namex86) {
@@ -241,13 +241,13 @@ class WineEngine {
                             .url(archive.url)
                             .message(tr("Downloading x86 runtime..."))
                             .checksum(archive.sha1sum)
-                            .to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/') + 1))
+                            .to(that2._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/') + 1))
                             .get();
 
                         new Extractor()
                             .wizard(setupWizard)
                             .archive(runtime)
-                            .to(that._wineEnginesDirectory + "/runtime")
+                            .to(that2._wineEnginesDirectory + "/runtime")
                             .extract();
                     }
                 }
