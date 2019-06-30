@@ -21,6 +21,7 @@ class AppResource {
 
     /**
      * Returns the searched resource
+     *
      * @param {string} resourceName The name of the resource
      * @returns {Resource} The found resource
      */
