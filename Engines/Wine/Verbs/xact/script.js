@@ -4,9 +4,10 @@ include("utils.functions.net.resource");
 include("utils.functions.filesystem.files");
 
 /**
-* Verb to install xact
-* @returns {Wine} Wine object
-*/
+ * Verb to install xact
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.xact = function () {
     var that = this;
 
@@ -18,7 +19,7 @@ Wine.prototype.xact = function () {
             progressBar.setProgressPercentage(numberOfExtractedFiles * 100 / filesToExtract.length);
 
             new CabExtract()
-                .archive(that.prefixDirectory() + "/drive_c/"+ directory + cabFile)
+                .archive(that.prefixDirectory() + "/drive_c/" + directory + cabFile)
                 .to(destination)
                 .extract(["-L", "-F", pattern]);
 
@@ -137,7 +138,6 @@ Wine.prototype.xact = function () {
         ];
         extractFiles(progressBar, filesToExtract, that.system64directory(), "xactengine*.dll", "xact_x64/");
 
-
         //---------------------------------------------------------Extract X3Daudio*.dll (x64)----------------------------------------------
         new CabExtract()
             .archive(setupFile)
@@ -149,7 +149,6 @@ Wine.prototype.xact = function () {
             "mar2009_x3daudio_x64.cab", "nov2007_x3daudio_x64.cab", "nov2008_x3daudio_x64.cab"
         ];
         extractFiles(progressBar, filesToExtract, that.system64directory(), "X3Daudio*.dll", "x3daudio_x64/");
-
 
         //---------------------------------------------------------Extract XAudio*.dll and XAPOFX*.dll (x64)---------------------------------
         new CabExtract()
@@ -176,9 +175,14 @@ Wine.prototype.xact = function () {
 
 /**
  * Verb to install xact
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+class XactVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "xact", java.util.Optional.empty());
@@ -186,8 +190,4 @@ var verbImplementation = {
         wine.xact();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}
