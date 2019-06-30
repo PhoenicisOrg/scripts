@@ -72,7 +72,7 @@ class CabExtract {
             this._wizard.progressBar(progressMessage);
         }
 
-        var processArguments;
+        let processArguments;
         if (args) {
             processArguments = ["cabextract"].concat(args).concat([this._archive]);
         } else {
