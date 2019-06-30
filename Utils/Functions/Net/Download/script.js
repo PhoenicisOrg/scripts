@@ -3,6 +3,7 @@ include("utils.functions.filesystem.files");
 /**
  * Downloader class
  */
+// eslint-disable-next-line no-unused-vars
 class Downloader {
     constructor() {
         this._downloader = Bean("downloader");
