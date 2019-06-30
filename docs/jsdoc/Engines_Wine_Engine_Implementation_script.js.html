@@ -36,30 +36,34 @@ var WINE_PREFIX_DIR = "wineprefix";
 
 /**
  * Wine engine
-*/
-var engineImplementation = {
-    _configFactory: Bean("compatibleConfigFileFormatFactory"),
-    _containerRegex: /[^a-z0-9_\- ]/gi,
-    _ExeAnalyser: Bean("exeAnalyser"),
-    _ldPath: Bean("propertyReader").getProperty("application.environment.ld"),
-    _operatingSystemFetcher: Bean("operatingSystemFetcher"),
-    _wineEnginesDirectory: Bean("propertyReader").getProperty("application.user.engines") + "/wine",
-    _winePrefixesDirectory: Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/",
-    _wineWebServiceUrl : Bean("propertyReader").getProperty("webservice.wine.url"),
-    _wizard: null,
-    _workingContainer: "",
-    getLocalDirectory: function (subCategory, version) {
+ */
+// eslint-disable-next-line no-unused-vars
+class WineEngine {
+    constructor() {
+        this._configFactory = Bean("compatibleConfigFileFormatFactory");
+        this._containerRegex = /[^a-z0-9_\- ]/gi;
+        this._ExeAnalyser = Bean("exeAnalyser");
+        this._ldPath = Bean("propertyReader").getProperty("application.environment.ld");
+        this._operatingSystemFetcher = Bean("operatingSystemFetcher");
+        this._wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines") + "/wine";
+        this._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
+        this._wineWebServiceUrl = Bean("propertyReader").getProperty("webservice.wine.url");
+        this._wizard = null;
+        this._workingContainer = "";
+    }
+
+    getLocalDirectory(subCategory, version) {
         var parts = subCategory.split("-");
         var distribution = parts[0];
         var architecture = parts[2];
         var operatingSystem = this._operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
         var fullDistributionName = distribution + "-" + operatingSystem + "-" + architecture;
         return this._wineEnginesDirectory + "/" + fullDistributionName + "/" + version;
-    },
-    isInstalled: function (subCategory, version) {
+    }
+    isInstalled(subCategory, version) {
         return fileExists(this.getLocalDirectory(subCategory, version));
-    },
-    install: function (subCategory, version) {
+    }
+    install(subCategory, version) {
         this._installRuntime(this.getWizard());
         var parts = subCategory.split("-");
         var distribution = parts[0];
@@ -97,8 +101,8 @@ var engineImplementation = {
                 wizard.close();
             }
         }
-    },
-    _installWinePackage: function (setupWizard, winePackage, localDirectory) {
+    }
+    _installWinePackage(setupWizard, winePackage, localDirectory) {
         var tmpFile = createTempFile("tar.gz");
 
         new Downloader()
@@ -126,12 +130,12 @@ var engineImplementation = {
             }
             );
         }
-    },
-    _installRuntime: function (setupWizard) {
+    }
+    _installRuntime(setupWizard) {
         var runtimeJsonPath = this._wineEnginesDirectory + "/runtime.json";
         var runtimeJson;
         var runtimeJsonFile;
-        var download=false;
+        var download = false;
         var name;
         if (!fileExists(runtimeJsonPath)) {
             mkdir(this._wineEnginesDirectory + "/runtime");
@@ -143,10 +147,10 @@ var engineImplementation = {
                 .get();
 
             runtimeJson = JSON.parse(cat(runtimeJsonFile));
-            download=true;
+            download = true;
 
             var maxVersion = 0;
-            runtimeJson.forEach(function (archive){
+            runtimeJson.forEach(function (archive) {
                 if (archive.arch == "amd64") {
                     if (archive.name > maxVersion) {
                         maxVersion = archive.name;
@@ -171,7 +175,7 @@ var engineImplementation = {
 
             var maxVersion2 = 0;
 
-            runtimeJson.forEach(function (archive){
+            runtimeJson.forEach(function (archive) {
                 if (archive.arch == "amd64") {
                     if (archive.name > maxVersion2) {
                         maxVersion2 = archive.name;
@@ -181,7 +185,7 @@ var engineImplementation = {
 
             var oldMaxVersion = 0;
 
-            oldRuntimeJson.forEach(function (archive){
+            oldRuntimeJson.forEach(function (archive) {
                 if (archive.arch == "amd64") {
                     if (archive.name > oldMaxVersion) {
                         oldMaxVersion = archive.name;
@@ -197,11 +201,15 @@ var engineImplementation = {
         }
 
         if (download == true) {
-            remove(this._wineEnginesDirectory + "/runtime/lib");
-            remove(this._wineEnginesDirectory + "/runtime/lib64");
+            if (fileExists(this._wineEnginesDirectory + "/runtime/lib")) {
+                remove(this._wineEnginesDirectory + "/runtime/lib");
+            }
+            if (fileExists(this._wineEnginesDirectory + "/runtime/lib64")) {
+                remove(this._wineEnginesDirectory + "/runtime/lib64");
+            }
             mkdir(this._wineEnginesDirectory + "/TMP");
             var that = this;
-            runtimeJson.forEach(function (archive){
+            runtimeJson.forEach(function (archive) {
                 var runtime;
                 if (archive.name == name) {
                     if (archive.arch == "x86") {
@@ -210,7 +218,7 @@ var engineImplementation = {
                             .url(archive.url)
                             .message(tr("Downloading x86 runtime..."))
                             .checksum(archive.sha1sum)
-                            .to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/')+1))
+                            .to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/') + 1))
                             .get();
 
                         new Extractor()
@@ -225,7 +233,7 @@ var engineImplementation = {
                             .url(archive.url)
                             .message(tr("Downloading amd64 runtime..."))
                             .checksum(archive.sha1sum)
-                            .to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/')+1))
+                            .to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/') + 1))
                             .get();
 
                         new Extractor()
@@ -238,8 +246,9 @@ var engineImplementation = {
             });
             remove(this._wineEnginesDirectory + "/TMP");
         }
-    },
-    _installGecko: function (setupWizard, winePackage, localDirectory) {
+    }
+
+    _installGecko(setupWizard, winePackage, localDirectory) {
         if (winePackage.geckoUrl) {
             var gecko = new Resource()
                 .wizard(setupWizard)
@@ -255,8 +264,9 @@ var engineImplementation = {
             var FileClass = Java.type('java.io.File');
             lns(new FileClass(gecko).getParent(), wineGeckoDir);
         }
-    },
-    _installMono: function (setupWizard, winePackage, localDirectory) {
+    }
+
+    _installMono(setupWizard, winePackage, localDirectory) {
         if (winePackage.monoUrl) {
             var mono = new Resource()
                 .wizard(setupWizard)
@@ -272,13 +282,15 @@ var engineImplementation = {
             var FileClass = Java.type('java.io.File');
             lns(new FileClass(mono).getParent(), wineMonoDir);
         }
-    },
-    delete: function (subCategory, version) {
+    }
+
+    delete(subCategory, version) {
         if (this.isInstalled(subCategory, version)) {
             remove(this.getLocalDirectory(subCategory, version));
         }
-    },
-    getAvailableVersions: function () {
+    }
+
+    getAvailableVersions() {
         var versionsFile = this._wineEnginesDirectory + "/availableVersions.json";
         touch(versionsFile);
         new Downloader()
@@ -289,19 +301,23 @@ var engineImplementation = {
             .onlyIfUpdateAvailable(true)
             .get();
         return cat(versionsFile);
-    },
-    getWorkingContainer: function () {
+    }
+
+    getWorkingContainer() {
         return this._workingContainer;
-    },
-    setWorkingContainer: function (workingContainer) {
+    }
+
+    setWorkingContainer(workingContainer) {
         var workingContainerCleaned = workingContainer.replace(this._containerRegex, '');
         this._workingContainer = workingContainerCleaned;
-    },
-    getContainerDirectory: function (containerName) {
+    }
+
+    getContainerDirectory(containerName) {
         var containerNameCleaned = containerName.replace(this._containerRegex, '');
         return this._winePrefixesDirectory + "/" + containerNameCleaned + "/";
-    },
-    createContainer: function (subCategory, version, containerName) {
+    }
+
+    createContainer(subCategory, version, containerName) {
         var parts = subCategory.split("-");
         var distribution = parts[0];
         var architecture = parts[2];
@@ -316,8 +332,9 @@ var engineImplementation = {
         containerConfiguration.writeValue("wineVersion", version);
         containerConfiguration.writeValue("wineDistribution", distribution);
         containerConfiguration.writeValue("wineArchitecture", architecture);
-    },
-    run: function (executable, args, workingDir, captureOutput, wait, userData) {
+    }
+
+    run(executable, args, workingDir, captureOutput, wait, userData) {
         var subCategory = "";
         var version = "";
         var architecture = "";
@@ -369,13 +386,9 @@ var engineImplementation = {
         this.install(subCategory, version);
 
         var wineBinary = this.getLocalDirectory(subCategory, version) + "/bin/wine";
-        var StringArray = Java.type('java.lang.String[]');
-        var command = new StringArray(2 + args.length);
-        command[0] = wineBinary;
-        command[1] = executable;
-        java.lang.System.arraycopy(args, 0, command, 2, args.length);
+        var command = [wineBinary, executable].concat(args);
         var ProcessBuilderClass = Java.type('java.lang.ProcessBuilder');
-        var processBuilder = new ProcessBuilderClass(command);
+        var processBuilder = new ProcessBuilderClass(Java.to(command, Java.type('java.lang.String[]')));
 
         var FileClass = Java.type('java.io.File');
         if (workingDir) {
@@ -403,8 +416,8 @@ var engineImplementation = {
         }
         if (architecture == "amd64") {
             ldPath = this._wineEnginesDirectory + "/runtime/lib64/:" + this._wineEnginesDirectory + "/runtime/lib/:"
-                   + this.getLocalDirectory(subCategory, version) + "/lib64/:"
-                   + this.getLocalDirectory(subCategory, version) + "/lib/:"+ ldPath;
+                + this.getLocalDirectory(subCategory, version) + "/lib64/:"
+                + this.getLocalDirectory(subCategory, version) + "/lib/:" + ldPath;
         } else {
             ldPath = this._wineEnginesDirectory + "/runtime/lib/:" + this.getLocalDirectory(subCategory, version) + "/lib/:" + ldPath;
         }
@@ -431,8 +444,9 @@ var engineImplementation = {
         } else {
             return "";
         }
-    },
-    changeVersion: function (containerName) {
+    }
+
+    changeVersion(containerName) {
         var wizard = SetupWizard(InstallationType.ENGINES, "Change " + containerName + " container wine version", java.util.Optional.empty());
         this._wizard = wizard;
 
@@ -452,7 +466,7 @@ var engineImplementation = {
                 distributions.push(parts[0]);
                 versions.push(new Array());
                 subPart.packages.forEach(function (winePackage) {
-                    versions[distributions.length-1].push(winePackage.version);
+                    versions[distributions.length - 1].push(winePackage.version);
                 });
             }
         });
@@ -467,17 +481,16 @@ var engineImplementation = {
         containerConfiguration.writeValue("wineDistribution", selectedDistribution.text);
         containerConfiguration.writeValue("wineArchitecture", architecture);
         wizard.close();
-    },
-    getWizard: function () {
+    }
+
+    getWizard() {
         return this._wizard;
-    },
-    setWizard: function (wizard) {
+    }
+
+    setWizard(wizard) {
         this._wizard = wizard;
     }
-};
-
-/* exported Engine */
-var Engine = Java.extend(org.phoenicis.engines.Engine, engineImplementation);
+}
 </code></pre>
         </article>
     </section>
@@ -488,7 +501,7 @@ var Engine = Java.extend(org.phoenicis.engines.Engine, engineImplementation);
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdobeAirVerb.html">AdobeAirVerb</a></li><li><a href="AlwaysOffscreenSetting.html">AlwaysOffscreenSetting</a></li><li><a href="AmstreamVerb.html">AmstreamVerb</a></li><li><a href="AppResource.html">AppResource</a></li><li><a href="AtmlibVerb.html">AtmlibVerb</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="ConfigureWineTool.html">ConfigureWineTool</a></li><li><a href="CorefontsVerb.html">CorefontsVerb</a></li><li><a href="Crypt32Verb.html">Crypt32Verb</a></li><li><a href="D3drmVerb.html">D3drmVerb</a></li><li><a href="D3DX9Verb.html">D3DX9Verb</a></li><li><a href="D3DX10Verb.html">D3DX10Verb</a></li><li><a href="D3DX11Verb.html">D3DX11Verb</a></li><li><a href="D9VKVerb.html">D9VKVerb</a></li><li><a href="DevenumVerb.html">DevenumVerb</a></li><li><a href="DirectDrawRendererSetting.html">DirectDrawRendererSetting</a></li><li><a href="Dotnet20SP2Verb.html">Dotnet20SP2Verb</a></li><li><a href="Dotnet40Verb.html">Dotnet40Verb</a></li><li><a href="Dotnet45Verb.html">Dotnet45Verb</a></li><li><a href="Dotnet46Verb.html">Dotnet46Verb</a></li><li><a href="Dotnet452Verb.html">Dotnet452Verb</a></li><li><a href="Dotnet461Verb.html">Dotnet461Verb</a></li><li><a href="Dotnet462Verb.html">Dotnet462Verb</a></li><li><a href="Dotnet472Verb.html">Dotnet472Verb</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="DXVKVerb.html">DXVKVerb</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="FAudioVerb.html">FAudioVerb</a></li><li><a href="FontSmoothingSetting.html">FontSmoothingSetting</a></li><li><a href="GdiplusVerb.html">GdiplusVerb</a></li><li><a href="GLSLSetting.html">GLSLSetting</a></li><li><a href="HDPISetting.html">HDPISetting</a></li><li><a href="KillWineProcessesTool.html">KillWineProcessesTool</a></li><li><a href="LunaVerb.html">LunaVerb</a></li><li><a href="Mfc42Verb.html">Mfc42Verb</a></li><li><a href="MouseWarpOverrideSetting.html">MouseWarpOverrideSetting</a></li><li><a href="Msls31Verb.html">Msls31Verb</a></li><li><a href="MspatchaVerb.html">MspatchaVerb</a></li><li><a href="Msxml3Verb.html">Msxml3Verb</a></li><li><a href="Msxml6Verb.html">Msxml6Verb</a></li><li><a href="MultisamplingSetting.html">MultisamplingSetting</a></li><li><a href="OffscreenRenderingModeSetting.html">OffscreenRenderingModeSetting</a></li><li><a href="PhysXVerb.html">PhysXVerb</a></li><li><a href="QuartzVerb.html">QuartzVerb</a></li><li><a href="QuickTime76Verb.html">QuickTime76Verb</a></li><li><a href="RebootWineTool.html">RebootWineTool</a></li><li><a href="RemoveMonoVerb.html">RemoveMonoVerb</a></li><li><a href="RenderTargetModeLockSetting.html">RenderTargetModeLockSetting</a></li><li><a href="RepairWinePrefixTool.html">RepairWinePrefixTool</a></li><li><a href="Resource.html">Resource</a></li><li><a href="SandboxVerb.html">SandboxVerb</a></li><li><a href="Secur32Verb.html">Secur32Verb</a></li><li><a href="StrictDrawOrderingSetting.html">StrictDrawOrderingSetting</a></li><li><a href="TahomaVerb.html">TahomaVerb</a></li><li><a href="UninstallWineTool.html">UninstallWineTool</a></li><li><a href="UplayVerb.html">UplayVerb</a></li><li><a href="UseTakeFocusSetting.html">UseTakeFocusSetting</a></li><li><a href="Vcrun6SP6Verb.html">Vcrun6SP6Verb</a></li><li><a href="Vcrun2003Verb.html">Vcrun2003Verb</a></li><li><a href="Vcrun2005Verb.html">Vcrun2005Verb</a></li><li><a href="Vcrun2008Verb.html">Vcrun2008Verb</a></li><li><a href="Vcrun2010Verb.html">Vcrun2010Verb</a></li><li><a href="Vcrun2012Verb.html">Vcrun2012Verb</a></li><li><a href="Vcrun2013Verb.html">Vcrun2013Verb</a></li><li><a href="Vcrun2015Verb.html">Vcrun2015Verb</a></li><li><a href="Vcrun2017Verb.html">Vcrun2017Verb</a></li><li><a href="VideoMemorySizeSetting.html">VideoMemorySizeSetting</a></li><li><a href="VK9Verb.html">VK9Verb</a></li><li><a href="VulkanSDKVerb.html">VulkanSDKVerb</a></li><li><a href="WindowsXPSP3Verb.html">WindowsXPSP3Verb</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineConsoleTool.html">WineConsoleTool</a></li><li><a href="WineEngine.html">WineEngine</a></li><li><a href="WineRegistryEditorTool.html">WineRegistryEditorTool</a></li><li><a href="WineShortcut.html">WineShortcut</a></li><li><a href="WineTaskManagerTool.html">WineTaskManagerTool</a></li><li><a href="WineTerminalOpenerTool.html">WineTerminalOpenerTool</a></li><li><a href="XactVerb.html">XactVerb</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
