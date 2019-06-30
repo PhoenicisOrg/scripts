@@ -33,7 +33,7 @@ class AppResource {
         const foundResource = Java.from(this._application.resources).find(resource => resource.name === resourceName);
 
         if (!foundResource) {
-            throw new Error(`Application "${this._application.name}" does not contain resource "resourceName"`);
+            throw new Error(`Application "${this._application.name}" does not contain resource "${resourceName}"`);
         }
 
         return foundResource.content;
