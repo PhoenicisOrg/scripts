@@ -126,7 +126,7 @@ class WineEngine {
 
             var maxVersionx86 = 0;
             var maxVersionx64 = 0;
-            runtimeJson.forEach(function (archive) {
+            runtimeJson.forEach(archive => {
                 if (archive.arch == "amd64") {
                     if (archive.name > maxVersionx64) {
                         maxVersionx64 = archive.name;
@@ -158,7 +158,7 @@ class WineEngine {
             var maxVersion2x86 = 0;
             var maxVersion2x64 = 0;
 
-            runtimeJson.forEach(function (archive) {
+            runtimeJson.forEach(archive => {
                 if (archive.arch == "amd64") {
                     if (archive.name > maxVersion2x64) {
                         maxVersion2x64 = archive.name;
@@ -174,7 +174,7 @@ class WineEngine {
             var oldMaxVersionx86 = 0;
             var oldMaxVersionx64 = 0;
 
-            oldRuntimeJson.forEach(function (archive) {
+            oldRuntimeJson.forEach(archive => {
                 if (archive.arch == "amd64") {
                     if (archive.name > oldMaxVersionx64) {
                         oldMaxVersionx64 = archive.name;
@@ -203,8 +203,7 @@ class WineEngine {
                 remove(this._wineEnginesDirectory + "/runtime/lib64");
             }
             mkdir(this._wineEnginesDirectory + "/TMP");
-            var that = this;
-            runtimeJson.forEach(function (archive) {
+            runtimeJson.forEach(archive => {
                 var runtime;
                 if (archive.name == namex64) {
                     if (archive.arch == "amd64") {
@@ -213,13 +212,13 @@ class WineEngine {
                             .url(archive.url)
                             .message(tr("Downloading amd64 runtime..."))
                             .checksum(archive.sha1sum)
-                            .to(that._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/') + 1))
+                            .to(this._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/') + 1))
                             .get();
 
                         new Extractor()
                             .wizard(setupWizard)
                             .archive(runtime)
-                            .to(that._wineEnginesDirectory + "/runtime")
+                            .to(this._wineEnginesDirectory + "/runtime")
                             .extract();
                     }
                 }
@@ -231,8 +230,7 @@ class WineEngine {
                 remove(this._wineEnginesDirectory + "/runtime/lib");
             }
             mkdir(this._wineEnginesDirectory + "/TMP");
-            var that2 = this;
-            runtimeJson.forEach(function (archive) {
+            runtimeJson.forEach(archive => {
                 var runtime;
                 if (archive.name == namex86) {
                     if (archive.arch == "x86") {
@@ -241,13 +239,13 @@ class WineEngine {
                             .url(archive.url)
                             .message(tr("Downloading x86 runtime..."))
                             .checksum(archive.sha1sum)
-                            .to(that2._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/') + 1))
+                            .to(this._wineEnginesDirectory + "/TMP/" + archive.url.substring(archive.url.lastIndexOf('/') + 1))
                             .get();
 
                         new Extractor()
                             .wizard(setupWizard)
                             .archive(runtime)
-                            .to(that2._wineEnginesDirectory + "/runtime")
+                            .to(this._wineEnginesDirectory + "/runtime")
                             .extract();
                     }
                 }
