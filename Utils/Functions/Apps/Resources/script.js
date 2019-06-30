@@ -16,6 +16,10 @@ class AppResource {
     application(application) {
         this._application = this.appsManager.getApplication(application);
 
+        if (!this._application) {
+            print(`Warning: unable to fetch application "${application}"`);
+        }
+
         return this;
     }
 
