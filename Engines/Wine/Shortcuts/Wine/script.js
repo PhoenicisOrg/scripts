@@ -103,7 +103,7 @@ class WineShortcut {
      * @returns {WineShortcut} The WineShortcut object
      */
     miniature(miniature) {
-        if (isArray(miniature)) {
+        if (Array.isArray(miniature)) {
             // application of miniature given
             const application = this._appsManager.getApplication(miniature);
             if (application != null && application.getMainMiniature().isPresent()) {
