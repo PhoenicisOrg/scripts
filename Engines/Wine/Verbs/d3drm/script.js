@@ -6,9 +6,10 @@ include("utils.functions.filesystem.files");
 include("utils.functions.filesystem.extract");
 
 /**
-* Verb to install d3drm
-* @returns {Wine} Wine object
-*/
+ * Verb to install d3drm
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.d3drm = function () {
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -16,15 +17,19 @@ Wine.prototype.d3drm = function () {
         .checksum("a97c820915dc20929e84b49646ec275760012a42")
         .name("directx_feb2010_redist.exe")
         .get();
+
     this.wizard().wait(tr("Please wait while {0} is installed...", "d3drm"));
+
     new CabExtract()
         .archive(setupFile)
         .to(this.prefixDirectory() + "/drive_c/d3drm/")
         .extract(["-L", "-F", "dxnt.cab"]);
+
     new CabExtract()
         .archive(this.prefixDirectory() + "/drive_c/d3drm/dxnt.cab")
         .to(this.system32directory())
         .extract(["-L", "-F", "d3drm.dll"]);
+
     this.overrideDLL()
         .set("native", ["d3drm"])
         .do();
@@ -34,9 +39,14 @@ Wine.prototype.d3drm = function () {
 
 /**
  * Verb to install d3drm
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+class D3drmVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "d3drm", java.util.Optional.empty());
@@ -44,7 +54,4 @@ var verbImplementation = {
         wine.d3drm();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}

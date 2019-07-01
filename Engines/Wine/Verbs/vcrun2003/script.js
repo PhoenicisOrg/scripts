@@ -4,9 +4,10 @@ include("utils.functions.filesystem.files");
 include("engines.wine.verbs.luna");
 
 /**
-* Verb to install vcrun2003
-* @returns {Wine} Wine object
-*/
+ * Verb to install vcrun2003
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.vcrun2003 = function () {
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -22,20 +23,25 @@ Wine.prototype.vcrun2003 = function () {
         "msvcp71",
         "mfc71"
     ];
+
     var that = this;
     dlls.forEach(function (dll) {
         cp(that.programFiles() + "/BZEdit1.6.5/" + dll, this.system32directory());
     });
-
 
     return this;
 };
 
 /**
  * Verb to install vcrun2003
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+class Vcrun2003Verb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "vcrun2003", java.util.Optional.empty());
@@ -43,8 +49,4 @@ var verbImplementation = {
         wine.vcrun2003();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}

@@ -115,6 +115,26 @@ class QuickScript {
     }
 
     /**
+     * set environment
+     * @param {string} environment variables
+     * @returns {QuickScript} QuickScript object
+     */
+    environment(environment) {
+        this._environment = environment;
+        return this;
+    }
+
+    /**
+     * set trust level
+     * @param {string} trustlevel
+     * @returns {QuickScript} QuickScript object
+     */
+    trustLevel(trustLevel) {
+        this._trustLevel = trustLevel;
+        return this;
+    }
+
+    /**
      * creates shortcut
      * @param {string} [prefix] prefix name
      */
@@ -125,6 +145,8 @@ class QuickScript {
             .category(this._category)
             .prefix(prefix)
             .search(this._executable)
+            .environment(this._environment)
+            .trustLevel(this._trustLevel)
             .arguments(this._executableArgs);
 
         if (this.miniature().isPresent()) {

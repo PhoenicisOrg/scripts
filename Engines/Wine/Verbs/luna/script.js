@@ -4,9 +4,10 @@ include("utils.functions.filesystem.files");
 include("utils.functions.net.resource");
 
 /**
-* Verb to install luna
-* @returns {Wine} Wine object
-*/
+ * Verb to install luna
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.luna = function () {
     var lunaStyle = new Resource()
         .wizard(this.wizard())
@@ -32,9 +33,14 @@ Wine.prototype.luna = function () {
 
 /**
  * Verb to install luna
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+class LunaVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "luna", java.util.Optional.empty());
@@ -42,8 +48,4 @@ var verbImplementation = {
         wine.luna();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}
