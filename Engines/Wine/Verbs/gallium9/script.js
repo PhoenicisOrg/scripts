@@ -78,7 +78,7 @@ Wine.prototype.gallium9 = function (gallium9Version) {
  * Verb to install Gallium 9 Standalone
  */
 // eslint-disable-next-line no-unused-vars
-class FAudioVerb {
+class Gallium9Verb {
     constructor() {
         // do nothing
     }
