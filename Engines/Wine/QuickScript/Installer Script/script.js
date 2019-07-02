@@ -72,7 +72,7 @@ class InstallerScript extends QuickScript {
         // back to generic wait (might have been changed in preInstall)
         setupWizard.wait(tr("Please wait..."));
 
-        wine.run(installationCommand.command, installationCommand.args, false, true);
+        wine.run(installationCommand.command, installationCommand.args, null, false, true);
 
         // if no executable given, ask user
         if (!this._executable) {
