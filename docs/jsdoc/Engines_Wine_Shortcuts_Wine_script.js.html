@@ -28,189 +28,201 @@
         <article>
             <pre class="prettyprint source linenums"><code>include("engines.wine.engine.object");
 
-/**
-* WineShortcut prototype
-* @constructor
-*/
-function WineShortcut() {
-    this._shortcutManager = Bean("shortcutManager");
-    this._appsManager = Bean("repositoryManager");
-    this._fileSearcher = Bean("fileSearcher");
-    this._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
-
-    this._category = "Other";
-    this._description = "";
-}
+const ShortcutInfoDTOBuilderClass = Java.type("org.phoenicis.library.dto.ShortcutInfoDTO.Builder");
+const ShortcutDTOBuilderClass = Java.type("org.phoenicis.library.dto.ShortcutDTO.Builder");
 
 /**
-* sets shortcut name
-* @param {string} name shortcut name
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.name = function (name) {
-    this._name = name;
-    return this;
-}
+ * WineShortcut prototype
+ */
+// eslint-disable-next-line no-unused-vars
+class WineShortcut {
+    constructor() {
+        this._shortcutManager = Bean("shortcutManager");
+        this._appsManager = Bean("repositoryManager");
+        this._fileSearcher = Bean("fileSearcher");
+        this._winePrefixesDirectory =
+            Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
 
-/**
-* sets shortcut type
-* @param {string} type shortcut type
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.type = function (type) {
-    this._type = type;
-    return this;
-}
+        this._category = "Other";
+        this._description = "";
+    }
 
-/**
-* sets shortcut category
-* @param {string} category shortcut category
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.category = function (category) {
-    this._category = category;
-    return this;
-}
+    /**
+     * Sets the shortcut name
+     *
+     * @param {string} name The shortcut name
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    name(name) {
+        this._name = name;
+        return this;
+    }
 
-/**
-* sets shortcut description
-* @param {string} description shortcut description
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.description = function (description) {
-    this._description = description;
-    return this;
-}
+    /**
+     * Sets the shortcut type
+     *
+     * @param {string} type The shortcut type
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    type(type) {
+        this._type = type;
+        return this;
+    }
 
-/**
-* sets shortcut arguments
-* @param {array} args shortcut arguments
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.arguments = function (args) {
-    this._arguments = args;
-    return this;
-}
+    /**
+     * Sets the shortcut category
+     *
+     * @param {string} category The shortcut category
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    category(category) {
+        this._category = category;
+        return this;
+    }
 
-/**
-* sets executable which shall be used
-* @param {string} search executable name
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.search = function (search) {
-    this._search = search;
-    return this;
-}
+    /**
+     * Sets the shortcut description
+     *
+     * @param {string} description The shortcut description
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    description(description) {
+        this._description = description;
+        return this;
+    }
 
-/**
-* sets shortcut prefix
-* @param {string} prefix shortcut prefix
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.prefix = function (prefix) {
-    this._prefix = prefix;
-    return this;
-}
+    /**
+     * Sets the shortcut arguments
+     *
+     * @param {array} args The shortcut arguments
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    arguments(args) {
+        this._arguments = args;
+        return this;
+    }
 
-/**
-* sets the miniature for the shortcut
-* @param {string[]|URI} miniature
-* array which specifies the application of which the miniature shall be used
-* or
-* URI of the miniature
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.miniature = function (miniature) {
-    if (isArray(miniature)) {
-        // application of miniature given
-        var application = this._appsManager.getApplication(miniature);
-        if (application != null &amp;&amp; application.getMainMiniature().isPresent()) {
-            this._miniature = application.getMainMiniature().get();
+    /**
+     * Sets the executable which shall be used
+     *
+     * @param {string} search The executable name
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    search(search) {
+        this._search = search;
+        return this;
+    }
+
+    /**
+     * Sets the shortcut prefix
+     *
+     * @param {string} prefix The shortcut prefix
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    prefix(prefix) {
+        this._prefix = prefix;
+        return this;
+    }
+
+    /**
+     * Sets the miniature for the shortcut
+     *
+     * @param {string[]|URI} miniature An array which specifies the application of which the miniature shall be used or URI of the miniature
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    miniature(miniature) {
+        if (Array.isArray(miniature)) {
+            // application of miniature given
+            const application = this._appsManager.getApplication(miniature);
+            if (application != null &amp;&amp; application.getMainMiniature().isPresent()) {
+                this._miniature = application.getMainMiniature().get();
+            }
+        } else {
+            // miniature URI given
+            this._miniature = miniature;
         }
-    } else {
-        // miniature URI given
-        this._miniature = miniature;
+
+        return this;
     }
 
-    return this;
-}
-
-/**
-* sets shortcut environment
-* @param {string} environment variables
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.environment = function (environment) {
-    this._environment = environment;
-    return this;
-}
-
-/**
-* sets trust level
-* @param {string} trustLevel trust level
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.trustLevel = function (trustLevel) {
-    this._trustLevel = trustLevel;
-    return this;
-}
-
-
-/**
-* creates shortcut
-* @returns {void}
-*/
-WineShortcut.prototype.create = function () {
-    var _shortcutPrefixDirectory = this._winePrefixesDirectory + "/" + this._prefix;
-
-    var executables = this._fileSearcher.search(_shortcutPrefixDirectory, this._search);
-
-    if (executables.length == 0) {
-        throw tr("Executable {0} not found!", this._search)
+    /**
+     * Sets the shortcut environment variables
+     *
+     * @param {string} environment The environment variables
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    environment(environment) {
+        this._environment = environment;
+        return this;
     }
 
-    var ShortcutInfoDTOBuilderClass = Java.type('org.phoenicis.library.dto.ShortcutInfoDTO.Builder');
-    var info = new ShortcutInfoDTOBuilderClass()
-        .withCategory(this._category)
-        .withName(this._name)
-        .withDescription(this._description)
-        .build();
-
-    var myEnv = {WINEDEBUG: "-all"};
-    if (typeof this._environment !== 'undefined') {
-        var envJSON = JSON.parse(this._environment);
-        Object.keys(envJSON).forEach(function (key){
-            myEnv[key] = envJSON[key];
-        });
+    /**
+     * Sets the trust level
+     *
+     * @param {string} trustLevel The trust level
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    trustLevel(trustLevel) {
+        this._trustLevel = trustLevel;
+        return this;
     }
 
-    var trustLevel;
-    if (typeof this._trustLevel !== 'undefined') {
-        trustLevel = this._trustLevel;
-    }
-    else {
-        trustLevel = "0"; //dummy value
-    }
+    /**
+     * Creates a new shortcut
+     *
+     * @returns {void}
+     */
+    create() {
+        const shortcutPrefixDirectory = this._winePrefixesDirectory + "/" + this._prefix;
 
-    var ShortcutDTOBuilderClass = Java.type('org.phoenicis.library.dto.ShortcutDTO.Builder');
-    var builder = new ShortcutDTOBuilderClass()
-        .withId(this._name)
-        .withInfo(info)
-        .withScript(JSON.stringify({
-            type: "WINE",
-            environment: myEnv,
-            trustLevel: trustLevel,
-            winePrefix: this._prefix,
-            arguments: this._arguments,
-            workingDirectory:executables[0].getParentFile().getAbsolutePath(),
-            executable: executables[0].getAbsolutePath()
-        }));
+        const executables = this._fileSearcher.search(shortcutPrefixDirectory, this._search);
 
-    if (this._miniature) {
-        builder.withMiniature(this._miniature);
+        if (executables.length == 0) {
+            throw tr("Executable {0} not found!", this._search);
+        }
+
+        const info = new ShortcutInfoDTOBuilderClass()
+            .withCategory(this._category)
+            .withName(this._name)
+            .withDescription(this._description)
+            .build();
+
+        const myEnv = { WINEDEBUG: "-all" };
+        if (typeof this._environment !== "undefined") {
+            var envJSON = JSON.parse(this._environment);
+            Object.keys(envJSON).forEach(function (key) {
+                myEnv[key] = envJSON[key];
+            });
+        }
+
+        let trustLevel;
+        if (typeof this._trustLevel !== "undefined") {
+            trustLevel = this._trustLevel;
+        } else {
+            trustLevel = "0"; //dummy value
+        }
+
+        const builder = new ShortcutDTOBuilderClass()
+            .withId(this._name)
+            .withInfo(info)
+            .withScript(
+                JSON.stringify({
+                    type: "WINE",
+                    environment: myEnv,
+                    trustLevel: trustLevel,
+                    winePrefix: this._prefix,
+                    arguments: this._arguments,
+                    workingDirectory: executables[0].getParentFile().getAbsolutePath(),
+                    executable: executables[0].getAbsolutePath()
+                })
+            );
+
+        if (this._miniature) {
+            builder.withMiniature(this._miniature);
+        }
+
+        this._shortcutManager.createShortcut(builder.build());
     }
-
-    this._shortcutManager.createShortcut(builder.build());
 }
 </code></pre>
         </article>
@@ -222,7 +234,7 @@ WineShortcut.prototype.create = function () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdobeAirVerb.html">AdobeAirVerb</a></li><li><a href="AlwaysOffscreenSetting.html">AlwaysOffscreenSetting</a></li><li><a href="AmstreamVerb.html">AmstreamVerb</a></li><li><a href="AtmlibVerb.html">AtmlibVerb</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="ConfigureWineTool.html">ConfigureWineTool</a></li><li><a href="CorefontsVerb.html">CorefontsVerb</a></li><li><a href="Crypt32Verb.html">Crypt32Verb</a></li><li><a href="D3drmVerb.html">D3drmVerb</a></li><li><a href="D3DX9Verb.html">D3DX9Verb</a></li><li><a href="D3DX10Verb.html">D3DX10Verb</a></li><li><a href="D3DX11Verb.html">D3DX11Verb</a></li><li><a href="D9VKVerb.html">D9VKVerb</a></li><li><a href="DevenumVerb.html">DevenumVerb</a></li><li><a href="DirectDrawRendererSetting.html">DirectDrawRendererSetting</a></li><li><a href="Dotnet20SP2Verb.html">Dotnet20SP2Verb</a></li><li><a href="Dotnet40Verb.html">Dotnet40Verb</a></li><li><a href="Dotnet45Verb.html">Dotnet45Verb</a></li><li><a href="Dotnet46Verb.html">Dotnet46Verb</a></li><li><a href="Dotnet452Verb.html">Dotnet452Verb</a></li><li><a href="Dotnet461Verb.html">Dotnet461Verb</a></li><li><a href="Dotnet462Verb.html">Dotnet462Verb</a></li><li><a href="Dotnet472Verb.html">Dotnet472Verb</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="DXVKVerb.html">DXVKVerb</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="FAudioVerb.html">FAudioVerb</a></li><li><a href="FontSmoothingSetting.html">FontSmoothingSetting</a></li><li><a href="GdiplusVerb.html">GdiplusVerb</a></li><li><a href="GLSLSetting.html">GLSLSetting</a></li><li><a href="HDPISetting.html">HDPISetting</a></li><li><a href="KillWineProcessesTool.html">KillWineProcessesTool</a></li><li><a href="LunaVerb.html">LunaVerb</a></li><li><a href="Mfc42Verb.html">Mfc42Verb</a></li><li><a href="MouseWarpOverrideSetting.html">MouseWarpOverrideSetting</a></li><li><a href="Msls31Verb.html">Msls31Verb</a></li><li><a href="MspatchaVerb.html">MspatchaVerb</a></li><li><a href="Msxml3Verb.html">Msxml3Verb</a></li><li><a href="Msxml6Verb.html">Msxml6Verb</a></li><li><a href="MultisamplingSetting.html">MultisamplingSetting</a></li><li><a href="OffscreenRenderingModeSetting.html">OffscreenRenderingModeSetting</a></li><li><a href="PhysXVerb.html">PhysXVerb</a></li><li><a href="QuartzVerb.html">QuartzVerb</a></li><li><a href="QuickTime76Verb.html">QuickTime76Verb</a></li><li><a href="RebootWineTool.html">RebootWineTool</a></li><li><a href="RemoveMonoVerb.html">RemoveMonoVerb</a></li><li><a href="RenderTargetModeLockSetting.html">RenderTargetModeLockSetting</a></li><li><a href="RepairWinePrefixTool.html">RepairWinePrefixTool</a></li><li><a href="Resource.html">Resource</a></li><li><a href="SandboxVerb.html">SandboxVerb</a></li><li><a href="Secur32Verb.html">Secur32Verb</a></li><li><a href="StrictDrawOrderingSetting.html">StrictDrawOrderingSetting</a></li><li><a href="TahomaVerb.html">TahomaVerb</a></li><li><a href="UninstallWineTool.html">UninstallWineTool</a></li><li><a href="UplayVerb.html">UplayVerb</a></li><li><a href="UseTakeFocusSetting.html">UseTakeFocusSetting</a></li><li><a href="Vcrun6SP6Verb.html">Vcrun6SP6Verb</a></li><li><a href="Vcrun2003Verb.html">Vcrun2003Verb</a></li><li><a href="Vcrun2005Verb.html">Vcrun2005Verb</a></li><li><a href="Vcrun2008Verb.html">Vcrun2008Verb</a></li><li><a href="Vcrun2010Verb.html">Vcrun2010Verb</a></li><li><a href="Vcrun2012Verb.html">Vcrun2012Verb</a></li><li><a href="Vcrun2013Verb.html">Vcrun2013Verb</a></li><li><a href="Vcrun2015Verb.html">Vcrun2015Verb</a></li><li><a href="Vcrun2017Verb.html">Vcrun2017Verb</a></li><li><a href="VideoMemorySizeSetting.html">VideoMemorySizeSetting</a></li><li><a href="VK9Verb.html">VK9Verb</a></li><li><a href="VulkanSDKVerb.html">VulkanSDKVerb</a></li><li><a href="WindowsXPSP3Verb.html">WindowsXPSP3Verb</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineConsoleTool.html">WineConsoleTool</a></li><li><a href="WineEngine.html">WineEngine</a></li><li><a href="WineRegistryEditorTool.html">WineRegistryEditorTool</a></li><li><a href="WineShortcut.html">WineShortcut</a></li><li><a href="WineTaskManagerTool.html">WineTaskManagerTool</a></li><li><a href="WineTerminalOpenerTool.html">WineTerminalOpenerTool</a></li><li><a href="XactVerb.html">XactVerb</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdobeAirVerb.html">AdobeAirVerb</a></li><li><a href="AlwaysOffscreenSetting.html">AlwaysOffscreenSetting</a></li><li><a href="AmstreamVerb.html">AmstreamVerb</a></li><li><a href="AtmlibVerb.html">AtmlibVerb</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="ConfigureWineTool.html">ConfigureWineTool</a></li><li><a href="CorefontsVerb.html">CorefontsVerb</a></li><li><a href="Crypt32Verb.html">Crypt32Verb</a></li><li><a href="D3drmVerb.html">D3drmVerb</a></li><li><a href="D3DX9Verb.html">D3DX9Verb</a></li><li><a href="D3DX10Verb.html">D3DX10Verb</a></li><li><a href="D3DX11Verb.html">D3DX11Verb</a></li><li><a href="D9VKVerb.html">D9VKVerb</a></li><li><a href="DevenumVerb.html">DevenumVerb</a></li><li><a href="DirectDrawRendererSetting.html">DirectDrawRendererSetting</a></li><li><a href="Dotnet20SP2Verb.html">Dotnet20SP2Verb</a></li><li><a href="Dotnet40Verb.html">Dotnet40Verb</a></li><li><a href="Dotnet45Verb.html">Dotnet45Verb</a></li><li><a href="Dotnet46Verb.html">Dotnet46Verb</a></li><li><a href="Dotnet452Verb.html">Dotnet452Verb</a></li><li><a href="Dotnet461Verb.html">Dotnet461Verb</a></li><li><a href="Dotnet462Verb.html">Dotnet462Verb</a></li><li><a href="Dotnet472Verb.html">Dotnet472Verb</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="DXVKVerb.html">DXVKVerb</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="FAudioVerb.html">FAudioVerb</a></li><li><a href="FontSmoothingSetting.html">FontSmoothingSetting</a></li><li><a href="Gallium9Verb.html">Gallium9Verb</a></li><li><a href="GdiplusVerb.html">GdiplusVerb</a></li><li><a href="GLSLSetting.html">GLSLSetting</a></li><li><a href="HDPISetting.html">HDPISetting</a></li><li><a href="KillWineProcessesTool.html">KillWineProcessesTool</a></li><li><a href="LunaVerb.html">LunaVerb</a></li><li><a href="Mfc42Verb.html">Mfc42Verb</a></li><li><a href="MouseWarpOverrideSetting.html">MouseWarpOverrideSetting</a></li><li><a href="Msls31Verb.html">Msls31Verb</a></li><li><a href="MspatchaVerb.html">MspatchaVerb</a></li><li><a href="Msxml3Verb.html">Msxml3Verb</a></li><li><a href="Msxml6Verb.html">Msxml6Verb</a></li><li><a href="MultisamplingSetting.html">MultisamplingSetting</a></li><li><a href="OffscreenRenderingModeSetting.html">OffscreenRenderingModeSetting</a></li><li><a href="PhysXVerb.html">PhysXVerb</a></li><li><a href="QuartzVerb.html">QuartzVerb</a></li><li><a href="QuickTime76Verb.html">QuickTime76Verb</a></li><li><a href="RebootWineTool.html">RebootWineTool</a></li><li><a href="RemoveMonoVerb.html">RemoveMonoVerb</a></li><li><a href="RenderTargetModeLockSetting.html">RenderTargetModeLockSetting</a></li><li><a href="RepairWinePrefixTool.html">RepairWinePrefixTool</a></li><li><a href="Resource.html">Resource</a></li><li><a href="SandboxVerb.html">SandboxVerb</a></li><li><a href="Secur32Verb.html">Secur32Verb</a></li><li><a href="StrictDrawOrderingSetting.html">StrictDrawOrderingSetting</a></li><li><a href="TahomaVerb.html">TahomaVerb</a></li><li><a href="UninstallWineTool.html">UninstallWineTool</a></li><li><a href="UplayVerb.html">UplayVerb</a></li><li><a href="UseTakeFocusSetting.html">UseTakeFocusSetting</a></li><li><a href="Vcrun6SP6Verb.html">Vcrun6SP6Verb</a></li><li><a href="Vcrun2003Verb.html">Vcrun2003Verb</a></li><li><a href="Vcrun2005Verb.html">Vcrun2005Verb</a></li><li><a href="Vcrun2008Verb.html">Vcrun2008Verb</a></li><li><a href="Vcrun2010Verb.html">Vcrun2010Verb</a></li><li><a href="Vcrun2012Verb.html">Vcrun2012Verb</a></li><li><a href="Vcrun2013Verb.html">Vcrun2013Verb</a></li><li><a href="Vcrun2015Verb.html">Vcrun2015Verb</a></li><li><a href="Vcrun2017Verb.html">Vcrun2017Verb</a></li><li><a href="VideoMemorySizeSetting.html">VideoMemorySizeSetting</a></li><li><a href="VK9Verb.html">VK9Verb</a></li><li><a href="VulkanSDKVerb.html">VulkanSDKVerb</a></li><li><a href="WindowsXPSP3Verb.html">WindowsXPSP3Verb</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineConsoleTool.html">WineConsoleTool</a></li><li><a href="WineEngine.html">WineEngine</a></li><li><a href="WineRegistryEditorTool.html">WineRegistryEditorTool</a></li><li><a href="WineShortcut.html">WineShortcut</a></li><li><a href="WineTaskManagerTool.html">WineTaskManagerTool</a></li><li><a href="WineTerminalOpenerTool.html">WineTerminalOpenerTool</a></li><li><a href="XactVerb.html">XactVerb</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
