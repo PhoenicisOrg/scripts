@@ -9,9 +9,10 @@ include("engines.wine.plugins.regedit");
 
 
 /**
-* Verb to install .NET 2.0 SP2
-* @returns {Wine} Wine object
-*/
+ * Verb to install .NET 2.0 SP2
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.dotnet20sp2 = function () {
     var osVersion = this.windowsVersion();
     this.windowsVersion("winxp");
@@ -60,11 +61,17 @@ Wine.prototype.dotnet20sp2 = function () {
     this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*mscorsvw.exe");
     return this;
 };
+
 /**
  * Verb to install dotnet20sp2
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+class Dotnet20SP2Verb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "dotnet20sp2", java.util.Optional.empty());
@@ -72,7 +79,4 @@ var verbImplementation = {
         wine.dotnet20sp2();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}

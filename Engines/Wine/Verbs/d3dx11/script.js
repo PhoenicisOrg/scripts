@@ -3,9 +3,10 @@ include("engines.wine.plugins.override_dll");
 include("utils.functions.net.resource");
 
 /**
-* Verb to install D3DX11
-* @returns {Wine} Wine object
-*/
+ * Verb to install D3DX11
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.d3dx11 = function () {
     var that = this;
 
@@ -63,9 +64,14 @@ Wine.prototype.d3dx11 = function () {
 
 /**
  * Verb to install D3DX11
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+class D3DX11Verb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "d3dx11", java.util.Optional.empty());
@@ -73,8 +79,4 @@ var verbImplementation = {
         wine.d3dx11();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}

@@ -4,9 +4,10 @@ include("utils.functions.net.resource");
 include("utils.functions.filesystem.files");
 
 /**
-* Verb to install mspatcha
-* @returns {Wine} Wine object
-*/
+ * Verb to install mspatcha
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.mspatcha = function () {
     //Inspired from winetricks mspatcha, but with a link Phoenicis can understand
     var setupFile = new Resource()
@@ -35,14 +36,20 @@ Wine.prototype.mspatcha = function () {
     this.overrideDLL()
         .set("native, builtin", ["mspatcha"])
         .do();
+
     return this;
 };
 
 /**
  * Verb to install mspatcha
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+class MspatchaVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "mspatcha", java.util.Optional.empty());
@@ -50,8 +57,4 @@ var verbImplementation = {
         wine.mspatcha();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}
