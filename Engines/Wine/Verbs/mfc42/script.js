@@ -3,9 +3,10 @@ include("engines.wine.plugins.override_dll");
 include("utils.functions.net.resource");
 
 /**
-* Verb to install mfc42.dll and mfc42u.dll
-* @returns {Wine} Wine object
-*/
+ * Verb to install mfc42.dll and mfc42u.dll
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.mfc42 = function () {
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -32,14 +33,20 @@ Wine.prototype.mfc42 = function () {
     this.overrideDLL()
         .set("native, builtin", ["mfc42", "mfc42u"])
         .do();
+
     return this;
 };
 
 /**
  * Verb to install mfc42.dll and mfc42u.dll
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+class Mfc42Verb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "mfc42", java.util.Optional.empty());
@@ -47,8 +54,4 @@ var verbImplementation = {
         wine.mfc42();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}

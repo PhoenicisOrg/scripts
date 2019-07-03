@@ -7,9 +7,9 @@ include("engines.wine.plugins.regedit");
 include("engines.wine.verbs.dotnet40");
 
 /**
-* Verb to install .NET 4.5
-* @returns {Wine} Wine object
-*/
+ * Verb to install .NET 4.5
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.dotnet45 = function () {
     if (this.architecture() == "amd64") {
         print(tr("This package ({0}) may not fully work on a 64-bit installation. 32-bit prefixes may work better.", "dotnet45"));
@@ -54,21 +54,22 @@ Wine.prototype.dotnet45 = function () {
 
 /**
  * Verb to install .NET 4.5
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+class Dotnet45Verb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "dotnet45", java.util.Optional.empty());
-        if (wine.architecture() == "amd64")
-        {
+        if (wine.architecture() == "amd64") {
             wizard.message(tr("This package ({0}) may not fully work on a 64-bit installation. 32-bit prefixes may work better.", "dotnet45"));
         }
         wine.wizard(wizard);
         wine.dotnet45();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}

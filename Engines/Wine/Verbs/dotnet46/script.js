@@ -7,9 +7,10 @@ include("engines.wine.plugins.regedit");
 include("engines.wine.verbs.dotnet45");
 
 /**
-* Verb to install .NET 4.6
-* @returns {Wine} Wine object
-*/
+ * Verb to install .NET 4.6
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.dotnet46 = function () {
     print(tr("This package ({0}) does not work currently. Use it only for testing!", "dotnet46"));
 
@@ -48,9 +49,14 @@ Wine.prototype.dotnet46 = function () {
 
 /**
  * Verb to install .NET 4.6
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+class Dotnet46Verb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "dotnet46", java.util.Optional.empty());
@@ -59,7 +65,4 @@ var verbImplementation = {
         wine.dotnet46();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}

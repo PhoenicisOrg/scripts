@@ -5,11 +5,11 @@ include("utils.functions.filesystem.files");
 include("engines.wine.plugins.windows_version");
 include("engines.wine.verbs.remove_mono");
 
-
 /**
-* Verb to install .NET 2.0
-* @returns {Wine} Wine object
-*/
+ * Verb to install .NET 2.0
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.dotnet20 = function () {
     var osVersion = this.windowsVersion();
 

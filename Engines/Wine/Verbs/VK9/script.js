@@ -4,11 +4,12 @@ include("utils.functions.net.resource");
 include("utils.functions.filesystem.files");
 
 /**
-* Verb to install VK9
-* see: https://github.com/disks86/VK9
-* @param {String} vk9Version VK9 version to install
-* @returns {Wine} Wine object
-*/
+ * Verb to install VK9
+ * see: https://github.com/disks86/VK9
+ *
+ * @param {String} vk9Version VK9 version to install
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.VK9 = function (vk9Version) {
     var operatingSystemFetcher = Bean("operatingSystemFetcher");
     var uiQuestionFactory = Bean("uiQuestionFactory");
@@ -23,15 +24,17 @@ Wine.prototype.VK9 = function (vk9Version) {
     {
         this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else VK9 might not work correctly."));
     }
+
     print("NOTE: wine version should be greater or equal to 3.5");
     print("NOTE: works from 0.28.0");
 
-    if (typeof vk9Version !== 'string')
+    if (typeof vk9Version !== 'string') {
         vk9Version = "0.29.0";
+    }
 
     var setupFile32 = new Resource()
         .wizard(this.wizard())
-        .url("https://github.com/disks86/VK9/releases/download/" + vk9Version +"/"+ vk9Version + "-bin-x86-Release.zip")
+        .url("https://github.com/disks86/VK9/releases/download/" + vk9Version + "/" + vk9Version + "-bin-x86-Release.zip")
         .name(vk9Version + "-bin-x86-Realease.zip")
         .get();
 
@@ -45,11 +48,10 @@ Wine.prototype.VK9 = function (vk9Version) {
 
     remove(this.prefixDirectory() + "/TMP32/");
 
-    if (this.architecture() === "amd64")
-    {
+    if (this.architecture() === "amd64") {
         var setupFile64 = new Resource()
             .wizard(this.wizard())
-            .url("https://github.com/disks86/VK9/releases/download/" + vk9Version +"/"+ vk9Version + "-bin-x86_64-Release.zip")
+            .url("https://github.com/disks86/VK9/releases/download/" + vk9Version + "/" + vk9Version + "-bin-x86_64-Release.zip")
             .name(vk9Version + "-bin-x86_64-Realease.zip")
             .get();
 
@@ -73,22 +75,28 @@ Wine.prototype.VK9 = function (vk9Version) {
 
 /**
  * Verb to install VK9
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+class VK9Verb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
+
         var wizard = SetupWizard(InstallationType.VERBS, "VK9", java.util.Optional.empty());
+
+        // this script is not able to install older versions (VK9.conf mandatory)
+        var versions = ["0.29.0", "0.28.1", "0.28.0"];
         // query desired version (default: 0.28.1)
-        var versions = ["0.29.0", "0.28.1", "0.28.0"]; //this script is not able to install older versions (VK9.conf mandatory)
         var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.28.1");
         wine.wizard(wizard);
+
         // install selected version
         wine.VK9(selectedVersion.text);
+
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}
