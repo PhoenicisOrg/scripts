@@ -11,7 +11,7 @@ Wine.prototype.adobeair = function () {
     const adobeair = new Resource()
         .wizard(this.wizard())
         .url("https://airdownload.adobe.com/air/win/download/latest/AdobeAIRInstaller.exe")
-        .checksum("68d26cca4c6c8230d3f7aa850ee227d518288dfc")
+        .checksum("1ca3fce6593960706526d26563a398cef37628cc")
         .name("AdobeAIRInstaller.exe")
         .get();
 
