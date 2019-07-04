@@ -7,7 +7,6 @@ include("engines.wine.verbs.msxml6");
 include("engines.wine.verbs.atmlib");
 include("engines.wine.plugins.font_smoothing");
 include("engines.wine.verbs.adobeair");
-include("engines.wine.verbs.amtlib");
 include("utils.functions.net.download");
 include("utils.functions.filesystem.extract");
 include("utils.functions.filesystem.files");
