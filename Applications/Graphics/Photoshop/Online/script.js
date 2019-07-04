@@ -5,7 +5,7 @@ include("engines.wine.verbs.vcrun2015");
 include("engines.wine.verbs.msxml3");
 include("engines.wine.verbs.msxml6");
 include("engines.wine.verbs.atmlib");
-//include("engines.wine.verbs.FontsSmoothRGB"); - Not available
+include("engines.wine.plugins.font_smoothing");
 include("engines.wine.verbs.adobeair");
 include("engines.wine.verbs.amtlib");
 include("utils.functions.net.download");
@@ -34,7 +34,7 @@ var installerImplementation = {
                wine.msxml6();
                wine.amtlib();
                wine.adobeair();
-               //wine.FontsSmoothRGB(); - FIXME
+               wine.font_smoothing(RGB);
 
                 var zipLocation = wine.prefixDirectory() + "drive_c/AdobePhotoshop20-mul_x64.zip";
                 new Downloader()
