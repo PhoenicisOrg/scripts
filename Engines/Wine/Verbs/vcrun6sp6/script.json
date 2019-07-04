@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "vcrun6sp6",
+    "id"                         : "engines.wine.verbs.vcrun6sp6",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Local",
+    "id"                         : "applications.development.enterprise_architect.local",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}

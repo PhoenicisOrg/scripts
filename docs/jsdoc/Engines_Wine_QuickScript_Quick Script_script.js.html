@@ -28,136 +28,162 @@
         <article>
             <pre class="prettyprint source linenums"><code>include("engines.wine.shortcuts.wine");
 
-function QuickScript() {
-    this._wineVersion = LATEST_STABLE_VERSION;
-    this._wineArchitecture = "x86";
-    this._wineDistribution = "upstream";
+class QuickScript {
+    constructor() {
+        this._wineVersion = LATEST_STABLE_VERSION;
+        this._wineArchitecture = "x86";
+        this._wineDistribution = "upstream";
+        this._wineUserSettings = false;
 
-    this._type = "Applications";
+        this._type = "Applications";
 
-    // by default do nothing in post install
-    this._postInstall = function () {};
-    this._preInstall = function () {};
-    this._wineUserSettings = false;
+        // by default do nothing in post install
+        this._postInstall = function () { };
+        this._preInstall = function () { };
 
-    var appsManager = Bean("repositoryManager");
-    var application = appsManager.getApplication([TYPE_ID, CATEGORY_ID, APPLICATION_ID]);
-    this._miniature = java.util.Optional.empty();
-    if (application) {
-        this._miniature = application.getMainMiniature();
+        const appsManager = Bean("repositoryManager");
+        const application = appsManager.getApplication([TYPE_ID, CATEGORY_ID, APPLICATION_ID]);
+
+        this._miniature = java.util.Optional.empty();
+        if (application) {
+            this._miniature = application.getMainMiniature();
+        }
+    }
+
+    name(name) {
+        this._name = name;
+        return this;
+    }
+
+    editor(editor) {
+        this._editor = editor;
+        return this;
+    }
+
+    applicationHomepage(applicationHomepage) {
+        this._applicationHomepage = applicationHomepage;
+        return this;
+    }
+
+    author(author) {
+        this._author = author;
+        return this;
+    }
+
+    type(type) {
+        this._type = type;
+        return this;
+    }
+
+    category(category) {
+        this._category = category;
+        return this;
+    }
+
+    /**
+     * get/set miniature (for the installation and the shortcut)
+     * @param {URI} [miniature] path to the miniature file
+     */
+    miniature(miniature) {
+        // get
+        if (arguments.length == 0) {
+            return this._miniature;
+        }
+
+        // set
+        this._miniature = java.util.Optional.of(miniature);
+        return this;
+    }
+
+    /**
+     * set executable
+     * @param executable executable without path (e.g. "Steam.exe")
+     * @param args use array (e.g. ["-applaunch", 409160])
+     */
+    executable(executable, args) {
+        this._executable = executable;
+        this._executableArgs = typeof args !== 'undefined' ? args : "";
+        return this;
+    }
+
+    wineArchitecture(wineArchitecture) {
+        this._wineArchitecture = wineArchitecture;
+        return this;
+    }
+
+    wineDistribution(wineDistribution) {
+        this._wineDistribution = wineDistribution;
+        return this;
+    }
+
+    wineVersion(wineVersion) {
+        this._wineVersion = wineVersion;
+        return this;
+    }
+
+    wineUserSettings(wineUserSettings) {
+        // get
+        if (arguments.length == 0) {
+            return this._wineUserSettings;
+        }
+
+        // set
+        this._wineUserSettings = wineUserSettings;
+        return this;
+    }
+
+    postInstall(postInstall) {
+        this._postInstall = postInstall;
+        return this;
+    }
+
+    preInstall(preInstall) {
+        this._preInstall = preInstall;
+        return this;
+    }
+
+    /**
+     * set environment
+     * @param {string} environment variables
+     * @returns {QuickScript} QuickScript object
+     */
+    environment(environment) {
+        this._environment = environment;
+        return this;
+    }
+
+    /**
+     * set trust level
+     * @param {string} trustlevel
+     * @returns {QuickScript} QuickScript object
+     */
+    trustLevel(trustLevel) {
+        this._trustLevel = trustLevel;
+        return this;
+    }
+
+    /**
+     * creates shortcut
+     * @param {string} [prefix] prefix name
+     */
+    _createShortcut(prefix) {
+        const shortcut = new WineShortcut()
+            .name(this._name)
+            .type(this._type)
+            .category(this._category)
+            .prefix(prefix)
+            .search(this._executable)
+            .environment(this._environment)
+            .trustLevel(this._trustLevel)
+            .arguments(this._executableArgs);
+
+        if (this.miniature().isPresent()) {
+            shortcut.miniature(this.miniature().get())
+        }
+
+        shortcut.create();
     }
 }
-
-QuickScript.prototype.name = function (name) {
-    this._name = name;
-    return this;
-};
-
-QuickScript.prototype.editor = function (editor) {
-    this._editor = editor;
-    return this;
-};
-
-QuickScript.prototype.applicationHomepage = function (applicationHomepage) {
-    this._applicationHomepage = applicationHomepage;
-    return this;
-};
-
-QuickScript.prototype.author = function (author) {
-    this._author = author;
-    return this;
-};
-
-QuickScript.prototype.type = function (type) {
-    this._type = type;
-    return this;
-};
-
-QuickScript.prototype.category = function (category) {
-    this._category = category;
-    return this;
-};
-
-/**
- * get/set miniature (for the installation and the shortcut)
- * @param {URI} [miniature] path to the miniature file
- */
-QuickScript.prototype.miniature = function (miniature) {
-    // get
-    if (arguments.length == 0) {
-        return this._miniature;
-    }
-
-    // set
-    this._miniature = java.util.Optional.of(miniature);
-    return this;
-};
-
-/**
- * set executable
- * @param executable executable without path (e.g. "Steam.exe")
- * @param args use array (e.g. ["-applaunch", 409160])
- */
-QuickScript.prototype.executable = function (executable, args) {
-    this._executable = executable;
-    this._executableArgs = typeof args !== 'undefined' ? args : "";
-    return this;
-};
-
-QuickScript.prototype.wineArchitecture = function (wineArchitecture) {
-    this._wineArchitecture = wineArchitecture;
-    return this;
-};
-
-QuickScript.prototype.wineDistribution = function (wineDistribution) {
-    this._wineDistribution = wineDistribution;
-    return this;
-};
-
-QuickScript.prototype.wineVersion = function (wineVersion) {
-    this._wineVersion = wineVersion;
-    return this;
-};
-
-QuickScript.prototype.wineUserSettings = function (wineUserSettings) {
-    // get
-    if (arguments.length == 0) {
-        return this._wineUserSettings;
-    }
-
-    // set
-    this._wineUserSettings = wineUserSettings;
-    return this;
-};
-
-QuickScript.prototype.postInstall = function (postInstall) {
-    this._postInstall = postInstall;
-    return this;
-};
-
-QuickScript.prototype.preInstall = function (preInstall) {
-    this._preInstall = preInstall;
-    return this;
-};
-
-/**
- * creates shortcut
- * @param {string} [prefix] prefix name
- */
-QuickScript.prototype._createShortcut = function (prefix) {
-    var shortcut = new WineShortcut()
-        .name(this._name)
-        .type(this._type)
-        .category(this._category)
-        .prefix(prefix)
-        .search(this._executable)
-        .arguments(this._executableArgs);
-
-    if (this.miniature().isPresent()) {
-        shortcut.miniature(this.miniature().get())
-    }
-    shortcut.create();
-};
 </code></pre>
         </article>
     </section>
@@ -168,13 +194,13 @@ QuickScript.prototype._createShortcut = function (prefix) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdobeAirVerb.html">AdobeAirVerb</a></li><li><a href="AlwaysOffscreenSetting.html">AlwaysOffscreenSetting</a></li><li><a href="AmstreamVerb.html">AmstreamVerb</a></li><li><a href="AtmlibVerb.html">AtmlibVerb</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="ConfigureWineTool.html">ConfigureWineTool</a></li><li><a href="CorefontsVerb.html">CorefontsVerb</a></li><li><a href="Crypt32Verb.html">Crypt32Verb</a></li><li><a href="D3drmVerb.html">D3drmVerb</a></li><li><a href="D3DX9Verb.html">D3DX9Verb</a></li><li><a href="D3DX10Verb.html">D3DX10Verb</a></li><li><a href="D3DX11Verb.html">D3DX11Verb</a></li><li><a href="D9VKVerb.html">D9VKVerb</a></li><li><a href="DevenumVerb.html">DevenumVerb</a></li><li><a href="DirectDrawRendererSetting.html">DirectDrawRendererSetting</a></li><li><a href="Dotnet20SP2Verb.html">Dotnet20SP2Verb</a></li><li><a href="Dotnet40Verb.html">Dotnet40Verb</a></li><li><a href="Dotnet45Verb.html">Dotnet45Verb</a></li><li><a href="Dotnet46Verb.html">Dotnet46Verb</a></li><li><a href="Dotnet452Verb.html">Dotnet452Verb</a></li><li><a href="Dotnet461Verb.html">Dotnet461Verb</a></li><li><a href="Dotnet462Verb.html">Dotnet462Verb</a></li><li><a href="Dotnet472Verb.html">Dotnet472Verb</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="DXVKVerb.html">DXVKVerb</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="FAudioVerb.html">FAudioVerb</a></li><li><a href="FontSmoothingSetting.html">FontSmoothingSetting</a></li><li><a href="Gallium9Verb.html">Gallium9Verb</a></li><li><a href="GdiplusVerb.html">GdiplusVerb</a></li><li><a href="GLSLSetting.html">GLSLSetting</a></li><li><a href="HDPISetting.html">HDPISetting</a></li><li><a href="KillWineProcessesTool.html">KillWineProcessesTool</a></li><li><a href="LunaVerb.html">LunaVerb</a></li><li><a href="Mfc42Verb.html">Mfc42Verb</a></li><li><a href="MouseWarpOverrideSetting.html">MouseWarpOverrideSetting</a></li><li><a href="Msls31Verb.html">Msls31Verb</a></li><li><a href="MspatchaVerb.html">MspatchaVerb</a></li><li><a href="Msxml3Verb.html">Msxml3Verb</a></li><li><a href="Msxml6Verb.html">Msxml6Verb</a></li><li><a href="MultisamplingSetting.html">MultisamplingSetting</a></li><li><a href="OffscreenRenderingModeSetting.html">OffscreenRenderingModeSetting</a></li><li><a href="PhysXVerb.html">PhysXVerb</a></li><li><a href="QuartzVerb.html">QuartzVerb</a></li><li><a href="QuickTime76Verb.html">QuickTime76Verb</a></li><li><a href="RebootWineTool.html">RebootWineTool</a></li><li><a href="RemoveMonoVerb.html">RemoveMonoVerb</a></li><li><a href="RenderTargetModeLockSetting.html">RenderTargetModeLockSetting</a></li><li><a href="RepairWinePrefixTool.html">RepairWinePrefixTool</a></li><li><a href="Resource.html">Resource</a></li><li><a href="SandboxVerb.html">SandboxVerb</a></li><li><a href="Secur32Verb.html">Secur32Verb</a></li><li><a href="StrictDrawOrderingSetting.html">StrictDrawOrderingSetting</a></li><li><a href="TahomaVerb.html">TahomaVerb</a></li><li><a href="UninstallWineTool.html">UninstallWineTool</a></li><li><a href="UplayVerb.html">UplayVerb</a></li><li><a href="UseTakeFocusSetting.html">UseTakeFocusSetting</a></li><li><a href="Vcrun6SP6Verb.html">Vcrun6SP6Verb</a></li><li><a href="Vcrun2003Verb.html">Vcrun2003Verb</a></li><li><a href="Vcrun2005Verb.html">Vcrun2005Verb</a></li><li><a href="Vcrun2008Verb.html">Vcrun2008Verb</a></li><li><a href="Vcrun2010Verb.html">Vcrun2010Verb</a></li><li><a href="Vcrun2012Verb.html">Vcrun2012Verb</a></li><li><a href="Vcrun2013Verb.html">Vcrun2013Verb</a></li><li><a href="Vcrun2015Verb.html">Vcrun2015Verb</a></li><li><a href="Vcrun2017Verb.html">Vcrun2017Verb</a></li><li><a href="VideoMemorySizeSetting.html">VideoMemorySizeSetting</a></li><li><a href="VK9Verb.html">VK9Verb</a></li><li><a href="VulkanSDKVerb.html">VulkanSDKVerb</a></li><li><a href="WindowsXPSP3Verb.html">WindowsXPSP3Verb</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineConsoleTool.html">WineConsoleTool</a></li><li><a href="WineEngine.html">WineEngine</a></li><li><a href="WineRegistryEditorTool.html">WineRegistryEditorTool</a></li><li><a href="WineShortcut.html">WineShortcut</a></li><li><a href="WineTaskManagerTool.html">WineTaskManagerTool</a></li><li><a href="WineTerminalOpenerTool.html">WineTerminalOpenerTool</a></li><li><a href="XactVerb.html">XactVerb</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a>
 </footer>
 
 <script> prettyPrint(); </script>

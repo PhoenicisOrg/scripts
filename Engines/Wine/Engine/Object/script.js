@@ -5,11 +5,11 @@ include("utils.functions.net.download");
 include("utils.functions.net.resource");
 
 /* exported LATEST_STABLE_VERSION */
-var LATEST_STABLE_VERSION = "4.0";
+var LATEST_STABLE_VERSION = "4.0.1";
 /* exported LATEST_DEVELOPMENT_VERSION */
-var LATEST_DEVELOPMENT_VERSION = "4.3";
+var LATEST_DEVELOPMENT_VERSION = "4.11";
 /* exported LATEST_STAGING_VERSION */
-var LATEST_STAGING_VERSION = "4.3";
+var LATEST_STAGING_VERSION = "4.11";
 /* exported LATEST_DOS_SUPPORT_VERSION */
 var LATEST_DOS_SUPPORT_VERSION = "4.0";
 
@@ -18,7 +18,7 @@ var LATEST_DOS_SUPPORT_VERSION = "4.0";
  * @constructor
  */
 function Wine() {
-    this._implementation = new Engine();
+    this._implementation = new WineEngine();
     this._OperatingSystemFetcher = Bean("operatingSystemFetcher");
 }
 

@@ -4,9 +4,10 @@ include("utils.functions.net.resource");
 include("engines.wine.verbs.luna");
 
 /**
-* Verb to install vcrun2010
-* @returns {Wine} Wine object
-*/
+ * Verb to install vcrun2010
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.vcrun2010 = function () {
     var setupFile32 = new Resource()
         .wizard(this.wizard())
@@ -45,9 +46,14 @@ Wine.prototype.vcrun2010 = function () {
 
 /**
  * Verb to install vcrun2010
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+class Vcrun2010Verb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "vcrun2010", java.util.Optional.empty());
@@ -55,8 +61,4 @@ var verbImplementation = {
         wine.vcrun2010();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}
