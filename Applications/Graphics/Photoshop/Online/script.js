@@ -27,7 +27,7 @@ new OnlineInstallerScript()
         wine.atmlib();
         wine.msxml3();
         wine.msxml6();
-        wine.amtlib();
+        wine.atmlib();
         wine.adobeair();
         wine.font_smoothing("RGB");
 
