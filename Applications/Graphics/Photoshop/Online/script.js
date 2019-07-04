@@ -53,7 +53,7 @@ var installerImplementation = {
                     .extract(["-F", "Set-up.exe"]);
                 wine.run(wine.prefixDirectory() + "/drive_c/photoshopcc2019/Set-up.exe");
                 wine.wait();
-          })
+            })
             .go();
     }
 };
