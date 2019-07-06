@@ -70,7 +70,7 @@ class InstallerScript extends QuickScript {
                 shownVersions,
                 LATEST_STABLE_VERSION + " (recommended)"
             );
-            
+
             this._wineVersion = versions[selectedVersion.index];
         }
 
