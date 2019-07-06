@@ -74,7 +74,7 @@ class GogScript extends QuickScript {
             .wizard(setupWizard)
             .to(tmpDirectory)
             .headers({
-                Authorization: "Bearer " + this._token["access_token"],
+                "Authorization": "Bearer " + this._token["access_token"],
                 "User-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:64.0) Gecko/20100101 Firefox/64.0"
             })
             .get();
