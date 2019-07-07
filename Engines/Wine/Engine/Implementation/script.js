@@ -483,7 +483,7 @@ class WineEngine {
     }
 
     changeVersion(containerName) {
-        const wizardTitle = tr("Change {0} container wine version", containerName);
+        const wizardTitle = tr("Change {0} container Wine version", containerName);
         const wizard = SetupWizard(InstallationType.ENGINES, wizardTitle, java.util.Optional.empty());
 
         this._wizard = wizard;
