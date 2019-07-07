@@ -38,9 +38,7 @@ class Wine {
 
             return architecture;
         } else {
-            print('Wine prefix "' + this.prefixDirectory() + '" does not exist!');
-
-            return "";
+            throw new Error(`Wine prefix "${this.prefixDirectory()}" does not exist!`);
         }
     }
 
@@ -124,9 +122,7 @@ class Wine {
                 subCategory = distribution + "-" + operatingSystem + "-" + architecture;
                 version = containerConfiguration.readValue("wineVersion");
             } else {
-                print('Wine prefix "' + this.prefixDirectory() + '" does not exist!');
-
-                return "";
+                throw new Error(`Wine prefix "${this.prefixDirectory()}" does not exist!`);
             }
         }
 
