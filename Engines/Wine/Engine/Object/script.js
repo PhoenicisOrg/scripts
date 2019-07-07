@@ -118,7 +118,7 @@ class Wine {
 
                 const distribution = containerConfiguration.readValue("wineDistribution", "upstream");
                 const architecture = containerConfiguration.readValue("wineArchitecture", "x86");
-                
+
                 const operatingSystem = this.operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
 
                 subCategory = distribution + "-" + operatingSystem + "-" + architecture;
