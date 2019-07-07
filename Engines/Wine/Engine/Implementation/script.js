@@ -26,7 +26,7 @@ class WineEngine {
     }
 
     getLocalDirectory(subCategory, version) {
-        const [distribution, _, architecture] = subCategory.split("-");
+        const [distribution, , architecture] = subCategory.split("-");
         const operatingSystem = this._operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
 
         const fullDistributionName = distribution + "-" + operatingSystem + "-" + architecture;
@@ -41,7 +41,7 @@ class WineEngine {
     install(subCategory, version) {
         this._installRuntime(this.getWizard());
 
-        const [distribution, _, architecture] = subCategory.split("-");
+        const [distribution, , architecture] = subCategory.split("-");
         const localDirectory = this.getLocalDirectory(subCategory, version);
 
         // if not installed
@@ -335,7 +335,7 @@ class WineEngine {
     }
 
     createContainer(subCategory, version, containerName) {
-        const [distribution, _, architecture] = subCategory.split("-");
+        const [distribution, , architecture] = subCategory.split("-");
 
         const containerNameCleaned = containerName.replace(this._containerRegex, "");
         const containerDirectory = this._winePrefixesDirectory + "/" + containerNameCleaned + "/";
@@ -500,7 +500,7 @@ class WineEngine {
         const distributions = [];
         const versions = [];
         wineJson.forEach(subPart => {
-            const [extractedDistribution, _, extractedArchitecture] = subPart.name.split("-");
+            const [extractedDistribution, , extractedArchitecture] = subPart.name.split("-");
             if (extractedArchitecture == architecture) {
                 // extract the distribution
                 distributions.push(extractedDistribution);
