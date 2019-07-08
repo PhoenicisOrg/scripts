@@ -6,6 +6,10 @@ include("engines.wine.engine.object");
  * @returns {Wine} Wine object
  */
 Wine.prototype.fontSmoothing = function (mode) {
+    if (mode === undefined)
+    {
+        throw tr("No font smoothing mode specified!")
+    }
     let fontSmoothingType;
     let fontSmoothingOrientation;
     if (mode === "RGB") {
@@ -35,4 +39,4 @@ Wine.prototype.fontSmoothing = function (mode) {
 
     this.regedit().patch(regeditFileContent);
     return this;
-};
+}
