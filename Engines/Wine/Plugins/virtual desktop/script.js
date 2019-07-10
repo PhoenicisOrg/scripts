@@ -9,7 +9,7 @@ include("engines.wine.engine.object");
 Wine.prototype.setVirtualDesktop = function (width, height) {
     const width = Bean("screenManager").getScreenWidth();
     const height = Bean("screenManager").getScreenHeight();
-    var regeditFileContent =
+    const regeditFileContent =
         "REGEDIT4\n" +
         "\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\Explorer\\Desktops]\n" +
