@@ -58,7 +58,7 @@ ZipScript.prototype.go = function () {
         .archive(archive)
         .to(wine.prefixDirectory() + "/drive_c/" + this._name)
         .extract()
-        .wine.runInsidePrefix(wine.prefixDirectory() + "/drive_c/" + this._name + ".exe");
+    wine.runInsidePrefix(wine.prefixDirectory() + "/drive_c/" + this._name + ".exe");
 
     this._postInstall(wine, setupWizard);
 
