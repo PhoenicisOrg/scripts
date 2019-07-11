@@ -6,7 +6,7 @@ var screenManager = Bean("screenManager");
  */
 
 function getScreenWidth() {
-   return screenManager.getScreenWidth();
+    return screenManager.getScreenWidth();
 }
 
 /**
@@ -15,5 +15,5 @@ function getScreenWidth() {
  */
 
 function getScreenHeight() {
-   return screenManager.getScreenHeight();
+    return screenManager.getScreenHeight();
 }
