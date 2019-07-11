@@ -1,4 +1,4 @@
-var screenManager = Bean("screenManager");
+const screenManager = Bean("screenManager");
 
 /**
  * obtains the width of user's screen
