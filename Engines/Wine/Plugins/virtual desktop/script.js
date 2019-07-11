@@ -7,10 +7,11 @@ include("engines.wine.engine.object");
  * @returns {Wine} Wine object
  */
 Wine.prototype.setVirtualDesktop = function (width, height) {
-    if (width === 'undefined')
-        const width = Bean("screenManager").getScreenWidth();
-    if (height === 'undefined')
-        const height = Bean("screenManager").getScreenHeight();
+    if (!width)
+        const width = getScreenWidth();
+    if (!height)
+        const height = getScreenHeight();
+    
     const regeditFileContent =
         "REGEDIT4\n" +
         "\n" +
@@ -18,6 +19,8 @@ Wine.prototype.setVirtualDesktop = function (width, height) {
         "\"Default\"=\"" + width + "x" + height + "\"\n" +
         "[HKEY_CURRENT_USER\\Software\\Wine\\Explorer]\n" +
         "\"Desktop\"=\"" + "Default" + "\"\n";
+    
     this.regedit().patch(regeditFileContent);
+    
     return this;
 };
