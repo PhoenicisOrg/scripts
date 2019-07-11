@@ -1,4 +1,5 @@
 include("engines.wine.engine.object");
+include("utils.functions.system.virtual_desktop");
 
 /**
  * sets Virtual Desktop with window resolution
@@ -8,9 +9,13 @@ include("engines.wine.engine.object");
  */
 Wine.prototype.setVirtualDesktop = function (width, height) {
     if (!width)
-        const width = getScreenWidth();
+    {
+        width = getScreenWidth();
+    }
     if (!height)
-        const height = getScreenHeight();
+    {
+        height = getScreenHeight();
+    }
     
     const regeditFileContent =
         "REGEDIT4\n" +
