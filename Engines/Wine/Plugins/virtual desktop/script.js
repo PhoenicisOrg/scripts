@@ -26,6 +26,5 @@ Wine.prototype.setVirtualDesktop = function (width, height) {
         "\"Desktop\"=\"" + "Default" + "\"\n";
     
     this.regedit().patch(regeditFileContent);
-    
     return this;
 };
