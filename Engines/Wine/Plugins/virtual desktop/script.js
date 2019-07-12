@@ -16,7 +16,6 @@ Wine.prototype.setVirtualDesktop = function (width, height) {
     {
         height = getScreenHeight();
     }
-    
     const regeditFileContent =
         "REGEDIT4\n" +
         "\n" +
