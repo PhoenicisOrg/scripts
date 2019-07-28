@@ -100,7 +100,8 @@ class DXVKVerb {
         var latestVersion = cat(releaseFile).replaceAll("\\n", "");
         // query desired version (default: latest release version)
         var versions = [
-            "1.2.2", "1.2.1", "1.2",
+	    "1.3", "1.3.1"
+            "1.2.3", "1.2.2", "1.2.1", "1.2",
             "1.1.1",
             "1.0.3", "1.0.2", "1.0.1", "1.0",
             "0.96", "0.95", "0.94", "0.93", "0.92", "0.91", "0.90",
