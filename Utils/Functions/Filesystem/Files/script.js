@@ -164,7 +164,7 @@ function chmod(filePath, permissions) {
  * Checksum
  */
 // eslint-disable-next-line no-unused-vars
-class Checksum {
+module.Checksum = class Checksum {
     constructor() {
         this.checksumCalculator = Bean("checksumCalculator");
         this._method = "SHA";
@@ -222,4 +222,19 @@ class Checksum {
             }
         });
     }
-}
+};
+
+module.ls = ls;
+module.mkdir = mkdir;
+module.fileExists = fileExists;
+module.cat = cat;
+module.cp = cp;
+module.getFileSize = getFileSize;
+module.fileName = fileName;
+module.lns = lns;
+module.remove = remove;
+module.touch = touch;
+module.writeToFile = writeToFile;
+module.createTempFile = createTempFile;
+module.createTempDir = createTempDir;
+module.chmod = chmod;

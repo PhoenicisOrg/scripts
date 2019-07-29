@@ -1,4 +1,4 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 
 /**
  * Tool to open the Wine task manager

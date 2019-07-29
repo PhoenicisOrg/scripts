@@ -1,6 +1,6 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
+const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
 
 /**
  * Verb to install atmlib

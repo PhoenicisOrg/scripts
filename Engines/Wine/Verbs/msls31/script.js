@@ -1,4 +1,4 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 include("utils.functions.net.resource");
 
 /**

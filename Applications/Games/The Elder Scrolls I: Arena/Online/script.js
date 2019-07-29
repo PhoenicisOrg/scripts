@@ -1,6 +1,6 @@
 include("engines.wine.quick_script.zip_script");
 include("engines.wine.plugins.dos_support");
-include("utils.functions.filesystem.files");
+const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
 
 new ZipScript()
     .name("The Elder Scroll 1: Arena")

@@ -1,4 +1,4 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 
 /**
  * Force the Font smoothing

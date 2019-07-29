@@ -1,4 +1,4 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 include("engines.wine.quick_script.quick_script");
 include("engines.wine.verbs.gdiplus");
 include("utils.functions.net.download");

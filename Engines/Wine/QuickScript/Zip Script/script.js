@@ -1,6 +1,6 @@
 include("engines.wine.quick_script.quick_script");
 include("utils.functions.net.download");
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 include("utils.functions.filesystem.extract");
 include("engines.wine.verbs.luna");
 

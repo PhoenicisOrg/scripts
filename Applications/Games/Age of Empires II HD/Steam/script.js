@@ -1,5 +1,5 @@
 include("engines.wine.quick_script.steam_script");
-include("utils.functions.filesystem.files");
+const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
 
 new SteamScript()
     .name("Age of Empires II HD")

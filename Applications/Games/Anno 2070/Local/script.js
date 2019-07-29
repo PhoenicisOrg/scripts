@@ -4,7 +4,7 @@ include("engines.wine.plugins.override_dll");
 include("engines.wine.verbs.corefonts");
 include("engines.wine.verbs.crypt32");
 include("engines.wine.verbs.d3dx10");
-include("utils.functions.filesystem.files");
+const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
 
 new LocalInstallerScript()
     .name("Anno 2070")

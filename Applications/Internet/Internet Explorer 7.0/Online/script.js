@@ -1,9 +1,9 @@
 include("utils.functions.apps.plain_installer");
 include("utils.functions.net.resource");
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.regsvr32");
-include("utils.functions.filesystem.files");
+const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
 include("engines.wine.shortcuts.wine");
 include("utils.functions.apps.resources");
 include("engines.wine.verbs.sandbox");

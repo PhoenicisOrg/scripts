@@ -1,11 +1,11 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 include("engines.wine.plugins.hdpi");
 
 /**
  * Setting to enable/disable Retina
  */
 // eslint-disable-next-line no-unused-vars
-class HDPISetting {
+module.default = class HDPISetting {
     constructor() {
         this.options = [tr("Disabled"), tr("Enabled")];
     }

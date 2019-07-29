@@ -1,4 +1,4 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 
 /**
  * Tool to repair a Wine prefix

@@ -1,11 +1,11 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 include("engines.wine.plugins.regedit");
 
 /**
  * setting to set always offscreen
  */
 // eslint-disable-next-line no-unused-vars
-class AlwaysOffscreenSetting {
+module.default = class AlwaysOffscreenSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("Enabled")];
         // values which are written into the registry, do not translate!

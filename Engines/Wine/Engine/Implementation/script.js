@@ -1,4 +1,4 @@
-include("utils.functions.filesystem.files");
+const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
 include("utils.functions.filesystem.extract");
 include("utils.functions.net.download");
 include("utils.functions.net.resource");
@@ -10,7 +10,7 @@ var WINE_PREFIX_DIR = "wineprefix";
  * Wine engine
  */
 // eslint-disable-next-line no-unused-vars
-class WineEngine {
+module.default = class WineEngine {
     constructor() {
         this._configFactory = Bean("compatibleConfigFileFormatFactory");
         this._containerRegex = /[^a-z0-9_\- ]/gi;
