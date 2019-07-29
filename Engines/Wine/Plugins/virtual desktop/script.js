@@ -7,6 +7,7 @@ include("utils.functions.system.virtual_desktop");
  * @param {number} height height of virtual desktop (in px)
  * @returns {Wine} Wine object
  */
+// eslint-disable-next-line no-unused-vars
 Wine.prototype.setVirtualDesktop = function (width, height) {
     if (!width)
     {
