@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 include("engines.wine.engine.object");
 include("utils.functions.system.virtual_desktop");
 
