@@ -2,7 +2,7 @@ include("engines.wine.engine.object");
 include("utils.functions.system.virtual_desktop");
 
 /**
- * sets Virtual Desktop with window resolution
+ * Sets Virtual Desktop with window resolution
  * @param {number} width width of virtual desktop (in px)
  * @param {number} height height of virtual desktop (in px)
  * @returns {Wine} Wine object
