@@ -25,7 +25,7 @@ Wine.prototype.quicktime76 = function () {
  * Verb to install QuickTime 7.6
  */
 // eslint-disable-next-line no-unused-vars
-class QuickTime76Verb {
+module.default = class QuickTime76Verb {
     constructor() {
         // do nothing
     }

@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.local_installer_script");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 include("engines.wine.plugins.virtual_desktop");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.verbs.corefonts");

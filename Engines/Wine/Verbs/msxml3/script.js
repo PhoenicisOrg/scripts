@@ -33,7 +33,7 @@ Wine.prototype.msxml3 = function () {
  * Verb to install msxml3
  */
 // eslint-disable-next-line no-unused-vars
-class Msxml3Verb {
+module.default = class Msxml3Verb {
     constructor() {
         // do nothing
     }

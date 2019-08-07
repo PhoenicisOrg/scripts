@@ -4,7 +4,7 @@ include("engines.wine.plugins.register_font");
 include("utils.functions.net.resource");
 include("engines.wine.verbs.luna");
 const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
-include("utils.functions.filesystem.extract");
+const {CabExtract, Extractor} = include("utils.functions.filesystem.extract");
 
 /**
  * Verb to install the Tahoma font
@@ -39,7 +39,7 @@ Wine.prototype.tahoma = function () {
  * Verb to install the Tahoma font
  */
 // eslint-disable-next-line no-unused-vars
-class TahomaVerb {
+module.default = class TahomaVerb {
     constructor() {
         // do nothing
     }

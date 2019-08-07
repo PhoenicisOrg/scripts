@@ -52,7 +52,7 @@ Wine.prototype.dotnet46 = function () {
  * Verb to install .NET 4.6
  */
 // eslint-disable-next-line no-unused-vars
-class Dotnet46Verb {
+module.default = class Dotnet46Verb {
     constructor() {
         // do nothing
     }

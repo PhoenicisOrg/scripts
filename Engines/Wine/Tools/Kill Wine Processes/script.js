@@ -5,7 +5,7 @@ const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION
  * Tool to kill running Wine processes
  */
 // eslint-disable-next-line no-unused-vars
-class KillWineProcessesTool {
+module.default = class KillWineProcessesTool {
     constructor() {
         // do nothing
     }

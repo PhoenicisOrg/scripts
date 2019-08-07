@@ -45,7 +45,7 @@ Wine.prototype.quartz = function () {
  * Verb to install quartz
  */
 // eslint-disable-next-line no-unused-vars
-class QuartzVerb {
+module.default = class QuartzVerb {
     constructor() {
         // do nothing
     }

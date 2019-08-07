@@ -43,7 +43,7 @@ Wine.prototype.vcrun2013 = function () {
  * Verb to install vcrun2013
  */
 // eslint-disable-next-line no-unused-vars
-class Vcrun2013Verb {
+module.default = class Vcrun2013Verb {
     constructor() {
         // do nothing
     }

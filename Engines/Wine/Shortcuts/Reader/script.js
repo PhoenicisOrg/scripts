@@ -64,7 +64,7 @@ class WineShortcutReader {
     }
 }
 
-class ShortcutReader {
+module.default = class ShortcutReader {
     constructor() {
         // do nothing
     }

@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.uplay_script");
+const UplayScript = include("engines.wine.quick_script.uplay_script");
 include("engines.wine.verbs.corefonts");
 include("engines.wine.plugins.virtual_desktop");
 

@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.uplay_script");
+const UplayScript = include("engines.wine.quick_script.uplay_script");
 
 new UplayScript()
     .name("Beyond Good and Evil™")

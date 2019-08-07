@@ -4,7 +4,7 @@ const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch
  * Downloader class
  */
 // eslint-disable-next-line no-unused-vars
-class Downloader {
+module.default = class Downloader {
     constructor() {
         this._downloader = Bean("downloader");
         this._algorithm = "SHA";

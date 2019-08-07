@@ -58,7 +58,7 @@ Wine.prototype.faudio = function (faudioVersion) {
  * Verb to install FAudio
  */
 // eslint-disable-next-line no-unused-vars
-class FAudioVerb {
+module.default = class FAudioVerb {
     constructor() {
         // do nothing
     }

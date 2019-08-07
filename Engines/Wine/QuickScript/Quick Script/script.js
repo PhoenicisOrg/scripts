@@ -1,6 +1,6 @@
 include("engines.wine.shortcuts.wine");
 
-class QuickScript {
+module.default = class QuickScript {
     constructor() {
         this._wineVersion = LATEST_STABLE_VERSION;
         this._wineArchitecture = "x86";

@@ -178,7 +178,7 @@ Wine.prototype.xact = function () {
  * Verb to install xact
  */
 // eslint-disable-next-line no-unused-vars
-class XactVerb {
+module.default = class XactVerb {
     constructor() {
         // do nothing
     }

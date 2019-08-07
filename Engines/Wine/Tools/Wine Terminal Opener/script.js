@@ -5,7 +5,7 @@ const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION
  * Tool to open a terminal in a Wine prefix
  */
 // eslint-disable-next-line no-unused-vars
-class WineTerminalOpenerTool {
+module.default = class WineTerminalOpenerTool {
     constructor() {
         this.terminalOpener = Bean("terminalOpener");
     }

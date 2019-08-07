@@ -5,7 +5,7 @@ const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch
  * Resource class
  */
 // eslint-disable-next-line no-unused-vars
-class Resource {
+module.default = class Resource {
     constructor() {
         this._resourcesPath = Bean("propertyReader").getProperty("application.user.resources");
         this._algorithm = "SHA";

@@ -47,7 +47,7 @@ Wine.prototype.msxml6 = function () {
  * Verb to install msxml6
  */
 // eslint-disable-next-line no-unused-vars
-class Msxml6Verb {
+module.default = class Msxml6Verb {
     constructor() {
         // do nothing
     }

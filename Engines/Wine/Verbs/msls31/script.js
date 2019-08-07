@@ -30,7 +30,7 @@ Wine.prototype.msls31 = function () {
  * Verb to install msls31.dll
  */
 // eslint-disable-next-line no-unused-vars
-class Msls31Verb {
+module.default = class Msls31Verb {
     constructor() {
         // do nothing
     }

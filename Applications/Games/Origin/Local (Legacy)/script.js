@@ -1,6 +1,6 @@
-include("engines.wine.quick_script.local_installer_script");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 include("utils.functions.net.download");
-include("utils.functions.filesystem.extract");
+const {CabExtract, Extractor} = include("utils.functions.filesystem.extract");
 
 new LocalInstallerScript()
     .name("Origin")

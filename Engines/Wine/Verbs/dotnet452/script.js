@@ -57,7 +57,7 @@ Wine.prototype.dotnet452 = function () {
  * Verb to install .NET 4.5.2
  */
 // eslint-disable-next-line no-unused-vars
-class Dotnet452Verb {
+module.default = class Dotnet452Verb {
     constructor() {
         // do nothing
     }

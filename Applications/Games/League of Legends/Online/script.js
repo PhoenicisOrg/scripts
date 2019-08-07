@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.custom_installer_script");
+const CustomInstallerScript = include("engines.wine.quick_script.custom_installer_script");
 include("engines.wine.plugins.csmt");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");

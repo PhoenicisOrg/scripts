@@ -4,7 +4,7 @@ include("engines.wine.plugins.override_dll");
 include("utils.functions.net.resource");
 include("engines.wine.verbs.luna");
 const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
-include("utils.functions.filesystem.extract");
+const {CabExtract, Extractor} = include("utils.functions.filesystem.extract");
 include("engines.wine.plugins.regsvr32");
 
 
@@ -61,7 +61,7 @@ Wine.prototype.amstream = function () {
  * Verb to install amstream
  */
 // eslint-disable-next-line no-unused-vars
-class AmstreamVerb {
+module.default = class AmstreamVerb {
     constructor() {
         // do nothing
     }

@@ -4,7 +4,7 @@ include("engines.wine.plugins.override_dll");
 include("utils.functions.net.resource");
 include("engines.wine.verbs.luna");
 const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
-include("utils.functions.filesystem.extract");
+const {CabExtract, Extractor} = include("utils.functions.filesystem.extract");
 include("engines.wine.plugins.regsvr32");
 
 /**
@@ -40,7 +40,7 @@ Wine.prototype.devenum = function () {
  * Verb to install devenum
  */
 // eslint-disable-next-line no-unused-vars
-class DevenumVerb {
+module.default = class DevenumVerb {
     constructor() {
         // do nothing
     }

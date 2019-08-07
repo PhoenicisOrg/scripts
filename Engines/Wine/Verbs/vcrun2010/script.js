@@ -49,7 +49,7 @@ Wine.prototype.vcrun2010 = function () {
  * Verb to install vcrun2010
  */
 // eslint-disable-next-line no-unused-vars
-class Vcrun2010Verb {
+module.default = class Vcrun2010Verb {
     constructor() {
         // do nothing
     }

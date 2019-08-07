@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.gog_script");
+const GogScript = include("engines.wine.quick_script.gog_script");
 
 new GogScript()
     .name("Teenagent")

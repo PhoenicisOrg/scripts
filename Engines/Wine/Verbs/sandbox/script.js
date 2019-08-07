@@ -24,7 +24,7 @@ Wine.prototype.sandbox = function () {
  * Verb to install a sandbox
  */
 // eslint-disable-next-line no-unused-vars
-class SandboxVerb {
+module.default = class SandboxVerb {
     constructor() {
         // do nothing
     }

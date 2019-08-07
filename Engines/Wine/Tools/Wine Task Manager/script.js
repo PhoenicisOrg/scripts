@@ -5,7 +5,7 @@ const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION
  * Tool to open the Wine task manager
  */
 // eslint-disable-next-line no-unused-vars
-class WineTaskManagerTool {
+module.default = class WineTaskManagerTool {
     constructor() {
         // do nothing
     }

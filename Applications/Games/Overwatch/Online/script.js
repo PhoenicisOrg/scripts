@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.online_installer_script");
+const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
 include("engines.wine.plugins.windows_version");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.verbs.vcrun2015");

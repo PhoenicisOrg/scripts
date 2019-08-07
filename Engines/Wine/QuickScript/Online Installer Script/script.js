@@ -1,7 +1,7 @@
-include("engines.wine.quick_script.installer_script");
+const InstallerScript = include("engines.wine.quick_script.installer_script");
 include("utils.functions.net.download");
 
-class OnlineInstallerScript extends InstallerScript {
+module.default = class OnlineInstallerScript extends InstallerScript {
     constructor() {
         super();
 

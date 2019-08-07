@@ -1,11 +1,11 @@
-include("engines.wine.quick_script.quick_script");
+const QuickScript = include("engines.wine.quick_script.quick_script");
 include("utils.functions.net.download");
 const Wine = include("engines.wine.engine.object");
 const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION, LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
-include("utils.functions.filesystem.extract");
+const {CabExtract, Extractor} = include("utils.functions.filesystem.extract");
 include("engines.wine.verbs.luna");
 
-class ZipScript extends QuickScript {
+module.default = class ZipScript extends QuickScript {
     constructor() {
         super();
     }

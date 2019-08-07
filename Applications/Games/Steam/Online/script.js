@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.online_installer_script");
+const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
 include("engines.wine.verbs.corefonts");
 include("engines.wine.plugins.windows_version");
 

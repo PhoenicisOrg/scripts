@@ -21,7 +21,7 @@ Wine.prototype.crypt32 = function () {
  * Verb to install crypt32
  */
 // eslint-disable-next-line no-unused-vars
-class Crypt32Verb {
+module.default = class Crypt32Verb {
     constructor() {
         // do nothing
     }

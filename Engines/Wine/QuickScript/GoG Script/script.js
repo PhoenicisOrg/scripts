@@ -1,10 +1,10 @@
 const Wine = include("engines.wine.engine.object");
 const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION, LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
-include("engines.wine.quick_script.quick_script");
+const QuickScript = include("engines.wine.quick_script.quick_script");
 include("engines.wine.verbs.gdiplus");
 include("utils.functions.net.download");
 
-class GogScript extends QuickScript {
+module.default = class GogScript extends QuickScript {
     constructor() {
         super();
     }

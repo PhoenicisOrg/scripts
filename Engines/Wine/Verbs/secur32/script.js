@@ -57,7 +57,7 @@ Wine.prototype.secur32 = function () {
  * Verb to install secur32
  */
 // eslint-disable-next-line no-unused-vars
-class Secur32Verb {
+module.default = class Secur32Verb {
     constructor() {
         // do nothing
     }

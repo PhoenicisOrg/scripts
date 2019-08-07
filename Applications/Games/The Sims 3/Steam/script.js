@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.steam_script");
+const SteamScript = include("engines.wine.quick_script.steam_script");
 include("engines.wine.verbs.dotnet20");
 include("engines.wine.verbs.vcrun2010");
 include("engines.wine.verbs.tahoma");

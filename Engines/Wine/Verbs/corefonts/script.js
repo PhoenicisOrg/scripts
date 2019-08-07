@@ -141,7 +141,7 @@ Wine.prototype.corefonts = function () {
  * Verb to install corefonts
  */
 // eslint-disable-next-line no-unused-vars
-class CorefontsVerb {
+module.default = class CorefontsVerb {
     constructor() {
         // do nothing
     }

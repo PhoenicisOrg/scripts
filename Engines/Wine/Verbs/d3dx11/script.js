@@ -67,7 +67,7 @@ Wine.prototype.d3dx11 = function () {
  * Verb to install D3DX11
  */
 // eslint-disable-next-line no-unused-vars
-class D3DX11Verb {
+module.default = class D3DX11Verb {
     constructor() {
         // do nothing
     }

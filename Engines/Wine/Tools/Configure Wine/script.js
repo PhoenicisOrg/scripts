@@ -5,7 +5,7 @@ const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION
  * Tool to configure Wine
  */
 // eslint-disable-next-line no-unused-vars
-class ConfigureWineTool {
+module.default = class ConfigureWineTool {
     constructor() {
         // do nothing
     }

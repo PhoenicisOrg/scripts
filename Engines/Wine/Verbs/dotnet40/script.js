@@ -66,7 +66,7 @@ Wine.prototype.dotnet40 = function () {
  * Verb to install .NET 4.0
  */
 // eslint-disable-next-line no-unused-vars
-class Dotnet40Verb {
+module.default = class Dotnet40Verb {
     constructor() {
         // do nothing
     }

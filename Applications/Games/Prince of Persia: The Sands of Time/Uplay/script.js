@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.uplay_script");
+const UplayScript = include("engines.wine.quick_script.uplay_script");
 
 new UplayScript()
     .name("Prince of Persia®: The Sands of Time")

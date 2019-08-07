@@ -37,7 +37,7 @@ Wine.prototype.atmlib = function () {
  * Verb to install atmlib
  */
 // eslint-disable-next-line no-unused-vars
-class AtmlibVerb {
+module.default = class AtmlibVerb {
     constructor() {
         // do nothing
     }

@@ -45,7 +45,7 @@ Wine.prototype.mspatcha = function () {
  * Verb to install mspatcha
  */
 // eslint-disable-next-line no-unused-vars
-class MspatchaVerb {
+module.default = class MspatchaVerb {
     constructor() {
         // do nothing
     }
