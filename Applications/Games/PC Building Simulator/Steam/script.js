@@ -1,7 +1,7 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
 include("engines.wine.plugins.virtual_desktop");
 include("engines.wine.verbs.corefonts");
-include("utils.functions.apps.resources");
+const AppResource = include("utils.functions.apps.resources");
 
 new SteamScript()
     .name("PC Building Simulator")

@@ -1,12 +1,12 @@
-include("utils.functions.apps.plain_installer");
-include("utils.functions.net.resource");
+const PlainInstaller = include("utils.functions.apps.plain_installer");
+const Resource = include("utils.functions.net.resource");
 const Wine = include("engines.wine.engine.object");
 const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION, LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.regsvr32");
 const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
-include("engines.wine.shortcuts.wine");
-include("utils.functions.apps.resources");
+const WineShortcut = include("engines.wine.shortcuts.wine");
+const AppResource = include("utils.functions.apps.resources");
 include("engines.wine.verbs.sandbox");
 include("engines.wine.plugins.windows_version");
 

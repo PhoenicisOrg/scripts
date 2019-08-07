@@ -1,5 +1,5 @@
 {
-    "scriptName"                 : "Wine engine",
+    "scriptName"                 : "Wine versions",
     "id"                         : "engines.wine.engine.versions",
     "compatibleOperatingSystems" : [
         "MACOSX",

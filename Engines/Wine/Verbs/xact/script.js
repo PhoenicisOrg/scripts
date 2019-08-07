@@ -1,7 +1,7 @@
 const Wine = include("engines.wine.engine.object");
 const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION, LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
 include("engines.wine.plugins.regsvr32");
-include("utils.functions.net.resource");
+const Resource = include("utils.functions.net.resource");
 const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
 
 /**

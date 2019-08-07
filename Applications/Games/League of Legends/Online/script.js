@@ -2,7 +2,7 @@ const CustomInstallerScript = include("engines.wine.quick_script.custom_installe
 include("engines.wine.plugins.csmt");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");
-include("engines.wine.shortcuts.wine");
+const WineShortcut = include("engines.wine.shortcuts.wine");
 include("engines.wine.verbs.sandbox");
 include("engines.wine.verbs.d3dx9");
 

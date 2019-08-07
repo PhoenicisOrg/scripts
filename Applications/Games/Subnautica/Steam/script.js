@@ -3,7 +3,7 @@ include("engines.wine.plugins.virtual_desktop");
 include("engines.wine.verbs.vcrun2013");
 include("engines.wine.verbs.corefonts");
 include("engines.wine.verbs.dxvk");
-include("utils.functions.apps.resources");
+const AppResource = include("utils.functions.apps.resources");
 
 new SteamScript()
     .name("Subnautica")

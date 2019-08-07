@@ -251,7 +251,7 @@ If the script requires a special registry setting, there are 2 options:
 2. If the setting is special for this script, use a registry file. Create a `registry.reg` in `<scriptname>/resources` (see [IE6](https://github.com/PhoenicisOrg/scripts/blob/master/Applications/Internet/Internet%20Explorer%206.0/resources/ie6.reg)) and apply this in `pre/postInstall()` via:
 
     ```javascript
-    include("utils.functions.apps.resources");
+    const AppResource = include("utils.functions.apps.resources");
     include("engines.wine.plugins.regedit");
         ...
     var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
@@ -265,7 +265,7 @@ The frame for a custom script looks like this:
 
 ```javascript
 include("engines.wine.engines.wine");
-include("engines.wine.shortcuts.wine");
+const WineShortcut = include("engines.wine.shortcuts.wine");
 
 var application = "application name"
 
