@@ -4,15 +4,6 @@ include("utils.functions.filesystem.extract");
 include("utils.functions.net.download");
 include("utils.functions.net.resource");
 
-/* exported LATEST_STABLE_VERSION */
-const LATEST_STABLE_VERSION = "4.0.1";
-/* exported LATEST_DEVELOPMENT_VERSION */
-const LATEST_DEVELOPMENT_VERSION = "4.11";
-/* exported LATEST_STAGING_VERSION */
-const LATEST_STAGING_VERSION = "4.11";
-/* exported LATEST_DOS_SUPPORT_VERSION */
-const LATEST_DOS_SUPPORT_VERSION = "4.0";
-
 const FilenameUtils = Java.type("org.apache.commons.io.FilenameUtils");
 
 /**
