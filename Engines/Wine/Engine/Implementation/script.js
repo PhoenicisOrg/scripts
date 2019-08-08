@@ -2,9 +2,7 @@ const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch
 const {CabExtract, Extractor} = include("utils.functions.filesystem.extract");
 const Downloader = include("utils.functions.net.download");
 const Resource = include("utils.functions.net.resource");
-
-/* exported WINE_PREFIX_DIR */
-var WINE_PREFIX_DIR = "wineprefix";
+const {WINE_PREFIX_DIR} = include("engines.wine.engine.constants");
 
 /**
  * Wine engine
