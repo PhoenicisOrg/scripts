@@ -1,8 +1,9 @@
 const Wine = include("engines.wine.engine.object");
-const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION, LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
 const QuickScript = include("engines.wine.quick_script.quick_script");
-include("engines.wine.verbs.gdiplus");
 const Downloader = include("utils.functions.net.download");
+const {createTempDir} = include("utils.functions.filesystem.files");
+
+include("engines.wine.verbs.gdiplus");
 
 module.default = class GogScript extends QuickScript {
     constructor() {

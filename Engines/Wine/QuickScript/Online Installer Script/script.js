@@ -1,6 +1,6 @@
-const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
 const InstallerScript = include("engines.wine.quick_script.installer_script");
 const Downloader = include("utils.functions.net.download");
+const {createTempFile} = include("utils.functions.filesystem.files");
 
 module.default = class OnlineInstallerScript extends InstallerScript {
     constructor() {
