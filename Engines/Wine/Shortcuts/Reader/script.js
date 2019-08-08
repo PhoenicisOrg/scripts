@@ -1,6 +1,6 @@
 const Wine = include("engines.wine.engine.object");
 const {WINE_PREFIX_DIR} = include("engines.wine.engine.constants");
-const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION, LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
+const {remove} = include("utils.functions.filesystem.files");
 
 class WineShortcutReader {
     constructor(shortcut) {
