@@ -1,13 +1,11 @@
 const Wine = include("engines.wine.engine.object");
-const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION, LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
-include("engines.wine.plugins.override_dll");
 const Resource = include("utils.functions.net.resource");
-const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
+const {remove} = include("utils.functions.filesystem.files");
+
+include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");
-include("engines.wine.verbs.remove_mono");
 include("engines.wine.plugins.regedit");
-
-
+include("engines.wine.verbs.remove_mono");
 
 /**
  * Verb to install .NET 2.0 SP2
@@ -39,7 +37,6 @@ Wine.prototype.dotnet20sp2 = function () {
         this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0 SP2"));
         this.run(setupFile32, [setupFile32, "/q", "/c:\"install.exe /q\""], null, false, true);
 
-
         remove(this.system32directory() + "/msvcr80.dll");
         remove(this.system32directory() + "/msvcm80.dll");
         remove(this.system32directory() + "/msvcp80.dll");
@@ -60,6 +57,7 @@ Wine.prototype.dotnet20sp2 = function () {
     this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*ngen.exe");
     this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*regsvcs.exe");
     this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*mscorsvw.exe");
+
     return this;
 };
 

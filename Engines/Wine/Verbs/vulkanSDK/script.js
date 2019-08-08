@@ -1,9 +1,9 @@
 
 const Wine = include("engines.wine.engine.object");
-const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION, LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
-include("engines.wine.plugins.regedit");
 const Resource = include("utils.functions.net.resource");
-const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
+const {touch, writeToFile} = include("utils.functions.filesystem.files");
+
+include("engines.wine.plugins.regedit");
 
 /**
  * All the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)

@@ -1,12 +1,11 @@
 const Wine = include("engines.wine.engine.object");
-const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION, LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
-include("engines.wine.plugins.override_dll");
 const Resource = include("utils.functions.net.resource");
-include("engines.wine.verbs.luna");
-const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
-const {CabExtract, Extractor} = include("utils.functions.filesystem.extract");
-include("engines.wine.plugins.regsvr32");
+const {cp, remove} = include("utils.functions.filesystem.files");
+const {CabExtract} = include("utils.functions.filesystem.extract");
 
+include("engines.wine.plugins.override_dll");
+include("engines.wine.plugins.regsvr32");
+include("engines.wine.verbs.luna");
 
 /**
  * Verb to install amstream

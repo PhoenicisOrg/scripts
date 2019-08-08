@@ -1,11 +1,10 @@
 const Wine = include("engines.wine.engine.object");
-const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION, LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
-include("engines.wine.plugins.override_dll");
 const Resource = include("utils.functions.net.resource");
-include("engines.wine.verbs.luna");
-const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
-const {CabExtract, Extractor} = include("utils.functions.filesystem.extract");
+const {CabExtract} = include("utils.functions.filesystem.extract");
+
+include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.regsvr32");
+include("engines.wine.verbs.luna");
 
 /**
  * Verb to install devenum
@@ -19,15 +18,19 @@ Wine.prototype.devenum = function () {
         .checksum("a97c820915dc20929e84b49646ec275760012a42")
         .name("directx_feb2010_redist.exe")
         .get();
+
     this.wizard().wait(tr("Please wait while {0} is installed...", "devenum"));
+
     new CabExtract()
         .archive(setupFile)
         .to(this.prefixDirectory() + "/drive_c/devenum/")
         .extract(["-L", "-F", "dxnt.cab"]);
+
     new CabExtract()
         .archive(this.prefixDirectory() + "/drive_c/devenum/dxnt.cab")
         .to(this.system32directory())
         .extract(["-L", "-F", "devenum.dll"]);
+
     this.regsvr32().install("devenum.dll");
     this.overrideDLL()
         .set("native", ["devenum"])

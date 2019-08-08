@@ -1,10 +1,10 @@
 const Wine = include("engines.wine.engine.object");
-const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION, LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
-include("engines.wine.plugins.register_font");
 const Resource = include("utils.functions.net.resource");
+const {cp} = include("utils.functions.filesystem.files");
+const {CabExtract} = include("utils.functions.filesystem.extract");
+
+include("engines.wine.plugins.register_font");
 include("engines.wine.verbs.luna");
-const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
-const {CabExtract, Extractor} = include("utils.functions.filesystem.extract");
 
 /**
  * Verb to install the Tahoma font
