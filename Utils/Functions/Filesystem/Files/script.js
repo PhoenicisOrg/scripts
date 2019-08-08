@@ -1,4 +1,3 @@
-var fileAnalyser = Bean("fileAnalyser");
 var fileUtilities = Bean("fileUtilities");
 
 /**
