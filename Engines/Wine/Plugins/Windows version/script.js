@@ -1,5 +1,5 @@
 const Wine = include("engines.wine.engine.object");
-const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION, LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
+
 include("engines.wine.plugins.regedit");
 
 /**
@@ -9,7 +9,6 @@ include("engines.wine.plugins.regedit");
  * @returns {string|Wine} get: Windows version, set: Wine object
  */
 Wine.prototype.windowsVersion = function (version, servicePack) {
-    var that = this;
     // get
     if (arguments.length == 0) {
         return this.regedit().fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Version"]);
