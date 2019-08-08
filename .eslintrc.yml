@@ -38,6 +38,12 @@ globals:
   # java
   Bean: false
 
+  # translations
+  tr: false
+
   # classes
   InstallationType: false
   SetupWizard: false
+
+  # module system
+  module: false
