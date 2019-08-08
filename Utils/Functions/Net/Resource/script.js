@@ -1,5 +1,5 @@
 const Downloader = include("utils.functions.net.download");
-const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
+const {mkdir, fileExists, Checksum} = include("utils.functions.filesystem.files");
 
 /**
  * Resource class
