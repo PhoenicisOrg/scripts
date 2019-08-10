@@ -264,7 +264,7 @@ If the QuickScript is not sufficient for you, you can still write a custom scrip
 The frame for a custom script looks like this:
 
 ```javascript
-include("engines.wine.engines.wine");
+const Wine = include("engines.wine.engine.object");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 
 var application = "application name"
