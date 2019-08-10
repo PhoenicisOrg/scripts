@@ -356,11 +356,12 @@ class WineEngine {
         let version = "";
         let architecture = "";
         let workingContainerDirectory = this.getContainerDirectory(this.getWorkingContainer());
+        let distribution;
 
         if (fileExists(workingContainerDirectory)) {
             const containerConfiguration = this._configFactory.open(workingContainerDirectory + "/phoenicis.cfg");
 
-            const distribution = containerConfiguration.readValue("wineDistribution", "upstream");
+            distribution = containerConfiguration.readValue("wineDistribution", "upstream");
             architecture = containerConfiguration.readValue("wineArchitecture", "x86");
 
             const operatingSystem = this._operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
