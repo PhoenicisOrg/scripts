@@ -1,14 +1,16 @@
 const PlainInstaller = include("utils.functions.apps.plain_installer");
 const Resource = include("utils.functions.net.resource");
+const {CabExtract} = include("utils.functions.filesystem.extract");
 const Wine = include("engines.wine.engine.object");
-const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION, LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
+const {LATEST_STABLE_VERSION} = include("engines.wine.engine.versions");
+const {remove} = include("utils.functions.filesystem.files");
+const WineShortcut = include("engines.wine.shortcuts.wine");
+const AppResource = include("utils.functions.apps.resources");
+
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.regedit");
 include("engines.wine.plugins.regsvr32");
 include("engines.wine.plugins.windows_version");
-const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
-const WineShortcut = include("engines.wine.shortcuts.wine");
-const AppResource = include("utils.functions.apps.resources");
 include("engines.wine.verbs.msls31");
 
 new PlainInstaller().withScript(() => {
