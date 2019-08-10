@@ -1,4 +1,6 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
+const WineShortcut = include("engines.wine.shortcuts.wine");
+
 include("engines.wine.plugins.override_dll");
 
 new LocalInstallerScript()
