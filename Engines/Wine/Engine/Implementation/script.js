@@ -356,7 +356,7 @@ class WineEngine {
         let version = "";
         let architecture = "";
         let workingContainerDirectory = this.getContainerDirectory(this.getWorkingContainer());
-        let distribution;
+        let distribution = "";
 
         if (fileExists(workingContainerDirectory)) {
             const containerConfiguration = this._configFactory.open(workingContainerDirectory + "/phoenicis.cfg");
