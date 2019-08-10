@@ -1,10 +1,11 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
+const {touch, writeToFile, chmod} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.virtual_desktop");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.verbs.corefonts");
 include("engines.wine.verbs.crypt32");
 include("engines.wine.verbs.d3dx10");
-const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
 
 new LocalInstallerScript()
     .name("Anno 2070")

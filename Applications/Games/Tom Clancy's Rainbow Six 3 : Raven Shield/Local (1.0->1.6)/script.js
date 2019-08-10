@@ -1,4 +1,6 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
+const Downloader = include("utils.functions.net.download");
+
 include("engines.wine.plugins.virtual_desktop");
 
 new LocalInstallerScript()

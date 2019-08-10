@@ -1,4 +1,6 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
+const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+
 include("engines.wine.plugins.csmt");
 
 new SteamScript()
@@ -8,6 +10,6 @@ new SteamScript()
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .appId(200260)
-    .postInstall(function (wine, wizard) {
+    .postInstall(function (wine/*, wizard*/) {
         wine.enableCSMT();
     });

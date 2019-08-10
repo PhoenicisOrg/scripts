@@ -1,4 +1,6 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
+const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+
 include("engines.wine.plugins.csmt");
 include("engines.wine.plugins.virtual_desktop");
 

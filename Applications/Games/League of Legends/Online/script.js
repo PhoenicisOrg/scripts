@@ -1,8 +1,11 @@
 const CustomInstallerScript = include("engines.wine.quick_script.custom_installer_script");
+const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const {fileName, mkdir, writeToFile} = include("utils.functions.filesystem.files");
+const Resource = include("utils.functions.net.resource");
+
 include("engines.wine.plugins.csmt");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");
-const WineShortcut = include("engines.wine.shortcuts.wine");
 include("engines.wine.verbs.sandbox");
 include("engines.wine.verbs.d3dx9");
 

@@ -1,4 +1,6 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
+const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+
 include("engines.wine.verbs.d3dx9");
 include("engines.wine.verbs.vcrun2005");
 include("engines.wine.verbs.vcrun2008");

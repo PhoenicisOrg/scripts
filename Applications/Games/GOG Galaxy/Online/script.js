@@ -1,4 +1,7 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
+const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const {remove, lns} = include("utils.functions.filesystem.files");
+
 include("engines.wine.verbs.corefonts");
 include("engines.wine.verbs.vcrun2017");
 include("engines.wine.verbs.xact");

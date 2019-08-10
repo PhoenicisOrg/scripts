@@ -1,9 +1,10 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
+const {LATEST_STABLE_VERSION} = include("engines.wine.engine.versions");
+
 include("engines.wine.plugins.virtual_desktop");
 include("engines.wine.verbs.vcrun2013");
 include("engines.wine.verbs.corefonts");
 include("engines.wine.verbs.dxvk");
-const AppResource = include("utils.functions.apps.resources");
 
 new SteamScript()
     .name("Subnautica Below Zero")

@@ -1,7 +1,5 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
-const Wine = include("engines.wine.engine.object");
-const {LATEST_STABLE_VERSION, LATEST_DEVELOPMENT_VERSION, LATEST_STAGING_VERSION, LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
-const {ls, mkdir, fileExists, cat, cp, getFileSize, fileName, lns, remove, touch, writeToFile, createTempFile, createTempDir, chmod, Checksum} = include("utils.functions.filesystem.files");
+const Downloader = include("utils.functions.net.download");
 
 new LocalInstallerScript()
     .name("STAR WARS™ Battlefront™ II")
