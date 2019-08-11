@@ -1,6 +1,8 @@
-include("engines.wine.quick_script.online_installer_script");
+const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
+const {writeToFile} = include("utils.functions.filesystem.files");
+const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+
 include("engines.wine.verbs.d3dx9");
-include("utils.functions.filesystem.files");
 
 new OnlineInstallerScript()
     .name("STAR WARS™: The Old Republic")

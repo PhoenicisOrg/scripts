@@ -15,7 +15,7 @@ Probably, the verb you want to add has already been implemented somewhere else. 
 Create a new folder in `Engines/Wine/Verbs` and add a `script.js`. The `script.js` must follow this template:
 
 ```javascript
-include(["engines", "wine", "engine", "object"]);
+const Wine = include("engines.wine.engine.object");
 
 /**
  * Verb to install verb
@@ -30,7 +30,7 @@ Wine.prototype.verb = function() {
 /**
  * Verb to install verb
  */
-class VerbVerb {
+module.default = class VerbVerb {
     constructor() {
         // do some optional initialisation work
     }

@@ -1,4 +1,5 @@
-include("engines.wine.quick_script.uplay_script");
+const UplayScript = include("engines.wine.quick_script.uplay_script");
+const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
 new UplayScript()
     .name("Tom Clancy's Splinter Cell®")

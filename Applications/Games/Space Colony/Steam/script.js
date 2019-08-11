@@ -1,4 +1,6 @@
-include("engines.wine.quick_script.steam_script");
+const SteamScript = include("engines.wine.quick_script.steam_script");
+const {LATEST_DEVELOPMENT_VERSION} = include("engines.wine.engine.versions");
+
 include("engines.wine.verbs.vcrun2010");
 include("engines.wine.verbs.dotnet40");
 include("engines.wine.verbs.d3dx9");

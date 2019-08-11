@@ -1,10 +1,10 @@
-include("utils.functions.filesystem.files");
+const {Checksum} = include("utils.functions.filesystem.files");
 
 /**
  * Downloader class
  */
 // eslint-disable-next-line no-unused-vars
-class Downloader {
+module.default = class Downloader {
     constructor() {
         this._downloader = Bean("downloader");
         this._algorithm = "SHA";

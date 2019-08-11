@@ -1,7 +1,9 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {Extractor} = include("utils.functions.filesystem.extract");
+const {ls, cp, cat, remove} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
 
 /**
  * Verb to install DXVK
@@ -77,7 +79,7 @@ Wine.prototype.DXVK = function (dxvkVersion) {
  * Verb to install DXVK
  */
 // eslint-disable-next-line no-unused-vars
-class DXVKVerb {
+module.default = class DXVKVerb {
     constructor() {
         // do nothing
     }

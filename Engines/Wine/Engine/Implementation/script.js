@@ -1,16 +1,14 @@
-include("utils.functions.filesystem.files");
-include("utils.functions.filesystem.extract");
-include("utils.functions.net.download");
-include("utils.functions.net.resource");
-
-/* exported WINE_PREFIX_DIR */
-var WINE_PREFIX_DIR = "wineprefix";
+const {ls, mkdir, fileExists, cat, lns, remove, touch, createTempFile} = include("utils.functions.filesystem.files");
+const {Extractor} = include("utils.functions.filesystem.extract");
+const Downloader = include("utils.functions.net.download");
+const Resource = include("utils.functions.net.resource");
+const {WINE_PREFIX_DIR} = include("engines.wine.engine.constants");
 
 /**
  * Wine engine
  */
 // eslint-disable-next-line no-unused-vars
-class WineEngine {
+module.default = class WineEngine {
     constructor() {
         this._configFactory = Bean("compatibleConfigFileFormatFactory");
         this._containerRegex = /[^a-z0-9_\- ]/gi;

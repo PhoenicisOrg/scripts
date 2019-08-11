@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.zip_script");
+const ZipScript = include("engines.wine.quick_script.zip_script");
 
 new ZipScript()
     .name("Microsoft Paint")

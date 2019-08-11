@@ -1,9 +1,9 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {CabExtract} = include("utils.functions.filesystem.extract");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
 include("engines.wine.verbs.luna");
-include("utils.functions.filesystem.files");
-include("utils.functions.filesystem.extract");
 
 /**
  * Verb to install d3drm
@@ -41,7 +41,7 @@ Wine.prototype.d3drm = function () {
  * Verb to install d3drm
  */
 // eslint-disable-next-line no-unused-vars
-class D3drmVerb {
+module.default = class D3drmVerb {
     constructor() {
         // do nothing
     }

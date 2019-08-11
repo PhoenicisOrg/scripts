@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.steam_script");
+const SteamScript = include("engines.wine.quick_script.steam_script");
 include("engines.wine.verbs.quicktime76");
 include("engines.wine.verbs.corefonts");
 include("engines.wine.verbs.tahoma");

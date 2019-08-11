@@ -1,5 +1,6 @@
-include("engines.wine.engine.object");
-include("utils.functions.filesystem.files");
+const Wine = include("engines.wine.engine.object");
+const {remove} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.regedit");
 
 /**
@@ -31,7 +32,7 @@ Wine.prototype.removeMono = function () {
  * Verb to remove mono
  */
 // eslint-disable-next-line no-unused-vars
-class RemoveMonoVerb {
+module.default = class RemoveMonoVerb {
     constructor() {
         // do nothing
     }

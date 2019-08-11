@@ -38,52 +38,12 @@ globals:
   # java
   Bean: false
 
-  # files
-  ls: false
-  mkdir: false
-  fileExists: false
-  cat: false
-  cp: false
-  getFileSize: false
-  fileName: false
-  lns: false
-  remove: false
-  touch: false
+  # translations
   tr: false
-  writeToFile: false
-  createTempFile: false
-  createTempDir: false
-  chmod: false
 
   # classes
-  AppResource: false
-  CabExtract: false
-  Checksum: false
-  Downloader: false
-  WineEngine: false
-  Extractor: false
   InstallationType: false
-  Resource: false
   SetupWizard: false
-  Wine: false
-  WineShortcut: false
 
-  # quick scripts
-  PlainInstaller: false
-  CustomInstallerScript: false
-  GogScript: false
-  InstallerScript: false
-  LocalInstallerScript: false
-  OnlineInstallerScript: false
-  OriginScript: false
-  QuickScript: false
-  SteamScript: false
-  UplayScript: false
-  ZipScript: false
-  
-  # wine
-  LATEST_DEVELOPMENT_VERSION: false
-  LATEST_STABLE_VERSION: false
-  LATEST_STAGING_VERSION: false
-  LATEST_DOS_SUPPORT_VERSION: false
-  WINE_PREFIX_DIR: false
+  # module system
+  module: false

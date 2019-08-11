@@ -1,10 +1,11 @@
-include("engines.wine.quick_script.quick_script");
-include("utils.functions.net.download");
-include("engines.wine.engine.object");
-include("utils.functions.filesystem.files");
+const QuickScript = include("engines.wine.quick_script.quick_script");
+const Downloader = include("utils.functions.net.download");
+const Wine = include("engines.wine.engine.object");
+const {createTempFile} = include("utils.functions.filesystem.files");
+
 include("engines.wine.verbs.luna");
 
-class OriginScript extends QuickScript {
+module.default = class OriginScript extends QuickScript {
     constructor() {
         super();
 

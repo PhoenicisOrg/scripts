@@ -1,7 +1,8 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {mkdir, cp} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.regedit");
-include("utils.functions.filesystem.files");
-include("utils.functions.net.resource");
 
 /**
  * Verb to install luna
@@ -26,6 +27,7 @@ Wine.prototype.luna = function () {
 
     mkdir(this.prefixDirectory() + "/drive_c/windows/Resources/Themes/luna/");
     cp(lunaStyle, this.prefixDirectory() + "/drive_c/windows/Resources/Themes/luna/");
+
     this.regedit().open(lunaReg);
 
     return this;
@@ -35,7 +37,7 @@ Wine.prototype.luna = function () {
  * Verb to install luna
  */
 // eslint-disable-next-line no-unused-vars
-class LunaVerb {
+module.default = class LunaVerb {
     constructor() {
         // do nothing
     }

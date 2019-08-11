@@ -1,6 +1,7 @@
-include("engines.wine.engine.object");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {cp} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.override_dll");
 
 /**
@@ -32,7 +33,7 @@ Wine.prototype.gdiplus = function () {
  * Verb to install gdiplus
  */
 // eslint-disable-next-line no-unused-vars
-class GdiplusVerb {
+module.default = class GdiplusVerb {
     constructor() {
         // do nothing
     }

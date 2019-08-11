@@ -1,7 +1,9 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {CabExtract} = include("utils.functions.filesystem.extract");
+const {remove} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.regsvr32");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
 
 /**
  * Verb to install xact
@@ -177,7 +179,7 @@ Wine.prototype.xact = function () {
  * Verb to install xact
  */
 // eslint-disable-next-line no-unused-vars
-class XactVerb {
+module.default = class XactVerb {
     constructor() {
         // do nothing
     }

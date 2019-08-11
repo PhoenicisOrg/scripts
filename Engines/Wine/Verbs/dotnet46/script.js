@@ -1,9 +1,10 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
 include("engines.wine.plugins.windows_version");
-include("engines.wine.verbs.remove_mono");
 include("engines.wine.plugins.regedit");
+include("engines.wine.verbs.remove_mono");
 include("engines.wine.verbs.dotnet45");
 
 /**
@@ -51,7 +52,7 @@ Wine.prototype.dotnet46 = function () {
  * Verb to install .NET 4.6
  */
 // eslint-disable-next-line no-unused-vars
-class Dotnet46Verb {
+module.default = class Dotnet46Verb {
     constructor() {
         // do nothing
     }

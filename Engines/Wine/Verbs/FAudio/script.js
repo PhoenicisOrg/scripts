@@ -1,7 +1,9 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {Extractor} = include("utils.functions.filesystem.extract");
+const {ls, cp} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
 
 /**
  * Verb to install FAudio
@@ -57,7 +59,7 @@ Wine.prototype.faudio = function (faudioVersion) {
  * Verb to install FAudio
  */
 // eslint-disable-next-line no-unused-vars
-class FAudioVerb {
+module.default = class FAudioVerb {
     constructor() {
         // do nothing
     }
