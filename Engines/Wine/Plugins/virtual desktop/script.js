@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 include("engines.wine.engine.object");
 include("utils.functions.system.virtual_desktop");
+const Wine = include("engines.wine.engine.object");
 
 /**
  * Sets Virtual Desktop with window resolution
