@@ -1,8 +1,10 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {CabExtract} = include("utils.functions.filesystem.extract");
+const {remove} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.regsvr32");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
 
 /**
  * Verb to install quartz
@@ -44,7 +46,7 @@ Wine.prototype.quartz = function () {
  * Verb to install quartz
  */
 // eslint-disable-next-line no-unused-vars
-class QuartzVerb {
+module.default = class QuartzVerb {
     constructor() {
         // do nothing
     }

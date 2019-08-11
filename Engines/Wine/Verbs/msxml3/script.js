@@ -1,8 +1,8 @@
-include("engines.wine.engine.object");
-include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {remove} = include("utils.functions.filesystem.files");
 
+include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install msxml3
@@ -17,7 +17,8 @@ Wine.prototype.msxml3 = function () {
         .name("msxml3.msi")
         .get();
 
-    remove(this.system32directory() + "/msxml3.dll")
+    remove(this.system32directory() + "/msxml3.dll");
+
     this.overrideDLL()
         .set("native", ["msxml3"])
         .do();
@@ -32,7 +33,7 @@ Wine.prototype.msxml3 = function () {
  * Verb to install msxml3
  */
 // eslint-disable-next-line no-unused-vars
-class Msxml3Verb {
+module.default = class Msxml3Verb {
     constructor() {
         // do nothing
     }

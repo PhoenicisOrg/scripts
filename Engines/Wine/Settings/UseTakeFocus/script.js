@@ -1,4 +1,5 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+
 include("engines.wine.plugins.regedit");
 include("engines.wine.plugins.usetakefocus");
 
@@ -6,7 +7,7 @@ include("engines.wine.plugins.usetakefocus");
  * Setting to enable/disable UseTakeFocus
  */
 // eslint-disable-next-line no-unused-vars
-class UseTakeFocusSetting {
+module.default = class UseTakeFocusSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("Enabled")];
         // values which are written into the registry, do not translate!

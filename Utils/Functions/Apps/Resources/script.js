@@ -2,7 +2,7 @@
  * AppResource class
  */
 // eslint-disable-next-line no-unused-vars
-class AppResource {
+module.default = class AppResource {
     constructor() {
         this.appsManager = Bean("repositoryManager");
     }

@@ -1,11 +1,12 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+
 include("engines.wine.plugins.regedit");
 
 /**
  * Setting to enable/disable GLSL
  */
 // eslint-disable-next-line no-unused-vars
-class GLSLSetting {
+module.default = class GLSLSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("Enabled")];
         // values which are written into the registry, do not translate!

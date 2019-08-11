@@ -1,9 +1,10 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
 include("engines.wine.plugins.windows_version");
-include("engines.wine.verbs.remove_mono");
 include("engines.wine.plugins.regedit");
+include("engines.wine.verbs.remove_mono");
 include("engines.wine.verbs.dotnet462");
 
 
@@ -52,7 +53,7 @@ Wine.prototype.dotnet472 = function () {
  * Verb to install .NET 4.7.2
  */
 // eslint-disable-next-line no-unused-vars
-class Dotnet472Verb {
+module.default = class Dotnet472Verb {
     constructor() {
         // do nothing
     }

@@ -1,6 +1,7 @@
-include("engines.wine.engine.object");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {CabExtract} = include("utils.functions.filesystem.extract");
+const {remove} = include("utils.functions.filesystem.files");
 
 /**
  * Verb to install atmlib
@@ -36,7 +37,7 @@ Wine.prototype.atmlib = function () {
  * Verb to install atmlib
  */
 // eslint-disable-next-line no-unused-vars
-class AtmlibVerb {
+module.default = class AtmlibVerb {
     constructor() {
         // do nothing
     }

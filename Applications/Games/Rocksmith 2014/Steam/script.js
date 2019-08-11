@@ -1,6 +1,7 @@
-include("engines.wine.quick_script.steam_script");
+const SteamScript = include("engines.wine.quick_script.steam_script");
+const {writeToFile} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.sound_driver");
-include("utils.functions.filesystem.files");
 
 function fixIni(ini) {
     var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();

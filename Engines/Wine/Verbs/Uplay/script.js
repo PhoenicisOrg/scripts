@@ -1,5 +1,5 @@
-include("engines.wine.engine.object");
-include("utils.functions.net.resource");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
 
 /**
  * Verb to install Uplay
@@ -23,7 +23,7 @@ Wine.prototype.uplay = function () {
  * Verb to install Uplay
  */
 // eslint-disable-next-line no-unused-vars
-class UplayVerb {
+module.default = class UplayVerb {
     constructor() {
         // do nothing
     }

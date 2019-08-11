@@ -1,7 +1,7 @@
-include("engines.wine.quick_script.local_installer_script");
-include("utils.functions.net.download");
-include("utils.functions.filesystem.extract");
-include("utils.functions.filesystem.files");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
+const Downloader = include("utils.functions.net.download");
+const {Extractor} = include("utils.functions.filesystem.extract");
+
 include("engines.wine.verbs.amstream");
 include("engines.wine.verbs.quartz");
 include("engines.wine.verbs.devenum");

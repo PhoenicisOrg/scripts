@@ -1,6 +1,9 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {CabExtract} = include("utils.functions.filesystem.extract");
+const {remove} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
 
 /**
  * Verb to install mfc42.dll and mfc42u.dll
@@ -41,7 +44,7 @@ Wine.prototype.mfc42 = function () {
  * Verb to install mfc42.dll and mfc42u.dll
  */
 // eslint-disable-next-line no-unused-vars
-class Mfc42Verb {
+module.default = class Mfc42Verb {
     constructor() {
         // do nothing
     }

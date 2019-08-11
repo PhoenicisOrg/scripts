@@ -1,5 +1,5 @@
-include("engines.wine.engine.object");
-include("utils.functions.filesystem.files");
+const Wine = include("engines.wine.engine.object");
+const {writeToFile, fileExists, cat} = include("utils.functions.filesystem.files");
 
 /**
  * This extensions allows script to add extra settings to dos_support wine builds

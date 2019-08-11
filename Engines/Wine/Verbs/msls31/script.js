@@ -1,5 +1,7 @@
-include("engines.wine.engine.object");
-include("utils.functions.net.resource");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {CabExtract} = include("utils.functions.filesystem.extract");
+const {remove} = include("utils.functions.filesystem.files");
 
 /**
  * Verb to install msls31.dll
@@ -29,7 +31,7 @@ Wine.prototype.msls31 = function () {
  * Verb to install msls31.dll
  */
 // eslint-disable-next-line no-unused-vars
-class Msls31Verb {
+module.default = class Msls31Verb {
     constructor() {
         // do nothing
     }

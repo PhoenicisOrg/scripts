@@ -1,6 +1,7 @@
-include("engines.wine.engine.object");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {cp} = include("utils.functions.filesystem.files");
+
 include("engines.wine.verbs.luna");
 
 /**
@@ -36,7 +37,7 @@ Wine.prototype.vcrun2003 = function () {
  * Verb to install vcrun2003
  */
 // eslint-disable-next-line no-unused-vars
-class Vcrun2003Verb {
+module.default = class Vcrun2003Verb {
     constructor() {
         // do nothing
     }

@@ -1,6 +1,7 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+
 include("engines.wine.plugins.windows_version");
-include("utils.functions.net.resource");
 
 /**
  * Verb to install adobeair
@@ -33,7 +34,7 @@ Wine.prototype.adobeair = function () {
  * Verb to install adobeair
  */
 // eslint-disable-next-line no-unused-vars
-class AdobeAirVerb {
+module.default = class AdobeAirVerb {
     constructor() {
         // do nothing
     }

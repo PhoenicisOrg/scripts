@@ -1,17 +1,5 @@
-include("engines.wine.engine.implementation");
-include("utils.functions.filesystem.files");
-include("utils.functions.filesystem.extract");
-include("utils.functions.net.download");
-include("utils.functions.net.resource");
-
-/* exported LATEST_STABLE_VERSION */
-const LATEST_STABLE_VERSION = "4.0.1";
-/* exported LATEST_DEVELOPMENT_VERSION */
-var LATEST_DEVELOPMENT_VERSION = "4.12.1";
-/* exported LATEST_STAGING_VERSION */
-var LATEST_STAGING_VERSION = "4.12.1";
-/* exported LATEST_DOS_SUPPORT_VERSION */
-const LATEST_DOS_SUPPORT_VERSION = "4.0";
+const WineEngine = include("engines.wine.engine.implementation");
+const {fileExists} = include("utils.functions.filesystem.files");
 
 const FilenameUtils = Java.type("org.apache.commons.io.FilenameUtils");
 
@@ -19,7 +7,7 @@ const FilenameUtils = Java.type("org.apache.commons.io.FilenameUtils");
  * Wine main prototype
  */
 // eslint-disable-next-line no-unused-vars
-class Wine {
+module.default = class Wine {
     constructor() {
         this._implementation = new WineEngine();
 

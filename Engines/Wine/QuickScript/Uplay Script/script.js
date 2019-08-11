@@ -1,13 +1,13 @@
-include("engines.wine.quick_script.quick_script");
-include("utils.functions.net.download");
-include("engines.wine.engine.object");
-include("utils.functions.filesystem.extract");
-include("utils.functions.filesystem.files");
+const QuickScript = include("engines.wine.quick_script.quick_script");
+const Downloader = include("utils.functions.net.download");
+const Wine = include("engines.wine.engine.object");
+const {fileExists, createTempFile} = include("utils.functions.filesystem.files");
+
 include("engines.wine.verbs.luna");
 include("engines.wine.verbs.corefonts");
 include("engines.wine.plugins.windows_version");
 
-class UplayScript extends QuickScript {
+module.default = class UplayScript extends QuickScript {
     constructor() {
         super();
 

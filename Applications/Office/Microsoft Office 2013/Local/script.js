@@ -1,4 +1,7 @@
-include("engines.wine.quick_script.local_installer_script");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
+const WineShortcut = include("engines.wine.shortcuts.wine");
+const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+
 include("engines.wine.plugins.override_dll");
 
 new LocalInstallerScript()

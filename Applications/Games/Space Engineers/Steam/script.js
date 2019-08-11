@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.steam_script");
+const SteamScript = include("engines.wine.quick_script.steam_script");
 include("engines.wine.verbs.dotnet472");
 include("engines.wine.verbs.vcrun2017");
 include("engines.wine.verbs.dxvk");

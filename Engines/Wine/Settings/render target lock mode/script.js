@@ -1,11 +1,12 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+
 include("engines.wine.plugins.regedit");
 
 /**
  * Setting to set the render target lock mode
  */
 // eslint-disable-next-line no-unused-vars
-class RenderTargetModeLockSetting {
+module.default = class RenderTargetModeLockSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("readdraw"), tr("readtext")];
         // values which are written into the registry, do not translate!
