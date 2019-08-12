@@ -1,7 +1,9 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {Extractor} = include("utils.functions.filesystem.extract");
+const {cp, remove} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
 
 /**
  * Verb to install VK9
@@ -71,7 +73,7 @@ Wine.prototype.VK9 = function (vk9Version) {
  * Verb to install VK9
  */
 // eslint-disable-next-line no-unused-vars
-class VK9Verb {
+module.default = class VK9Verb {
     constructor() {
         // do nothing
     }

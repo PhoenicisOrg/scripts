@@ -1,11 +1,12 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+
 include("engines.wine.plugins.regedit");
 
 /**
  * setting to set the DirectDraw renderer
  */
 // eslint-disable-next-line no-unused-vars
-class DirectDrawRendererSetting {
+module.default = class DirectDrawRendererSetting {
     constructor() {
         this.options = [tr("Default"), tr("GDI"), tr("OpenGL")];
         // values which are written into the registry, do not translate!

@@ -1,6 +1,7 @@
-include("engines.wine.engine.object");
-include("utils.functions.filesystem.files");
-include("utils.functions.net.resource");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {CabExtract} = include("utils.functions.filesystem.extract");
+const {remove, fileName} = include("utils.functions.filesystem.files");
 
 /**
  * Verb to install Windows XP Service Pack 3
@@ -45,7 +46,7 @@ Wine.prototype.sp3extract = function (fileToExtract) {
  * Verb to install Windows XP Service Pack 3
  */
 // eslint-disable-next-line no-unused-vars
-class WindowsXPSP3Verb {
+module.default = class WindowsXPSP3Verb {
     constructor() {
         // do nothing
     }

@@ -1,11 +1,12 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+
 include("engines.wine.plugins.regedit");
 
 /**
  * Setting to configure mouse warp override
  */
 // eslint-disable-next-line no-unused-vars
-class MouseWarpOverrideSetting {
+module.default = class MouseWarpOverrideSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("Enabled"), tr("Force")];
         // values which are written into the registry, do not translate!

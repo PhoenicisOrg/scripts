@@ -1,4 +1,6 @@
-include("engines.wine.quick_script.online_installer_script");
+const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
+const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+
 include("engines.wine.verbs.mspatcha");
 include("engines.wine.plugins.windows_version");
 

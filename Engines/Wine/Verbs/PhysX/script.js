@@ -1,5 +1,6 @@
-include("engines.wine.engine.object");
-include("utils.functions.net.resource");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+
 include("engines.wine.verbs.luna");
 
 /**
@@ -25,7 +26,7 @@ Wine.prototype.physx = function () {
  * Verb to install Nvidia PhysX
  */
 // eslint-disable-next-line no-unused-vars
-class PhysXVerb {
+module.default = class PhysXVerb {
     constructor() {
         // do nothing
     }

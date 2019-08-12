@@ -1,4 +1,5 @@
-include("engines.wine.quick_script.local_installer_script");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
+const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
 new LocalInstallerScript()
     .name("The Elder Scrolls IV: Oblivion")

@@ -1,7 +1,8 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {remove} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
 
 /**
  * Verb to install msxml6
@@ -25,7 +26,8 @@ Wine.prototype.msxml6 = function () {
             .get();
     }
 
-    remove(this.system32directory() + "/msxml6.dll")
+    remove(this.system32directory() + "/msxml6.dll");
+
     this.overrideDLL()
         .set("native,builtin", ["msxml6"])
         .do();
@@ -46,7 +48,7 @@ Wine.prototype.msxml6 = function () {
  * Verb to install msxml6
  */
 // eslint-disable-next-line no-unused-vars
-class Msxml6Verb {
+module.default = class Msxml6Verb {
     constructor() {
         // do nothing
     }

@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.local_installer_script");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 include("engines.wine.verbs.vcrun2005");
 
 new LocalInstallerScript()

@@ -1,8 +1,9 @@
 
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {touch, writeToFile} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.regedit");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
 
 /**
  * All the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
@@ -62,7 +63,7 @@ Wine.prototype.vulkanSDK = function () {
  * Verb to install all the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
  */
 // eslint-disable-next-line no-unused-vars
-class VulkanSDKVerb {
+module.default = class VulkanSDKVerb {
     constructor() {
         // do nothing
     }

@@ -1,7 +1,8 @@
-include("engines.wine.quick_script.installer_script");
-include("utils.functions.net.download");
+const InstallerScript = include("engines.wine.quick_script.installer_script");
+const Downloader = include("utils.functions.net.download");
+const {createTempFile} = include("utils.functions.filesystem.files");
 
-class OnlineInstallerScript extends InstallerScript {
+module.default = class OnlineInstallerScript extends InstallerScript {
     constructor() {
         super();
 

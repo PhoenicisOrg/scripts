@@ -1,7 +1,7 @@
-include("engines.wine.quick_script.local_installer_script");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
+const Downloader = include("utils.functions.net.download");
+
 include("engines.wine.verbs.d3dx9");
-include("engines.wine.engine.object");
-include("utils.functions.filesystem.files");
 
 new LocalInstallerScript()
     .name("STAR WARS™ Empire at War: Gold Pack")
@@ -9,7 +9,7 @@ new LocalInstallerScript()
     .author("ImperatorS79")
     .category("Games")
     .executable("LaunchEAW.exe")
-    .preInstall(function (wine, wizard) {
+    .preInstall(function (wine/*, wizard */) {
         wine.d3dx9();
     })
     .postInstall(function (wine, wizard) {

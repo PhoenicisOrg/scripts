@@ -1,6 +1,8 @@
-include("engines.wine.quick_script.zip_script");
+const ZipScript = include("engines.wine.quick_script.zip_script");
+const {writeToFile} = include("utils.functions.filesystem.files");
+const {LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
+
 include("engines.wine.plugins.dos_support");
-include("utils.functions.filesystem.files");
 
 new ZipScript()
     .name("The Elder Scroll 1: Arena")

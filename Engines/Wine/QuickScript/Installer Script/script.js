@@ -1,12 +1,13 @@
-include("engines.wine.quick_script.quick_script");
-include("engines.wine.engine.object");
-include("utils.functions.filesystem.extract");
-include("utils.functions.filesystem.files");
+const QuickScript = include("engines.wine.quick_script.quick_script");
+const Wine = include("engines.wine.engine.object");
+const {LATEST_STABLE_VERSION} = include("engines.wine.engine.versions");
+const {fileName} = include("utils.functions.filesystem.files");
+
 include("engines.wine.verbs.luna");
 
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
 
-class InstallerScript extends QuickScript {
+module.default = class InstallerScript extends QuickScript {
     constructor() {
         super();
     }

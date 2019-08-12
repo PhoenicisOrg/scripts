@@ -1,9 +1,10 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
 include("engines.wine.plugins.windows_version");
-include("engines.wine.verbs.remove_mono");
 include("engines.wine.plugins.regedit");
+include("engines.wine.verbs.remove_mono");
 
 
 /**
@@ -65,7 +66,7 @@ Wine.prototype.dotnet40 = function () {
  * Verb to install .NET 4.0
  */
 // eslint-disable-next-line no-unused-vars
-class Dotnet40Verb {
+module.default = class Dotnet40Verb {
     constructor() {
         // do nothing
     }

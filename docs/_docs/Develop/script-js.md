@@ -28,7 +28,7 @@ If you wish to change the trust level (if the application compalains about admin
 A basic script looks like:
 
 ```javascript
-include("engines.wine.quick_script.steam_script");
+const SteamScript = include("engines.wine.quick_script.steam_script");
 
 new SteamScript()
     .name("A Game")              // name of the game
@@ -65,7 +65,7 @@ For a different shortcut (e.g. if you want to pass arguments):
 A basic script looks like:
 
 ```javascript
-include("engines.wine.quick_script.origin_script");
+const OriginScript = include("engines.wine.quick_script.origin_script");
 
 new OriginScript()
     .name("A Game")              // name of the game
@@ -86,7 +86,7 @@ You can determine the app ID by going into `C:\Origin Games\*name of the game*\ 
 A basic script looks like:
 
 ```javascript
-include("engines.wine.quick_script.uplay_script");
+const UplayScript = include("engines.wine.quick_script.uplay_script");
 
 new UplayScript()
     .name("A Game")                                 // name of the game
@@ -104,7 +104,7 @@ Installs a local Windows executable. Shows a setup window browse step (see [Setu
 A basic script looks like:
 
 ```javascript
-include("engines.wine.quick_script.local_installer_script");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 
 new LocalInstallerScript()
     .name("Application-Name")                       // name of the application
@@ -121,7 +121,7 @@ Downloads and installs a Windows executable.
 A basic script looks like:
 
 ```javascript
-include("engines.wine.quick_script.online_installer_script");
+const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
 
 new OnlineInstallerScript()
     .name("Application-Name")                       // name of the application
@@ -138,7 +138,7 @@ new OnlineInstallerScript()
 Executes a custom installation command:
 
 ```javascript
-include("engines.wine.quick_script.custom_installer_script");
+const CustomInstallerScript = include("engines.wine.quick_script.custom_installer_script");
 
 new CustomInstallerScript()
     .name("Application-Name")                                           // name of the application
@@ -156,7 +156,7 @@ new CustomInstallerScript()
 A basic script looks like:
 
 ```javascript
-include("engines.wine.quick_script.zip_script");
+const ZipScript = include("engines.wine.quick_script.zip_script");
 
 new ZipScript()
     .name("Application-Name")                       // name of the application
@@ -176,7 +176,7 @@ This section describes some advanced methods which give you more possibilities t
 When you want to use a certain functionality in your scripts, you need to include it in your scripts, for example:
 
 ```javascript
-include("engines.wine.quick_script.steam_script");
+const SteamScript = include("engines.wine.quick_script.steam_script");
 ```
 
 allows you to execute a steam script. The content of the include is the id of the functionality, which can be found in the `script.json` file located next to the `script.js` file implementing the functionality.
@@ -251,7 +251,7 @@ If the script requires a special registry setting, there are 2 options:
 2. If the setting is special for this script, use a registry file. Create a `registry.reg` in `<scriptname>/resources` (see [IE6](https://github.com/PhoenicisOrg/scripts/blob/master/Applications/Internet/Internet%20Explorer%206.0/resources/ie6.reg)) and apply this in `pre/postInstall()` via:
 
     ```javascript
-    include("utils.functions.apps.resources");
+    const AppResource = include("utils.functions.apps.resources");
     include("engines.wine.plugins.regedit");
         ...
     var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
@@ -264,8 +264,8 @@ If the QuickScript is not sufficient for you, you can still write a custom scrip
 The frame for a custom script looks like this:
 
 ```javascript
-include("engines.wine.engines.wine");
-include("engines.wine.shortcuts.wine");
+const Wine = include("engines.wine.engine.object");
+const WineShortcut = include("engines.wine.shortcuts.wine");
 
 var application = "application name"
 

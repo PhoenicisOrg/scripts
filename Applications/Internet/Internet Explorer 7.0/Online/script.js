@@ -1,13 +1,14 @@
-include("utils.functions.apps.plain_installer");
-include("utils.functions.net.resource");
-include("engines.wine.engine.object");
+const PlainInstaller = include("utils.functions.apps.plain_installer");
+const Resource = include("utils.functions.net.resource");
+const Wine = include("engines.wine.engine.object");
+const {LATEST_STABLE_VERSION} = include("engines.wine.engine.versions");
+const {remove} = include("utils.functions.filesystem.files");
+const WineShortcut = include("engines.wine.shortcuts.wine");
+
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.regsvr32");
-include("utils.functions.filesystem.files");
-include("engines.wine.shortcuts.wine");
-include("utils.functions.apps.resources");
-include("engines.wine.verbs.sandbox");
 include("engines.wine.plugins.windows_version");
+include("engines.wine.verbs.sandbox");
 
 new PlainInstaller().withScript(() => {
     var appsManager = Bean("repositoryManager");

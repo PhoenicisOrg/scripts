@@ -1,6 +1,8 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {CabExtract} = include("utils.functions.filesystem.extract");
+
 include("engines.wine.plugins.register_font");
-include("utils.functions.net.resource");
 include("engines.wine.verbs.luna");
 
 /**
@@ -140,7 +142,7 @@ Wine.prototype.corefonts = function () {
  * Verb to install corefonts
  */
 // eslint-disable-next-line no-unused-vars
-class CorefontsVerb {
+module.default = class CorefontsVerb {
     constructor() {
         // do nothing
     }

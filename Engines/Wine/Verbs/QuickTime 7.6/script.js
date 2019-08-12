@@ -1,5 +1,5 @@
-include("engines.wine.engine.object");
-include("utils.functions.net.resource");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
 
 /**
  * Verb to install QuickTime 7.6
@@ -24,7 +24,7 @@ Wine.prototype.quicktime76 = function () {
  * Verb to install QuickTime 7.6
  */
 // eslint-disable-next-line no-unused-vars
-class QuickTime76Verb {
+module.default = class QuickTime76Verb {
     constructor() {
         // do nothing
     }
