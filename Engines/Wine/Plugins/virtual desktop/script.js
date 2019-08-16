@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 const Wine = include("engines.wine.engine.object");
-include("engines.wine.engine.object");
-include("utils.functions.system.virtual_desktop");
+const {getScreenWidth, getScreenHeight} = include("utils.functions.system.virtual_desktop");
 
 include("engines.wine.plugins.regedit");
 
