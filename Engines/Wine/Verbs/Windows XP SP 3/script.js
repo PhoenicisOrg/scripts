@@ -39,7 +39,6 @@ Wine.prototype.sp3extract = function (fileToExtract) {
 /**
  * Verb to install Windows XP Service Pack 3
  */
-// eslint-disable-next-line no-unused-vars
 module.default = class WindowsXPSP3Verb {
     constructor() {
         // do nothing
