@@ -22,7 +22,6 @@ new SteamScript()
         wine.vcrun2013();
         wine.corefonts();
         wine.DXVK();
-        var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        wine.setVirtualDesktop(screenSize.width, screenSize.height);
+        wine.setVirtualDesktop();
     })
     .gameOverlay(false);

@@ -17,8 +17,7 @@ new LocalInstallerScript()
     .wineVersion("3.16")
     .wineDistribution("upstream")
     .preInstall(function (wine) {
-        var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        wine.setVirtualDesktop(screenSize.width, screenSize.height);
+        wine.setVirtualDesktop();
         wine.crypt32();
         wine.corefonts();
         wine.d3dx10();
