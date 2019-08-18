@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Engines/Wine/Settings/hdpi/script.js</title>
+    <title>JSDoc: Source: Utils/Functions/System/virtual desktop/script.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Engines/Wine/Settings/hdpi/script.js</h1>
+    <h1 class="page-title">Source: Utils/Functions/System/virtual desktop/script.js</h1>
 
     
 
@@ -26,41 +26,26 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const Wine = include("engines.wine.engine.object");
-
-include("engines.wine.plugins.hdpi");
+            <pre class="prettyprint source linenums"><code>const screenManager = Bean("screenManager");
 
 /**
- * Setting to enable/disable Retina
+ * Obtains the width of user's screen
+ * @returns {number} width of user's screen in pixels
  */
-// eslint-disable-next-line no-unused-vars
-module.default = class HDPISetting {
-    constructor() {
-        this.options = [tr("Disabled"), tr("Enabled")];
-    }
-
-    getText() {
-        return tr("Retina support");
-    }
-
-    getOptions() {
-        return this.options;
-    }
-
-    getCurrentOption(container) {
-        var currentValue = new Wine()
-            .prefix(container)
-            .hdpi();
-
-        return currentValue ? this.options[1] : this.options[0];
-    }
-
-    setOption(container, optionIndex) {
-        new Wine()
-            .prefix(container)
-            .hdpi(1 == optionIndex);
-    }
+function getScreenWidth() {
+    return screenManager.getScreenWidth();
 }
+
+/**
+ * Obtains the height of user's screen
+ * @returns {number} height of user's screen in pixels
+ */
+function getScreenHeight() {
+    return screenManager.getScreenHeight();
+}
+
+module.getScreenWidth = getScreenWidth;
+module.getScreenHeight = getScreenHeight;
 </code></pre>
         </article>
     </section>
