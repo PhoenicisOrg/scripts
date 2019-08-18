@@ -16,6 +16,5 @@ new LocalInstallerScript()
             )
         );
         wine.quartz();
-        var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        wine.setVirtualDesktop(screenSize.width, screenSize.height);
+        wine.setVirtualDesktop();
     });
