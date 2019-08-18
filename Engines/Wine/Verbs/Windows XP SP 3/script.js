@@ -1,12 +1,14 @@
-include("engines.wine.engine.object");
-include("utils.functions.filesystem.files");
-include("utils.functions.net.resource");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {CabExtract} = include("utils.functions.filesystem.extract");
+const {remove, fileName} = include("utils.functions.filesystem.files");
 
 /**
-* Verb to install Windows XP Service Pack 3
-* @param {string} fileToExtract path to file which shall be extracted
-* @returns {Wine} Wine object
-*/
+ * Verb to install Windows XP Service Pack 3
+ *
+ * @param {string} fileToExtract path to file which shall be extracted
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.sp3extract = function (fileToExtract) {
     var that = this;
     that._targetDirectory = this.system32directory();
@@ -42,21 +44,26 @@ Wine.prototype.sp3extract = function (fileToExtract) {
 
 /**
  * Verb to install Windows XP Service Pack 3
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class WindowsXPSP3Verb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
+
         var wizard = SetupWizard(InstallationType.VERBS, "sp3extract", java.util.Optional.empty());
+
         // query .dll file which shall be extracted
         var fileToExtract = fileName(wizard.browse(tr("Please select the SP3 file."), wine.prefixDirectory(), ["dll"]));
         wine.wizard(wizard);
+
         // extract requested file
         wine.sp3extract(fileToExtract);
+
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}

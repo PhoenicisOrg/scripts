@@ -27,21 +27,23 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {touch, writeToFile} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.regedit");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
 
 /**
-* All the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
-* -> https://github.com/roderickc/wine-vulkan
-* @returns {Wine} Wine object
-*/
+ * All the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
+ * see: https://github.com/roderickc/wine-vulkan
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.vulkanSDK = function () {
     print("NOTE: you need a graphic driver that supports Vulkan to run winevulkan");
     print("NOTE: Vulkan works in wine from version 3.3 (if compiled with vulkan support)");
 
-    var sdkVersion="1.1.97.0";
+    var sdkVersion = "1.1.97.0";
 
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -55,25 +57,29 @@ Wine.prototype.vulkanSDK = function () {
 
     var pathVulkanJSON = this.prefixDirectory() + "drive_c/windows/winevulkan.json";
     touch(pathVulkanJSON);
-    var contentVulkanJSON = JSON.stringify({"file_format_version": "1.0.0", "ICD": {"library_path": "c:\\windows\\system32\\winevulkan.dll",
-        "api_version": sdkVersion}}, null, 4);
+    var contentVulkanJSON = JSON.stringify({
+        "file_format_version": "1.0.0", "ICD": {
+            "library_path": "c:\\windows\\system32\\winevulkan.dll",
+            "api_version": sdkVersion
+        }
+    }, null, 4);
 
     writeToFile(pathVulkanJSON, contentVulkanJSON);
 
     var regeditFileContent32 =
-    "REGEDIT4\n"                                                    +
-    "\n"                                                      	    +
-    "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers]\n"    +
-    "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000" ;
+        "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers]\n" +
+        "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000";
 
     this.regedit().patch(regeditFileContent32);
 
     if (this.architecture() == "amd64") {
         var regeditFileContent64 =
-        "REGEDIT4\n"                                                                  +
-        "\n"                                                                          +
-        "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Khronos\\Vulkan\\Drivers\\]\n"    +
-	"\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000" ;
+            "REGEDIT4\n" +
+            "\n" +
+            "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Khronos\\Vulkan\\Drivers\\]\n" +
+            "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000";
 
         this.regedit().patch(regeditFileContent64);
     }
@@ -83,9 +89,14 @@ Wine.prototype.vulkanSDK = function () {
 
 /**
  * Verb to install all the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class VulkanSDKVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "vulkanSDK", java.util.Optional.empty());
@@ -93,10 +104,7 @@ var verbImplementation = {
         wine.vulkanSDK();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}
 </code></pre>
         </article>
     </section>
@@ -107,13 +115,13 @@ var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.CabExtract.html">CabExtract</a></li><li><a href="module.Checksum.html">Checksum</a></li><li><a href="module.default.html">default</a></li><li><a href="module.Extractor.html">Extractor</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a>
 </footer>
 
 <script> prettyPrint(); </script>
