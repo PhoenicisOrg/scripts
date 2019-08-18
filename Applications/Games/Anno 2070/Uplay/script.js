@@ -12,7 +12,6 @@ new UplayScript()
     .wineDistribution("upstream")
     .appId(22)
     .preInstall(function (wine /*, wizard*/) {
-        var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        wine.setVirtualDesktop(screenSize.width, screenSize.height);
+        wine.setVirtualDesktop();
         wine.corefonts();
     });
