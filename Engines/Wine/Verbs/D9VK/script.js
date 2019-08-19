@@ -28,7 +28,7 @@ Wine.prototype.D9VK = function (d9vkVersion) {
 
     if (typeof d9vkVersion !== 'string') 
     {
-        d9vkVersion = "0.12";
+        d9vkVersion = "0.13f";
     }
 
     var setupFile = new Resource()
@@ -86,7 +86,7 @@ class D9VKVerb {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "D9VK", java.util.Optional.empty());
-        var versions = ["0.12", "0.11", "0.10"];
+        var versions = ["0.13f", "0.13", "0.12", "0.11", "0.10"];
         var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.12");
         wine.wizard(wizard);
         // install selected version
