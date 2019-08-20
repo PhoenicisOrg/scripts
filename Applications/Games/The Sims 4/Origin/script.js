@@ -1,12 +1,12 @@
 const OriginScript = include("engines.wine.quick_script.origin_script");
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const Resource = include("utils.functions.apps.resources");
 include("engines.wine.verbs.vcrun6sp6");
 include("engines.wine.verbs.mfc42");
 include("engines.wine.verbs.dotnet20sp2");
 include("engines.wine.verbs.vcrun2010");
 include("engines.wine.verbs.vcrun2013");
 include("engines.wine.verbs.d9vk");
-include("utils.functions.apps.resources");
 include("engines.wine.plugins.regedit");
 include("engines.wine.plugins.override_dll");
 
