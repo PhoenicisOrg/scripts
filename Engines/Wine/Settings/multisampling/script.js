@@ -1,11 +1,12 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+
 include("engines.wine.plugins.regedit");
 
 /**
  * Setting to configure multisampling
  */
 // eslint-disable-next-line no-unused-vars
-class MultisamplingSetting {
+module.default = class MultisamplingSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("Enabled")];
         // values which are written into the registry, do not translate!

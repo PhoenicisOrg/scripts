@@ -1,4 +1,6 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+
+include("engines.wine.plugins.regedit");
 
 /**
  * Force the Font smoothing
@@ -6,6 +8,10 @@ include("engines.wine.engine.object");
  * @returns {Wine} Wine object
  */
 Wine.prototype.fontSmoothing = function (mode) {
+    if (mode === undefined)
+    {
+        throw tr("No font smoothing mode specified!")
+    }
     let fontSmoothingType;
     let fontSmoothingOrientation;
     if (mode === "RGB") {

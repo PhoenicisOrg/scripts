@@ -1,10 +1,10 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 
 /**
  * Tool to reboot Wine
  */
 // eslint-disable-next-line no-unused-vars
-class RebootWineTool {
+module.default = class RebootWineTool {
     constructor() {
         // do nothing
     }

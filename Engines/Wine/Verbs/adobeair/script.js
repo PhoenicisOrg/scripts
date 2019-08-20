@@ -1,6 +1,7 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+
 include("engines.wine.plugins.windows_version");
-include("utils.functions.net.resource");
 
 /**
  * Verb to install adobeair
@@ -11,7 +12,7 @@ Wine.prototype.adobeair = function () {
     const adobeair = new Resource()
         .wizard(this.wizard())
         .url("https://airdownload.adobe.com/air/win/download/latest/AdobeAIRInstaller.exe")
-        .checksum("68d26cca4c6c8230d3f7aa850ee227d518288dfc")
+        .checksum("1ca3fce6593960706526d26563a398cef37628cc")
         .name("AdobeAIRInstaller.exe")
         .get();
 
@@ -33,7 +34,7 @@ Wine.prototype.adobeair = function () {
  * Verb to install adobeair
  */
 // eslint-disable-next-line no-unused-vars
-class AdobeAirVerb {
+module.default = class AdobeAirVerb {
     constructor() {
         // do nothing
     }

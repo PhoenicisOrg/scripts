@@ -1,5 +1,5 @@
-include("engines.wine.engine.object");
-include("utils.functions.net.resource");
+const Wine = include("engines.wine.engine.object");
+const {remove, lns} = include("utils.functions.filesystem.files");
 
 /**
  * Verb to install a sandbox
@@ -23,7 +23,7 @@ Wine.prototype.sandbox = function () {
  * Verb to install a sandbox
  */
 // eslint-disable-next-line no-unused-vars
-class SandboxVerb {
+module.default = class SandboxVerb {
     constructor() {
         // do nothing
     }

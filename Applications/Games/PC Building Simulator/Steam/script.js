@@ -1,7 +1,9 @@
-include("engines.wine.quick_script.steam_script");
+const SteamScript = include("engines.wine.quick_script.steam_script");
+const {LATEST_DEVELOPMENT_VERSION} = include("engines.wine.engine.versions");
+
 include("engines.wine.plugins.virtual_desktop");
 include("engines.wine.verbs.corefonts");
-include("utils.functions.apps.resources");
+
 
 new SteamScript()
     .name("PC Building Simulator")
@@ -18,7 +20,6 @@ new SteamScript()
             )
         );
         wine.corefonts();
-        var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        wine.setVirtualDesktop(screenSize.width, screenSize.height);
+        wine.setVirtualDesktop();
     })
     .gameOverlay(false);

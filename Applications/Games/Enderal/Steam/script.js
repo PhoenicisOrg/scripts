@@ -1,5 +1,5 @@
-include("engines.wine.quick_script.steam_script");
-include("utils.functions.filesystem.files");
+const SteamScript = include("engines.wine.quick_script.steam_script");
+const Downloader = include("utils.functions.net.download");
 
 new SteamScript()
     .name("Enderal")

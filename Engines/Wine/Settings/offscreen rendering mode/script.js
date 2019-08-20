@@ -1,11 +1,12 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+
 include("engines.wine.plugins.regedit");
 
 /**
  * Setting to set the offscreen rendering mode
  */
 // eslint-disable-next-line no-unused-vars
-class OffscreenRenderingModeSetting {
+module.default = class OffscreenRenderingModeSetting {
     constructor() {
         this.options = [tr("Default"), tr("FBO"), tr("Backbuffer")];
         // values which are written into the registry, do not translate!

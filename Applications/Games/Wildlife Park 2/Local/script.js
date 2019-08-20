@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.local_installer_script");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 include("engines.wine.plugins.virtual_desktop");
 include("engines.wine.verbs.quartz");
 
@@ -16,6 +16,5 @@ new LocalInstallerScript()
             )
         );
         wine.quartz();
-        var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        wine.setVirtualDesktop(screenSize.width, screenSize.height);
+        wine.setVirtualDesktop();
     });

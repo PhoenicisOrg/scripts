@@ -1,10 +1,11 @@
-include("engines.wine.quick_script.local_installer_script");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
+const {touch, writeToFile, chmod} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.virtual_desktop");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.verbs.corefonts");
 include("engines.wine.verbs.crypt32");
 include("engines.wine.verbs.d3dx10");
-include("utils.functions.filesystem.files");
 
 new LocalInstallerScript()
     .name("Anno 2070")
@@ -16,8 +17,7 @@ new LocalInstallerScript()
     .wineVersion("3.16")
     .wineDistribution("upstream")
     .preInstall(function (wine) {
-        var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        wine.setVirtualDesktop(screenSize.width, screenSize.height);
+        wine.setVirtualDesktop();
         wine.crypt32();
         wine.corefonts();
         wine.d3dx10();

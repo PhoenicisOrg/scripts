@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.origin_script");
+const OriginScript = include("engines.wine.quick_script.origin_script");
 
 new OriginScript()
     .name("Mass Effect 2")

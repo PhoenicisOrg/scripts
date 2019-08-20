@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.online_installer_script");
+const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
 
 new OnlineInstallerScript()
     .name("TeamSpeak 3")

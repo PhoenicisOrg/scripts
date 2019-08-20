@@ -1,4 +1,5 @@
-include("engines.wine.quick_script.uplay_script");
+const UplayScript = include("engines.wine.quick_script.uplay_script");
+
 include("engines.wine.verbs.corefonts");
 include("engines.wine.plugins.virtual_desktop");
 
@@ -11,7 +12,6 @@ new UplayScript()
     .wineDistribution("upstream")
     .appId(22)
     .preInstall(function (wine /*, wizard*/) {
-        var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        wine.setVirtualDesktop(screenSize.width, screenSize.height);
+        wine.setVirtualDesktop();
         wine.corefonts();
     });

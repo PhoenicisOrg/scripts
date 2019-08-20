@@ -1,4 +1,7 @@
-include("engines.wine.quick_script.steam_script");
+const SteamScript = include("engines.wine.quick_script.steam_script");
+const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+
+include("engines.wine.verbs.uplay");
 
 new SteamScript()
     .name("Assassin’s Creed® IV Black Flag™")

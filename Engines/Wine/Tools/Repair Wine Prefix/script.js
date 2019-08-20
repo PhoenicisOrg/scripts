@@ -1,10 +1,10 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 
 /**
  * Tool to repair a Wine prefix
  */
 // eslint-disable-next-line no-unused-vars
-class RepairWinePrefixTool {
+module.default = class RepairWinePrefixTool {
     constructor() {
         // do nothing
     }

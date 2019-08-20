@@ -1,7 +1,9 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {CabExtract} = include("utils.functions.filesystem.extract");
+const {cp, remove} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
 
 /**
  * Verb to install secur32
@@ -56,7 +58,7 @@ Wine.prototype.secur32 = function () {
  * Verb to install secur32
  */
 // eslint-disable-next-line no-unused-vars
-class Secur32Verb {
+module.default = class Secur32Verb {
     constructor() {
         // do nothing
     }

@@ -1,7 +1,8 @@
-include("engines.wine.engine.object");
-include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+
 include("engines.wine.verbs.luna");
+include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install vcrun2008
@@ -49,7 +50,7 @@ Wine.prototype.vcrun2008 = function () {
  * Verb to install vcrun2008
  */
 // eslint-disable-next-line no-unused-vars
-class Vcrun2008Verb {
+module.default = class Vcrun2008Verb {
     constructor() {
         // do nothing
     }

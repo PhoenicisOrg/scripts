@@ -1,4 +1,5 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const {createTempFile, writeToFile} = include("utils.functions.filesystem.files");
 
 /**
  * Regedit support
