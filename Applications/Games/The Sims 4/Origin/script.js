@@ -1,6 +1,6 @@
 const OriginScript = include("engines.wine.quick_script.origin_script");
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
-const Resource = include("utils.functions.apps.resources");
+const AppResource = include("utils.functions.apps.resources");
 include("engines.wine.verbs.vcrun6sp6");
 include("engines.wine.verbs.mfc42");
 include("engines.wine.verbs.dotnet20sp2");
@@ -27,7 +27,7 @@ new OriginScript()
         wine.vcrun2010();
         wine.vcrun2013();
         wine.D9VK();
-        var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
+        const registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
         wine.regedit().patch(registrySettings);
         wine.overrideDLL()
             .set("disabled", ["nvapi","nvapi64"])
