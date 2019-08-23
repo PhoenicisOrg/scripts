@@ -1,13 +1,14 @@
 const Downloader = include("utils.functions.net.download");
 const {mkdir, fileExists, Checksum} = include("utils.functions.filesystem.files");
 
+const propertyReader = Bean("propertyReader");
+
 /**
  * Resource class
  */
-// eslint-disable-next-line no-unused-vars
 module.default = class Resource {
     constructor() {
-        this._resourcesPath = Bean("propertyReader").getProperty("application.user.resources");
+        this._resourcesPath = propertyReader.getProperty("application.user.resources");
         this._algorithm = "SHA";
         this._directory = "";
     }
