@@ -1,0 +1,5 @@
+{
+    "name"        : "System Utils",
+    "id"          : "utils.functions.system",
+    "description" : "Utils for system interaction."
+}

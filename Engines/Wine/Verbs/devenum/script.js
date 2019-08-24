@@ -1,15 +1,16 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {CabExtract} = include("utils.functions.filesystem.extract");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
-include("engines.wine.verbs.luna");
-include("utils.functions.filesystem.files");
-include("utils.functions.filesystem.extract");
 include("engines.wine.plugins.regsvr32");
+include("engines.wine.verbs.luna");
 
 /**
-* Verb to install devenum
-* @returns {Wine} Wine object
-*/
+ * Verb to install devenum
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.devenum = function () {
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -17,15 +18,19 @@ Wine.prototype.devenum = function () {
         .checksum("a97c820915dc20929e84b49646ec275760012a42")
         .name("directx_feb2010_redist.exe")
         .get();
+
     this.wizard().wait(tr("Please wait while {0} is installed...", "devenum"));
+
     new CabExtract()
         .archive(setupFile)
         .to(this.prefixDirectory() + "/drive_c/devenum/")
         .extract(["-L", "-F", "dxnt.cab"]);
+
     new CabExtract()
         .archive(this.prefixDirectory() + "/drive_c/devenum/dxnt.cab")
         .to(this.system32directory())
         .extract(["-L", "-F", "devenum.dll"]);
+
     this.regsvr32().install("devenum.dll");
     this.overrideDLL()
         .set("native", ["devenum"])
@@ -35,10 +40,15 @@ Wine.prototype.devenum = function () {
 };
 
 /**
-  * Verb to install devenum
-*/
-var verbImplementation = {
-    install: function (container) {
+ * Verb to install devenum
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class DevenumVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "devenum", java.util.Optional.empty());
@@ -46,7 +56,4 @@ var verbImplementation = {
         wine.devenum();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}

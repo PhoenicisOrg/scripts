@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Steam",
+    "id"                         : "applications.games.rimworld.steam",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}

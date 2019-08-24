@@ -1,15 +1,15 @@
-include("engines.wine.engine.object");
-include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {remove} = include("utils.functions.filesystem.files");
 
+include("engines.wine.plugins.override_dll");
 
 /**
-* Verb to install msxml3
-* @returns {Wine} Wine object
-*/
+ * Verb to install msxml3
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.msxml3 = function () {
-
     var setupFile32 = new Resource()
         .wizard(this.wizard())
         .url("https://media.codeweavers.com/pub/other/msxml3.msi")
@@ -17,7 +17,8 @@ Wine.prototype.msxml3 = function () {
         .name("msxml3.msi")
         .get();
 
-    remove(this.system32directory() + "/msxml3.dll")
+    remove(this.system32directory() + "/msxml3.dll");
+
     this.overrideDLL()
         .set("native", ["msxml3"])
         .do();
@@ -27,11 +28,17 @@ Wine.prototype.msxml3 = function () {
 
     return this;
 };
+
 /**
  * Verb to install msxml3
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class Msxml3Verb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "msxml3", java.util.Optional.empty());
@@ -39,7 +46,4 @@ var verbImplementation = {
         wine.msxml3();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}
