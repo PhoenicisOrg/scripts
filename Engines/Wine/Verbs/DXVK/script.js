@@ -1,7 +1,9 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {Extractor} = include("utils.functions.filesystem.extract");
+const {ls, cp, cat, remove} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
 
 /**
  * Verb to install DXVK
@@ -16,10 +18,13 @@ Wine.prototype.DXVK = function (dxvkVersion) {
     print("NOTE: wine version should be greater or equal to 3.10");
     if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
     {
-        uiQuestionFactory.create(
-				tr("DXVK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Do you want to continue? Chosing yes will skip DXVK verb  installation and continue with other verbs. Chosing no will quit script installation.", winePrefix),
-				() => return this;
-			);
+        const answer = uiQuestionFactory.create(
+            tr("DXVK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Do you want to continue? Choosing yes will skip DXVK verb installation and continue with other verbs. Choosing no will quit script installation.")
+        );
+        // or: `if (answer == false)`
+        if (!answer) {
+            return this;
+        }
     }
     else {
         this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
