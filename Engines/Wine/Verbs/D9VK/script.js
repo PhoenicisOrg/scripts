@@ -22,17 +22,17 @@ Wine.prototype.D9VK = function (d9vkVersion) {
         const answer = uiQuestionFactory.create(
             tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Do you want to continue? Choosing yes will skip DXVK verb installation and continue with other verbs. Choosing no will quit script installation.")
         );
-        // or: `if (answer == false)` 
+        // or: `if (answer == false)`
         if (!answer) {
-           return this;
+            return this;
         }
     }
-    else 
+    else
     {
         this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else D9VK might not work correctly."));
     }
 
-    if (typeof d9vkVersion !== 'string') 
+    if (typeof d9vkVersion !== 'string')
     {
         d9vkVersion = "0.13f";
     }
