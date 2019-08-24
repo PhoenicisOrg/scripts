@@ -14,25 +14,29 @@ include("engines.wine.plugins.override_dll");
  * @returns {Wine} Wine object
  */
 Wine.prototype.D9VK = function (d9vkVersion) {
-    const operatingSystemFetcher = Bean("operatingSystemFetcher");
-    const uiQuestionFactory = Bean("uiQuestionFactory");
+    var operatingSystemFetcher = Bean("operatingSystemFetcher");
+    var uiQuestionFactory = Bean("uiQuestionFactory");
     print("NOTE: Wine version should be greater or equal to 3.10");
     if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
     {
         const answer = uiQuestionFactory.create(
-            tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Do you want to continue? Choosing yes will skip D9VK verb installation and continue with other verbs. Choosing no will quit script installation.")
-        );
-        // or: `if (answer == false)`
-        if (!answer) {
+            tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation."),
+            ["YES, continue with D9VK installation regardless", "NO, quit script alltogether", "Exit D9VK Installer, but continue with the script"]
+         );
+         
+         if (!answer || answer == "Exit D9VK Installer, but continue with the script") {
             return this;
-        }
+         }
+         if (answer == "NO, quit script alltogether") {
+             throw "User aborted the script.";
+         }
     }
-    else
+    else 
     {
         this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else D9VK might not work correctly."));
     }
 
-    if (typeof d9vkVersion !== 'string')
+    if (typeof d9vkVersion !== 'string') 
     {
         d9vkVersion = "0.13f";
     }
@@ -49,10 +53,10 @@ Wine.prototype.D9VK = function (d9vkVersion) {
         .to(this.prefixDirectory() + "/TMP/")
         .extract();
 
-    const forEach = Array.prototype.forEach;
-    const sys32dir = this.system32directory();
-    const d9vkTmpDir = this.prefixDirectory() + "/TMP/d9vk-" + d9vkVersion;
-    const self = this;
+    var forEach = Array.prototype.forEach;
+    var sys32dir = this.system32directory();
+    var d9vkTmpDir = this.prefixDirectory() + "/TMP/d9vk-" + d9vkVersion;
+    var self = this;
 
     //Copy 32 bits dll to system* and apply override
     forEach.call(ls(d9vkTmpDir + "/x32"), function (file) {
@@ -65,7 +69,7 @@ Wine.prototype.D9VK = function (d9vkVersion) {
     });
 
     if (this.architecture() == "amd64") {
-        const sys64dir = this.system64directory();
+        var sys64dir = this.system64directory();
         //Copy 64 bits dll to system*
         forEach.call(ls(d9vkTmpDir + "/x64"), function (file) {
             if (file.endsWith(".dll")) {
@@ -89,11 +93,11 @@ module.default = class D9VKVerb {
     }
 
     install(container) {
-        const wine = new Wine();
+        var wine = new Wine();
         wine.prefix(container);
-        const wizard = SetupWizard(InstallationType.VERBS, "D9VK", java.util.Optional.empty());
-        const versions = ["0.13f", "0.13", "0.12", "0.11", "0.10"];
-        const selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.12");
+        var wizard = SetupWizard(InstallationType.VERBS, "D9VK", java.util.Optional.empty());
+        var versions = ["0.13f", "0.13", "0.12", "0.11", "0.10"];
+        var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.12");
         wine.wizard(wizard);
         // install selected version
         wine.D9VK(selectedVersion.text);
