@@ -17,7 +17,7 @@ Wine.prototype.faudio = function (faudioVersion) {
         throw "FAudio does not support 32bit architecture.";
     }
     if (typeof faudioVersion !== "string") {
-        faudioVersion = "19.06.07";
+        faudioVersion = "19.08";
     }
 
     var setupFile = new Resource()
@@ -66,9 +66,9 @@ module.default = class FAudioVerb {
 
     install(container) {
         const wizard = SetupWizard(InstallationType.VERBS, "FAudio", java.util.Optional.empty());
-        const versions = ["19.06.07", "19.06", "19.05", "19.04", "19.03", "19.02", "19.01"];
+        const versions = ["19.08", "19.07", "19.06.07", "19.06", "19.05", "19.04", "19.03", "19.02", "19.01"];
 
-        const selectedVersion = wizard.menu(tr("Please select the version."), versions, "19.06.07");
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, "19.08");
 
         const wine = new Wine();
         wine.prefix(container);
