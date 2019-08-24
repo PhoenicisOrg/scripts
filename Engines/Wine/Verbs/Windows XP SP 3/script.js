@@ -1,7 +1,7 @@
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
-const {CabExtract} = include("utils.functions.filesystem.extract");
-const {remove, fileName} = include("utils.functions.filesystem.files");
+const { CabExtract } = include("utils.functions.filesystem.extract");
+const { remove, fileName } = include("utils.functions.filesystem.files");
 
 /**
  * Verb to install Windows XP Service Pack 3
@@ -10,17 +10,11 @@ const {remove, fileName} = include("utils.functions.filesystem.files");
  * @returns {Wine} Wine object
  */
 Wine.prototype.sp3extract = function (fileToExtract) {
-    var that = this;
-    that._targetDirectory = this.system32directory();
+    const targetDirectory = this.system32directory();
 
-    this.targetDirectory = function (targetDirectory) {
-        that._targetDirectory = targetDirectory;
-        return that;
-    };
-
-    var setupFile = new Resource()
+    const setupFile = new Resource()
         .wizard(this.wizard())
-        .url("http://freeware.epsc.wustl.edu/Win/XP_SP3/WindowsXP-KB936929-SP3-x86-ENU.exe")// Just a test, the URL needs to be fixed
+        .url("http://freeware.epsc.wustl.edu/Win/XP_SP3/WindowsXP-KB936929-SP3-x86-ENU.exe")
         .checksum("c81472f7eeea2eca421e116cd4c03e2300ebfde4")
         .name("WindowsXP-KB936929-SP3-x86-ENU.exe")
         .get();
@@ -31,12 +25,12 @@ Wine.prototype.sp3extract = function (fileToExtract) {
         .to(this.prefixDirectory() + "/drive_c/sp3/")
         .extract(["-F", "i386/" + fileToExtract.slice(0, -1) + "_"]);
 
-    remove(that._targetDirectory + "/" + fileToExtract);
+    remove(targetDirectory + "/" + fileToExtract);
 
     new CabExtract()
         .archive(this.prefixDirectory() + "/drive_c/sp3/i386/" + fileToExtract.slice(0, -1) + "_")
         .wizard(this.wizard())
-        .to(that._targetDirectory)
+        .to(targetDirectory)
         .extract();
 
     return this;
@@ -45,25 +39,28 @@ Wine.prototype.sp3extract = function (fileToExtract) {
 /**
  * Verb to install Windows XP Service Pack 3
  */
-// eslint-disable-next-line no-unused-vars
 module.default = class WindowsXPSP3Verb {
     constructor() {
         // do nothing
     }
 
     install(container) {
-        var wine = new Wine();
+        const wine = new Wine();
+
         wine.prefix(container);
 
-        var wizard = SetupWizard(InstallationType.VERBS, "sp3extract", java.util.Optional.empty());
+        const wizard = SetupWizard(InstallationType.VERBS, "sp3extract", java.util.Optional.empty());
+
+        wine.wizard(wizard);
 
         // query .dll file which shall be extracted
-        var fileToExtract = fileName(wizard.browse(tr("Please select the SP3 file."), wine.prefixDirectory(), ["dll"]));
-        wine.wizard(wizard);
+        const fileToExtract = fileName(
+            wizard.browse(tr("Please select the SP3 file."), wine.prefixDirectory(), ["dll"])
+        );
 
         // extract requested file
         wine.sp3extract(fileToExtract);
 
         wizard.close();
     }
-}
+};
