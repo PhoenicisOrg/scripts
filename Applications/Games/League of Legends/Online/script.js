@@ -12,20 +12,22 @@ new CustomInstallerScript()
     .applicationHomepage("http://leagueoflegends.com/")
     .author("Plata, feanor12, Thog, TheRuntimeIsNotWorkingRey, ImperatorS79, Zemogiter, Kreyren")
     .installationCommand(function (wizard) {
-        let url, regionID;
         /// Select the region and download the setup file
-        const regions = ["EU West", 
-                         "Latin America North",
-                        // "Latin America South", URL not found
-                         "Oceania",
-                         "Japan",
-                         "Turkey",
-                         "Brasil",
-                         "EU Nordic & East",
-                         "North America",
-                         "Russia"];
+        const regions = [
+            "EU West", 
+            "Latin America North",
+            //"Latin America South", URL not found
+            "Oceania",
+            "Japan",
+            "Turkey",
+            "Brasil",
+            "EU Nordic & East",
+            "North America",
+            "Russia"
+        ];
         const selectedRegion = wizard.menu(tr("Select your region:"), regions);
         const baseUrl = "https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20";
+        let url, regionID;        
         switch (selectedRegion.text){
             case "EU West":
                 regionID = "EUW";
