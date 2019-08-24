@@ -1,7 +1,7 @@
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
 const {CabExtract} = include("utils.functions.filesystem.extract");
-const {remove} = include("utils.functions.filesystem.files");
+const {fileExists, remove} = include("utils.functions.filesystem.files");
 
 include("engines.wine.plugins.override_dll");
 
@@ -18,8 +18,12 @@ Wine.prototype.mfc42 = function () {
         .name("VC6RedistSetup_deu.exe")
         .get();
 
-    remove(this.system32directory() + "/mfc42.dll");
-    remove(this.system32directory() + "/mfc42u.dll");
+    if (fileExists(this.system32directory() + "/mfc42.dll")) {
+        remove(this.system32directory() + "/mfc42.dll");
+    }
+    if (fileExists(this.system32directory() + "/mfc42u.dll")) {
+        remove(this.system32directory() + "/mfc42u.dll");
+    }
 
     new CabExtract()
         .archive(setupFile)
