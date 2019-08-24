@@ -1,25 +1,32 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+
 include("engines.wine.plugins.override_dll");
 include("engines.wine.verbs.sp3extract");
 
 /**
-* Verb to install crypt32
-* @returns {Wine} Wine object
-*/
+ * Verb to install crypt32
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.crypt32 = function () {
     this.sp3extract("crypt32.dll");
     this.sp3extract("msasn1.dll");
 
     this.overrideDLL()
         .set("native, builtin", ["crypt32"])
-        .do()
+        .do();
 };
 
 /**
  * Verb to install crypt32
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class Crypt32Verb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "crypt32", java.util.Optional.empty());
@@ -27,8 +34,4 @@ var verbImplementation = {
         wine.crypt32();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}

@@ -1,14 +1,15 @@
-include("engines.wine.engine.object");
-include("utils.functions.filesystem.files");
+const Wine = include("engines.wine.engine.object");
+const {remove} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.regedit");
 
 /**
-* Verb to remove mono
-* @returns {Wine} Wine object
-*/
+ * Verb to remove mono
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.removeMono = function () {
-    if (this.uninstall("Mono"))
-    {
+    if (this.uninstall("Mono")) {
         this.wizard().wait(tr("Please wait..."));
         this.regedit().deleteKey("HKLM\\Software\\Microsoft\\.NETFramework\\v2.0.50727\\SBSDisabled");
 
@@ -19,8 +20,7 @@ Wine.prototype.removeMono = function () {
         this.regedit().deleteKey("HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v4");
 
         remove(this.system32directory() + "/mscoree.dll");
-        if (this.architecture() == "amd64")
-        {
+        if (this.architecture() == "amd64") {
             remove(this.system64directory() + "/mscoree.dll");
         }
     }
@@ -30,9 +30,14 @@ Wine.prototype.removeMono = function () {
 
 /**
  * Verb to remove mono
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class RemoveMonoVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "remove_mono", java.util.Optional.empty());
@@ -40,7 +45,4 @@ var verbImplementation = {
         wine.removeMono();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}
