@@ -14,8 +14,8 @@ include("engines.wine.plugins.override_dll");
  * @returns {Wine} Wine object
  */
 Wine.prototype.D9VK = function (d9vkVersion) {
-    var operatingSystemFetcher = Bean("operatingSystemFetcher");
-    var uiQuestionFactory = Bean("uiQuestionFactory");
+    const operatingSystemFetcher = Bean("operatingSystemFetcher");
+    const uiQuestionFactory = Bean("uiQuestionFactory");
     print("NOTE: Wine version should be greater or equal to 3.10");
     if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
     {
@@ -49,10 +49,10 @@ Wine.prototype.D9VK = function (d9vkVersion) {
         .to(this.prefixDirectory() + "/TMP/")
         .extract();
 
-    var forEach = Array.prototype.forEach;
-    var sys32dir = this.system32directory();
-    var d9vkTmpDir = this.prefixDirectory() + "/TMP/d9vk-" + d9vkVersion;
-    var self = this;
+    const forEach = Array.prototype.forEach;
+    const sys32dir = this.system32directory();
+    const d9vkTmpDir = this.prefixDirectory() + "/TMP/d9vk-" + d9vkVersion;
+    const self = this;
 
     //Copy 32 bits dll to system* and apply override
     forEach.call(ls(d9vkTmpDir + "/x32"), function (file) {
@@ -65,7 +65,7 @@ Wine.prototype.D9VK = function (d9vkVersion) {
     });
 
     if (this.architecture() == "amd64") {
-        var sys64dir = this.system64directory();
+        const sys64dir = this.system64directory();
         //Copy 64 bits dll to system*
         forEach.call(ls(d9vkTmpDir + "/x64"), function (file) {
             if (file.endsWith(".dll")) {
@@ -89,11 +89,11 @@ module.default = class D9VKVerb {
     }
 
     install(container) {
-        var wine = new Wine();
+        const wine = new Wine();
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "D9VK", java.util.Optional.empty());
-        var versions = ["0.13f", "0.13", "0.12", "0.11", "0.10"];
-        var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.12");
+        const wizard = SetupWizard(InstallationType.VERBS, "D9VK", java.util.Optional.empty());
+        const versions = ["0.13f", "0.13", "0.12", "0.11", "0.10"];
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.12");
         wine.wizard(wizard);
         // install selected version
         wine.D9VK(selectedVersion.text);
