@@ -33,4 +33,4 @@ new OriginScript()
             .set("disabled", ["nvapi","nvapi64"])
             .do();
     })
-    .environment('{ "STAGING_SHARED_MEMORY": "0", "__GL_SHADER_DISK_CACHE_PATH": "$GAMEDIR", "__GL_SHADER_DISK_CACHE": "1"}')
+    .environment('{ "STAGING_SHARED_MEMORY": "0", "__GL_SHADER_DISK_CACHE_PATH": "wine.prefixDirectory()", "__GL_SHADER_DISK_CACHE": "1"}')
