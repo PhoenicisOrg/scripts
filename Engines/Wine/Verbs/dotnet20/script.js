@@ -1,15 +1,16 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {remove} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
 include("engines.wine.plugins.windows_version");
 include("engines.wine.verbs.remove_mono");
 
-
 /**
-* Verb to install .NET 2.0
-* @returns {Wine} Wine object
-*/
+ * Verb to install .NET 2.0
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.dotnet20 = function () {
     var osVersion = this.windowsVersion();
 

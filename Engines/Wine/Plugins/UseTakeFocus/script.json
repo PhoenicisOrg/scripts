@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Use Take Focus",
+    "id"                         : "engines.wine.plugins.usetakefocus",
+    "compatibleOperatingSystems" : [
+        "LINUX",
+        "MACOSX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

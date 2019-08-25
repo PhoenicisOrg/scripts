@@ -1,16 +1,18 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
 include("engines.wine.plugins.windows_version");
-include("engines.wine.verbs.remove_mono");
 include("engines.wine.plugins.regedit");
+include("engines.wine.verbs.remove_mono");
 include("engines.wine.verbs.dotnet46");
 
 
 /**
-* Verb to install .NET 4.6.1
-* @returns {Wine} Wine object
-*/
+ * Verb to install .NET 4.6.1
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.dotnet461 = function () {
     print(tr("This package ({0}) does not work currently. Use it only for testing!", "dotnet461"));
 
@@ -49,9 +51,14 @@ Wine.prototype.dotnet461 = function () {
 
 /**
  * Verb to install .NET 4.6.1
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class Dotnet461Verb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "dotnet461", java.util.Optional.empty());
@@ -60,7 +67,4 @@ var verbImplementation = {
         wine.dotnet461();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}

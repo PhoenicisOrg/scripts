@@ -26,31 +26,33 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>include("engines.wine.engine.object");
+            <pre class="prettyprint source linenums"><code>const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {Extractor} = include("utils.functions.filesystem.extract");
+const {ls, cp, cat, remove} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
 
 /**
-* Verb to install DXVK
-* see: https://github.com/doitsujin/dxvk/
-* @param {String} dxvkVersion DXVK version to download
-* @returns {Wine} Wine object
-*/
+ * Verb to install DXVK
+ * see: https://github.com/doitsujin/dxvk/
+ *
+ * @param {String} dxvkVersion DXVK version to download
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.DXVK = function (dxvkVersion) {
     var operatingSystemFetcher = Bean("operatingSystemFetcher");
+
     print("NOTE: wine version should be greater or equal to 3.10");
-    if (operatingSystemFetcher.fetchCurrentOperationSystem() != "Linux")
-    {
+
+    if (operatingSystemFetcher.fetchCurrentOperationSystem() != "Linux") {
         this.wizard().message(tr("DXVK might not work correctly on macOS. This is depending on Metal api support and MoltenVK compatibility layer advancement"));
     }
-    else
-    {
+    else {
         this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
     }
 
-    if (typeof dxvkVersion !== 'string')
-    {
+    if (typeof dxvkVersion !== 'string') {
         var releaseFile = new Resource()
             .wizard(this.wizard())
             .url("https://raw.githubusercontent.com/doitsujin/dxvk/master/RELEASE")
@@ -86,8 +88,7 @@ Wine.prototype.DXVK = function (dxvkVersion) {
         }
     });
 
-    if (this.architecture() == "amd64")
-    {
+    if (this.architecture() == "amd64") {
         var sys64dir = this.system64directory();
         //Copy 64 bits dll to system*
         forEach.call(ls(dxvkTmpDir + "/x64"), function (file) {
@@ -104,39 +105,48 @@ Wine.prototype.DXVK = function (dxvkVersion) {
 
 /**
  * Verb to install DXVK
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class DXVKVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "DXVK", java.util.Optional.empty());
+
         // get latest release version
         var releaseFile = new Resource()
             .wizard(wizard)
             .url("https://raw.githubusercontent.com/doitsujin/dxvk/master/RELEASE")
             .name("RELEASE.txt")
             .get();
+
         var latestVersion = cat(releaseFile).replaceAll("\\n", "");
         // query desired version (default: latest release version)
-        var versions = ["1.0",
-                        "0.96", "0.95", "0.94", "0.93", "0.92", "0.91", "0.90",
-                        "0.81", "0.80", "0.72", "0.71", "0.70",
-                        "0.65", "0.64", "0.63", "0.62", "0.61", "0.60",
-                        "0.54", "0.53", "0.52", "0.51", "0.50",
-                        "0.42", "0.41", "0.40",
-                        "0.31", "0.30",
-                        "0.21", "0.20"];
+        var versions = [
+            "1.2.2", "1.2.1", "1.2",
+            "1.1.1",
+            "1.0.3", "1.0.2", "1.0.1", "1.0",
+            "0.96", "0.95", "0.94", "0.93", "0.92", "0.91", "0.90",
+            "0.81", "0.80", "0.72", "0.71", "0.70",
+            "0.65", "0.64", "0.63", "0.62", "0.61", "0.60",
+            "0.54", "0.53", "0.52", "0.51", "0.50",
+            "0.42", "0.41", "0.40",
+            "0.31", "0.30",
+            "0.21", "0.20"
+        ];
+
         var selectedVersion = wizard.menu(tr("Please select the version."), versions, latestVersion);
         wine.wizard(wizard);
         // install selected version
-        wine.DXVK(selectedVersion);
+        wine.DXVK(selectedVersion.text);
+
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}
 </code></pre>
         </article>
     </section>
@@ -147,13 +157,13 @@ var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.CabExtract.html">CabExtract</a></li><li><a href="module.Checksum.html">Checksum</a></li><li><a href="module.default.html">default</a></li><li><a href="module.Extractor.html">Extractor</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#getScreenHeight">getScreenHeight</a></li><li><a href="global.html#getScreenWidth">getScreenWidth</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a>
 </footer>
 
 <script> prettyPrint(); </script>

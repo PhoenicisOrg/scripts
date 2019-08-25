@@ -1,12 +1,14 @@
-include("engines.wine.engine.object");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {cp} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.override_dll");
 
 /**
-* Verb to install gdiplus
-* @returns {Wine} Wine object
-*/
+ * Verb to install gdiplus
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.gdiplus = function () {
     var setupFile = new Resource()
         .wizard(this.wizard())
@@ -29,9 +31,14 @@ Wine.prototype.gdiplus = function () {
 
 /**
  * Verb to install gdiplus
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class GdiplusVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "gdiplus", java.util.Optional.empty());
@@ -39,8 +46,4 @@ var verbImplementation = {
         wine.gdiplus();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}

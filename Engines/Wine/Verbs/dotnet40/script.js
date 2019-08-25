@@ -1,15 +1,17 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
 include("engines.wine.plugins.windows_version");
-include("engines.wine.verbs.remove_mono");
 include("engines.wine.plugins.regedit");
+include("engines.wine.verbs.remove_mono");
 
 
 /**
-* Verb to install .NET 4.0
-* @returns {Wine} Wine object
-*/
+ * Verb to install .NET 4.0
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.dotnet40 = function () {
     if (this.architecture() == "amd64") {
         print(tr("This package ({0}) may not fully work on a 64-bit installation. 32-bit prefixes may work better.", "dotnet40"));
@@ -43,11 +45,11 @@ Wine.prototype.dotnet40 = function () {
         .do();
 
     this.wizard().wait(tr("Please wait..."));
-    var regeditFileContent = "REGEDIT4\n"                                                                      +
-                             "\n"                                                                              +
-                             "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full]\n" +
-                             "\"Install\"=dword:0001\n"                                                        +
-                             "\"Version\"=\"4.0.30319\"";
+    var regeditFileContent = "REGEDIT4\n" +
+        "\n" +
+        "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full]\n" +
+        "\"Install\"=dword:0001\n" +
+        "\"Version\"=\"4.0.30319\"";
 
     this.regedit().patch(regeditFileContent);
 
@@ -62,21 +64,22 @@ Wine.prototype.dotnet40 = function () {
 
 /**
  * Verb to install .NET 4.0
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class Dotnet40Verb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "dotnet40", java.util.Optional.empty());
-        if (wine.architecture() == "amd64")
-        {
+        if (wine.architecture() == "amd64") {
             wizard.message(tr("This package ({0}) may not fully work on a 64-bit installation. 32-bit prefixes may work better.", "dotnet40"));
         }
         wine.wizard(wizard);
         wine.dotnet40();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}
