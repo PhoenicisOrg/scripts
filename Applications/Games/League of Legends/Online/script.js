@@ -27,7 +27,7 @@ new CustomInstallerScript()
         ];
         const selectedRegion = wizard.menu(tr("Select your region:"), regions);
         const baseUrl = "https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20";
-        let url, regionID;       
+        let url, regionID;
         switch (selectedRegion.text){
             case "EU West":
                 regionID = "EUW";
