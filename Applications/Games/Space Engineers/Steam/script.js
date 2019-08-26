@@ -9,8 +9,8 @@ new SteamScript()
     .name("Space Engineers")
     .editor("Keen Software House")
     .author("Zemogiter")
-    .appId(244850)
-    .wineVersion("4.11")
+    .appId("244850")
+    .wineVersion("4.14")
     .wineDistribution("upstream")
     .wineArchitecture("amd64")
     .preInstall(function (wine, wizard) {
@@ -24,4 +24,4 @@ new SteamScript()
         wizard.message(tr("You have to install libjpeg62 and libjpeg62-dev or else the thumbnails in New Game menu will be dispalyed as magenta rectangles."));
         wizard.message(tr("Due to JIT compiler issues and the way this game uses multithreating, there are audio stutters. This script will attempt to minimize them but you might also have to enter the alsoft-conf command in terminal and set sample depth to 32bit float and period size to 2048."));
     })
-    .executable("Steam.exe", ["-silent", "-applaunch", 244850, "-no-ces-sandbox", "-skipintro"])
+    .executable("Steam.exe", ["-silent", "-applaunch", "244850", "-no-cef-sandbox", "-skipintro"])

@@ -28,13 +28,14 @@
         <article>
             <pre class="prettyprint source linenums"><code>const {mkdir} = include("utils.functions.filesystem.files");
 
+const extractor = Bean("extractor");
+
 const ProcessBuilderClass = Java.type("java.lang.ProcessBuilder");
 const FileClass = Java.type("java.io.File");
 
 /**
  * CabExtract class
  */
-// eslint-disable-next-line no-unused-vars
 module.CabExtract = class CabExtract {
     constructor() {
         // do nothing
@@ -123,10 +124,9 @@ module.CabExtract = class CabExtract {
 /**
  * Extractor class
  */
-// eslint-disable-next-line no-unused-vars
 module.Extractor = class Extractor {
     constructor() {
-        this.extractor = Bean("extractor");
+        // nothing to do
     }
 
     /**
@@ -192,7 +192,7 @@ module.Extractor = class Extractor {
 
         mkdir(this._destination);
 
-        this.extractor.uncompress(this._archive, this._destination, progress => progressBar.accept(progress));
+        extractor.uncompress(this._archive, this._destination, progress => progressBar.accept(progress));
     }
 }
 </code></pre>
@@ -205,7 +205,7 @@ module.Extractor = class Extractor {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.CabExtract.html">CabExtract</a></li><li><a href="module.Checksum.html">Checksum</a></li><li><a href="module.default.html">default</a></li><li><a href="module.Extractor.html">Extractor</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.CabExtract.html">CabExtract</a></li><li><a href="module.Checksum.html">Checksum</a></li><li><a href="module.default.html">default</a></li><li><a href="module.Extractor.html">Extractor</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#getScreenHeight">getScreenHeight</a></li><li><a href="global.html#getScreenWidth">getScreenWidth</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">

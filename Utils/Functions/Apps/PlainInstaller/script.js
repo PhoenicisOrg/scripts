@@ -1,7 +1,6 @@
 /**
  * A "plain" script installer that is fully configurable.
  */
-// eslint-disable-next-line no-unused-vars
 module.default = class PlainInstaller {
     constructor() {
         // do nothing
@@ -19,6 +18,10 @@ module.default = class PlainInstaller {
     }
 
     go() {
+        if (!this.command) {
+            throw new Error(`No command provided to "PlainInstaller"`);
+        }
+
         this.command();
     }
 }
