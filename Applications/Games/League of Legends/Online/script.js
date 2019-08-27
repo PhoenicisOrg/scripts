@@ -3,7 +3,6 @@ const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 const Resource = include("utils.functions.net.resource");
 
 include("engines.wine.verbs.corefonts");
-include("engines.wine.verbs.d9vk");
 
 
 new CustomInstallerScript()
@@ -80,5 +79,4 @@ new CustomInstallerScript()
     .wineVersion(LATEST_STAGING_VERSION)
     .preInstall(function (wine /*, wizard*/) {
         wine.corefonts();
-        wine.D9VK();
     })
