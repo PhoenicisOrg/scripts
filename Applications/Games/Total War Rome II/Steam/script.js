@@ -1,7 +1,7 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
-include("engines.wine.verbs.d3dx9");
+const D3DX9 = include("engines.wine.verbs.d3dx9");
 include("engines.wine.verbs.vcrun2005");
 include("engines.wine.verbs.vcrun2008");
 include("engines.wine.verbs.vcrun2010");
@@ -14,7 +14,7 @@ new SteamScript()
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .postInstall(function (wine, wizard) {
-        wine.d3dx9();
+        new D3DX9(wine).go();
         wine.vcrun2005();
         wine.vcrun2008();
         wine.vcrun2010();

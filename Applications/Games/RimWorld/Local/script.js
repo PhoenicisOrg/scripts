@@ -1,7 +1,7 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 include("engines.wine.verbs.vcrun2017");
-include("engines.wine.verbs.d3dx9");
-include("engines.wine.verbs.corefonts");
+const D3DX9 = include("engines.wine.verbs.d3dx9");
+const Corefonts = include("engines.wine.verbs.corefonts");
 
 new LocalInstallerScript()
     .name("RimWorld")
@@ -12,6 +12,6 @@ new LocalInstallerScript()
     .executable("RimWorld.exe")
     .preInstall(function (wine) {
         wine.vcrun2017();
-        wine.d3dx9();
-        wine.corefonts();
+        new D3DX9(wine).go();
+        new Corefonts(wine).go();
     });

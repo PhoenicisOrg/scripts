@@ -2,8 +2,8 @@ const OnlineInstallerScript = include("engines.wine.quick_script.online_installe
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
 include("engines.wine.plugins.windows_version");
-include("engines.wine.verbs.corefonts");
-include("engines.wine.verbs.d3dx9");
+const Corefonts = include("engines.wine.verbs.corefonts");
+const D3DX9 = include("engines.wine.verbs.d3dx9");
 include("engines.wine.verbs.vcrun2008");
 
 new OnlineInstallerScript()
@@ -19,7 +19,7 @@ new OnlineInstallerScript()
     .wineDistribution("staging")
     .preInstall(function (wine /*, wizard*/) {
         wine.windowsVersion("winxp");
-        wine.corefonts();
-        wine.d3dx9();
+        new Corefonts(wine).go();
+        new D3DX9(wine).go();
         wine.vcrun2008();
     });

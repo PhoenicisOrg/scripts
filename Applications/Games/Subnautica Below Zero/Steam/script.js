@@ -3,8 +3,8 @@ const {LATEST_STABLE_VERSION} = include("engines.wine.engine.versions");
 
 include("engines.wine.plugins.virtual_desktop");
 include("engines.wine.verbs.vcrun2013");
-include("engines.wine.verbs.corefonts");
-include("engines.wine.verbs.dxvk");
+const Corefonts = include("engines.wine.verbs.corefonts");
+const DXVK = include("engines.wine.verbs.dxvk");
 
 new SteamScript()
     .name("Subnautica Below Zero")
@@ -20,8 +20,8 @@ new SteamScript()
             tr("You can make the game smoother by using this: https://github.com/lutris/lutris/wiki/How-to:-Esync")
         );
         wine.vcrun2013();
-        wine.corefonts();
-        wine.DXVK();
+        new Corefonts(wine).go();
+        new DXVK(wine).go();
         wine.setVirtualDesktop();
     })
     .gameOverlay(false);

@@ -1,11 +1,11 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 const Downloader = include("utils.functions.net.download");
-const {Extractor} = include("utils.functions.filesystem.extract");
+const { Extractor } = include("utils.functions.filesystem.extract");
 
-include("engines.wine.verbs.amstream");
+const Amstream = include("engines.wine.verbs.amstream");
 include("engines.wine.verbs.quartz");
-include("engines.wine.verbs.devenum");
-include("engines.wine.verbs.d3drm");
+const Devenum = include("engines.wine.verbs.devenum");
+const D3drm = include("engines.wine.verbs.d3drm");
 
 new LocalInstallerScript()
     .name("Lego Rock Raiders")
@@ -15,14 +15,17 @@ new LocalInstallerScript()
     .executable("LegoRR.exe")
     .wineVersion("3.0.3")
     .wineDistribution("upstream")
-    .preInstall(function (wine, wizard) {
-        wine.amstream();
+    .preInstall(function(wine, wizard) {
+        new Amstream(wine).go();
+
         wine.quartz();
-        wine.devenum();
-        wine.d3drm();
+        
+        new Devenum(wine).go();
+        new D3drm(wine).go();
+
         wizard.message(tr("When the game ask to install DirectX Media click yes. Click no when it ask for DirectX 6."));
     })
-    .postInstall(function (wine, wizard) {
+    .postInstall(function(wine, wizard) {
         wizard.message(
             tr(
                 "This game needs a copy protection patch to work. It may be illegal in your country to patch copy protection. You must patch the game yourself."

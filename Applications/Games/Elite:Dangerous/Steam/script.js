@@ -1,19 +1,19 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
 
-include("engines.wine.verbs.corefonts");
-include("engines.wine.verbs.dotnet45");
+const Corefonts = include("engines.wine.verbs.corefonts");
+const DotNET45 = include("engines.wine.verbs.dotnet45");
 include("engines.wine.verbs.vcrun2015");
-include("engines.wine.verbs.dxvk");
+const DXVK = include("engines.wine.verbs.dxvk");
 
 new SteamScript()
     .name("Elite:Dangerous")
     .editor("Frontier Developments")
     .author("ImperatorS79")
     .wineArchitecture("amd64")
-    .preInstall(function (wine /*, wizard*/) {
-        wine.dotnet45();
-        wine.corefonts();
+    .preInstall(function(wine /*, wizard*/) {
+        new DotNET45(wine).go();
+        new Corefonts(wine).go();
         wine.vcrun2015();
-        wine.DXVK();
+        new DXVK(wine).go();
     })
     .appId(359320);

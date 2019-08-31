@@ -4,8 +4,8 @@ const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 include("engines.wine.plugins.windows_version");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.verbs.vcrun2015");
-include("engines.wine.verbs.corefonts");
-include("engines.wine.verbs.dxvk");
+const Corefonts = include("engines.wine.verbs.corefonts");
+const DXVK = include("engines.wine.verbs.dxvk");
 
 new OnlineInstallerScript()
     .name("Overwatch")
@@ -22,10 +22,10 @@ new OnlineInstallerScript()
     .preInstall(function (wine /*, wizard*/) {
         wine.windowsVersion("win7");
         wine.vcrun2015();
-        wine.corefonts();
+        new Corefonts(wine).go();
         wine
             .overrideDLL()
             .set("disabled", ["nvapi", "nvapi64"])
             .do();
-        wine.DXVK();
+        new DXVK(wine).go();
     });

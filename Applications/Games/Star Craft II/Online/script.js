@@ -1,6 +1,6 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
 include("engines.wine.verbs.vcrun2015");
-include("engines.wine.verbs.corefonts");
+const Corefonts = include("engines.wine.verbs.corefonts");
 
 new OnlineInstallerScript()
     .name("Star Craft II")
@@ -13,5 +13,5 @@ new OnlineInstallerScript()
     .executable("Battle.net.exe")
     .preInstall(function (wine /*, wizard*/) {
         wine.vcrun2015();
-        wine.corefonts();
+        new Corefonts(wine).go();
     });

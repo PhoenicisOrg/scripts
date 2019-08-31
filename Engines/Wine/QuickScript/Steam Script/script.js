@@ -4,7 +4,7 @@ const Wine = include("engines.wine.engine.object");
 const {cat, fileExists, writeToFile, createTempFile} = include("utils.functions.filesystem.files");
 
 include("engines.wine.verbs.luna");
-include("engines.wine.verbs.corefonts");
+const Corefonts = include("engines.wine.verbs.corefonts");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");
 
@@ -111,7 +111,7 @@ module.default = class SteamScript extends QuickScript {
             .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
             .luna();
 
-        wine.corefonts();
+        new Corefonts(wine).go();
 
         // Steam must be started once such that config.vdf is created (see fixCertificateIssue())
         setupWizard.wait(tr("Please follow the steps of the Steam setup. Then, wait until Steam is updated, log in and finally close Steam completely so the installation of \"{0}\" can continue.", this._name));

@@ -1,6 +1,6 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
 include("engines.wine.verbs.quicktime76");
-include("engines.wine.verbs.corefonts");
+const Corefonts = include("engines.wine.verbs.corefonts");
 include("engines.wine.verbs.tahoma");
 
 new SteamScript()
@@ -10,6 +10,6 @@ new SteamScript()
     .appId(12900)
     .preInstall(function (wine /*, wizard*/) {
         wine.quicktime76();
-        wine.corefonts();
+        new Corefonts(wine).go();
         wine.tahoma();
     });

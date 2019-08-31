@@ -1,8 +1,8 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
-include("engines.wine.verbs.corefonts");
-include("engines.wine.verbs.d3dx9");
+const Corefonts = include("engines.wine.verbs.corefonts");
+const D3DX9 = include("engines.wine.verbs.d3dx9");
 include("engines.wine.verbs.tahoma");
 include("engines.wine.verbs.vcrun2005");
 include("engines.wine.verbs.vcrun2008");
@@ -15,8 +15,8 @@ new SteamScript()
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .preInstall(function (wine /*, wizard*/) {
-        wine.corefonts();
-        wine.d3dx9();
+        new Corefonts(wine).go();
+        new D3DX9(wine).go();
         wine.tahoma();
         wine.vcrun2005();
         wine.vcrun2008();

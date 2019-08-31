@@ -1,6 +1,6 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
 include("engines.wine.verbs.vcrun2012");
-include("engines.wine.verbs.d3dx9");
+const D3DX9 = include("engines.wine.verbs.d3dx9");
 
 new OnlineInstallerScript()
     .name("DC Universe Online")
@@ -12,5 +12,5 @@ new OnlineInstallerScript()
     .executable("LaunchPad.exe")
     .preInstall(function (wine /*, wizard*/) {
         wine.vcrun2012();
-        wine.d3dx9();
+        new D3DX9(wine).go();
     });

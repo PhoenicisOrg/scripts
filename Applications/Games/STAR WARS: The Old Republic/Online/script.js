@@ -2,7 +2,7 @@ const OnlineInstallerScript = include("engines.wine.quick_script.online_installe
 const {writeToFile} = include("utils.functions.filesystem.files");
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
-include("engines.wine.verbs.d3dx9");
+const D3DX9 = include("engines.wine.verbs.d3dx9");
 
 new OnlineInstallerScript()
     .name("STAR WARS™: The Old Republic")
@@ -17,7 +17,7 @@ new OnlineInstallerScript()
     .executable("launcher.exe")
     .preInstall(function (wine /*, wizard*/) {
         //it seems it brings better performance
-        wine.d3dx9();
+        new D3DX9(wine).go();
     })
     .postInstall(function (wine /*, wizard*/) {
         //without that the launcher is unable to download the game
