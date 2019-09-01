@@ -1,10 +1,10 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
-const {remove, lns} = include("utils.functions.filesystem.files");
+const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+const { remove, lns } = include("utils.functions.filesystem.files");
 
 const Corefonts = include("engines.wine.verbs.corefonts");
-include("engines.wine.verbs.vcrun2017");
-include("engines.wine.verbs.xact");
+const Vcrun2017 = include("engines.wine.verbs.vcrun2017");
+const Xact = include("engines.wine.verbs.xact");
 
 new OnlineInstallerScript()
     .name("GOG Galaxy")
@@ -18,10 +18,12 @@ new OnlineInstallerScript()
     .wineArchitecture("amd64")
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall(function(wine /*, wizard*/) {
         new Corefonts(wine).go();
-        wine.vcrun2017(); // Probably needed for self-updater
-        wine.xact(); // Required by a couple of games
+        // Probably needed for self-updater
+        new Vcrun2017(wine).go();
+        // Required by a couple of games
+        new Xact(wine).go();
 
         // GOG Galaxy doesn't properly install without a symlink between
         // drive_c/ProgramData and drive_c/users/Public

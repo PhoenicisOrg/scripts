@@ -1,5 +1,6 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-include("engines.wine.verbs.vcrun2017");
+
+const Vcrun2017 = include("engines.wine.verbs.vcrun2017");
 const D3DX9 = include("engines.wine.verbs.d3dx9");
 const Corefonts = include("engines.wine.verbs.corefonts");
 
@@ -10,8 +11,8 @@ new SteamScript()
     .applicationHomepage("https://rimworldgame.com/")
     .wineArchitecture("amd64")
     .appId(294100)
-    .preInstall(function (wine) {
+    .preInstall(function(wine) {
         new Corefonts(wine).go();
-        wine.vcrun2017();
+        new Vcrun2017(wine).go();
         new D3DX9(wine).go();
     });

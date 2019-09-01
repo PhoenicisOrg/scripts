@@ -1,7 +1,7 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
 
 const DotNET20 = include("engines.wine.verbs.dotnet20");
-include("engines.wine.verbs.vcrun2010");
+const Vcrun2010 = include("engines.wine.verbs.vcrun2010");
 const Tahoma = include("engines.wine.verbs.tahoma");
 const Mfc42 = include("engines.wine.verbs.mfc42");
 
@@ -17,7 +17,7 @@ new SteamScript()
         new DotNET20(wine).go();
         new Mfc42(wine).go();
         new Tahoma(wine).go();
-        wine.vcrun2010();
+        new Vcrun2010(wine).go();
     })
     .gameOverlay(false)
     .executable("Steam.exe", ["-silent", "-applaunch", 47890, "-no-ces-sandbox", "xgamma -gamma 1"]);

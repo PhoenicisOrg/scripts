@@ -1,6 +1,6 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 
-include("engines.wine.verbs.vcrun2010");
+const Vcrun2010 = include("engines.wine.verbs.vcrun2010");
 const Tahoma = include("engines.wine.verbs.tahoma");
 const Mfc42 = include("engines.wine.verbs.mfc42");
 const DotNET20 = include("engines.wine.verbs.dotnet20");
@@ -15,6 +15,6 @@ new LocalInstallerScript()
     .preInstall(function(wine) {
         new Mfc42(wine).go();
         new Tahoma(wine).go();
-        wine.vcrun2010();
+        new Vcrun2010(wine).go();
         new DotNET20(wine).go();
     });

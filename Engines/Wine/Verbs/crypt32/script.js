@@ -3,7 +3,7 @@ const Wine = include("engines.wine.engine.object");
 const Optional = Java.type("java.util.Optional");
 
 include("engines.wine.plugins.override_dll");
-include("engines.wine.verbs.sp3extract");
+const WindowsXPSP3 = include("engines.wine.verbs.sp3extract");
 
 /**
  * Verb to install crypt32
@@ -14,8 +14,8 @@ class Crypt32Verb {
     }
 
     go() {
-        this.wine.sp3extract("crypt32.dll");
-        this.wine.sp3extract("msasn1.dll");
+        new WindowsXPSP3(this.wine).withFileToExtract("crypt32.dll").go();
+        new WindowsXPSP3(this.wine).withFileToExtract("msasn1.dll").go();
 
         this.wine
             .overrideDLL()
