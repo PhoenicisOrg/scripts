@@ -11,7 +11,7 @@ const Luna = include("engines.wine.verbs.luna");
 /**
  * Verb to install devenum
  */
-class DevenumVerb {
+class Devenum {
     constructor(wine) {
         this.wine = wine;
     }
@@ -58,10 +58,10 @@ class DevenumVerb {
         wine.prefix(container);
         wine.wizard(wizard);
 
-        new DevenumVerb(wine).go();
+        new Devenum(wine).go();
 
         wizard.close();
     }
 }
 
-module.default = DevenumVerb;
+module.default = Devenum;

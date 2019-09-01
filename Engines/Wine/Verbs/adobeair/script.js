@@ -8,7 +8,7 @@ include("engines.wine.plugins.windows_version");
 /**
  * Verb to install adobeair
  */
-class AdobeAirVerb {
+class AdobeAir {
     constructor(wine) {
         this.wine = wine;
     }
@@ -39,10 +39,10 @@ class AdobeAirVerb {
         wine.prefix(container);
         wine.wizard(wizard);
 
-        new AdobeAirVerb(wine).go();
+        new AdobeAir(wine).go();
 
         wizard.close();
     }
 };
 
-module.default = AdobeAirVerb;
+module.default = AdobeAir;

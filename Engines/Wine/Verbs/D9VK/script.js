@@ -11,10 +11,9 @@ include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install D9VK
- *
  * see: https://github.com/Joshua-Ashton/d9vk/
  */
-class D9VKVerb {
+class D9VK {
     constructor(wine) {
         this.wine = wine;
     }
@@ -23,7 +22,7 @@ class D9VKVerb {
      * Specifies the D9VK version to download
      *
      * @param {string} d9vkVersion
-     * @returns {D9VKVerb}
+     * @returns {D9VK}
      */
     withVersion(d9vkVersion) {
         this.d9vkVersion = d9vkVersion;
@@ -109,10 +108,10 @@ class D9VKVerb {
         wine.wizard(wizard);
 
         // install selected version
-        new D9VKVerb(wine).withVersion(selectedVersion.text).go();
+        new D9VK(wine).withVersion(selectedVersion.text).go();
 
         wizard.close();
     }
 }
 
-module.default = D9VKVerb;
+module.default = D9VK;

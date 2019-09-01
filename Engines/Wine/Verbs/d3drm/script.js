@@ -10,7 +10,7 @@ const Luna = include("engines.wine.verbs.luna");
 /**
  * Verb to install d3drm
  */
-class D3drmVerb {
+class D3drm {
     constructor(wine) {
         this.wine = wine;
     }
@@ -56,10 +56,10 @@ class D3drmVerb {
         wine.prefix(container);
         wine.wizard(wizard);
 
-        wine.d3drm();
+        new D3drm(wine).go();
 
         wizard.close();
     }
 }
 
-module.default = D3drmVerb;
+module.default = D3drm;

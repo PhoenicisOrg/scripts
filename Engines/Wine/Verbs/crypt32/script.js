@@ -8,7 +8,7 @@ const WindowsXPSP3 = include("engines.wine.verbs.sp3extract");
 /**
  * Verb to install crypt32
  */
-class Crypt32Verb {
+class Crypt32 {
     constructor(wine) {
         this.wine = wine;
     }
@@ -30,10 +30,10 @@ class Crypt32Verb {
         wine.prefix(container);
         wine.wizard(wizard);
 
-        new Crypt32Verb(wine).go();
+        new Crypt32(wine).go();
 
         wizard.close();
     }
 }
 
-module.default = Crypt32Verb;
+module.default = Crypt32;

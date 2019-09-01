@@ -10,7 +10,7 @@ const Luna = include("engines.wine.verbs.luna");
 /**
  * Verb to install corefonts
  */
-class CorefontsVerb {
+class Corefonts {
     constructor(wine) {
         this.wine = wine;
     }
@@ -142,17 +142,17 @@ class CorefontsVerb {
             .do();
     }
 
-    install(container) {
+    static install(container) {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "corefonts", Optional.empty());
 
         wine.prefix(container);
         wine.wizard(wizard);
 
-        new CorefontsVerb(wine).go();
+        new Corefonts(wine).go();
 
         wizard.close();
     }
 }
 
-module.default = CorefontsVerb;
+module.default = Corefonts;

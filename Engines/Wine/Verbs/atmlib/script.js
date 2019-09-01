@@ -8,7 +8,7 @@ const Optional = Java.type("java.util.Optional");
 /**
  * Verb to install atmlib
  */
-class AtmlibVerb {
+class Atmlib {
     constructor(wine) {
         this.wine = wine;
     }
@@ -48,10 +48,10 @@ class AtmlibVerb {
         wine.prefix(container);
         wine.wizard(wizard);
 
-        new AtmlibVerb(wine).go();
+        new Atmlib(wine).go();
 
         wizard.close();
     }
 }
 
-module.default = AtmlibVerb;
+module.default = Atmlib;

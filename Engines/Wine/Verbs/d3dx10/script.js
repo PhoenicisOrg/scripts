@@ -9,7 +9,7 @@ include("engines.wine.plugins.override_dll");
 /**
  * Verb to install D3DX10
  */
-class D3DX10Verb {
+class D3DX10 {
     constructor(wine) {
         this.wine = wine;
     }
@@ -136,10 +136,10 @@ class D3DX10Verb {
         wine.prefix(container);
         wine.wizard(wizard);
 
-        new D3DX10Verb(wine).go();
+        new D3DX10(wine).go();
 
         wizard.close();
     }
 }
 
-module.default = D3DX10Verb;
+module.default = D3DX10;

@@ -9,7 +9,7 @@ include("engines.wine.plugins.override_dll");
 /**
  * Verb to install D3DX9
  */
-class D3DX9Verb {
+class D3DX9 {
     constructor(wine) {
         this.wine = wine;
     }
@@ -161,10 +161,10 @@ class D3DX9Verb {
         wine.prefix(container);
         wine.wizard(wizard);
 
-        new D3DX9Verb(wine).go();
+        new D3DX9(wine).go();
 
         wizard.close();
     }
 }
 
-module.default = D3DX9Verb;
+module.default = D3DX9;

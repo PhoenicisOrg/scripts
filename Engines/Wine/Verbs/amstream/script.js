@@ -12,7 +12,7 @@ const Luna = include("engines.wine.verbs.luna");
 /**
  * Verb to install amstream
  */
-class AmstreamVerb {
+class Amstream {
     constructor(wine) {
         this.wine = wine;
     }
@@ -97,10 +97,10 @@ class AmstreamVerb {
         wine.prefix(container);
         wine.wizard(wizard);
 
-        new AmstreamVerb(wine).go();
+        new Amstream(wine).go();
 
         wizard.close();
     }
 }
 
-module.default = AmstreamVerb;
+module.default = Amstream;
