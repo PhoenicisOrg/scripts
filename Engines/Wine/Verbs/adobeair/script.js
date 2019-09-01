@@ -43,6 +43,6 @@ class AdobeAir {
 
         wizard.close();
     }
-};
+}
 
 module.default = AdobeAir;

@@ -53,7 +53,7 @@ new PlainInstaller().withScript(() => {
         "browseui",
         "iseng",
         "inetcpl"
-    ].forEach(function(dll) {
+    ].forEach(function (dll) {
         remove(wine.prefixDirectory() + "/drive_c/windows/system32/" + dll + ".dll");
     });
 
@@ -143,7 +143,7 @@ new PlainInstaller().withScript(() => {
 
     var progressBar = setupWizard.progressBar(tr("Please wait..."));
     var i = 1;
-    librariesToRegister.forEach(function(dll) {
+    librariesToRegister.forEach(function (dll) {
         progressBar.setProgressPercentage((i * 100) / librariesToRegister.length);
         progressBar.setText(tr("Installing {0}...", dll));
         wine.regsvr32().install(dll);

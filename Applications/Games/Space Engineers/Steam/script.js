@@ -14,7 +14,7 @@ new SteamScript()
     .wineVersion("4.14")
     .wineDistribution("upstream")
     .wineArchitecture("amd64")
-    .preInstall(function(wine, wizard) {
+    .preInstall(function (wine, wizard) {
         new DotNET472(wine).go();
         new Vcrun2017(wine).go();
         new DXVK(wine).go();

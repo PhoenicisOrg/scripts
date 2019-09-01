@@ -18,7 +18,7 @@ new OnlineInstallerScript()
     .wineArchitecture("amd64")
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .preInstall(function(wine /*, wizard*/) {
+    .preInstall(function (wine /*, wizard*/) {
         new Corefonts(wine).go();
         // Probably needed for self-updater
         new Vcrun2017(wine).go();

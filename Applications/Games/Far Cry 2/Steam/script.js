@@ -11,7 +11,7 @@ new SteamScript()
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .appId(19900)
-    .preInstall(function(wine /*, wizard*/) {
+    .preInstall(function (wine /*, wizard*/) {
         new Secur32(wine).go();
         wine.enableCSMT();
     });

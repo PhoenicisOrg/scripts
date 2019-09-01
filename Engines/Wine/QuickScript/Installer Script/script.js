@@ -77,7 +77,7 @@ module.default = class InstallerScript extends QuickScript {
 
         // setup the prefix
         wine.prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion);
-        
+
         new Luna(wine).go();
 
         this._preInstall(wine, setupWizard);

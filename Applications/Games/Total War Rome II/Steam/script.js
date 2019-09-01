@@ -13,7 +13,7 @@ new SteamScript()
     .appId(214950)
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .postInstall(function(wine, wizard) {
+    .postInstall(function (wine, wizard) {
         new D3DX9(wine).go();
         new Vcrun2005(wine).go();
         new Vcrun2008(wine).go();

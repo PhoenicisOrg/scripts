@@ -7,7 +7,7 @@ new SteamScript()
     .editor("DICE")
     .author("Plata")
     .appId(17410)
-    .preInstall(function(wine /*, wizard*/) {
+    .preInstall(function (wine /*, wizard*/) {
         new PhysX(wine).go();
 
         wine.setManagedForApplication()

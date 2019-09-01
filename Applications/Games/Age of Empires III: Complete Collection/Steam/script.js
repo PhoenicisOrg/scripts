@@ -7,7 +7,7 @@ new SteamScript()
     .editor("Microsoft Studios")
     .author("Quentin PARIS")
     .appId(105450)
-    .postInstall(function(wine /*, wizard*/) {
+    .postInstall(function (wine /*, wizard*/) {
         new Mfc42(wine).go();
 
         wine.overrideDLL()

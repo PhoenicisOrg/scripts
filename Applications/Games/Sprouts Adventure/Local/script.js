@@ -8,7 +8,7 @@ new LocalInstallerScript()
     .author("Zemogiter")
     .category("Games")
     .executable("Sprouts Adventure.CRC")
-    .preInstall(function(wine, wizard) {
+    .preInstall(function (wine, wizard) {
         wizard.message(
             tr("This game requires winebind (for Ubuntu) or samba and libwbclient/lib32-libwbclient (for Arch Linux).")
         );

@@ -16,7 +16,7 @@ new LocalInstallerScript()
     .executable("Anno5.exe")
     .wineVersion("3.16")
     .wineDistribution("upstream")
-    .preInstall(function(wine) {
+    .preInstall(function (wine) {
         wine.setVirtualDesktop();
         new Crypt32(wine).go();
         new Corefonts(wine).go();
@@ -25,7 +25,7 @@ new LocalInstallerScript()
             .set("native, builtin", ["winhttp", "msvcrt40", "msvcr100", "crypt32"])
             .do();
     })
-    .postInstall(function(wine) {
+    .postInstall(function (wine) {
         var versionFile = wine.prefixDirectory() + "/drive_c/Ubisoft/Related Designs/ANNO 2070/update/version.txt";
         touch(versionFile);
         writeToFile(

@@ -15,7 +15,7 @@ new SteamScript()
     .wineVersion(LATEST_STABLE_VERSION)
     .wineArchitecture("amd64")
     .appId(264710)
-    .preInstall(function(wine, wizard) {
+    .preInstall(function (wine, wizard) {
         wizard.message(
             tr("You can make the game smoother by using this: https://github.com/lutris/lutris/wiki/How-to:-Esync")
         );
@@ -26,7 +26,7 @@ new SteamScript()
 
         wine.setVirtualDesktop();
     })
-    .postInstall(function(wine, wizard) {
+    .postInstall(function (wine, wizard) {
         wizard.message(
             tr(
                 "Due to a potential confilct with Vulkan, shader mods break the game (the executable file works but no window is displayed)."
