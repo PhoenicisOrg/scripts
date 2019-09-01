@@ -3,7 +3,7 @@ const SteamScript = include("engines.wine.quick_script.steam_script");
 const DotNET472 = include("engines.wine.verbs.dotnet472");
 include("engines.wine.verbs.vcrun2017");
 const DXVK = include("engines.wine.verbs.dxvk");
-include("engines.wine.verbs.faudio");
+const FAudio = include("engines.wine.verbs.faudio");
 include("engines.wine.plugins.override_dll");
 
 new SteamScript()
@@ -18,7 +18,7 @@ new SteamScript()
         new DotNET472(wine).go();
         wine.vcrun2017();
         new DXVK(wine).go();
-        wine.faudio();
+        new FAudio(wine).go();
         wine.overrideDLL()
             .set("native, builtin", [
                 "msvcr120",

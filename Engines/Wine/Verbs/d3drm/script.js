@@ -5,7 +5,7 @@ const { CabExtract } = include("utils.functions.filesystem.extract");
 const Optional = Java.type("java.util.Optional");
 
 include("engines.wine.plugins.override_dll");
-include("engines.wine.verbs.luna");
+const Luna = include("engines.wine.verbs.luna");
 
 /**
  * Verb to install d3drm
@@ -32,11 +32,13 @@ class D3drmVerb {
         wizard.wait(tr("Please wait while {0} is installed...", "d3drm"));
 
         new CabExtract()
+            .wizard(wizard)
             .archive(setupFile)
             .to(`${prefixDirectory}/drive_c/d3drm/`)
             .extract(["-L", "-F", "dxnt.cab"]);
 
         new CabExtract()
+            .wizard(wizard)
             .archive(`${prefixDirectory}/drive_c/d3drm/dxnt.cab`)
             .to(system32directory)
             .extract(["-L", "-F", "d3drm.dll"]);

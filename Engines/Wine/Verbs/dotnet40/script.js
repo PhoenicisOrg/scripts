@@ -6,7 +6,7 @@ const Optional = Java.type("java.util.Optional");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");
 include("engines.wine.plugins.regedit");
-include("engines.wine.verbs.remove_mono");
+const RemoveMono = include("engines.wine.verbs.remove_mono");
 
 /**
  * Verb to install .NET 4.0
@@ -38,7 +38,7 @@ class DotNET40 {
             .name("dotNetFx40_Full_x86_x64.exe")
             .get();
 
-        this.wine.removeMono();
+        new RemoveMono(this.wine).go();
 
         this.wine.windowsVersion("winxp");
 

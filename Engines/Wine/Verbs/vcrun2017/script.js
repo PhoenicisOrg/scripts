@@ -1,7 +1,7 @@
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
 
-include("engines.wine.verbs.luna");
+const Luna = include("engines.wine.verbs.luna");
 include("engines.wine.plugins.override_dll");
 
 /**

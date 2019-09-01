@@ -2,8 +2,8 @@ const SteamScript = include("engines.wine.quick_script.steam_script");
 
 const DotNET20 = include("engines.wine.verbs.dotnet20");
 include("engines.wine.verbs.vcrun2010");
-include("engines.wine.verbs.tahoma");
-include("engines.wine.verbs.mfc42");
+const Tahoma = include("engines.wine.verbs.tahoma");
+const Mfc42 = include("engines.wine.verbs.mfc42");
 
 new SteamScript()
     .name("The Sims 3")
@@ -13,10 +13,10 @@ new SteamScript()
     .wineDistribution("upstream")
     .wineVersion("4.0-rc2")
     .appId(47890)
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall(function(wine /*, wizard*/) {
         new DotNET20(wine).go();
-        wine.mfc42();
-        wine.tahoma();
+        new Mfc42(wine).go();
+        new Tahoma(wine).go();
         wine.vcrun2010();
     })
     .gameOverlay(false)

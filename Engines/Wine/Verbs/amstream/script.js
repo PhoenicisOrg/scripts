@@ -7,7 +7,7 @@ const Optional = Java.type("java.util.Optional");
 
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.regsvr32");
-include("engines.wine.verbs.luna");
+const Luna = include("engines.wine.verbs.luna");
 
 /**
  * Verb to install amstream
@@ -35,6 +35,7 @@ class AmstreamVerb {
         remove(`${system32directory}/amstream.dll`);
 
         new CabExtract()
+            .wizard(wizard)
             .archive(setupFile)
             .to(system32directory)
             .extract([
@@ -67,6 +68,7 @@ class AmstreamVerb {
             remove(`${system64directory}/amstream.dll`);
 
             new CabExtract()
+                .wizard(wizard)
                 .archive(setupFilex64)
                 .to(system64directory)
                 .extract([

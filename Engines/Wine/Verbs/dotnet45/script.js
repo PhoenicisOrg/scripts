@@ -6,7 +6,7 @@ const Optional = Java.type("java.util.Optional");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");
 include("engines.wine.plugins.regedit");
-include("engines.wine.verbs.remove_mono");
+const RemoveMono = include("engines.wine.verbs.remove_mono");
 const DotNET40 = include("engines.wine.verbs.dotnet40");
 
 /**
@@ -39,7 +39,7 @@ class DotNET45 {
             .name("dotnetfx45_full_x86_x64.exe")
             .get();
 
-        this.wine.removeMono();
+        new RemoveMono(this.wine).go();
 
         new DotNET40(this.wine).go();
 

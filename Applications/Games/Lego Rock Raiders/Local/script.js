@@ -3,7 +3,7 @@ const Downloader = include("utils.functions.net.download");
 const { Extractor } = include("utils.functions.filesystem.extract");
 
 const Amstream = include("engines.wine.verbs.amstream");
-include("engines.wine.verbs.quartz");
+const Quartz = include("engines.wine.verbs.quartz");
 const Devenum = include("engines.wine.verbs.devenum");
 const D3drm = include("engines.wine.verbs.d3drm");
 
@@ -17,9 +17,7 @@ new LocalInstallerScript()
     .wineDistribution("upstream")
     .preInstall(function(wine, wizard) {
         new Amstream(wine).go();
-
-        wine.quartz();
-        
+        new Quartz(wine).go();
         new Devenum(wine).go();
         new D3drm(wine).go();
 

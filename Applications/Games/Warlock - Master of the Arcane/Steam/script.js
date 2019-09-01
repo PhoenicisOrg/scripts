@@ -3,7 +3,7 @@ const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
 const Corefonts = include("engines.wine.verbs.corefonts");
 const D3DX9 = include("engines.wine.verbs.d3dx9");
-include("engines.wine.verbs.tahoma");
+const Tahoma = include("engines.wine.verbs.tahoma");
 include("engines.wine.verbs.vcrun2005");
 include("engines.wine.verbs.vcrun2008");
 
@@ -17,7 +17,7 @@ new SteamScript()
     .preInstall(function (wine /*, wizard*/) {
         new Corefonts(wine).go();
         new D3DX9(wine).go();
-        wine.tahoma();
+        new Tahoma(wine).go();
         wine.vcrun2005();
         wine.vcrun2008();
     });

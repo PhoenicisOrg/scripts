@@ -7,7 +7,7 @@ const Optional = Java.type("java.util.Optional");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");
 include("engines.wine.plugins.regedit");
-include("engines.wine.verbs.remove_mono");
+const RemoveMono = include("engines.wine.verbs.remove_mono");
 
 /**
  * Verb to install dotnet20sp2
@@ -29,7 +29,7 @@ class Dotnet20SP2 {
             .set("builtin", ["ngen.exe", "regsvcs.exe", "mscorsvw.exe"])
             .do();
 
-        this.wine.removeMono();
+        new RemoveMono(this.wine).go();
 
         if (this.wine.architecture() == "x86") {
             const setupFile32 = new Resource()

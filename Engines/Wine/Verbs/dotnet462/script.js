@@ -6,7 +6,7 @@ const Optional = Java.type("java.util.Optional");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");
 include("engines.wine.plugins.regedit");
-include("engines.wine.verbs.remove_mono");
+const RemoveMono = include("engines.wine.verbs.remove_mono");
 const DotNET461 = include("engines.wine.verbs.dotnet461");
 
 /**
@@ -32,7 +32,7 @@ class DotNET462 {
             .name("NDP462-KB3151800-x86-x64-AllOS-ENU.exe")
             .get();
 
-        this.wine.removeMono();
+        new RemoveMono(this.wine).go();
 
         new DotNET461(this.wine).go();
 

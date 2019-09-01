@@ -5,7 +5,7 @@ const { CabExtract } = include("utils.functions.filesystem.extract");
 const Optional = Java.type("java.util.Optional");
 
 include("engines.wine.plugins.register_font");
-include("engines.wine.verbs.luna");
+const Luna = include("engines.wine.verbs.luna");
 
 /**
  * Verb to install corefonts
@@ -100,8 +100,8 @@ class CorefontsVerb {
             progressBar.setProgressPercentage((numInstalledFonts * 100) / fontResources.length);
 
             new CabExtract()
-                .archive(fontResource)
                 .wizard(wizard)
+                .archive(fontResource)
                 .to(fontDirectory)
                 .extract();
 

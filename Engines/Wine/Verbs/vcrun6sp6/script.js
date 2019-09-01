@@ -3,7 +3,7 @@ const Resource = include("utils.functions.net.resource");
 const {CabExtract} = include("utils.functions.filesystem.extract");
 const {remove} = include("utils.functions.filesystem.files");
 
-include("engines.wine.verbs.luna");
+const Luna = include("engines.wine.verbs.luna");
 
 /**
  * Verb to install vcrun6sp6

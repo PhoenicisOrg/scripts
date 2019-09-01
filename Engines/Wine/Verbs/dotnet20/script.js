@@ -6,7 +6,7 @@ const Optional = Java.type("java.util.Optional");
 
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");
-include("engines.wine.verbs.remove_mono");
+const RemoveMono = include("engines.wine.verbs.remove_mono");
 
 /**
  * Verb to install .NET 2.0
@@ -31,7 +31,7 @@ class DotNET20 {
                 .name("dotnetfx.exe")
                 .get();
 
-            this.wine.removeMono();
+            new RemoveMono(this.wine).go();
 
             wizard.wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
 
@@ -50,7 +50,7 @@ class DotNET20 {
                 .name("NetFx64.exe")
                 .get();
 
-            this.wine.removeMono();
+            new RemoveMono(this.wine).go();
 
             wizard.wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0"));
 
