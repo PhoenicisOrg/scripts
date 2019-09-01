@@ -17,7 +17,7 @@ class WindowsXPSP3 {
      * Sets the path to the file which shall be extracted
      *
      * @param {string} fileToExtract The path to the file which shall be extracted
-     * @returns {WindowsXPSP3}
+     * @returns {WindowsXPSP3} The WindowsXPSP3 object
      */
     withFileToExtract(fileToExtract) {
         this.fileToExtract = fileToExtract;

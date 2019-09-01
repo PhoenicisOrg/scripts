@@ -5,7 +5,6 @@ const { CabExtract } = include("utils.functions.filesystem.extract");
 const Optional = Java.type("java.util.Optional");
 
 include("engines.wine.plugins.register_font");
-const Luna = include("engines.wine.verbs.luna");
 
 /**
  * Verb to install corefonts

@@ -3,7 +3,6 @@ const Resource = include("utils.functions.net.resource");
 
 const Optional = Java.type("java.util.Optional");
 
-const Luna = include("engines.wine.verbs.luna");
 include("engines.wine.plugins.override_dll");
 
 /**

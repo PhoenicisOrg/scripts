@@ -22,7 +22,7 @@ class VK9 {
      * Sets the VK9 version to install
      *
      * @param {string} vk9Version The VK9 version to install
-     * @returns {VK9}
+     * @returns {VK9} The VK9 object
      */
     withVersion(vk9Version) {
         this.vk9Version = vk9Version;

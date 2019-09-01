@@ -20,7 +20,7 @@ class FAudio {
      * Sets the used FAudio version
      *
      * @param {string} faudioVersion The version of FAudio to downlaod
-     * @returns {FAudio}
+     * @returns {FAudio} The FAudio object
      */
     withVersion(faudioVersion) {
         this.faudioVersion = faudioVersion;

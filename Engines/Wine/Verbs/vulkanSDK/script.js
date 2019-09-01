@@ -40,10 +40,10 @@ class VulkanSDK {
 
         const contentVulkanJSON = JSON.stringify(
             {
-                file_format_version: "1.0.0",
-                ICD: {
-                    library_path: "c:\\windows\\system32\\winevulkan.dll",
-                    api_version: sdkVersion
+                "file_format_version": "1.0.0",
+                "ICD": {
+                    "library_path": "c:\\windows\\system32\\winevulkan.dll",
+                    "api_version": sdkVersion
                 }
             },
             null,

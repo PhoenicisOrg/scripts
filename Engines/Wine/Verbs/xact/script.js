@@ -50,7 +50,7 @@ class Xact {
      * Executes regsvr32 on the dlls present in dllToRegsvr
      *
      * @param {*} progressBar The progressbar
-     * @param {*} dllToRegsvr The dll file
+     * @param {*} dllToRegsvr The dll files
      * @returns {void}
      */
     regsvr32Xact(progressBar, dllToRegsvr) {
@@ -58,7 +58,7 @@ class Xact {
             print(tr("Registering {0}...", dll));
 
             progressBar.setText(tr("Registering {0}...", "Xact"));
-            progressBar.setProgressPercentage((numberOfExtractedFiles * 100) / filesToExtract.length);
+            progressBar.setProgressPercentage((numberOfExtractedFiles * 100) / dllToRegsvr.length);
 
             this.wine.regsvr32().install(dll);
 

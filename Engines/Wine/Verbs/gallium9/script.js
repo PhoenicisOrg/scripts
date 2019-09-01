@@ -20,7 +20,7 @@ class Gallium9 {
      * Sets the used gallium9 version
      *
      * @param {string} gallium9Version The Gallium 9 Standalone version to download
-     * @returns {Gallium9}
+     * @returns {Gallium9} The Gallium9 object
      */
     withVersion(gallium9Version) {
         this.gallium9Version = gallium9Version;
@@ -33,8 +33,8 @@ class Gallium9 {
         const prefixDirectory = this.wine.prefixDirectory();
         const system32directory = this.wine.system32directory();
 
-        if (typeof gallium9Version !== "string") {
-            gallium9Version = "0.4";
+        if (typeof this.gallium9Version !== "string") {
+            this.gallium9Version = "0.4";
         }
 
         this.wizard().message(

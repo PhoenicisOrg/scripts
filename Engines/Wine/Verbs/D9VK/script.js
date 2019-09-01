@@ -21,8 +21,8 @@ class D9VK {
     /**
      * Specifies the D9VK version to download
      *
-     * @param {string} d9vkVersion
-     * @returns {D9VK}
+     * @param {string} d9vkVersion The D9VK version to download
+     * @returns {D9VK} The D9VK object
      */
     withVersion(d9vkVersion) {
         this.d9vkVersion = d9vkVersion;

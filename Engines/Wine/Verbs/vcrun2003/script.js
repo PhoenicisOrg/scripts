@@ -4,8 +4,6 @@ const { cp } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-const Luna = include("engines.wine.verbs.luna");
-
 /**
  * Verb to install vcrun2003
  */

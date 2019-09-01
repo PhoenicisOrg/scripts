@@ -12,7 +12,7 @@ const RemoveMono = include("engines.wine.verbs.remove_mono");
 /**
  * Verb to install dotnet20sp2
  */
-class Dotnet20SP2 {
+class DotNET20SP2 {
     constructor(wine) {
         this.wine = wine;
     }
@@ -77,7 +77,7 @@ class Dotnet20SP2 {
         wine.prefix(container);
         wine.wizard(wizard);
 
-        new Dotnet20SP2(wine).go();
+        new DotNET20SP2(wine).go();
 
         wizard.close();
     }

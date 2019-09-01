@@ -7,7 +7,6 @@ const Optional = Java.type("java.util.Optional");
 
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.regsvr32");
-const Luna = include("engines.wine.verbs.luna");
 
 /**
  * Verb to install amstream

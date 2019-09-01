@@ -6,7 +6,6 @@ const Resource = include("utils.functions.net.resource");
 include("engines.wine.plugins.csmt");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");
-const Sandbox = include("engines.wine.verbs.sandbox");
 const D3DX9 = include("engines.wine.verbs.d3dx9");
 
 // Installs League of Legends

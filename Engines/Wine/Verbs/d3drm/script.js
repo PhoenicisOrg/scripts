@@ -5,7 +5,6 @@ const { CabExtract } = include("utils.functions.filesystem.extract");
 const Optional = Java.type("java.util.Optional");
 
 include("engines.wine.plugins.override_dll");
-const Luna = include("engines.wine.verbs.luna");
 
 /**
  * Verb to install d3drm

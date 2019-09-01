@@ -23,7 +23,7 @@ class DXVK {
      * Sets the DXVK version to download
      *
      * @param {string} dxvkVersion The DXVK version to download
-     * @returns {DXVK}
+     * @returns {DXVK} The DXVK object
      */
     withVersion(dxvkVersion) {
         this.dxvkVersion = dxvkVersion;
