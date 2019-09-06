@@ -120,7 +120,7 @@ module.default = class WineEngine {
             mkdir(this._wineEnginesDirectory + "/runtime");
 
             runtimeJsonFile = new Downloader()
-                .wizard(this._wizard)
+                .wizard(setupWizard)
                 .message(tr("Downloading runtime json..."))
                 .url("https://phoenicis.playonlinux.com/index.php/runtime?os=linux")
                 .to(runtimeJsonPath)
@@ -151,7 +151,7 @@ module.default = class WineEngine {
             const oldRuntimeJson = JSON.parse(oldRuntimeJsonFile);
 
             runtimeJsonFile = new Downloader()
-                .wizard(this._wizard)
+                .wizard(setupWizard)
                 .message(tr("Downloading runtime json..."))
                 .url("https://phoenicis.playonlinux.com/index.php/runtime?os=linux")
                 .to(runtimeJsonPath)
