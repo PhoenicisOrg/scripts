@@ -1,6 +1,6 @@
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
-const {cp} = include("utils.functions.filesystem.files");
+const {cp, fileExists, mkdir} = include("utils.functions.filesystem.files");
 const {CabExtract} = include("utils.functions.filesystem.extract");
 
 include("engines.wine.plugins.register_font");
@@ -23,6 +23,10 @@ Wine.prototype.tahoma = function () {
         .archive(tahoma)
         .to(this.prefixDirectory() + "/drive_c/tahoma/")
         .extract(["-L", "-F", "tahoma*.tff"]);
+    
+    if(!fileExists(this.fontDirectory()) {
+       mkdir(this.fontDirectory());
+    }
 
     cp(this.prefixDirectory() + "/drive_c/tahoma/tahoma.ttf", this.fontDirectory());
     cp(this.prefixDirectory() + "/drive_c/tahoma/tahomabd.ttf", this.fontDirectory());
