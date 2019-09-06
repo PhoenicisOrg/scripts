@@ -404,8 +404,6 @@ module.default = class WineEngine {
             }
         }
 
-        this.install(subCategory, version);
-
         const wineBinary = this.getLocalDirectory(subCategory, version) + "/bin/wine";
         const command = [wineBinary, executable].concat(args);
         const processBuilder = new ProcessBuilderClass(Java.to(command, Java.type("java.lang.String[]")));
