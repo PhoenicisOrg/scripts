@@ -34,7 +34,7 @@ Wine.prototype.xact = function () {
             print(tr("Registering {0}...", dll));
 
             progressBar.setText(tr("Registering {0}...", "Xact"));
-            progressBar.setProgressPercentage((numberOfExtractedFiles * 100) / filesToExtract.length);
+            progressBar.setProgressPercentage((numberOfExtractedFiles * 100) / dllToRegsvr.length);
 
             this.regsvr32().install(dll);
 
