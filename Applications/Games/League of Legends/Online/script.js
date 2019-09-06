@@ -15,7 +15,7 @@ new CustomInstallerScript()
         const regions = [
             "EU West",
             "Latin America North",
-            //"Latin America South", URL not found
+            "Latin America South",
             "Oceania",
             "Japan",
             "Turkey",
@@ -63,6 +63,10 @@ new CustomInstallerScript()
             case "Latin America North":
                 regionID = "LA1";
                 url = baseUrl+"LA1.exe";
+                break;
+            case "Latin America South":
+                regionID = "LA2";
+                url = baseUrl+"LA2.exe";
                 break;
         }
         var setupFile = new Resource()
