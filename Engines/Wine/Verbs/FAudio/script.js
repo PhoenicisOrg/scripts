@@ -38,7 +38,7 @@ class FAudio {
         }
 
         if (typeof this.faudioVersion !== "string") {
-            this.faudioVersion = "19.06.07";
+            this.faudioVersion = "19.08";
         }
 
         const setupFile = new Resource()
@@ -76,9 +76,9 @@ class FAudio {
         wine.prefix(container);
         wine.wizard(wizard);
 
-        const versions = ["19.06.07", "19.06", "19.05", "19.04", "19.03", "19.02", "19.01"];
+        const versions = ["19.08", "19.07", "19.06.07", "19.06", "19.05", "19.04", "19.03", "19.02", "19.01"];
 
-        const selectedVersion = wizard.menu(tr("Please select the version."), versions, "19.06.07");
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, "19.08");
 
         // install selected version
         new FAudio(wine).withVersion(selectedVersion.text).go();
