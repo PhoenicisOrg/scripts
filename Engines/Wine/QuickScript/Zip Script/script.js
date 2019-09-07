@@ -60,11 +60,12 @@ module.default = class ZipScript extends QuickScript {
             .archive(archive)
             .to(wine.prefixDirectory() + "/drive_c/" + this._name)
             .extract();
-        if (fileExists(this._setupPath)){
-	    if (this._setupPath !== 'undefined') {
-                wine.runInsidePrefix(this._setupPath);
-            }
+        if (!fileExists(this._setupPath)){
+            throw tr("File not found");
 	}
+	if (this._setupPath !== 'undefined') {
+            wine.runInsidePrefix(this._setupPath);
+        }
         
         this._postInstall(wine, setupWizard);
 
