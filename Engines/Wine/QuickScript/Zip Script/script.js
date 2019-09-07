@@ -2,6 +2,7 @@ const QuickScript = include("engines.wine.quick_script.quick_script");
 const Downloader = include("utils.functions.net.download");
 const Wine = include("engines.wine.engine.object");
 const {Extractor} = include("utils.functions.filesystem.extract");
+const {fileExists} = include("utils.functions.filesystem.files");
 
 include("engines.wine.verbs.luna");
 
@@ -59,11 +60,12 @@ module.default = class ZipScript extends QuickScript {
             .archive(archive)
             .to(wine.prefixDirectory() + "/drive_c/" + this._name)
             .extract();
+        if (fileExists(this._setupPath)){
+	    if (this._setupPath !== 'undefined') {
+                wine.runInsidePrefix(this._setupPath);
+            }
+	}
         
-        if (this._setupPath !== 'undefined') {
-            wine.runInsidePrefix(this._setupPath);
-        }
-
         this._postInstall(wine, setupWizard);
 
         this._createShortcut(wine.prefix());
