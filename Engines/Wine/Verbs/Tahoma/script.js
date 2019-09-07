@@ -24,7 +24,7 @@ Wine.prototype.tahoma = function () {
         .to(this.prefixDirectory() + "/drive_c/tahoma/")
         .extract(["-L", "-F", "tahoma*.tff"]);
     
-    if(!fileExists(this.fontDirectory()) {
+    if(!fileExists(this.fontDirectory())) {
        mkdir(this.fontDirectory());
     }
 
