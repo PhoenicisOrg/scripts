@@ -65,6 +65,8 @@ module.default = class ZipScript extends QuickScript {
         if (this._setupPath !== `undefined`) {
             if (!fileExists(this._setupPath)) {
                 throw new Error(tr("File \"{0}\" not found", this._setupPath));
+            } else {
+                wine.runInsidePrefix(this._setupPath);
             }
         }
 
