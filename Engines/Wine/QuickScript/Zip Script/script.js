@@ -67,7 +67,6 @@ module.default = class ZipScript extends QuickScript {
                 throw new Error(tr("File \"{0}\" not found", this._setupPath));
             }
         }
-        
 
         this._postInstall(wine, setupWizard);
 
