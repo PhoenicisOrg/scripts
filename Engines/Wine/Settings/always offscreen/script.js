@@ -1,48 +1,54 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+
 include("engines.wine.plugins.regedit");
 
 /**
  * setting to set always offscreen
-*/
-var settingImplementation = {
-    _options: [tr("Default"), tr("Disabled"), tr("Enabled")],
-    // values which are written into the registry, do not translate!
-    _registryValues: ["", "disabled", "enabled"],
-    getText: function () {
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class AlwaysOffscreenSetting {
+    constructor() {
+        this.options = [tr("Default"), tr("Disabled"), tr("Enabled")];
+        // values which are written into the registry, do not translate!
+        this.registryValues = ["", "disabled", "enabled"];
+    }
+
+    getText() {
         return tr("Always offscreen");
-    },
-    getOptions: function () {
-        return this._options;
-    },
-    getCurrentOption: function (container) {
-        var currentValue = new Wine()
+    }
+
+    getOptions() {
+        return this.options;
+    }
+
+    getCurrentOption(container) {
+        const currentValue = new Wine()
             .prefix(container)
             .regedit()
             .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Direct3D", "AlwaysOffscreen"]);
+
         // find matching option (use default if not found)
-        var index = Math.max(this._registryValues.indexOf(currentValue), 0);
-        return this._options[index];
-    },
-    setOption: function (container, optionIndex) {
+        const index = Math.max(this.registryValues.indexOf(currentValue), 0);
+
+        return this.options[index];
+    }
+
+    setOption(container, optionIndex) {
         if (0 == optionIndex) {
             new Wine()
                 .prefix(container)
                 .regedit()
                 .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D", "AlwaysOffscreen");
-        }
-        else {
-            var regeditFileContent =
-            "REGEDIT4\n" +
-            "\n" +
-            "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-            "\"AlwaysOffscreen\"=\"" + this._registryValues[optionIndex] + "\"\n";
+        } else {
+            const regeditFileContent =
+                "REGEDIT4\n" +
+                "\n" +
+                "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
+                "\"AlwaysOffscreen\"=\"" + this.registryValues[optionIndex] + "\"\n";
             new Wine()
                 .prefix(container)
                 .regedit()
                 .patch(regeditFileContent);
         }
     }
-};
-
-/* exported Setting */
-var Setting = Java.extend(org.phoenicis.engines.EngineSetting, settingImplementation);
+}

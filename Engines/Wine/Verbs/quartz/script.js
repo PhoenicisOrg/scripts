@@ -1,14 +1,17 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {CabExtract} = include("utils.functions.filesystem.extract");
+const {remove} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.regsvr32");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
 
 /**
-* Verb to install quartz
-* @returns {Wine} Wine object
-*/
-Wine.prototype.quartz = function (){
+ * Verb to install quartz
+ *
+ * @returns {Wine} Wine object
+ */
+Wine.prototype.quartz = function () {
     var setupFile = new Resource()
         .wizard(this.wizard())
         .url("https://download.microsoft.com/download/E/E/1/EE17FF74-6C45-4575-9CF4-7FC2597ACD18/directx_feb2010_redist.exe")
@@ -41,9 +44,14 @@ Wine.prototype.quartz = function (){
 
 /**
  * Verb to install quartz
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class QuartzVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "quartz", java.util.Optional.empty());
@@ -51,8 +59,4 @@ var verbImplementation = {
         wine.quartz();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+}

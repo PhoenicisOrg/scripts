@@ -1,15 +1,17 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 
 /**
- * tool to kill running Wine processes
-*/
-var toolImplementation = {
-    run: function (container) {
+ * Tool to kill running Wine processes
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class KillWineProcessesTool {
+    constructor() {
+        // do nothing
+    }
+
+    run(container) {
         new Wine()
             .prefix(container)
             .kill()
     }
-};
-
-/* exported Tool */
-var Tool = Java.extend(org.phoenicis.engines.EngineTool, toolImplementation);
+}

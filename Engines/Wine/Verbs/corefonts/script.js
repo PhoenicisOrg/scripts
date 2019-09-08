@@ -1,15 +1,17 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const { CabExtract } = include("utils.functions.filesystem.extract");
+
 include("engines.wine.plugins.register_font");
-include("utils.functions.net.resource");
 include("engines.wine.verbs.luna");
 
 /**
-* Verb to install corefonts
-* @returns {Wine} Wine object
-*/
+ * Verb to install corefonts
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.corefonts = function () {
-    var fontResources =
-    [
+    const fontResources = [
         new Resource()
             .wizard(this.wizard())
             .url("https://mirrors.kernel.org/gentoo/distfiles/arial32.exe")
@@ -81,24 +83,22 @@ Wine.prototype.corefonts = function () {
             .get()
     ];
 
-    var progressBar = this.wizard().progressBar(tr("Please wait..."));
+    const progressBar = this.wizard().progressBar(tr("Please wait..."));
     progressBar.setText(tr("Installing {0}...", tr("fonts")));
-    progressBar.setProgressPercentage(0.);
-    var numInstalledFonts = 0;
+    progressBar.setProgressPercentage(0);
 
-    var that = this;
-    fontResources.forEach(function (fontResource) {
+    fontResources.reduce((numInstalledFonts, fontResource) => {
         progressBar.setText(tr("Installing {0}...", tr("fonts")));
-        progressBar.setProgressPercentage(numInstalledFonts * 100 / fontResources.length);
+        progressBar.setProgressPercentage((numInstalledFonts * 100) / fontResources.length);
 
         new CabExtract()
             .archive(fontResource)
-            .wizard(null)
-            .to(that.fontDirectory())
+            .wizard(this.wizard())
+            .to(this.fontDirectory())
             .extract();
 
-        numInstalledFonts++;
-    });
+        return numInstalledFonts + 1;
+    }, 0);
 
     this.registerFont()
         .set("Arial", "Arial.TTF")
@@ -131,22 +131,28 @@ Wine.prototype.corefonts = function () {
         .set("Verdana Italic", "Verdanai.TTF")
         .set("Webdings", "Webdings.TTF")
         .do();
+
     return this;
-}
+};
 
 /**
  * Verb to install corefonts
-*/
-var verbImplementation = {
-    install: function (container) {
-        var wine = new Wine();
+ */
+module.default = class CorefontsVerb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
+        const wine = new Wine();
+
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "corefonts", java.util.Optional.empty());
+
+        const wizard = SetupWizard(InstallationType.VERBS, "corefonts", java.util.Optional.empty());
+
         wine.wizard(wizard);
         wine.corefonts();
+
         wizard.close();
     }
 };
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);

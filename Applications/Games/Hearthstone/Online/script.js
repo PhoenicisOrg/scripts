@@ -1,26 +1,20 @@
-include("engines.wine.quick_script.online_installer_script");
+const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
+const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+
 include("engines.wine.verbs.vcrun2015");
 include("engines.wine.verbs.corefonts");
 
-var installerImplementation = {
-    run: function () {
-        new OnlineInstallerScript()
-            .name("Hearthstone")
-            .editor("Blizzard")
-            .applicationHomepage("https://eu.battle.net/hearthstone/")
-            .author("ImperatorS79, kreyren")
-            .url("https://eu.battle.net/download/getInstaller?os=win&installer=Hearthstone-Setup.exe")
-            .category("Games")
-            .executable("Battle.net.exe")
-            .wineVersion(LATEST_STAGING_VERSION)
-            .wineDistribution("staging")
-            .preInstall(function (wine/*, wizard*/) {
-                wine.vcrun2015();
-                wine.corefonts();
-            })
-            .go();
-    }
-};
-
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
+new OnlineInstallerScript()
+    .name("Hearthstone")
+    .editor("Blizzard")
+    .applicationHomepage("https://eu.battle.net/hearthstone/")
+    .author("ImperatorS79, kreyren")
+    .url("https://eu.battle.net/download/getInstaller?os=win&installer=Hearthstone-Setup.exe")
+    .category("Games")
+    .executable("Battle.net.exe")
+    .wineVersion(LATEST_STAGING_VERSION)
+    .wineDistribution("staging")
+    .preInstall(function (wine /*, wizard*/) {
+        wine.vcrun2015();
+        wine.corefonts();
+    });

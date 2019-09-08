@@ -1,36 +1,46 @@
-/**
-* AppResource prototype
-* @constructor
-*/
-function AppResource() {
-    this._appsManager = Bean("repositoryManager");
-}
+const appsManager = Bean("repositoryManager");
 
 /**
-* sets application
-* @param {string} application application of the resource
-* @returns {AppResource} AppResource object
-*/
-AppResource.prototype.application = function (application) {
-    this._application = application;
-    return this;
-}
-
-/**
-* returns resource
-* @param {string} resourceName name of the resource
-* @returns {Resource} found resource
-*/
-AppResource.prototype.get = function (resourceName) {
-    var application = this._appsManager.getApplication(this._application);
-    var foundResource = null;
-    if (application != null && application.resources != null) {
-        application.resources.forEach(function (resource) {
-            if (resource.name == resourceName) {
-                foundResource = resource.content;
-            }
-        });
+ * AppResource class
+ */
+module.default = class AppResource {
+    constructor() {
+        // nothing to do
     }
 
-    return foundResource;
+    /**
+     * Sets the application containing the resources
+     *
+     * @param {string} application The application with the resource
+     * @returns {AppResource} The AppResource object
+     */
+    application(application) {
+        this._application = appsManager.getApplication(application);
+
+        if (!this._application) {
+            print(`Warning: unable to fetch application "${application}"`);
+        }
+
+        return this;
+    }
+
+    /**
+     * Returns the searched resource
+     *
+     * @param {string} resourceName The name of the resource
+     * @returns {Resource} The found resource
+     */
+    get(resourceName) {
+        if (!this._application || !this._application.resources) {
+            throw new Error(`Unable to fetch resource from "null" application`);
+        }
+
+        const foundResource = Java.from(this._application.resources).find(resource => resource.name === resourceName);
+
+        if (!foundResource) {
+            throw new Error(`Application "${this._application.name}" does not contain resource "${resourceName}"`);
+        }
+
+        return foundResource.content;
+    }
 }

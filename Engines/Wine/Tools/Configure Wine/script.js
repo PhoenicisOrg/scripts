@@ -1,15 +1,17 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 
 /**
- * tool to configure Wine
-*/
-var toolImplementation = {
-    run: function (container) {
+ * Tool to configure Wine
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class ConfigureWineTool {
+    constructor() {
+        // do nothing
+    }
+
+    run(container) {
         new Wine()
             .prefix(container)
             .run("winecfg", [], null, false, true);
     }
-};
-
-/* exported Tool */
-var Tool = Java.extend(org.phoenicis.engines.EngineTool, toolImplementation);
+}

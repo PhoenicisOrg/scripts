@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Plain Installer",
+    "id"                         : "utils.functions.apps.plain_installer",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

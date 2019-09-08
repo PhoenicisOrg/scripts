@@ -1,17 +1,17 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const {remove} = include("utils.functions.filesystem.files");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
 include("engines.wine.plugins.windows_version");
-include("engines.wine.verbs.remove_mono");
 include("engines.wine.plugins.regedit");
-
-
+include("engines.wine.verbs.remove_mono");
 
 /**
-* Verb to install .NET 2.0 SP2
-* @returns {Wine} Wine object
-*/
+ * Verb to install .NET 2.0 SP2
+ *
+ * @returns {Wine} Wine object
+ */
 Wine.prototype.dotnet20sp2 = function () {
     var osVersion = this.windowsVersion();
     this.windowsVersion("winxp");
@@ -37,7 +37,6 @@ Wine.prototype.dotnet20sp2 = function () {
         this.wizard().wait(tr("Please wait while {0} is installed...", ".NET Framework 2.0 SP2"));
         this.run(setupFile32, [setupFile32, "/q", "/c:\"install.exe /q\""], null, false, true);
 
-
         remove(this.system32directory() + "/msvcr80.dll");
         remove(this.system32directory() + "/msvcm80.dll");
         remove(this.system32directory() + "/msvcp80.dll");
@@ -58,13 +57,20 @@ Wine.prototype.dotnet20sp2 = function () {
     this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*ngen.exe");
     this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*regsvcs.exe");
     this.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*mscorsvw.exe");
+
     return this;
 };
+
 /**
  * Verb to install dotnet20sp2
-*/
-var verbImplementation = {
-    install: function (container) {
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class Dotnet20SP2Verb {
+    constructor() {
+        // do nothing
+    }
+
+    install(container) {
         var wine = new Wine();
         wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "dotnet20sp2", java.util.Optional.empty());
@@ -72,7 +78,4 @@ var verbImplementation = {
         wine.dotnet20sp2();
         wizard.close();
     }
-};
-
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+}

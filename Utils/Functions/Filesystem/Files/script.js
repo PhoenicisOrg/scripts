@@ -1,203 +1,224 @@
-var fileAnalyser = Bean("fileAnalyser");
-var fileUtilities = Bean("fileUtilities");
+const fileUtilities = Bean("fileUtilities");
+const checksumCalculator = Bean("checksumCalculator");
 
 /**
-* lists files and directories
-* @param {string} directoryPath directory path
-* @returns {string[]} list of files and directories
-*/
-function ls(directoryPath) { // eslint-disable-line no-unused-vars
-    var FileClass = Java.type('java.io.File');
-    return fileUtilities.ls(new FileClass(directoryPath));
+ * Lists all files and directories contained in the given path
+ *
+ * @param {string} directoryPath directory path
+ * @returns {string[]} list of files and directories
+ */
+function ls(directoryPath) {
+    return fileUtilities.ls(directoryPath);
 }
+module.ls = ls;
 
 /**
-* creates directory
-* @param {string} directoryPath directory path
-* @returns {void}
-*/
-function mkdir(directoryPath) { // eslint-disable-line no-unused-vars
-    var FileClass = Java.type('java.io.File');
-    fileUtilities.mkdir(new FileClass(directoryPath));
+ * Creates the given directory
+ *
+ * @param {string} directoryPath directory path
+ * @returns {void}
+ */
+function mkdir(directoryPath) {
+    fileUtilities.mkdir(directoryPath);
 }
+module.mkdir = mkdir;
 
 /**
-* check if file exists
-* @param {string} filePath file path
-* @returns {boolean} true if file exists
-*/
-function fileExists(filePath) { // eslint-disable-line no-unused-vars
-    var FileClass = Java.type('java.io.File');
-    return new FileClass(filePath).exists();
+ * Checks if the given file exists
+ *
+ * @param {string} filePath file path
+ * @returns {boolean} true if file exists
+ */
+function fileExists(filePath) {
+    return fileUtilities.exists(filePath);
 }
+module.fileExists = fileExists;
 
 /**
-* returns file content
-* @param {string} filePath file path
-* @returns {string} content
-*/
-function cat(filePath) { // eslint-disable-line no-unused-vars
-    var FileClass = Java.type('java.io.File');
-    return Bean("fileUtilities").getFileContent(new FileClass(filePath));
+ * Returns the file content of the given file
+ *
+ * @param {string} filePath file path
+ * @returns {string} content
+ */
+function cat(filePath) {
+    return fileUtilities.getFileContent(filePath);
 }
+module.cat = cat;
 
 /**
-* copies file
-* @param {string} source source
-* @param {string} target target
-* @returns {void}
-*/
-function cp(source, target) { // eslint-disable-line no-unused-vars
-    var FileClass = Java.type('java.io.File');
-    return Bean("fileUtilities").copy(new FileClass(source), new FileClass(target));
+ * Copies the given source file to the target location
+ *
+ * @param {string} source Source file
+ * @param {string} target Target location
+ * @returns {void}
+ */
+function cp(source, target) {
+    return fileUtilities.copy(source, target);
 }
+module.cp = cp;
 
 /**
-* returns file size
-* @param {string} filePath file path
-* @returns {number} file size
-*/
-function getFileSize(filePath) { // eslint-disable-line no-unused-vars
-    var FileClass = Java.type('java.io.File');
-    return Bean("fileUtilities").getSize(new FileClass(filePath));
+ * Returns the file size of the given file
+ *
+ * @param {string} filePath file path
+ * @returns {number} file size
+ */
+function getFileSize(filePath) {
+    return fileUtilities.getSize(filePath);
 }
+module.getFileSize = getFileSize;
 
 /**
-* returns file name
-* @param {string} filePath file path
-* @returns {string} file name
-*/
-function fileName(filePath) { // eslint-disable-line no-unused-vars
-    var FileClass = Java.type('java.io.File');
-    return new FileClass(filePath).getName();
+ * Returns the file name of the given file
+ *
+ * @param {string} filePath file path
+ * @returns {string} file name
+ */
+function fileName(filePath) {
+    return fileUtilities.getFileName(filePath);
 }
+module.fileName = fileName;
 
 /**
-* creates link
-* @param {string} target target
-* @param {string} destination destination
-* @returns {void}
-*/
-function lns(target, destination) { // eslint-disable-line no-unused-vars
-    var FileClass = Java.type('java.io.File');
-    return Bean("fileUtilities").createSymbolicLink(new FileClass(destination), new FileClass(target));
+ * Creates a symbolic link
+ *
+ * @param {string} target target
+ * @param {string} link destination
+ * @returns {void}
+ */
+function lns(target, link) {
+    return fileUtilities.createSymbolicLink(link, target);
 }
+module.lns = lns;
 
 /**
-* removes file
-* @param {string} filePath file path
-* @returns {void}
-*/
-function remove(filePath) { // eslint-disable-line no-unused-vars
-    var FileClass = Java.type('java.io.File');
-    return Bean("fileUtilities").remove(new FileClass(filePath));
+ * Removes the given file
+ *
+ * @param {string} filePath file path
+ * @returns {void}
+ */
+function remove(filePath) {
+    return fileUtilities.remove(filePath);
 }
+module.remove = remove;
 
 /**
-* creates empty file
-* @param {string} filePath file path
-* @returns {void}
-*/
-function touch(filePath) { // eslint-disable-line no-unused-vars
+ * Creates the given file if it does not exist
+ *
+ * @param {string} filePath file path
+ * @returns {void}
+ */
+function touch(filePath) {
     if (!fileExists(filePath)) {
-        var FileClass = Java.type('java.io.File');
-        Bean("fileUtilities").writeToFile(new FileClass(filePath), "");
+        fileUtilities.writeToFile(filePath, "");
     }
 }
+module.touch = touch;
 
 /**
-* writes content into file
-* @param {string} filePath file path
-* @param {string} content content which shall be written
-* @returns {void}
-*/
-function writeToFile(filePath, content) { // eslint-disable-line no-unused-vars
-    var FileClass = Java.type('java.io.File');
-    Bean("fileUtilities").writeToFile(new FileClass(filePath), content);
+ * Writes the given content to the given file
+ *
+ * @param {string} filePath file path
+ * @param {string} content content which shall be written
+ * @returns {void}
+ */
+function writeToFile(filePath, content) {
+    fileUtilities.writeToFile(filePath, content);
 }
+module.writeToFile = writeToFile;
 
 /**
-* creates temporary file
-* @param {string} extension file extension
-* @returns {string} file path of created temporary file
-*/
-function createTempFile(extension) { // eslint-disable-line no-unused-vars
-    var tmpFile = Bean("fileUtilities").createTmpFile(extension);
-    return tmpFile.getAbsolutePath();
+ * Creates a new temporary file with the given file extension
+ *
+ * @param {string} extension file extension
+ * @returns {string} file path of created temporary file
+ */
+function createTempFile(extension) {
+    return fileUtilities.createTmpFile(extension);
 }
+module.createTempFile = createTempFile;
 
 /**
- * creates temporary directory
+ * Creates a new temporary temporary directory
+ *
  * @returns {string} file path of created temporary directory
  */
-function createTempDir() { // eslint-disable-line no-unused-vars
-    var tmpFile = Bean("fileUtilities").createTmpDir();
-    return tmpFile.getAbsolutePath();
+function createTempDir() {
+    return fileUtilities.createTmpDir();
 }
+module.createTempDir = createTempDir;
 
 /**
-* Checksum prototype
-* @constructor
-*/
-function Checksum() {
-    this._method = "SHA";
-    this._checksumCalculator = Bean("checksumCalculator");
+ * Sets the given file permissions
+ *
+ * @param {string} filePath file path
+ * @param {string} permissions file permissions (e.g. "r--r--r--")
+ * @returns {void}
+ */
+function chmod(filePath, permissions) {
+    fileUtilities.chmod(filePath, permissions);
 }
+module.chmod = chmod;
 
 /**
-* sets wizard
-* @param {SetupWizard} wizard setup wizard
-* @returns {Checksum} Checksum object
-*/
-Checksum.prototype.wizard = function (wizard) {
-    this._wizard = wizard;
-    return this;
-}
-
-/**
-* sets checksum algorithm
-* @param {string} algorithm algorithm (e.g. "SHA")
-* @returns {Checksum} Checksum object
-*/
-Checksum.prototype.method = function (algorithm) {
-    this._method = algorithm;
-    return this;
-}
-
-/**
-* sets file for which the checksum shall be computed
-* @param {string} file file for which the checksum shall be computed
-* @returns {Checksum} Checksum object
-*/
-Checksum.prototype.of = function (file) {
-    this._file = file;
-    return this;
-}
-
-/**
-* returns calculated checksum
-* @returns {string} calculated checksum
-*/
-Checksum.prototype.get = function () {
-    if (this._wizard) {
-        var progressBar = this._wizard.progressBar(tr("Checking file consistency..."));
+ * Checksum
+ */
+module.Checksum = class Checksum {
+    constructor() {
+        this._method = "SHA";
     }
 
-    return this._checksumCalculator.calculate(this._file, this._method, function (progressEntity) {
-        if (progressBar) {
-            progressBar.accept(progressEntity);
-        }
-    });
-}
+    /**
+     * Sets the setup wizard
+     *
+     * @param {SetupWizard} wizard The setup wizard
+     * @returns {Checksum} The Checksum object
+     */
+    wizard(wizard) {
+        this._wizard = wizard;
 
-/**
-* sets file permissions
-* @param {string} filePath file path
-* @param {string} permissions file permissions (e.g. "r--r--r--")
-* @returns {void}
-*/
-function chmod(filePath, permissions) { // eslint-disable-line no-unused-vars
-    var permissionsObj = java.nio.file.attribute.PosixFilePermissions.fromString(permissions);
-    var filePathObj = java.nio.file.Paths.get(filePath);
-    java.nio.file.Files.setPosixFilePermissions(filePathObj, permissionsObj);
-}
+        return this;
+    }
+
+    /**
+     * Sets the used checksum algorithm
+     *
+     * @param {string} algorithm The used algorithm (e.g. "SHA")
+     * @returns {Checksum} The Checksum object
+     */
+    method(algorithm) {
+        this._method = algorithm;
+
+        return this;
+    }
+
+    /**
+     * Sets the file for which the checksum shall be computed
+     *
+     * @param {string} file The file for which the checksum shall be computed
+     * @returns {Checksum} The Checksum object
+     */
+    of(file) {
+        this._file = file;
+
+        return this;
+    }
+
+    /**
+     * Calculates and returns the checksum for the previously set file
+     *
+     * @returns {string} The calculated checksum
+     */
+    get() {
+        let progressBar;
+        if (this._wizard) {
+            progressBar = this._wizard.progressBar(tr("Checking file consistency..."));
+        }
+
+        return checksumCalculator.calculate(this._file, this._method, progressEntity => {
+            if (progressBar) {
+                progressBar.accept(progressEntity);
+            }
+        });
+    }
+};
