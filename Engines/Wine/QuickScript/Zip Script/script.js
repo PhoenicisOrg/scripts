@@ -62,7 +62,7 @@ module.default = class ZipScript extends QuickScript {
             .extract();
         if (this._setupPath !== `undefined`){
             if (!fileExists(this._setupPath)){
-                throw new Error "Hello There"
+                throw new Error(tr("File \"{0}\" not found", this._setupPath));
             }
         }
         
