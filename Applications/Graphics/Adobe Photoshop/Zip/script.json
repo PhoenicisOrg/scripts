@@ -1,6 +1,6 @@
 {
-    "scriptName"                 : "Online",
-    "id"                         : "applications.graphics.photoshop.online",
+    "scriptName"                 : "Zip",
+    "id"                         : "applications.graphics.photoshop.zip",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
