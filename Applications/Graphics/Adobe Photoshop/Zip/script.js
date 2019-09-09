@@ -22,11 +22,11 @@ new ZipScript()
     .url("http://prdl-download.adobe.com/Photoshop/55E8FC8663C847F08BFBCD8DFE336AE8/1546595903133/AdobePhotoshop20-mul_x64.zip")
     .preInstall(function (wine /*, wizard*/) {
         wine.corefonts();
-        wine.gdiplus();
+        //wine.gdiplus();
         wine.vcrun2015();
         wine.atmlib();
         wine.msxml3();
         wine.msxml6();
         wine.adobeair();
-        wine.font_smoothing("RGB");
+        wine.fontSmoothing("RGB");
     });
