@@ -233,17 +233,19 @@ Specific wine version:
     .wineVersion("1.9.23")
 ```
 
-You can also use variables for the wine version:
-* `LATEST_DEVELOPMENT_VERSION`
-* `LATEST_STAGING_VERSION`
+You can also use variables for the latest wine version:
+* `LATEST_STABLE_VERSION` via `const { LATEST_STABLE_VERSION } = include("engines.wine.engine.versions");`
+* `LATEST_DEVELOPMENT_VERSION` via `const { LATEST_DEVELOPMENT_VERSION } = include("engines.wine.engine.versions");`
+* `LATEST_STAGING_VERSION` via `const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");`
+* `LATEST_DOS_SUPPORT_VERSION` via `const { LATEST_DOS_SUPPORT_VERSION } = include("engines.wine.engine.versions");`
 
-Specific wine architecture ("x86" or "amd64"):
+For the specific wine architecture ("x86" or "amd64"):
 
 ```javascript
     .wineArchitecture("x86")
 ```
 
-Specific windows version:
+And for the specific windows version:
 
 ```javascript
 include("engines.wine.plugins.windows_version");
