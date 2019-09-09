@@ -23,10 +23,10 @@ Wine.prototype.gdiplus_winxp = function () {
         .to(this.prefixDirectory() + "/drive_c/gdiplus/")
         .extract(["-F", "FL_gdiplus_dll_____X86.3643236F_FC70_11D3_A536_0090278A1BB8"]);
 		
-	var content = cat(this.prefixDirectory() + "/drive_c/gdiplusFL_gdiplus_dll_____X86.3643236F_FC70_11D3_A536_0090278A1BB8");
-	writeToFile(this.system32directory() + "/gdiplus.dll", content);
+    var content = cat(this.prefixDirectory() + "/drive_c/gdiplusFL_gdiplus_dll_____X86.3643236F_FC70_11D3_A536_0090278A1BB8");
+    writeToFile(this.system32directory() + "/gdiplus.dll", content);
     
-	remove(this.prefixDirectory() + "/drive_c/gdiplus/");
+    remove(this.prefixDirectory() + "/drive_c/gdiplus/");
 
     this.overrideDLL()
         .set("native", ["gdiplus"])
