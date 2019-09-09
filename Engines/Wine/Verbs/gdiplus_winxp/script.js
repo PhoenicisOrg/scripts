@@ -18,7 +18,7 @@ Wine.prototype.gdiplus_winxp = function () {
         .name("NDP1.0sp2-KB830348-X86-Enu.exe")
         .get();
 		
-	new CabExtract()
+    new CabExtract()
         .archive(setupFile)
         .to(this.prefixDirectory() + "/drive_c/gdiplus/")
         .extract(["-F", "FL_gdiplus_dll_____X86.3643236F_FC70_11D3_A536_0090278A1BB8"]);
