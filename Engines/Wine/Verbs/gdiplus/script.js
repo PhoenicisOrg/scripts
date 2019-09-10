@@ -10,7 +10,7 @@ include("engines.wine.plugins.override_dll");
  *
  * @returns {Wine} Wine object
  */
-Wine.prototype.gdiplus = function () {	
+Wine.prototype.gdiplus = function () {
     var setupFile = new Resource()
         .wizard(this.wizard())
         .url("https://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X86.exe")
@@ -40,7 +40,7 @@ Wine.prototype.gdiplus = function () {
 		
         cp(this.prefixDirectory() + "/drive_c/gdiplus/amd64_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.17514_none_2b24536c71ed437a/gdiplus.dll", this.system64directory());
     }
-    
+
     remove(this.prefixDirectory() + "/drive_c/gdiplus/");
 
     this.overrideDLL()
