@@ -3,7 +3,7 @@ const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
 include("engines.wine.plugins.csmt");
 include("engines.wine.plugins.windows_version");
-include("engines.wine.verbs.d3dx9");
+const D3DX9 = include("engines.wine.verbs.d3dx9");
 
 new LocalInstallerScript()
     .name("Command and Conquer - Tiberium Wars")
@@ -15,6 +15,6 @@ new LocalInstallerScript()
     .wineDistribution("staging")
     .preInstall(function (wine /*, wizard*/) {
         wine.windowsVersion("winxp");
-        wine.d3dx9();
+        new D3DX9(wine).go();
         wine.enableCSMT();
     });
