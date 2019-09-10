@@ -21,8 +21,6 @@ class GDIPlusWinXP {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const system32directory = this.wine.system32directory();
-        const system64directory = this.wine.system64directory();
-        const architecture = this.wine.architecture();
 
         const setupFile = new Resource()
             .wizard(this.wizard())
