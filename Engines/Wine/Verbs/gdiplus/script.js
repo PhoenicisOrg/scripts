@@ -11,7 +11,7 @@ include("engines.wine.plugins.override_dll");
  * @returns {Wine} Wine object
  */
 Wine.prototype.gdiplus = function () {
-    var setupFile = new Resource()
+    const setupFile = new Resource()
         .wizard(this.wizard())
         .url("https://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X86.exe")
         .checksum("c3516bc5c9e69fee6d9ac4f981f5b95977a8a2fa")
@@ -26,7 +26,7 @@ Wine.prototype.gdiplus = function () {
     cp(this.prefixDirectory() + "/drive_c/gdiplus/x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.17514_none_72d18a4386696c80/gdiplus.dll", this.system32directory());
 	
     if (this.architecture() == "amd64") {
-        var setupFile64 = new Resource()
+        const setupFile64 = new Resource()
             .wizard(this.wizard())
             .url("https://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X64.exe")
             .checksum("74865ef2562006e51d7f9333b4a8d45b7a749dab")
@@ -60,9 +60,9 @@ module.default = class GdiplusVerb {
     }
 
     install(container) {
-        var wine = new Wine();
+        const wine = new Wine();
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "gdiplus", java.util.Optional.empty());
+        const wizard = SetupWizard(InstallationType.VERBS, "gdiplus", java.util.Optional.empty());
         wine.wizard(wizard);
         wine.gdiplus();
         wizard.close();
