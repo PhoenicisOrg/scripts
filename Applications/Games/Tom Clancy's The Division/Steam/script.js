@@ -1,7 +1,7 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
-include("engines.wine.verbs.uplay");
+const Uplay = include("engines.wine.verbs.uplay");
 
 new SteamScript()
     .name("Tom Clancy’s The Division™")
@@ -12,5 +12,5 @@ new SteamScript()
     .wineDistribution("staging")
     .wineArchitecture("amd64")
     .postInstall(function (wine /*, wizard*/) {
-        wine.uplay();
+        new Uplay(wine).go();
     });

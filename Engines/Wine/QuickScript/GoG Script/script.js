@@ -1,9 +1,9 @@
 const Wine = include("engines.wine.engine.object");
 const QuickScript = include("engines.wine.quick_script.quick_script");
 const Downloader = include("utils.functions.net.download");
-const {createTempDir} = include("utils.functions.filesystem.files");
+const { createTempDir } = include("utils.functions.filesystem.files");
 
-include("engines.wine.verbs.gdiplus");
+const GDIPlus = include("engines.wine.verbs.gdiplus");
 
 module.default = class GogScript extends QuickScript {
     constructor() {
@@ -76,7 +76,7 @@ module.default = class GogScript extends QuickScript {
             .wizard(setupWizard)
             .to(tmpDirectory)
             .headers({
-                "Authorization": "Bearer " + this._token["access_token"],
+                Authorization: "Bearer " + this._token["access_token"],
                 "User-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:64.0) Gecko/20100101 Firefox/64.0"
             })
             .get();
@@ -112,7 +112,8 @@ module.default = class GogScript extends QuickScript {
 
         this._preInstall(wine, setupWizard);
 
-        wine.gdiplus();
+        new GDIPlus(wine).go();
+
         wine.run(setupFile, [], wine.prefixDirectory() + "/drive_c/", true, true);
 
         this._postInstall(wine, setupWizard);
@@ -121,4 +122,4 @@ module.default = class GogScript extends QuickScript {
 
         setupWizard.close();
     }
-}
+};
