@@ -1,7 +1,7 @@
 const ZipScript = include("engines.wine.quick_script.zip_script");
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 include("engines.wine.plugins.font_smoothing");
-const CoreFonts = include("engines.wine.verbs.corefonts");
+const Corefonts = include("engines.wine.verbs.corefonts");
 const GDIPlus = include("engines.wine.verbs.gdiplus");
 const Vcrun2015 = include("engines.wine.verbs.vcrun2015");
 const Msxml3 = include("engines.wine.verbs.msxml3");
