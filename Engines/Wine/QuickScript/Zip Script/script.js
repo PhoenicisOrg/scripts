@@ -63,7 +63,7 @@ module.default = class ZipScript extends QuickScript {
             .extract();
 
         if (this._setupPath !== `undefined`) {
-            if (!fileExists(this._setupPath)) {
+            if (!fileExists(this.prefixDirectory() + "/drive_c/" + this._setupPath)) {
                 throw new Error(tr("File \"{0}\" not found", this._setupPath));
             } else {
                 wine.runInsidePrefix(this._setupPath);
