@@ -1,11 +1,11 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 const Downloader = include("utils.functions.net.download");
-const {Extractor} = include("utils.functions.filesystem.extract");
+const { Extractor } = include("utils.functions.filesystem.extract");
 
-include("engines.wine.verbs.amstream");
-include("engines.wine.verbs.quartz");
-include("engines.wine.verbs.devenum");
-include("engines.wine.verbs.d3drm");
+const Amstream = include("engines.wine.verbs.amstream");
+const Quartz = include("engines.wine.verbs.quartz");
+const Devenum = include("engines.wine.verbs.devenum");
+const D3drm = include("engines.wine.verbs.d3drm");
 
 new LocalInstallerScript()
     .name("Lego Rock Raiders")
@@ -16,10 +16,11 @@ new LocalInstallerScript()
     .wineVersion("3.0.3")
     .wineDistribution("upstream")
     .preInstall(function (wine, wizard) {
-        wine.amstream();
-        wine.quartz();
-        wine.devenum();
-        wine.d3drm();
+        new Amstream(wine).go();
+        new Quartz(wine).go();
+        new Devenum(wine).go();
+        new D3drm(wine).go();
+
         wizard.message(tr("When the game ask to install DirectX Media click yes. Click no when it ask for DirectX 6."));
     })
     .postInstall(function (wine, wizard) {

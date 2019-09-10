@@ -1,7 +1,7 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
-include("engines.wine.verbs.corefonts");
+const Corefonts = include("engines.wine.verbs.corefonts");
 include("engines.wine.plugins.windows_version");
 
 new OnlineInstallerScript()
@@ -23,6 +23,6 @@ new OnlineInstallerScript()
             .setOsForApplication()
             .set("steamwebhelper.exe", "winxp")
             .do();
-        wine.corefonts();
+        new Corefonts(wine).go();
     })
     .executable("Steam.exe", ["-no-cef-sandbox"]);

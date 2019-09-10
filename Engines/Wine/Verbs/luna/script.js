@@ -1,53 +1,55 @@
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
-const {mkdir, cp} = include("utils.functions.filesystem.files");
+const { mkdir, cp } = include("utils.functions.filesystem.files");
+
+const Optional = Java.type("java.util.Optional");
 
 include("engines.wine.plugins.regedit");
 
 /**
  * Verb to install luna
- *
- * @returns {Wine} Wine object
  */
-Wine.prototype.luna = function () {
-    var lunaStyle = new Resource()
-        .wizard(this.wizard())
-        .url("https://repository.playonlinux.com/divers/luna.msstyles")
-        .checksum("50a71767f90c1d3d86ca188a84393f2d39664311")
-        .name("luna.msstyles")
-        .get();
-
-    var lunaReg = new Resource()
-        .wizard(this.wizard())
-        .url("https://repository.playonlinux.com/divers/luna.reg")
-        .checksum("074e655d391ae87527f4cc50ba822a8aad83a09f")
-        .name("luna.reg")
-        .get();
-
-
-    mkdir(this.prefixDirectory() + "/drive_c/windows/Resources/Themes/luna/");
-    cp(lunaStyle, this.prefixDirectory() + "/drive_c/windows/Resources/Themes/luna/");
-
-    this.regedit().open(lunaReg);
-
-    return this;
-};
-
-/**
- * Verb to install luna
- */
-// eslint-disable-next-line no-unused-vars
-module.default = class LunaVerb {
-    constructor() {
-        // do nothing
+class Luna {
+    constructor(wine) {
+        this.wine = wine;
     }
 
-    install(container) {
+    go() {
+        const wizard = this.wine.wizard();
+        const prefixDirectory = this.wine.prefixDirectory();
+
+        const lunaStyle = new Resource()
+            .wizard(wizard)
+            .url("https://repository.playonlinux.com/divers/luna.msstyles")
+            .checksum("50a71767f90c1d3d86ca188a84393f2d39664311")
+            .name("luna.msstyles")
+            .get();
+
+        const lunaReg = new Resource()
+            .wizard(wizard)
+            .url("https://repository.playonlinux.com/divers/luna.reg")
+            .checksum("074e655d391ae87527f4cc50ba822a8aad83a09f")
+            .name("luna.reg")
+            .get();
+
+        mkdir(`${prefixDirectory}/drive_c/windows/Resources/Themes/luna/`);
+
+        cp(lunaStyle, `${prefixDirectory}/drive_c/windows/Resources/Themes/luna/`);
+
+        this.wine.regedit().open(lunaReg);
+    }
+
+    static install(container) {
         var wine = new Wine();
+        var wizard = SetupWizard(InstallationType.VERBS, "luna", Optional.empty());
+
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "luna", java.util.Optional.empty());
         wine.wizard(wizard);
-        wine.luna();
+
+        new Luna(wine).go();
+
         wizard.close();
     }
 }
+
+module.default = Luna;
