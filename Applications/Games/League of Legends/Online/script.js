@@ -2,7 +2,7 @@ const CustomInstallerScript = include("engines.wine.quick_script.custom_installe
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 const Resource = include("utils.functions.net.resource");
 
-include("engines.wine.verbs.corefonts");
+const Corefonts = include("engines.wine.verbs.corefonts");
 
 
 new CustomInstallerScript()
@@ -82,5 +82,5 @@ new CustomInstallerScript()
     .wineDistribution("staging")
     .wineVersion(LATEST_STAGING_VERSION)
     .preInstall(function (wine /*, wizard*/) {
-        wine.corefonts();
+        new Corefonts(wine).go();
     })
