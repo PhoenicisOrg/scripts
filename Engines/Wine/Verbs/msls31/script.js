@@ -1,47 +1,49 @@
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
-const {CabExtract} = include("utils.functions.filesystem.extract");
-const {remove} = include("utils.functions.filesystem.files");
+const { CabExtract } = include("utils.functions.filesystem.extract");
+const { remove } = include("utils.functions.filesystem.files");
 
-/**
- * Verb to install msls31.dll
- *
- * @returns {Wine} Wine object
- */
-Wine.prototype.msls31 = function () {
-    var setupFile = new Resource()
-        .wizard(this.wizard())
-        .url("ftp://ftp.hp.com/pub/softlib/software/msi/InstMsiW.exe")
-        .checksum("4fc3bf0dc96b5cf5ab26430fac1c33c5c50bd142")
-        .name("InstMsiW.exe")
-        .get();
-
-    remove(this.system32directory() + "/msls31.dll");
-
-    new CabExtract()
-        .archive(setupFile)
-        .wizard(this.wizard())
-        .to(this.system32directory())
-        .extract(["-F", "msls31.dll"]);
-
-    return this;
-};
+const Optional = Java.type("java.util.Optional");
 
 /**
  * Verb to install msls31.dll
  */
-// eslint-disable-next-line no-unused-vars
-module.default = class Msls31Verb {
-    constructor() {
-        // do nothing
+class Msls31 {
+    constructor(wine) {
+        this.wine = wine;
     }
 
-    install(container) {
-        var wine = new Wine();
+    go() {
+        const wizard = this.wine.wizard();
+        const system32directory = this.wine.system32directory();
+
+        const setupFile = new Resource()
+            .wizard(wizard)
+            .url("ftp://ftp.hp.com/pub/softlib/software/msi/InstMsiW.exe")
+            .checksum("4fc3bf0dc96b5cf5ab26430fac1c33c5c50bd142")
+            .name("InstMsiW.exe")
+            .get();
+
+        remove(`${system32directory}/msls31.dll`);
+
+        new CabExtract()
+            .wizard(wizard)
+            .archive(setupFile)
+            .to(system32directory)
+            .extract(["-F", "msls31.dll"]);
+    }
+
+    static install(container) {
+        const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "msls31", Optional.empty());
+
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "msls31", java.util.Optional.empty());
         wine.wizard(wizard);
-        wine.msls31();
+
+        new Msls31(wine).go();
+
         wizard.close();
     }
 }
+
+module.default = Msls31;

@@ -1,7 +1,7 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
 
-include("engines.wine.verbs.mspatcha");
+const Mspatcha = include("engines.wine.verbs.mspatcha");
 include("engines.wine.plugins.windows_version");
 
 new OnlineInstallerScript()
@@ -16,7 +16,7 @@ new OnlineInstallerScript()
     .category("Office")
     .executable("AcroRd32.exe")
     .preInstall(function (wine /*, wizard*/) {
-        wine.mspatcha();
+        new Mspatcha(wine).go();
     })
     .postInstall(function (wine /*, wizard*/) {
         // fix broken dialogs (e.g. preferences)

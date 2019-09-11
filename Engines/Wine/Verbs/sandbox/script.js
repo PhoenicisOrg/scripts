@@ -1,39 +1,42 @@
 const Wine = include("engines.wine.engine.object");
-const {remove, lns} = include("utils.functions.filesystem.files");
+const { remove, lns } = include("utils.functions.filesystem.files");
 
-/**
- * Verb to install a sandbox
- *
- * @returns {Wine} Wine object
- */
-Wine.prototype.sandbox = function () {
-    var tmp = Bean("propertyReader").getProperty("application.user.tmp");
-    var resources = Bean("propertyReader").getProperty("application.user.resources");
+const propertyReader = Bean("propertyReader");
 
-    remove(this.prefixDirectory() + "/dosdevices/z:");
-    remove(this.prefixDirectory() + "/dosdevices/y:");
-
-    lns(tmp, this.prefixDirectory() + "/dosdevices/z:");
-    lns(resources, this.prefixDirectory() + "/dosdevices/y:");
-
-    return this;
-};
+const Optional = Java.type("java.util.Optional");
 
 /**
  * Verb to install a sandbox
  */
-// eslint-disable-next-line no-unused-vars
-module.default = class SandboxVerb {
-    constructor() {
-        // do nothing
+class Sandbox {
+    constructor(wine) {
+        this.wine = wine;
     }
 
-    install(container) {
-        var wine = new Wine();
+    go() {
+        const prefixDirectory = this.wine.prefixDirectory();
+
+        const tmp = propertyReader.getProperty("application.user.tmp");
+        const resources = propertyReader.getProperty("application.user.resources");
+
+        remove(`${prefixDirectory}/dosdevices/z:`);
+        remove(`${prefixDirectory}/dosdevices/y:`);
+
+        lns(tmp, `${prefixDirectory}/dosdevices/z:`);
+        lns(resources, `${prefixDirectory}/dosdevices/y:`);
+    }
+
+    static install(container) {
+        const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "sandbox", Optional.empty());
+
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "sandbox", java.util.Optional.empty());
         wine.wizard(wizard);
-        wine.sandbox();
+
+        new Sandbox(wine).go();
+
         wizard.close();
     }
 }
+
+module.default = Sandbox;

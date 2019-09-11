@@ -1,79 +1,87 @@
-
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
-const {touch, writeToFile} = include("utils.functions.filesystem.files");
+const { touch, writeToFile } = include("utils.functions.filesystem.files");
+
+const Optional = Java.type("java.util.Optional");
 
 include("engines.wine.plugins.regedit");
 
 /**
- * All the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
+ * Verb to install all the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
  * see: https://github.com/roderickc/wine-vulkan
- *
- * @returns {Wine} Wine object
  */
-Wine.prototype.vulkanSDK = function () {
-    print("NOTE: you need a graphic driver that supports Vulkan to run winevulkan");
-    print("NOTE: Vulkan works in wine from version 3.3 (if compiled with vulkan support)");
+class VulkanSDK {
+    constructor(wine) {
+        this.wine = wine;
+    }
 
-    var sdkVersion = "1.1.97.0";
+    go() {
+        const wizard = this.wine.wizard();
+        const prefixDirectory = this.wine.prefixDirectory();
 
-    var setupFile = new Resource()
-        .wizard(this.wizard())
-        .url("https://sdk.lunarg.com/sdk/download/" + sdkVersion + "/windows/VulkanSDK-" + sdkVersion + "-Installer.exe")
-        .checksum("6bab01f98473bfd550544bbe9773a6d05872a61a")
-        .name("VulkanSDK-" + sdkVersion + "-Installer.exe")
-        .get();
+        print("NOTE: you need a graphic driver that supports Vulkan to run winevulkan");
+        print("NOTE: Vulkan works in wine from version 3.3 (if compiled with vulkan support)");
 
-    this.run(setupFile, "/S");
-    this.wait();
+        const sdkVersion = "1.1.97.0";
 
-    var pathVulkanJSON = this.prefixDirectory() + "drive_c/windows/winevulkan.json";
-    touch(pathVulkanJSON);
-    var contentVulkanJSON = JSON.stringify({
-        "file_format_version": "1.0.0", "ICD": {
-            "library_path": "c:\\windows\\system32\\winevulkan.dll",
-            "api_version": sdkVersion
-        }
-    }, null, 4);
+        const setupFile = new Resource()
+            .wizard(wizard)
+            .url(`https://sdk.lunarg.com/sdk/download/${sdkVersion}/windows/VulkanSDK-${sdkVersion}-Installer.exe`)
+            .checksum("6bab01f98473bfd550544bbe9773a6d05872a61a")
+            .name(`VulkanSDK-${sdkVersion}-Installer.exe`)
+            .get();
 
-    writeToFile(pathVulkanJSON, contentVulkanJSON);
+        this.wine.run(setupFile, "/S");
+        this.wine.wait();
 
-    var regeditFileContent32 =
-        "REGEDIT4\n" +
-        "\n" +
-        "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers]\n" +
-        "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000";
+        const pathVulkanJSON = `${prefixDirectory}/drive_c/windows/winevulkan.json`;
 
-    this.regedit().patch(regeditFileContent32);
+        touch(pathVulkanJSON);
 
-    if (this.architecture() == "amd64") {
-        var regeditFileContent64 =
+        const contentVulkanJSON = JSON.stringify(
+            {
+                "file_format_version": "1.0.0",
+                "ICD": {
+                    "library_path": "c:\\windows\\system32\\winevulkan.dll",
+                    "api_version": sdkVersion
+                }
+            },
+            null,
+            4
+        );
+
+        writeToFile(pathVulkanJSON, contentVulkanJSON);
+
+        const regeditFileContent32 =
             "REGEDIT4\n" +
             "\n" +
-            "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Khronos\\Vulkan\\Drivers\\]\n" +
-            "\"C:\\\\Windows\\\\winevulkan.json\"=dword:00000000";
+            "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers]\n" +
+            '"C:\\\\Windows\\\\winevulkan.json"=dword:00000000';
 
-        this.regedit().patch(regeditFileContent64);
+        this.wine.regedit().patch(regeditFileContent32);
+
+        if (this.wine.architecture() == "amd64") {
+            const regeditFileContent64 =
+                "REGEDIT4\n" +
+                "\n" +
+                "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Khronos\\Vulkan\\Drivers\\]\n" +
+                '"C:\\\\Windows\\\\winevulkan.json"=dword:00000000';
+
+            this.wine.regedit().patch(regeditFileContent64);
+        }
     }
 
-    return this;
-}
+    static install(container) {
+        const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "vulkanSDK", Optional.empty());
 
-/**
- * Verb to install all the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
- */
-// eslint-disable-next-line no-unused-vars
-module.default = class VulkanSDKVerb {
-    constructor() {
-        // do nothing
-    }
-
-    install(container) {
-        var wine = new Wine();
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "vulkanSDK", java.util.Optional.empty());
         wine.wizard(wizard);
-        wine.vulkanSDK();
+
+        new VulkanSDK(wine).go();
+
         wizard.close();
     }
 }
+
+module.default = VulkanSDK;
