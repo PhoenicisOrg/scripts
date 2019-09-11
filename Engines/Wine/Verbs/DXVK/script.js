@@ -35,6 +35,7 @@ class DXVK {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const sys32dir = this.wine.system32directory();
+        const architecture = this.wine.architecture();
 
         print("NOTE: wine version should be greater or equal to 3.10");
 
@@ -90,7 +91,7 @@ class DXVK {
             }
         });
 
-        if (this.wine.architecture() == "amd64") {
+        if (architecture == "amd64") {
             const sys64dir = this.wine.system64directory();
 
             //Copy 64 bits dll to system*
