@@ -1,9 +1,9 @@
 const PlainInstaller = include("utils.functions.apps.plain_installer");
 const Resource = include("utils.functions.net.resource");
-const {CabExtract} = include("utils.functions.filesystem.extract");
+const { CabExtract } = include("utils.functions.filesystem.extract");
 const Wine = include("engines.wine.engine.object");
-const {LATEST_STABLE_VERSION} = include("engines.wine.engine.versions");
-const {remove} = include("utils.functions.filesystem.files");
+const { LATEST_STABLE_VERSION } = include("engines.wine.engine.versions");
+const { remove } = include("utils.functions.filesystem.files");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 const AppResource = include("utils.functions.apps.resources");
 
@@ -11,7 +11,7 @@ include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.regedit");
 include("engines.wine.plugins.regsvr32");
 include("engines.wine.plugins.windows_version");
-include("engines.wine.verbs.msls31");
+const Msls31 = include("engines.wine.verbs.msls31");
 
 new PlainInstaller().withScript(() => {
     var appsManager = Bean("repositoryManager");
@@ -30,8 +30,9 @@ new PlainInstaller().withScript(() => {
     var wine = new Wine()
         .wizard(setupWizard)
         .prefix("InternetExplorer6", "upstream", "x86", LATEST_STABLE_VERSION)
-        .create()
-        .msls31();
+        .create();
+
+    new Msls31(wine).go();
 
     wine.windowsVersion("win2k");
 
@@ -65,13 +66,11 @@ new PlainInstaller().withScript(() => {
         .extract(["-F", "inseng.dll"]);
 
     wine.run("iexplore", ["-unregserver"], null, false, true);
-    wine
-        .overrideDLL()
+    wine.overrideDLL()
         .set("native", ["inseng"])
         .do();
     wine.runInsidePrefix("IE 6.0 Full/IE6SETUP.EXE", [], true);
-    wine
-        .overrideDLL()
+    wine.overrideDLL()
         .set("native,builtin", [
             "inetcpl.cpl",
             "itircl",

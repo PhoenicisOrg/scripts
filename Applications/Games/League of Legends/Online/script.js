@@ -6,8 +6,7 @@ const Resource = include("utils.functions.net.resource");
 include("engines.wine.plugins.csmt");
 include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");
-include("engines.wine.verbs.sandbox");
-include("engines.wine.verbs.d3dx9");
+const D3DX9 = include("engines.wine.verbs.d3dx9");
 
 // Installs League of Legends
 
@@ -100,7 +99,7 @@ new CustomInstallerScript()
     .wineVersion(LATEST_STAGING_VERSION)
     .preInstall(function (wine /*, wizard*/) {
         wine.windowsVersion("winxp");
-        wine.d3dx9();
+        new D3DX9(wine).go();
         wine
             .overrideDLL()
             .set("native, builtin", ["atl120", "msvcp120", "msvcr120", "vcomp120", "msvcp140"])

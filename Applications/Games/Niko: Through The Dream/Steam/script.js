@@ -1,6 +1,6 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
 include("engines.wine.plugins.managed");
-include("engines.wine.verbs.dotnet40");
+const DotNET40 = include("engines.wine.verbs.dotnet40");
 
 new SteamScript()
     .name("Niko: Through The Dream")
@@ -8,7 +8,7 @@ new SteamScript()
     .author("Plata")
     .appId(296550)
     .postInstall(function (wine /*, wizard*/) {
-        wine.dotnet40();
+        new DotNET40(wine).go();
         wine
             .setManagedForApplication()
             .set("NIKO.exe", false)

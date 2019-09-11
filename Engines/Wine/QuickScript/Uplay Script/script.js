@@ -3,8 +3,8 @@ const Downloader = include("utils.functions.net.download");
 const Wine = include("engines.wine.engine.object");
 const {fileExists, createTempFile} = include("utils.functions.filesystem.files");
 
-include("engines.wine.verbs.luna");
-include("engines.wine.verbs.corefonts");
+const Luna = include("engines.wine.verbs.luna");
+const Corefonts = include("engines.wine.verbs.corefonts");
 include("engines.wine.plugins.windows_version");
 
 module.default = class UplayScript extends QuickScript {
@@ -49,10 +49,10 @@ module.default = class UplayScript extends QuickScript {
 
         const wine = new Wine()
             .wizard(setupWizard)
-            .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
-            .luna();
+            .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion);
 
-        wine.corefonts();
+        new Luna(wine).go();
+        new Corefonts(wine).go();
 
         setupWizard.message(tr("Please ensure that winbind is installed before you continue."));
         setupWizard.wait(tr("Please follow the steps of the Uplay setup.\n\nUncheck \"Run Uplay\" or close Uplay completely after the setup so that the installation of \"{0}\" can continue.", this._name));

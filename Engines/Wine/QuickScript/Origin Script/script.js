@@ -3,7 +3,7 @@ const Downloader = include("utils.functions.net.download");
 const Wine = include("engines.wine.engine.object");
 const {createTempFile} = include("utils.functions.filesystem.files");
 
-include("engines.wine.verbs.luna");
+const Luna = include("engines.wine.verbs.luna");
 
 module.default = class OriginScript extends QuickScript {
     constructor() {
@@ -38,8 +38,9 @@ module.default = class OriginScript extends QuickScript {
 
         const wine = new Wine()
             .wizard(setupWizard)
-            .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
-            .luna();
+            .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion);
+
+        new Luna(wine).go();
 
         //Origin does not have an install command
         setupWizard.message(tr("Download \"{0}\" in Origin and shut it down once \"{0}\" is installed", this._name));
