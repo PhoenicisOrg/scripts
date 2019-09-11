@@ -38,6 +38,7 @@ class GDIPlus {
 	
         if (architecture == "amd64") {
 	    const system64directory = this.wine.system64directory();
+
             const setupFile64 = new Resource()
                 .wizard(wizard)
                 .url("https://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X64.exe")
