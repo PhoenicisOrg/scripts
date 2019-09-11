@@ -19,7 +19,7 @@ new SteamScript()
         wine.overrideDLL()
             .set("native, builtin", ["msvcr120"])
             .do();
-        wizard.message(tr("You have to install libjpeg62 and libjpeg62-dev or else the thumbnails in New Game menu will be dispalyed as magenta rectangles."));
+        wizard.message(tr("You have to install libjpeg62 package or else the thumbnails in New Game menu will be dispalyed as magenta rectangles."));
         wizard.message(tr("Due to JIT compiler issues and the way this game uses multithreating, there are audio stutters. To minimize those (assuming you are on a Debian-based Linux distribution), download the libFAudio package from this PPA:\nhttps://launchpad.net/~cybermax-dexter/+archive/ubuntu/sdl2-backport"));
     })
     .executable("Steam.exe", ["-silent", "-applaunch", "244850", "-no-cef-sandbox", "-skipintro"])
