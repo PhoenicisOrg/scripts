@@ -1,37 +1,39 @@
 const Wine = include("engines.wine.engine.object");
 
+const Optional = Java.type("java.util.Optional");
+
 include("engines.wine.plugins.override_dll");
-include("engines.wine.verbs.sp3extract");
-
-/**
- * Verb to install crypt32
- *
- * @returns {Wine} Wine object
- */
-Wine.prototype.crypt32 = function () {
-    this.sp3extract("crypt32.dll");
-    this.sp3extract("msasn1.dll");
-
-    this.overrideDLL()
-        .set("native, builtin", ["crypt32"])
-        .do();
-};
+const WindowsXPSP3 = include("engines.wine.verbs.sp3extract");
 
 /**
  * Verb to install crypt32
  */
-// eslint-disable-next-line no-unused-vars
-module.default = class Crypt32Verb {
-    constructor() {
-        // do nothing
+class Crypt32 {
+    constructor(wine) {
+        this.wine = wine;
     }
 
-    install(container) {
-        var wine = new Wine();
+    go() {
+        new WindowsXPSP3(this.wine).withFileToExtract("crypt32.dll").go();
+        new WindowsXPSP3(this.wine).withFileToExtract("msasn1.dll").go();
+
+        this.wine
+            .overrideDLL()
+            .set("native, builtin", ["crypt32"])
+            .do();
+    }
+
+    static install(container) {
+        const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "crypt32", Optional.empty());
+
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "crypt32", java.util.Optional.empty());
         wine.wizard(wizard);
-        wine.crypt32();
+
+        new Crypt32(wine).go();
+
         wizard.close();
     }
 }
+
+module.default = Crypt32;
