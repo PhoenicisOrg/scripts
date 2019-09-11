@@ -46,7 +46,8 @@ class GDIPlusWinXP {
 		
         remove(`${prefixDirectory}/drive_c/gdiplus/`);
 
-        this.overrideDLL()
+        this.wine
+            .overrideDLL()
             .set("native", ["gdiplus"])
             .do();
     }
