@@ -19,7 +19,6 @@ class GDIPlus {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const system32directory = this.wine.system32directory();
-        const system64directory = this.wine.system64directory();
         const architecture = this.wine.architecture();
 
         const setupFile = new Resource()
@@ -38,6 +37,7 @@ class GDIPlus {
         cp(`${prefixDirectory}/drive_c/gdiplus/x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.17514_none_72d18a4386696c80/gdiplus.dll`, system32directory);
 	
         if (architecture == "amd64") {
+	    const system64directory = this.wine.system64directory();
             const setupFile64 = new Resource()
                 .wizard(wizard)
                 .url("https://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X64.exe")
