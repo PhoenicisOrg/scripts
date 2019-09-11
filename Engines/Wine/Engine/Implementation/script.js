@@ -114,7 +114,7 @@ module.default = class WineEngine {
         if (this._fetchedRuntimeJson) {
             return;
         }
-      
+
         const setupWizard = this.getWizard();
 
         const runtimeJsonPath = this._wineEnginesDirectory + "/runtime.json";
