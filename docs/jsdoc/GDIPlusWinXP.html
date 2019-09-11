@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Engines/Wine/Settings/GLSL/script.js</title>
+    <title>JSDoc: Class: GDIPlusWinXP</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,70 +17,159 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Engines/Wine/Settings/GLSL/script.js</h1>
+    <h1 class="page-title">Class: GDIPlusWinXP</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>const Wine = include("engines.wine.engine.object");
+        <h2><span class="attribs"><span class="type-signature"></span></span>GDIPlusWinXP<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Wine.html">Wine</a>}</span></h2>
+        
+            <div class="class-description">Verb to install gdiplus (windows xp)</div>
+        
+    
+</header>
 
-include("engines.wine.plugins.regedit");
+<article>
+    <div class="container-overview">
+    
+        
 
-/**
- * Setting to enable/disable GLSL
- */
-// eslint-disable-next-line no-unused-vars
-module.default = class GLSLSetting {
-    constructor() {
-        this.options = [tr("Default"), tr("Disabled"), tr("Enabled")];
-        // values which are written into the registry, do not translate!
-        this.registryValues = ["", "disabled", "enabled"];
-    }
+    
+    <h2>Constructor</h2>
+    
 
-    getText() {
-        return tr("GLSL support");
-    }
+    
+    <h4 class="name" id="GDIPlusWinXP"><span class="type-signature"></span>new GDIPlusWinXP<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Wine.html">Wine</a>}</span></h4>
+    
 
-    getOptions() {
-        return this.options;
-    }
+    
 
-    getCurrentOption(container) {
-        var currentValue = new Wine()
-            .prefix(container)
-            .regedit()
-            .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Direct3D", "UseGLSL"]);
-        // find matching option (use default if not found)
-        var index = Math.max(this.registryValues.indexOf(currentValue), 0);
-        return this.options[index];
-    }
 
-    setOption(container, optionIndex) {
-        if (0 == optionIndex) {
-            new Wine()
-                .prefix(container)
-                .regedit()
-                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D", "UseGLSL");
-        } else {
-            var regeditFileContent =
-                "REGEDIT4\n" +
-                "\n" +
-                "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-                "\"UseGLSL\"=\"" + this.registryValues[optionIndex] + "\"\n";
-            new Wine()
-                .prefix(container)
-                .regedit()
-                .patch(regeditFileContent);
-        }
-    }
-}
-</code></pre>
-        </article>
-    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Engines_Wine_Verbs_gdiplus_winxp_script.js.html">Engines/Wine/Verbs/gdiplus_winxp/script.js</a>, <a href="Engines_Wine_Verbs_gdiplus_winxp_script.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Wine object
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Wine.html">Wine</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
