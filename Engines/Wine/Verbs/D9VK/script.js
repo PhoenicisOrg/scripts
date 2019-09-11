@@ -34,6 +34,7 @@ class D9VK {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const system32directory = this.wine.system32directory();
+        const architecture = this.wine.architecture():
 
         print("NOTE: Wine version should be greater or equal to 3.10");
 
@@ -83,7 +84,7 @@ class D9VK {
             }
         });
 
-        if (this.architecture() == "amd64") {
+        if (architecture == "amd64") {
             const system64directory = this.wine.system64directory();
 
             // copy 64 bits dll to system*

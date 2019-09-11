@@ -14,6 +14,7 @@ class AdobeAir {
     }
 
     go() {
+        const wizard = this.wine.wizard();
         // Using Windows XP to workaround the wine bug 43506
         // See https://bugs.winehq.org/show_bug.cgi?id=43506
         const currentWindowsVersion = this.wine.windowsVersion();
@@ -21,7 +22,7 @@ class AdobeAir {
         this.wine.windowsVersion("winxp");
 
         const adobeair = new Resource()
-            .wizard(this.wizard())
+            .wizard(wizard)
             .url("https://airdownload.adobe.com/air/win/download/latest/AdobeAIRInstaller.exe")
             .name("AdobeAIRInstaller.exe")
             .get();

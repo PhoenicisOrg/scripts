@@ -37,7 +37,7 @@ class Gallium9 {
             this.gallium9Version = "0.4";
         }
 
-        this.wizard().message(
+        wizard.message(
             tr(
                 "Using Gallium 9 requires to have a driver supporting the Gallium 9 state tracker, as well as d3dapater9.so installed (ex: libd3d9adapter-mesa package). Please be sure it is installed (both 32 and 64 bits)."
             )

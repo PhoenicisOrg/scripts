@@ -19,6 +19,7 @@ class Amstream {
     go() {
         const wizard = this.wine.wizard();
         const system32directory = this.wine.system32directory();
+        const architecture = this.wine.architecture();
 
         const setupFile = new Resource()
             .wizard(wizard)
@@ -50,7 +51,7 @@ class Amstream {
 
         this.wine.regsvr32().install("amstream.dll");
 
-        if (this.architecture() == "amd64") {
+        if (architecture == "amd64") {
             const system64directory = this.wine.system64directory();
 
             const setupFilex64 = new Resource()
