@@ -70,7 +70,7 @@ class Xact {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const system32directory = this.wine.system32directory();
-        const system64directory = this.wine.system64directory();
+        const architecture = this.wine.architecture();
 
         const setupFile = new Resource()
             .wizard(wizard)
@@ -195,7 +195,9 @@ class Xact {
         remove(`${prefixDirectory}/drive_c/x3daudio_x86/`);
         remove(`${prefixDirectory}/drive_c/xaudio_x86/`);
 
-        if (this.architecture() == "amd64") {
+        if (architecture == "amd64") {
+            const system64directory = this.wine.system64directory();
+            
             //---------------------------------------------------------Extract xactengine*.dll (x64)--------------------------------------------
             new CabExtract()
                 .wizard(wizard)
