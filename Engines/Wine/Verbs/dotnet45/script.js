@@ -20,8 +20,9 @@ class DotNET45 {
     go() {
         const wizard = this.wine.wizard();
         const windowsVersion = this.wine.windowsVersion();
+        const architecture = this.wine.architecture();
 
-        if (this.architecture() == "amd64") {
+        if (architecture == "amd64") {
             print(
                 tr(
                     "This package ({0}) may not fully work on a 64-bit installation. 32-bit prefixes may work better.",
