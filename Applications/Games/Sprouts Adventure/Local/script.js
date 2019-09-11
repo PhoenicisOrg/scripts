@@ -1,5 +1,5 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
-include("engines.wine.verbs.vcrun2005");
+const Vcrun2005 = include("engines.wine.verbs.vcrun2005");
 
 new LocalInstallerScript()
     .name("Sprouts Adventure")
@@ -12,5 +12,6 @@ new LocalInstallerScript()
         wizard.message(
             tr("This game requires winebind (for Ubuntu) or samba and libwbclient/lib32-libwbclient (for Arch Linux).")
         );
-        wine.vcrun2005();
+
+        new Vcrun2005(wine).go();
     });

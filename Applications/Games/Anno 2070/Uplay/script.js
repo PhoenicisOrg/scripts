@@ -1,6 +1,6 @@
 const UplayScript = include("engines.wine.quick_script.uplay_script");
 
-include("engines.wine.verbs.corefonts");
+const Corefonts = include("engines.wine.verbs.corefonts");
 include("engines.wine.plugins.virtual_desktop");
 
 new UplayScript()
@@ -13,5 +13,5 @@ new UplayScript()
     .appId(22)
     .preInstall(function (wine /*, wizard*/) {
         wine.setVirtualDesktop();
-        wine.corefonts();
+        new Corefonts(wine).go();
     });

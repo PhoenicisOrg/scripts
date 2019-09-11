@@ -1,102 +1,113 @@
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
-const {Extractor} = include("utils.functions.filesystem.extract");
-const {remove, lns} = include("utils.functions.filesystem.files");
+const { Extractor } = include("utils.functions.filesystem.extract");
+const { remove, lns } = include("utils.functions.filesystem.files");
+
+const Optional = Java.type("java.util.Optional");
 
 include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install Gallium 9 Standalone
  * see: https://github.com/iXit/wine-nine-standalone/
- *
- * @param {String} gallium9Version Gallium 9 Standalone version to download
- * @returns {Wine} Wine object
  */
-Wine.prototype.gallium9 = function (gallium9Version) {
-    if (typeof gallium9Version !== "string") {
-        gallium9Version = "0.4";
+class Gallium9 {
+    constructor(wine) {
+        this.wine = wine;
     }
 
-    this.wizard().message(
-        tr(
-            "Using Gallium 9 requires to have a driver supporting the Gallium 9 state tracker, as well as d3dapater9.so installed (ex: libd3d9adapter-mesa package). Please be sure it is installed (both 32 and 64 bits)."
-        )
-    );
+    /**
+     * Sets the used gallium9 version
+     *
+     * @param {string} gallium9Version The Gallium 9 Standalone version to download
+     * @returns {Gallium9} The Gallium9 object
+     */
+    withVersion(gallium9Version) {
+        this.gallium9Version = gallium9Version;
 
-    const setupFile = new Resource()
-        .wizard(this.wizard())
-        .url(
-            "https://github.com/iXit/wine-nine-standalone/releases/download/v" +
-                gallium9Version +
-                "/gallium-nine-standalone-v" +
-                gallium9Version +
-                ".tar.gz"
-        )
-        .name("gallium-nine-standalone-v" + gallium9Version + ".tar.gz")
-        .get();
+        return this;
+    }
 
-    new Extractor()
-        .wizard(this.wizard())
-        .archive(setupFile)
-        .to(this.prefixDirectory())
-        .extract();
+    go() {
+        const wizard = this.wine.wizard();
+        const prefixDirectory = this.wine.prefixDirectory();
+        const system32directory = this.wine.system32directory();
 
-    remove(this.system32directory() + "/d3d9.dll");
-    lns(
-        this.prefixDirectory() + "/gallium-nine-standalone/lib32/d3d9-nine.dll.so",
-        this.system32directory() + "/d3d9-nine.dll"
-    );
-    lns(
-        this.prefixDirectory() + "/gallium-nine-standalone/bin32/ninewinecfg.exe.so",
-        this.system32directory() + "/ninewinecfg.exe"
-    );
-    lns(this.system32directory() + "/d3d9-nine.dll", this.system32directory() + "/d3d9.dll");
+        if (typeof this.gallium9Version !== "string") {
+            this.gallium9Version = "0.4";
+        }
 
-    if (this.architecture() == "amd64") {
-        remove(this.system64directory() + "/d3d9.dll");
-        lns(
-            this.prefixDirectory() + "/gallium-nine-standalone/lib64/d3d9-nine.dll.so",
-            this.system64directory() + "/d3d9-nine.dll"
+        wizard.message(
+            tr(
+                "Using Gallium 9 requires to have a driver supporting the Gallium 9 state tracker, as well as d3dapater9.so installed (ex: libd3d9adapter-mesa package). Please be sure it is installed (both 32 and 64 bits)."
+            )
         );
+
+        const setupFile = new Resource()
+            .wizard(wizard)
+            .url(
+                `https://github.com/iXit/wine-nine-standalone/releases/download/v${this.gallium9Version}/gallium-nine-standalone-v${this.gallium9Version}.tar.gz`
+            )
+            .name(`gallium-nine-standalone-v${this.gallium9Version}.tar.gz`)
+            .get();
+
+        new Extractor()
+            .wizard(wizard)
+            .archive(setupFile)
+            .to(prefixDirectory)
+            .extract();
+
+        remove(`${system32directory}/d3d9.dll`);
+
+        lns(`${prefixDirectory}/gallium-nine-standalone/lib32/d3d9-nine.dll.so`, `${system32directory}/d3d9-nine.dll`);
         lns(
-            this.prefixDirectory() + "/gallium-nine-standalone/bin64/ninewinecfg.exe.so",
-            this.system64directory() + "/ninewinecfg.exe"
+            `${prefixDirectory}/gallium-nine-standalone/bin32/ninewinecfg.exe.so`,
+            `${system32directory}/ninewinecfg.exe`
         );
-        lns(this.system64directory() + "/d3d9-nine.dll", this.system64directory() + "/d3d9.dll");
+        lns(`${system32directory}/d3d9-nine.dll`, `${system32directory}/d3d9.dll`);
 
-        this.run(this.system64directory() + "ninewinecfg.exe", ["-e"], null, false, true);
-    } else {
-        this.run(this.system32directory() + "ninewinecfg.exe", ["-e"], null, false, true);
+        if (this.wine.architecture() == "amd64") {
+            const system64directory = this.wine.system64directory();
+
+            remove(`${system64directory}/d3d9.dll`);
+
+            lns(
+                `${prefixDirectory}/gallium-nine-standalone/lib64/d3d9-nine.dll.so`,
+                `${system64directory}/d3d9-nine.dll`
+            );
+            lns(
+                `${prefixDirectory}/gallium-nine-standalone/bin64/ninewinecfg.exe.so`,
+                `${system64directory}/ninewinecfg.exe`
+            );
+            lns(`${system64directory}/d3d9-nine.dll`, `${system64directory}/d3d9.dll`);
+
+            this.wine.run(`${system64directory}ninewinecfg.exe`, ["-e"], null, false, true);
+        } else {
+            this.wine.run(`${system32directory}ninewinecfg.exe`, ["-e"], null, false, true);
+        }
+
+        this.wine
+            .overrideDLL()
+            .set("native", ["d3d9"])
+            .do();
     }
 
-    this.overrideDLL()
-        .set("native", ["d3d9"])
-        .do();
+    static install(container) {
+        const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "gallium9", Optional.empty());
 
-    return this;
-};
-
-/**
- * Verb to install Gallium 9 Standalone
- */
-// eslint-disable-next-line no-unused-vars
-module.default = class Gallium9Verb {
-    constructor() {
-        // do nothing
-    }
-
-    install(container) {
-        const wizard = SetupWizard(InstallationType.VERBS, "gallium9", java.util.Optional.empty());
         const versions = ["0.4", "0.3", "0.2"];
 
         const selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.4");
 
-        const wine = new Wine();
         wine.prefix(container);
         wine.wizard(wizard);
+
         // install selected version
-        wine.gallium9(selectedVersion.text);
+        new Gallium9(wine).withVersion(selectedVersion.text).go();
 
         wizard.close();
     }
 }
+
+module.default = Gallium9;

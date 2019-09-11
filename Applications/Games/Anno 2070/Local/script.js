@@ -1,11 +1,11 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
-const {touch, writeToFile, chmod} = include("utils.functions.filesystem.files");
+const { touch, writeToFile, chmod } = include("utils.functions.filesystem.files");
 
 include("engines.wine.plugins.virtual_desktop");
 include("engines.wine.plugins.override_dll");
-include("engines.wine.verbs.corefonts");
-include("engines.wine.verbs.crypt32");
-include("engines.wine.verbs.d3dx10");
+const Corefonts = include("engines.wine.verbs.corefonts");
+const Crypt32 = include("engines.wine.verbs.crypt32");
+const D3DX10 = include("engines.wine.verbs.d3dx10");
 
 new LocalInstallerScript()
     .name("Anno 2070")
@@ -18,11 +18,10 @@ new LocalInstallerScript()
     .wineDistribution("upstream")
     .preInstall(function (wine) {
         wine.setVirtualDesktop();
-        wine.crypt32();
-        wine.corefonts();
-        wine.d3dx10();
-        wine
-            .overrideDLL()
+        new Crypt32(wine).go();
+        new Corefonts(wine).go();
+        new D3DX10(wine).go();
+        wine.overrideDLL()
             .set("native, builtin", ["winhttp", "msvcrt40", "msvcr100", "crypt32"])
             .do();
     })
