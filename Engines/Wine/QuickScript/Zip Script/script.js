@@ -4,7 +4,6 @@ const Wine = include("engines.wine.engine.object");
 const {Extractor} = include("utils.functions.filesystem.extract");
 const {fileExists} = include("utils.functions.filesystem.files");
 
-
 const Luna = include("engines.wine.verbs.luna");
 
 module.default = class ZipScript extends QuickScript {
@@ -68,9 +67,8 @@ module.default = class ZipScript extends QuickScript {
         if (this._setupPath !== `undefined`) {
             if (!fileExists(this.prefixDirectory() + "/drive_c/" + this._setupPath)) {
                 throw new Error(tr("File \"{0}\" not found", this._setupPath));
-            } else {
-                wine.runInsidePrefix(this._setupPath);
-            }
+            } 
+            wine.runInsidePrefix(this._setupPath);
         }
 
         this._postInstall(wine, setupWizard);
