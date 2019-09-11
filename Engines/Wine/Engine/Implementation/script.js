@@ -42,7 +42,7 @@ module.default = class WineEngine {
     }
 
     install(subCategory, version) {
-        this._installRuntime(this.getWizard());
+        this._installRuntime();
 
         const [distribution, , architecture] = subCategory.split("-");
         const localDirectory = this.getLocalDirectory(subCategory, version);
@@ -108,7 +108,8 @@ module.default = class WineEngine {
             );
         }
     }
-    _installRuntime(setupWizard) {
+    _installRuntime() {
+        const setupWizard = this.getWizard();
         const runtimeJsonPath = this._wineEnginesDirectory + "/runtime.json";
         let runtimeJson;
         let runtimeJsonFile;
