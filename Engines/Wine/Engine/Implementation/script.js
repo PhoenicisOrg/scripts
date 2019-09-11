@@ -26,6 +26,7 @@ module.default = class WineEngine {
         this._wineWebServiceUrl = propertyReader.getProperty("webservice.wine.url");
         this._wizard = null;
         this._workingContainer = "";
+        this._fetchedRuntimeJson = false;
     }
 
     getLocalDirectory(subCategory, version) {
@@ -109,6 +110,11 @@ module.default = class WineEngine {
         }
     }
     _installRuntime(setupWizard) {
+        // avoid that runtime is installed multiple times during one installation
+        if (this._fetchedRuntimeJson) {
+            return;
+        }
+
         const runtimeJsonPath = this._wineEnginesDirectory + "/runtime.json";
         let runtimeJson;
         let runtimeJsonFile;
@@ -261,6 +267,8 @@ module.default = class WineEngine {
 
             remove(this._wineEnginesDirectory + "/TMP");
         }
+
+        this._fetchedRuntimeJson = true;
     }
 
     _installGecko(setupWizard, winePackage, localDirectory) {
