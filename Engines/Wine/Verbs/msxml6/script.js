@@ -1,6 +1,6 @@
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
-const { remove } = include("utils.functions.filesystem.files");
+const { remove, fileExists } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
@@ -18,7 +18,9 @@ class Msxml6 {
         const wizard = this.wine.wizard();
         const system32directory = this.wine.system32directory();
 
-        remove(`${system32directory}/msxml6.dll`);
+        if(fileExists(`${system32directory}/msxml6.dll`)) {
+            remove(`${system32directory}/msxml6.dll`);
+        }
 
         this.wine
             .overrideDLL()
@@ -28,7 +30,9 @@ class Msxml6 {
         if (this.wine.architecture() == "amd64") {
             const system64directory = this.wine.system64directory();
 
-            remove(`${system64directory}/msxml6.dll`);
+            if(fileExists(`${system64directory}/msxml6.dll`)) {
+                remove(`${system64directory}/msxml6.dll`);
+            }
 
             const setupFile64 = new Resource()
                 .wizard(wizard)
