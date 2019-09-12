@@ -41,7 +41,7 @@ class Msxml6 {
 
             wizard.wait(tr("Please wait while {0} is installed...", "msxml6"));
 
-            this.run(setupFile64, ["/q:a", "/c:msxml6_x64.msi /q"], null, false, true);
+            this.wine.run(setupFile64, ["/q:a", "/c:msxml6_x64.msi /q"], null, false, true);
         } else {
             const setupFile32 = new Resource()
                 .wizard(wizard)
@@ -54,7 +54,7 @@ class Msxml6 {
 
             wizard.wait(tr("Please wait while {0} is installed...", "msxml6"));
 
-            this.run(setupFile32, ["/q:a", "/c:msxml6_x86.msi /q"], null, false, true);
+            this.wine.run(setupFile32, ["/q:a", "/c:msxml6_x86.msi /q"], null, false, true);
         }
     }
 
