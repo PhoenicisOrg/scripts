@@ -17,7 +17,6 @@ class Msxml6 {
     go() {
         const wizard = this.wine.wizard();
         const system32directory = this.wine.system32directory();
-        const system64directory = this.wine.system64directory();
 
         remove(`${system32directory}/msxml6.dll`);
 
@@ -27,6 +26,8 @@ class Msxml6 {
             .do();
 
         if (this.wine.architecture() == "amd64") {
+            const system64directory = this.wine.system64directory();
+
             remove(`${system64directory}/msxml6.dll`);
 
             const setupFile64 = new Resource()
