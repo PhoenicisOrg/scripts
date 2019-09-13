@@ -1,6 +1,7 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
+
 include("engines.wine.plugins.virtual_desktop");
-include("engines.wine.verbs.quartz");
+const Quartz = include("engines.wine.verbs.quartz");
 
 new SteamScript()
     .name("Wildlife Park 2")
@@ -14,7 +15,8 @@ new SteamScript()
                 "On first run the game might not go into full screen. If that happens go to options and set the resolution to 1280x960. You will be asked to close the game in order to apply the new settings. Click Yes. Once you start the game again you should see a window where you can set your game resolution to match your screen."
             )
         );
-        wine.quartz();
+
+        new Quartz(wine).go();
         wine.setVirtualDesktop();
     })
     .gameOverlay(false);

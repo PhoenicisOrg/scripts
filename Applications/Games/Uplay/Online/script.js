@@ -2,7 +2,7 @@ const OnlineInstallerScript = include("engines.wine.quick_script.online_installe
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
 include("engines.wine.plugins.windows_version");
-include("engines.wine.verbs.corefonts");
+const Corefonts = include("engines.wine.verbs.corefonts");
 
 new OnlineInstallerScript()
     .name("Uplay")
@@ -15,7 +15,7 @@ new OnlineInstallerScript()
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .preInstall(function (wine /*, wizard*/) {
-        wine.corefonts();
+        new Corefonts(wine).go();
         wine
             .setOsForApplication()
             .set("upc.exe", "winvista")
