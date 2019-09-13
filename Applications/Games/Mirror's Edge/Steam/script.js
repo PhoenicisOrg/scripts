@@ -1,21 +1,16 @@
-include("engines.wine.quick_script.steam_script");
+const SteamScript = include("engines.wine.quick_script.steam_script");
 include("engines.wine.plugins.managed");
-include("engines.wine.verbs.physx");
+const PhysX = include("engines.wine.verbs.physx");
 
-var installerImplementation = {
-    run: function () {
-        new SteamScript()
-            .name("Mirror's Edge™")
-            .editor("DICE")
-            .author("Plata")
-            .appId(17410)
-            .preInstall(function (wine/*, wizard*/) {
-                wine.physx();
-                wine.setManagedForApplication().set("MirrorsEdge.exe", false).do();
-            })
-            .go();
-    }
-};
+new SteamScript()
+    .name("Mirror's Edge™")
+    .editor("DICE")
+    .author("Plata")
+    .appId(17410)
+    .preInstall(function (wine /*, wizard*/) {
+        new PhysX(wine).go();
 
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
+        wine.setManagedForApplication()
+            .set("MirrorsEdge.exe", false)
+            .do();
+    });

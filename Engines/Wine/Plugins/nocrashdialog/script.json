@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "nocrashdialog",
+    "id"                         : "engines.wine.plugins.nocrashdialog",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

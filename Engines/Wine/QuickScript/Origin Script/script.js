@@ -1,72 +1,70 @@
-include("engines.wine.quick_script.quick_script");
-include("utils.functions.net.download");
-include("engines.wine.engine.object");
-include("utils.functions.filesystem.files");
-include("engines.wine.verbs.luna");
+const QuickScript = include("engines.wine.quick_script.quick_script");
+const Downloader = include("utils.functions.net.download");
+const Wine = include("engines.wine.engine.object");
+const {createTempFile} = include("utils.functions.filesystem.files");
 
+const Luna = include("engines.wine.verbs.luna");
 
-function OriginScript() {
-    QuickScript.call(this);
+module.default = class OriginScript extends QuickScript {
+    constructor() {
+        super();
 
-    this._executable = "Origin.exe";
-    this._category = "Games";
-}
-
-OriginScript.prototype = Object.create(QuickScript.prototype);
-
-OriginScript.prototype.constructor = OriginScript;
-
-OriginScript.prototype.appId = function (appId) {
-    this._appId = appId;
-    return this;
-};
-
-OriginScript.prototype.go = function () {
-
-    // default executable args if not specified
-    if (!this._executableArgs) {
-        this._executableArgs = ["origin://launchgame/" + this._appId];
+        this._executable = "Origin.exe";
+        this._category = "Games";
     }
 
-    var setupWizard = SetupWizard(InstallationType.APPS, this._name, this.miniature());
+    appId(appId) {
+        this._appId = appId;
+        return this;
+    }
 
-    setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
+    go() {
+        // default executable args if not specified
+        if (!this._executableArgs) {
+            this._executableArgs = ["origin://launchgame/" + this._appId];
+        }
 
-    var tempFile = createTempFile("exe");
+        const setupWizard = SetupWizard(InstallationType.APPS, this._name, this.miniature());
 
-    new Downloader()
-        .wizard(setupWizard)
-        .url("https://origin-a.akamaihd.net/Origin-Client-Download/origin/live/OriginThinSetup.exe")
-        .to(tempFile)
-        .get();
+        setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
-    var wine = new Wine()
-        .wizard(setupWizard)
-        .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
-        .luna();
+        const tempFile = createTempFile("exe");
 
-    //Origin does not have an install command
-    setupWizard.message(tr("Download \"{0}\" in Origin and shut it down once \"{0}\" is installed", this._name));
-    wine.run(tempFile, [], null, false, true);
+        new Downloader()
+            .wizard(setupWizard)
+            .url("https://origin-a.akamaihd.net/Origin-Client-Download/origin/live/OriginThinSetup.exe")
+            .to(tempFile)
+            .get();
 
-    // wait until Origin and Wine are closed
-    wine.wait();
+        const wine = new Wine()
+            .wizard(setupWizard)
+            .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion);
 
-    // Origin installation has finished
-    setupWizard.wait(tr("Please wait..."));
+        new Luna(wine).go();
 
-    this._preInstall(wine, setupWizard);
+        //Origin does not have an install command
+        setupWizard.message(tr("Download \"{0}\" in Origin and shut it down once \"{0}\" is installed", this._name));
+        wine.run(tempFile, [], null, false, true);
 
-    // back to generic wait (might have been changed in preInstall)
-    setupWizard.wait(tr("Please wait..."));
+        // wait until Origin and Wine are closed
+        wine.wait();
 
-    this._postInstall(wine, setupWizard);
+        // Origin installation has finished
+        setupWizard.wait(tr("Please wait..."));
 
-    // create shortcut after installation (if executable is specified, it does not exist earlier)
-    this._createShortcut(wine.prefix());
+        this._preInstall(wine, setupWizard);
 
-    // back to generic wait (might have been changed in postInstall)
-    setupWizard.wait(tr("Please wait..."));
+        // back to generic wait (might have been changed in preInstall)
+        setupWizard.wait(tr("Please wait..."));
 
-    setupWizard.close();
-};
+        this._postInstall(wine, setupWizard);
+
+        // create shortcut after installation (if executable is specified, it does not exist earlier)
+        this._createShortcut(wine.prefix());
+
+        // back to generic wait (might have been changed in postInstall)
+        setupWizard.wait(tr("Please wait..."));
+
+        setupWizard.close();
+    }
+}

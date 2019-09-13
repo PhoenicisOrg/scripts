@@ -1,4 +1,6 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+
+include("engines.wine.plugins.regedit");
 
 /**
  * force the DirectDrawRenderer

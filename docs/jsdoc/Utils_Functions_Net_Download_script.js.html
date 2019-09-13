@@ -26,170 +26,192 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>include("utils.functions.filesystem.files");
+            <pre class="prettyprint source linenums"><code>const {Checksum} = include("utils.functions.filesystem.files");
+
+const downloader = Bean("downloader");
 
 /**
- * Downloader prototype
- * @constructor
+ * Downloader class
  */
-function Downloader() {
-    this._downloader = Bean("downloader");
-    this._algorithm = "SHA";
-    this._headers = {};
-}
-
-/**
- * fetches the file name from an URL
- * @param {string} url URL
- * @returns {string} file name
- */
-Downloader.prototype._fetchFileNameFromUrl = function (url) {
-    return url.substring(url.lastIndexOf('/') + 1);
-}
-
-/**
- * sets wizard
- * @param {SetupWizard} wizard setup wizard
- * @returns {Downloader} Downloader object
- */
-Downloader.prototype.wizard = function (wizard) {
-    this._wizard = wizard;
-    return this;
-}
-
-/**
- * sets URL which shall be used for the download
- * @param {string} url URL
- * @returns {Downloader} Downloader object
- */
-Downloader.prototype.url = function (url) {
-    this._url = url;
-    return this;
-}
-
-/**
- * sets algorithm which shall be used to verify the checksum
- * @param {string} algorithm checksum algorithm (e.g. "SHA")
- * @returns {Downloader} Downloader object
- */
-Downloader.prototype.algorithm = function (algorithm) {
-    this._algorithm = algorithm;
-    return this;
-}
-
-/**
- * sets checksum
- * @param {string} checksum checksum which shall be used to verify the download
- * @returns {Downloader} Downloader object
- */
-Downloader.prototype.checksum = function (checksum) {
-    this._checksum = checksum;
-    return this;
-}
-
-/**
- * sets message text
- * @param {string} message download message
- * @returns {Downloader} Downloader object
- */
-Downloader.prototype.message = function (message) {
-    this._message = message;
-    return this;
-}
-
-/**
- * sets http headers
- * @param {{}} headers headers
- * @returns {Downloader} Downloader object
- */
-Downloader.prototype.headers = function (headers) {
-    this._headers = headers;
-    return this;
-}
-
-/**
- * sets destination
- * @param {string} localDestination destination of the download. If it is a directory, the file will be placed inside
- * @returns {Downloader} Downloader object
- */
-Downloader.prototype.to = function (localDestination) {
-    this._localDestination = localDestination;
-    return this;
-}
-
-/**
- * specifies if the download shall be executed only if a newer version is available
- * @param {boolean} onlyIfUpdateAvailable true the download shall be executed only if a newer version is available
- * @returns {Downloader} Downloader object
- */
-Downloader.prototype.onlyIfUpdateAvailable = function (onlyIfUpdateAvailable) {
-    this._onlyIfUpdateAvailable = onlyIfUpdateAvailable;
-    return this;
-};
-
-/**
- * returns downloaded file
- * @returns {String} content of downloaded file
- */
-Downloader.prototype.get = function () {
-    if (!this._message) {
-        this._message = tr("Please wait while {0} is downloaded...", this._fetchFileNameFromUrl(this._url));
+module.default = class Downloader {
+    constructor() {
+        this._algorithm = "SHA";
+        this._headers = {};
     }
 
-    if (this._wizard) {
-        var progressBar = this._wizard.progressBar(this._message);
+    /**
+     * Fetches the file name from an URL
+     *
+     * @param {string} url The URL
+     * @returns {string} The file name
+     */
+    _fetchFileNameFromUrl(url) {
+        return url.substring(url.lastIndexOf("/") + 1);
     }
 
-    if (this._onlyIfUpdateAvailable) {
-        if (!this._downloader.isUpdateAvailable(this._localDestination, this._url)) {
-            print(this._localDestination + " already up-to-date.");
-            return;
+    /**
+     * Sets the setup wizard
+     *
+     * @param {SetupWizard} wizard The setup wizard
+     * @returns {Downloader} The Downloader object
+     */
+    wizard(wizard) {
+        this._wizard = wizard;
+        return this;
+    }
+
+    /**
+     * Sets the URL which shall be used for the download
+     *
+     * @param {string} url The URL
+     * @returns {Downloader} The Downloader object
+     */
+    url(url) {
+        this._url = url;
+        return this;
+    }
+
+    /**
+     * Sets the algorithm which shall be used to verify the checksum
+     *
+     * @param {string} algorithm The checksum algorithm (e.g. "SHA")
+     * @returns {Downloader} The Downloader object
+     */
+    algorithm(algorithm) {
+        this._algorithm = algorithm;
+        return this;
+    }
+
+    /**
+     * Sets the checksum
+     *
+     * @param {string} checksum The checksum which shall be used to verify the download
+     * @returns {Downloader} The Downloader object
+     */
+    checksum(checksum) {
+        this._checksum = checksum;
+        return this;
+    }
+
+    /**
+     * Sets the download message text
+     *
+     * @param {string} message The download message
+     * @returns {Downloader} The Downloader object
+     */
+    message(message) {
+        this._message = message;
+        return this;
+    }
+
+    /**
+     * Sets the http headers
+     *
+     * @param {{}} headers The http headers
+     * @returns {Downloader} The Downloader object
+     */
+    headers(headers) {
+        this._headers = headers;
+        return this;
+    }
+
+    /**
+     * Sets the download destination
+     *
+     * @param {string} localDestination The destination of the download. If it is a directory, the file will be placed inside
+     * @returns {Downloader} The Downloader object
+     */
+    to(localDestination) {
+        this._localDestination = localDestination;
+        return this;
+    }
+
+    /**
+     * Specifies if the download shall be executed only if a newer version is available
+     *
+     * @param {boolean} onlyIfUpdateAvailable true the download shall be executed only if a newer version is available
+     * @returns {Downloader} The Downloader object
+     */
+    onlyIfUpdateAvailable(onlyIfUpdateAvailable) {
+        this._onlyIfUpdateAvailable = onlyIfUpdateAvailable;
+        return this;
+    }
+
+    /**
+     * Gets the content of the downloaded file
+     *
+     * @returns {String} The content of downloaded file
+     */
+    get() {
+        if (!this._message) {
+            this._message = tr("Please wait while {0} is downloaded...", this._fetchFileNameFromUrl(this._url));
         }
-    }
 
-    if (this._localDestination) {
-        var downloadFile = this._downloader.get(this._url, this._localDestination, this._headers, function (progressEntity) {
-            if (progressBar) {
-                progressBar.accept(progressEntity);
-            }
-        });
+        let progressBar;
+        if (this._wizard) {
+            progressBar = this._wizard.progressBar(this._message);
+        }
 
-        if (this._checksum) {
-            var fileChecksum = new Checksum()
-                .wizard(this._wizard)
-                .of(this._localDestination)
-                .method(this._algorithm)
-                .get();
-
-            if (fileChecksum != this._checksum) {
-                var checksumErrorMessage = tr("Error while calculating checksum for \"{0}\". \n\nExpected = {1}\nActual = {2}",
-                    this._localDestination,
-                    this._checksum,
-                    fileChecksum);
-
-                this._wizard.message(checksumErrorMessage);
-
-                throw checksumErrorMessage;
+        if (this._onlyIfUpdateAvailable) {
+            if (!downloader.isUpdateAvailable(this._localDestination, this._url)) {
+                print(this._localDestination + " already up-to-date.");
+                return;
             }
         }
 
-        return downloadFile.toString();
-    } else {
-        return this._downloader.get(this._url, this._headers, function (progressEntity) {
-            if (progressBar) {
-                progressBar.accept(progressEntity);
+        if (this._localDestination) {
+            const downloadFile = downloader.get(
+                this._url,
+                this._localDestination,
+                this._headers,
+                progressEntity => {
+                    if (progressBar) {
+                        progressBar.accept(progressEntity);
+                    }
+                }
+            );
+
+            if (this._checksum) {
+                const fileChecksum = new Checksum()
+                    .wizard(this._wizard)
+                    .of(this._localDestination)
+                    .method(this._algorithm)
+                    .get();
+
+                if (fileChecksum != this._checksum) {
+                    const checksumErrorMessage = tr(
+                        'Error while calculating checksum for "{0}". \n\nExpected = {1}\nActual = {2}',
+                        this._localDestination,
+                        this._checksum,
+                        fileChecksum
+                    );
+
+                    this._wizard.message(checksumErrorMessage);
+
+                    throw new Error(checksumErrorMessage);
+                }
             }
-        });
+
+            return downloadFile.toString();
+        } else {
+            return downloader.get(this._url, this._headers, progressEntity => {
+                if (progressBar) {
+                    progressBar.accept(progressEntity);
+                }
+            });
+        }
+    }
+
+    /**
+     * Gets the content of the downloaded file and returns it as a JSON value
+     *
+     * @returns {any} The json value
+     */
+    json() {
+        return JSON.parse(this.get());
     }
 }
-
-/**
- * Gets the content and parse the JSON value
- * @returns {any} The json content
- */
-Downloader.prototype.json = function () {
-    return JSON.parse(this.get());
-}</code></pre>
+</code></pre>
         </article>
     </section>
 
@@ -199,13 +221,13 @@ Downloader.prototype.json = function () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdobeAir.html">AdobeAir</a></li><li><a href="Amstream.html">Amstream</a></li><li><a href="Atmlib.html">Atmlib</a></li><li><a href="Corefonts.html">Corefonts</a></li><li><a href="Crypt32.html">Crypt32</a></li><li><a href="D3drm.html">D3drm</a></li><li><a href="D3DX9.html">D3DX9</a></li><li><a href="D3DX10.html">D3DX10</a></li><li><a href="D3DX11.html">D3DX11</a></li><li><a href="Devenum.html">Devenum</a></li><li><a href="DotNET20.html">DotNET20</a></li><li><a href="DotNET20SP2.html">DotNET20SP2</a></li><li><a href="DotNET40.html">DotNET40</a></li><li><a href="DotNET45.html">DotNET45</a></li><li><a href="DotNET46.html">DotNET46</a></li><li><a href="DotNET452.html">DotNET452</a></li><li><a href="DotNET461.html">DotNET461</a></li><li><a href="DotNET462.html">DotNET462</a></li><li><a href="DotNET472.html">DotNET472</a></li><li><a href="DXVK.html">DXVK</a></li><li><a href="FAudio.html">FAudio</a></li><li><a href="Gallium9.html">Gallium9</a></li><li><a href="GDIPlus.html">GDIPlus</a></li><li><a href="GDIPlusWinXP.html">GDIPlusWinXP</a></li><li><a href="Luna.html">Luna</a></li><li><a href="Mfc42.html">Mfc42</a></li><li><a href="module.CabExtract.html">CabExtract</a></li><li><a href="module.Checksum.html">Checksum</a></li><li><a href="module.default.html">default</a></li><li><a href="module.Extractor.html">Extractor</a></li><li><a href="Msls31.html">Msls31</a></li><li><a href="Mspatcha.html">Mspatcha</a></li><li><a href="Msxml3.html">Msxml3</a></li><li><a href="Msxml6.html">Msxml6</a></li><li><a href="PhysX.html">PhysX</a></li><li><a href="Quartz.html">Quartz</a></li><li><a href="QuickTime76.html">QuickTime76</a></li><li><a href="RemoveMono.html">RemoveMono</a></li><li><a href="Sandbox.html">Sandbox</a></li><li><a href="Secur32.html">Secur32</a></li><li><a href="Tahoma.html">Tahoma</a></li><li><a href="Uplay.html">Uplay</a></li><li><a href="Vcrun6SP6.html">Vcrun6SP6</a></li><li><a href="Vcrun2003.html">Vcrun2003</a></li><li><a href="Vcrun2005.html">Vcrun2005</a></li><li><a href="Vcrun2008.html">Vcrun2008</a></li><li><a href="Vcrun2010.html">Vcrun2010</a></li><li><a href="Vcrun2012.html">Vcrun2012</a></li><li><a href="Vcrun2013.html">Vcrun2013</a></li><li><a href="Vcrun2015.html">Vcrun2015</a></li><li><a href="Vcrun2017.html">Vcrun2017</a></li><li><a href="VK9.html">VK9</a></li><li><a href="VulkanSDK.html">VulkanSDK</a></li><li><a href="WindowsXPSP3.html">WindowsXPSP3</a></li><li><a href="Xact.html">Xact</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#getScreenHeight">getScreenHeight</a></li><li><a href="global.html#getScreenWidth">getScreenWidth</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a>
 </footer>
 
 <script> prettyPrint(); </script>

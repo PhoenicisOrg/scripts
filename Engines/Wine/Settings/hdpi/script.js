@@ -1,31 +1,35 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+
 include("engines.wine.plugins.hdpi");
 
 /**
- * setting to enable/disable Retina
-*/
-var settingImplementation = {
-    _options: [tr("Disabled"), tr("Enabled")],
+ * Setting to enable/disable Retina
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class HDPISetting {
+    constructor() {
+        this.options = [tr("Disabled"), tr("Enabled")];
+    }
 
-    getText: function () {
+    getText() {
         return tr("Retina support");
-    },
-    getOptions: function () {
-        return this._options;
-    },
-    getCurrentOption: function (container) {
+    }
+
+    getOptions() {
+        return this.options;
+    }
+
+    getCurrentOption(container) {
         var currentValue = new Wine()
             .prefix(container)
             .hdpi();
 
-        return currentValue ? this._options[1] : this._options[0];
-    },
-    setOption: function (container, optionIndex) {
+        return currentValue ? this.options[1] : this.options[0];
+    }
+
+    setOption(container, optionIndex) {
         new Wine()
             .prefix(container)
             .hdpi(1 == optionIndex);
     }
-};
-
-/* exported Setting */
-var Setting = Java.extend(org.phoenicis.engines.EngineSetting, settingImplementation);
+}

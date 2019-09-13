@@ -26,153 +26,203 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>include("engines.wine.engine.object");
+            <pre class="prettyprint source linenums"><code>const {WINE_PREFIX_DIR} = include("engines.wine.engine.constants");
+
+const ShortcutInfoDTOBuilderClass = Java.type("org.phoenicis.library.dto.ShortcutInfoDTO.Builder");
+const ShortcutDTOBuilderClass = Java.type("org.phoenicis.library.dto.ShortcutDTO.Builder");
 
 /**
-* WineShortcut prototype
-* @constructor
-*/
-function WineShortcut() {
-    this._shortcutManager = Bean("shortcutManager");
-    this._appsManager = Bean("repositoryManager");
-    this._fileSearcher = Bean("fileSearcher");
-    this._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
+ * WineShortcut prototype
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class WineShortcut {
+    constructor() {
+        this._shortcutManager = Bean("shortcutManager");
+        this._appsManager = Bean("repositoryManager");
+        this._fileSearcher = Bean("fileSearcher");
+        this._winePrefixesDirectory =
+            Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
 
-    this._category = "Other";
-    this._description = "";
-}
+        this._category = "Other";
+        this._description = "";
+    }
 
-/**
-* sets shortcut name
-* @param {string} name shortcut name
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.name = function (name) {
-    this._name = name;
-    return this;
-}
+    /**
+     * Sets the shortcut name
+     *
+     * @param {string} name The shortcut name
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    name(name) {
+        this._name = name;
+        return this;
+    }
 
-/**
-* sets shortcut type
-* @param {string} type shortcut type
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.type = function (type) {
-    this._type = type;
-    return this;
-}
+    /**
+     * Sets the shortcut type
+     *
+     * @param {string} type The shortcut type
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    type(type) {
+        this._type = type;
+        return this;
+    }
 
-/**
-* sets shortcut category
-* @param {string} category shortcut category
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.category = function (category) {
-    this._category = category;
-    return this;
-}
+    /**
+     * Sets the shortcut category
+     *
+     * @param {string} category The shortcut category
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    category(category) {
+        this._category = category;
+        return this;
+    }
 
-/**
-* sets shortcut description
-* @param {string} description shortcut description
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.description = function (description) {
-    this._description = description;
-    return this;
-}
+    /**
+     * Sets the shortcut description
+     *
+     * @param {string} description The shortcut description
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    description(description) {
+        this._description = description;
+        return this;
+    }
 
-/**
-* sets shortcut arguments
-* @param {array} args shortcut arguments
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.arguments = function (args) {
-    this._arguments = args;
-    return this;
-}
+    /**
+     * Sets the shortcut arguments
+     *
+     * @param {array} args The shortcut arguments
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    arguments(args) {
+        this._arguments = args;
+        return this;
+    }
 
-/**
-* sets executable which shall be used
-* @param {string} search executable name
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.search = function (search) {
-    this._search = search;
-    return this;
-}
+    /**
+     * Sets the executable which shall be used
+     *
+     * @param {string} search The executable name
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    search(search) {
+        this._search = search;
+        return this;
+    }
 
-/**
-* sets shortcut prefix
-* @param {string} prefix shortcut prefix
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.prefix = function (prefix) {
-    this._prefix = prefix;
-    return this;
-}
+    /**
+     * Sets the shortcut prefix
+     *
+     * @param {string} prefix The shortcut prefix
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    prefix(prefix) {
+        this._prefix = prefix;
+        return this;
+    }
 
-/**
-* sets the miniature for the shortcut
-* @param {string[]|URI} miniature
-* array which specifies the application of which the miniature shall be used
-* or
-* URI of the miniature
-* @returns {WineShortcut} WineShortcut object
-*/
-WineShortcut.prototype.miniature = function (miniature) {
-    if (isArray(miniature)) {
-        // application of miniature given
-        var application = this._appsManager.getApplication(miniature);
-        if (application != null &amp;&amp; application.getMainMiniature().isPresent()) {
-            this._miniature = application.getMainMiniature().get();
+    /**
+     * Sets the miniature for the shortcut
+     *
+     * @param {string[]|URI} miniature An array which specifies the application of which the miniature shall be used or URI of the miniature
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    miniature(miniature) {
+        if (Array.isArray(miniature)) {
+            // application of miniature given
+            const application = this._appsManager.getApplication(miniature);
+            if (application != null &amp;&amp; application.getMainMiniature().isPresent()) {
+                this._miniature = application.getMainMiniature().get();
+            }
+        } else {
+            // miniature URI given
+            this._miniature = miniature;
         }
-    } else {
-        // miniature URI given
-        this._miniature = miniature;
+
+        return this;
     }
 
-    return this;
-}
-
-/**
-* creates shortcut
-* @returns {void}
-*/
-WineShortcut.prototype.create = function () {
-    var _shortcutPrefixDirectory = this._winePrefixesDirectory + "/" + this._prefix;
-
-    var executables = this._fileSearcher.search(_shortcutPrefixDirectory, this._search);
-
-    if (executables.length == 0) {
-        throw tr("Executable {0} not found!", this._search)
+    /**
+     * Sets the shortcut environment variables
+     *
+     * @param {string} environment The environment variables
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    environment(environment) {
+        this._environment = environment;
+        return this;
     }
 
-    var ShortcutInfoDTOBuilderClass = Java.type('org.phoenicis.library.dto.ShortcutInfoDTO.Builder');
-    var info = new ShortcutInfoDTOBuilderClass()
-        .withCategory(this._category)
-        .withName(this._name)
-        .withDescription(this._description)
-        .build();
-
-    var ShortcutDTOBuilderClass = Java.type('org.phoenicis.library.dto.ShortcutDTO.Builder');
-    var builder = new ShortcutDTOBuilderClass()
-        .withId(this._name)
-        .withInfo(info)
-        .withScript(JSON.stringify({
-            type: "WINE",
-            wineDebug: "-all",
-            winePrefix: this._prefix,
-            arguments: this._arguments,
-            workingDirectory:executables[0].getParentFile().getAbsolutePath(),
-            executable: executables[0].getAbsolutePath()
-        }));
-
-    if (this._miniature) {
-        builder.withMiniature(this._miniature);
+    /**
+     * Sets the trust level
+     *
+     * @param {string} trustLevel The trust level
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    trustLevel(trustLevel) {
+        this._trustLevel = trustLevel;
+        return this;
     }
 
-    this._shortcutManager.createShortcut(builder.build());
+    /**
+     * Creates a new shortcut
+     *
+     * @returns {void}
+     */
+    create() {
+        const shortcutPrefixDirectory = this._winePrefixesDirectory + "/" + this._prefix;
+
+        const executables = this._fileSearcher.search(shortcutPrefixDirectory, this._search);
+
+        if (executables.length == 0) {
+            throw tr("Executable {0} not found!", this._search);
+        }
+
+        const info = new ShortcutInfoDTOBuilderClass()
+            .withCategory(this._category)
+            .withName(this._name)
+            .withDescription(this._description)
+            .build();
+
+        const myEnv = { WINEDEBUG: "-all" };
+        if (typeof this._environment !== "undefined") {
+            var envJSON = JSON.parse(this._environment);
+            Object.keys(envJSON).forEach(function (key) {
+                myEnv[key] = envJSON[key];
+            });
+        }
+
+        let trustLevel;
+        if (typeof this._trustLevel !== "undefined") {
+            trustLevel = this._trustLevel;
+        } else {
+            trustLevel = "0"; //dummy value
+        }
+
+        const builder = new ShortcutDTOBuilderClass()
+            .withId(this._name)
+            .withInfo(info)
+            .withScript(
+                JSON.stringify({
+                    type: "WINE",
+                    environment: myEnv,
+                    trustLevel: trustLevel,
+                    winePrefix: this._prefix,
+                    arguments: this._arguments,
+                    workingDirectory: executables[0].getParentFile().getAbsolutePath(),
+                    executable: executables[0].getAbsolutePath()
+                })
+            );
+
+        if (this._miniature) {
+            builder.withMiniature(this._miniature);
+        }
+
+        this._shortcutManager.createShortcut(builder.build());
+    }
 }
 </code></pre>
         </article>
@@ -184,13 +234,13 @@ WineShortcut.prototype.create = function () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdobeAir.html">AdobeAir</a></li><li><a href="Amstream.html">Amstream</a></li><li><a href="Atmlib.html">Atmlib</a></li><li><a href="Corefonts.html">Corefonts</a></li><li><a href="Crypt32.html">Crypt32</a></li><li><a href="D3drm.html">D3drm</a></li><li><a href="D3DX9.html">D3DX9</a></li><li><a href="D3DX10.html">D3DX10</a></li><li><a href="D3DX11.html">D3DX11</a></li><li><a href="Devenum.html">Devenum</a></li><li><a href="DotNET20.html">DotNET20</a></li><li><a href="DotNET20SP2.html">DotNET20SP2</a></li><li><a href="DotNET40.html">DotNET40</a></li><li><a href="DotNET45.html">DotNET45</a></li><li><a href="DotNET46.html">DotNET46</a></li><li><a href="DotNET452.html">DotNET452</a></li><li><a href="DotNET461.html">DotNET461</a></li><li><a href="DotNET462.html">DotNET462</a></li><li><a href="DotNET472.html">DotNET472</a></li><li><a href="DXVK.html">DXVK</a></li><li><a href="FAudio.html">FAudio</a></li><li><a href="Gallium9.html">Gallium9</a></li><li><a href="GDIPlus.html">GDIPlus</a></li><li><a href="GDIPlusWinXP.html">GDIPlusWinXP</a></li><li><a href="Luna.html">Luna</a></li><li><a href="Mfc42.html">Mfc42</a></li><li><a href="module.CabExtract.html">CabExtract</a></li><li><a href="module.Checksum.html">Checksum</a></li><li><a href="module.default.html">default</a></li><li><a href="module.Extractor.html">Extractor</a></li><li><a href="Msls31.html">Msls31</a></li><li><a href="Mspatcha.html">Mspatcha</a></li><li><a href="Msxml3.html">Msxml3</a></li><li><a href="Msxml6.html">Msxml6</a></li><li><a href="PhysX.html">PhysX</a></li><li><a href="Quartz.html">Quartz</a></li><li><a href="QuickTime76.html">QuickTime76</a></li><li><a href="RemoveMono.html">RemoveMono</a></li><li><a href="Sandbox.html">Sandbox</a></li><li><a href="Secur32.html">Secur32</a></li><li><a href="Tahoma.html">Tahoma</a></li><li><a href="Uplay.html">Uplay</a></li><li><a href="Vcrun6SP6.html">Vcrun6SP6</a></li><li><a href="Vcrun2003.html">Vcrun2003</a></li><li><a href="Vcrun2005.html">Vcrun2005</a></li><li><a href="Vcrun2008.html">Vcrun2008</a></li><li><a href="Vcrun2010.html">Vcrun2010</a></li><li><a href="Vcrun2012.html">Vcrun2012</a></li><li><a href="Vcrun2013.html">Vcrun2013</a></li><li><a href="Vcrun2015.html">Vcrun2015</a></li><li><a href="Vcrun2017.html">Vcrun2017</a></li><li><a href="VK9.html">VK9</a></li><li><a href="VulkanSDK.html">VulkanSDK</a></li><li><a href="WindowsXPSP3.html">WindowsXPSP3</a></li><li><a href="Xact.html">Xact</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#getScreenHeight">getScreenHeight</a></li><li><a href="global.html#getScreenWidth">getScreenWidth</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a>
 </footer>
 
 <script> prettyPrint(); </script>

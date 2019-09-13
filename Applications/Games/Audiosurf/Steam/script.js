@@ -1,23 +1,16 @@
-include("engines.wine.quick_script.steam_script");
-include("engines.wine.verbs.quicktime76");
-include("engines.wine.verbs.corefonts");
-include("engines.wine.verbs.tahoma");
+const SteamScript = include("engines.wine.quick_script.steam_script");
 
-var installerImplementation = {
-    run: function () {
-        new SteamScript()
-            .name("Audiosurf")
-            .editor("Dylan Fitterer")
-            .author("Brainzyy")
-            .appId(12900)
-            .preInstall(function (wine/*, wizard*/) {
-                wine.quicktime76();
-                wine.corefonts();
-                wine.tahoma();
-            })
-            .go();
-    }
-};
+const QuickTime76 = include("engines.wine.verbs.quicktime76");
+const Corefonts = include("engines.wine.verbs.corefonts");
+const Tahoma = include("engines.wine.verbs.tahoma");
 
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
+new SteamScript()
+    .name("Audiosurf")
+    .editor("Dylan Fitterer")
+    .author("Brainzyy")
+    .appId(12900)
+    .preInstall(function (wine /*, wizard*/) {
+        new QuickTime76(wine).go();
+        new Corefonts(wine).go();
+        new Tahoma(wine).go();
+    });

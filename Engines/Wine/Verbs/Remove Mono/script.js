@@ -1,46 +1,55 @@
-include("engines.wine.engine.object");
-include("utils.functions.filesystem.files");
+const Wine = include("engines.wine.engine.object");
+const { remove } = include("utils.functions.filesystem.files");
+
+const Optional = Java.type("java.util.Optional");
+
 include("engines.wine.plugins.regedit");
 
 /**
-* Verb to remove mono
-* @returns {Wine} Wine object
-*/
-Wine.prototype.removeMono = function () {
-    if (this.uninstall("Mono"))
-    {
-        this.wizard().wait(tr("Please wait..."));
-        this.regedit().deleteKey("HKLM\\Software\\Microsoft\\.NETFramework\\v2.0.50727\\SBSDisabled");
+ * Verb to remove mono
+ */
+class RemoveMono {
+    constructor(wine) {
+        this.wine = wine;
+    }
 
-        this.wizard().wait(tr("Please wait..."));
-        this.regedit().deleteKey("HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v3.5");
+    go() {
+        const wizard = this.wine.wizard();
+        const system32directory = this.wine.system32directory();
+        const system64directory = this.wine.system64directory();
 
-        this.wizard().wait(tr("Please wait..."));
-        this.regedit().deleteKey("HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v4");
+        if (this.wine.uninstall("Mono")) {
+            wizard.wait(tr("Please wait..."));
 
-        remove(this.system32directory() + "/mscoree.dll");
-        if (this.architecture() == "amd64")
-        {
-            remove(this.system64directory() + "/mscoree.dll");
+            this.wine.regedit().deleteKey("HKLM\\Software\\Microsoft\\.NETFramework\\v2.0.50727\\SBSDisabled");
+
+            wizard.wait(tr("Please wait..."));
+
+            this.wine.regedit().deleteKey("HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v3.5");
+
+            wizard.wait(tr("Please wait..."));
+
+            this.wine.regedit().deleteKey("HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v4");
+
+            remove(`${system32directory}/mscoree.dll`);
+
+            if (this.wine.architecture() == "amd64") {
+                remove(`${system64directory}/mscoree.dll`);
+            }
         }
     }
 
-    return this;
-};
+    static install(container) {
+        const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "remove_mono", Optional.empty());
 
-/**
- * Verb to remove mono
-*/
-var verbImplementation = {
-    install: function (container) {
-        var wine = new Wine();
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "remove_mono", java.util.Optional.empty());
         wine.wizard(wizard);
-        wine.removeMono();
+
+        new RemoveMono(wine).go();
+
         wizard.close();
     }
-};
+}
 
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+module.default = RemoveMono;

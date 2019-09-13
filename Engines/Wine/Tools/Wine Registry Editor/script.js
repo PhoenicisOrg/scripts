@@ -1,16 +1,19 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+
 include("engines.wine.plugins.regedit");
 
 /**
- * tool to open the Wine registry editor
-*/
-var toolImplementation = {
-    run: function (container) {
+ * Tool to open the Wine registry editor
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class WineRegistryEditorTool {
+    constructor() {
+        // do nothing
+    }
+
+    run(container) {
         new Wine()
             .prefix(container)
             .run("regedit", [], null, false, true);
     }
-};
-
-/* exported Tool */
-var Tool = Java.extend(org.phoenicis.engines.EngineTool, toolImplementation);
+}

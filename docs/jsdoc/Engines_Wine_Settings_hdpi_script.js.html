@@ -26,37 +26,41 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>include("engines.wine.engine.object");
+            <pre class="prettyprint source linenums"><code>const Wine = include("engines.wine.engine.object");
+
 include("engines.wine.plugins.hdpi");
 
 /**
- * setting to enable/disable Retina
-*/
-var settingImplementation = {
-    _options: [tr("Disabled"), tr("Enabled")],
+ * Setting to enable/disable Retina
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class HDPISetting {
+    constructor() {
+        this.options = [tr("Disabled"), tr("Enabled")];
+    }
 
-    getText: function () {
+    getText() {
         return tr("Retina support");
-    },
-    getOptions: function () {
-        return this._options;
-    },
-    getCurrentOption: function (container) {
+    }
+
+    getOptions() {
+        return this.options;
+    }
+
+    getCurrentOption(container) {
         var currentValue = new Wine()
             .prefix(container)
             .hdpi();
 
-        return currentValue ? this._options[1] : this._options[0];
-    },
-    setOption: function (container, optionIndex) {
+        return currentValue ? this.options[1] : this.options[0];
+    }
+
+    setOption(container, optionIndex) {
         new Wine()
             .prefix(container)
             .hdpi(1 == optionIndex);
     }
-};
-
-/* exported Setting */
-var Setting = Java.extend(org.phoenicis.engines.EngineSetting, settingImplementation);
+}
 </code></pre>
         </article>
     </section>
@@ -67,13 +71,13 @@ var Setting = Java.extend(org.phoenicis.engines.EngineSetting, settingImplementa
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdobeAir.html">AdobeAir</a></li><li><a href="Amstream.html">Amstream</a></li><li><a href="Atmlib.html">Atmlib</a></li><li><a href="Corefonts.html">Corefonts</a></li><li><a href="Crypt32.html">Crypt32</a></li><li><a href="D3drm.html">D3drm</a></li><li><a href="D3DX9.html">D3DX9</a></li><li><a href="D3DX10.html">D3DX10</a></li><li><a href="D3DX11.html">D3DX11</a></li><li><a href="Devenum.html">Devenum</a></li><li><a href="DotNET20.html">DotNET20</a></li><li><a href="DotNET20SP2.html">DotNET20SP2</a></li><li><a href="DotNET40.html">DotNET40</a></li><li><a href="DotNET45.html">DotNET45</a></li><li><a href="DotNET46.html">DotNET46</a></li><li><a href="DotNET452.html">DotNET452</a></li><li><a href="DotNET461.html">DotNET461</a></li><li><a href="DotNET462.html">DotNET462</a></li><li><a href="DotNET472.html">DotNET472</a></li><li><a href="DXVK.html">DXVK</a></li><li><a href="FAudio.html">FAudio</a></li><li><a href="Gallium9.html">Gallium9</a></li><li><a href="GDIPlus.html">GDIPlus</a></li><li><a href="GDIPlusWinXP.html">GDIPlusWinXP</a></li><li><a href="Luna.html">Luna</a></li><li><a href="Mfc42.html">Mfc42</a></li><li><a href="module.CabExtract.html">CabExtract</a></li><li><a href="module.Checksum.html">Checksum</a></li><li><a href="module.default.html">default</a></li><li><a href="module.Extractor.html">Extractor</a></li><li><a href="Msls31.html">Msls31</a></li><li><a href="Mspatcha.html">Mspatcha</a></li><li><a href="Msxml3.html">Msxml3</a></li><li><a href="Msxml6.html">Msxml6</a></li><li><a href="PhysX.html">PhysX</a></li><li><a href="Quartz.html">Quartz</a></li><li><a href="QuickTime76.html">QuickTime76</a></li><li><a href="RemoveMono.html">RemoveMono</a></li><li><a href="Sandbox.html">Sandbox</a></li><li><a href="Secur32.html">Secur32</a></li><li><a href="Tahoma.html">Tahoma</a></li><li><a href="Uplay.html">Uplay</a></li><li><a href="Vcrun6SP6.html">Vcrun6SP6</a></li><li><a href="Vcrun2003.html">Vcrun2003</a></li><li><a href="Vcrun2005.html">Vcrun2005</a></li><li><a href="Vcrun2008.html">Vcrun2008</a></li><li><a href="Vcrun2010.html">Vcrun2010</a></li><li><a href="Vcrun2012.html">Vcrun2012</a></li><li><a href="Vcrun2013.html">Vcrun2013</a></li><li><a href="Vcrun2015.html">Vcrun2015</a></li><li><a href="Vcrun2017.html">Vcrun2017</a></li><li><a href="VK9.html">VK9</a></li><li><a href="VulkanSDK.html">VulkanSDK</a></li><li><a href="WindowsXPSP3.html">WindowsXPSP3</a></li><li><a href="Xact.html">Xact</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#getScreenHeight">getScreenHeight</a></li><li><a href="global.html#getScreenWidth">getScreenWidth</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a>
 </footer>
 
 <script> prettyPrint(); </script>

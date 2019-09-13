@@ -1,51 +1,49 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+
+const Optional = Java.type("java.util.Optional");
+
 include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
-include("engines.wine.verbs.luna");
-
-/**
-* Verb to install vcrun2005
-* @returns {Wine} Wine object
-*/
-Wine.prototype.vcrun2005 = function () {
-    var setupFile = new Resource()
-        .wizard(this.wizard())
-        .url("http://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x86.EXE")
-        .checksum("b8fab0bb7f62a24ddfe77b19cd9a1451abd7b847")
-        .name("vcredist_x86.EXE")
-        .get();
-
-    this.wizard().wait(tr("Please wait while {0} is installed...", "Microsoft Visual C++ 2005 Redistributable (x86)"));
-    this.run(setupFile, "/q", null, false, true);
-
-    var dlls = [
-        "atl80",
-        "msvcm80",
-        "msvcp80",
-        "msvcr80",
-        "vcomp"
-    ];
-    this.overrideDLL()
-        .set("native, builtin", dlls)
-        .do();
-
-    return this;
-};
 
 /**
  * Verb to install vcrun2005
-*/
-var verbImplementation = {
-    install: function (container) {
-        var wine = new Wine();
+ */
+class Vcrun2005 {
+    constructor(wine) {
+        this.wine = wine;
+    }
+
+    go() {
+        const wizard = this.wine.wizard();
+
+        const setupFile = new Resource()
+            .wizard(wizard)
+            .url("http://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x86.EXE")
+            .checksum("b8fab0bb7f62a24ddfe77b19cd9a1451abd7b847")
+            .name("vcredist_x86.EXE")
+            .get();
+
+        wizard.wait(tr("Please wait while {0} is installed...", "Microsoft Visual C++ 2005 Redistributable (x86)"));
+
+        this.wine.run(setupFile, "/q", null, false, true);
+
+        this.wine
+            .overrideDLL()
+            .set("native, builtin", ["atl80", "msvcm80", "msvcp80", "msvcr80", "vcomp"])
+            .do();
+    }
+
+    install(container) {
+        const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "vcrun2005", Optional.empty());
+
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "vcrun2005", java.util.Optional.empty());
         wine.wizard(wizard);
-        wine.vcrun2005();
+
+        new Vcrun2005(wine).go();
+
         wizard.close();
     }
-};
+}
 
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+module.default = Vcrun2005;

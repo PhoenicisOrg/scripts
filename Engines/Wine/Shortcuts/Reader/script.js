@@ -1,122 +1,127 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
+const {WINE_PREFIX_DIR} = include("engines.wine.engine.constants");
+const {remove} = include("utils.functions.filesystem.files");
 
-var _WineShortcutReader = function (shortcut) {
-    var that = this;
-    that._shortcutManager = Bean("shortcutManager");
-    that._libraryManager = Bean("libraryManager");
-    that._uiQuestionFactory = Bean("uiQuestionFactory");
-    that._winePrefixesDirectory = Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
+class WineShortcutReader {
+    constructor(shortcut) {
+        this.shortcut = shortcut;
 
-    this.shortcut = shortcut;
+        this.shortcutManager = Bean("shortcutManager");
+        this.libraryManager = Bean("libraryManager");
+        this.uiQuestionFactory = Bean("uiQuestionFactory");
+        this.winePrefixesDirectory =
+            Bean("propertyReader").getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
 
-    this.wineprefix = function () {
-        var shortcutContent = JSON.parse(this.shortcut.script);
-        return shortcutContent.winePrefix;
-    };
+        this.shortcutContent = JSON.parse(this.shortcut.script);
+    }
 
-    this.container = this.wineprefix;
+    get container() {
+        return this.shortcutContent.winePrefix;
+    }
 
-    this.run = function (userArguments) {
-        var shortcutContent = JSON.parse(this.shortcut.script);
-
+    run(userArguments) {
         if (!userArguments) {
             userArguments = [];
         }
 
-        var args = (shortcutContent.arguments ? shortcutContent.arguments : []).concat(Java.from(userArguments));
+        let shortcutArguments = this.shortcutContent.arguments;
+        if (!shortcutArguments) {
+            shortcutArguments = [];
+        }
 
-        var userData = {};
-        userData["wineDebug"] = shortcutContent.wineDebug;
+        const args = shortcutArguments.concat(Java.from(userArguments));
+
+        const userData = {
+            environment: this.shortcutContent.environment,
+            trustLevel: this.shortcutContent.trustLevel
+        };
+
         new Wine()
-            .prefix(shortcutContent.winePrefix)
-            .run(shortcutContent.executable, args, shortcutContent.workingDirectory, false, false, userData)
-    };
+            .prefix(this.container)
+            .run(this.shortcutContent.executable, args, this.shortcutContent.workingDirectory, false, false, userData);
+    }
 
+    stop() {
+        new Wine().prefix(this.shortcutContent.winePrefix).kill();
+    }
 
-    this.stop = function () {
-        var shortcutContent = JSON.parse(this.shortcut.script);
+    uninstall() {
+        const found = Java.from(this.libraryManager.fetchShortcuts())
+            .flatMap(shortcutCategory => shortcutCategory.getShortcuts())
+            .some(shortcut => {
+                const otherShortcutContent = JSON.parse(shortcut.script);
 
-        new Wine()
-            .prefix(shortcutContent.winePrefix)
-            .kill()
-    };
-
-    this.uninstall = function () {
-        var shortcutContent = JSON.parse(this.shortcut.script);
-        var _winePrefix = shortcutContent.winePrefix;
-
-        var _found = false;
-        this._libraryManager.fetchShortcuts().forEach(function (shortcutCategory) {
-            shortcutCategory.getShortcuts().forEach(function (shortcut) {
-                var _otherShortcutContent = JSON.parse(shortcut.script);
-
-                if (_otherShortcutContent.winePrefix == _winePrefix && shortcut.name != that.shortcut.name) {
-                    _found = true;
-                }
+                return otherShortcutContent.winePrefix == this.container && shortcut.name != this.shortcut.name;
             });
-        });
 
-        this._shortcutManager.deleteShortcut(this.shortcut);
+        this.shortcutManager.deleteShortcut(this.shortcut);
 
-        if (!_found) {
-            this._uiQuestionFactory.create(tr("The container {0} is no longer used.\nDo you want to delete it?", _winePrefix),
-                function () {
-                    remove(that._winePrefixesDirectory + _winePrefix);
-                });
+        if (!found) {
+            this.uiQuestionFactory.create(
+                tr("The container {0} is no longer used.\nDo you want to delete it?", this.container),
+                () => remove(this.winePrefixesDirectory + this.container)
+            );
         }
     }
-};
-
-/**
-* ShortcutReader prototype
-* @constructor
-*/
-function ShortcutReader() {
 }
 
-/**
-* sets shortcut
-* @param {string} shortcut shortcut
-* @returns {void}
-*/
-ShortcutReader.prototype.of = function (shortcut) {
-    this.shortcut = shortcut;
-    var shortcutContentParsed = JSON.parse(this.shortcut.script);
-
-    if (shortcutContentParsed.type == "WINE") {
-        this._runner = new _WineShortcutReader(this.shortcut);
+module.default = class ShortcutReader {
+    constructor() {
+        // do nothing
     }
-}
 
-/**
-* runs shortcut
-* @param {array} userArguments arguments
-* @returns {void}
-*/
-ShortcutReader.prototype.run = function (userArguments) {
-    this._runner.run(userArguments);
-}
+    /**
+     * Sets shortcut
+     *
+     * @param {string} shortcut shortcut
+     * @returns {void}
+     */
+    of(shortcut) {
+        const shortcutContentParsed = JSON.parse(shortcut.script);
 
-/**
-* stops running shortcut
-* @returns {void}
-*/
-ShortcutReader.prototype.stop = function () {
-    this._runner.stop();
-}
+        switch (shortcutContentParsed.type) {
+            case "WINE":
+                this.runner = new WineShortcutReader(shortcut);
+                break;
+            default:
+                throw new Error(`Unknown container type ${shortcutContentParsed.type}`);
+        }
+    }
 
-/**
-* uninstalls shortcut
-* @returns {void}
-*/
-ShortcutReader.prototype.uninstall = function () {
-    this._runner.uninstall();
-}
+    /**
+     * Returns the name of the container belonging to a shortcut
+     *
+     * @returns {string} The container name
+     */
+    getContainer() {
+        return this.runner.container;
+    }
 
-/**
-* returns container of shortcut
-* @returns {string} container
-*/
-ShortcutReader.prototype.container = function () {
-    return this._runner.container();
+    /**
+     * Runs a shortcut with the given user arguments
+     *
+     * @param {array} userArguments The user arguments
+     * @returns {void}
+     */
+    run(userArguments) {
+        this.runner.run(userArguments);
+    }
+
+    /**
+     * Stops the running shortcut
+     *
+     * @returns {void}
+     */
+    stop() {
+        this.runner.stop();
+    }
+
+    /**
+     * Uninstalls the shortcut
+     *
+     * @returns {void}
+     */
+    uninstall() {
+        this.runner.uninstall();
+    }
 }

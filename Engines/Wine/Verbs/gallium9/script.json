@@ -1,0 +1,10 @@
+{
+    "scriptName"                 : "gallium9",
+    "id"                         : "engines.wine.verbs.gallium9",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

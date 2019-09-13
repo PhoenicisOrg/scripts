@@ -1,14 +1,12 @@
-include("engines.wine.quick_script.installer_script");
+const InstallerScript = include("engines.wine.quick_script.installer_script");
 
-function CustomInstallerScript() {
-    InstallerScript.call(this);
+module.default = class CustomInstallerScript extends InstallerScript {
+    constructor() {
+        super();
+    }
+
+    installationCommand(installationCommand) {
+        this._installationCommand = installationCommand;
+        return this;
+    }
 }
-
-CustomInstallerScript.prototype = Object.create(InstallerScript.prototype);
-
-CustomInstallerScript.prototype.constructor = CustomInstallerScript;
-
-CustomInstallerScript.prototype.installationCommand = function (installationCommand) {
-    this._installationCommand = installationCommand;
-    return this;
-};

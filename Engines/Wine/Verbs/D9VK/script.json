@@ -1,0 +1,12 @@
+{
+    "scriptName"                 : "D9VK",
+    "id"                         : "engines.wine.verbs.d9vk",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "LINUX"
+    ],
+    "free"          : true,
+    "requiresPatch" : false
+}

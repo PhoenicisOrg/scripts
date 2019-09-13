@@ -1,144 +1,169 @@
-include("utils.functions.filesystem.files");
+const {mkdir} = include("utils.functions.filesystem.files");
+
+const extractor = Bean("extractor");
+
+const ProcessBuilderClass = Java.type("java.lang.ProcessBuilder");
+const FileClass = Java.type("java.io.File");
 
 /**
-* CabExtract prototype
-* @constructor
-*/
-function CabExtract() {
-}
-
-/**
-* sets wizard
-* @param {SetupWizard} wizard setup wizard
-* @returns {CabExtract} CabExtract object
-*/
-CabExtract.prototype.wizard = function (wizard) {
-    this._wizard = wizard;
-    return this;
-}
-
-/**
-* sets archive
-* @param {string} archive archive which shall be extracted
-* @returns {CabExtract} CabExtract object
-*/
-CabExtract.prototype.archive = function (archive) {
-    this._archive = archive;
-    return this;
-}
-
-/**
-* sets progress message text
-* @param {string} progressMessage progress message
-* @returns {CabExtract} CabExtract object
-*/
-CabExtract.prototype.message = function (progressMessage) {
-    this._progressMessage = progressMessage;
-    return this;
-}
-
-/**
-* sets destination
-* @param {string} destination place where the archive shall be extracted
-* @returns {CabExtract} CabExtract object
-*/
-CabExtract.prototype.to = function (destination) {
-    this._destination = destination;
-    return this;
-}
-
-/**
-* extracts archive
-* @param {string} args arguments for the extraction
-* @returns {void}
-*/
-CabExtract.prototype.extract = function (args) {
-    if (!this._progressMessage) {
-        this._progressMessage = tr("Please wait while {0} is extracted...", this._archive);
+ * CabExtract class
+ */
+module.CabExtract = class CabExtract {
+    constructor() {
+        // do nothing
     }
 
-    if (this._wizard) {
-        var progressBar = this._wizard.progressBar(this._progressMessage);
+    /**
+     * Sets the setup wizard
+     *
+     * @param {SetupWizard} wizard The setup wizard
+     * @returns {CabExtract} The CabExtract object
+     */
+    wizard(wizard) {
+        this._wizard = wizard;
+        return this;
     }
 
-    var processArguments;
-    if (args) {
-        processArguments = ["cabextract"].concat(args).concat([this._archive]);
-    } else {
-        processArguments = ["cabextract", this._archive];
+    /**
+     * Sets the CAB archive
+     *
+     * @param {string} archive The CAB archive which shall be extracted
+     * @returns {CabExtract} The CabExtract object
+     */
+    archive(archive) {
+        this._archive = archive;
+        return this;
     }
 
-    print("Extracting to: " + this._destination);
-    mkdir(this._destination);
-    var ProcessBuilderClass = Java.type('java.lang.ProcessBuilder');
-    var processBuilder = new ProcessBuilderClass(Java.to(processArguments, "java.lang.String[]"));
-    var FileClass = Java.type('java.io.File');
-    processBuilder.directory(new FileClass(this._destination));
-    processBuilder.inheritIO();
-    processBuilder.start().waitFor();
-}
-
-/**
-* Extractor prototype
-* @constructor
-*/
-function Extractor() {
-    this._extractor = Bean("extractor");
-}
-
-/**
-* sets wizard
-* @param {SetupWizard} wizard setup wizard
-* @returns {Extractor} Extractor object
-*/
-Extractor.prototype.wizard = function (wizard) {
-    this._wizard = wizard;
-    return this;
-}
-
-/**
-* sets archive
-* @param {string} archive archive which shall be extracted
-* @returns {Extractor} Extractor object
-*/
-Extractor.prototype.archive = function (archive) {
-    this._archive = archive;
-    return this;
-}
-
-/**
-* sets progress message text
-* @param {string} progressMessage progress message
-* @returns {Extractor} Extractor object
-*/
-Extractor.prototype.message = function (progressMessage) {
-    this._progressMessage = progressMessage;
-    return this;
-}
-
-/**
-* sets destination
-* @param {string} destination place where the archive shall be extracted
-* @returns {Extractor} Extractor object
-*/
-Extractor.prototype.to = function (destination) {
-    this._destination = destination;
-    return this;
-}
-
-/**
-* extracts archive
-* @returns {void}
-*/
-Extractor.prototype.extract = function () {
-    if (!this._progressMessage) {
-        this._progressMessage = tr("Please wait while {0} is extracted...", this._archive);
+    /**
+     * Sets the progress message text
+     *
+     * @param {string} progressMessage The progress message
+     * @returns {CabExtract} The CabExtract object
+     */
+    message(progressMessage) {
+        this._progressMessage = progressMessage;
+        return this;
     }
 
-    var progressBar = this._wizard.progressBar(this._progressMessage);
+    /**
+     * Sets the destination for the extracted archive content
+     *
+     * @param {string} destination The place where the archive shall be extracted
+     * @returns {CabExtract} The CabExtract object
+     */
+    to(destination) {
+        this._destination = destination;
+        return this;
+    }
 
-    mkdir(this._destination);
-    this._extractor.uncompress(this._archive, this._destination, function (progress) {
-        progressBar.accept(progress);
-    });
+    /**
+     * Extracts the archive to the previously set destination
+     *
+     * @param {string} args The arguments for the extraction
+     * @returns {void}
+     */
+    extract(args) {
+        if (this._wizard) {
+            let progressMessage = this._progressMessage;
+            if (!progressMessage) {
+                progressMessage = tr("Please wait while {0} is extracted...", this._archive);
+            }
+
+            this._wizard.progressBar(progressMessage);
+        }
+
+        let processArguments;
+        if (args) {
+            processArguments = ["cabextract"].concat(args).concat([this._archive]);
+        } else {
+            processArguments = ["cabextract", this._archive];
+        }
+
+        print("Extracting to: " + this._destination);
+        mkdir(this._destination);
+
+        const process = new ProcessBuilderClass()
+            .command(Java.to(processArguments, "java.lang.String[]"))
+            .directory(new FileClass(this._destination))
+            .inheritIO()
+            .start();
+
+        process.waitFor();
+    }
+}
+
+/**
+ * Extractor class
+ */
+module.Extractor = class Extractor {
+    constructor() {
+        // nothing to do
+    }
+
+    /**
+     * Sets the setup wizard
+     *
+     * @param {SetupWizard} wizard The setup wizard
+     * @returns {Extractor} The Extractor object
+     */
+    wizard(wizard) {
+        this._wizard = wizard;
+        return this;
+    }
+
+    /**
+     * Sets the archive
+     *
+     * @param {string} archive The archive which shall be extracted
+     * @returns {Extractor} The Extractor object
+     */
+    archive(archive) {
+        this._archive = archive;
+        return this;
+    }
+
+    /**
+     * Sets the progress message text
+     *
+     * @param {string} progressMessage The progress message
+     * @returns {Extractor} The Extractor object
+     */
+    message(progressMessage) {
+        this._progressMessage = progressMessage;
+        return this;
+    }
+
+    /**
+     * Sets the destination for the extracted archive content
+     *
+     * @param {string} destination The place where the archive shall be extracted
+     * @returns {Extractor} The Extractor object
+     */
+    to(destination) {
+        this._destination = destination;
+        return this;
+    }
+
+    /**
+     * Extracts the archive to the previously set destination
+     *
+     * @returns {void}
+     */
+    extract() {
+        if (!this._wizard) {
+            throw new Error(`No setup wizard specified`);
+        }
+
+        let progressMessage = this._progressMessage;
+        if (!progressMessage) {
+            progressMessage = tr("Please wait while {0} is extracted...", this._archive);
+        }
+
+        const progressBar = this._wizard.progressBar(progressMessage);
+
+        mkdir(this._destination);
+
+        extractor.uncompress(this._archive, this._destination, progress => progressBar.accept(progress));
+    }
 }

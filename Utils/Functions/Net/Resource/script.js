@@ -1,110 +1,121 @@
-include("utils.functions.net.download");
-include("utils.functions.filesystem.files");
+const Downloader = include("utils.functions.net.download");
+const {mkdir, fileExists, Checksum} = include("utils.functions.filesystem.files");
+
+const propertyReader = Bean("propertyReader");
 
 /**
-* Resource prototype
-* @constructor
-*/
-function Resource() {
-    this._algorithm = "SHA";
-    this._resourcesPath = Bean("propertyReader").getProperty("application.user.resources");
-    this._directory = "";
-}
-
-/**
-* sets wizard
-* @param {SetupWizard} wizard setup wizard
-* @returns {Resource} Resource object
-*/
-Resource.prototype.wizard = function (wizard) {
-    this._wizard = wizard;
-    return this;
-}
-
-/**
-* sets algorithm
-* @param {string} algorithm algorithm to verify the checksum (e.g. "SHA")
-* @returns {Resource} Resource object
-*/
-Resource.prototype.algorithm = function (algorithm) {
-    this._algorithm = algorithm;
-    return this;
-}
-
-/**
-* sets name
-* @param {string} name name of the resource
-* @returns {Resource} Resource object
-*/
-Resource.prototype.name = function (name) {
-    this._name = name;
-    return this;
-}
-
-/**
-* sets checksum which shall be used to verify the resource
-* @param {string} checksum checksum
-* @returns {Resource} Resource object
-*/
-Resource.prototype.checksum = function (checksum) {
-    this._checksum = checksum;
-    return this;
-}
-
-/**
-* sets URL
-* @param {string} url URL
-* @returns {Resource} Resource object
-*/
-Resource.prototype.url = function (url) {
-    this._url = url;
-    return this;
-}
-
-/**
-* sets directory inside the resource directory where the Resource is stored
-* @param {string} directory directory path
-* @returns {Resource} Resource object
-*/
-Resource.prototype.directory = function (directory) {
-    this._directory = directory;
-    return this;
-}
-
-/**
-* returns the Resource
-* @returns {Resource} downloaded Resource object
-*/
-Resource.prototype.get = function () {
-    if (!this._message) {
-        this._message = tr("Please wait while {0} is downloaded...", this._name);
+ * Resource class
+ */
+module.default = class Resource {
+    constructor() {
+        this._resourcesPath = propertyReader.getProperty("application.user.resources");
+        this._algorithm = "SHA";
+        this._directory = "";
     }
 
-    var resourcesPath = this._resourcesPath + "/" + this._directory;
-    mkdir(resourcesPath);
+    /**
+     * Sets the setup wizard
+     *
+     * @param {SetupWizard} wizard The setup wizard
+     * @returns {Resource} The Resource object
+     */
+    wizard(wizard) {
+        this._wizard = wizard;
+        return this;
+    }
 
-    var resourcePath = resourcesPath + "/" + this._name;
+    /**
+     * Sets the checksum algorithm
+     *
+     * @param {string} algorithm The algorithm to verify the checksum (e.g. "SHA")
+     * @returns {Resource} The Resource object
+     */
+    algorithm(algorithm) {
+        this._algorithm = algorithm;
+        return this;
+    }
 
-    if (fileExists(resourcePath)) {
-        var fileChecksum = new Checksum()
+    /**
+     * Sets the resource name
+     *
+     * @param {string} name The name of the resource
+     * @returns {Resource} The Resource object
+     */
+    name(name) {
+        this._name = name;
+        return this;
+    }
+
+    /**
+     * Sets the checksum which shall be used to verify the resource
+     *
+     * @param {string} checksum The checksum
+     * @returns {Resource} The Resource object
+     */
+    checksum(checksum) {
+        this._checksum = checksum;
+        return this;
+    }
+
+    /**
+     * Sets the resource URL
+     *
+     * @param {string} url The URL
+     * @returns {Resource} The Resource object
+     */
+    url(url) {
+        this._url = url;
+        return this;
+    }
+
+    /**
+     * Sets the directory inside the resources directory where the Resource is stored
+     *
+     * @param {string} directory The directory path
+     * @returns {Resource} The Resource object
+     */
+    directory(directory) {
+        this._directory = directory;
+        return this;
+    }
+
+    /**
+     * Fetches the Resource and returns the path leading to the downloaded resource
+     *
+     * @returns {string} The path leading to the downloaded resource
+     */
+    get() {
+        if (!this._message) {
+            this._message = tr("Please wait while {0} is downloaded...", this._name);
+        }
+
+        const resourcesPath = this._resourcesPath + "/" + this._directory;
+
+        mkdir(resourcesPath);
+
+        const resourcePath = resourcesPath + "/" + this._name;
+
+        if (fileExists(resourcePath)) {
+            const fileChecksum = new Checksum()
+                .wizard(this._wizard)
+                .of(resourcePath)
+                .method(this._algorithm)
+                .get();
+
+            if (fileChecksum === this._checksum) {
+                return resourcePath;
+            }
+        }
+
+        new Downloader()
+            .url(this._url)
             .wizard(this._wizard)
-            .of(resourcePath)
-            .method(this._algorithm)
+            .message(this._message)
+            .checksum(this._checksum)
+            .algorithm(this._algorithm)
+            .to(resourcePath)
             .get();
 
-        if (fileChecksum == this._checksum) {
-            return resourcePath;
-        }
+        return resourcePath;
     }
-
-    new Downloader()
-        .url(this._url)
-        .wizard(this._wizard)
-        .message(this._message)
-        .checksum(this._checksum)
-        .algorithm(this._algorithm)
-        .to(resourcePath)
-        .get();
-
-    return resourcePath;
 }

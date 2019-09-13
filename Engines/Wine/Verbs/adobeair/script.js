@@ -1,43 +1,49 @@
-include("engines.wine.engine.object");
-include("utils.functions.net.resource");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+
+const Optional = Java.type("java.util.Optional");
+
 include("engines.wine.plugins.windows_version");
 
 /**
  * Verb to install adobeair
- * @returns {Wine} Wine object
  */
-Wine.prototype.adobeair = function () {
-    var adobeair = new Resource()
-        .wizard(this.wizard())
-        .url("https://airdownload.adobe.com/air/win/download/latest/AdobeAIRInstaller.exe")
-        .checksum("68d26cca4c6c8230d3f7aa850ee227d518288dfc")
-        .name("AdobeAIRInstaller.exe")
-        .get();
+class AdobeAir {
+    constructor(wine) {
+        this.wine = wine;
+    }
 
-    // Using Windows XP to workaround the wine bug 43506
-    // See https://bugs.winehq.org/show_bug.cgi?id=43506
-    var currentWindowsVersion = this.windowsVersion();
-    this.windowsVersion("winxp");
-    this.run(adobeair);
-    this.wait();
-    this.windowsVersion(currentWindowsVersion);
+    go() {
+        const wizard = this.wine.wizard();
+        // Using Windows XP to workaround the wine bug 43506
+        // See https://bugs.winehq.org/show_bug.cgi?id=43506
+        const currentWindowsVersion = this.wine.windowsVersion();
 
-    return this;
-};
+        this.wine.windowsVersion("winxp");
 
-/**
- * Verb to install adobeair
- */
-var verbImplementation = {
-    install: function (container) {
-        var wine = new Wine();
+        const adobeair = new Resource()
+            .wizard(wizard)
+            .url("https://airdownload.adobe.com/air/win/download/latest/AdobeAIRInstaller.exe")
+            .name("AdobeAIRInstaller.exe")
+            .get();
+
+        this.wine.run(adobeair);
+        this.wine.wait();
+
+        this.wine.windowsVersion(currentWindowsVersion);
+    }
+
+    static install(container) {
+        const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "adobeair", Optional.empty());
+
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "adobeair", java.util.Optional.empty());
         wine.wizard(wizard);
-        wine.adobeair();
+
+        new AdobeAir(wine).go();
+
         wizard.close();
     }
-};
+}
 
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
+module.default = AdobeAir;

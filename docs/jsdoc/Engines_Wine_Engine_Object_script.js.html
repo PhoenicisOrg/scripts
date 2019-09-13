@@ -26,343 +26,356 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>include("engines.wine.engine.implementation");
-include("utils.functions.filesystem.files");
-include("utils.functions.filesystem.extract");
-include("utils.functions.net.download");
-include("utils.functions.net.resource");
+            <pre class="prettyprint source linenums"><code>const WineEngine = include("engines.wine.engine.implementation");
+const {fileExists} = include("utils.functions.filesystem.files");
 
-/* exported LATEST_STABLE_VERSION */
-var LATEST_STABLE_VERSION = "4.0";
-/* exported LATEST_DEVELOPMENT_VERSION */
-var LATEST_DEVELOPMENT_VERSION = "4.7";
-/* exported LATEST_STAGING_VERSION */
-var LATEST_STAGING_VERSION = "4.7";
-/* exported LATEST_DOS_SUPPORT_VERSION */
-var LATEST_DOS_SUPPORT_VERSION = "4.0";
+const configFactory = Bean("compatibleConfigFileFormatFactory");
+const operatingSystemFetcher = Bean("operatingSystemFetcher");
+
+const FilenameUtils = Java.type("org.apache.commons.io.FilenameUtils");
+const ProcessBuilderClass = Java.type("java.lang.ProcessBuilder");
 
 /**
  * Wine main prototype
- * @constructor
  */
-function Wine() {
-    this._implementation = new Engine();
-    this._OperatingSystemFetcher = Bean("operatingSystemFetcher");
-}
+// eslint-disable-next-line no-unused-vars
+module.default = class Wine {
+    constructor() {
+        this._implementation = new WineEngine();
+    }
 
-/**
-*
-* @returns {string} architecture ("x86" or "amd64")
-*/
-Wine.prototype.architecture = function () {
-    // get
-    if (arguments.length == 0) {
+    /**
+     *
+     * @returns {string} architecture ("x86" or "amd64")
+     */
+    architecture() {
         if (fileExists(this.prefixDirectory())) {
-            var configFactory = Bean("compatibleConfigFileFormatFactory");
-            var containerConfiguration = configFactory.open(this.prefixDirectory() + "/phoenicis.cfg");
-            var architecture = containerConfiguration.readValue("wineArchitecture", "x86");
+            const containerConfiguration = configFactory.open(this.prefixDirectory() + "/phoenicis.cfg");
+            const architecture = containerConfiguration.readValue("wineArchitecture", "x86");
+
             return architecture;
-        }
-        else {
-            print("Wine prefix \"" + this.prefixDirectory() + "\" does not exist!");
-            return "";
+        } else {
+            throw new Error(`Wine prefix "${this.prefixDirectory()}" does not exist!`);
         }
     }
-};
 
-/**
-*
-* @param {SetupWizard} [wizard]
-* @returns {SetupWizard|Wine}
-*/
-Wine.prototype.wizard = function (wizard) {
-    // get
-    if (arguments.length == 0) {
-        return this._implementation.getWizard();
-    }
+    /**
+     *
+     * @param {SetupWizard} [wizard]
+     * @returns {SetupWizard|Wine}
+     */
+    wizard(wizard) {
+        // get
+        if (arguments.length == 0) {
+            return this._implementation.getWizard();
+        }
 
-    // set
-    this._implementation.setWizard(wizard);
-    return this;
-};
-
-/**
- * @param {String} [path]
- * @returns {String}
- */
-Wine.prototype.winepath = function (path) {
-    return this.run("winepath", ["-w", path], this.prefixDirectory(), true, true);
-}
-
-/**
-*
-* @param {string} [prefix]
-* @param {string} [distribution]
-* @param {string} [architecture]
-* @param {string} [version]
-* @returns {string|Wine}
-*/
-Wine.prototype.prefix = function (prefix, distribution, architecture, version) {
-    // get
-    if (arguments.length == 0) {
-        return this._implementation.getWorkingContainer();
-    }
-    // set
-    else if (arguments.length == 1) {
-        this._implementation.setWorkingContainer(prefix);
+        // set
+        this._implementation.setWizard(wizard);
         return this;
     }
-    else {
-        var operatingSystem = this._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
-        var subCategory = distribution + "-" + operatingSystem + "-" + architecture;
-        this._implementation.createContainer(subCategory, version, prefix);
-        this._implementation.setWorkingContainer(prefix);
+
+    /**
+     * @param {String} [path]
+     * @returns {String}
+     */
+    winepath(path) {
+        return this.run("winepath", ["-w", path], this.prefixDirectory(), true, true);
+    }
+
+    /**
+     *
+     * @param {string} [prefix]
+     * @param {string} [distribution]
+     * @param {string} [architecture]
+     * @param {string} [version]
+     * @returns {string|Wine}
+     */
+    prefix(prefix, distribution, architecture, version) {
+        // get
+        if (arguments.length == 0) {
+            return this._implementation.getWorkingContainer();
+        }
+
+        // set
+        else if (arguments.length == 1) {
+            this._implementation.setWorkingContainer(prefix);
+        } else {
+            const operatingSystem = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+            const subCategory = distribution + "-" + operatingSystem + "-" + architecture;
+
+            this._implementation.createContainer(subCategory, version, prefix);
+            this._implementation.setWorkingContainer(prefix);
+        }
+
         return this;
     }
-};
 
-/**
-* returns prefix directory
-* @returns {string}
-*/
-Wine.prototype.prefixDirectory = function () {
-    return this._implementation.getContainerDirectory(this._implementation.getWorkingContainer());
-};
+    /**
+     * returns prefix directory
+     * @returns {string}
+     */
+    prefixDirectory() {
+        return this._implementation.getContainerDirectory(this._implementation.getWorkingContainer());
+    }
 
-/**
-* returns the path to the engine binary directory
-* if no parameters are given, the Wine version of the current prefix is used
-* @param {string} [subCategory] Wine sub-category
-* @param {string} [version] Wine version
-* @returns {string} path to "wine" binary
-*/
-Wine.prototype.binPath = function (subCategory, version) {
-    if (0 == arguments.length) {
-        if (fileExists(this.prefixDirectory())) {
-            var configFactory = Bean("compatibleConfigFileFormatFactory");
-            var containerConfiguration = configFactory.open(this.prefixDirectory() + "/phoenicis.cfg");
-            var distribution = containerConfiguration.readValue("wineDistribution", "upstream");
-            var architecture = containerConfiguration.readValue("wineArchitecture", "x86");
-            var operatingSystem = this._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
-            subCategory = distribution + "-" + operatingSystem + "-" + architecture;
-            version = containerConfiguration.readValue("wineVersion");
+    /**
+     * returns the path to the engine binary directory
+     * if no parameters are given, the Wine version of the current prefix is used
+     * @param {string} [subCategory] Wine sub-category
+     * @param {string} [version] Wine version
+     * @returns {string} path to "wine" binary
+     */
+    binPath(subCategory, version) {
+        if (0 == arguments.length) {
+            if (fileExists(this.prefixDirectory())) {
+                const containerConfiguration = configFactory.open(this.prefixDirectory() + "/phoenicis.cfg");
+
+                const distribution = containerConfiguration.readValue("wineDistribution", "upstream");
+                const architecture = containerConfiguration.readValue("wineArchitecture", "x86");
+
+                const operatingSystem = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+
+                subCategory = distribution + "-" + operatingSystem + "-" + architecture;
+                version = containerConfiguration.readValue("wineVersion");
+            } else {
+                throw new Error(`Wine prefix "${this.prefixDirectory()}" does not exist!`);
+            }
         }
-        else {
-            print("Wine prefix \"" + this.prefixDirectory() + "\" does not exist!");
-            return "";
+
+        return this._implementation.getLocalDirectory(subCategory, version) + "/bin/";
+    }
+
+    /**
+     *
+     * @param {string} executable
+     * @param {array} [args = []]
+     * @param {boolean} [wait=false]
+     */
+    runInsidePrefix(executable, args, wait) {
+        if (!args) {
+            args = [];
+        } else if (typeof args === "string" || args instanceof String) {
+            args = [args];
+        }
+
+        if (!wait) {
+            wait = false;
+        }
+
+        return this.run(this.prefixDirectory() + "/drive_c/" + executable, args, this.prefixDirectory(), false, wait);
+    }
+
+    /**
+     *
+     * @param {string} executable
+     * @param {array} [args = []]
+     * @param {string} [workingDirectory = working container]
+     * @param {boolean} [captureOutput=false]
+     * @param {boolean} [wait=false]
+     * @param {map} [userData=empty]
+     * @returns {String} output
+     */
+    run(executable, args, workingDirectory, captureOutput, wait, userData) {
+        if (!args) {
+            args = [];
+        } else if (typeof args === "string" || args instanceof String) {
+            args = [args];
+        }
+        if (!workingDirectory) {
+            workingDirectory =
+                this._implementation.getContainerDirectory(this._implementation.getWorkingContainer()) + "/drive_c";
+        }
+        if (!captureOutput) {
+            captureOutput = false;
+        }
+        if (!wait) {
+            wait = false;
+        }
+        if (!userData) {
+            userData = [];
+        }
+
+        return this._implementation.run(executable, args, workingDirectory, captureOutput, wait, userData);
+    }
+
+    /**
+     * uninstall application
+     * @param {string} name of the application which shall be uninstalled
+     * @returns {bool} true if an application has been uninstalled, false otherwise
+     */
+    uninstall(application) {
+        const list = this.run("uninstaller", ["--list"], this.prefixDirectory(), true, true);
+        const appEscaped = application.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&amp;");
+        const re = new RegExp("(.*)\\|\\|\\|.*" + appEscaped);
+        const uuid = list.match(re);
+        if (uuid) {
+            this._implementation.getWizard().wait(tr("Please wait while {0} is uninstalled...", application));
+            this.run("uninstaller", ["--remove", uuid[1]], this.prefixDirectory(), false, true);
+
+            return true;
+        } else {
+            print(tr("Could not uninstall {0}!", application));
+
+            return false;
         }
     }
-    return this._implementation.getLocalDirectory(subCategory, version) + "/bin/";
-};
 
-/**
-*
-* @param {string} executable
-* @param {array} [args = []]
-* @param {boolean} [wait=false]
-*/
-Wine.prototype.runInsidePrefix = function (executable, args, wait) {
-    if (!args) {
-        args = [];
-    } else if (typeof args === 'string' || args instanceof String) {
-        args = [args];
-    }
-    if (!wait) {
-        wait = false;
-    }
-    return this.run(this.prefixDirectory() + "/drive_c/" + executable, args, this.prefixDirectory(), false, wait);
-};
+    /**
+     * runs "wineboot"
+     *
+     * @returns {Wine} The Wine object
+     */
+    create() {
+        this.run("wineboot", [], this.prefixDirectory(), false, true);
 
-/**
-*
-* @param executable
-* @param {array} [args = []]
-* @param {string} [workingDirectory = working container]
-* @param {boolean} [captureOutput=false]
-* @param {boolean} [wait=false]
-* @param {map} [userData=empty]
-* @returns {String} output
-*/
-Wine.prototype.run = function (executable, args, workingDirectory, captureOutput, wait, userData) {
-    if (!args) {
-        args = [];
-    } else if (typeof args === 'string' || args instanceof String) {
-        args = [args];
-    }
-    if (!workingDirectory) {
-        workingDirectory = this._implementation.getContainerDirectory(this._implementation.getWorkingContainer()) + "/drive_c";
-    }
-    if (!captureOutput) {
-        captureOutput = false;
-    }
-    if (!wait) {
-        wait = false;
-    }
-    if (!userData) {
-        userData = [];
+        return this;
     }
 
-    return this._implementation.run(executable, args, workingDirectory, captureOutput, wait, userData);
+    /**
+     *
+     * @returns {string} name of "Program Files"
+     */
+    programFiles() {
+        const programFilesName = this.run(
+            "cmd",
+            ["/c", "echo", "%ProgramFiles%"],
+            this.prefixDirectory(),
+            true,
+            true
+        ).trim();
+
+        if (programFilesName == "%ProgramFiles%") {
+            return "Program Files";
+        } else {
+            return FilenameUtils.getBaseName(programFilesName);
+        }
+    }
+
+    /**
+     * executes wineserver in current prefix
+     * @param {string} wineserver parameter
+     */
+    wineServer(parameter) {
+        const workingContainerDirectory = this.prefixDirectory();
+
+        if (fileExists(workingContainerDirectory)) {
+            const containerConfiguration = configFactory.open(workingContainerDirectory + "/phoenicis.cfg");
+
+            const distribution = containerConfiguration.readValue("wineDistribution", "upstream");
+            const architecture = containerConfiguration.readValue("wineArchitecture", "x86");
+            const version = containerConfiguration.readValue("wineVersion");
+
+            const operatingSystem = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+
+            const subCategory = distribution + "-" + operatingSystem + "-" + architecture;
+
+            const binary = this._implementation.getLocalDirectory(subCategory, version) + "/bin/wineserver";
+
+            const processBuilder = new ProcessBuilderClass()
+                .command(Java.to([binary, parameter], "java.lang.String[]"))
+                .inheritIO();
+
+            const environment = processBuilder.environment();
+            environment.put(
+                "WINEPREFIX",
+                this._implementation.getContainerDirectory(this._implementation.getWorkingContainer())
+            );
+
+            const wineServerProcess = processBuilder.start();
+            wineServerProcess.waitFor();
+        } else {
+            throw new Error('Wine prefix "' + this.getWorkingContainer() + '" does not exist!');
+        }
+    }
+
+    /**
+     * wait until wineserver finishes
+     * @returns {Wine}
+     */
+    wait() {
+        this.wineServer("-w");
+
+        return this;
+    }
+
+    /**
+     * kill wine server
+     * @returns {Wine}
+     */
+    kill() {
+        this.wineServer("-k");
+
+        return this;
+    }
+
+    /**
+     *
+     * @param {string} [architecture = current architecture]
+     * @returns {string[]}
+     */
+    availableDistributions(architectureName) {
+        const architecture = architectureName || this._architecture;
+        const architectureRegExp = new RegExp(architecture);
+
+        const wineJson = JSON.parse(this._implementation.getAvailableVersions());
+        // find all distributions with the right architecture
+        return wineJson
+            .filter(distribution => architectureRegExp.test(distribution.name))
+            .map(distribution => distribution.name.match(/([a-z]+)-/)[1])
+            .sort();
+    }
+
+    /**
+     *
+     * @param {string} [distribution name = current distribution]
+     * @returns {string[]}
+     */
+    availableVersions(distributionName) {
+        const fullDistributionName = distributionName || this._fetchFullDistributionName();
+
+        const wineJson = JSON.parse(this._implementation.getAvailableVersions());
+
+        return wineJson
+            .filter(distribution => distribution.name == fullDistributionName)
+            .flatMap(distribution => distribution.packages)
+            .map(winePackage => winePackage.version)
+            .sort()
+            .reverse();
+    }
+
+    /**
+     *
+     * @returns {string} system32 directory
+     */
+    system32directory() {
+        if (fileExists(this.prefixDirectory() + "/drive_c/windows/syswow64")) {
+            return this.prefixDirectory() + "/drive_c/windows/syswow64";
+        } else {
+            return this.prefixDirectory() + "/drive_c/windows/system32";
+        }
+    }
+
+    /**
+     *
+     * @returns {string} system64 directory
+     */
+    system64directory() {
+        if (fileExists(this.prefixDirectory() + "/drive_c/windows/syswow64")) {
+            return this.prefixDirectory() + "/drive_c/windows/system32";
+        }
+
+        throw new Error(tr("Prefix seems to be 32bits"));
+    }
+
+    /**
+     *
+     * @returns {string} font directory
+     */
+    fontDirectory() {
+        return this.prefixDirectory() + "/drive_c/windows/Fonts";
+    }
 }
-
-/**
-* uninstall application
-* @param {string} name of the application which shall be uninstalled
-* @returns {bool} true if an application has been uninstalled, false otherwise
-*/
-Wine.prototype.uninstall = function (application) {
-    var list = this.run("uninstaller", ["--list"], this.prefixDirectory(), true, true);
-    var appEscaped = application.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&amp;");
-    var re = new RegExp("(.*)\\|\\|\\|.*" + appEscaped);
-    var uuid = list.match(re);
-    if (uuid) {
-        this._implementation.getWizard().wait(tr("Please wait while {0} is uninstalled...", application));
-        this.run("uninstaller", ["--remove", uuid[1]], this.prefixDirectory(), false, true);
-        return true;
-    } else {
-        print(tr("Could not uninstall {0}!", application));
-        return false;
-    }
-};
-
-/**
-* runs "wineboot"
-*/
-Wine.prototype.create = function () {
-    this.run("wineboot", [], this.prefixDirectory(), false, true);
-    return this;
-};
-
-/**
-*
-* @returns {string} name of "Program Files"
-*/
-Wine.prototype.programFiles = function () {
-    var programFilesName = this.run("cmd", ["/c", "echo", "%ProgramFiles%"], this.prefixDirectory(), true, true).trim();
-    if (programFilesName == "%ProgramFiles%") {
-        return "Program Files"
-    } else {
-        return org.apache.commons.io.FilenameUtils.getBaseName(programFilesName);
-    }
-};
-
-/**
-* executes wineserver in current prefix
-* @param {string} wineserver parameter
-*/
-Wine.prototype.wineServer = function (parameter) {
-    var workingContainerDirectory = this._implementation.getContainerDirectory(this._implementation.getWorkingContainer());
-    if (fileExists(workingContainerDirectory)) {
-        var configFactory = Bean("compatibleConfigFileFormatFactory");
-        var containerConfiguration = configFactory.open(workingContainerDirectory + "/phoenicis.cfg");
-        var distribution = containerConfiguration.readValue("wineDistribution", "upstream");
-        var architecture = containerConfiguration.readValue("wineArchitecture", "x86");
-        var operatingSystem = this._OperatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
-        var subCategory = distribution + "-" + operatingSystem + "-" + architecture;
-        var version = containerConfiguration.readValue("wineVersion");
-        var binary = this._implementation.getLocalDirectory(subCategory, version) + "/bin/wineserver";
-        var ProcessBuilderClass = Java.type('java.lang.ProcessBuilder');
-        var processBuilder = new ProcessBuilderClass(Java.to([binary, parameter], "java.lang.String[]"));
-        var environment = processBuilder.environment();
-        environment.put("WINEPREFIX", this._implementation.getContainerDirectory(this._implementation.getWorkingContainer()));
-        processBuilder.inheritIO();
-        var wineServerProcess = processBuilder.start();
-        wineServerProcess.waitFor();
-    }
-    else {
-        print("Wine prefix \"" + this.getWorkingContainer() + "\" does not exist!");
-    }
-};
-
-/**
-* wait until wineserver finishes
-* @returns {Wine}
-*/
-Wine.prototype.wait = function () {
-    this.wineServer("-w");
-    return this;
-};
-
-/**
-* kill wine server
-* @returns {Wine}
-*/
-Wine.prototype.kill = function () {
-    this.wineServer("-k");
-    return this;
-};
-
-/**
-*
-* @param {string} [architecture = current architecture]
-* @returns {string[]}
-*/
-Wine.prototype.availableDistributions = function (architectureName) {
-    var distributions = [];
-    var wineJson = JSON.parse(this._implementation.getAvailableVersions());
-    var architecture = architectureName || this._architecture;
-    var architectureRegExp = new RegExp(architecture);
-    wineJson.forEach(function (distribution) {
-        // only with the right architecture
-        if (architectureRegExp.test(distribution.name)) {
-            distributions.push(distribution.name.match(/([a-z]+)-/)[1]);
-        }
-    });
-    distributions.sort();
-    return distributions;
-}
-
-/**
-*
-* @param {string} [distribution name = current distribution]
-* @returns {string[]}
-*/
-Wine.prototype.availableVersions = function (distributionName) {
-    var versions = [];
-    var fullDistributionName = distributionName || this._fetchFullDistributionName();
-    var wineJson = JSON.parse(this._implementation.getAvailableVersions());
-    wineJson.forEach(function (distribution) {
-        if (distribution.name == fullDistributionName) {
-            distribution.packages.forEach(function (winePackage) {
-                versions.push(winePackage.version);
-            });
-        }
-    });
-    versions.sort();
-    versions.reverse();
-    return versions;
-}
-
-/**
-*
-* @returns {string} system32 directory
-*/
-Wine.prototype.system32directory = function () {
-    if (fileExists(this.prefixDirectory() + "/drive_c/windows/syswow64")) {
-        return this.prefixDirectory() + "/drive_c/windows/syswow64";
-    } else {
-        return this.prefixDirectory() + "/drive_c/windows/system32";
-    }
-};
-
-/**
-*
-* @returns {string} system64 directory
-*/
-Wine.prototype.system64directory = function () {
-    if (fileExists(this.prefixDirectory() + "/drive_c/windows/syswow64")) {
-        return this.prefixDirectory() + "/drive_c/windows/system32";
-    }
-    throw tr("Prefix seems to be 32bits");
-};
-
-/**
-*
-* @returns {string} font directory
-*/
-Wine.prototype.fontDirectory = function () {
-    return this.prefixDirectory() + "/drive_c/windows/Fonts";
-};
 </code></pre>
         </article>
     </section>
@@ -373,13 +386,13 @@ Wine.prototype.fontDirectory = function () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AppResource.html">AppResource</a></li><li><a href="CabExtract.html">CabExtract</a></li><li><a href="Checksum.html">Checksum</a></li><li><a href="Downloader.html">Downloader</a></li><li><a href="Extractor.html">Extractor</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ShortcutReader.html">ShortcutReader</a></li><li><a href="Wine.html">Wine</a></li><li><a href="WineShortcut.html">WineShortcut</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#engineImplementation">engineImplementation</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#settingImplementation">settingImplementation</a></li><li><a href="global.html#toolImplementation">toolImplementation</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#verbImplementation">verbImplementation</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdobeAir.html">AdobeAir</a></li><li><a href="Amstream.html">Amstream</a></li><li><a href="Atmlib.html">Atmlib</a></li><li><a href="Corefonts.html">Corefonts</a></li><li><a href="Crypt32.html">Crypt32</a></li><li><a href="D3drm.html">D3drm</a></li><li><a href="D3DX9.html">D3DX9</a></li><li><a href="D3DX10.html">D3DX10</a></li><li><a href="D3DX11.html">D3DX11</a></li><li><a href="Devenum.html">Devenum</a></li><li><a href="DotNET20.html">DotNET20</a></li><li><a href="DotNET20SP2.html">DotNET20SP2</a></li><li><a href="DotNET40.html">DotNET40</a></li><li><a href="DotNET45.html">DotNET45</a></li><li><a href="DotNET46.html">DotNET46</a></li><li><a href="DotNET452.html">DotNET452</a></li><li><a href="DotNET461.html">DotNET461</a></li><li><a href="DotNET462.html">DotNET462</a></li><li><a href="DotNET472.html">DotNET472</a></li><li><a href="DXVK.html">DXVK</a></li><li><a href="FAudio.html">FAudio</a></li><li><a href="Gallium9.html">Gallium9</a></li><li><a href="GDIPlus.html">GDIPlus</a></li><li><a href="GDIPlusWinXP.html">GDIPlusWinXP</a></li><li><a href="Luna.html">Luna</a></li><li><a href="Mfc42.html">Mfc42</a></li><li><a href="module.CabExtract.html">CabExtract</a></li><li><a href="module.Checksum.html">Checksum</a></li><li><a href="module.default.html">default</a></li><li><a href="module.Extractor.html">Extractor</a></li><li><a href="Msls31.html">Msls31</a></li><li><a href="Mspatcha.html">Mspatcha</a></li><li><a href="Msxml3.html">Msxml3</a></li><li><a href="Msxml6.html">Msxml6</a></li><li><a href="PhysX.html">PhysX</a></li><li><a href="Quartz.html">Quartz</a></li><li><a href="QuickTime76.html">QuickTime76</a></li><li><a href="RemoveMono.html">RemoveMono</a></li><li><a href="Sandbox.html">Sandbox</a></li><li><a href="Secur32.html">Secur32</a></li><li><a href="Tahoma.html">Tahoma</a></li><li><a href="Uplay.html">Uplay</a></li><li><a href="Vcrun6SP6.html">Vcrun6SP6</a></li><li><a href="Vcrun2003.html">Vcrun2003</a></li><li><a href="Vcrun2005.html">Vcrun2005</a></li><li><a href="Vcrun2008.html">Vcrun2008</a></li><li><a href="Vcrun2010.html">Vcrun2010</a></li><li><a href="Vcrun2012.html">Vcrun2012</a></li><li><a href="Vcrun2013.html">Vcrun2013</a></li><li><a href="Vcrun2015.html">Vcrun2015</a></li><li><a href="Vcrun2017.html">Vcrun2017</a></li><li><a href="VK9.html">VK9</a></li><li><a href="VulkanSDK.html">VulkanSDK</a></li><li><a href="WindowsXPSP3.html">WindowsXPSP3</a></li><li><a href="Xact.html">Xact</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#getScreenHeight">getScreenHeight</a></li><li><a href="global.html#getScreenWidth">getScreenWidth</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a>
 </footer>
 
 <script> prettyPrint(); </script>

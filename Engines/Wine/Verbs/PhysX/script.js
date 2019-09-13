@@ -1,39 +1,42 @@
-include("engines.wine.engine.object");
-include("utils.functions.net.resource");
-include("engines.wine.verbs.luna");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
 
-/**
-* Verb to install Nvidia PhysX
-* @returns {Wine} Wine object
-*/
-Wine.prototype.physx = function () {
-    var setupFile = new Resource()
-        .wizard(this.wizard())
-        .url("http://uk.download.nvidia.com/Windows/9.14.0702/PhysX-9.14.0702-SystemSoftware.msi")
-        .checksum("81e2d38e2356e807ad80cdf150ed5acfff839c8b")
-        .name("PhysX-9.14.0702-SystemSoftware.msi")
-        .get();
-
-    this.wizard().wait(tr("Please wait while {0} is installed...", "PhysX"));
-    this.run("msiexec", ["/i", setupFile, "/q"], null, false, true);
-
-    return this;
-};
+const Optional = Java.type("java.util.Optional");
 
 /**
  * Verb to install Nvidia PhysX
-*/
-var verbImplementation = {
-    install: function (container) {
-        var wine = new Wine();
+ */
+class PhysX {
+    constructor(wine) {
+        this.wine = wine;
+    }
+
+    go() {
+        const wizard = this.wine.wizard();
+
+        const setupFile = new Resource()
+            .wizard(wizard)
+            .url("http://uk.download.nvidia.com/Windows/9.14.0702/PhysX-9.14.0702-SystemSoftware.msi")
+            .checksum("81e2d38e2356e807ad80cdf150ed5acfff839c8b")
+            .name("PhysX-9.14.0702-SystemSoftware.msi")
+            .get();
+
+        wizard.wait(tr("Please wait while {0} is installed...", "PhysX"));
+
+        this.wine.run("msiexec", ["/i", setupFile, "/q"], null, false, true);
+    }
+
+    static install(container) {
+        const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "physx", Optional.empty());
+
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "physx", java.util.Optional.empty());
         wine.wizard(wizard);
-        wine.physx();
+
+        new PhysX(wine).go();
+
         wizard.close();
     }
-};
+}
 
-/* exported Verb */
-var Verb = Java.extend(org.phoenicis.engines.Verb, verbImplementation);
-
+module.default = PhysX;

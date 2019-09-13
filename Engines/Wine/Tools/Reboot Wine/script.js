@@ -1,15 +1,17 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 
 /**
- * tool to reboot Wine
-*/
-var toolImplementation = {
-    run: function (container) {
+ * Tool to reboot Wine
+ */
+// eslint-disable-next-line no-unused-vars
+module.default = class RebootWineTool {
+    constructor() {
+        // do nothing
+    }
+
+    run(container) {
         new Wine()
             .prefix(container)
             .run("wineboot", [], null, false, true);
     }
-};
-
-/* exported Tool */
-var Tool = Java.extend(org.phoenicis.engines.EngineTool, toolImplementation);
+}

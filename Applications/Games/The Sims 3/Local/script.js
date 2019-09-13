@@ -1,29 +1,20 @@
-include("engines.wine.quick_script.local_installer_script");
-include("engines.wine.verbs.vcrun2010");
-include("engines.wine.verbs.tahoma");
-include("engines.wine.verbs.mfc42");
-include("engines.wine.verbs.dotnet20");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 
-var installerImplementation = {
-    run: function () {
-        new LocalInstallerScript()
-            .name("The Sims 3")
-            .editor("Electronic Arts")
-            .applicationHomepage("http://www.thesims3.com/")
-            .author("Zemogiter")
-            .category("Games")
-            .executable("Sims3Launcher.exe", ["xgamma -gamma 1"])
-            .wineVersion("3.19")
-            .wineDistribution("upstream")
-            .preInstall(function (wine){
-                wine.mfc42();
-                wine.tahoma();
-                wine.vcrun2010();
-                wine.dotnet20();
-            })
-            .go();
-    }
-};
+const Vcrun2010 = include("engines.wine.verbs.vcrun2010");
+const Tahoma = include("engines.wine.verbs.tahoma");
+const Mfc42 = include("engines.wine.verbs.mfc42");
+const DotNET20 = include("engines.wine.verbs.dotnet20");
 
-/* exported Installer */
-var Installer = Java.extend(org.phoenicis.scripts.Installer, installerImplementation);
+new LocalInstallerScript()
+    .name("The Sims 3")
+    .editor("Electronic Arts")
+    .applicationHomepage("http://www.thesims3.com/")
+    .author("Zemogiter")
+    .category("Games")
+    .executable("Sims3Launcher.exe", ["xgamma -gamma 1"])
+    .preInstall(function (wine) {
+        new Mfc42(wine).go();
+        new Tahoma(wine).go();
+        new Vcrun2010(wine).go();
+        new DotNET20(wine).go();
+    });
