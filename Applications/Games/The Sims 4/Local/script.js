@@ -28,4 +28,8 @@ new LocalInstallerScript()
         wine.D9VK();
         const registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
         wine.regedit().patch(registrySettings);
+        wine.overrideDLL()
+            .set("disabled", ["nvapi","nvapi64"])
+            .do();
     })
+    .environment('{ "STAGING_SHARED_MEMORY": "0", "__GL_SHADER_DISK_CACHE": "1"}')
