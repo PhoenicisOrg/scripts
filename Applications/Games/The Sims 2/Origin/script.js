@@ -19,16 +19,16 @@ new OriginScript()
     .preInstall(function (wine) {
         new vcrun2010(wine).go();
         new vcrun2013(wine).go();
-        var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
+        const registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
         wine.regedit().patch(registrySettings);
     })
     .postInstall(function (wine) {
-        var fixes = new Resource()
+        const fixes = new Resource()
             .wizard(wine.wizard())
             .url("https://raw.githubusercontent.com/tannisroot/installer-fixes/master/sims2_fixes.tar.xz")
             .name("sims2_fixes.tar.xz")
             .get();
-        var username = java.lang.System.getenv("USERNAME")
+        const username = java.lang.System.getenv("USERNAME")
         new Extractor()
             .wizard(wine.wizard())
             .archive(fixes)
