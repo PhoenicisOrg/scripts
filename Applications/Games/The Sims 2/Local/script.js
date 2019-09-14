@@ -24,7 +24,7 @@ new LocalInstallerScript()
      })
     .postInstall(function (wine) {
         var fixes = new Resource()
-            .wizard(this.wizard())
+            .wizard(wine.wizard())
             .url("https://raw.githubusercontent.com/tannisroot/installer-fixes/master/sims2_fixes.tar.xz")
             .name("sims2_fixes.tar.xz")
             .get();
