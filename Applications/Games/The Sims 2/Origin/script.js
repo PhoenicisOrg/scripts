@@ -1,8 +1,9 @@
 const OriginScript = include("engines.wine.quick_script.origin_script");
-include("engines.wine.verbs.vcrun2010");
-include("engines.wine.verbs.vcrun2013");
+const vcrun2010 = include("engines.wine.verbs.vcrun2010");
+const vcrun2013 = include("engines.wine.verbs.vcrun2013");
+const AppResource = include("utils.functions.apps.resources");
+
 include("utils.functions.net.resource");
-include("utils.functions.apps.resources");
 include("utils.functions.filesystem.files");
 include("utils.functions.filesystem.extract");
 
@@ -16,8 +17,8 @@ new OriginScript()
     .wineDistribution("staging")
     .appId("1014457,sims2_apt_life,sims2_bestofbusiness_dd,sims2_bonvoyage_na,sims2dd_remaster,sims2_freetime,sims2_funwpets_dd,sims2_stuffpackglamour_na,sims2_holiday2_na,sims2-holiday,sims2_inseason_na,sims2_collegepack_dd")
     .preInstall(function (wine) {
-        wine.vcrun2010();
-        wine.vcrun2013();
+        new vcrun2010(wine).go();
+        new vcrun2013(wine).go();
         var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
         wine.regedit().patch(registrySettings);
     })
@@ -33,7 +34,7 @@ new OriginScript()
             .archive(fixes)
             .to(wine.prefixDirectory() + "/drive_c/users/" + username + "My Documents/EA Games/The Sims\u2122 2 Ultimate Collection/Downloads")
             .extract();
-        var configFile = wine.prefixDirectory() + "drive_c/users/" + username + "My Documents/EA Games/The Sims\u2122 2 Ultimate Collection/Config/userstartup.cheat";
+        const configFile = wine.prefixDirectory() + "drive_c/users/" + username + "My Documents/EA Games/The Sims\u2122 2 Ultimate Collection/Config/userstartup.cheat";
         touch(configFile);
         writeToFile(configFile, "boolprop useshaders true\nboolProp   createNVidiaWorkaroundTexture false\nboolProp   bumpMapping false");
     })
