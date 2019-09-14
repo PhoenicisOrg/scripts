@@ -2,6 +2,7 @@ const OriginScript = include("engines.wine.quick_script.origin_script");
 const vcrun2010 = include("engines.wine.verbs.vcrun2010");
 const vcrun2013 = include("engines.wine.verbs.vcrun2013");
 const AppResource = include("utils.functions.apps.resources");
+const System = Java.type("java.lang.System");
 
 include("utils.functions.net.resource");
 include("utils.functions.filesystem.files");
@@ -28,7 +29,7 @@ new OriginScript()
             .url("https://raw.githubusercontent.com/tannisroot/installer-fixes/master/sims2_fixes.tar.xz")
             .name("sims2_fixes.tar.xz")
             .get();
-        const username = java.lang.System.getenv("USERNAME")
+        const username = System.getProperty("user.name");
         new Extractor()
             .wizard(wine.wizard())
             .archive(fixes)
