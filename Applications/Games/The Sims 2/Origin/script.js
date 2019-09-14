@@ -3,10 +3,9 @@ const vcrun2010 = include("engines.wine.verbs.vcrun2010");
 const vcrun2013 = include("engines.wine.verbs.vcrun2013");
 const AppResource = include("utils.functions.apps.resources");
 const System = Java.type("java.lang.System");
-
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
-include("utils.functions.filesystem.extract");
+const Extractor = include("utils.functions.filesystem.extract");
+const Resource = include("utils.functions.net.resource");
+const {touch, writeToFile} = include("utils.functions.filesystem.files");
 
 new OriginScript()
     .name("The Sims 2")
