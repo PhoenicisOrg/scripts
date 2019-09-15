@@ -197,7 +197,7 @@ class Xact {
 
         if (architecture == "amd64") {
             const system64directory = this.wine.system64directory();
-            
+
             //---------------------------------------------------------Extract xactengine*.dll (x64)--------------------------------------------
             new CabExtract()
                 .wizard(wizard)
