@@ -28,12 +28,14 @@ new OriginScript()
             .url("https://raw.githubusercontent.com/tannisroot/installer-fixes/master/sims2_fixes.tar.xz")
             .name("sims2_fixes.tar.xz")
             .get();
-        const username = System.getProperty("user.name");
+    
         new Extractor()
             .wizard(wine.wizard())
             .archive(fixes)
             .to(wine.prefixDirectory() + "/drive_c/users/" + username + "My Documents/EA Games/The Sims\u2122 2 Ultimate Collection/Downloads")
             .extract();
+    
+        const username = System.getProperty("user.name");
         const configFile = wine.prefixDirectory() + "drive_c/users/" + username + "My Documents/EA Games/The Sims\u2122 2 Ultimate Collection/Config/userstartup.cheat";
         touch(configFile);
         writeToFile(configFile, "boolprop useshaders true\nboolProp   createNVidiaWorkaroundTexture false\nboolProp   bumpMapping false");
