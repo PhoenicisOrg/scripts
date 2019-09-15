@@ -5,5 +5,3 @@ REGEDIT4
 
 [HKEY_CURRENT_USER\Software\Wine\Direct3D]
 "MaxShaderModelPS"=dword:00000002
-
-
