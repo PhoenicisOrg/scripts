@@ -30,14 +30,14 @@ class GDIPlus {
 
         new CabExtract()
             .archive(setupFile)
-	    .wizard(wizard)
+            .wizard(wizard)
             .to(`${prefixDirectory}/drive_c/gdiplus/`)
             .extract(["-L", "-F", "x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.17514_none_72d18a4386696c80/gdiplus.dll"]);
 
         cp(`${prefixDirectory}/drive_c/gdiplus/x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.17514_none_72d18a4386696c80/gdiplus.dll`, system32directory);
 
         if (architecture == "amd64") {
-	    const system64directory = this.wine.system64directory();
+            const system64directory = this.wine.system64directory();
 
             const setupFile64 = new Resource()
                 .wizard(wizard)

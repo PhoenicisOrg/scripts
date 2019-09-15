@@ -34,7 +34,7 @@ class D9VK {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const system32directory = this.wine.system32directory();
-        const architecture = this.wine.architecture():
+        const architecture = this.wine.architecture();
 
         print("NOTE: Wine version should be greater or equal to 3.10");
 

@@ -31,13 +31,13 @@ class GDIPlusWinXP {
 
         new CabExtract()
             .archive(setupFile)
-	    .wizard(wizard)
+            .wizard(wizard)
             .to(`${prefixDirectory}/drive_c/gdiplus/`)
             .extract(["-F", "FL_gdiplus_dll_____X86.3643236F_FC70_11D3_A536_0090278A1BB8"]);
 
         new CabExtract()
             .archive(setupFile)
-	    .wizard(wizard)
+            .wizard(wizard)
             .to(`${prefixDirectory}/drive_c/gdiplus/`)
             .extract(["-L", "-F", "x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.17514_none_72d18a4386696c80/gdiplus.dll"]);
 
@@ -65,4 +65,4 @@ class GDIPlusWinXP {
     }
 }
 
-module.default = GDIPlusWindowsXP;
+module.default = GDIPlusWinXP;
