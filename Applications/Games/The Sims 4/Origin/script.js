@@ -7,8 +7,9 @@ const dotnet20sp2 = include("engines.wine.verbs.dotnet20sp2");
 const vcrun2010 = include("engines.wine.verbs.vcrun2010");
 const vcrun2013 = include("engines.wine.verbs.vcrun2013");
 const D9VK = include("engines.wine.verbs.d9vk");
-const regedit = include("engines.wine.plugins.regedit");
-const overrideDLL = include("engines.wine.plugins.override_dll");
+
+include("engines.wine.plugins.regedit");
+include("engines.wine.plugins.override_dll");
 
 new OriginScript()
     .name("The Sims 4")
@@ -23,14 +24,14 @@ new OriginScript()
     .preInstall(function (wine) {
         new dotnet20sp2(wine).go();
         new vcrun6sp6(wine).go();
-        new MFC(wine).go();
+        new MFC42(wine).go();
         new vcrun2010(wine).go();
         new vcrun2013(wine).go();
         new D9VK(wine).go();
         const registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
         wine.regedit().patch(registrySettings);
         wine.overrideDLL()
-            .set("disabled", ["nvapi","nvapi64"])
+            .set("disabled", ["nvapi", "nvapi64"])
             .do();
     })
     .environment('{ "STAGING_SHARED_MEMORY": "0", "__GL_SHADER_DISK_CACHE": "1"}')
