@@ -61,8 +61,6 @@ class GDIPlus {
             .overrideDLL()
             .set("native", ["gdiplus"])
             .do();
-
-        cp(`${prefixDirectory}/drive_c/Tmp/asms/10/msft/windows/gdiplus/gdiplus.dll`, system32directory);
     }
 
     static install(container) {
