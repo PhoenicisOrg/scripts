@@ -4,7 +4,7 @@ const { CabExtract } = include("utils.functions.filesystem.extract");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install D3DX9
@@ -128,9 +128,8 @@ class D3DX9 {
             this.extractDirectXToSystemDirectory(progressBar, filesToExtractx64, system64directory, "d3dx9*.dll");
         }
 
-        this.wine
-            .overrideDLL()
-            .set("native", [
+        new OverrideDLL(this.wine)
+            .withMode("native", [
                 "d3dx9_24",
                 "d3dx9_25",
                 "d3dx9_26",
@@ -152,7 +151,7 @@ class D3DX9 {
                 "d3dx9_42",
                 "d3dx9_43"
             ])
-            .do();
+            .go();
     }
 
     static install(container) {

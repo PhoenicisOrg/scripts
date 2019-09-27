@@ -7,7 +7,7 @@ const { remove } = include("utils.functions.filesystem.files");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 const AppResource = include("utils.functions.apps.resources");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.regedit");
 include("engines.wine.plugins.regsvr32");
 include("engines.wine.plugins.windows_version");
@@ -66,12 +66,13 @@ new PlainInstaller().withScript(() => {
         .extract(["-F", "inseng.dll"]);
 
     wine.run("iexplore", ["-unregserver"], null, false, true);
-    wine.overrideDLL()
-        .set("native", ["inseng"])
-        .do();
+
+    new OverrideDLL(wine).withMode("native", ["inseng"]).go();
+
     wine.runInsidePrefix("IE 6.0 Full/IE6SETUP.EXE", [], true);
-    wine.overrideDLL()
-        .set("native,builtin", [
+
+    new OverrideDLL(wine)
+        .withMode("native,builtin", [
             "inetcpl.cpl",
             "itircl",
             "itss",
@@ -84,7 +85,7 @@ new PlainInstaller().withScript(() => {
             "shlwapi",
             "urlmon"
         ])
-        .do();
+        .go();
 
     var librariesToRegister = [
         "actxprxy.dll",

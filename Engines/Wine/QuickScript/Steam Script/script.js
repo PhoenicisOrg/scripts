@@ -5,7 +5,7 @@ const { cat, fileExists, writeToFile, createTempFile } = include("utils.function
 
 const Luna = include("engines.wine.verbs.luna");
 const Corefonts = include("engines.wine.verbs.corefonts");
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");
 
 const Thread = Java.type("java.lang.Thread");
@@ -38,7 +38,9 @@ module.default = class SteamScript extends QuickScript {
     manifest(wine) {
         if (!this._manifest) {
             // cache manifest path (will not change during the installation)
-            this._manifest = `${wine.prefixDirectory()}/drive_c/${wine.programFiles()}/Steam/steamapps/appmanifest_${this._appId}.acf`;
+            this._manifest = `${wine.prefixDirectory()}/drive_c/${wine.programFiles()}/Steam/steamapps/appmanifest_${
+                this._appId
+            }.acf`;
         }
 
         return this._manifest;
@@ -204,9 +206,7 @@ module.default = class SteamScript extends QuickScript {
 
         // deactivate game overlay if desired
         if (!this._gameOverlay) {
-            wine.overrideDLL()
-                .set("", ["gameoverlayrenderer"])
-                .do();
+            new OverrideDLL(wine).withMode("", ["gameoverlayrenderer"]).go();
         }
 
         // back to generic wait (might have been changed in postInstall)

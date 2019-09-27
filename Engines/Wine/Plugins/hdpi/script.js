@@ -3,28 +3,64 @@ const Wine = include("engines.wine.engine.object");
 include("engines.wine.plugins.regedit");
 
 /**
-* gets/sets hdpi state
-* @param {boolean} [hdpi] true if hdpi shall be enabled
-* @returns {boolean|Wine} get: if is hdpi, set: Wine object
-*/
-Wine.prototype.hdpi = function (hdpi) {
-    // get
-    if (arguments.length == 0) {
-        return (this.regedit().fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Mac Driver", "RetinaMode"]) == "y");
+ * Plugin to manage the hdpi state
+
+ * @returns {boolean|Wine} get: if is hdpi, set: Wine object
+ */
+module.default = class HDPI {
+    constructor(wine) {
+        this.wine = wine;
     }
 
-    // set
-    var hdpiYn = hdpi ? "y" : "n";
-    var fontDpiLogPixels = hdpi ? "dword:000000C0" : "dword:00000060"
+    /**
+     * Specifies whether hdpi should be enabled or not
+     *
+     * @param {boolean} hdpi true if hdpi shall be enabled
+     * @returns {HDPI} This
+     */
+    withHdpi(hdpi) {
+        this.hdpi = hdpi;
 
-    var regeditFileContent =
-        "REGEDIT4\n" +
-        "\n" +
-        "[HKEY_CURRENT_USER\\Software\\Wine\\Mac Driver]\n" +
-        "\"RetinaMode\"=\"" + hdpiYn + "\"\n" +
-        "\n" +
-        "[HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Hardware Profiles\\Current\\Software\\Fonts]\n" +
-        "\"LogPixels\"=" + fontDpiLogPixels + "\n";
-    this.regedit().patch(regeditFileContent);
-    return this;
+        return this;
+    }
+
+    fetchHdpiInformation() {
+        if (this.hdpi) {
+            return {
+                yn: "y",
+                fontDpiLogPixels: "dword:000000C0"
+            };
+        } else {
+            return {
+                yn: "n",
+                fontDpiLogPixels: "dword:00000060"
+            };
+        }
+    }
+
+    /**
+     * Fetches whether hdpi is enabled or not
+     *
+     * @returns {boolean} True if hdpi is enabled, false otherwise
+     */
+    isHdpi() {
+        const hdpi = this.wine
+            .regedit()
+            .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Mac Driver", "RetinaMode"]);
+
+        return hdpi == "y";
+    }
+
+    go() {
+        const { yn, fontDpiLogPixels } = this.fetchHdpiInformation();
+
+        const regeditFileContent =
+            `REGEDIT4\n\n` +
+            `[HKEY_CURRENT_USER\\Software\\Wine\\Mac Driver]\n` +
+            `"RetinaMode"="${yn}"\n\n` +
+            `[HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Hardware Profiles\\Current\\Software\\Fonts]\n` +
+            `"LogPixels"=${fontDpiLogPixels}\n`;
+
+        this.wine.regedit().patch(regeditFileContent);
+    }
 };

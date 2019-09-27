@@ -3,16 +3,28 @@ const Wine = include("engines.wine.engine.object");
 include("engines.wine.plugins.regedit");
 
 /**
- * force the DirectDrawRenderer
- * @param {string} mode (gdi or opengl)
- * @returns {Wine} Wine object
+ * Plugin to force the DirectDrawRenderer
  */
-Wine.prototype.DirectDrawRenderer = function (mode) {
-    var regeditFileContent =
-        "REGEDIT4\n" +
-        "\n" +
-        "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-        "\"DirectDrawRenderer\"=\"" + mode + "\""
-    this.regedit().patch(regeditFileContent);
-    return this;
+module.default = class DirectDrawRenderer {
+    constructor(wine) {
+        this.wine = wine;
+    }
+
+    /**
+     * Selects the used direct draw mode (either gdi or opengl)
+     *
+     * @param {string} mode gdi or opengl
+     * @returns {DirectDrawRenderer} This
+     */
+    withMode(mode) {
+        this.mode = mode;
+
+        return this;
+    }
+
+    go() {
+        const regeditFileContent = `REGEDIT4\n\n[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n"DirectDrawRenderer"="${this.mode}"`;
+
+        this.wine.regedit().patch(regeditFileContent);
+    }
 };

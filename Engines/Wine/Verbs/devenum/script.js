@@ -4,7 +4,7 @@ const { CabExtract } = include("utils.functions.filesystem.extract");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.regsvr32");
 
 /**
@@ -44,10 +44,8 @@ class Devenum {
             .extract(["-L", "-F", "devenum.dll"]);
 
         this.wine.regsvr32().install("devenum.dll");
-        this.wine
-            .overrideDLL()
-            .set("native", ["devenum"])
-            .do();
+
+        new OverrideDLL(this.wine).withMode("native", ["devenum"]).go();
     }
 
     static install(container) {

@@ -1,7 +1,7 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
-include("engines.wine.plugins.csmt");
+const CSMT = include("engines.wine.plugins.csmt");
 include("engines.wine.plugins.virtual_desktop");
 
 new OnlineInstallerScript()
@@ -18,5 +18,5 @@ new OnlineInstallerScript()
     .preInstall(function (wine /*, wizard*/) {
         // avoid that launcher freezes the complete system
         wine.setVirtualDesktop(1280, 1024);
-        wine.enableCSMT();
+        new CSMT(wine).go();
     });

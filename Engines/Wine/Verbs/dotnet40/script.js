@@ -3,7 +3,7 @@ const Resource = include("utils.functions.net.resource");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");
 include("engines.wine.plugins.regedit");
 const RemoveMono = include("engines.wine.verbs.remove_mono");
@@ -42,10 +42,7 @@ class DotNET40 {
 
         this.wine.windowsVersion("winxp");
 
-        this.wine
-            .overrideDLL()
-            .set("builtin", ["fusion"])
-            .do();
+        new OverrideDLL(this.wine).withMode("builtin", ["fusion"]).go();
 
         wizard.wait(tr("Please wait while {0} is installed...", ".NET Framework 4.0"));
 
@@ -55,10 +52,7 @@ class DotNET40 {
 
         this.wine.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*fusion");
 
-        this.wine
-            .overrideDLL()
-            .set("native", ["mscoree"])
-            .do();
+        new OverrideDLL(this.wine).withMode("native", ["mscoree"]).go();
 
         wizard.wait(tr("Please wait..."));
 

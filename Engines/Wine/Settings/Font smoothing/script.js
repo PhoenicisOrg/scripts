@@ -1,7 +1,7 @@
 const Wine = include("engines.wine.engine.object");
 
 include("engines.wine.plugins.regedit");
-include("engines.wine.plugins.font_smoothing");
+const FontSmoothing = include("engines.wine.plugins.font_smoothing");
 
 /**
  * Setting to set the Fonts Smoothing
@@ -71,7 +71,9 @@ module.default = class FontSmoothingSetting {
                 .regedit()
                 .patch(regeditFileContent);
         } else {
-            new Wine().prefix(container).fontSmoothing(this.options[optionIndex]);
+            const wine = new Wine().prefix(container);
+
+            new FontSmoothing(wine).withMode(this.options[optionIndex]).go();
         }
     }
-}
+};

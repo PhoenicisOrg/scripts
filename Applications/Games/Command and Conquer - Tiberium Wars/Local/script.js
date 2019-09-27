@@ -1,7 +1,7 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
-include("engines.wine.plugins.csmt");
+const CSMT = include("engines.wine.plugins.csmt");
 include("engines.wine.plugins.windows_version");
 const D3DX9 = include("engines.wine.verbs.d3dx9");
 
@@ -16,5 +16,5 @@ new LocalInstallerScript()
     .preInstall(function (wine /*, wizard*/) {
         wine.windowsVersion("winxp");
         new D3DX9(wine).go();
-        wine.enableCSMT();
+        new CSMT(wine).go();
     });

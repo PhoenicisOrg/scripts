@@ -7,7 +7,7 @@ const operatingSystemFetcher = Bean("operatingSystemFetcher");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install D9VK
@@ -77,10 +77,7 @@ class D9VK {
             if (file.endsWith(".dll")) {
                 cp(`${d9vkTmpDir}/x32/${file}`, system32directory);
 
-                this.wine
-                    .overrideDLL()
-                    .set("native", [file])
-                    .do();
+                new OverrideDLL(this.wine).withMode("native", [file]).go();
             }
         });
 

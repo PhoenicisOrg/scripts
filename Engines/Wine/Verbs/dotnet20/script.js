@@ -4,7 +4,7 @@ const { remove } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");
 const RemoveMono = include("engines.wine.verbs.remove_mono");
 

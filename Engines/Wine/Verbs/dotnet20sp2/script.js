@@ -4,7 +4,7 @@ const { remove } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.windows_version");
 include("engines.wine.plugins.regedit");
 const RemoveMono = include("engines.wine.verbs.remove_mono");
@@ -24,10 +24,7 @@ class DotNET20SP2 {
 
         this.wine.windowsVersion("winxp");
 
-        this.wine
-            .overrideDLL()
-            .set("builtin", ["ngen.exe", "regsvcs.exe", "mscorsvw.exe"])
-            .do();
+        new OverrideDLL(this.wine).withMode("builtin", ["ngen.exe", "regsvcs.exe", "mscorsvw.exe"]).go();
 
         new RemoveMono(this.wine).go();
 

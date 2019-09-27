@@ -5,7 +5,7 @@ const { remove } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 include("engines.wine.plugins.regsvr32");
 
 /**
@@ -46,10 +46,7 @@ class Quartz {
 
         this.wine.regsvr32().install("quartz.dll");
 
-        this.wine
-            .overrideDLL()
-            .set("native, builtin", ["quartz"])
-            .do();
+        new OverrideDLL(this.wine).withMode("native, builtin", ["quartz"]).go();
     }
 
     static install(container) {
