@@ -2,9 +2,6 @@ const Regedit = include("engines.wine.plugins.regedit");
 
 /**
  * Plugin to force the use of GLSL
- *
- * @param {string} mode
- * @returns {Wine} Wine object
  */
 module.default = class GLSL {
     constructor(wine) {

@@ -14,7 +14,7 @@ new LocalInstallerScript()
     .executable("CNC3.exe")
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .preInstall(function(wine) {
+    .preInstall(function (wine) {
         new WindowsVersion(wine).withWindowsVersion("winxp").go();
 
         new D3DX9(wine).go();

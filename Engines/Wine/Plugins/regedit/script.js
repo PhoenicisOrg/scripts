@@ -1,6 +1,5 @@
 const { createTempFile, writeToFile } = include("utils.functions.filesystem.files");
 
-const StringClass = Java.type("java.lang.String");
 const FileClass = Java.type("java.io.File");
 const ArrayListClass = Java.type("java.util.ArrayList");
 

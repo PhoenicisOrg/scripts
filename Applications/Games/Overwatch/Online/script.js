@@ -21,7 +21,7 @@ new OnlineInstallerScript()
     .wineArchitecture("amd64")
     .category("Games")
     .executable("Battle.net.exe")
-    .preInstall(function(wine) {
+    .preInstall(function (wine) {
         new WindowsVersion(wine).withWindowsVersion("win7").go();
 
         new Vcrun2015(wine).go();

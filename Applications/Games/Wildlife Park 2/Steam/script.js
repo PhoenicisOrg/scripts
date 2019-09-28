@@ -9,7 +9,7 @@ new SteamScript()
     .applicationHomepage("www.wildlifepark2.com")
     .author("Zemogiter")
     .appId(264710)
-    .preInstall(function(wine) {
+    .preInstall(function (wine) {
         const wizard = wine.wizard();
 
         wizard.message(

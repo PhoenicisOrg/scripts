@@ -6,6 +6,6 @@ new SteamScript()
     .editor("Impressions Games")
     .author("ImperatorS79")
     .appId(517790)
-    .postInstall(function(wine) {
+    .postInstall(function (wine) {
         new VirtualDesktop(wine).withDimensions(1280, 1024).go();
     });

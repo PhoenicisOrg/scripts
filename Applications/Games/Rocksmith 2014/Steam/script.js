@@ -47,7 +47,7 @@ new SteamScript()
     .editor("Ubisoft - San Francisco")
     .author("Plata")
     .appId(221680)
-    .postInstall(function(wine) {
+    .postInstall(function (wine) {
         new SoundDriver(wine).withDriver("alsa").go();
 
         new WindowsVersion(wine).withApplicationWindowsVersion("Rocksmith2014.exe", "win7").go();

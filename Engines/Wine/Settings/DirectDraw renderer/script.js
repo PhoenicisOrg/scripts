@@ -24,10 +24,16 @@ module.default = class DirectDrawRendererSetting {
     getCurrentOption(container) {
         const wine = new Wine().prefix(container);
 
-        new Regedit(wine).fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Direct3D", "DirectDrawRenderer"]);
+        const currentValue = new Regedit(wine).fetchValue([
+            "HKEY_CURRENT_USER",
+            "Software",
+            "Wine",
+            "Direct3D",
+            "DirectDrawRenderer"
+        ]);
 
         // find matching option (use default if not found)
-        var index = Math.max(this.registryValues.indexOf(currentValue), 0);
+        const index = Math.max(this.registryValues.indexOf(currentValue), 0);
 
         return this.options[index];
     }

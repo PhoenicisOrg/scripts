@@ -14,7 +14,7 @@ new OnlineInstallerScript()
     .category("Games")
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .preInstall(function(wine) {
+    .preInstall(function (wine) {
         new WindowsVersion(wine)
             .withApplicationWindowsVersion("steam.exe", "winxp")
             .withApplicationWindowsVersion("steamwebhelper.exe", "winxp")

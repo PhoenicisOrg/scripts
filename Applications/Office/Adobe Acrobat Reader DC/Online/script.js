@@ -15,10 +15,10 @@ new OnlineInstallerScript()
     .checksum("98b2b838e6c4663fefdfd341dfdc596b1eff355c")
     .category("Office")
     .executable("AcroRd32.exe")
-    .preInstall(function(wine) {
+    .preInstall(function (wine) {
         new Mspatcha(wine).go();
     })
-    .postInstall(function(wine) {
+    .postInstall(function (wine) {
         // fix broken dialogs (e.g. preferences)
         new WindowsVersion(wine).withWindowsVersion("winxp").go();
     });

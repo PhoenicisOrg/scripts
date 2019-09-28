@@ -15,7 +15,7 @@ new SteamScript()
     .wineVersion(LATEST_STABLE_VERSION)
     .wineArchitecture("amd64")
     .appId(264710)
-    .preInstall(function(wine) {
+    .preInstall(function (wine) {
         const wizard = wine.wizard();
 
         wizard.message(
@@ -28,7 +28,7 @@ new SteamScript()
 
         new VirtualDesktop(wine).go();
     })
-    .postInstall(function(wine) {
+    .postInstall(function (wine) {
         const wizard = wine.wizard();
 
         wizard.message(

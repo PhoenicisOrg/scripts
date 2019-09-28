@@ -1,10 +1,10 @@
 const Wine = include("engines.wine.engine.object");
+
 const Resource = include("utils.functions.net.resource");
 const { remove } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-const OverrideDLL = include("engines.wine.plugins.override_dll");
 const WindowsVersion = include("engines.wine.plugins.windows_version");
 const RemoveMono = include("engines.wine.verbs.remove_mono");
 

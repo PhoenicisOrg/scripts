@@ -15,7 +15,7 @@ new SteamScript()
     .wineVersion(LATEST_STABLE_VERSION)
     .wineArchitecture("amd64")
     .appId(848450)
-    .preInstall(function(wine, wizard) {
+    .preInstall(function (wine, wizard) {
         wizard.message(
             tr("You can make the game smoother by using this: https://github.com/lutris/lutris/wiki/How-to:-Esync")
         );

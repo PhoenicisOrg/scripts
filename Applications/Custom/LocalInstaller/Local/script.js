@@ -8,7 +8,7 @@ new LocalInstallerScript()
     .author("Plata")
     .category("Custom")
     .wineUserSettings(true)
-    .preInstall(function(wine) {
+    .preInstall(function (wine) {
         const wizard = wine.wizard();
 
         const versions = ["win7", "vista", "win2003", "winxp", "win2k", "winnt", "winme", "win98", "win95", "win31"];

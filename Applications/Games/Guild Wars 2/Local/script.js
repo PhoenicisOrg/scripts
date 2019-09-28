@@ -13,7 +13,7 @@ new LocalInstallerScript()
     .executable("Gw2.exe")
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .preInstall(function(wine) {
+    .preInstall(function (wine) {
         // avoid that launcher freezes the complete system
         new VirtualDesktop(wine).withDimensions(1280, 1024).go();
         new CSMT(wine).go();

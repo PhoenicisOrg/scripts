@@ -16,7 +16,7 @@ new CustomInstallerScript()
     .editor("Riot Games")
     .applicationHomepage("http://leagueoflegends.com/")
     .author("Plata, feanor12, Thog")
-    .installationCommand(function(wizard) {
+    .installationCommand(function (wizard) {
         // Select the region and download the setup file
         ////////////////////////////////////////////////
         var regions = [
@@ -98,7 +98,7 @@ new CustomInstallerScript()
     .category("Games")
     .wineDistribution("staging")
     .wineVersion(LATEST_STAGING_VERSION)
-    .preInstall(function(wine) {
+    .preInstall(function (wine) {
         new WindowsVersion(wine).withWindowsVersion("winxp").go();
 
         new D3DX9(wine).go();

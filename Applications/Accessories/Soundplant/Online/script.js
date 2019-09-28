@@ -11,6 +11,6 @@ new OnlineInstallerScript()
     .checksum("df17f942189618219cd504beee1be0712f4e4e4e")
     .category("Accessories")
     .executable("Soundplant45.exe")
-    .preInstall(function(wine) {
+    .preInstall(function (wine) {
         new WindowsVersion(wine).withWindowsVersion("win7").go();
     });
