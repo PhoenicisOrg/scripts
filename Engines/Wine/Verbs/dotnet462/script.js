@@ -4,8 +4,8 @@ const Resource = include("utils.functions.net.resource");
 const Optional = Java.type("java.util.Optional");
 
 const OverrideDLL = include("engines.wine.plugins.override_dll");
-include("engines.wine.plugins.windows_version");
-include("engines.wine.plugins.regedit");
+const WindowsVersion = include("engines.wine.plugins.windows_version");
+const Regedit = include("engines.wine.plugins.regedit");
 const RemoveMono = include("engines.wine.verbs.remove_mono");
 const DotNET461 = include("engines.wine.verbs.dotnet461");
 
@@ -19,7 +19,8 @@ class DotNET462 {
 
     go() {
         const wizard = this.wine.wizard();
-        const windowsVersion = this.wine.windowsVersion();
+
+        const windowsVersion = new WindowsVersion(this.wine).getWindowsVersion();
 
         print(tr("This package ({0}) does not work currently. Use it only for testing!", "dotnet462"));
 
@@ -36,7 +37,7 @@ class DotNET462 {
 
         new DotNET461(this.wine).go();
 
-        this.wine.windowsVersion("win7");
+        new WindowsVersion(this.wine).withWindowsVersion("win7").go();
 
         new OverrideDLL(this.wine).withMode("builtin", ["fusion"]).go();
 
@@ -46,11 +47,11 @@ class DotNET462 {
 
         wizard.wait(tr("Please wait..."));
 
-        this.wine.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*fusion");
+        new Regedit(this.wine).deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*fusion");
 
         new OverrideDLL(this.wine).withMode("native", ["mscoree"]).go();
 
-        this.wine.windowsVersion(windowsVersion);
+        new WindowsVersion(this.wine).withWindowsVersion(windowsVersion).go();
     }
 
     static install(container) {

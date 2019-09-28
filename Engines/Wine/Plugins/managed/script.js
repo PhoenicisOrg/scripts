@@ -1,6 +1,4 @@
-const Wine = include("engines.wine.engine.object");
-
-include("engines.wine.plugins.regedit");
+const Regedit = include("engines.wine.plugins.regedit");
 
 /**
  * Plugin to set the managed state
@@ -30,6 +28,7 @@ module.default = class Managed {
      * Specifies the managed state for a given application
      * @param {string} application The application
      * @param {boolean} managed True if the application shall be managed
+     * @returns {Managed} This
      */
     withManagedApplication(application, managed) {
         this.applications[application] = managed;
@@ -56,6 +55,6 @@ module.default = class Managed {
                 `"Managed"="${localYN}"\n`;
         });
 
-        this.wine.regedit().patch(regeditFileContent);
+        new Regedit(this.wine).patch(regeditFileContent);
     }
 };

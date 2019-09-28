@@ -9,8 +9,8 @@ const WineShortcut = include("engines.wine.shortcuts.wine");
 const Sandbox = include("engines.wine.verbs.sandbox");
 
 const OverrideDLL = include("engines.wine.plugins.override_dll");
-include("engines.wine.plugins.regsvr32");
-include("engines.wine.plugins.windows_version");
+const Regsvr32 = include("engines.wine.plugins.regsvr32");
+const WindowsVersion = include("engines.wine.plugins.windows_version");
 
 new PlainInstaller().withScript(() => {
     var appsManager = Bean("repositoryManager");
@@ -48,7 +48,7 @@ new PlainInstaller().withScript(() => {
     // delete existing IE, otherwise installer will abort with "newer IE installed"
     remove(wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Internet Explorer/iexplore.exe");
     ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"].forEach(
-        function (dll) {
+        function(dll) {
             remove(wine.prefixDirectory() + "/drive_c/windows/system32/" + dll + ".dll");
         }
     );
@@ -239,9 +239,12 @@ new PlainInstaller().withScript(() => {
         .name(ie7installer)
         .get();
 
-    wine.windowsVersion("winxp", "sp3");
+    new WindowsVersion(wine).withWindowsVersion("winxp", "sp3").go();
+
     wine.wait();
+
     wine.run(setupFile, [], null, false, true);
+
     wine.wait();
 
     var librairiesToRegister = [
@@ -301,10 +304,12 @@ new PlainInstaller().withScript(() => {
 
     var progressBar = setupWizard.progressBar("Please wait...");
     var i = 1;
-    librairiesToRegister.forEach(function (dll) {
+    librairiesToRegister.forEach(dll => {
         progressBar.setProgressPercentage((i * 100) / librairiesToRegister.length);
         progressBar.setText(tr("Installing {0}...", dll));
-        wine.regsvr32().install(dll);
+
+        new Regsvr32(wine).withDll(dll).go();
+
         i++;
     });
 

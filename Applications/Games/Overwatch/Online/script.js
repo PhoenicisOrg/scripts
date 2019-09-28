@@ -6,7 +6,7 @@ const Vcrun2015 = include("engines.wine.verbs.vcrun2015");
 const Corefonts = include("engines.wine.verbs.corefonts");
 const DXVK = include("engines.wine.verbs.dxvk");
 
-include("engines.wine.plugins.windows_version");
+const WindowsVersion = include("engines.wine.plugins.windows_version");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 new OnlineInstallerScript()
@@ -21,8 +21,8 @@ new OnlineInstallerScript()
     .wineArchitecture("amd64")
     .category("Games")
     .executable("Battle.net.exe")
-    .preInstall(function (wine) {
-        wine.windowsVersion("win7");
+    .preInstall(function(wine) {
+        new WindowsVersion(wine).withWindowsVersion("win7").go();
 
         new Vcrun2015(wine).go();
         new Corefonts(wine).go();

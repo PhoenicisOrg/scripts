@@ -1,6 +1,4 @@
-const Wine = include("engines.wine.engine.object");
-
-include("engines.wine.plugins.regedit");
+const Regedit = include("engines.wine.plugins.regedit");
 
 /**
  * Plugin to force the use of GLSL
@@ -28,6 +26,6 @@ module.default = class GLSL {
     go() {
         const regeditFileContent = `REGEDIT4\n\n[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n"UseGLSL"="${this.mode}"`;
 
-        this.wine.regedit().patch(regeditFileContent);
+        new Regedit(this.wine).patch(regeditFileContent);
     }
 };

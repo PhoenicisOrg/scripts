@@ -6,7 +6,7 @@ const { cat, fileExists, writeToFile, createTempFile } = include("utils.function
 const Luna = include("engines.wine.verbs.luna");
 const Corefonts = include("engines.wine.verbs.corefonts");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
-include("engines.wine.plugins.windows_version");
+const WindowsVersion = include("engines.wine.plugins.windows_version");
 
 const Thread = Java.type("java.lang.Thread");
 
@@ -143,20 +143,16 @@ module.default = class SteamScript extends QuickScript {
         wine.run(tempFile, [], null, false, true);
 
         // Set windows environment for executable that needs it
-        wine.setOsForApplication()
-            .set("steam.exe", "winxp")
-            .do();
-        wine.setOsForApplication()
-            .set("steamwebhelper.exe", "winxp")
-            .do();
+        new WindowsVersion(wine)
+            .withApplicationWindowsVersion("steam.exe", "winxp")
+            .withApplicationWindowsVersion("steamwebhelper.exe", "winxp")
+            .go();
 
         // Fix for Uplay games that are executed on steam
-        wine.setOsForApplication()
-            .set("upc.exe", "winvista")
-            .do();
-        wine.setOsForApplication()
-            .set("UbisoftGameLauncher.exe", "winvista")
-            .do();
+        new WindowsVersion(wine)
+            .withApplicationWindowsVersion("upc.exe", "winvista")
+            .withApplicationWindowsVersion("UbisoftGameLauncher.exe", "winvista")
+            .go();
 
         // ensure that Steam is running (user might have unchecked "run Steam after installation finished")
         wine.runInsidePrefix(`${wine.programFiles()}/Steam/Steam.exe`, ["steam://nav/games"], false);

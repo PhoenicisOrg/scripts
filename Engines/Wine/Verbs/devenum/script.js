@@ -5,7 +5,7 @@ const { CabExtract } = include("utils.functions.filesystem.extract");
 const Optional = Java.type("java.util.Optional");
 
 const OverrideDLL = include("engines.wine.plugins.override_dll");
-include("engines.wine.plugins.regsvr32");
+const Regsvr32 = include("engines.wine.plugins.regsvr32");
 
 /**
  * Verb to install devenum
@@ -43,7 +43,7 @@ class Devenum {
             .to(system32directory)
             .extract(["-L", "-F", "devenum.dll"]);
 
-        this.wine.regsvr32().install("devenum.dll");
+        new Regsvr32(this.wine).withDll("devenum.dll").go();
 
         new OverrideDLL(this.wine).withMode("native", ["devenum"]).go();
     }

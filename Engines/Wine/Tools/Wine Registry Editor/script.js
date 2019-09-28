@@ -1,6 +1,6 @@
 const Wine = include("engines.wine.engine.object");
 
-include("engines.wine.plugins.regedit");
+const Regedit = include("engines.wine.plugins.regedit");
 
 /**
  * Tool to open the Wine registry editor

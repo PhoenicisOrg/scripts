@@ -6,7 +6,7 @@ const Corefonts = include("engines.wine.verbs.corefonts");
 const Crypt32 = include("engines.wine.verbs.crypt32");
 const D3DX10 = include("engines.wine.verbs.d3dx10");
 
-include("engines.wine.plugins.virtual_desktop");
+const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 new LocalInstallerScript()
@@ -18,8 +18,8 @@ new LocalInstallerScript()
     .executable("Anno5.exe")
     .wineVersion("3.16")
     .wineDistribution("upstream")
-    .preInstall(function (wine) {
-        wine.setVirtualDesktop();
+    .preInstall(function(wine) {
+        new VirtualDesktop(wine).go();
 
         new Crypt32(wine).go();
         new Corefonts(wine).go();
@@ -27,7 +27,7 @@ new LocalInstallerScript()
 
         new OverrideDLL(wine).withMode("native, builtin", ["winhttp", "msvcrt40", "msvcr100", "crypt32"]).go();
     })
-    .postInstall(function (wine) {
+    .postInstall(function(wine) {
         var versionFile = wine.prefixDirectory() + "/drive_c/Ubisoft/Related Designs/ANNO 2070/update/version.txt";
         touch(versionFile);
         writeToFile(

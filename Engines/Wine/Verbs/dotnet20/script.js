@@ -5,7 +5,7 @@ const { remove } = include("utils.functions.filesystem.files");
 const Optional = Java.type("java.util.Optional");
 
 const OverrideDLL = include("engines.wine.plugins.override_dll");
-include("engines.wine.plugins.windows_version");
+const WindowsVersion = include("engines.wine.plugins.windows_version");
 const RemoveMono = include("engines.wine.verbs.remove_mono");
 
 /**
@@ -18,11 +18,13 @@ class DotNET20 {
 
     go() {
         const wizard = this.wine.wizard();
-        const windowsVersion = this.wine.windowsVersion();
+
+        const windowsVersion = new WindowsVersion(this.wine).getWindowsVersion();
+
         const system32directory = this.wine.system32directory();
 
         if (this.wine.architecture() == "x86") {
-            this.wine.windowsVersion("win2k");
+            new WindowsVersion(this.wine).withWindowsVersion("win2k").go();
 
             const setupFile32 = new Resource()
                 .wizard(wizard)
@@ -37,7 +39,7 @@ class DotNET20 {
 
             this.wine.run(setupFile32, ["/q:a", "/c:install.exe /q"], null, false, true);
 
-            this.wine.windowsVersion(windowsVersion);
+            new WindowsVersion(this.wine).withWindowsVersion(windowsVersion).go();
 
             remove(`${system32directory}/msvcr80.dll`);
             remove(`${system32directory}/msvcm80.dll`);

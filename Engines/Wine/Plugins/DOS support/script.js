@@ -1,4 +1,3 @@
-const Wine = include("engines.wine.engine.object");
 const { writeToFile, fileExists, cat } = include("utils.functions.filesystem.files");
 
 /**

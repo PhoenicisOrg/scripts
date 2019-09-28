@@ -6,7 +6,7 @@ const { CabExtract } = include("utils.functions.filesystem.extract");
 const Optional = Java.type("java.util.Optional");
 
 const OverrideDLL = include("engines.wine.plugins.override_dll");
-include("engines.wine.plugins.regsvr32");
+const Regsvr32 = include("engines.wine.plugins.regsvr32");
 
 /**
  * Verb to install amstream
@@ -49,7 +49,7 @@ class Amstream {
             system32directory
         );
 
-        this.wine.regsvr32().install("amstream.dll");
+        new Regsvr32(this.wine).withDll("amstream.dll").go();
 
         if (architecture == "amd64") {
             const system64directory = this.wine.system64directory();

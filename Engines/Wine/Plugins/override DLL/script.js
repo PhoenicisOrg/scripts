@@ -1,6 +1,4 @@
-const Wine = include("engines.wine.engine.object");
-
-include("engines.wine.plugins.regedit");
+const Regedit = include("engines.wine.plugins.regedit");
 
 module.default = class OverrideDLL {
     constructor(wine) {
@@ -23,6 +21,6 @@ module.default = class OverrideDLL {
                 regeditFileContent += `"*${library}"="${mode}"\n`;
             });
 
-        this.wine.regedit().patch(regeditFileContent);
+        new Regedit(this.wine).patch(regeditFileContent);
     }
 };

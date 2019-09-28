@@ -1,7 +1,7 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
 const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
 
-include("engines.wine.plugins.windows_version");
+const WindowsVersion = include("engines.wine.plugins.windows_version");
 const Vcrun2015 = include("engines.wine.verbs.vcrun2015");
 const Corefonts = include("engines.wine.verbs.corefonts");
 
@@ -16,8 +16,8 @@ new OnlineInstallerScript()
     //The checksum is different each time you download
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .preInstall(function (wine /*, wizard*/) {
-        wine.windowsVersion("winxp");
+    .preInstall(function(wine) {
+        new WindowsVersion(wine).withWindowsVersion("winxp").go();
 
         new Vcrun2015(wine).go();
         new Corefonts(wine).go();

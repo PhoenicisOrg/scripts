@@ -8,7 +8,7 @@ const D3DX9 = include("engines.wine.verbs.d3dx9");
 
 const CSMT = include("engines.wine.plugins.csmt");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
-include("engines.wine.plugins.windows_version");
+const WindowsVersion = include("engines.wine.plugins.windows_version");
 
 // Installs League of Legends
 new CustomInstallerScript()
@@ -16,7 +16,7 @@ new CustomInstallerScript()
     .editor("Riot Games")
     .applicationHomepage("http://leagueoflegends.com/")
     .author("Plata, feanor12, Thog")
-    .installationCommand(function (wizard) {
+    .installationCommand(function(wizard) {
         // Select the region and download the setup file
         ////////////////////////////////////////////////
         var regions = [
@@ -98,8 +98,8 @@ new CustomInstallerScript()
     .category("Games")
     .wineDistribution("staging")
     .wineVersion(LATEST_STAGING_VERSION)
-    .preInstall(function (wine) {
-        wine.windowsVersion("winxp");
+    .preInstall(function(wine) {
+        new WindowsVersion(wine).withWindowsVersion("winxp").go();
 
         new D3DX9(wine).go();
 

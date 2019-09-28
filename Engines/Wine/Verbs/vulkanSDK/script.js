@@ -4,7 +4,7 @@ const { touch, writeToFile } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.regedit");
+const Regedit = include("engines.wine.plugins.regedit");
 
 /**
  * Verb to install all the necessary things to run winevulkan (even inside wine mainline or newest wine-staging)
@@ -40,10 +40,10 @@ class VulkanSDK {
 
         const contentVulkanJSON = JSON.stringify(
             {
-                "file_format_version": "1.0.0",
-                "ICD": {
-                    "library_path": "c:\\windows\\system32\\winevulkan.dll",
-                    "api_version": sdkVersion
+                file_format_version: "1.0.0",
+                ICD: {
+                    library_path: "c:\\windows\\system32\\winevulkan.dll",
+                    api_version: sdkVersion
                 }
             },
             null,
@@ -58,7 +58,7 @@ class VulkanSDK {
             "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Khronos\\Vulkan\\Drivers]\n" +
             '"C:\\\\Windows\\\\winevulkan.json"=dword:00000000';
 
-        this.wine.regedit().patch(regeditFileContent32);
+        new Regedit(this.wine).patch(regeditFileContent32);
 
         if (this.wine.architecture() == "amd64") {
             const regeditFileContent64 =
@@ -67,7 +67,7 @@ class VulkanSDK {
                 "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Khronos\\Vulkan\\Drivers\\]\n" +
                 '"C:\\\\Windows\\\\winevulkan.json"=dword:00000000';
 
-            this.wine.regedit().patch(regeditFileContent64);
+            new Regedit(this.wine).patch(regeditFileContent64);
         }
     }
 

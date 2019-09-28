@@ -6,7 +6,7 @@ const { remove } = include("utils.functions.filesystem.files");
 const Optional = Java.type("java.util.Optional");
 
 const OverrideDLL = include("engines.wine.plugins.override_dll");
-include("engines.wine.plugins.regsvr32");
+const Regsvr32 = include("engines.wine.plugins.regsvr32");
 
 /**
  * Verb to install quartz
@@ -44,7 +44,7 @@ class Quartz {
 
         remove(`${prefixDirectory}/TMP/`);
 
-        this.wine.regsvr32().install("quartz.dll");
+        new Regsvr32(this.wine).withDll("quartz.dll").go();
 
         new OverrideDLL(this.wine).withMode("native, builtin", ["quartz"]).go();
     }

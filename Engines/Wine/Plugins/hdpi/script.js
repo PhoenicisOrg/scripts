@@ -1,6 +1,4 @@
-const Wine = include("engines.wine.engine.object");
-
-include("engines.wine.plugins.regedit");
+const Regedit = include("engines.wine.plugins.regedit");
 
 /**
  * Plugin to manage the hdpi state
@@ -44,9 +42,13 @@ module.default = class HDPI {
      * @returns {boolean} True if hdpi is enabled, false otherwise
      */
     isHdpi() {
-        const hdpi = this.wine
-            .regedit()
-            .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Mac Driver", "RetinaMode"]);
+        const hdpi = new Regedit(this.wine).fetchValue([
+            "HKEY_CURRENT_USER",
+            "Software",
+            "Wine",
+            "Mac Driver",
+            "RetinaMode"
+        ]);
 
         return hdpi == "y";
     }
@@ -61,6 +63,6 @@ module.default = class HDPI {
             `[HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Hardware Profiles\\Current\\Software\\Fonts]\n` +
             `"LogPixels"=${fontDpiLogPixels}\n`;
 
-        this.wine.regedit().patch(regeditFileContent);
+        new Regedit(this.wine).patch(regeditFileContent);
     }
 };

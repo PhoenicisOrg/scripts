@@ -1,6 +1,4 @@
-const Wine = include("engines.wine.engine.object");
-
-include("engines.wine.plugins.regedit");
+const Regedit = include("engines.wine.plugins.regedit");
 
 /**
  * Plugin to use native application for a certain file extension
@@ -46,6 +44,6 @@ module.default = class NativeApplication {
             `[HKEY_CLASSES_ROOT\\${this.extension}file\\Shell\\Open\\command]\n` +
             `@="winebrowser "%1""`;
 
-        this.wine.regedit().patch(regeditFileContent);
+        new Regedit(this.wine).patch(regeditFileContent);
     }
 };
