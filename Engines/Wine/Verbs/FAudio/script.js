@@ -2,6 +2,8 @@ const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const { ls, cp } = include("utils.functions.filesystem.files");
+const { getGitVersions } = include("utils.functions.net.gitversions");
+
 
 const Optional = Java.type("java.util.Optional");
 
@@ -38,7 +40,8 @@ class FAudio {
         }
 
         if (typeof this.faudioVersion !== "string") {
-            this.faudioVersion = "19.08";
+            const versions = getGitVersions("Kron4ek", "FAudio-Builds", wizard);
+            this.faudioVersion = versions[0];
         }
 
         const setupFile = new Resource()
@@ -76,9 +79,9 @@ class FAudio {
         wine.prefix(container);
         wine.wizard(wizard);
 
-        const versions = ["19.08", "19.07", "19.06.07", "19.06", "19.05", "19.04", "19.03", "19.02", "19.01"];
+        const versions = getGitVersions("Kron4ek", "FAudio-Builds", wizard);
 
-        const selectedVersion = wizard.menu(tr("Please select the version."), versions, "19.08");
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
 
         // install selected version
         new FAudio(wine).withVersion(selectedVersion.text).go();

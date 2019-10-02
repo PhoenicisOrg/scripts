@@ -4,6 +4,8 @@ const { Extractor } = include("utils.functions.filesystem.extract");
 const { remove, lns } = include("utils.functions.filesystem.files");
 const Downloader = include("utils.functions.net.download");
 const { getGitVersions } = include("utils.functions.net.gitversions");
+
+
 const Optional = Java.type("java.util.Optional");
 
 include("engines.wine.plugins.override_dll");
@@ -35,7 +37,8 @@ class Gallium9 {
         const system32directory = this.wine.system32directory();
 
         if (typeof this.gallium9Version !== "string") {
-            this.gallium9Version = "0.4";
+            const versions = getGitVersions("iXit", "wine-nine-standalone", wizard);
+            this.gallium9Version = versions[0];
         }
 
         wizard.message(
