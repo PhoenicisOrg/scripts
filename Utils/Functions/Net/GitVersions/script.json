@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Git Versions",
+    "id"                         : "utils.functions.net.gitversions",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

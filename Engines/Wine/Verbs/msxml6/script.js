@@ -18,7 +18,7 @@ class Msxml6 {
         const wizard = this.wine.wizard();
         const system32directory = this.wine.system32directory();
 
-        if(fileExists(`${system32directory}/msxml6.dll`)) {
+        if (fileExists(`${system32directory}/msxml6.dll`)) {
             remove(`${system32directory}/msxml6.dll`);
         }
 
@@ -30,7 +30,7 @@ class Msxml6 {
         if (this.wine.architecture() == "amd64") {
             const system64directory = this.wine.system64directory();
 
-            if(fileExists(`${system64directory}/msxml6.dll`)) {
+            if (fileExists(`${system64directory}/msxml6.dll`)) {
                 remove(`${system64directory}/msxml6.dll`);
             }
 
