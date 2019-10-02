@@ -1,7 +1,7 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
 
-include("engines.wine.verbs.dxvk");
+const DXVK = include("engines.wine.verbs.dxvk");
 include("engines.wine.plugins.usetakefocus");
 
 new OnlineInstallerScript()
@@ -13,7 +13,7 @@ new OnlineInstallerScript()
     .wineDistribution("staging")
     .wineVersion(LATEST_STAGING_VERSION)
     .preInstall(function (wine /*, wizard*/) {
-        wine.DXVK();
+        new DXVK(wine).go();
         wine.UseTakeFocus("N");
     })
     .executable("MtgaLauncher.exe");
