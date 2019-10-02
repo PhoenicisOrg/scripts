@@ -1,5 +1,5 @@
 const Downloader = include("utils.functions.net.download");
-const {createTempDir, remove} = include("utils.functions.filesystem.files");
+const {createTempDir, remove, cat} = include("utils.functions.filesystem.files");
 
 /**
  * Get an array of tag corresponding to the version in a git repository
@@ -9,7 +9,7 @@ const {createTempDir, remove} = include("utils.functions.filesystem.files");
  * @param {wizard} wizard
  * @returns {string[]} list of version tag in the repository
  */
-function getGitVersions(repositoryName, repositoryOwner, wizard) {
+function getGitVersions(repositoryOwner, repositoryName, wizard) {
     const tmpDir = createTempDir();
 
     const releasesFile = new Downloader()
@@ -23,8 +23,8 @@ function getGitVersions(repositoryName, repositoryOwner, wizard) {
 
     let versions = new Array();
 
-    const releaseFileJson = JSON.parse(cat(releaseFile));
-    releaseFileJson.forEach(version => {
+    const releasesFileJson = JSON.parse(cat(releasesFile));
+    releasesFileJson.forEach(version => {
         versions.push(version.tag_name);
     });
 
