@@ -2,7 +2,6 @@ const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const { remove, lns } = include("utils.functions.filesystem.files");
-const Downloader = include("utils.functions.net.download");
 const { getGitVersions } = include("utils.functions.net.gitversions");
 
 
