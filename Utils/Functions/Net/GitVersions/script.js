@@ -4,9 +4,9 @@ const {createTempDir, remove, cat} = include("utils.functions.filesystem.files")
 /**
  * Get an array of tag corresponding to the version in a git repository
  *
- * @param {string} repositoryName name of the repository
  * @param {string} repositoryOwner owner of the repository
- * @param {wizard} wizard
+ * @param {string} repositoryName name of the repository
+ * @param {wizard} wizard the wizard
  * @returns {string[]} list of version tag in the repository
  */
 function getGitVersions(repositoryOwner, repositoryName, wizard) {
