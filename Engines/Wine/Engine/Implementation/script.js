@@ -23,6 +23,7 @@ module.default = class WineEngine {
         this._ldPath = propertyReader.getProperty("application.environment.ld");
         this._wineEnginesDirectory = propertyReader.getProperty("application.user.engines") + "/wine";
         this._winePrefixesDirectory = propertyReader.getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
+        this._useRuntime = (propertyReader.getProperty("application.environment.wineRuntime") !== "false");
         this._wineWebServiceUrl = propertyReader.getProperty("webservice.wine.url");
         this._wizard = null;
         this._workingContainer = "";
@@ -43,7 +44,9 @@ module.default = class WineEngine {
     }
 
     install(subCategory, version) {
-        this._installRuntime(this.getWizard());
+        if (this._useRuntime) {
+            this._installRuntime(this.getWizard());
+        }
 
         const [distribution, , architecture] = subCategory.split("-");
         const localDirectory = this.getLocalDirectory(subCategory, version);
@@ -447,9 +450,9 @@ module.default = class WineEngine {
         if (architecture == "amd64") {
             ldPath =
                 this._wineEnginesDirectory +
-                "/runtime/lib64/:" +
+                (this._useRuntime ? "/runtime/lib64/:" : "") +
                 this._wineEnginesDirectory +
-                "/runtime/lib/:" +
+                (this._useRuntime ? "/runtime/lib/:" : "") +
                 this.getLocalDirectory(subCategory, version) +
                 "/lib64/:" +
                 this.getLocalDirectory(subCategory, version) +
@@ -458,7 +461,7 @@ module.default = class WineEngine {
         } else {
             ldPath =
                 this._wineEnginesDirectory +
-                "/runtime/lib/:" +
+                (this._useRuntime ? "/runtime/lib/:" : "") +
                 this.getLocalDirectory(subCategory, version) +
                 "/lib/:" +
                 ldPath;
