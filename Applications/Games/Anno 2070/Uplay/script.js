@@ -1,7 +1,7 @@
 const UplayScript = include("engines.wine.quick_script.uplay_script");
 
 const Corefonts = include("engines.wine.verbs.corefonts");
-include("engines.wine.plugins.virtual_desktop");
+const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
 
 new UplayScript()
     .name("Anno 2070")
@@ -11,7 +11,7 @@ new UplayScript()
     .wineVersion("4.0-rc3")
     .wineDistribution("upstream")
     .appId(22)
-    .preInstall(function (wine /*, wizard*/) {
-        wine.setVirtualDesktop();
+    .preInstall(function (wine) {
+        new VirtualDesktop(wine).go();
         new Corefonts(wine).go();
     });

@@ -1,4 +1,5 @@
 const PlainInstaller = include("utils.functions.apps.plain_installer");
+
 const Resource = include("utils.functions.net.resource");
 const { CabExtract } = include("utils.functions.filesystem.extract");
 const Wine = include("engines.wine.engine.object");
@@ -7,11 +8,12 @@ const { remove } = include("utils.functions.filesystem.files");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 const AppResource = include("utils.functions.apps.resources");
 
-include("engines.wine.plugins.override_dll");
-include("engines.wine.plugins.regedit");
-include("engines.wine.plugins.regsvr32");
-include("engines.wine.plugins.windows_version");
 const Msls31 = include("engines.wine.verbs.msls31");
+
+const OverrideDLL = include("engines.wine.plugins.override_dll");
+const Regedit = include("engines.wine.plugins.regedit");
+const Regsvr32 = include("engines.wine.plugins.regsvr32");
+const WindowsVersion = include("engines.wine.plugins.windows_version");
 
 new PlainInstaller().withScript(() => {
     var appsManager = Bean("repositoryManager");
@@ -34,7 +36,7 @@ new PlainInstaller().withScript(() => {
 
     new Msls31(wine).go();
 
-    wine.windowsVersion("win2k");
+    new WindowsVersion(wine).withWindowsVersion("win2k").go();
 
     remove(wine.prefixDirectory() + "/drive_c/IE 6.0 Full/");
     remove(wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Internet Explorer/iexplore.exe");
@@ -66,12 +68,13 @@ new PlainInstaller().withScript(() => {
         .extract(["-F", "inseng.dll"]);
 
     wine.run("iexplore", ["-unregserver"], null, false, true);
-    wine.overrideDLL()
-        .set("native", ["inseng"])
-        .do();
+
+    new OverrideDLL(wine).withMode("native", ["inseng"]).go();
+
     wine.runInsidePrefix("IE 6.0 Full/IE6SETUP.EXE", [], true);
-    wine.overrideDLL()
-        .set("native,builtin", [
+
+    new OverrideDLL(wine)
+        .withMode("native,builtin", [
             "inetcpl.cpl",
             "itircl",
             "itss",
@@ -84,7 +87,7 @@ new PlainInstaller().withScript(() => {
             "shlwapi",
             "urlmon"
         ])
-        .do();
+        .go();
 
     var librariesToRegister = [
         "actxprxy.dll",
@@ -143,10 +146,12 @@ new PlainInstaller().withScript(() => {
 
     var progressBar = setupWizard.progressBar(tr("Please wait..."));
     var i = 1;
-    librariesToRegister.forEach(function (dll) {
+    librariesToRegister.forEach(dll => {
         progressBar.setProgressPercentage((i * 100) / librariesToRegister.length);
         progressBar.setText(tr("Installing {0}...", dll));
-        wine.regsvr32().install(dll);
+
+        new Regsvr32(wine).withDll(dll).go();
+
         i++;
     });
 
@@ -159,8 +164,9 @@ new PlainInstaller().withScript(() => {
         .miniature([TYPE_ID, CATEGORY_ID, APPLICATION_ID])
         .create();
 
-    var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("ie6.reg");
-    wine.regedit().patch(registrySettings);
+    const registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("ie6.reg");
+
+    new Regedit(wine).patch(registrySettings);
 
     setupWizard.close();
 });

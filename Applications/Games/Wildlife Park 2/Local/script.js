@@ -1,6 +1,6 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 
-include("engines.wine.plugins.virtual_desktop");
+const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
 const Quartz = include("engines.wine.verbs.quartz");
 
 new LocalInstallerScript()
@@ -18,5 +18,5 @@ new LocalInstallerScript()
         );
 
         new Quartz(wine).go();
-        wine.setVirtualDesktop();
+        new VirtualDesktop(wine).go();
     });

@@ -2,7 +2,7 @@ const OnlineInstallerScript = include("engines.wine.quick_script.online_installe
 const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
 
 const DXVK = include("engines.wine.verbs.dxvk");
-include("engines.wine.plugins.usetakefocus");
+const TakeFocus = include("engines.wine.plugins.usetakefocus");
 
 new OnlineInstallerScript()
     .name("Magic: The Gathering Arena")
@@ -12,8 +12,8 @@ new OnlineInstallerScript()
     .category("Games")
     .wineDistribution("staging")
     .wineVersion(LATEST_STAGING_VERSION)
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall(function (wine) {
         new DXVK(wine).go();
-        wine.UseTakeFocus("N");
+        new TakeFocus(wine).withMode("N").go();
     })
     .executable("MtgaLauncher.exe");

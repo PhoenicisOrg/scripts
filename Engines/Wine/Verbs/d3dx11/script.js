@@ -4,7 +4,7 @@ const { CabExtract } = include("utils.functions.filesystem.extract");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install D3DX11
@@ -47,6 +47,7 @@ class D3DX11 {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const system32directory = this.wine.system32directory();
+        const architecture = this.wine.architecture();
 
         const setupFile = new Resource()
             .wizard(wizard)
@@ -72,7 +73,7 @@ class D3DX11 {
 
         this.extractDirectXToSystemDirectory(progressBar, filesToExtractx86, system32directory, "*.dll");
 
-        if (this.architecture() == "amd64") {
+        if (architecture == "amd64") {
             const system64directory = this.wine.system64directory();
 
             new CabExtract()
@@ -91,10 +92,7 @@ class D3DX11 {
             this.extractDirectXToSystemDirectory(progressBar, filesToExtractx64, system64directory, "*.dll");
         }
 
-        this.wine
-            .overrideDLL()
-            .set("native, builtin", ["d3dx11_42", "d3dx11_43"])
-            .do();
+        new OverrideDLL(this.wine).withMode("native, builtin", ["d3dx11_42", "d3dx11_43"]).go();
     }
 
     static install(container) {

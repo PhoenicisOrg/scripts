@@ -4,7 +4,7 @@ const { CabExtract } = include("utils.functions.filesystem.extract");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install D3DX10
@@ -47,6 +47,7 @@ class D3DX10 {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const system32directory = this.wine.system32directory();
+        const architecture = this.wine.architecture();
 
         const setupFile = new Resource()
             .wizard(wizard)
@@ -84,7 +85,7 @@ class D3DX10 {
 
         this.extractDirectXToSystemDirectory(progressBar, filesToExtractx86, system32directory, "d3dx10*.dll");
 
-        if (this.architecture() == "amd64") {
+        if (architecture == "amd64") {
             const system64directory = this.wine.system64directory();
 
             new CabExtract()
@@ -111,9 +112,8 @@ class D3DX10 {
             this.extractDirectXToSystemDirectory(progressBar, filesToExtractx64, system64directory, "d3dx10*.dll");
         }
 
-        this.wine
-            .overrideDLL()
-            .set("native", [
+        new OverrideDLL(this.wine)
+            .withMode("native", [
                 "d3dx10_33",
                 "d3dx10_34",
                 "d3dx10_35",
@@ -126,7 +126,7 @@ class D3DX10 {
                 "d3dx10_42",
                 "d3dx10_43"
             ])
-            .do();
+            .go();
     }
 
     static install(container) {

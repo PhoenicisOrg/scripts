@@ -5,7 +5,7 @@ const { remove, lns } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install Gallium 9 Standalone
@@ -37,7 +37,7 @@ class Gallium9 {
             this.gallium9Version = "0.4";
         }
 
-        this.wizard().message(
+        wizard.message(
             tr(
                 "Using Gallium 9 requires to have a driver supporting the Gallium 9 state tracker, as well as d3dapater9.so installed (ex: libd3d9adapter-mesa package). Please be sure it is installed (both 32 and 64 bits)."
             )
@@ -86,10 +86,7 @@ class Gallium9 {
             this.wine.run(`${system32directory}ninewinecfg.exe`, ["-e"], null, false, true);
         }
 
-        this.wine
-            .overrideDLL()
-            .set("native", ["d3d9"])
-            .do();
+        new OverrideDLL(this.wine).withMode("native", ["d3d9"]).go();
     }
 
     static install(container) {

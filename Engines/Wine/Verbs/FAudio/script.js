@@ -5,7 +5,7 @@ const { ls, cp } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install FAudio
@@ -61,10 +61,7 @@ class FAudio {
             if (file.endsWith(".dll")) {
                 cp(`${faudioDir}/x64/${file}`, system64directory);
 
-                this.wine
-                    .overrideDLL()
-                    .set("native", [file])
-                    .do();
+                new OverrideDLL(this.wine).withMode("native", [file]).go();
             }
         });
     }
