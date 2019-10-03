@@ -17,9 +17,10 @@ module.default = class ZipScript extends QuickScript {
     }
 
     /**
-     * If setupPath is provided, ZipScript will try to execute the .exe when the archive is extracted 
+     * If setupPath is provided, ZipScript will try to execute the .exe when the archive is extracted
      *
      * @param {string} setupPath path of the setup in <wineprefix>/drive_c/
+     * @returns {ZipScript} This
      */
     setupPathInsidePrefix(setupPath) {
         this._setupPath = setupPath;
@@ -54,7 +55,7 @@ module.default = class ZipScript extends QuickScript {
         if (!this._url) {
             archive = setupWizard.browse(tr("Please select the .zip file."), wine.prefixDirectory(), ["zip"]);
         } else {
-            archive = wine.prefixDirectory() + "/drive_c/archive.zip";
+            archive = `${wine.prefixDirectory()}/drive_c/archive.zip`;
             new Downloader()
                 .wizard(setupWizard)
                 .url(this._url)
@@ -70,7 +71,7 @@ module.default = class ZipScript extends QuickScript {
             .extract();
 
         if (this._setupPath !== `undefined`) {
-            if (!fileExists(this.prefixDirectory() + "/drive_c/" + this._setupPath)) {
+            if (!fileExists(`${wine.prefixDirectory()}/drive_c/${this._setupPath}`)) {
                 throw new Error(tr("File \"{0}\" not found", this._setupPath));
             }
             wine.runInsidePrefix(this._setupPath);
