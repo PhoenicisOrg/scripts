@@ -2,8 +2,8 @@ const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const { remove, lns } = include("utils.functions.filesystem.files");
-const Downloader = include("utils.functions.net.download");
 const { getGithubVersions } = include("utils.functions.net.githubversions");
+
 
 
 const Optional = Java.type("java.util.Optional");
