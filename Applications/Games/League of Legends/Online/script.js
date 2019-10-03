@@ -82,6 +82,6 @@ new CustomInstallerScript()
     .category("Games")
     .wineDistribution("staging")
     .wineVersion(LATEST_STAGING_VERSION)
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall(function (wine) {
         new Corefonts(wine).go();
     });
