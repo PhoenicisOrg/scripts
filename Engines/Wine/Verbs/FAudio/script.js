@@ -2,7 +2,7 @@ const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const { ls, cp } = include("utils.functions.filesystem.files");
-const { getGitVersions } = include("utils.functions.net.gitversions");
+const { getGithubVersions } = include("utils.functions.net.githubversions");
 
 
 const Optional = Java.type("java.util.Optional");
@@ -40,7 +40,7 @@ class FAudio {
         }
 
         if (typeof this.faudioVersion !== "string") {
-            const versions = getGitVersions("Kron4ek", "FAudio-Builds", wizard);
+            const versions = getGithubVersions("Kron4ek", "FAudio-Builds", wizard);
             this.faudioVersion = versions[0];
         }
 
@@ -79,7 +79,7 @@ class FAudio {
         wine.prefix(container);
         wine.wizard(wizard);
 
-        const versions = getGitVersions("Kron4ek", "FAudio-Builds", wizard);
+        const versions = getGithubVersions("Kron4ek", "FAudio-Builds", wizard);
 
         const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
 

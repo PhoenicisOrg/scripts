@@ -1,6 +1,6 @@
 {
-    "scriptName"                 : "Git Versions",
-    "id"                         : "utils.functions.net.gitversions",
+    "scriptName"                 : "Github Versions",
+    "id"                         : "utils.functions.net.githubversions",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"

@@ -9,7 +9,7 @@ const {createTempDir, remove, cat} = include("utils.functions.filesystem.files")
  * @param {wizard} wizard
  * @returns {string[]} list of version tag in the repository
  */
-function getGitVersions(repositoryOwner, repositoryName, wizard) {
+function getGithubVersions(repositoryOwner, repositoryName, wizard) {
     const tmpDir = createTempDir();
 
     const releasesFile = new Downloader()
@@ -21,15 +21,10 @@ function getGitVersions(repositoryOwner, repositoryName, wizard) {
         .to(tmpDir + "/releases.json")
         .get();
 
-    let versions = new Array();
-
-    const releasesFileJson = JSON.parse(cat(releasesFile));
-    releasesFileJson.forEach(version => {
-        versions.push(version.tag_name);
-    });
+    const versions = JSON.parse(cat(releasesFile)).map(version => version.tag_name);
 
     remove(tmpDir);
 
     return versions;
 }
-module.getGitVersions = getGitVersions;
+module.getGithubVersions = getGithubVersions;

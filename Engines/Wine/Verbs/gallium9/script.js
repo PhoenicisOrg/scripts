@@ -3,7 +3,7 @@ const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const { remove, lns } = include("utils.functions.filesystem.files");
 const Downloader = include("utils.functions.net.download");
-const { getGitVersions } = include("utils.functions.net.gitversions");
+const { getGithubVersions } = include("utils.functions.net.githubversions");
 
 
 const Optional = Java.type("java.util.Optional");
@@ -37,7 +37,7 @@ class Gallium9 {
         const system32directory = this.wine.system32directory();
 
         if (typeof this.gallium9Version !== "string") {
-            const versions = getGitVersions("iXit", "wine-nine-standalone", wizard);
+            const versions = getGithubVersions("iXit", "wine-nine-standalone", wizard);
             this.gallium9Version = versions[0];
         }
 
@@ -85,9 +85,9 @@ class Gallium9 {
             );
             lns(`${system64directory}/d3d9-nine.dll`, `${system64directory}/d3d9.dll`);
 
-            this.wine.run(`${system64directory}ninewinecfg.exe`, ["-e"], null, false, true);
+            this.wine.run(`${system64directory}/ninewinecfg.exe`, ["-e"], null, false, true);
         } else {
-            this.wine.run(`${system32directory}ninewinecfg.exe`, ["-e"], null, false, true);
+            this.wine.run(`${system32directory}/ninewinecfg.exe`, ["-e"], null, false, true);
         }
 
         this.wine
@@ -100,7 +100,7 @@ class Gallium9 {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "gallium9", Optional.empty());
 
-        const versions = getGitVersions("iXit", "wine-nine-standalone", wizard);
+        const versions = getGithubVersions("iXit", "wine-nine-standalone", wizard);
 
         const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
 
