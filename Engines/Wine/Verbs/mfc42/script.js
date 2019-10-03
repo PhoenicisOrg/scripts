@@ -1,60 +1,60 @@
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
-const {CabExtract} = include("utils.functions.filesystem.extract");
-const {remove} = include("utils.functions.filesystem.files");
+const { CabExtract } = include("utils.functions.filesystem.extract");
+const { remove } = include("utils.functions.filesystem.files");
 
-include("engines.wine.plugins.override_dll");
+const Optional = Java.type("java.util.Optional");
 
-/**
- * Verb to install mfc42.dll and mfc42u.dll
- *
- * @returns {Wine} Wine object
- */
-Wine.prototype.mfc42 = function () {
-    var setupFile = new Resource()
-        .wizard(this.wizard())
-        .url("http://download.microsoft.com/download/vc60pro/Update/2/W9XNT4/EN-US/VC6RedistSetup_deu.exe")
-        .checksum("a8c4dd33e281c166488846a10edf97ff0ce37044")
-        .name("VC6RedistSetup_deu.exe")
-        .get();
-
-    remove(this.system32directory() + "/mfc42.dll");
-    remove(this.system32directory() + "/mfc42u.dll");
-
-    new CabExtract()
-        .archive(setupFile)
-        .wizard(this.wizard())
-        .to(this.system32directory())
-        .extract();
-
-    new CabExtract()
-        .archive(this.system32directory() + "/vcredist.exe")
-        .wizard(this.wizard())
-        .to(this.system32directory())
-        .extract(['-F', 'mfc42*.dll']);
-
-    this.overrideDLL()
-        .set("native, builtin", ["mfc42", "mfc42u"])
-        .do();
-
-    return this;
-};
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install mfc42.dll and mfc42u.dll
  */
-// eslint-disable-next-line no-unused-vars
-module.default = class Mfc42Verb {
-    constructor() {
-        // do nothing
+class Mfc42 {
+    constructor(wine) {
+        this.wine = wine;
     }
 
-    install(container) {
-        var wine = new Wine();
+    go() {
+        const wizard = this.wine.wizard();
+        const system32directory = this.wine.system32directory();
+
+        const setupFile = new Resource()
+            .wizard(wizard)
+            .url("http://download.microsoft.com/download/vc60pro/Update/2/W9XNT4/EN-US/VC6RedistSetup_deu.exe")
+            .checksum("a8c4dd33e281c166488846a10edf97ff0ce37044")
+            .name("VC6RedistSetup_deu.exe")
+            .get();
+
+        remove(`${system32directory}/mfc42.dll`);
+        remove(`${system32directory}/mfc42u.dll`);
+
+        new CabExtract()
+            .wizard(wizard)
+            .archive(setupFile)
+            .to(system32directory)
+            .extract();
+
+        new CabExtract()
+            .wizard(wizard)
+            .archive(`${system32directory}/vcredist.exe`)
+            .to(system32directory)
+            .extract(["-F", "mfc42*.dll"]);
+
+        new OverrideDLL(this.wine).withMode("native, builtin", ["mfc42", "mfc42u"]).go();
+    }
+
+    static install(container) {
+        const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "mfc42", Optional.empty());
+
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "mfc42", java.util.Optional.empty());
         wine.wizard(wizard);
-        wine.mfc42();
+
+        new Mfc42(wine).go();
+
         wizard.close();
     }
 }
+
+module.default = Mfc42;

@@ -1,10 +1,11 @@
 const CustomInstallerScript = include("engines.wine.quick_script.custom_installer_script");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
 const Resource = include("utils.functions.net.resource");
 
 const Corefonts = include("engines.wine.verbs.corefonts");
 
 
+// Installs League of Legends
 new CustomInstallerScript()
     .name("League of Legends")
     .editor("Riot Games")
@@ -83,4 +84,4 @@ new CustomInstallerScript()
     .wineVersion(LATEST_STAGING_VERSION)
     .preInstall(function (wine /*, wizard*/) {
         new Corefonts(wine).go();
-    })
+    });

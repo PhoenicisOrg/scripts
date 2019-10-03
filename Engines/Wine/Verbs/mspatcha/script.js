@@ -1,62 +1,64 @@
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
-const {CabExtract} = include("utils.functions.filesystem.extract");
-const {remove} = include("utils.functions.filesystem.files");
+const { CabExtract } = include("utils.functions.filesystem.extract");
+const { remove } = include("utils.functions.filesystem.files");
 
-include("engines.wine.plugins.override_dll");
+const Optional = Java.type("java.util.Optional");
 
-/**
- * Verb to install mspatcha
- *
- * @returns {Wine} Wine object
- */
-Wine.prototype.mspatcha = function () {
-    //Inspired from winetricks mspatcha, but with a link Phoenicis can understand
-    var setupFile = new Resource()
-        .wizard(this.wizard())
-        .url("https://ftp.gnome.org/mirror/archive/ftp.sunet.se/pub/security/vendor/microsoft/win2000/Service_Packs/usa/W2KSP4_EN.EXE")
-        .checksum("fadea6d94a014b039839fecc6e6a11c20afa4fa8")
-        .name("W2ksp4_EN.exe")
-        .get();
-
-    remove(this.system32directory() + "/mspatcha.dll");
-
-    new CabExtract()
-        .archive(setupFile)
-        .wizard(this.wizard())
-        .to(this.system32directory())
-        .extract();
-
-    new CabExtract()
-        .archive(this.system32directory() + "/i386/mspatcha.dl_")
-        .wizard(this.wizard())
-        .to(this.system32directory())
-        .extract();
-
-    remove(this.system32directory() + "/i386/");
-
-    this.overrideDLL()
-        .set("native, builtin", ["mspatcha"])
-        .do();
-
-    return this;
-};
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install mspatcha
  */
-// eslint-disable-next-line no-unused-vars
-module.default = class MspatchaVerb {
-    constructor() {
-        // do nothing
+class Mspatcha {
+    constructor(wine) {
+        this.wine = wine;
     }
 
-    install(container) {
-        var wine = new Wine();
+    go() {
+        const wizard = this.wine.wizard();
+        const system32directory = this.wine.system32directory();
+
+        //Inspired from winetricks mspatcha, but with a link Phoenicis can understand
+        const setupFile = new Resource()
+            .wizard(wizard)
+            .url(
+                "https://ftp.gnome.org/mirror/archive/ftp.sunet.se/pub/security/vendor/microsoft/win2000/Service_Packs/usa/W2KSP4_EN.EXE"
+            )
+            .checksum("fadea6d94a014b039839fecc6e6a11c20afa4fa8")
+            .name("W2ksp4_EN.exe")
+            .get();
+
+        remove(`${system32directory}/mspatcha.dll`);
+
+        new CabExtract()
+            .wizard(wizard)
+            .archive(setupFile)
+            .to(system32directory)
+            .extract();
+
+        new CabExtract()
+            .wizard(wizard)
+            .archive(`${system32directory}/i386/mspatcha.dl_`)
+            .to(system32directory)
+            .extract();
+
+        remove(`${system32directory}/i386/`);
+
+        new OverrideDLL(this.wine).withMode("native, builtin", ["mspatcha"]).go();
+    }
+
+    static install(container) {
+        const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "mspatcha", Optional.empty());
+
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "mspatcha", java.util.Optional.empty());
         wine.wizard(wizard);
-        wine.mspatcha();
+
+        new Mspatcha(wine).go();
+
         wizard.close();
     }
 }
+
+module.default = Mspatcha;
