@@ -9,7 +9,7 @@ const {createTempDir, remove, cat} = include("utils.functions.filesystem.files")
  * @param {wizard} wizard the wizard
  * @returns {string[]} list of version tag in the repository
  */
-function getGithubReleases(repositoryOwner, repositoryName, wizard) {
+module.getGithubReleases = function getGithubReleases(repositoryOwner, repositoryName, wizard) {
     const tmpDir = createTempDir();
 
     const releasesFile = new Downloader()
@@ -26,5 +26,4 @@ function getGithubReleases(repositoryOwner, repositoryName, wizard) {
     remove(tmpDir);
 
     return versions;
-}
-module.getGithubReleases = getGithubReleases;
+};
