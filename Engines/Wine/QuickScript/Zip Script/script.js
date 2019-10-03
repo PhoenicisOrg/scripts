@@ -16,6 +16,11 @@ module.default = class ZipScript extends QuickScript {
         return this;
     }
 
+    /**
+     * If setupPath is provided, ZipScript will try to execute the .exe when the archive is extracted 
+     *
+     * @param {string} setupPath path of the setup in <wineprefix>/drive_c/
+     */
     setupPathInsidePrefix(setupPath) {
         this._setupPath = setupPath;
         return this;
