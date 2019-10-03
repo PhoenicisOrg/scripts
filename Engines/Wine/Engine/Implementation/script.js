@@ -447,12 +447,17 @@ module.default = class WineEngine {
             ldPath = userData.ldPath + ldPath;
         }
 
+        let runtimePath = "";
+        let runtimePath64 = "";
+        if (this._useRuntime) {
+            runtimePath = this._wineEnginesDirectory + "/runtime/lib/";
+            runtimePath64 = this._wineEnginesDirectory + "/runtime/lib64/";
+        }
+
         if (architecture == "amd64") {
             ldPath =
-                this._wineEnginesDirectory +
-                (this._useRuntime ? "/runtime/lib64/:" : "") +
-                this._wineEnginesDirectory +
-                (this._useRuntime ? "/runtime/lib/:" : "") +
+                runtimePath64 + ":" +
+                runtimePath + ":" +
                 this.getLocalDirectory(subCategory, version) +
                 "/lib64/:" +
                 this.getLocalDirectory(subCategory, version) +
@@ -460,8 +465,7 @@ module.default = class WineEngine {
                 ldPath;
         } else {
             ldPath =
-                this._wineEnginesDirectory +
-                (this._useRuntime ? "/runtime/lib/:" : "") +
+                runtimePath + ":" +
                 this.getLocalDirectory(subCategory, version) +
                 "/lib/:" +
                 ldPath;
