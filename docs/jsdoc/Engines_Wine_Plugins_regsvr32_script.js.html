@@ -26,22 +26,26 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const Wine = include("engines.wine.engine.object");
+            <pre class="prettyprint source linenums"><code>/**
+ * Plugin to run "regsvr32"
+ */
+module.default = class Regsvr32 {
+    constructor(wine) {
+        this.wine = wine;
+        this.dlls = [];
+    }
 
-/**
-* runs "regsvr32"
-* @returns {Wine} Wine object
-*/
-Wine.prototype.regsvr32 = function () {
-    var _wine = this;
+    withDll(dll) {
+        this.dlls.push(dll);
 
-    this.install = function (dll) {
-        _wine.run("regsvr32", ["/i", dll], this.prefixDirectory(), false, true);
-        return _wine;
-    };
+        return this;
+    }
 
-    return this;
-};</code></pre>
+    go() {
+        this.dlls.forEach(dll => this.wine.run("regsvr32", ["/i", dll], this.wine.prefixDirectory(), false, true));
+    }
+};
+</code></pre>
         </article>
     </section>
 

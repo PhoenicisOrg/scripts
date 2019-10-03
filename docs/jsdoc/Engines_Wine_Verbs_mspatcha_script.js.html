@@ -33,7 +33,7 @@ const { remove } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install mspatcha
@@ -73,10 +73,7 @@ class Mspatcha {
 
         remove(`${system32directory}/i386/`);
 
-        this.wine
-            .overrideDLL()
-            .set("native, builtin", ["mspatcha"])
-            .do();
+        new OverrideDLL(this.wine).withMode("native, builtin", ["mspatcha"]).go();
     }
 
     static install(container) {

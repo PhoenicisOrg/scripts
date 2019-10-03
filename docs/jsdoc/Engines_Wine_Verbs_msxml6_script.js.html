@@ -32,7 +32,7 @@ const { remove, fileExists } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install msxml6
@@ -46,19 +46,16 @@ class Msxml6 {
         const wizard = this.wine.wizard();
         const system32directory = this.wine.system32directory();
 
-        if(fileExists(`${system32directory}/msxml6.dll`)) {
+        if (fileExists(`${system32directory}/msxml6.dll`)) {
             remove(`${system32directory}/msxml6.dll`);
         }
 
-        this.wine
-            .overrideDLL()
-            .set("native,builtin", ["msxml6"])
-            .do();
+        new OverrideDLL(this.wine).withMode("native,builtin", ["msxml6"]).go();
 
         if (this.wine.architecture() == "amd64") {
             const system64directory = this.wine.system64directory();
 
-            if(fileExists(`${system64directory}/msxml6.dll`)) {
+            if (fileExists(`${system64directory}/msxml6.dll`)) {
                 remove(`${system64directory}/msxml6.dll`);
             }
 

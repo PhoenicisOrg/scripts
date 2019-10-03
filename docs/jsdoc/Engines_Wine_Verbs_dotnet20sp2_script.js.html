@@ -32,9 +32,9 @@ const { remove } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
-include("engines.wine.plugins.windows_version");
-include("engines.wine.plugins.regedit");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
+const WindowsVersion = include("engines.wine.plugins.windows_version");
+const Regedit = include("engines.wine.plugins.regedit");
 const RemoveMono = include("engines.wine.verbs.remove_mono");
 
 /**
@@ -47,15 +47,13 @@ class DotNET20SP2 {
 
     go() {
         const wizard = this.wine.wizard();
-        const osVersion = this.wine.windowsVersion();
         const system32directory = this.wine.system32directory();
 
-        this.wine.windowsVersion("winxp");
+        const osVersion = new WindowsVersion(this.wine).getWindowsVersion();
 
-        this.wine
-            .overrideDLL()
-            .set("builtin", ["ngen.exe", "regsvcs.exe", "mscorsvw.exe"])
-            .do();
+        new WindowsVersion(this.wine).withWindowsVersion("winxp").go();
+
+        new OverrideDLL(this.wine).withMode("builtin", ["ngen.exe", "regsvcs.exe", "mscorsvw.exe"]).go();
 
         new RemoveMono(this.wine).go();
 
@@ -91,11 +89,11 @@ class DotNET20SP2 {
             this.wine.run(setupFile64, [setupFile64, "/q", '/c:"install.exe /q"'], null, false, true);
         }
 
-        this.wine.windowsVersion(osVersion);
+        new WindowsVersion(this.wine).withWindowsVersion(osVersion).go();
 
-        this.wine.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*ngen.exe");
-        this.wine.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*regsvcs.exe");
-        this.wine.regedit().deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*mscorsvw.exe");
+        new Regedit(this.wine).deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*ngen.exe");
+        new Regedit(this.wine).deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*regsvcs.exe");
+        new Regedit(this.wine).deleteValue("HKCU\\Software\\Wine\\DllOverrides", "*mscorsvw.exe");
     }
 
     static install(container) {

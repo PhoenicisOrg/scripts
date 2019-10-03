@@ -32,7 +32,7 @@ const { CabExtract } = include("utils.functions.filesystem.extract");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.register_font");
+const RegisterFont = include("engines.wine.plugins.register_font");
 
 /**
  * Verb to install corefonts
@@ -135,38 +135,37 @@ class Corefonts {
             return numInstalledFonts + 1;
         }, 0);
 
-        this.wine
-            .registerFont()
-            .set("Arial", "Arial.TTF")
-            .set("Arial Bold", "Arialbd.TTF")
-            .set("Arial Bold Italic", "Arialbi.TTF")
-            .set("Arial Italic", "Ariali.TTF")
-            .set("Arial Black", "AriBlk.TTF")
-            .set("Comic Sans MS", "Comic.TTF")
-            .set("Comic Sans MS Bold", "Comicbd.TTF")
-            .set("Courier New", "Cour.TTF")
-            .set("Courier New Bold", "CourBD.TTF")
-            .set("Courier New Bold Italic", "CourBI.TTF")
-            .set("Courier New Italic", "Couri.TTF")
-            .set("Georgia", "Georgia.TTF")
-            .set("Georgia Bold", "Georgiab.TTF")
-            .set("Georgia Bold Italic", "Georgiaz.TTF")
-            .set("Georgia Italic", "Georgiai.TTF")
-            .set("Impact", "Impact.TTF")
-            .set("Times New Roman", "Times.TTF")
-            .set("Times New Roman Bold", "Timesbd.TTF")
-            .set("Times New Roman Bold Italic", "Timesbi.TTF")
-            .set("Times New Roman Italic", "Timesi.TTF")
-            .set("Trebucet MS", "Trebuc.TTF")
-            .set("Trebucet MS Bold", "Trebucbd.TTF")
-            .set("Trebucet MS Bold Italic", "Trebucbi.TTF")
-            .set("Trebucet MS Italic", "Trebucit.TTF")
-            .set("Verdana", "Verdana.TTF")
-            .set("Verdana Bold", "Verdanab.TTF")
-            .set("Verdana Bold Italic", "Verdanaz.TTF")
-            .set("Verdana Italic", "Verdanai.TTF")
-            .set("Webdings", "Webdings.TTF")
-            .do();
+        new RegisterFont(this.wine)
+            .withFont("Arial", "Arial.TTF")
+            .withFont("Arial Bold", "Arialbd.TTF")
+            .withFont("Arial Bold Italic", "Arialbi.TTF")
+            .withFont("Arial Italic", "Ariali.TTF")
+            .withFont("Arial Black", "AriBlk.TTF")
+            .withFont("Comic Sans MS", "Comic.TTF")
+            .withFont("Comic Sans MS Bold", "Comicbd.TTF")
+            .withFont("Courier New", "Cour.TTF")
+            .withFont("Courier New Bold", "CourBD.TTF")
+            .withFont("Courier New Bold Italic", "CourBI.TTF")
+            .withFont("Courier New Italic", "Couri.TTF")
+            .withFont("Georgia", "Georgia.TTF")
+            .withFont("Georgia Bold", "Georgiab.TTF")
+            .withFont("Georgia Bold Italic", "Georgiaz.TTF")
+            .withFont("Georgia Italic", "Georgiai.TTF")
+            .withFont("Impact", "Impact.TTF")
+            .withFont("Times New Roman", "Times.TTF")
+            .withFont("Times New Roman Bold", "Timesbd.TTF")
+            .withFont("Times New Roman Bold Italic", "Timesbi.TTF")
+            .withFont("Times New Roman Italic", "Timesi.TTF")
+            .withFont("Trebucet MS", "Trebuc.TTF")
+            .withFont("Trebucet MS Bold", "Trebucbd.TTF")
+            .withFont("Trebucet MS Bold Italic", "Trebucbi.TTF")
+            .withFont("Trebucet MS Italic", "Trebucit.TTF")
+            .withFont("Verdana", "Verdana.TTF")
+            .withFont("Verdana Bold", "Verdanab.TTF")
+            .withFont("Verdana Bold Italic", "Verdanaz.TTF")
+            .withFont("Verdana Italic", "Verdanai.TTF")
+            .withFont("Webdings", "Webdings.TTF")
+            .go();
     }
 
     static install(container) {

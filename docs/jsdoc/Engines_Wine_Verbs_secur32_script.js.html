@@ -33,7 +33,7 @@ const { cp, remove } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install secur32
@@ -105,10 +105,7 @@ class Secur32 {
             remove(`${prefixDirectory}/TMP/`);
         }
 
-        this.wine
-            .overrideDLL()
-            .set("native, builtin", ["secur32"])
-            .do();
+        new OverrideDLL(this.wine).withMode("native, builtin", ["secur32"]).go();
     }
 
     static install(container) {

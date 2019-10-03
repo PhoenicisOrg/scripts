@@ -26,23 +26,23 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const Wine = include("engines.wine.engine.object");
-
-include("engines.wine.plugins.regedit");
+            <pre class="prettyprint source linenums"><code>const Regedit = include("engines.wine.plugins.regedit");
 
 /**
- * enable command stream multi-threading
- * @returns {Wine} Wine object
+ * Plugin to enable command stream multi-threading
  */
-Wine.prototype.enableCSMT = function () {
-    var regeditFileContent =
-        "REGEDIT4\n" +
-        "\n" +
-        "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-        "\"csmt\"=dword:1"
-    this.regedit().patch(regeditFileContent);
-    return this;
-};</code></pre>
+module.default = class CSMT {
+    constructor(wine) {
+        this.wine = wine;
+    }
+
+    go() {
+        const regeditFileContent = `REGEDIT4\n\n[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n"csmt"=dword:1`;
+
+        new Regedit(this.wine).patch(regeditFileContent);
+    }
+};
+</code></pre>
         </article>
     </section>
 

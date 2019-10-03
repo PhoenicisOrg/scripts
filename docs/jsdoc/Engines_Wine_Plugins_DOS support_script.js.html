@@ -26,55 +26,43 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const Wine = include("engines.wine.engine.object");
-const {writeToFile, fileExists, cat} = include("utils.functions.filesystem.files");
+            <pre class="prettyprint source linenums"><code>const { writeToFile, fileExists, cat } = include("utils.functions.filesystem.files");
 
 /**
- * This extensions allows script to add extra settings to dos_support wine builds
- * @returns {Wine} Wine object
+ * Plugin to add extra settings to dos_support wine builds
  */
-Wine.prototype.dosbox = function () {
-    var _wine = this;
-
-    /**
-     * Fetch the prefix dosbox configuration file
-     * @returns {string} The dosbox configuration file path
-     */
-    this.dosConfigFile = function () {
-        return _wine.prefixDirectory() + "/playonlinux_dos.cfg";
+module.default = class Dosbox {
+    constructor(wine) {
+        this.wine = wine;
+        this.settings = {};
     }
 
     /**
-     * Set a setting in the prefix dosbox configuration file
-     * @param {string} key The key (example: dosbox_memsize)
-     * @param {*} value The value (example: 64)
-     * @returns {void}
+     * Fetch the prefix dosbox configuration file
+     *
+     * @returns {string} The dosbox configuration file path
      */
-    this.setSetting = function (key, value) {
-        var settingsToWrite = this.getSettings();
-        settingsToWrite[key] = value;
-
-        var newFileString = "";
-        for (var keyToWrite in settingsToWrite) {
-            if (keyToWrite !== "" &amp;&amp; settingsToWrite[keyToWrite]) {
-                newFileString += keyToWrite + "=" + settingsToWrite[keyToWrite] + "\n"
-            }
-        }
-        writeToFile(this.dosConfigFile(), newFileString);
+    dosConfigFile() {
+        return `${this.wine.prefixDirectory()}/playonlinux_dos.cfg`;
     }
 
     /**
      * Fetch all prefix dosbox sttings
-     * @returns {{}} All the settings
+     *
+     * @returns {object} All the settings
      */
-    this.getSettings = function () {
+    getSettings() {
         if (fileExists(this.dosConfigFile())) {
-            var dosboxSettingsContent = cat(this.dosConfigFile());
-            var settingResults = {};
-            dosboxSettingsContent.split("\n").forEach(function (dosboxSettingLine) {
-                var splitDosboxSettingLine = dosboxSettingLine.split("=");
-                settingResults[splitDosboxSettingLine[0]] = splitDosboxSettingLine[1];
-            });
+            const settingResults = {};
+
+            cat(this.dosConfigFile())
+                .split("\n")
+                .forEach(dosboxSettingLine => {
+                    const [key, value] = dosboxSettingLine.split("=");
+
+                    settingResults[key] = value;
+                });
+
             return settingResults;
         } else {
             return {};
@@ -82,90 +70,77 @@ Wine.prototype.dosbox = function () {
     }
 
     /**
-     * Get one dosbox setting
+     * Sets a dosbox setting
+     *
      * @param {string} key The key of the setting (example dosbox_memsize)
-     * @returns {*} The value (example: 64)
+     * @param {any} value The value to be set
+     * @returns {Dosbox} This
      */
-    this.getSetting = function (key) {
-        return this.getSettings()[key];
-    }
+    withSetting(key, value) {
+        this.settings[key] = value;
 
-    /**
-     * Set or get one dosbox setting
-     * @param {string} key The key of the setting (example dosbox_memsize)
-     * @param {string} value: The value to be set
-     * @returns {*} The value (example: 64) if this is a getter, the same object otherwise
-     */
-    this.setting = function (key, value) {
-        if (arguments.length == 1) {
-            return this.getSettings()[key];
-        } else {
-            this.setSetting(key, value);
-        }
+        return this;
     }
 
     /**
      * Sets dosbox_memsize parameter in the current prefix
      * https://www.dosbox.com/wiki/dosbox.conf#.5Bdosbox.5D
+     *
      * @param {int} memSize The memory size
-     * @returns {string} current memory size
+     * @returns {Dosbox} This
      */
-    this.memSize = function (memSize) {
-        if (arguments.length == 0) {
-            return this.getSetting("dosbox_memsize")
-        } else {
-            this.setSetting("dosbox_memsize", memSize);
-            return this;
-        }
+    withMemSize(memSize) {
+        return this.withSetting("dosbox_memsize", memSize);
     }
 
     /**
      * Sets render_aspect parameter in the current prefix
      * https://www.dosbox.com/wiki/dosbox.conf#.5Brender.5D
+     *
      * @param {boolean} renderAspect The render aspect
-     * @returns {string} current renderAspect
+     * @returns {Dosbox} This
      */
-    this.renderAspect = function (renderAspect) {
-        if (arguments.length == 0) {
-            return this.getSetting("render_aspect")
-        } else {
-            this.setSetting("render_aspect", renderAspect);
-            return this;
-        }
+    withRenderAspect(renderAspect) {
+        return this.withSetting("render_aspect", renderAspect);
     }
 
     /**
      * Sets render_frameskip parameter in the current prefix
      * https://www.dosbox.com/wiki/dosbox.conf#.5Brender.5D
+     *
      * @param {int} renderFrameSkip The render frameskip
-     * @returns {string} current frameskip
+     * @returns {Dosbox} This
      */
-    this.renderFrameSkip = function (renderFrameSkip) {
-        if (arguments.length == 0) {
-            return this.getSetting("render_frameskip")
-        } else {
-            this.setSetting("render_frameskip", renderFrameSkip);
-            return this;
-        }
+    withRenderFrameSkip(renderFrameSkip) {
+        return this.withSetting("render_frameskip", renderFrameSkip);
     }
 
     /**
      * Sets CPU cycles in the current prefix
      * https://www.dosbox.com/wiki/dosbox.conf#.5Bcpu.5D
-     * @param {*} cpuCycles (example: max 95% limit 33000)
-     * @returns {string} current cpuCycles
+     *
+     * @param {int} cpuCycles (example: max 95% limit 33000)
+     * @returns {Dosbox} This
      */
-    this.cpuCycles = function (cpuCycles) {
-        if (arguments.length == 0) {
-            return this.getSetting("cpu_cycles")
-        } else {
-            this.setSetting("cpu_cycles", cpuCycles);
-            return this;
-        }
+    withCpuCycles(cpuCycles) {
+        return this.withSetting("cpu_cycles", cpuCycles);
     }
 
-    return this;
-}
+    go() {
+        const settingsToWrite = this.getSettings();
+
+        for (const key in this.settings) {
+            settingsToWrite[key] = this.settings[key];
+        }
+
+        const newFileString = Object.entries(settingsToWrite)
+            .filter(([key, value]) => key !== "" &amp;&amp; value)
+            .map(([key, value]) => `${key}=${value}`)
+            .join("\n");
+
+        writeToFile(this.dosConfigFile(), newFileString);
+    }
+};
 </code></pre>
         </article>
     </section>
