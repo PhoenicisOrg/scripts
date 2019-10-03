@@ -4,7 +4,6 @@ const { Extractor } = include("utils.functions.filesystem.extract");
 const { ls, cp } = include("utils.functions.filesystem.files");
 const { getGithubReleases } = include("utils.functions.net.githubreleases");
 
-
 const Optional = Java.type("java.util.Optional");
 
 include("engines.wine.plugins.override_dll");
