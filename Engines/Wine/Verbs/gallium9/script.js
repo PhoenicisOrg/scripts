@@ -5,7 +5,6 @@ const { remove, lns } = include("utils.functions.filesystem.files");
 const { getGithubReleases } = include("utils.functions.net.githubreleases");
 
 
-
 const Optional = Java.type("java.util.Optional");
 
 include("engines.wine.plugins.override_dll");
