@@ -3,7 +3,7 @@ const Resource = include("utils.functions.net.resource");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install vcrun2017
@@ -44,9 +44,8 @@ class Vcrun2017 {
             this.wine.run(setupFile64, "/q", null, false, true);
         }
 
-        this.wine
-            .overrideDLL()
-            .set("native, builtin", [
+        new OverrideDLL(this.wine)
+            .withMode("native, builtin", [
                 "api-ms-win-crt-conio-l1-1-0",
                 "api-ms-win-crt-heap-l1-1-0",
                 "api-ms-win-crt-locale-l1-1-0",
@@ -62,7 +61,7 @@ class Vcrun2017 {
                 "vcomp140",
                 "vcruntime140"
             ])
-            .do();
+            .go();
     }
 
     static install(container) {

@@ -1,15 +1,16 @@
 const CustomInstallerScript = include("engines.wine.quick_script.custom_installer_script");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
-const {fileName, mkdir, writeToFile} = include("utils.functions.filesystem.files");
+
+const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+const { fileName, mkdir, writeToFile } = include("utils.functions.filesystem.files");
 const Resource = include("utils.functions.net.resource");
 
-include("engines.wine.plugins.csmt");
-include("engines.wine.plugins.override_dll");
-include("engines.wine.plugins.windows_version");
 const D3DX9 = include("engines.wine.verbs.d3dx9");
 
-// Installs League of Legends
+const CSMT = include("engines.wine.plugins.csmt");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
+const WindowsVersion = include("engines.wine.plugins.windows_version");
 
+// Installs League of Legends
 new CustomInstallerScript()
     .name("League of Legends")
     .editor("Riot Games")
@@ -97,14 +98,16 @@ new CustomInstallerScript()
     .category("Games")
     .wineDistribution("staging")
     .wineVersion(LATEST_STAGING_VERSION)
-    .preInstall(function (wine /*, wizard*/) {
-        wine.windowsVersion("winxp");
+    .preInstall(function (wine) {
+        new WindowsVersion(wine).withWindowsVersion("winxp").go();
+
         new D3DX9(wine).go();
-        wine
-            .overrideDLL()
-            .set("native, builtin", ["atl120", "msvcp120", "msvcr120", "vcomp120", "msvcp140"])
-            .do();
-        wine.enableCSMT();
+
+        new OverrideDLL(wine)
+            .withMode("native, builtin", ["atl120", "msvcp120", "msvcr120", "vcomp120", "msvcp140"])
+            .go();
+
+        new CSMT(wine).go();
 
         mkdir(wine.prefixDirectory() + "drive_c/LoL");
 

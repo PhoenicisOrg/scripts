@@ -1,64 +1,78 @@
-const Wine = include("engines.wine.engine.object");
-const {createTempFile, writeToFile} = include("utils.functions.filesystem.files");
+const { createTempFile, writeToFile } = include("utils.functions.filesystem.files");
+
+const FileClass = Java.type("java.io.File");
+const ArrayListClass = Java.type("java.util.ArrayList");
 
 /**
- * Regedit support
- * @returns {Wine} Wine object
+ * Plugin to provide Regedit support
  */
-Wine.prototype.regedit = function () {
-    var _wine = this;
+module.default = class Regedit {
+    constructor(wine) {
+        this.wine = wine;
+    }
 
-    this.open = function (args) {
-        _wine.run("regedit", [args], this.prefixDirectory(), false, true);
-        return _wine;
-    };
-
-    this.patch = function (patchContent) {
-        if (typeof patchContent.getClass !== "undefined" && patchContent.getClass().getCanonicalName() == "byte[]") {
-            var StringClass = Java.type('java.lang.String');
-            patchContent = new StringClass(patchContent);
+    convertPatchContent(patchContent, contentType) {
+        if (contentType && contentType === "binary") {
+            return patchContent.map(byte => String.fromCharCode(byte)).join("");
+        } else {
+            return patchContent;
         }
-        var tmpFile = createTempFile("reg");
-        writeToFile(tmpFile, patchContent);
-        _wine.run("regedit", [tmpFile], this.prefixDirectory(), false, true);
-        return _wine;
-    };
+    }
 
-    this.deleteKey = function (keyPath) {
-        _wine.run("reg", ["delete", keyPath, "/f"], this.prefixDirectory(), false, true);
-        return _wine;
-    };
-
-    this.deleteValue = function (keyPath, value) {
-        _wine.run("reg", ["delete", keyPath, "/v", value, "/f"], this.prefixDirectory(), false, true);
-        return _wine;
-    };
-
-    this.fetchValue = function (keyPath) {
-        var root = keyPath[0];
-        var registryFile;
+    fetchRegistryFile(root) {
         switch (root) {
             case "HKEY_CURRENT_USER":
-                registryFile = "user.reg";
-                break;
+                return "user.reg";
             case "HKEY_LOCAL_MACHINE":
-                registryFile = "system.reg";
-                break;
+                return "system.reg";
             default:
-                throw "Illegal registry root exception";
+                throw new Error("Illegal registry root exception");
         }
+    }
 
-        keyPath.shift();
+    open(args) {
+        this.wine.run("regedit", [args], this.wine.prefixDirectory(), false, true);
+
+        return this;
+    }
+
+    patch(patchContent, contentType) {
+        const content = this.convertPatchContent(patchContent, contentType);
+        const tmpFile = createTempFile("reg");
+
+        writeToFile(tmpFile, content);
+
+        this.wine.run("regedit", [tmpFile], this.wine.prefixDirectory(), false, true);
+
+        return this;
+    }
+
+    deleteKey(keyPath) {
+        this.wine.run("reg", ["delete", keyPath, "/f"], this.wine.prefixDirectory(), false, true);
+
+        return this;
+    }
+
+    deleteValue(keyPath, value) {
+        this.wine.run("reg", ["delete", keyPath, "/v", value, "/f"], this.wine.prefixDirectory(), false, true);
+
+        return this;
+    }
+
+    fetchValue(keyPath) {
+        const root = keyPath.shift();
+
+        const registryFile = this.fetchRegistryFile(root);
 
         // ensure that correct type is passed to Java
-        var ArrayListClass = Java.type('java.util.ArrayList');
-        var keyPathList = new ArrayListClass();
-        for (var level in keyPath) {
+        const keyPathList = new ArrayListClass();
+        for (const level in keyPath) {
             keyPathList.add(keyPath[level]);
         }
 
-        var FileClass = Java.type('java.io.File');
-        var registryValue = Bean("registryParser").parseFile(new FileClass(this.prefixDirectory() + "/" + registryFile), root).getChild(keyPathList);
+        const registryValue = Bean("registryParser")
+            .parseFile(new FileClass(this.wine.prefixDirectory() + "/" + registryFile), root)
+            .getChild(keyPathList);
 
         if (registryValue == null) {
             return null;
@@ -69,9 +83,5 @@ Wine.prototype.regedit = function () {
         } else {
             return registryValue;
         }
-    };
-
-    return this;
+    }
 };
-
-Wine.prototype.registry = Wine.prototype.regedit;

@@ -5,7 +5,7 @@ const { remove } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.regsvr32");
+const Regsvr32 = include("engines.wine.plugins.regsvr32");
 
 /**
  * Verb to install xact
@@ -60,7 +60,7 @@ class Xact {
             progressBar.setText(tr("Registering {0}...", "Xact"));
             progressBar.setProgressPercentage((numberOfExtractedFiles * 100) / dllToRegsvr.length);
 
-            this.wine.regsvr32().install(dll);
+            new Regsvr32(this.wine).withDll(dll).go();
 
             return numberOfExtractedFiles + 1;
         }, 0);
