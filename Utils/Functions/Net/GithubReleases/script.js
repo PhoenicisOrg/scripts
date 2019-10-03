@@ -2,14 +2,14 @@ const Downloader = include("utils.functions.net.download");
 const {createTempDir, remove, cat} = include("utils.functions.filesystem.files");
 
 /**
- * Get an array of tag corresponding to the version in a git repository
+ * Get an array of tag corresponding to the releases in a git repository
  *
  * @param {string} repositoryOwner owner of the repository
  * @param {string} repositoryName name of the repository
  * @param {wizard} wizard the wizard
  * @returns {string[]} list of version tag in the repository
  */
-function getGithubVersions(repositoryOwner, repositoryName, wizard) {
+function getGithubReleases(repositoryOwner, repositoryName, wizard) {
     const tmpDir = createTempDir();
 
     const releasesFile = new Downloader()
@@ -27,4 +27,4 @@ function getGithubVersions(repositoryOwner, repositoryName, wizard) {
 
     return versions;
 }
-module.getGithubVersions = getGithubVersions;
+module.getGithubReleases = getGithubReleases;
