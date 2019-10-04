@@ -1,7 +1,7 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
 
-include("engines.wine.verbs.dxvk");
+const DXVK = include("engines.wine.verbs.dxvk");
 
 new SteamScript()
     .name("The Witcher 3: Wild Hunt")
@@ -17,5 +17,6 @@ new SteamScript()
                 "Please ensure you have the latest drivers (415.25 minimum for NVIDIA and mesa 19 for AMD) or else this game will not work."
             )
         );
-        wine.DXVK();
+
+        new DXVK(wine).go();
     });

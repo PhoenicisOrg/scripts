@@ -3,7 +3,7 @@ const Wine = include("engines.wine.engine.object");
 const {LATEST_STABLE_VERSION} = include("engines.wine.engine.versions");
 const {fileName} = include("utils.functions.filesystem.files");
 
-include("engines.wine.verbs.luna");
+const Luna = include("engines.wine.verbs.luna");
 
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
 
@@ -76,7 +76,9 @@ module.default = class InstallerScript extends QuickScript {
         }
 
         // setup the prefix
-        wine.prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion).luna();
+        wine.prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion);
+
+        new Luna(wine).go();
 
         this._preInstall(wine, setupWizard);
 

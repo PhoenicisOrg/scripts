@@ -1,8 +1,8 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
 
-include("engines.wine.verbs.mspatcha");
-include("engines.wine.plugins.windows_version");
+const Mspatcha = include("engines.wine.verbs.mspatcha");
+const WindowsVersion = include("engines.wine.plugins.windows_version");
 
 new OnlineInstallerScript()
     .name("Adobe Acrobat Reader DC")
@@ -15,10 +15,10 @@ new OnlineInstallerScript()
     .checksum("98b2b838e6c4663fefdfd341dfdc596b1eff355c")
     .category("Office")
     .executable("AcroRd32.exe")
-    .preInstall(function (wine /*, wizard*/) {
-        wine.mspatcha();
+    .preInstall(function (wine) {
+        new Mspatcha(wine).go();
     })
-    .postInstall(function (wine /*, wizard*/) {
+    .postInstall(function (wine) {
         // fix broken dialogs (e.g. preferences)
-        wine.windowsVersion("winxp");
+        new WindowsVersion(wine).withWindowsVersion("winxp").go();
     });

@@ -1,7 +1,11 @@
 const WineEngine = include("engines.wine.engine.implementation");
 const {fileExists} = include("utils.functions.filesystem.files");
 
+const configFactory = Bean("compatibleConfigFileFormatFactory");
+const operatingSystemFetcher = Bean("operatingSystemFetcher");
+
 const FilenameUtils = Java.type("org.apache.commons.io.FilenameUtils");
+const ProcessBuilderClass = Java.type("java.lang.ProcessBuilder");
 
 /**
  * Wine main prototype
@@ -10,9 +14,6 @@ const FilenameUtils = Java.type("org.apache.commons.io.FilenameUtils");
 module.default = class Wine {
     constructor() {
         this._implementation = new WineEngine();
-
-        this.configFactory = Bean("compatibleConfigFileFormatFactory");
-        this.operatingSystemFetcher = Bean("operatingSystemFetcher");
     }
 
     /**
@@ -21,7 +22,7 @@ module.default = class Wine {
      */
     architecture() {
         if (fileExists(this.prefixDirectory())) {
-            const containerConfiguration = this.configFactory.open(this.prefixDirectory() + "/phoenicis.cfg");
+            const containerConfiguration = configFactory.open(this.prefixDirectory() + "/phoenicis.cfg");
             const architecture = containerConfiguration.readValue("wineArchitecture", "x86");
 
             return architecture;
@@ -72,7 +73,7 @@ module.default = class Wine {
         else if (arguments.length == 1) {
             this._implementation.setWorkingContainer(prefix);
         } else {
-            const operatingSystem = this.operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+            const operatingSystem = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
             const subCategory = distribution + "-" + operatingSystem + "-" + architecture;
 
             this._implementation.createContainer(subCategory, version, prefix);
@@ -100,12 +101,12 @@ module.default = class Wine {
     binPath(subCategory, version) {
         if (0 == arguments.length) {
             if (fileExists(this.prefixDirectory())) {
-                const containerConfiguration = this.configFactory.open(this.prefixDirectory() + "/phoenicis.cfg");
+                const containerConfiguration = configFactory.open(this.prefixDirectory() + "/phoenicis.cfg");
 
                 const distribution = containerConfiguration.readValue("wineDistribution", "upstream");
                 const architecture = containerConfiguration.readValue("wineArchitecture", "x86");
 
-                const operatingSystem = this.operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+                const operatingSystem = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
 
                 subCategory = distribution + "-" + operatingSystem + "-" + architecture;
                 version = containerConfiguration.readValue("wineVersion");
@@ -231,19 +232,18 @@ module.default = class Wine {
         const workingContainerDirectory = this.prefixDirectory();
 
         if (fileExists(workingContainerDirectory)) {
-            const containerConfiguration = this.configFactory.open(workingContainerDirectory + "/phoenicis.cfg");
+            const containerConfiguration = configFactory.open(workingContainerDirectory + "/phoenicis.cfg");
 
             const distribution = containerConfiguration.readValue("wineDistribution", "upstream");
             const architecture = containerConfiguration.readValue("wineArchitecture", "x86");
             const version = containerConfiguration.readValue("wineVersion");
 
-            const operatingSystem = this.operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+            const operatingSystem = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
 
             const subCategory = distribution + "-" + operatingSystem + "-" + architecture;
 
             const binary = this._implementation.getLocalDirectory(subCategory, version) + "/bin/wineserver";
 
-            const ProcessBuilderClass = Java.type("java.lang.ProcessBuilder");
             const processBuilder = new ProcessBuilderClass()
                 .command(Java.to([binary, parameter], "java.lang.String[]"))
                 .inheritIO();

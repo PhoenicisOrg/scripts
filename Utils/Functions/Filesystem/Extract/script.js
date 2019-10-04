@@ -1,12 +1,13 @@
 const {mkdir} = include("utils.functions.filesystem.files");
 
+const extractor = Bean("extractor");
+
 const ProcessBuilderClass = Java.type("java.lang.ProcessBuilder");
 const FileClass = Java.type("java.io.File");
 
 /**
  * CabExtract class
  */
-// eslint-disable-next-line no-unused-vars
 module.CabExtract = class CabExtract {
     constructor() {
         // do nothing
@@ -95,10 +96,9 @@ module.CabExtract = class CabExtract {
 /**
  * Extractor class
  */
-// eslint-disable-next-line no-unused-vars
 module.Extractor = class Extractor {
     constructor() {
-        this.extractor = Bean("extractor");
+        // nothing to do
     }
 
     /**
@@ -164,6 +164,6 @@ module.Extractor = class Extractor {
 
         mkdir(this._destination);
 
-        this.extractor.uncompress(this._archive, this._destination, progress => progressBar.accept(progress));
+        extractor.uncompress(this._archive, this._destination, progress => progressBar.accept(progress));
     }
 }

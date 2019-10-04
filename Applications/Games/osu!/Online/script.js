@@ -1,8 +1,8 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
 const {LATEST_DEVELOPMENT_VERSION} = include("engines.wine.engine.versions");
 
-include("engines.wine.verbs.dotnet45");
-include("engines.wine.verbs.corefonts");
+const DotNET45 = include("engines.wine.verbs.dotnet45");
+const Corefonts = include("engines.wine.verbs.corefonts");
 
 new OnlineInstallerScript()
     .name("osu!")
@@ -15,6 +15,6 @@ new OnlineInstallerScript()
     .url("https://m1.ppy.sh/r/osu!install.exe")
     .preInstall(function (wine /*, wizard*/) {
         //maybe needs cjkfonts or set sound driver to alsa
-        wine.corefonts();
-        wine.dotnet45();
+        new Corefonts(wine).go();
+        new DotNET45(wine).go();
     });

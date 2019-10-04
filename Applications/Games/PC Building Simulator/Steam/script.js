@@ -1,8 +1,8 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
 const {LATEST_DEVELOPMENT_VERSION} = include("engines.wine.engine.versions");
 
-include("engines.wine.plugins.virtual_desktop");
-include("engines.wine.verbs.corefonts");
+const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
+const Corefonts = include("engines.wine.verbs.corefonts");
 
 
 new SteamScript()
@@ -19,7 +19,7 @@ new SteamScript()
                 "The game is functional but benchmark animations on the monitors are not displayed. Feel free to drop a feedback if you know how to fix this issue."
             )
         );
-        wine.corefonts();
-        wine.setVirtualDesktop();
+        new Corefonts(wine).go();
+        new VirtualDesktop(wine).go();
     })
     .gameOverlay(false);

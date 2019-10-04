@@ -1,7 +1,7 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
-include("engines.wine.verbs.dotnet40");
+const DotNET40 = include("engines.wine.verbs.dotnet40");
 
 new SteamScript()
     .name("Unholy Heights")
@@ -11,5 +11,5 @@ new SteamScript()
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .preInstall(function (wine /*, wizard*/) {
-        wine.dotnet40();
+        new DotNET40(wine).go();
     });

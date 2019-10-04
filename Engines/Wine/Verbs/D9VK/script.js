@@ -1,18 +1,16 @@
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
-const {Extractor} = include("utils.functions.filesystem.extract");
-const {ls, cp, remove} = include("utils.functions.filesystem.files");
-
-
-include("engines.wine.plugins.override_dll");
+const { Extractor } = include("utils.functions.filesystem.extract");
+const { ls, cp, remove } = include("utils.functions.filesystem.files");
+const operatingSystemFetcher = Bean("operatingSystemFetcher");
+const Optional = Java.type("java.util.Optional");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install D9VK
  * see: https://github.com/Joshua-Ashton/d9vk/
- *
- * @param {String} d9vkVersion D9VK version to download
- * @returns {Wine} Wine object
  */
+
 Wine.prototype.D9VK = function (d9vkVersion) {
     var operatingSystemFetcher = Bean("operatingSystemFetcher");
     var uiQuestionFactory = Bean("uiQuestionFactory");
@@ -40,66 +38,84 @@ Wine.prototype.D9VK = function (d9vkVersion) {
         d9vkVersion = "0.13f";
     }
 
-    var setupFile = new Resource()
-        .wizard(this.wizard())
-        .url("https://github.com/Joshua-Ashton/d9vk/releases/download/" + d9vkVersion + "/d9vk-" + d9vkVersion + ".tar.gz")
-        .name("d9vk-" + d9vkVersion + ".tar.gz")
-        .get();
+class D9VK {
+    constructor(wine) {
+        this.wine = wine;
+    }
 
-    new Extractor()
-        .wizard(this.wizard())
-        .archive(setupFile)
-        .to(this.prefixDirectory() + "/TMP/")
-        .extract();
+    /**
+     * Specifies the D9VK version to download
+     *
+     * @param {string} d9vkVersion The D9VK version to download
+     * @returns {D9VK} The D9VK object
+     */
+    withVersion(d9vkVersion) {
+        this.d9vkVersion = d9vkVersion;
 
-    var forEach = Array.prototype.forEach;
-    var sys32dir = this.system32directory();
-    var d9vkTmpDir = this.prefixDirectory() + "/TMP/d9vk-" + d9vkVersion;
-    var self = this;
+        return this;
+    }
 
-    //Copy 32 bits dll to system* and apply override
-    forEach.call(ls(d9vkTmpDir + "/x32"), function (file) {
-        if (file.endsWith(".dll")) {
-            cp(d9vkTmpDir + "/x32/" + file, sys32dir);
-            self.overrideDLL()
-                .set("native", [file])
-                .do();
-        }
-    });
+    go() {
+        const wizard = this.wine.wizard();
+        const prefixDirectory = this.wine.prefixDirectory();
+        const system32directory = this.wine.system32directory();
+        const architecture = this.wine.architecture();
 
-    if (this.architecture() == "amd64") {
-        var sys64dir = this.system64directory();
-        //Copy 64 bits dll to system*
-        forEach.call(ls(d9vkTmpDir + "/x64"), function (file) {
+        print("NOTE: Wine version should be greater or equal to 3.10");
+
+        var setupFile = new Resource()
+            .wizard(wizard)
+            .url(
+                `https://github.com/Joshua-Ashton/d9vk/releases/download/${this.d9vkVersion}/d9vk-${this.d9vkVersion}.tar.gz`
+            )
+            .name(`d9vk-${this.d9vkVersion}.tar.gz`)
+            .get();
+
+        new Extractor()
+            .wizard(wizard)
+            .archive(setupFile)
+            .to(`${prefixDirectory}/TMP/`)
+            .extract();
+
+        const d9vkTmpDir = `${prefixDirectory}/TMP/d9vk-${this.d9vkVersion}`;
+
+        // copy 32 bits dll to system* and apply override
+        ls(`${d9vkTmpDir}/x32`).forEach(file => {
             if (file.endsWith(".dll")) {
-                cp(d9vkTmpDir + "/x64/" + file, sys64dir);
+                cp(`${d9vkTmpDir}/x32/${file}`, system32directory);
+
+                new OverrideDLL(this.wine).withMode("native", [file]).go();
             }
         });
+
+        if (architecture == "amd64") {
+            const system64directory = this.wine.system64directory();
+
+            // copy 64 bits dll to system*
+            ls(d9vkTmpDir + "/x64").forEach(file => {
+                if (file.endsWith(".dll")) {
+                    cp(`${d9vkTmpDir}/x64/${file}`, system64directory);
+                }
+            });
+        }
+
+        remove(`${prefixDirectory}/TMP/`);
     }
 
-    remove(this.prefixDirectory() + "/TMP/");
+    static install(container) {
+        const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "D9VK", Optional.empty());
 
-    return this;
-}
-
-/**
- * Verb to install D9VK
- */
-// eslint-disable-next-line no-unused-vars
-module.default = class D9VKVerb {
-    constructor() {
-        // do nothing
-    }
-
-    install(container) {
-        var wine = new Wine();
-        wine.prefix(container);
         var wizard = SetupWizard(InstallationType.VERBS, "D9VK", java.util.Optional.empty());
         var versions = ["0.13f", "0.13", "0.12", "0.11", "0.10"];
         var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.12");
         wine.wizard(wizard);
+
         // install selected version
-        wine.D9VK(selectedVersion.text);
+        new D9VK(wine).withVersion(selectedVersion.text).go();
+
         wizard.close();
     }
 }
+
+module.default = D9VK;

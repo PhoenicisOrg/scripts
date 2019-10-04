@@ -1,6 +1,6 @@
 {
-    "scriptName"                 : "v.7.2.2",
-    "id"                         : "applications.development.notepad_plus_plus.v_7_2_2",
+    "scriptName"                 : "gdiplus_winxp",
+    "id"                         : "engines.wine.verbs.gdiplus_winxp",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
