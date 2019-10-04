@@ -5,38 +5,12 @@ const { ls, cp, remove } = include("utils.functions.filesystem.files");
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
 const Optional = Java.type("java.util.Optional");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
+const uiQuestionFactory = Bean("uiQuestionFactory");
 
 /**
  * Verb to install D9VK
  * see: https://github.com/Joshua-Ashton/d9vk/
  */
-
-Wine.prototype.D9VK = function (d9vkVersion) {
-    var operatingSystemFetcher = Bean("operatingSystemFetcher");
-    var uiQuestionFactory = Bean("uiQuestionFactory");
-    print("NOTE: Wine version should be greater or equal to 3.10");
-    if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
-    {
-        const answer = uiQuestionFactory.create(
-            tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation."),
-            ["YES, continue with D9VK installation regardless", "NO, quit script alltogether", "Exit D9VK Installer, but continue with the script"]
-        );
-        if (!answer || answer == "Exit D9VK Installer, but continue with the script") {
-            return this;
-        }
-        if (answer == "NO, quit script alltogether") {
-            throw "User aborted the script.";
-        }
-    }
-    else
-    {
-        this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else D9VK might not work correctly."));
-    }
-
-    if (typeof d9vkVersion !== 'string')
-    {
-        d9vkVersion = "0.13f";
-    }
 
 class D9VK {
     constructor(wine) {
@@ -62,6 +36,29 @@ class D9VK {
         const architecture = this.wine.architecture();
 
         print("NOTE: Wine version should be greater or equal to 3.10");
+
+        if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
+        {
+            const answer = uiQuestionFactory.create(
+                tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation."),
+                ["YES, continue with D9VK installation regardless", "NO, quit script alltogether", "Exit D9VK Installer, but continue with the script"]
+            );
+            if (!answer || answer == "Exit D9VK Installer, but continue with the script") {
+                return this;
+            }
+            if (answer == "NO, quit script alltogether") {
+                throw "User aborted the script.";
+            }
+        }
+        else
+        {
+            this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else D9VK might not work correctly."));
+        }
+
+        if (typeof d9vkVersion !== 'string')
+        {
+            d9vkVersion = "0.13f";
+        }
 
         var setupFile = new Resource()
             .wizard(wizard)
