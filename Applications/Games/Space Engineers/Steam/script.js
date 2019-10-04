@@ -3,8 +3,6 @@ const dotnet472 = include("engines.wine.verbs.dotnet472");
 const vcrun2017 = include("engines.wine.verbs.vcrun2017");
 const DXVK = include("engines.wine.verbs.dxvk");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
-const wizard = wine.wizard();
-
 
 new SteamScript()
     .name("Space Engineers")
@@ -15,6 +13,7 @@ new SteamScript()
     .wineDistribution("upstream")
     .wineArchitecture("amd64")
     .preInstall(function (wine) {
+        const wizard = wine.wizard();
         new dotnet472(wine).go();
         new vcrun2017(wine).go();
         new DXVK(wine).go();
