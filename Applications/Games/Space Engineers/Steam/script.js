@@ -3,6 +3,7 @@ const dotnet472 = include("engines.wine.verbs.dotnet472");
 const vcrun2017 = include("engines.wine.verbs.vcrun2017");
 const DXVK = include("engines.wine.verbs.dxvk");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
+const wizard = wine.wizard();
 
 
 new SteamScript()
@@ -13,7 +14,7 @@ new SteamScript()
     .wineVersion("4.15")
     .wineDistribution("upstream")
     .wineArchitecture("amd64")
-    .preInstall(function (wine, wizard) {
+    .preInstall(function (wine) {
         new dotnet472(wine).go();
         new vcrun2017(wine).go();
         new DXVK(wine).go();
