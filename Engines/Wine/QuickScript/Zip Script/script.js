@@ -67,7 +67,7 @@ module.default = class ZipScript extends QuickScript {
         new Extractor()
             .wizard(setupWizard)
             .archive(archive)
-            .to(wine.prefixDirectory() + "/drive_c/" + this._name)
+            .to(`${wine.prefixDirectory()}/drive_c/${this._name}`)
             .extract();
 
         if (this._setupPath !== `undefined`) {
