@@ -453,21 +453,20 @@ module.default = class WineEngine {
             runtimePath = this._wineEnginesDirectory + "/runtime/lib/";
             runtimePath64 = this._wineEnginesDirectory + "/runtime/lib64/";
         }
+        const wineLibPath = this.getLocalDirectory(subCategory, version) + "/lib/";
+        const wineLibPath64 = this.getLocalDirectory(subCategory, version) + "/lib64/";
 
         if (architecture == "amd64") {
             ldPath =
                 runtimePath64 + ":" +
                 runtimePath + ":" +
-                this.getLocalDirectory(subCategory, version) +
-                "/lib64/:" +
-                this.getLocalDirectory(subCategory, version) +
-                "/lib/:" +
+                wineLibPath64 + ":" +
+                wineLibPath + ":" +
                 ldPath;
         } else {
             ldPath =
                 runtimePath + ":" +
-                this.getLocalDirectory(subCategory, version) +
-                "/lib/:" +
+                wineLibPath + ":" +
                 ldPath;
         }
         environment.put("LD_LIBRARY_PATH", ldPath);
