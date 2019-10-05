@@ -2,6 +2,7 @@ const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const { remove, lns } = include("utils.functions.filesystem.files");
+const { getGithubReleases } = include("utils.functions.net.githubreleases");
 
 const Optional = Java.type("java.util.Optional");
 
@@ -34,7 +35,8 @@ class Gallium9 {
         const system32directory = this.wine.system32directory();
 
         if (typeof this.gallium9Version !== "string") {
-            this.gallium9Version = "0.4";
+            const versions = getGithubReleases("iXit", "wine-nine-standalone", wizard);
+            this.gallium9Version = versions[0];
         }
 
         wizard.message(
@@ -46,9 +48,9 @@ class Gallium9 {
         const setupFile = new Resource()
             .wizard(wizard)
             .url(
-                `https://github.com/iXit/wine-nine-standalone/releases/download/v${this.gallium9Version}/gallium-nine-standalone-v${this.gallium9Version}.tar.gz`
+                `https://github.com/iXit/wine-nine-standalone/releases/download/${this.gallium9Version}/gallium-nine-standalone-${this.gallium9Version}.tar.gz`
             )
-            .name(`gallium-nine-standalone-v${this.gallium9Version}.tar.gz`)
+            .name(`gallium-nine-standalone-${this.gallium9Version}.tar.gz`)
             .get();
 
         new Extractor()
@@ -81,9 +83,9 @@ class Gallium9 {
             );
             lns(`${system64directory}/d3d9-nine.dll`, `${system64directory}/d3d9.dll`);
 
-            this.wine.run(`${system64directory}ninewinecfg.exe`, ["-e"], null, false, true);
+            this.wine.run(`${system64directory}/ninewinecfg.exe`, ["-e"], null, false, true);
         } else {
-            this.wine.run(`${system32directory}ninewinecfg.exe`, ["-e"], null, false, true);
+            this.wine.run(`${system32directory}/ninewinecfg.exe`, ["-e"], null, false, true);
         }
 
         new OverrideDLL(this.wine).withMode("native", ["d3d9"]).go();
@@ -93,9 +95,9 @@ class Gallium9 {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "gallium9", Optional.empty());
 
-        const versions = ["0.4", "0.3", "0.2"];
+        const versions = getGithubReleases("iXit", "wine-nine-standalone", wizard);
 
-        const selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.4");
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
 
         wine.prefix(container);
         wine.wizard(wizard);
