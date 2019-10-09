@@ -33,7 +33,7 @@ new SteamScript()
 
         wizard.message(
             tr(
-                "Due to a potential confilct with Vulkan, shader mods break the game (the executable file works but no window is displayed)."
+                "Due to a potential conflict with Vulkan, shader mods break the game (the executable file works but no window is displayed)."
             )
         );
     })
