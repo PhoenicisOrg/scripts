@@ -51,7 +51,7 @@ new SteamScript()
         );
         wizard.message(
             tr(
-                "Due to JIT compiler issues and the way this game uses multithreating, there are audio stutters. This script will attempt to minimize them but you might also have to enter the alsoft-conf command in terminal and set sample depth to 32bit float and period size to 2048."
+                "Due to JIT compiler issues and the way this game uses multithreading, there are audio stutters. This script will attempt to minimize them but you might also have to enter the alsoft-conf command in terminal and set sample depth to 32bit float and period size to 2048."
             )
         );
     })
