@@ -1,7 +1,7 @@
 const Wine = include("engines.wine.engine.object");
 
-include("engines.wine.plugins.regedit");
-include("engines.wine.plugins.font_smoothing");
+const Regedit = include("engines.wine.plugins.regedit");
+const FontSmoothing = include("engines.wine.plugins.font_smoothing");
 
 /**
  * Setting to set the Fonts Smoothing
@@ -21,20 +21,28 @@ module.default = class FontSmoothingSetting {
     }
 
     getCurrentOption(container) {
-        const fontSmoothing = new Wine()
-            .prefix(container)
-            .regedit()
-            .fetchValue(["HKEY_CURRENT_USER", "Control Panel", "Desktop", "FontSmoothing"]);
+        const wine = new Wine().prefix(container);
 
-        const fontSmoothingType = new Wine()
-            .prefix(container)
-            .regedit()
-            .fetchValue(["HKEY_CURRENT_USER", "Control Panel", "Desktop", "FontSmoothingType"]);
+        const fontSmoothing = new Regedit(wine).fetchValue([
+            "HKEY_CURRENT_USER",
+            "Control Panel",
+            "Desktop",
+            "FontSmoothing"
+        ]);
 
-        const fontSmoothingOrientation = new Wine()
-            .prefix(container)
-            .regedit()
-            .fetchValue(["HKEY_CURRENT_USER", "Control Panel", "Desktop", "FontSmoothingOrientation"]);
+        const fontSmoothingType = new Regedit(wine).fetchValue([
+            "HKEY_CURRENT_USER",
+            "Control Panel",
+            "Desktop",
+            "FontSmoothingType"
+        ]);
+
+        const fontSmoothingOrientation = new Regedit(wine).fetchValue([
+            "HKEY_CURRENT_USER",
+            "Control Panel",
+            "Desktop",
+            "FontSmoothingOrientation"
+        ]);
 
         let index;
 
@@ -56,6 +64,8 @@ module.default = class FontSmoothingSetting {
     }
 
     setOption(container, optionIndex) {
+        const wine = new Wine().prefix(container);
+
         if (0 === optionIndex) {
             const regeditFileContent =
                 "REGEDIT4\n" +
@@ -66,12 +76,9 @@ module.default = class FontSmoothingSetting {
                 '"FontSmoothingGamma"=dword:00000000\n' +
                 '"FontSmoothingOrientation"=dword:00000001';
 
-            new Wine()
-                .prefix(container)
-                .regedit()
-                .patch(regeditFileContent);
+            new Regedit(wine).patch(regeditFileContent);
         } else {
-            new Wine().prefix(container).fontSmoothing(this.options[optionIndex]);
+            new FontSmoothing(wine).withMode(this.options[optionIndex]).go();
         }
     }
-}
+};

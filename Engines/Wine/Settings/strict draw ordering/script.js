@@ -1,6 +1,6 @@
 const Wine = include("engines.wine.engine.object");
 
-include("engines.wine.plugins.regedit");
+const Regedit = include("engines.wine.plugins.regedit");
 
 /**
  * Setting to configure strict draw ordering
@@ -22,31 +22,37 @@ module.default = class StrictDrawOrderingSetting {
     }
 
     getCurrentOption(container) {
-        var currentValue = new Wine()
-            .prefix(container)
-            .regedit()
-            .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Direct3D", "StrictDrawOrdering"]);
+        const wine = new Wine().prefix(container);
+
+        var currentValue = new Regedit(wine).fetchValue([
+            "HKEY_CURRENT_USER",
+            "Software",
+            "Wine",
+            "Direct3D",
+            "StrictDrawOrdering"
+        ]);
+
         // find matching option (use default if not found)
-        var index = Math.max(this.registryValues.indexOf(currentValue), 0);
+        const index = Math.max(this.registryValues.indexOf(currentValue), 0);
+
         return this.options[index];
     }
 
     setOption(container, optionIndex) {
+        const wine = new Wine().prefix(container);
+
         if (0 == optionIndex) {
-            new Wine()
-                .prefix(container)
-                .regedit()
-                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D", "StrictDrawOrdering");
+            new Regedit(wine).deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D", "StrictDrawOrdering");
         } else {
-            var regeditFileContent =
+            const regeditFileContent =
                 "REGEDIT4\n" +
                 "\n" +
                 "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-                "\"StrictDrawOrdering\"=\"" + this.registryValues[optionIndex] + "\"\n";
-            new Wine()
-                .prefix(container)
-                .regedit()
-                .patch(regeditFileContent);
+                '"StrictDrawOrdering"="' +
+                this.registryValues[optionIndex] +
+                '"\n';
+
+            new Regedit(wine).patch(regeditFileContent);
         }
     }
-}
+};

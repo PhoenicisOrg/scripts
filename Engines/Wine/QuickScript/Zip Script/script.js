@@ -1,9 +1,9 @@
 const QuickScript = include("engines.wine.quick_script.quick_script");
 const Downloader = include("utils.functions.net.download");
 const Wine = include("engines.wine.engine.object");
-const {Extractor} = include("utils.functions.filesystem.extract");
+const { Extractor } = include("utils.functions.filesystem.extract");
 
-include("engines.wine.verbs.luna");
+const Luna = include("engines.wine.verbs.luna");
 
 module.default = class ZipScript extends QuickScript {
     constructor() {
@@ -28,9 +28,11 @@ module.default = class ZipScript extends QuickScript {
         const wine = new Wine()
             .wizard(setupWizard)
             .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
-            .create()
-            .luna()
-            .wait();
+            .create();
+
+        new Luna(wine).go();
+
+        wine.wait();
 
         this._preInstall(wine, setupWizard);
 
@@ -65,4 +67,4 @@ module.default = class ZipScript extends QuickScript {
 
         setupWizard.close();
     }
-}
+};
