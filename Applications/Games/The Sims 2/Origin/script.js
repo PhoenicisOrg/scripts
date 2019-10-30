@@ -30,7 +30,7 @@ new OriginScript()
             .url("https://github.com/tannisroot/installer-fixes/raw/master/sims2_fixes.tar.xz")
             .name("sims2_fixes.tar.xz")
             .get();
-    
+
         new Extractor()
             .wizard(wine.wizard())
             .archive(fixes)
