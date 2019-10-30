@@ -32,7 +32,7 @@ new OriginScript()
         wine.regedit().patch(registrySettings);
         var configFile = wine.prefixDirectory() + "/drive_c/dxvk.conf";
         touch(configFile);
-        writeToFile(configFile, dxgi.nvapiHack = False);
+        writeToFile(configFile, "dxgi.nvapiHack = False");
         wine.overrideDLL()
             .set("disabled", ["nvapi", "nvapi64", "OriginThinSetupInternal.exe"])
             .do();
