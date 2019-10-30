@@ -1,16 +1,19 @@
-include("engines.wine.engine.object");
-
 /**
-* runs "regsvr32"
-* @returns {Wine} Wine object
-*/
-Wine.prototype.regsvr32 = function () {
-    var _wine = this;
+ * Plugin to run "regsvr32"
+ */
+module.default = class Regsvr32 {
+    constructor(wine) {
+        this.wine = wine;
+        this.dlls = [];
+    }
 
-    this.install = function (dll) {
-        _wine.run("regsvr32", ["/i", dll], this.prefixDirectory(), false, true);
-        return _wine;
-    };
+    withDll(dll) {
+        this.dlls.push(dll);
 
-    return this;
+        return this;
+    }
+
+    go() {
+        this.dlls.forEach(dll => this.wine.run("regsvr32", ["/i", dll], this.wine.prefixDirectory(), false, true));
+    }
 };

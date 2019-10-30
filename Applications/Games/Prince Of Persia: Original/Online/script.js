@@ -1,4 +1,5 @@
-include("engines.wine.quick_script.zip_script");
+const ZipScript = include("engines.wine.quick_script.zip_script");
+const {LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
 
 new ZipScript()
     .name("Prince Of Persia: Original")

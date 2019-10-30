@@ -1,5 +1,5 @@
-include("engines.wine.quick_script.steam_script");
-include("engines.wine.verbs.d3dx9");
+const SteamScript = include("engines.wine.quick_script.steam_script");
+const D3DX9 = include("engines.wine.verbs.d3dx9");
 
 new SteamScript()
     .name("STAR WARS™ Empire at War: Gold Pack")
@@ -7,5 +7,5 @@ new SteamScript()
     .author("ImperatorS79")
     .appId(32470)
     .preInstall(function (wine /*, wizard*/) {
-        wine.d3dx9();
+        new D3DX9(wine).go();
     });

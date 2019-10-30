@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.local_installer_script");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 
 new LocalInstallerScript()
     .name("18 Wheels of Steel: Across America")

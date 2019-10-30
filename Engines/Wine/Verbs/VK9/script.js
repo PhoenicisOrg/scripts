@@ -1,102 +1,120 @@
-include("engines.wine.engine.object");
-include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const { Extractor } = include("utils.functions.filesystem.extract");
+const { cp, remove } = include("utils.functions.filesystem.files");
+
+const Optional = Java.type("java.util.Optional");
+
+const OverrideDLL = include("engines.wine.plugins.override_dll");
+
+const operatingSystemFetcher = Bean("operatingSystemFetcher");
 
 /**
  * Verb to install VK9
  * see: https://github.com/disks86/VK9
- *
- * @param {String} vk9Version VK9 version to install
- * @returns {Wine} Wine object
  */
-Wine.prototype.VK9 = function (vk9Version) {
-    var operatingSystemFetcher = Bean("operatingSystemFetcher");
-    var uiQuestionFactory = Bean("uiQuestionFactory");
-    if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
-    {
-        uiQuestionFactory.create(
-				tr("VK9 is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Do you want to continue? Chosing yes will skip DXVK verb  installation and continue with other verbs. Chosing no will quit script installation.", winePrefix),
-				() => return this;
-			);
-    }
-    else
-    {
-        this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else VK9 might not work correctly."));
+class VK9 {
+    constructor(wine) {
+        this.wine = wine;
     }
 
-    print("NOTE: wine version should be greater or equal to 3.5");
-    print("NOTE: works from 0.28.0");
+    /**
+     * Sets the VK9 version to install
+     *
+     * @param {string} vk9Version The VK9 version to install
+     * @returns {VK9} The VK9 object
+     */
+    withVersion(vk9Version) {
+        this.vk9Version = vk9Version;
 
-    if (typeof vk9Version !== 'string') {
-        vk9Version = "0.29.0";
+        return this;
     }
 
-    var setupFile32 = new Resource()
-        .wizard(this.wizard())
-        .url("https://github.com/disks86/VK9/releases/download/" + vk9Version + "/" + vk9Version + "-bin-x86-Release.zip")
-        .name(vk9Version + "-bin-x86-Realease.zip")
-        .get();
+    go() {
+        const wizard = this.wine.wizard();
+        const prefixDirectory = this.wine.prefixDirectory();
+        const system32directory = this.wine.system32directory();
+        const system64directory = this.wine.system64directory();
 
-    new Extractor()
-        .wizard(this.wizard())
-        .archive(setupFile32)
-        .to(this.prefixDirectory() + "/TMP32/")
-        .extract();
+        if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
+        {
+            const answer = uiQuestionFactory.create(
+                tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation."),
+                ["YES, continue with D9VK installation regardless", "NO, quit script alltogether", "Exit D9VK Installer, but continue with the script"]
+            );
+            if (!answer || answer == "Exit D9VK Installer, but continue with the script") {
+                return this;
+            }
+            if (answer == "NO, quit script alltogether") {
+                throw "User aborted the script.";
+            }
+        }
 
-    cp(this.prefixDirectory() + "/TMP32/" + vk9Version + "-bin-x86-Release/" + "d3d9.dll", this.system32directory());
+        print("NOTE: wine version should be greater or equal to 3.5");
+        print("NOTE: works from 0.28.0");
 
-    remove(this.prefixDirectory() + "/TMP32/");
+        if (typeof this.vk9Version !== "string") {
+            this.vk9Version = "0.29.0";
+        }
 
-    if (this.architecture() === "amd64") {
-        var setupFile64 = new Resource()
-            .wizard(this.wizard())
-            .url("https://github.com/disks86/VK9/releases/download/" + vk9Version + "/" + vk9Version + "-bin-x86_64-Release.zip")
-            .name(vk9Version + "-bin-x86_64-Realease.zip")
+        const setupFile32 = new Resource()
+            .wizard(wizard)
+            .url(
+                `https://github.com/disks86/VK9/releases/download/${this.vk9Version}/${this.vk9Version}-bin-x86-Release.zip`
+            )
+            .name(`${this.vk9Version}-bin-x86-Realease.zip`)
             .get();
 
         new Extractor()
-            .wizard(this.wizard())
-            .archive(setupFile64)
-            .to(this.prefixDirectory() + "/TMP64/")
+            .wizard(wizard)
+            .archive(setupFile32)
+            .to(`${prefixDirectory}/TMP32/`)
             .extract();
 
-        cp(this.prefixDirectory() + "/TMP64/" + vk9Version + "-bin-x86_64-Release/" + "d3d9.dll", this.system64directory());
+        cp(`${prefixDirectory}/TMP32/${this.vk9Version}-bin-x86-Release/d3d9.dll`, system32directory);
 
-        remove(this.prefixDirectory() + "/TMP64/");
+        remove(`${prefixDirectory}/TMP32/`);
+
+        if (this.wine.architecture() === "amd64") {
+            const setupFile64 = new Resource()
+                .wizard(wizard)
+                .url(
+                    `https://github.com/disks86/VK9/releases/download/${this.vk9Version}/${this.vk9Version}-bin-x86_64-Release.zip`
+                )
+                .name(`${this.vk9Version}-bin-x86_64-Realease.zip`)
+                .get();
+
+            new Extractor()
+                .wizard(wizard)
+                .archive(setupFile64)
+                .to(`${prefixDirectory}/TMP64/`)
+                .extract();
+
+            cp(`${prefixDirectory}/TMP64/${this.vk9Version}-bin-x86_64-Release/d3d9.dll`, system64directory);
+
+            remove(`${prefixDirectory}/TMP64/`);
+        }
+
+        new OverrideDLL(this.wine).withMode("native", ["d3d9"]).go();
     }
 
-    this.overrideDLL()
-        .set("native", ["d3d9"])
-        .do();
+    static install(container) {
+        const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "VK9", Optional.empty());
 
-    return this;
-}
-
-/**
- * Verb to install VK9
- */
-// eslint-disable-next-line no-unused-vars
-class VK9Verb {
-    constructor() {
-        // do nothing
-    }
-
-    install(container) {
-        var wine = new Wine();
         wine.prefix(container);
-
-        var wizard = SetupWizard(InstallationType.VERBS, "VK9", java.util.Optional.empty());
-
-        // this script is not able to install older versions (VK9.conf mandatory)
-        var versions = ["0.29.0", "0.28.1", "0.28.0"];
-        // query desired version (default: 0.28.1)
-        var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.28.1");
         wine.wizard(wizard);
 
+        // this script is not able to install older versions (VK9.conf mandatory)
+        const versions = ["0.29.0", "0.28.1", "0.28.0"];
+        // query desired version (default: 0.28.1)
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.28.1");
+
         // install selected version
-        wine.VK9(selectedVersion.text);
+        new VK9(wine).withVersion(selectedVersion.text).go();
 
         wizard.close();
     }
 }
+
+module.default = VK9;

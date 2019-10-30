@@ -1,6 +1,6 @@
-include("engines.wine.quick_script.installer_script");
+const InstallerScript = include("engines.wine.quick_script.installer_script");
 
-class LocalInstallerScript extends InstallerScript {
+module.default = class LocalInstallerScript extends InstallerScript {
     constructor() {
         super();
 

@@ -1,12 +1,12 @@
-include("utils.functions.filesystem.files");
+const {Checksum} = include("utils.functions.filesystem.files");
+
+const downloader = Bean("downloader");
 
 /**
  * Downloader class
  */
-// eslint-disable-next-line no-unused-vars
-class Downloader {
+module.default = class Downloader {
     constructor() {
-        this._downloader = Bean("downloader");
         this._algorithm = "SHA";
         this._headers = {};
     }
@@ -119,19 +119,20 @@ class Downloader {
             this._message = tr("Please wait while {0} is downloaded...", this._fetchFileNameFromUrl(this._url));
         }
 
+        let progressBar;
         if (this._wizard) {
-            var progressBar = this._wizard.progressBar(this._message);
+            progressBar = this._wizard.progressBar(this._message);
         }
 
         if (this._onlyIfUpdateAvailable) {
-            if (!this._downloader.isUpdateAvailable(this._localDestination, this._url)) {
+            if (!downloader.isUpdateAvailable(this._localDestination, this._url)) {
                 print(this._localDestination + " already up-to-date.");
                 return;
             }
         }
 
         if (this._localDestination) {
-            const downloadFile = this._downloader.get(
+            const downloadFile = downloader.get(
                 this._url,
                 this._localDestination,
                 this._headers,
@@ -150,7 +151,7 @@ class Downloader {
                     .get();
 
                 if (fileChecksum != this._checksum) {
-                    var checksumErrorMessage = tr(
+                    const checksumErrorMessage = tr(
                         'Error while calculating checksum for "{0}". \n\nExpected = {1}\nActual = {2}',
                         this._localDestination,
                         this._checksum,
@@ -165,7 +166,7 @@ class Downloader {
 
             return downloadFile.toString();
         } else {
-            return this._downloader.get(this._url, this._headers, function (progressEntity) {
+            return downloader.get(this._url, this._headers, progressEntity => {
                 if (progressBar) {
                     progressBar.accept(progressEntity);
                 }

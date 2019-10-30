@@ -1,7 +1,8 @@
-include("engines.wine.quick_script.steam_script");
-include("engines.wine.verbs.vcrun2017");
-include("engines.wine.verbs.d3dx9");
-include("engines.wine.verbs.corefonts");
+const SteamScript = include("engines.wine.quick_script.steam_script");
+
+const Vcrun2017 = include("engines.wine.verbs.vcrun2017");
+const D3DX9 = include("engines.wine.verbs.d3dx9");
+const Corefonts = include("engines.wine.verbs.corefonts");
 
 new SteamScript()
     .name("RimWorld")
@@ -11,7 +12,7 @@ new SteamScript()
     .wineArchitecture("amd64")
     .appId(294100)
     .preInstall(function (wine) {
-        wine.corefonts();
-        wine.vcrun2017();
-        wine.d3dx9();
+        new Corefonts(wine).go();
+        new Vcrun2017(wine).go();
+        new D3DX9(wine).go();
     });

@@ -1,54 +1,58 @@
-include("engines.wine.engine.object");
-include("engines.wine.plugins.register_font");
-include("utils.functions.net.resource");
-include("engines.wine.verbs.luna");
-include("utils.functions.filesystem.files");
-include("utils.functions.filesystem.extract");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const { cp } = include("utils.functions.filesystem.files");
+const { CabExtract } = include("utils.functions.filesystem.extract");
 
-/**
- * Verb to install the Tahoma font
- *
- * @returns {Wine} Wine object
- */
-Wine.prototype.tahoma = function () {
-    var tahoma = new Resource()
-        .wizard(this.wizard())
-        .url("https://master.dl.sourceforge.net/project/corefonts/OldFiles/IELPKTH.CAB")
-        .checksum("40c3771ba4ce0811fe18a7a7903e40fcce46422d")
-        .name("IELPKTH.CAB")
-        .get();
+const Optional = Java.type("java.util.Optional");
 
-    new CabExtract()
-        .archive(tahoma)
-        .to(this.prefixDirectory() + "/drive_c/tahoma/")
-        .extract(["-L", "-F", "tahoma*.tff"]);
-
-    cp(this.prefixDirectory() + "/drive_c/tahoma/tahoma.ttf", this.fontDirectory());
-    cp(this.prefixDirectory() + "/drive_c/tahoma/tahomabd.ttf", this.fontDirectory());
-
-    this.registerFont()
-        .set("Tahoma", "tahoma.ttf")
-        .set("Tahoma Bold", "tahomabd.ttf")
-        .do();
-
-    return this;
-};
+const RegisterFont = include("engines.wine.plugins.register_font");
 
 /**
  * Verb to install the Tahoma font
  */
-// eslint-disable-next-line no-unused-vars
-class TahomaVerb {
-    constructor() {
-        // do nothing
+class Tahoma {
+    constructor(wine) {
+        this.wine = wine;
     }
 
-    install(container) {
-        var wine = new Wine();
+    go() {
+        const wizard = this.wine.wizard();
+        const prefixDirectory = this.wine.prefixDirectory();
+        const fontDirectory = this.wine.fontDirectory();
+
+        const tahoma = new Resource()
+            .wizard(wizard)
+            .url("https://master.dl.sourceforge.net/project/corefonts/OldFiles/IELPKTH.CAB")
+            .checksum("40c3771ba4ce0811fe18a7a7903e40fcce46422d")
+            .name("IELPKTH.CAB")
+            .get();
+
+        new CabExtract()
+            .wizard(wizard)
+            .archive(tahoma)
+            .to(`${prefixDirectory}/drive_c/tahoma/`)
+            .extract(["-L", "-F", "tahoma*.tff"]);
+
+        cp(`${prefixDirectory}/drive_c/tahoma/tahoma.ttf`, fontDirectory);
+        cp(`${prefixDirectory}/drive_c/tahoma/tahomabd.ttf`, fontDirectory);
+
+        new RegisterFont(this.wine)
+            .withFont("Tahoma", "tahoma.ttf")
+            .withFont("Tahoma Bold", "tahomabd.ttf")
+            .go();
+    }
+
+    static install(container) {
+        const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "tahoma", Optional.empty());
+
         wine.prefix(container);
-        var wizard = SetupWizard(InstallationType.VERBS, "tahoma", java.util.Optional.empty());
         wine.wizard(wizard);
-        wine.tahoma();
+
+        new Tahoma(wine).go();
+
         wizard.close();
     }
 }
+
+module.default = Tahoma;

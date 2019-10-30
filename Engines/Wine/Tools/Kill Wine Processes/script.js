@@ -1,10 +1,10 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 
 /**
  * Tool to kill running Wine processes
  */
 // eslint-disable-next-line no-unused-vars
-class KillWineProcessesTool {
+module.default = class KillWineProcessesTool {
     constructor() {
         // do nothing
     }

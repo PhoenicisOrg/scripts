@@ -1,10 +1,11 @@
+const appsManager = Bean("repositoryManager");
+
 /**
  * AppResource class
  */
-// eslint-disable-next-line no-unused-vars
-class AppResource {
+module.default = class AppResource {
     constructor() {
-        this.appsManager = Bean("repositoryManager");
+        // nothing to do
     }
 
     /**
@@ -14,7 +15,7 @@ class AppResource {
      * @returns {AppResource} The AppResource object
      */
     application(application) {
-        this._application = this.appsManager.getApplication(application);
+        this._application = appsManager.getApplication(application);
 
         if (!this._application) {
             print(`Warning: unable to fetch application "${application}"`);

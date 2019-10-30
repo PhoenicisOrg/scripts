@@ -1,10 +1,13 @@
-include("engines.wine.quick_script.quick_script");
-include("engines.wine.engine.object");
-include("utils.functions.filesystem.extract");
-include("utils.functions.filesystem.files");
-include("engines.wine.verbs.luna");
+const QuickScript = include("engines.wine.quick_script.quick_script");
+const Wine = include("engines.wine.engine.object");
+const {LATEST_STABLE_VERSION} = include("engines.wine.engine.versions");
+const {fileName} = include("utils.functions.filesystem.files");
 
-class InstallerScript extends QuickScript {
+const Luna = include("engines.wine.verbs.luna");
+
+const operatingSystemFetcher = Bean("operatingSystemFetcher");
+
+module.default = class InstallerScript extends QuickScript {
     constructor() {
         super();
     }
@@ -22,50 +25,60 @@ class InstallerScript extends QuickScript {
         setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
         // get installation file from concrete InstallerScript implementation
-        var installationCommand = this._installationCommand(setupWizard);
+        const installationCommand = this._installationCommand(setupWizard);
 
-        var wine = new Wine()
-            .wizard(setupWizard);
+        const wine = new Wine().wizard(setupWizard);
 
         // let user select wine settings if desired
         if (this._wineUserSettings) {
-            var architectures = ["x86", "amd64"];
-            var shownArchitectures = ["x86 (recommended)", "amd64"];
-            var selectedArchitecture = setupWizard.menu(tr("Please select the wine architecture."), shownArchitectures, "x86 (recommended)");
+            const architectures = ["x86", "amd64"];
+            const selectedArchitecture = setupWizard.menu(
+                tr("Please select the wine architecture."),
+                ["x86 (recommended)", "amd64"],
+                "x86 (recommended)"
+            );
+
             this._wineArchitecture = architectures[selectedArchitecture.index];
 
-            var distributions = wine.availableDistributions(this._wineArchitecture);
-            var shownDistributions = [];
-            for (var distributionIdx in distributions) {
-                if (distributions[distributionIdx] == "upstream") {
-                    shownDistributions.push("upstream (recommended)");
+            const distributions = wine.availableDistributions(this._wineArchitecture);
+            const shownDistributions = distributions.map(distribution => {
+                if (distribution == "upstream") {
+                    return "upstream (recommended)";
+                } else {
+                    return distribution;
                 }
-                else {
-                    shownDistributions.push(distributions[distributionIdx]);
-                }
-            }
-            var selectedDistribution = setupWizard.menu(tr("Please select the wine distribution."), shownDistributions, "upstream (recommended)");
+            });
+            const selectedDistribution = setupWizard.menu(
+                tr("Please select the wine distribution."),
+                shownDistributions,
+                "upstream (recommended)"
+            );
             this._wineDistribution = distributions[selectedDistribution.index];
 
-            var operatingSystemFetcher = Bean("operatingSystemFetcher");
-            var operatingSystem = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
-            var versions = wine.availableVersions(this._wineDistribution + "-" + operatingSystem + "-" + this._wineArchitecture);
-            var shownVersions = [];
-            for (var versionIdx in versions) {
-                if (versions[versionIdx] == LATEST_STABLE_VERSION) {
-                    shownVersions.push(versions[versionIdx] + " (recommended)");
+            const operatingSystem = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+            const versions = wine.availableVersions(
+                `${this._wineDistribution}-${operatingSystem}-${this._wineArchitecture}`
+            );
+            const shownVersions = versions.map(version => {
+                if (version == LATEST_STABLE_VERSION) {
+                    return `${version} (recommended)`;
+                } else {
+                    return version;
                 }
-                else {
-                    shownVersions.push(versions[versionIdx]);
-                }
-            }
-            var selectedVersion = setupWizard.menu(tr("Please select the wine version."), shownVersions, LATEST_STABLE_VERSION + " (recommended)");
+            });
+            const selectedVersion = setupWizard.menu(
+                tr("Please select the wine version."),
+                shownVersions,
+                LATEST_STABLE_VERSION + " (recommended)"
+            );
+
             this._wineVersion = versions[selectedVersion.index];
         }
 
         // setup the prefix
-        wine.prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
-            .luna();
+        wine.prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion);
+
+        new Luna(wine).go();
 
         this._preInstall(wine, setupWizard);
 
@@ -76,7 +89,9 @@ class InstallerScript extends QuickScript {
 
         // if no executable given, ask user
         if (!this._executable) {
-            this._executable = fileName(setupWizard.browse(tr("Please select the executable."), wine.prefixDirectory(), ["exe"]));
+            this._executable = fileName(
+                setupWizard.browse(tr("Please select the executable."), wine.prefixDirectory(), ["exe"])
+            );
         }
 
         this._createShortcut(wine.prefix());

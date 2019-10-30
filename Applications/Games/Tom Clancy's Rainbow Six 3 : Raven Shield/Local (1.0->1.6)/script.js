@@ -1,5 +1,7 @@
-include("engines.wine.quick_script.local_installer_script");
-include("engines.wine.plugins.virtual_desktop");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
+const Downloader = include("utils.functions.net.download");
+
+const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
 
 new LocalInstallerScript()
     .name("Tom Clancy's Rainbow Six 3 : Raven Shield")
@@ -7,7 +9,9 @@ new LocalInstallerScript()
     .author("ImperatorS79")
     .category("Games")
     .executable("ravenshield.exe")
-    .postInstall(function (wine, wizard) {
+    .postInstall(function (wine) {
+        const wizard = wine.wizard();
+
         var regions = ["France", "England"];
         var selectedRegion = wizard.menu(tr("Select your region for the patch (1.0 to 1.60)."), regions);
         var exeName, url, sha1;
@@ -36,5 +40,5 @@ new LocalInstallerScript()
 
         wine.run(originDirectory + exeName);
 
-        wine.setVirtualDesktop(1280, 1024);
+        new VirtualDesktop(wine).withDimensions(1280, 1024).go();
     });

@@ -1,4 +1,4 @@
-include("engines.wine.quick_script.steam_script");
+const SteamScript = include("engines.wine.quick_script.steam_script");
 
 new SteamScript()
     .name("Dr. Langeskov, The Tiger, and The Terribly Cursed Emerald: A Whirlwind Heist")

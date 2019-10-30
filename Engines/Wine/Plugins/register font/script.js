@@ -1,38 +1,27 @@
-include("engines.wine.engine.object");
-include("engines.wine.plugins.regedit");
+const Regedit = include("engines.wine.plugins.regedit");
 
-var RegisterFont = function () {
-    var that = this;
-    that._regeditFileContentNT =
-        "REGEDIT4\n" +
-        "\n" +
-        "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Fonts]\n";
-
-    that._regeditFileContent =
-        "REGEDIT4\n" +
-        "\n" +
-        "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Fonts]\n";
-
-    that.wine = function (wine) {
-        that._wine = wine;
-        return that;
-    };
-
-    that.set = function (font, file) {
-        that._regeditFileContentNT += "\"*" + font + "\"=\"" + file + "\"\n";
-        that._regeditFileContent += "\"*" + font + "\"=\"" + file + "\"\n";
-
-        return that;
-    };
-
-    that.do =  function () {
-        that._wine.regedit().patch(that._regeditFileContentNT);
-        that._wine.regedit().patch(that._regeditFileContent);
-        return that._wine;
+module.default = class RegisterFont {
+    constructor(wine) {
+        this.wine = wine;
+        this.fonts = {};
     }
-};
 
-Wine.prototype.registerFont = function () {
-    return new RegisterFont()
-        .wine(this)
+    withFont(font, file) {
+        this.fonts[font] = file;
+
+        return this;
+    }
+
+    go() {
+        let regeditFileContentNT = `REGEDIT4\n\n[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Fonts]\n`;
+        let regeditFileContent = `REGEDIT4\n\n[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Fonts]\n`;
+
+        Object.entries(this.fonts).forEach(([font, file]) => {
+            regeditFileContentNT += `"*${font}"="${file}"\n`;
+            regeditFileContent += `"*${font}"="${file}"\n`;
+        });
+
+        new Regedit(this.wine).patch(regeditFileContentNT);
+        new Regedit(this.wine).patch(regeditFileContent);
+    }
 };

@@ -1,6 +1,8 @@
-include("engines.wine.quick_script.online_installer_script");
-include("engines.wine.plugins.csmt");
-include("engines.wine.plugins.virtual_desktop");
+const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
+const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+
+const CSMT = include("engines.wine.plugins.csmt");
+const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
 
 new OnlineInstallerScript()
     .name("Guild Wars 2")
@@ -13,8 +15,8 @@ new OnlineInstallerScript()
     .executable("Gw2.exe")
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall(function (wine) {
         // avoid that launcher freezes the complete system
-        wine.setVirtualDesktop(1280, 1024);
-        wine.enableCSMT();
+        new VirtualDesktop(wine).withDimensions(1280, 1024).go();
+        new CSMT(wine).go();
     });

@@ -1,18 +1,15 @@
-include("engines.wine.engine.object");
-include("engines.wine.plugins.regedit");
+const Wine = include("engines.wine.engine.object");
 
 /**
  * Tool to open the Wine registry editor
  */
 // eslint-disable-next-line no-unused-vars
-class WineRegistryEditorTool {
+module.default = class WineRegistryEditorTool {
     constructor() {
         // do nothing
     }
 
     run(container) {
-        new Wine()
-            .prefix(container)
-            .run("regedit", [], null, false, true);
+        new Wine().prefix(container).run("regedit", [], null, false, true);
     }
-}
+};

@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Wine constants",
+    "id"                         : "engines.wine.engine.constants",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

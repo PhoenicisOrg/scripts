@@ -1,10 +1,13 @@
-include("engines.wine.quick_script.local_installer_script");
-include("engines.wine.plugins.virtual_desktop");
-include("engines.wine.plugins.override_dll");
-include("engines.wine.verbs.corefonts");
-include("engines.wine.verbs.crypt32");
-include("engines.wine.verbs.d3dx10");
-include("utils.functions.filesystem.files");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
+
+const { touch, writeToFile, chmod } = include("utils.functions.filesystem.files");
+
+const Corefonts = include("engines.wine.verbs.corefonts");
+const Crypt32 = include("engines.wine.verbs.crypt32");
+const D3DX10 = include("engines.wine.verbs.d3dx10");
+
+const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 new LocalInstallerScript()
     .name("Anno 2070")
@@ -16,15 +19,13 @@ new LocalInstallerScript()
     .wineVersion("3.16")
     .wineDistribution("upstream")
     .preInstall(function (wine) {
-        var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        wine.setVirtualDesktop(screenSize.width, screenSize.height);
-        wine.crypt32();
-        wine.corefonts();
-        wine.d3dx10();
-        wine
-            .overrideDLL()
-            .set("native, builtin", ["winhttp", "msvcrt40", "msvcr100", "crypt32"])
-            .do();
+        new VirtualDesktop(wine).go();
+
+        new Crypt32(wine).go();
+        new Corefonts(wine).go();
+        new D3DX10(wine).go();
+
+        new OverrideDLL(wine).withMode("native, builtin", ["winhttp", "msvcrt40", "msvcr100", "crypt32"]).go();
     })
     .postInstall(function (wine) {
         var versionFile = wine.prefixDirectory() + "/drive_c/Ubisoft/Related Designs/ANNO 2070/update/version.txt";

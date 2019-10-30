@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "virtual desktop",
+    "id"                         : "utils.functions.system.virtual_desktop",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

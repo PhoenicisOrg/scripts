@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Wine versions",
+    "id"                         : "engines.wine.engine.versions",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

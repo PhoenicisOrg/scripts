@@ -1,11 +1,12 @@
-include("engines.wine.engine.object");
-include("engines.wine.plugins.regedit");
+const Wine = include("engines.wine.engine.object");
+
+const Regedit = include("engines.wine.plugins.regedit");
 
 /**
  * setting to set always offscreen
  */
 // eslint-disable-next-line no-unused-vars
-class AlwaysOffscreenSetting {
+module.default = class AlwaysOffscreenSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("Enabled")];
         // values which are written into the registry, do not translate!
@@ -21,10 +22,15 @@ class AlwaysOffscreenSetting {
     }
 
     getCurrentOption(container) {
-        const currentValue = new Wine()
-            .prefix(container)
-            .regedit()
-            .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Direct3D", "AlwaysOffscreen"]);
+        const wine = new Wine().prefix(container);
+
+        const currentValue = new Regedit(wine).fetchValue([
+            "HKEY_CURRENT_USER",
+            "Software",
+            "Wine",
+            "Direct3D",
+            "AlwaysOffscreen"
+        ]);
 
         // find matching option (use default if not found)
         const index = Math.max(this.registryValues.indexOf(currentValue), 0);
@@ -33,21 +39,20 @@ class AlwaysOffscreenSetting {
     }
 
     setOption(container, optionIndex) {
+        const wine = new Wine().prefix(container);
+
         if (0 == optionIndex) {
-            new Wine()
-                .prefix(container)
-                .regedit()
-                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D", "AlwaysOffscreen");
+            new Regedit(wine).deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D", "AlwaysOffscreen");
         } else {
             const regeditFileContent =
                 "REGEDIT4\n" +
                 "\n" +
                 "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-                "\"AlwaysOffscreen\"=\"" + this.registryValues[optionIndex] + "\"\n";
-            new Wine()
-                .prefix(container)
-                .regedit()
-                .patch(regeditFileContent);
+                '"AlwaysOffscreen"="' +
+                this.registryValues[optionIndex] +
+                '"\n';
+
+            new Regedit(wine).patch(regeditFileContent);
         }
     }
-}
+};

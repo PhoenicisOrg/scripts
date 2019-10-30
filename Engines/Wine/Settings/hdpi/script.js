@@ -1,11 +1,11 @@
-include("engines.wine.engine.object");
-include("engines.wine.plugins.hdpi");
+const Wine = include("engines.wine.engine.object");
+
+const HDPI = include("engines.wine.plugins.hdpi");
 
 /**
  * Setting to enable/disable Retina
  */
-// eslint-disable-next-line no-unused-vars
-class HDPISetting {
+module.default = class HDPISetting {
     constructor() {
         this.options = [tr("Disabled"), tr("Enabled")];
     }
@@ -19,16 +19,16 @@ class HDPISetting {
     }
 
     getCurrentOption(container) {
-        var currentValue = new Wine()
-            .prefix(container)
-            .hdpi();
+        const wine = new Wine().prefix(container);
+
+        const currentValue = new HDPI(wine).isHdpi();
 
         return currentValue ? this.options[1] : this.options[0];
     }
 
     setOption(container, optionIndex) {
-        new Wine()
-            .prefix(container)
-            .hdpi(1 == optionIndex);
+        const wine = new Wine().prefix(container);
+
+        new HDPI(wine).withHdpi(1 == optionIndex).go();
     }
-}
+};
