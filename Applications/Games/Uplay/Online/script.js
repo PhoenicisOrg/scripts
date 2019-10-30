@@ -1,6 +1,8 @@
-include("engines.wine.quick_script.online_installer_script");
-include("engines.wine.plugins.windows_version");
-include("engines.wine.verbs.corefonts");
+const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
+const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+
+const WindowsVersion = include("engines.wine.plugins.windows_version");
+const Corefonts = include("engines.wine.verbs.corefonts");
 
 new OnlineInstallerScript()
     .name("Uplay")
@@ -12,14 +14,11 @@ new OnlineInstallerScript()
     .executable("UbisoftGameLauncher.exe")
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .preInstall(function (wine /*, wizard*/) {
-        wine.corefonts();
-        wine
-            .setOsForApplication()
-            .set("upc.exe", "winvista")
-            .do();
-        wine
-            .setOsForApplication()
-            .set("UbisoftGameLauncher.exe", "winvista")
-            .do();
+    .preInstall(function (wine) {
+        new Corefonts(wine).go();
+
+        new WindowsVersion(wine)
+            .withApplicationWindowsVersion("upc.exe", "winvista")
+            .withApplicationWindowsVersion("UbisoftGameLauncher.exe", "winvista")
+            .go();
     });

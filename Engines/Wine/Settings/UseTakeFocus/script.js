@@ -1,12 +1,13 @@
-include("engines.wine.engine.object");
-include("engines.wine.plugins.regedit");
-include("engines.wine.plugins.usetakefocus");
+const Wine = include("engines.wine.engine.object");
+
+const Regedit = include("engines.wine.plugins.regedit");
+const TakeFocus = include("engines.wine.plugins.usetakefocus");
 
 /**
  * Setting to enable/disable UseTakeFocus
  */
 // eslint-disable-next-line no-unused-vars
-class UseTakeFocusSetting {
+module.default = class UseTakeFocusSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("Enabled")];
         // values which are written into the registry, do not translate!
@@ -23,25 +24,29 @@ class UseTakeFocusSetting {
     }
 
     getCurrentOption(container) {
-        var currentValue = new Wine()
-            .prefix(container)
-            .regedit()
-            .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "X11 Driver", "UseTakeFocus"]);
+        const wine = new Wine().prefix(container);
+
+        const currentValue = new Regedit(wine).fetchValue([
+            "HKEY_CURRENT_USER",
+            "Software",
+            "Wine",
+            "X11 Driver",
+            "UseTakeFocus"
+        ]);
+
         // find matching option (use default if not found)
-        var index = Math.max(this.registryValues.indexOf(currentValue), 0);
+        const index = Math.max(this.registryValues.indexOf(currentValue), 0);
+
         return this.options[index];
     }
 
     setOption(container, optionIndex) {
+        const wine = new Wine().prefix(container);
+
         if (0 == optionIndex) {
-            new Wine()
-                .prefix(container)
-                .regedit()
-                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver", "UseTakeFocus");
+            new Regedit(wine).deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver", "UseTakeFocus");
         } else {
-            new Wine()
-                .prefix(container)
-                .UseTakeFocus(this.registryValues[optionIndex]);
+            new TakeFocus(wine).withMode(this.registryValues[optionIndex]).go();
         }
     }
-}
+};

@@ -28,7 +28,7 @@ If you wish to change the trust level (if the application compalains about admin
 A basic script looks like:
 
 ```javascript
-include("engines.wine.quick_script.steam_script");
+const SteamScript = include("engines.wine.quick_script.steam_script");
 
 new SteamScript()
     .name("A Game")              // name of the game
@@ -65,7 +65,7 @@ For a different shortcut (e.g. if you want to pass arguments):
 A basic script looks like:
 
 ```javascript
-include("engines.wine.quick_script.origin_script");
+const OriginScript = include("engines.wine.quick_script.origin_script");
 
 new OriginScript()
     .name("A Game")              // name of the game
@@ -86,7 +86,7 @@ You can determine the app ID by going into `C:\Origin Games\*name of the game*\ 
 A basic script looks like:
 
 ```javascript
-include("engines.wine.quick_script.uplay_script");
+const UplayScript = include("engines.wine.quick_script.uplay_script");
 
 new UplayScript()
     .name("A Game")                                 // name of the game
@@ -104,7 +104,7 @@ Installs a local Windows executable. Shows a setup window browse step (see [Setu
 A basic script looks like:
 
 ```javascript
-include("engines.wine.quick_script.local_installer_script");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 
 new LocalInstallerScript()
     .name("Application-Name")                       // name of the application
@@ -121,7 +121,7 @@ Downloads and installs a Windows executable.
 A basic script looks like:
 
 ```javascript
-include("engines.wine.quick_script.online_installer_script");
+const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
 
 new OnlineInstallerScript()
     .name("Application-Name")                       // name of the application
@@ -138,7 +138,7 @@ new OnlineInstallerScript()
 Executes a custom installation command:
 
 ```javascript
-include("engines.wine.quick_script.custom_installer_script");
+const CustomInstallerScript = include("engines.wine.quick_script.custom_installer_script");
 
 new CustomInstallerScript()
     .name("Application-Name")                                           // name of the application
@@ -156,7 +156,7 @@ new CustomInstallerScript()
 A basic script looks like:
 
 ```javascript
-include("engines.wine.quick_script.zip_script");
+const ZipScript = include("engines.wine.quick_script.zip_script");
 
 new ZipScript()
     .name("Application-Name")                       // name of the application
@@ -176,7 +176,7 @@ This section describes some advanced methods which give you more possibilities t
 When you want to use a certain functionality in your scripts, you need to include it in your scripts, for example:
 
 ```javascript
-include("engines.wine.quick_script.steam_script");
+const SteamScript = include("engines.wine.quick_script.steam_script");
 ```
 
 allows you to execute a steam script. The content of the include is the id of the functionality, which can be found in the `script.json` file located next to the `script.js` file implementing the functionality.
@@ -191,22 +191,30 @@ For example, for a steam game:
 ```
 
 #### Pre/Post install hooks
-With the pre/post install hooks, you can specify a function which is executed before/after the installation. The function receives a wine object and the [SetupWizard]({{ site.baseurl }}{% link _docs/Develop/setup-wizard.md %}). By default, the pre/post install hooks do nothing.
+With the pre- and post- install hooks, you can specify a function which is executed before or after the installation. 
+The given function receives a wine object and the [SetupWizard]({{ site.baseurl }}{% link _docs/Develop/setup-wizard.md %}). 
+By default, the pre- and post- install hooks do nothing.
 
-These hooks are especially useful to set DLL overrides.
-You can find the complete list of available verbs [here](https://github.com/PhoenicisOrg/scripts/tree/master/Engines/Wine/Verbs).
+One common usecase for the pre- and post- install hooks is to set DLL overrides.
+DLL overrides are commonly performed using socalled `verb`s.
+You can find the complete list of available `verb`s [here](https://github.com/PhoenicisOrg/scripts/tree/master/Engines/Wine/Verbs).
 
-For example, in the script for "Assassin’s Creed: Brotherhood":
+To use a `verb` you first need to include it.
+You can include a verb by using the `include(<verb-id>)` command which returns the class of the included `verb`.
+
+For example, in the script for "Assassin’s Creed: Brotherhood" two verbs are included:
 
 ```javascript
-include("engines.wine.verbs.d3dx9");
-include("engines.wine.verbs.crypt32");
+const SteamScript = include("engines.wine.quick_script.steam_script");
+
+const Crypt32 = include("engines.wine.verbs.crypt32");
+const D3DX9 = include("engines.wine.verbs.d3dx9");
 
 new SteamScript()
          ...
     .preInstall(function(wine, wizard) {
-        wine.crypt32();
-        wine.d3dx9();
+        new Crypt32(wine).go();
+        new D3DX9(wine).go();
     })
 ```
 
@@ -225,17 +233,19 @@ Specific wine version:
     .wineVersion("1.9.23")
 ```
 
-You can also use variables for the wine version:
-* LATEST_DEVELOPMENT_VERSION
-* LATEST_STAGING_VERSION
+You can also use variables for the latest wine version:
+* `LATEST_STABLE_VERSION` via `const { LATEST_STABLE_VERSION } = include("engines.wine.engine.versions");`
+* `LATEST_DEVELOPMENT_VERSION` via `const { LATEST_DEVELOPMENT_VERSION } = include("engines.wine.engine.versions");`
+* `LATEST_STAGING_VERSION` via `const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");`
+* `LATEST_DOS_SUPPORT_VERSION` via `const { LATEST_DOS_SUPPORT_VERSION } = include("engines.wine.engine.versions");`
 
-Specific wine architecture ("x86" or "amd64"):
+For the specific wine architecture ("x86" or "amd64"):
 
 ```javascript
     .wineArchitecture("x86")
 ```
 
-Specific windows version:
+And for the specific windows version:
 
 ```javascript
 include("engines.wine.plugins.windows_version");
@@ -251,10 +261,10 @@ If the script requires a special registry setting, there are 2 options:
 2. If the setting is special for this script, use a registry file. Create a `registry.reg` in `<scriptname>/resources` (see [IE6](https://github.com/PhoenicisOrg/scripts/blob/master/Applications/Internet/Internet%20Explorer%206.0/resources/ie6.reg)) and apply this in `pre/postInstall()` via:
 
     ```javascript
-    include("utils.functions.apps.resources");
+    const AppResource = include("utils.functions.apps.resources");
     include("engines.wine.plugins.regedit");
         ...
-    var registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
+    const registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
     wine.regedit().patch(registrySettings);
     ```
 
@@ -264,20 +274,24 @@ If the QuickScript is not sufficient for you, you can still write a custom scrip
 The frame for a custom script looks like this:
 
 ```javascript
-include("engines.wine.engines.wine");
-include("engines.wine.shortcuts.wine");
+const Wine = include("engines.wine.engine.object");
+const WineShortcut = include("engines.wine.shortcuts.wine");
+const Luna = include("engines.wine.verbs.luna");
+const {LATEST_STABLE_VERSION} = include("engines.wine.engine.versions");
 
-var application = "application name"
+const application = "application name"
 
-var setupWizard = SetupWizard(application);
+const setupWizard = SetupWizard(application);
 
 setupWizard.presentation(application, "Editor", "http://applicationhomepage.com", "script author");
 
-var wine = new Wine()
+const wine = new Wine()
     .wizard(setupWizard)
-    .prefix(application, "upstream", "x86", LATEST_STABLE_VERSION)
-    .luna()
-    .run("your command", ["arg1", "arg2"], null, false, true);
+    .prefix(application, "upstream", "x86", LATEST_STABLE_VERSION);
+
+new Luna(wine).go();    
+    
+wine.run("your command", ["arg1", "arg2"], null, false, true);
 
 new WineShortcut()
     .name(application)

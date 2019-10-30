@@ -1,4 +1,7 @@
-include("engines.wine.quick_script.online_installer_script");
+const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
+const {LATEST_DEVELOPMENT_VERSION} = include("engines.wine.engine.versions");
+const Downloader = include("utils.functions.net.download");
+const {Extractor} = include("utils.functions.filesystem.extract");
 
 new OnlineInstallerScript()
     .name("Origin")

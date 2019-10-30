@@ -1,6 +1,7 @@
-include("engines.wine.quick_script.uplay_script");
-include("engines.wine.verbs.corefonts");
-include("engines.wine.plugins.virtual_desktop");
+const UplayScript = include("engines.wine.quick_script.uplay_script");
+
+const Corefonts = include("engines.wine.verbs.corefonts");
+const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
 
 new UplayScript()
     .name("Anno 2070")
@@ -10,8 +11,7 @@ new UplayScript()
     .wineVersion("4.0-rc3")
     .wineDistribution("upstream")
     .appId(22)
-    .preInstall(function (wine /*, wizard*/) {
-        var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        wine.setVirtualDesktop(screenSize.width, screenSize.height);
-        wine.corefonts();
+    .preInstall(function (wine) {
+        new VirtualDesktop(wine).go();
+        new Corefonts(wine).go();
     });

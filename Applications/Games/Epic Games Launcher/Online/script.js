@@ -1,4 +1,5 @@
-include("engines.wine.quick_script.online_installer_script");
+const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
+const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
 new OnlineInstallerScript()
     .name("Epic Games Launcher")

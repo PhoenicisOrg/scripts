@@ -1,5 +1,5 @@
-var fileAnalyser = Bean("fileAnalyser");
-var fileUtilities = Bean("fileUtilities");
+const fileUtilities = Bean("fileUtilities");
+const checksumCalculator = Bean("checksumCalculator");
 
 /**
  * Lists all files and directories contained in the given path
@@ -7,10 +7,10 @@ var fileUtilities = Bean("fileUtilities");
  * @param {string} directoryPath directory path
  * @returns {string[]} list of files and directories
  */
-// eslint-disable-next-line no-unused-vars
 function ls(directoryPath) {
     return fileUtilities.ls(directoryPath);
 }
+module.ls = ls;
 
 /**
  * Creates the given directory
@@ -18,10 +18,10 @@ function ls(directoryPath) {
  * @param {string} directoryPath directory path
  * @returns {void}
  */
-// eslint-disable-next-line no-unused-vars
 function mkdir(directoryPath) {
     fileUtilities.mkdir(directoryPath);
 }
+module.mkdir = mkdir;
 
 /**
  * Checks if the given file exists
@@ -29,10 +29,10 @@ function mkdir(directoryPath) {
  * @param {string} filePath file path
  * @returns {boolean} true if file exists
  */
-// eslint-disable-next-line no-unused-vars
 function fileExists(filePath) {
     return fileUtilities.exists(filePath);
 }
+module.fileExists = fileExists;
 
 /**
  * Returns the file content of the given file
@@ -40,10 +40,10 @@ function fileExists(filePath) {
  * @param {string} filePath file path
  * @returns {string} content
  */
-// eslint-disable-next-line no-unused-vars
 function cat(filePath) {
     return fileUtilities.getFileContent(filePath);
 }
+module.cat = cat;
 
 /**
  * Copies the given source file to the target location
@@ -52,10 +52,10 @@ function cat(filePath) {
  * @param {string} target Target location
  * @returns {void}
  */
-// eslint-disable-next-line no-unused-vars
 function cp(source, target) {
     return fileUtilities.copy(source, target);
 }
+module.cp = cp;
 
 /**
  * Returns the file size of the given file
@@ -63,10 +63,10 @@ function cp(source, target) {
  * @param {string} filePath file path
  * @returns {number} file size
  */
-// eslint-disable-next-line no-unused-vars
 function getFileSize(filePath) {
     return fileUtilities.getSize(filePath);
 }
+module.getFileSize = getFileSize;
 
 /**
  * Returns the file name of the given file
@@ -74,10 +74,10 @@ function getFileSize(filePath) {
  * @param {string} filePath file path
  * @returns {string} file name
  */
-// eslint-disable-next-line no-unused-vars
 function fileName(filePath) {
     return fileUtilities.getFileName(filePath);
 }
+module.fileName = fileName;
 
 /**
  * Creates a symbolic link
@@ -86,10 +86,10 @@ function fileName(filePath) {
  * @param {string} link destination
  * @returns {void}
  */
-// eslint-disable-next-line no-unused-vars
 function lns(target, link) {
     return fileUtilities.createSymbolicLink(link, target);
 }
+module.lns = lns;
 
 /**
  * Removes the given file
@@ -97,10 +97,10 @@ function lns(target, link) {
  * @param {string} filePath file path
  * @returns {void}
  */
-// eslint-disable-next-line no-unused-vars
 function remove(filePath) {
     return fileUtilities.remove(filePath);
 }
+module.remove = remove;
 
 /**
  * Creates the given file if it does not exist
@@ -108,12 +108,12 @@ function remove(filePath) {
  * @param {string} filePath file path
  * @returns {void}
  */
-// eslint-disable-next-line no-unused-vars
 function touch(filePath) {
     if (!fileExists(filePath)) {
         fileUtilities.writeToFile(filePath, "");
     }
 }
+module.touch = touch;
 
 /**
  * Writes the given content to the given file
@@ -122,10 +122,10 @@ function touch(filePath) {
  * @param {string} content content which shall be written
  * @returns {void}
  */
-// eslint-disable-next-line no-unused-vars
 function writeToFile(filePath, content) {
     fileUtilities.writeToFile(filePath, content);
 }
+module.writeToFile = writeToFile;
 
 /**
  * Creates a new temporary file with the given file extension
@@ -133,20 +133,20 @@ function writeToFile(filePath, content) {
  * @param {string} extension file extension
  * @returns {string} file path of created temporary file
  */
-// eslint-disable-next-line no-unused-vars
 function createTempFile(extension) {
     return fileUtilities.createTmpFile(extension);
 }
+module.createTempFile = createTempFile;
 
 /**
  * Creates a new temporary temporary directory
  *
  * @returns {string} file path of created temporary directory
  */
-// eslint-disable-next-line no-unused-vars
 function createTempDir() {
     return fileUtilities.createTmpDir();
 }
+module.createTempDir = createTempDir;
 
 /**
  * Sets the given file permissions
@@ -155,18 +155,16 @@ function createTempDir() {
  * @param {string} permissions file permissions (e.g. "r--r--r--")
  * @returns {void}
  */
-// eslint-disable-next-line no-unused-vars
 function chmod(filePath, permissions) {
     fileUtilities.chmod(filePath, permissions);
 }
+module.chmod = chmod;
 
 /**
  * Checksum
  */
-// eslint-disable-next-line no-unused-vars
-class Checksum {
+module.Checksum = class Checksum {
     constructor() {
-        this.checksumCalculator = Bean("checksumCalculator");
         this._method = "SHA";
     }
 
@@ -212,14 +210,15 @@ class Checksum {
      * @returns {string} The calculated checksum
      */
     get() {
+        let progressBar;
         if (this._wizard) {
-            var progressBar = this._wizard.progressBar(tr("Checking file consistency..."));
+            progressBar = this._wizard.progressBar(tr("Checking file consistency..."));
         }
 
-        return this.checksumCalculator.calculate(this._file, this._method, progressEntity => {
+        return checksumCalculator.calculate(this._file, this._method, progressEntity => {
             if (progressBar) {
                 progressBar.accept(progressEntity);
             }
         });
     }
-}
+};

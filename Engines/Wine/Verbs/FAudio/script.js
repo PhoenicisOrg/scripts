@@ -1,79 +1,89 @@
-include("engines.wine.engine.object");
-include("engines.wine.plugins.override_dll");
-include("utils.functions.net.resource");
-include("utils.functions.filesystem.files");
+const Wine = include("engines.wine.engine.object");
+const Resource = include("utils.functions.net.resource");
+const { Extractor } = include("utils.functions.filesystem.extract");
+const { ls, cp } = include("utils.functions.filesystem.files");
+const { getGithubReleases } = include("utils.functions.net.githubreleases");
+
+const Optional = Java.type("java.util.Optional");
+
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install FAudio
  * see: https://github.com/Kron4ek/FAudio-Builds
- *
- * @param {String} faudioVersion version of FAudio to downlaod
- * @returns {Wine} Wine object
  */
-Wine.prototype.faudio = function (faudioVersion) {
-    if (this.architecture() != "amd64") {
-        throw "FAudio does not support 32bit architecture.";
-    }
-    if (typeof faudioVersion !== "string") {
-        faudioVersion = "19.06.07";
+class FAudio {
+    constructor(wine) {
+        this.wine = wine;
     }
 
-    var setupFile = new Resource()
-        .wizard(this.wizard())
-        .url(
-            "https://github.com/Kron4ek/FAudio-Builds/releases/download/" +
-                faudioVersion +
-                "/faudio-" +
-                faudioVersion +
-                ".tar.xz"
-        )
-        .name("faudio-" + faudioVersion + ".tar.xz")
-        .get();
+    /**
+     * Sets the used FAudio version
+     *
+     * @param {string} faudioVersion The version of FAudio to downlaod
+     * @returns {FAudio} The FAudio object
+     */
+    withVersion(faudioVersion) {
+        this.faudioVersion = faudioVersion;
 
-    new Extractor()
-        .wizard(this.wizard())
-        .archive(setupFile)
-        .to(this.prefixDirectory() + "/FAudio/")
-        .extract();
+        return this;
+    }
 
-    var forEach = Array.prototype.forEach;
-    var sys64dir = this.system64directory();
-    var faudioDir = this.prefixDirectory() + "/FAudio/faudio-" + faudioVersion;
-    var self = this;
+    go() {
+        const wizard = this.wine.wizard();
+        const prefixDirectory = this.wine.prefixDirectory();
+        const system64directory = this.wine.system64directory();
 
-    forEach.call(ls(faudioDir + "/x64"), function (file) {
-        if (file.endsWith(".dll")) {
-            cp(faudioDir + "/x64/" + file, sys64dir);
-            self.overrideDLL()
-                .set("native", [file])
-                .do();
+        if (this.wine.architecture() != "amd64") {
+            throw "FAudio does not support 32bit architecture.";
         }
-    });
 
-    return this;
-};
+        if (typeof this.faudioVersion !== "string") {
+            const versions = getGithubReleases("Kron4ek", "FAudio-Builds", wizard);
+            this.faudioVersion = versions[0];
+        }
 
-/**
- * Verb to install FAudio
- */
-// eslint-disable-next-line no-unused-vars
-class FAudioVerb {
-    constructor() {
-        // do nothing
+        const setupFile = new Resource()
+            .wizard(wizard)
+            .url(
+                `https://github.com/Kron4ek/FAudio-Builds/releases/download/${this.faudioVersion}/faudio-${this.faudioVersion}.tar.xz`
+            )
+            .name(`faudio-${this.faudioVersion}.tar.xz`)
+            .get();
+
+        new Extractor()
+            .wizard(wizard)
+            .archive(setupFile)
+            .to(`${prefixDirectory}/FAudio/`)
+            .extract();
+
+        const faudioDir = `${prefixDirectory}/FAudio/faudio-${this.faudioVersion}`;
+
+        ls(`${faudioDir}/x64`).forEach(file => {
+            if (file.endsWith(".dll")) {
+                cp(`${faudioDir}/x64/${file}`, system64directory);
+
+                new OverrideDLL(this.wine).withMode("native", [file]).go();
+            }
+        });
     }
 
-    install(container) {
-        const wizard = SetupWizard(InstallationType.VERBS, "FAudio", java.util.Optional.empty());
-        const versions = ["19.06.07", "19.06", "19.05", "19.04", "19.03", "19.02", "19.01"];
-
-        const selectedVersion = wizard.menu(tr("Please select the version."), versions, "19.06.07");
-
+    static install(container) {
         const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "FAudio", Optional.empty());
+
         wine.prefix(container);
         wine.wizard(wizard);
+
+        const versions = getGithubReleases("Kron4ek", "FAudio-Builds", wizard);
+
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
+
         // install selected version
-        wine.faudio(selectedVersion.text);
+        new FAudio(wine).withVersion(selectedVersion.text).go();
 
         wizard.close();
     }
 }
+
+module.default = FAudio;

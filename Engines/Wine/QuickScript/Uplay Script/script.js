@@ -1,13 +1,13 @@
-include("engines.wine.quick_script.quick_script");
-include("utils.functions.net.download");
-include("engines.wine.engine.object");
-include("utils.functions.filesystem.extract");
-include("utils.functions.filesystem.files");
-include("engines.wine.verbs.luna");
-include("engines.wine.verbs.corefonts");
-include("engines.wine.plugins.windows_version");
+const QuickScript = include("engines.wine.quick_script.quick_script");
+const Downloader = include("utils.functions.net.download");
+const Wine = include("engines.wine.engine.object");
+const { fileExists, createTempFile } = include("utils.functions.filesystem.files");
 
-class UplayScript extends QuickScript {
+const Luna = include("engines.wine.verbs.luna");
+const Corefonts = include("engines.wine.verbs.corefonts");
+const WindowsVersion = include("engines.wine.plugins.windows_version");
+
+module.default = class UplayScript extends QuickScript {
     constructor() {
         super();
 
@@ -22,11 +22,25 @@ class UplayScript extends QuickScript {
     }
 
     downloadStarted(wine) {
-        return fileExists(wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/data/" + this._appId + "/manifests");
+        return fileExists(
+            wine.prefixDirectory() +
+                "/drive_c/" +
+                wine.programFiles() +
+                "/Ubisoft/Ubisoft Game Launcher/data/" +
+                this._appId +
+                "/manifests"
+        );
     }
 
     downloadFinished(wine) {
-        return !fileExists(wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/data/" + this._appId + "/manifests");
+        return !fileExists(
+            wine.prefixDirectory() +
+                "/drive_c/" +
+                wine.programFiles() +
+                "/Ubisoft/Ubisoft Game Launcher/data/" +
+                this._appId +
+                "/manifests"
+        );
     }
 
     go() {
@@ -49,17 +63,24 @@ class UplayScript extends QuickScript {
 
         const wine = new Wine()
             .wizard(setupWizard)
-            .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
-            .luna();
+            .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion);
 
-        wine.corefonts();
+        new Luna(wine).go();
+        new Corefonts(wine).go();
 
         setupWizard.message(tr("Please ensure that winbind is installed before you continue."));
-        setupWizard.wait(tr("Please follow the steps of the Uplay setup.\n\nUncheck \"Run Uplay\" or close Uplay completely after the setup so that the installation of \"{0}\" can continue.", this._name));
+        setupWizard.wait(
+            tr(
+                'Please follow the steps of the Uplay setup.\n\nUncheck "Run Uplay" or close Uplay completely after the setup so that the installation of "{0}" can continue.',
+                this._name
+            )
+        );
         wine.run(tempFile, [], null, false, true);
 
-        wine.setOsForApplication().set("upc.exe", "winvista").do();
-        wine.setOsForApplication().set("UbisoftGameLauncher.exe", "winvista").do();
+        new WindowsVersion(wine)
+            .withApplicationWindowsVersion("upc.exe", "winvista")
+            .withApplicationWindowsVersion("UbisoftGameLauncher.exe", "winvista")
+            .go();
 
         // Uplay installation has finished
         setupWizard.wait(tr("Please wait..."));
@@ -71,7 +92,11 @@ class UplayScript extends QuickScript {
 
         this._createShortcut(wine.prefix());
 
-        wine.runInsidePrefix(wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/Uplay.exe", ["uplay://launch/" + this._appId + "/0"], true);
+        wine.runInsidePrefix(
+            wine.programFiles() + "/Ubisoft/Ubisoft Game Launcher/Uplay.exe",
+            ["uplay://launch/" + this._appId + "/0"],
+            true
+        );
 
         // wait until download is finished
         setupWizard.wait(tr("Please wait until Uplay has finished the download..."));
@@ -91,4 +116,4 @@ class UplayScript extends QuickScript {
 
         setupWizard.close();
     }
-}
+};

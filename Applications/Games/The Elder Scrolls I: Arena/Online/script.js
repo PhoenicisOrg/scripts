@@ -1,6 +1,8 @@
-include("engines.wine.quick_script.zip_script");
-include("engines.wine.plugins.dos_support");
-include("utils.functions.filesystem.files");
+const ZipScript = include("engines.wine.quick_script.zip_script");
+const { writeToFile } = include("utils.functions.filesystem.files");
+const { LATEST_DOS_SUPPORT_VERSION } = include("engines.wine.engine.versions");
+
+const Dosbox = include("engines.wine.plugins.dos_support");
 
 new ZipScript()
     .name("The Elder Scroll 1: Arena")
@@ -26,11 +28,11 @@ new ZipScript()
             "@ECHO OFF\r\n" + "A -sa:220 -si:7 -sd:1 -ma:220 -mq:7 -md:1 -ssbdig.adv -msbfm.adv\n\n" + "EXIT"
         );
 
-        wine
-            .dosbox()
-            .memSize(64)
-            .renderAspect(true)
-            .cpuCycles("max 95% limit 33000")
-            .renderFrameSkip(1);
+        new Dosbox(wine)
+            .withMemSize(64)
+            .withRenderAspect(true)
+            .withCpuCycles("max 95% limit 33000")
+            .withRenderFrameSkip(1)
+            .go();
     })
     .executable("ARENA.BAT");

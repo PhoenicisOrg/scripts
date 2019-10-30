@@ -1,10 +1,10 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 
 /**
  * Tool to configure Wine
  */
 // eslint-disable-next-line no-unused-vars
-class ConfigureWineTool {
+module.default = class ConfigureWineTool {
     constructor() {
         // do nothing
     }

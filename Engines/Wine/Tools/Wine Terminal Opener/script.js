@@ -1,10 +1,10 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 
 /**
  * Tool to open a terminal in a Wine prefix
  */
 // eslint-disable-next-line no-unused-vars
-class WineTerminalOpenerTool {
+module.default = class WineTerminalOpenerTool {
     constructor() {
         this.terminalOpener = Bean("terminalOpener");
     }

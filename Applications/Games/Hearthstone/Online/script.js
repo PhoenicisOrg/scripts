@@ -1,6 +1,8 @@
-include("engines.wine.quick_script.online_installer_script");
-include("engines.wine.verbs.vcrun2015");
-include("engines.wine.verbs.corefonts");
+const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
+const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+
+const Vcrun2015 = include("engines.wine.verbs.vcrun2015");
+const Corefonts = include("engines.wine.verbs.corefonts");
 
 new OnlineInstallerScript()
     .name("Hearthstone")
@@ -13,6 +15,6 @@ new OnlineInstallerScript()
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .preInstall(function (wine /*, wizard*/) {
-        wine.vcrun2015();
-        wine.corefonts();
+        new Vcrun2015(wine).go();
+        new Corefonts(wine).go();
     });

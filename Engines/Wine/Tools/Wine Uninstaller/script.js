@@ -1,10 +1,10 @@
-include("engines.wine.engine.object");
+const Wine = include("engines.wine.engine.object");
 
 /**
  * Tool to uninstall Wine
  */
 // eslint-disable-next-line no-unused-vars
-class UninstallWineTool {
+module.default = class UninstallWineTool {
     constructor() {
         // do nothing
     }

@@ -1,7 +1,9 @@
-include("engines.wine.quick_script.steam_script");
-include("engines.wine.plugins.virtual_desktop");
-include("engines.wine.verbs.corefonts");
-include("utils.functions.apps.resources");
+const SteamScript = include("engines.wine.quick_script.steam_script");
+const {LATEST_DEVELOPMENT_VERSION} = include("engines.wine.engine.versions");
+
+const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
+const Corefonts = include("engines.wine.verbs.corefonts");
+
 
 new SteamScript()
     .name("PC Building Simulator")
@@ -17,8 +19,7 @@ new SteamScript()
                 "The game is functional but benchmark animations on the monitors are not displayed. Feel free to drop a feedback if you know how to fix this issue."
             )
         );
-        wine.corefonts();
-        var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        wine.setVirtualDesktop(screenSize.width, screenSize.height);
+        new Corefonts(wine).go();
+        new VirtualDesktop(wine).go();
     })
     .gameOverlay(false);

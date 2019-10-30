@@ -1,11 +1,12 @@
-include("engines.wine.engine.object");
-include("engines.wine.plugins.regedit");
+const Wine = include("engines.wine.engine.object");
+
+const Regedit = include("engines.wine.plugins.regedit");
 
 /**
  * Setting to set the render target lock mode
  */
 // eslint-disable-next-line no-unused-vars
-class RenderTargetModeLockSetting {
+module.default = class RenderTargetModeLockSetting {
     constructor() {
         this.options = [tr("Default"), tr("Disabled"), tr("readdraw"), tr("readtext")];
         // values which are written into the registry, do not translate!
@@ -21,31 +22,37 @@ class RenderTargetModeLockSetting {
     }
 
     getCurrentOption(container) {
-        var currentValue = new Wine()
-            .prefix(container)
-            .regedit()
-            .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Direct3D", "RenderTargetModeLock"]);
+        const wine = new Wine().prefix(container);
+
+        var currentValue = new Regedit(wine).fetchValue([
+            "HKEY_CURRENT_USER",
+            "Software",
+            "Wine",
+            "Direct3D",
+            "RenderTargetModeLock"
+        ]);
+
         // find matching option (use default if not found)
-        var index = Math.max(this.registryValues.indexOf(currentValue), 0);
+        const index = Math.max(this.registryValues.indexOf(currentValue), 0);
+
         return this.options[index];
     }
 
     setOption(container, optionIndex) {
+        const wine = new Wine().prefix(container);
+
         if (0 == optionIndex) {
-            new Wine()
-                .prefix(container)
-                .regedit()
-                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D", "RenderTargetModeLock");
+            new Regedit(wine).deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D", "RenderTargetModeLock");
         } else {
-            var regeditFileContent =
+            const regeditFileContent =
                 "REGEDIT4\n" +
                 "\n" +
                 "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-                "\"RenderTargetModeLock\"=\"" + this.registryValues[optionIndex] + "\"\n";
-            new Wine()
-                .prefix(container)
-                .regedit()
-                .patch(regeditFileContent);
+                '"RenderTargetModeLock"="' +
+                this.registryValues[optionIndex] +
+                '"\n';
+
+            new Regedit(wine).patch(regeditFileContent);
         }
     }
-}
+};

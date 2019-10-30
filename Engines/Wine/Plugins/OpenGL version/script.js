@@ -1,18 +1,30 @@
-include("engines.wine.engine.object");
-include("engines.wine.plugins.regedit");
+const Regedit = include("engines.wine.plugins.regedit");
 
-/**
- * sets OpenGL max core version
- * @param {number} major major version
- * @param {number} minor minor version
- * @returns {Wine} Wine object
- */
-Wine.prototype.setVersionGL = function (major, minor) {
-    var regeditFileContent =
-        "REGEDIT4\n" +
-        "\n" +
-        "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-        "\"MaxVersionGL\"=dword:000"+ major + "000" + minor
-    this.regedit().patch(regeditFileContent);
-    return this;
+module.default = class OpenGL {
+    constructor(wine) {
+        this.wine = wine;
+    }
+
+    /**
+     * Specifies the major and minor versions
+     *
+     * @param {number} major The major version
+     * @param {number} minor The minor version
+     * @returns {OpenGL} This
+     */
+    withVersion(major, minor) {
+        this.major = major;
+        this.minor = minor;
+
+        return this;
+    }
+
+    go() {
+        const regeditFileContent =
+            `REGEDIT4\n\n` +
+            `[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n` +
+            `"MaxVersionGL"=dword:000${this.major}000${this.minor}`;
+
+        new Regedit(this.wine).patch(regeditFileContent);
+    }
 };

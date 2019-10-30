@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Online",
+    "id"                         : "applications.development.notepad_plus_plus.online",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
