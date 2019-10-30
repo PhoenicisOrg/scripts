@@ -104,7 +104,7 @@ class D9VK {
         const wizard = SetupWizard(InstallationType.VERBS, "D9VK", Optional.empty());
 
         var wizard = SetupWizard(InstallationType.VERBS, "D9VK", java.util.Optional.empty());
-        var versions = ["0.13f", "0.13", "0.12", "0.11", "0.10"];
+        var versions = ["0.30", "0.22", "0.21", "0.20", "0.13f", "0.13", "0.12", "0.11", "0.10"];
         var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.12");
         wine.wizard(wizard);
 
