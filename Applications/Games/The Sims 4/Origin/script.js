@@ -30,8 +30,11 @@ new OriginScript()
         new D9VK(wine).go();
         const registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
         wine.regedit().patch(registrySettings);
+        var configFile = wine.prefixDirectory() + "/drive_c/dxvk.conf";
+        touch(configFile);
+        writeToFile(configFile, dxgi.nvapiHack = False);
         wine.overrideDLL()
-            .set("disabled", ["nvapi", "nvapi64"])
+            .set("disabled", ["nvapi", "nvapi64", "OriginThinSetupInternal.exe"])
             .do();
     })
-    .environment('{ "STAGING_SHARED_MEMORY": "0", "__GL_SHADER_DISK_CACHE": "1"}')
+    .environment('{ "STAGING_SHARED_MEMORY": "0", "__GL_SHADER_DISK_CACHE": "1", "DXVK_CONFIG_FILE": "configFile", "PULSE_LATENCY_MSEC": "60"}')
