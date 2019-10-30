@@ -1,4 +1,4 @@
-const LocalScript = include("engines.wine.quick_script.local_installer_script");
+const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 const AppResource = include("utils.functions.apps.resources");
 const vcrun2010 = include("engines.wine.verbs.vcrun2010");
 const vcrun2013 = include("engines.wine.verbs.vcrun2013");
@@ -21,7 +21,7 @@ new LocalInstallerScript()
         new vcrun2013(wine).go();
         const registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
         wine.regedit().patch(registrySettings);
-     })
+    })
     .postInstall(function (wine) {
         const fixes = new Resource()
             .wizard(wine.wizard())
