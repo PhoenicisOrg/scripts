@@ -42,11 +42,14 @@ class DXVK {
         if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
         {
             const answer = uiQuestionFactory.create(
-                tr("DXVK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Do you want to continue? Choosing yes will skip DXVK verb installation and continue with other verbs. Choosing no will quit script installation.")
+                tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation."),
+                ["YES, continue with D9VK installation regardless", "NO, quit script alltogether", "Exit D9VK Installer, but continue with the script"]
             );
-            // or: `if (answer == false)`
-            if (!answer) {
+            if (!answer || answer == "Exit D9VK Installer, but continue with the script") {
                 return this;
+            }
+            if (answer == "NO, quit script alltogether") {
+                throw "User aborted the script.";
             }
         }
         else {
