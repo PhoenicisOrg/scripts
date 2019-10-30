@@ -7,6 +7,7 @@ const dotnet20sp2 = include("engines.wine.verbs.dotnet20sp2");
 const vcrun2010 = include("engines.wine.verbs.vcrun2010");
 const vcrun2013 = include("engines.wine.verbs.vcrun2013");
 const D9VK = include("engines.wine.verbs.d9vk");
+const { touch, writeToFile } = include("utils.functions.filesystem.files");
 
 include("engines.wine.plugins.regedit");
 include("engines.wine.plugins.override_dll");
