@@ -2,12 +2,10 @@ const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const { ls, cp, cat, remove } = include("utils.functions.filesystem.files");
-
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
-
 const Optional = Java.type("java.util.Optional");
-
 const OverrideDLL = include("engines.wine.plugins.override_dll");
+const { getGithubReleases } = include("utils.functions.net.githubreleases");
 
 /**
  * Verb to install DXVK
@@ -56,13 +54,8 @@ class DXVK {
             this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
 
         if (typeof this.dxvkVersion !== "string") {
-            const releaseFile = new Resource()
-                .wizard(wizard)
-                .url("https://raw.githubusercontent.com/doitsujin/dxvk/master/RELEASE")
-                .name("RELEASE.txt")
-                .get();
-
-            this.dxvkVersion = cat(releaseFile).replaceAll("\\n", "");
+            const versions = getGithubReleases("doitsujin", "dxvk", wizard);
+            this.dxvkVersion = versions[0];
         }
 
         const setupFile = new Resource()
@@ -103,77 +96,14 @@ class DXVK {
 
         remove(`${prefixDirectory}/TMP/`);
     }
-
     static install(container) {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "DXVK", Optional.empty());
 
-        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "DXVK", java.util.Optional.empty());
+        const versions = getGithubReleases("doitsujin", "dxvk", wizard);
+        var selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
         wine.wizard(wizard);
-
-        // get latest release version
-        const releaseFile = new Resource()
-            .wizard(wizard)
-            .url("https://raw.githubusercontent.com/doitsujin/dxvk/master/RELEASE")
-            .name("RELEASE.txt")
-            .get();
-
-        const latestVersion = cat(releaseFile).replaceAll("\\n", "");
-
-        // query desired version (default: latest release version)
-const versions = [
-            "1.4.4",
-            "1.4.3",
-            "1.4.2",
-            "1.4.1",
-            "1.4",
-            "1.3.4",
-            "1.3.3",
-            "1.3.2",
-            "1.3.1",
-            "1.3",
-            "1.2.3",
-            "1.2.2",
-            "1.2.1",
-            "1.2",
-            "1.1.1",
-            "1.0.3",
-            "1.0.2",
-            "1.0.1",
-            "1.0",
-            "0.96",
-            "0.95",
-            "0.94",
-            "0.93",
-            "0.92",
-            "0.91",
-            "0.90",
-            "0.81",
-            "0.80",
-            "0.72",
-            "0.71",
-            "0.70",
-            "0.65",
-            "0.64",
-            "0.63",
-            "0.62",
-            "0.61",
-            "0.60",
-            "0.54",
-            "0.53",
-            "0.52",
-            "0.51",
-            "0.50",
-            "0.42",
-            "0.41",
-            "0.40",
-            "0.31",
-            "0.30",
-            "0.21",
-            "0.20"
-        ];
-
-        const selectedVersion = wizard.menu(tr("Please select the version."), versions, latestVersion);
 
         // install selected version
         new DXVK(wine).withVersion(selectedVersion.text).go();
