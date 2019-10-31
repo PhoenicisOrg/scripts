@@ -5,6 +5,7 @@ const operatingSystemFetcher = Bean("operatingSystemFetcher");
 const Optional = Java.type("java.util.Optional");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
 const uiQuestionFactory = Bean("uiQuestionFactory");
+const { getGithubReleases } = include("utils.functions.net.githubreleases");
 
 /**
  * Verb to install VK9
@@ -36,10 +37,10 @@ class VK9 {
         if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
         {
             const answer = uiQuestionFactory.create(
-                tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation."),
-                ["YES, continue with D9VK installation regardless", "NO, quit script alltogether", "Exit D9VK Installer, but continue with the script"]
+                tr("VK9 is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation."),
+                ["YES, continue with VK9 installation regardless", "NO, quit script alltogether", "Exit VK9 Installer, but continue with the script"]
             );
-            if (!answer || answer == "Exit D9VK Installer, but continue with the script") {
+            if (!answer || answer == "Exit VK9 Installer, but continue with the script") {
                 return this;
             }
             if (answer == "NO, quit script alltogether") {
@@ -51,7 +52,8 @@ class VK9 {
         print("NOTE: works from 0.28.0");
 
         if (typeof this.vk9Version !== "string") {
-            this.vk9Version = "0.29.0";
+            const versions = getGithubReleases("disks86", "VK9", wizard);
+            this.vk9Version = versions[0];
         }
 
         const setupFile32 = new Resource()
@@ -99,13 +101,10 @@ class VK9 {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "VK9", Optional.empty());
 
-        wine.prefix(container);
+        var wizard = SetupWizard(InstallationType.VERBS, "VK9", java.util.Optional.empty());
+        const versions = getGithubReleases("disks86", "VK9", wizard);
+        var selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
         wine.wizard(wizard);
-
-        // this script is not able to install older versions (VK9.conf mandatory)
-        const versions = ["0.29.0", "0.28.1", "0.28.0"];
-        // query desired version (default: 0.28.1)
-        const selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.28.1");
 
         // install selected version
         new VK9(wine).withVersion(selectedVersion.text).go();
