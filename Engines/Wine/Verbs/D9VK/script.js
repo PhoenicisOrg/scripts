@@ -6,6 +6,7 @@ const operatingSystemFetcher = Bean("operatingSystemFetcher");
 const Optional = Java.type("java.util.Optional");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
 const uiQuestionFactory = Bean("uiQuestionFactory");
+const { getGithubReleases } = include("utils.functions.net.githubreleases");
 
 /**
  * Verb to install D9VK
@@ -57,7 +58,8 @@ class D9VK {
 
         if (typeof d9vkVersion !== 'string')
         {
-            d9vkVersion = "0.13f";
+            const versions = getGithubReleases("Joshua-Ashton", "d9vk", wizard);
+            this.d9vkVersion = versions[0];
         }
 
         var setupFile = new Resource()
@@ -104,8 +106,8 @@ class D9VK {
         const wizard = SetupWizard(InstallationType.VERBS, "D9VK", Optional.empty());
 
         var wizard = SetupWizard(InstallationType.VERBS, "D9VK", java.util.Optional.empty());
-        var versions = ["0.30", "0.22", "0.21", "0.20", "0.13f", "0.13", "0.12", "0.11", "0.10"];
-        var selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.12");
+        const versions = getGithubReleases("Joshua-Ashton", "d9vk", wizard);
+        var selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
         wine.wizard(wizard);
 
         // install selected version
