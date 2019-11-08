@@ -48,7 +48,7 @@ class D9VK {
                 return this;
             }
             if (answer == "NO, quit script alltogether") {
-                throw "User aborted the script.";
+                throw new Error("User aborted the script.");
             }
         }
         else
