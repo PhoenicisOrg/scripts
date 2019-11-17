@@ -10,7 +10,7 @@ new SteamScript()
     .editor("Keen Software House")
     .author("Zemogiter")
     .appId(244850)
-    .wineVersion("4.19")
+    .wineVersion("4.20")
     .wineDistribution("upstream")
     .wineArchitecture("amd64")
     .preInstall(function (wine) {
