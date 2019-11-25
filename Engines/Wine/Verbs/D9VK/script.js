@@ -105,9 +105,8 @@ class D9VK {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "D9VK", Optional.empty());
 
-        var wizard = SetupWizard(InstallationType.VERBS, "D9VK", java.util.Optional.empty());
         const versions = getGithubReleases("Joshua-Ashton", "d9vk", wizard);
-        var selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
         wine.wizard(wizard);
 
         // install selected version
