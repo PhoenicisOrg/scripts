@@ -1,6 +1,6 @@
 const Wine = include("engines.wine.engine.object");
 
-include("engines.wine.plugins.regedit");
+const Regedit = include("engines.wine.plugins.regedit");
 
 /**
  * Setting to set the video memory size
@@ -22,31 +22,37 @@ module.default = class VideoMemorySizeSetting {
     }
 
     getCurrentOption(container) {
-        var currentValue = new Wine()
-            .prefix(container)
-            .regedit()
-            .fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Direct3D", "VideoMemorySize"]);
+        const wine = new Wine().prefix(container);
+
+        const currentValue = new Regedit(wine).fetchValue([
+            "HKEY_CURRENT_USER",
+            "Software",
+            "Wine",
+            "Direct3D",
+            "VideoMemorySize"
+        ]);
+
         // find matching option (use default if not found)
-        var index = Math.max(this.registryValues.indexOf(currentValue), 0);
+        const index = Math.max(this.registryValues.indexOf(currentValue), 0);
+
         return this.options[index];
     }
 
     setOption(container, optionIndex) {
+        const wine = new Wine().prefix(container);
+
         if (0 == optionIndex) {
-            new Wine()
-                .prefix(container)
-                .regedit()
-                .deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D", "VideoMemorySize");
+            new Regedit(wine).deleteValue("HKEY_CURRENT_USER\\Software\\Wine\\Direct3D", "VideoMemorySize");
         } else {
-            var regeditFileContent =
+            const regeditFileContent =
                 "REGEDIT4\n" +
                 "\n" +
                 "[HKEY_CURRENT_USER\\Software\\Wine\\Direct3D]\n" +
-                "\"VideoMemorySize\"=\"" + this.registryValues[optionIndex] + "\"\n";
-            new Wine()
-                .prefix(container)
-                .regedit()
-                .patch(regeditFileContent);
+                '"VideoMemorySize"="' +
+                this.registryValues[optionIndex] +
+                '"\n';
+
+            new Regedit(wine).patch(regeditFileContent);
         }
     }
-}
+};

@@ -1,8 +1,8 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
 
-include("engines.wine.plugins.csmt");
-include("engines.wine.plugins.glsl");
+const CSMT = include("engines.wine.plugins.csmt");
+const GLSL = include("engines.wine.plugins.glsl");
 
 new SteamScript()
     .name("Batman™: Arkham Asylum")
@@ -11,7 +11,7 @@ new SteamScript()
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
     .appId(35140)
-    .postInstall(function (wine/*, wizard*/) {
-        wine.UseGLSL("disabled");
-        wine.enableCSMT();
+    .postInstall(function (wine) {
+        new GLSL(wine).withMode("disabled").go();
+        new CSMT(wine).go();
     });

@@ -5,7 +5,7 @@ const { remove } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install mfc42.dll and mfc42u.dll
@@ -41,10 +41,7 @@ class Mfc42 {
             .to(system32directory)
             .extract(["-F", "mfc42*.dll"]);
 
-        this.wine
-            .overrideDLL()
-            .set("native, builtin", ["mfc42", "mfc42u"])
-            .do();
+        new OverrideDLL(this.wine).withMode("native, builtin", ["mfc42", "mfc42u"]).go();
     }
 
     static install(container) {

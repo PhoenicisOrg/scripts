@@ -4,7 +4,7 @@ const { mkdir, cp } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.regedit");
+const Regedit = include("engines.wine.plugins.regedit");
 
 /**
  * Verb to install luna
@@ -36,7 +36,7 @@ class Luna {
 
         cp(lunaStyle, `${prefixDirectory}/drive_c/windows/Resources/Themes/luna/`);
 
-        this.wine.regedit().open(lunaReg);
+        new Regedit(this.wine).open(lunaReg);
     }
 
     static install(container) {

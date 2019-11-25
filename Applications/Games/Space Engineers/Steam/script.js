@@ -4,7 +4,8 @@ const DotNET472 = include("engines.wine.verbs.dotnet472");
 const Vcrun2017 = include("engines.wine.verbs.vcrun2017");
 const DXVK = include("engines.wine.verbs.dxvk");
 const FAudio = include("engines.wine.verbs.faudio");
-include("engines.wine.plugins.override_dll");
+
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 new SteamScript()
     .name("Space Engineers")
@@ -14,13 +15,14 @@ new SteamScript()
     .wineVersion("4.14")
     .wineDistribution("upstream")
     .wineArchitecture("amd64")
-    .preInstall(function (wine, wizard) {
+    .preInstall(function (wine) {
         new DotNET472(wine).go();
         new Vcrun2017(wine).go();
         new DXVK(wine).go();
         new FAudio(wine).go();
-        wine.overrideDLL()
-            .set("native, builtin", [
+
+        new OverrideDLL(wine)
+            .withMode("native, builtin", [
                 "msvcr120",
                 "xaudio2_0",
                 "xaudio2_1",
@@ -38,7 +40,10 @@ new SteamScript()
                 "x3daudio1_6",
                 "x3daudio1_7"
             ])
-            .do();
+            .go();
+
+        const wizard = wine.wizard();
+
         wizard.message(
             tr(
                 "You have to install libjpeg62 and libjpeg62-dev or else the thumbnails in New Game menu will be dispalyed as magenta rectangles."
@@ -46,7 +51,7 @@ new SteamScript()
         );
         wizard.message(
             tr(
-                "Due to JIT compiler issues and the way this game uses multithreating, there are audio stutters. This script will attempt to minimize them but you might also have to enter the alsoft-conf command in terminal and set sample depth to 32bit float and period size to 2048."
+                "Due to JIT compiler issues and the way this game uses multithreading, there are audio stutters. This script will attempt to minimize them but you might also have to enter the alsoft-conf command in terminal and set sample depth to 32bit float and period size to 2048."
             )
         );
     })
