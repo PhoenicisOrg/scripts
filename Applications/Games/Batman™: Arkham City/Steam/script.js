@@ -1,7 +1,7 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
 
-include("engines.wine.plugins.csmt");
+const CSMT = include("engines.wine.plugins.csmt");
 
 new SteamScript()
     .name("Batman™: Arkham City")
@@ -11,5 +11,5 @@ new SteamScript()
     .wineDistribution("staging")
     .appId(200260)
     .postInstall(function (wine/*, wizard*/) {
-        wine.enableCSMT();
+        new CSMT(wine).go();
     });

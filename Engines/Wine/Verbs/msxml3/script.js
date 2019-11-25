@@ -4,7 +4,7 @@ const { remove } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install msxml3
@@ -27,10 +27,7 @@ class Msxml3 {
 
         remove(`${system32directory}/msxml3.dll`);
 
-        this.wine
-            .overrideDLL()
-            .set("native", ["msxml3"])
-            .do();
+        new OverrideDLL(this.wine).withMode("native", ["msxml3"]).go();
 
         wizard.wait(tr("Please wait while {0} is installed...", "msxml3"));
 

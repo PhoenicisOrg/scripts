@@ -1,7 +1,7 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
 const {LATEST_DEVELOPMENT_VERSION} = include("engines.wine.engine.versions");
 
-include("engines.wine.plugins.virtual_desktop");
+const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
 const Corefonts = include("engines.wine.verbs.corefonts");
 
 
@@ -20,6 +20,6 @@ new SteamScript()
             )
         );
         new Corefonts(wine).go();
-        wine.setVirtualDesktop();
+        new VirtualDesktop(wine).go();
     })
     .gameOverlay(false);

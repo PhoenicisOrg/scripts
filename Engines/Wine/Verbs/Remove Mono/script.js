@@ -3,7 +3,7 @@ const { remove } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.regedit");
+const Regedit = include("engines.wine.plugins.regedit");
 
 /**
  * Verb to remove mono
@@ -21,15 +21,15 @@ class RemoveMono {
         if (this.wine.uninstall("Mono")) {
             wizard.wait(tr("Please wait..."));
 
-            this.wine.regedit().deleteKey("HKLM\\Software\\Microsoft\\.NETFramework\\v2.0.50727\\SBSDisabled");
+            new Regedit(this.wine).deleteKey("HKLM\\Software\\Microsoft\\.NETFramework\\v2.0.50727\\SBSDisabled");
 
             wizard.wait(tr("Please wait..."));
 
-            this.wine.regedit().deleteKey("HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v3.5");
+            new Regedit(this.wine).deleteKey("HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v3.5");
 
             wizard.wait(tr("Please wait..."));
 
-            this.wine.regedit().deleteKey("HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v4");
+            new Regedit(this.wine).deleteKey("HKLM\\Software\\Microsoft\\NET Framework Setup\\NDP\\v4");
 
             remove(`${system32directory}/mscoree.dll`);
 

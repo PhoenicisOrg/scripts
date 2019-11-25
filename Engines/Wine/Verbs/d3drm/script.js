@@ -4,7 +4,7 @@ const { CabExtract } = include("utils.functions.filesystem.extract");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install d3drm
@@ -42,10 +42,7 @@ class D3drm {
             .to(system32directory)
             .extract(["-L", "-F", "d3drm.dll"]);
 
-        this.wine
-            .overrideDLL()
-            .set("native", ["d3drm"])
-            .do();
+        new OverrideDLL(this.wine).withMode("native", ["d3drm"]).go();
     }
 
     static install(container) {

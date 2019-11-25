@@ -5,7 +5,7 @@ const { cp, remove } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
 
@@ -95,10 +95,7 @@ class VK9 {
             remove(`${prefixDirectory}/TMP64/`);
         }
 
-        this.wine
-            .overrideDLL()
-            .set("native", ["d3d9"])
-            .do();
+        new OverrideDLL(this.wine).withMode("native", ["d3d9"]).go();
     }
 
     static install(container) {
