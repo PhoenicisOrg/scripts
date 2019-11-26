@@ -1,5 +1,4 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
-const AppResource = include("utils.functions.apps.resources");
 const vcrun2010 = include("engines.wine.verbs.vcrun2010");
 const vcrun2013 = include("engines.wine.verbs.vcrun2013");
 const System = Java.type("java.lang.System");
