@@ -36,16 +36,18 @@ class VK9 {
 
         if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
         {
-            const answer = uiQuestionFactory.create(
-                tr("VK9 is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation."),
+            const answer = wizard.menu(
+                tr("VK9 is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation.",
                 ["YES, continue with VK9 installation regardless", "NO, quit script alltogether", "Exit VK9 Installer, but continue with the script"]
-            );
-            if (!answer || answer == "Exit VK9 Installer, but continue with the script") {
+             );
+             
+             if (answer.text === "Exit VK9 Installer, but continue with the script") {
                 return this;
-            }
-            if (answer == "NO, quit script alltogether") {
+             }
+             
+             if (answer.text === "NO, quit script alltogether" || !answer) {
                 throw new Error("User aborted the script.");
-            }
+             }
         }
 
         print("NOTE: wine version should be greater or equal to 3.5");
