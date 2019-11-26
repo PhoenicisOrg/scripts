@@ -39,16 +39,18 @@ class DXVK {
   
         if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
         {
-            const answer = uiQuestionFactory.create(
-                tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation."),
-                ["YES, continue with D9VK installation regardless", "NO, quit script alltogether", "Exit D9VK Installer, but continue with the script"]
-            );
-            if (!answer || answer == "Exit D9VK Installer, but continue with the script") {
+            const answer = wizard.menu(
+                tr("DXVK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation.",
+                ["YES, continue with DXVK installation regardless", "NO, quit script alltogether", "Exit DXVK Installer, but continue with the script"]
+             );
+             
+             if (answer.text === "Exit DXVK Installer, but continue with the script") {
                 return this;
-            }
-            if (answer == "NO, quit script alltogether") {
+             }
+             
+             if (answer.text === "NO, quit script alltogether" || !answer) {
                 throw new Error("User aborted the script.");
-            }
+             }
         }
         else {
             this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
