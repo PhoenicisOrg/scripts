@@ -40,16 +40,18 @@ class D9VK {
 
         if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
         {
-            const answer = uiQuestionFactory.create(
-                tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation."),
+            const answer = wizard.menu(
+                tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation.",
                 ["YES, continue with D9VK installation regardless", "NO, quit script alltogether", "Exit D9VK Installer, but continue with the script"]
-            );
-            if (!answer || answer == "Exit D9VK Installer, but continue with the script") {
+             );
+             
+             if (answer.text === "Exit D9VK Installer, but continue with the script") {
                 return this;
-            }
-            if (answer == "NO, quit script alltogether") {
+             }
+             
+             if (answer.text === "NO, quit script alltogether" || !answer) {
                 throw new Error("User aborted the script.");
-            }
+             }
         }
         else
         {
