@@ -7,7 +7,7 @@ const operatingSystemFetcher = Bean("operatingSystemFetcher");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install DXVK
@@ -35,6 +35,7 @@ class DXVK {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const sys32dir = this.wine.system32directory();
+        const architecture = this.wine.architecture();
 
         print("NOTE: wine version should be greater or equal to 3.10");
 
@@ -83,14 +84,11 @@ class DXVK {
             if (file.endsWith(".dll")) {
                 cp(`${dxvkTmpDir}/x32/${file}`, sys32dir);
 
-                this.wine
-                    .overrideDLL()
-                    .set("native", [file])
-                    .do();
+                new OverrideDLL(this.wine).withMode("native", [file]).go();
             }
         });
 
-        if (this.wine.architecture() == "amd64") {
+        if (architecture == "amd64") {
             const sys64dir = this.wine.system64directory();
 
             //Copy 64 bits dll to system*

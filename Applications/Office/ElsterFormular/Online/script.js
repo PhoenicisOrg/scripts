@@ -1,7 +1,8 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 
-include("engines.wine.plugins.native_application");
 const Vcrun2017 = include("engines.wine.verbs.vcrun2017");
+
+const NativeApplication = include("engines.wine.plugins.native_application");
 
 new LocalInstallerScript()
     .name("ElsterFormular")
@@ -16,5 +17,5 @@ new LocalInstallerScript()
     .preInstall(function (wine /*, wizard*/) {
         new Vcrun2017(wine).go();
 
-        wine.nativeApplication("pdf");
+        new NativeApplication(wine).withExtension("pdf").go();
     });

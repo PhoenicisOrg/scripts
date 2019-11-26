@@ -3,7 +3,7 @@ const Resource = include("utils.functions.net.resource");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install vcrun2013
@@ -42,10 +42,7 @@ class Vcrun2013 {
             this.wine.run(setupFile64, "/q", null, false, true);
         }
 
-        this.wine
-            .overrideDLL()
-            .set("native, builtin", ["atl120", "msvcp120", "msvcr120", "vcomp120"])
-            .do();
+        new OverrideDLL(this.wine).withMode("native, builtin", ["atl120", "msvcp120", "msvcr120", "vcomp120"]).go();
     }
 
     install(container) {

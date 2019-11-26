@@ -5,7 +5,7 @@ const { cp, remove } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install secur32
@@ -19,7 +19,7 @@ class Secur32 {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const system32directory = this.wine.system32directory();
-        const system64directory = this.wine.system64directory();
+        const architecture = this.wine.architecture();
 
         const setupFilex86 = new Resource()
             .wizard(wizard)
@@ -47,7 +47,9 @@ class Secur32 {
 
         remove(`${prefixDirectory}/TMP/`);
 
-        if (this.architecture() == "amd64") {
+        if (architecture == "amd64") {
+            const system64directory = this.wine.system64directory();
+
             const setupFilex64 = new Resource()
                 .wizard(wizard)
                 .url(
@@ -75,10 +77,7 @@ class Secur32 {
             remove(`${prefixDirectory}/TMP/`);
         }
 
-        this.wine
-            .overrideDLL()
-            .set("native, builtin", ["secur32"])
-            .do();
+        new OverrideDLL(this.wine).withMode("native, builtin", ["secur32"]).go();
     }
 
     static install(container) {
