@@ -5,7 +5,6 @@ const { ls, cp, remove } = include("utils.functions.filesystem.files");
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
 const Optional = Java.type("java.util.Optional");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
-const uiQuestionFactory = Bean("uiQuestionFactory");
 const { getGithubReleases } = include("utils.functions.net.githubreleases");
 
 /**
@@ -106,7 +105,8 @@ class D9VK {
     static install(container) {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "D9VK", Optional.empty());
-
+        
+        wine.prefix(container); 
         const versions = getGithubReleases("Joshua-Ashton", "d9vk", wizard);
         const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
         wine.wizard(wizard);
