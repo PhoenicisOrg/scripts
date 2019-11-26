@@ -1,5 +1,6 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-include("engines.wine.plugins.windows_version");
+
+const WindowsVersion = include("engines.wine.plugins.windows_version");
 
 new OnlineInstallerScript()
     .editor("PlayOnLinux")
@@ -7,9 +8,11 @@ new OnlineInstallerScript()
     .author("Plata")
     .category("Custom")
     .wineUserSettings(true)
-    .preInstall(function (wine, wizard) {
-        var versions = ["win7", "vista", "win2003", "winxp", "win2k", "winnt", "winme", "win98", "win95", "win31"];
-        var shownVersions = [
+    .preInstall(function (wine) {
+        const wizard = wine.wizard();
+
+        const versions = ["win7", "vista", "win2003", "winxp", "win2k", "winnt", "winme", "win98", "win95", "win31"];
+        const shownVersions = [
             "win7",
             "vista",
             "win2003",
@@ -21,6 +24,12 @@ new OnlineInstallerScript()
             "win95",
             "win31"
         ];
-        var selectedVersion = wizard.menu("Please select the wine windows version.", shownVersions, "winxp (recommended)");
-        wine.windowsVersion(versions[selectedVersion.index]);
+
+        const selectedVersion = wizard.menu(
+            "Please select the wine windows version.",
+            shownVersions,
+            "winxp (recommended)"
+        );
+
+        new WindowsVersion(wine).withWindowsVersion(versions[selectedVersion.index]).go();
     });

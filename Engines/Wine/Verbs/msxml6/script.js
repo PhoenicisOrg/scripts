@@ -1,10 +1,10 @@
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
-const { remove } = include("utils.functions.filesystem.files");
+const { remove, fileExists } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install msxml6
@@ -17,17 +17,19 @@ class Msxml6 {
     go() {
         const wizard = this.wine.wizard();
         const system32directory = this.wine.system32directory();
-        const system64directory = this.wine.system64directory();
 
-        remove(`${system32directory}/msxml6.dll`);
+        if (fileExists(`${system32directory}/msxml6.dll`)) {
+            remove(`${system32directory}/msxml6.dll`);
+        }
 
-        this.wine
-            .overrideDLL()
-            .set("native,builtin", ["msxml6"])
-            .do();
+        new OverrideDLL(this.wine).withMode("native,builtin", ["msxml6"]).go();
 
         if (this.wine.architecture() == "amd64") {
-            remove(`${system64directory}/msxml6.dll`);
+            const system64directory = this.wine.system64directory();
+
+            if (fileExists(`${system64directory}/msxml6.dll`)) {
+                remove(`${system64directory}/msxml6.dll`);
+            }
 
             const setupFile64 = new Resource()
                 .wizard(wizard)
@@ -40,7 +42,7 @@ class Msxml6 {
 
             wizard.wait(tr("Please wait while {0} is installed...", "msxml6"));
 
-            this.run(setupFile64, ["/q:a", "/c:msxml6_x64.msi /q"], null, false, true);
+            this.wine.run(setupFile64, ["/q:a", "/c:msxml6_x64.msi /q"], null, false, true);
         } else {
             const setupFile32 = new Resource()
                 .wizard(wizard)
@@ -53,7 +55,7 @@ class Msxml6 {
 
             wizard.wait(tr("Please wait while {0} is installed...", "msxml6"));
 
-            this.run(setupFile32, ["/q:a", "/c:msxml6_x86.msi /q"], null, false, true);
+            this.wine.run(setupFile32, ["/q:a", "/c:msxml6_x86.msi /q"], null, false, true);
         }
     }
 

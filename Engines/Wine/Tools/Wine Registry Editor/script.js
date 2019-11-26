@@ -1,7 +1,5 @@
 const Wine = include("engines.wine.engine.object");
 
-include("engines.wine.plugins.regedit");
-
 /**
  * Tool to open the Wine registry editor
  */
@@ -12,8 +10,6 @@ module.default = class WineRegistryEditorTool {
     }
 
     run(container) {
-        new Wine()
-            .prefix(container)
-            .run("regedit", [], null, false, true);
+        new Wine().prefix(container).run("regedit", [], null, false, true);
     }
-}
+};

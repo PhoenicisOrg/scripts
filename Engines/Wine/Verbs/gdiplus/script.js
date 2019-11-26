@@ -1,10 +1,11 @@
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
-const { cp } = include("utils.functions.filesystem.files");
+const { CabExtract } = include("utils.functions.filesystem.extract");
+const { cp, remove } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
  * Verb to install gdiplus
@@ -18,26 +19,63 @@ class GDIPlus {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const system32directory = this.wine.system32directory();
+        const architecture = this.wine.architecture();
 
         const setupFile = new Resource()
             .wizard(wizard)
             .url(
-                "http://download.microsoft.com/download/a/b/c/abc45517-97a0-4cee-a362-1957be2f24e1/WindowsXP-KB975337-x86-ENU.exe"
+                "https://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X86.exe"
             )
-            .checksum("b9a84bc3de92863bba1f5eb1d598446567fbc646")
-            .name("WindowsXP-KB975337-x86-ENU.exe")
+            .checksum("c3516bc5c9e69fee6d9ac4f981f5b95977a8a2fa")
+            .name("windows6.1-KB976932-X86.exe")
             .get();
 
-        wizard.wait(tr("Please wait while {0} is installed...", "GDI+"));
+        new CabExtract()
+            .archive(setupFile)
+            .wizard(wizard)
+            .to(`${prefixDirectory}/drive_c/gdiplus/`)
+            .extract([
+                "-L",
+                "-F",
+                "x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.17514_none_72d18a4386696c80/gdiplus.dll"
+            ]);
 
-        this.wine.run(setupFile, ["/extract:C:\\Tmp", "/q"], null, true, true);
+        cp(
+            `${prefixDirectory}/drive_c/gdiplus/x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.17514_none_72d18a4386696c80/gdiplus.dll`,
+            system32directory
+        );
 
-        this.wine
-            .overrideDLL()
-            .set("native", ["gdiplus"])
-            .do();
+        if (architecture == "amd64") {
+            const system64directory = this.wine.system64directory();
 
-        cp(`${prefixDirectory}/drive_c/Tmp/asms/10/msft/windows/gdiplus/gdiplus.dll`, system32directory);
+            const setupFile64 = new Resource()
+                .wizard(wizard)
+                .url(
+                    "https://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X64.exe"
+                )
+                .checksum("74865ef2562006e51d7f9333b4a8d45b7a749dab")
+                .name("windows6.1-KB976932-X64.exe")
+                .get();
+
+            new CabExtract()
+                .archive(setupFile64)
+                .wizard(wizard)
+                .to(`${prefixDirectory}/drive_c/gdiplus/`)
+                .extract([
+                    "-L",
+                    "-F",
+                    "amd64_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.17514_none_2b24536c71ed437a/gdiplus.dll"
+                ]);
+
+            cp(
+                `${prefixDirectory}/drive_c/gdiplus/amd64_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.17514_none_2b24536c71ed437a/gdiplus.dll`,
+                system64directory
+            );
+        }
+
+        remove(`${prefixDirectory}/drive_c/gdiplus/`);
+
+        new OverrideDLL(this.wine).withMode("native", ["gdiplus"]).go();
     }
 
     static install(container) {

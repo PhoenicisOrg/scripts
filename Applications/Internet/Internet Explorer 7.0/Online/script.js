@@ -1,14 +1,16 @@
 const PlainInstaller = include("utils.functions.apps.plain_installer");
+
 const Resource = include("utils.functions.net.resource");
 const Wine = include("engines.wine.engine.object");
 const { LATEST_STABLE_VERSION } = include("engines.wine.engine.versions");
 const { remove } = include("utils.functions.filesystem.files");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 
-include("engines.wine.plugins.override_dll");
-include("engines.wine.plugins.regsvr32");
-include("engines.wine.plugins.windows_version");
 const Sandbox = include("engines.wine.verbs.sandbox");
+
+const OverrideDLL = include("engines.wine.plugins.override_dll");
+const Regsvr32 = include("engines.wine.plugins.regsvr32");
+const WindowsVersion = include("engines.wine.plugins.windows_version");
 
 new PlainInstaller().withScript(() => {
     var appsManager = Bean("repositoryManager");
@@ -26,8 +28,8 @@ new PlainInstaller().withScript(() => {
 
     wine.run("iexplore", ["-unregserver"], null, false, true);
 
-    wine.overrideDLL()
-        .set("native,builtin", [
+    new OverrideDLL(wine)
+        .withMode("native,builtin", [
             "itircl",
             "itss",
             "jscript",
@@ -39,9 +41,9 @@ new PlainInstaller().withScript(() => {
             "urlmon",
             "xmllite"
         ])
-        .set("native", ["iexplore.exe"])
-        .set("builtin", ["updspapi"])
-        .do();
+        .withMode("native", ["iexplore.exe"])
+        .withMode("builtin", ["updspapi"])
+        .go();
 
     // delete existing IE, otherwise installer will abort with "newer IE installed"
     remove(wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Internet Explorer/iexplore.exe");
@@ -237,9 +239,12 @@ new PlainInstaller().withScript(() => {
         .name(ie7installer)
         .get();
 
-    wine.windowsVersion("winxp", "sp3");
+    new WindowsVersion(wine).withWindowsVersion("winxp", "sp3").go();
+
     wine.wait();
+
     wine.run(setupFile, [], null, false, true);
+
     wine.wait();
 
     var librairiesToRegister = [
@@ -299,10 +304,12 @@ new PlainInstaller().withScript(() => {
 
     var progressBar = setupWizard.progressBar("Please wait...");
     var i = 1;
-    librairiesToRegister.forEach(function (dll) {
+    librairiesToRegister.forEach(dll => {
         progressBar.setProgressPercentage((i * 100) / librairiesToRegister.length);
         progressBar.setText(tr("Installing {0}...", dll));
-        wine.regsvr32().install(dll);
+
+        new Regsvr32(wine).withDll(dll).go();
+
         i++;
     });
 
