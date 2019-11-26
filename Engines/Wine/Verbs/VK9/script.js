@@ -4,7 +4,6 @@ const { Extractor } = include("utils.functions.filesystem.extract");
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
 const Optional = Java.type("java.util.Optional");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
-const uiQuestionFactory = Bean("uiQuestionFactory");
 const { getGithubReleases } = include("utils.functions.net.githubreleases");
 
 /**
@@ -103,9 +102,8 @@ class VK9 {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "VK9", Optional.empty());
 
-        var wizard = SetupWizard(InstallationType.VERBS, "VK9", java.util.Optional.empty());
         const versions = getGithubReleases("disks86", "VK9", wizard);
-        var selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
         wine.wizard(wizard);
 
         // install selected version
