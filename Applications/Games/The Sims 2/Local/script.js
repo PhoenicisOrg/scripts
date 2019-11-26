@@ -6,6 +6,7 @@ const System = Java.type("java.lang.System");
 const Extractor = include("utils.functions.filesystem.extract");
 const Resource = include("utils.functions.net.resource");
 const {touch, writeToFile} = include("utils.functions.filesystem.files");
+const Regedit = include("engines.wine.plugins.regedit");
 
 new LocalInstallerScript()
     .name("The Sims 2")
@@ -19,8 +20,8 @@ new LocalInstallerScript()
     .preInstall(function (wine) {
         new vcrun2010(wine).go();
         new vcrun2013(wine).go();
-        const registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
-        wine.regedit().patch(registrySettings);
+        const registryFile = Bean("fileSearcher").search([TYPE_ID, CATEGORY_ID, APPLICATION_ID], "registry.reg");
+        new Regedit(wine).open(registryFile[0]);
     })
     .postInstall(function (wine) {
         const fixes = new Resource()
