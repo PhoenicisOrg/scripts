@@ -54,7 +54,7 @@ class DXVK {
         }
         else {
             this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
-
+        }
         if (typeof this.dxvkVersion !== "string") {
             const versions = getGithubReleases("doitsujin", "dxvk", wizard);
             this.dxvkVersion = versions[0];
@@ -101,7 +101,8 @@ class DXVK {
     static install(container) {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "DXVK", Optional.empty());
-
+        
+        wine.prefix(container);
         const versions = getGithubReleases("doitsujin", "dxvk", wizard);
         const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
         wine.wizard(wizard);
