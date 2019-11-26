@@ -8,6 +8,7 @@ const vcrun2010 = include("engines.wine.verbs.vcrun2010");
 const vcrun2013 = include("engines.wine.verbs.vcrun2013");
 const D9VK = include("engines.wine.verbs.d9vk");
 const { touch, writeToFile } = include("utils.functions.filesystem.files");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 include("engines.wine.plugins.regedit");
 include("engines.wine.plugins.override_dll");
@@ -29,13 +30,11 @@ new OriginScript()
         new vcrun2010(wine).go();
         new vcrun2013(wine).go();
         new D9VK(wine).go();
-        const registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
-        wine.regedit().patch(registrySettings);
+        //const registrySettings = new AppResource().application([TYPE_ID, CATEGORY_ID, APPLICATION_ID]).get("registry.reg");
+        //wine.regedit().patch(registrySettings);
         var configFile = wine.prefixDirectory() + "/drive_c/dxvk.conf";
         touch(configFile);
         writeToFile(configFile, "dxgi.nvapiHack = False");
-        wine.overrideDLL()
-            .set("disabled", ["nvapi", "nvapi64", "OriginThinSetupInternal.exe"])
-            .do();
+        new OverrideDLL(wine).withMode("disabled", ["nvapi", "nvapi64", "OriginThinSetupInternal.exe"]).go();
     })
     .environment('{ "STAGING_SHARED_MEMORY": "0", "__GL_SHADER_DISK_CACHE": "1", "DXVK_CONFIG_FILE": "configFile", "PULSE_LATENCY_MSEC": "60"}')
