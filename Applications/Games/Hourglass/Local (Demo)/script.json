@@ -1,0 +1,10 @@
+{
+    "scriptName"                 : "Local (Demo)",
+    "id"                         : "applications.games.hourglass.local_demo",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
