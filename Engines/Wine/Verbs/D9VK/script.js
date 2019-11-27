@@ -54,7 +54,7 @@ class D9VK {
         }
         else
         {
-            this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else D9VK might not work correctly."));
+            wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else D9VK might not work correctly."));
         }
 
         if (typeof d9vkVersion !== 'string')
