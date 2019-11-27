@@ -102,10 +102,11 @@ class VK9 {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "VK9", Optional.empty());
         
-        wine.prefix(container); 
+        wine.wizard(wizard);
+        wine.prefix(container);
+        
         const versions = getGithubReleases("disks86", "VK9", wizard);
         const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
-        wine.wizard(wizard);
 
         // install selected version
         new VK9(wine).withVersion(selectedVersion.text).go();
