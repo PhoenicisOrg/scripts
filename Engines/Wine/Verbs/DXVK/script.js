@@ -42,7 +42,7 @@ class DXVK {
             const answer = wizard.menu(
                 tr("DXVK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation.",
                 ["YES, continue with DXVK installation regardless", "NO, quit script alltogether", "Exit DXVK Installer, but continue with the script"]
-             );
+             )
              
              if (answer.text === "Exit DXVK Installer, but continue with the script") {
                 return this;
