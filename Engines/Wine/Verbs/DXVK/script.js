@@ -102,10 +102,11 @@ class DXVK {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "DXVK", Optional.empty());
         
+        wine.wizard(wizard);
         wine.prefix(container);
+        
         const versions = getGithubReleases("doitsujin", "dxvk", wizard);
         const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
-        wine.wizard(wizard);
 
         // install selected version
         new DXVK(wine).withVersion(selectedVersion.text).go();
