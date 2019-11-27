@@ -53,7 +53,7 @@ class DXVK {
              }
         }
         else {
-            this.wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
+            wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
         }
         if (typeof this.dxvkVersion !== "string") {
             const versions = getGithubReleases("doitsujin", "dxvk", wizard);
