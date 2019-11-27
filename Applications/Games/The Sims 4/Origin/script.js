@@ -1,6 +1,5 @@
 const OriginScript = include("engines.wine.quick_script.origin_script");
 const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
-const AppResource = include("utils.functions.apps.resources");
 const vcrun6sp6 = include("engines.wine.verbs.vcrun6sp6");
 const MFC42 = include("engines.wine.verbs.mfc42");
 const dotnet20sp2 = include("engines.wine.verbs.dotnet20sp2");
