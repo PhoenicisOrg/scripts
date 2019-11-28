@@ -101,7 +101,7 @@ class VK9 {
     static install(container) {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "VK9", Optional.empty());
-        
+
         wine.wizard(wizard);
         wine.prefix(container);
 
