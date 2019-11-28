@@ -38,7 +38,7 @@ class VK9 {
             const answer = wizard.menu(
                 tr("VK9 is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation.",
                 ["YES, continue with VK9 installation regardless", "NO, quit script alltogether", "Exit VK9 Installer, but continue with the script"]
-             )
+             ))
              
              if (answer.text === "Exit VK9 Installer, but continue with the script") {
                 return this;
