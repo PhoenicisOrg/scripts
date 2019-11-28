@@ -11,7 +11,6 @@ const { getGithubReleases } = include("utils.functions.net.githubreleases");
  * Verb to install D9VK
  * see: https://github.com/Joshua-Ashton/d9vk/
  */
-
 class D9VK {
     constructor(wine) {
         this.wine = wine;
@@ -54,10 +53,10 @@ class D9VK {
         }
         else
         {
-            wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else D9VK might not work correctly."));
+            wizard.message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else D9VK might not work correctly."));
         }
 
-        if (typeof d9vkVersion !== 'string')
+        if (typeof this.d9vkVersion !== 'string')
         {
             const versions = getGithubReleases("Joshua-Ashton", "d9vk", wizard);
             this.d9vkVersion = versions[0];
