@@ -1,7 +1,7 @@
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
 const { CabExtract } = include("utils.functions.filesystem.extract");
-const { remove } = include("utils.functions.filesystem.files");
+const { fileExists, remove } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 
@@ -26,8 +26,12 @@ class Mfc42 {
             .name("VC6RedistSetup_deu.exe")
             .get();
 
-        remove(`${system32directory}/mfc42.dll`);
-        remove(`${system32directory}/mfc42u.dll`);
+        if (fileExists(`${system32directory}/mfc42.dll`)) {
+            remove(`${system32directory}/mfc42.dll`);
+        }
+        if (fileExists(`${system32directory}/mfc42u.dll`)) {
+            remove(`${system32directory}/mfc42u.dll`);
+        }
 
         new CabExtract()
             .wizard(wizard)
