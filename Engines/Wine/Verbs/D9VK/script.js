@@ -41,16 +41,16 @@ class D9VK {
         {
             const answer = wizard.menu(
                 tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation.",
-                ["YES, continue with D9VK installation regardless", "NO, quit script alltogether", "Exit D9VK Installer, but continue with the script"]
-             ))
+                    ["YES, continue with D9VK installation regardless", "NO, quit script alltogether", "Exit D9VK Installer, but continue with the script"]
+                ))
              
-             if (answer.text === "Exit D9VK Installer, but continue with the script") {
+            if (answer.text === "Exit D9VK Installer, but continue with the script") {
                 return this;
-             }
+            }
              
-             if (answer.text === "NO, quit script alltogether" || !answer) {
+            if (answer.text === "NO, quit script alltogether" || !answer) {
                 throw new Error("User aborted the script.");
-             }
+            }
         }
         else
         {
@@ -107,8 +107,8 @@ class D9VK {
         const wizard = SetupWizard(InstallationType.VERBS, "D9VK", Optional.empty());
         
         wine.wizard(wizard);
-        wine.prefix(container); 
-        
+        wine.prefix(container);
+
         const versions = getGithubReleases("Joshua-Ashton", "d9vk", wizard);
         const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
 
