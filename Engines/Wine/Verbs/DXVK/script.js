@@ -47,7 +47,7 @@ class DXVK {
             if (answer.text === "Exit DXVK Installer, but continue with the script") {
                 return this;
             }
-             
+
             if (answer.text === "NO, quit script alltogether" || !answer) {
                 throw new Error("User aborted the script.");
             }
