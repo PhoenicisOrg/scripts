@@ -36,7 +36,7 @@ class DXVK {
         const architecture = this.wine.architecture();
 
         print("NOTE: wine version should be greater or equal to 3.10");
-  
+
         if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
         {
             const answer = wizard.menu(
