@@ -19,7 +19,7 @@ class Tahoma {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const fontDirectory = this.wine.fontDirectory();
-        
+
         if (!fileExists(fontDirectory)) {
             mkdir(fontDirectory);
         }
