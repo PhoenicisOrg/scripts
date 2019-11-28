@@ -48,7 +48,7 @@ class VK9 {
                 case 1:
                     // choice: "NO, quit script alltogether"
                     throw new Error("User aborted the script.");
-                case 2: 
+                case 2:
                     // choice: "Exit VK9 Installer, but continue with the script"
                     return this;
                 default:
