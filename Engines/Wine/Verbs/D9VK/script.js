@@ -105,7 +105,7 @@ class D9VK {
     static install(container) {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "D9VK", Optional.empty());
-        
+
         wine.wizard(wizard);
         wine.prefix(container);
 
