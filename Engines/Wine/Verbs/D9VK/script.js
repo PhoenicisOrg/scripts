@@ -43,7 +43,7 @@ class D9VK {
                 tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation.",
                     ["YES, continue with D9VK installation regardless", "NO, quit script alltogether", "Exit D9VK Installer, but continue with the script"]
                 ))
-             
+
             if (answer.text === "Exit D9VK Installer, but continue with the script") {
                 return this;
             }
