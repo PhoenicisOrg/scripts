@@ -37,16 +37,16 @@ class VK9 {
         {
             const answer = wizard.menu(
                 tr("VK9 is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation.",
-                ["YES, continue with VK9 installation regardless", "NO, quit script alltogether", "Exit VK9 Installer, but continue with the script"]
-             ))
+                    ["YES, continue with VK9 installation regardless", "NO, quit script alltogether", "Exit VK9 Installer, but continue with the script"]
+                ))
              
-             if (answer.text === "Exit VK9 Installer, but continue with the script") {
+            if (answer.text === "Exit VK9 Installer, but continue with the script") {
                 return this;
-             }
+            }
              
-             if (answer.text === "NO, quit script alltogether" || !answer) {
+            if (answer.text === "NO, quit script alltogether" || !answer) {
                 throw new Error("User aborted the script.");
-             }
+            }
         }
 
         print("NOTE: wine version should be greater or equal to 3.5");
@@ -104,7 +104,7 @@ class VK9 {
         
         wine.wizard(wizard);
         wine.prefix(container);
-        
+
         const versions = getGithubReleases("disks86", "VK9", wizard);
         const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
 
