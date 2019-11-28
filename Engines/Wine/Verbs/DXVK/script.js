@@ -28,7 +28,7 @@ class DXVK {
 
         return this;
     }
-  
+
     go() {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
