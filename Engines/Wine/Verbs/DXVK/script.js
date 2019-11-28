@@ -101,7 +101,7 @@ class DXVK {
     static install(container) {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "DXVK", Optional.empty());
-        
+
         wine.wizard(wizard);
         wine.prefix(container);
 
