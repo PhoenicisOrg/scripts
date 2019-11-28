@@ -47,7 +47,7 @@ class D9VK {
             if (answer.text === "Exit D9VK Installer, but continue with the script") {
                 return this;
             }
-             
+
             if (answer.text === "NO, quit script alltogether" || !answer) {
                 throw new Error("User aborted the script.");
             }
