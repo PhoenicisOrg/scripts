@@ -41,16 +41,16 @@ class DXVK {
         {
             const answer = wizard.menu(
                 tr("DXVK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation.",
-                ["YES, continue with DXVK installation regardless", "NO, quit script alltogether", "Exit DXVK Installer, but continue with the script"]
-             ))
+                    ["YES, continue with DXVK installation regardless", "NO, quit script alltogether", "Exit DXVK Installer, but continue with the script"]
+                ))
              
-             if (answer.text === "Exit DXVK Installer, but continue with the script") {
+            if (answer.text === "Exit DXVK Installer, but continue with the script") {
                 return this;
-             }
+            }
              
-             if (answer.text === "NO, quit script alltogether" || !answer) {
+            if (answer.text === "NO, quit script alltogether" || !answer) {
                 throw new Error("User aborted the script.");
-             }
+            }
         }
         else {
             wizard().message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
@@ -104,7 +104,7 @@ class DXVK {
         
         wine.wizard(wizard);
         wine.prefix(container);
-        
+
         const versions = getGithubReleases("doitsujin", "dxvk", wizard);
         const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
 
