@@ -43,7 +43,7 @@ class VK9 {
             if (answer.text === "Exit VK9 Installer, but continue with the script") {
                 return this;
             }
-             
+
             if (answer.text === "NO, quit script alltogether" || !answer) {
                 throw new Error("User aborted the script.");
             }
