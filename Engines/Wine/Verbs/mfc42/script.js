@@ -25,7 +25,7 @@ class Mfc42 {
             .checksum("a8c4dd33e281c166488846a10edf97ff0ce37044")
             .name("VC6RedistSetup_deu.exe")
             .get();
-      
+
         if (fileExists(`${system32directory}/mfc42.dll`)) {
             remove(`${system32directory}/mfc42.dll`);
         }
