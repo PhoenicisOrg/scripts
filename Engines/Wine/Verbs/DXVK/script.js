@@ -39,17 +39,24 @@ class DXVK {
 
         if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
         {
-            const answer = wizard.menu(
-                tr("DXVK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation.",
-                    ["YES, continue with DXVK installation regardless", "NO, quit script alltogether", "Exit DXVK Installer, but continue with the script"]
-                ))
+            const question = tr("DXVK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation.")
+            const choices = [
+                tr("YES, continue with DXVK installation regardless"),
+                tr("NO, quit script alltogether"),
+                tr("Exit DXVK Installer, but continue with the script")
+            ];
 
-            if (answer.text === "Exit DXVK Installer, but continue with the script") {
-                return this;
-            }
+            const answer = wizard.menu(question, choices);
 
-            if (answer.text === "NO, quit script alltogether" || !answer) {
-                throw new Error("User aborted the script.");
+            switch (answer.index) {
+                case 1:
+                    // choice: "NO, quit script alltogether"
+                    throw new Error("User aborted the script.");
+                case 2:
+                    // choice: "Exit DXVK Installer, but continue with the script"
+                    return this;
+                default:
+                    // do nothing
             }
         }
         else {
