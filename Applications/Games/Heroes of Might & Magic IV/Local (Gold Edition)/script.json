@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Local (Gold Edition)",
-    "id"                         : "applications.games.heroes_of_might_and_magic_IV.local_gold_edition",
+    "id"                         : "applications.games.heroes_of_might_and_magic_IV.local",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
