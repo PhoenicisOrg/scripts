@@ -1,10 +1,10 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-const {LATEST_STABLE_VERSION} = include("engines.wine.engine.versions");
+const { LATEST_STABLE_VERSION } = include("engines.wine.engine.versions");
 
-include("engines.wine.plugins.virtual_desktop");
-include("engines.wine.verbs.vcrun2013");
-include("engines.wine.verbs.corefonts");
-include("engines.wine.verbs.dxvk");
+const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
+const Vcrun2013 = include("engines.wine.verbs.vcrun2013");
+const Corefonts = include("engines.wine.verbs.corefonts");
+const DXVK = include("engines.wine.verbs.dxvk");
 
 new SteamScript()
     .name("Subnautica")
@@ -15,19 +15,25 @@ new SteamScript()
     .wineVersion(LATEST_STABLE_VERSION)
     .wineArchitecture("amd64")
     .appId(264710)
-    .preInstall(function (wine, wizard) {
+    .preInstall(function (wine) {
+        const wizard = wine.wizard();
+
         wizard.message(
             tr("You can make the game smoother by using this: https://github.com/lutris/lutris/wiki/How-to:-Esync")
         );
-        wine.vcrun2013();
-        wine.corefonts();
-        wine.DXVK();
-        wine.setVirtualDesktop();
+
+        new Vcrun2013(wine).go();
+        new Corefonts(wine).go();
+        new DXVK(wine).go();
+
+        new VirtualDesktop(wine).go();
     })
-    .postInstall(function (wine, wizard) {
+    .postInstall(function (wine) {
+        const wizard = wine.wizard();
+
         wizard.message(
             tr(
-                "Due to a potential confilct with Vulkan, shader mods break the game (the executable file works but no window is displayed)."
+                "Due to a potential conflict with Vulkan, shader mods break the game (the executable file works but no window is displayed)."
             )
         );
     })

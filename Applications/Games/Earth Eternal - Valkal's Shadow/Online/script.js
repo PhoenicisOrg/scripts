@@ -1,10 +1,10 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
 
-include("engines.wine.plugins.windows_version");
-include("engines.wine.verbs.corefonts");
-include("engines.wine.verbs.d3dx9");
-include("engines.wine.verbs.vcrun2008");
+const WindowsVersion = include("engines.wine.plugins.windows_version");
+const Corefonts = include("engines.wine.verbs.corefonts");
+const D3DX9 = include("engines.wine.verbs.d3dx9");
+const Vcrun2008 = include("engines.wine.verbs.vcrun2008");
 
 new OnlineInstallerScript()
     .name("Earth Eternal - Valkal's Shadow")
@@ -17,9 +17,9 @@ new OnlineInstallerScript()
     .executable("Spark.exe", ["http://live.theanubianwar.com/Release/Current/EarthEternal.car"])
     .wineVersion(LATEST_STAGING_VERSION)
     .wineDistribution("staging")
-    .preInstall(function (wine /*, wizard*/) {
-        wine.windowsVersion("winxp");
-        wine.corefonts();
-        wine.d3dx9();
-        wine.vcrun2008();
+    .preInstall(function (wine) {
+        new WindowsVersion(wine).withWindowsVersion("winxp").go();
+        new Corefonts(wine).go();
+        new D3DX9(wine).go();
+        new Vcrun2008(wine).go();
     });

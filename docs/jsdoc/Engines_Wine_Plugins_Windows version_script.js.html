@@ -26,77 +26,74 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const Wine = include("engines.wine.engine.object");
-
-include("engines.wine.plugins.regedit");
+            <pre class="prettyprint source linenums"><code>const Regedit = include("engines.wine.plugins.regedit");
 
 /**
- * default windows version
- * @param {string} version (win7, vista, win2003, winxp, win2k, winnt, winme, win98, win95, win31)
- * @param {string} [servicePack] e.g. sp3
- * @returns {string|Wine} get: Windows version, set: Wine object
+ * Plugin to set the windows version
  */
-Wine.prototype.windowsVersion = function (version, servicePack) {
-    // get
-    if (arguments.length == 0) {
-        return this.regedit().fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Version"]);
+module.default = class WindowsVersion {
+    constructor(wine) {
+        this.wine = wine;
+        this.applications = {};
     }
 
-    // set
-    var regeditFileContent;
-    if (version == null) {
-        regeditFileContent =
-            "REGEDIT4\n" +
-            "\n" +
-            "[HKEY_CURRENT_USER\\Software\\Wine]\n" +
-            "\"Version\"=-\n";
-    } else {
-        regeditFileContent =
-            "REGEDIT4\n" +
-            "\n" +
-            "[HKEY_CURRENT_USER\\Software\\Wine]\n" +
-            "\"Version\"=\"" + version + "\"\n";
+    getWindowsVersion() {
+        return new Regedit(this.wine).fetchValue(["HKEY_CURRENT_USER", "Software", "Wine", "Version"]);
+    }
 
-        if (servicePack) {
-            var servicePackNumber = servicePack.replace("sp", "");
-            regeditFileContent += "[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion]\n";
-            regeditFileContent += "\"CSDVersion\"=\"Service Pack " + servicePackNumber + "\"\n";
-            regeditFileContent += "[HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Windows]\n";
-            regeditFileContent += "\"CSDVersion\"=dword:00000" + servicePackNumber + "00\n";
+    /**
+     * Specifies the default windows version
+     *
+     * @param {string} version win7, vista, win2003, winxp, win2k, winnt, winme, win98, win95, win31
+     * @param {string} servicePack e.g. sp3
+     * @returns {WindowsVersion} This
+     */
+    withWindowsVersion(version, servicePack) {
+        this.version = version;
+        this.servicePack = servicePack;
+
+        return this;
+    }
+
+    /**
+     * Specifies the windows version for a given application
+     * @param {string} application The application executable
+     * @param {string} os The windows version
+     * @returns {WindowsVersion} This
+     */
+    withApplicationWindowsVersion(application, os) {
+        this.applications[application] = os;
+
+        return this;
+    }
+
+    go() {
+        let regeditFileContent = `REGEDIT4\n\n[HKEY_CURRENT_USER\\Software\\Wine]\n`;
+
+        // set the global windows version
+        if (this.version) {
+            regeditFileContent += `"Version"="${this.version}"\n`;
+
+            if (this.servicePack) {
+                const servicePackNumber = this.servicePack.replace("sp", "");
+
+                regeditFileContent += `[HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion]\n`;
+                regeditFileContent += `"CSDVersion"="Service Pack ${servicePackNumber}"\n`;
+                regeditFileContent += `[HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Windows]\n`;
+                regeditFileContent += `"CSDVersion"=dword:00000${servicePackNumber}00\n`;
+            }
+        } else {
+            regeditFileContent += `"Version"=-\n`;
         }
+
+        // set the local windows version
+        Object.entries(this.applications).forEach(([application, os]) => {
+            regeditFileContent += `[HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\${application}]\n`;
+            regeditFileContent += `"Version"="${os}"\n`;
+        });
+
+        new Regedit(this.wine).patch(regeditFileContent);
     }
-
-    this.regedit().patch(regeditFileContent);
-    return this;
-};
-
-var SetOsForApplication = function () {
-    var that = this;
-    that._regeditFileContent =
-        "REGEDIT4\n" +
-        "\n";
-
-    that.wine = function (wine) {
-        that._wine = wine;
-        return that;
-    };
-
-    that.set = function (application, os) {
-        that._regeditFileContent += "[HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\" + application + "]\n";
-        that._regeditFileContent += "\"Version\"=\"" + os + "\"\n";
-
-        return that;
-    };
-
-    that.do = function () {
-        that._wine.regedit().patch(that._regeditFileContent);
-        return that._wine;
-    }
-};
-
-Wine.prototype.setOsForApplication = function () {
-    return new SetOsForApplication()
-        .wine(this)
 };
 </code></pre>
         </article>
@@ -108,7 +105,7 @@ Wine.prototype.setOsForApplication = function () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.CabExtract.html">CabExtract</a></li><li><a href="module.Checksum.html">Checksum</a></li><li><a href="module.default.html">default</a></li><li><a href="module.Extractor.html">Extractor</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#getScreenHeight">getScreenHeight</a></li><li><a href="global.html#getScreenWidth">getScreenWidth</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdobeAir.html">AdobeAir</a></li><li><a href="Amstream.html">Amstream</a></li><li><a href="Atmlib.html">Atmlib</a></li><li><a href="Corefonts.html">Corefonts</a></li><li><a href="Crypt32.html">Crypt32</a></li><li><a href="D3drm.html">D3drm</a></li><li><a href="D3DX9.html">D3DX9</a></li><li><a href="D3DX10.html">D3DX10</a></li><li><a href="D3DX11.html">D3DX11</a></li><li><a href="D9VK.html">D9VK</a></li><li><a href="Devenum.html">Devenum</a></li><li><a href="DotNET20.html">DotNET20</a></li><li><a href="DotNET20SP2.html">DotNET20SP2</a></li><li><a href="DotNET40.html">DotNET40</a></li><li><a href="DotNET45.html">DotNET45</a></li><li><a href="DotNET46.html">DotNET46</a></li><li><a href="DotNET452.html">DotNET452</a></li><li><a href="DotNET461.html">DotNET461</a></li><li><a href="DotNET462.html">DotNET462</a></li><li><a href="DotNET472.html">DotNET472</a></li><li><a href="DXVK.html">DXVK</a></li><li><a href="FAudio.html">FAudio</a></li><li><a href="Gallium9.html">Gallium9</a></li><li><a href="GDIPlus.html">GDIPlus</a></li><li><a href="GDIPlusWinXP.html">GDIPlusWinXP</a></li><li><a href="Luna.html">Luna</a></li><li><a href="Mfc42.html">Mfc42</a></li><li><a href="module.CabExtract.html">CabExtract</a></li><li><a href="module.Checksum.html">Checksum</a></li><li><a href="module.default.html">default</a></li><li><a href="module.Extractor.html">Extractor</a></li><li><a href="Msls31.html">Msls31</a></li><li><a href="Mspatcha.html">Mspatcha</a></li><li><a href="Msxml3.html">Msxml3</a></li><li><a href="Msxml6.html">Msxml6</a></li><li><a href="PhysX.html">PhysX</a></li><li><a href="Quartz.html">Quartz</a></li><li><a href="QuickTime76.html">QuickTime76</a></li><li><a href="RemoveMono.html">RemoveMono</a></li><li><a href="Sandbox.html">Sandbox</a></li><li><a href="Secur32.html">Secur32</a></li><li><a href="Tahoma.html">Tahoma</a></li><li><a href="Uplay.html">Uplay</a></li><li><a href="Vcrun6SP6.html">Vcrun6SP6</a></li><li><a href="Vcrun2003.html">Vcrun2003</a></li><li><a href="Vcrun2005.html">Vcrun2005</a></li><li><a href="Vcrun2008.html">Vcrun2008</a></li><li><a href="Vcrun2010.html">Vcrun2010</a></li><li><a href="Vcrun2012.html">Vcrun2012</a></li><li><a href="Vcrun2013.html">Vcrun2013</a></li><li><a href="Vcrun2015.html">Vcrun2015</a></li><li><a href="Vcrun2017.html">Vcrun2017</a></li><li><a href="VK9.html">VK9</a></li><li><a href="VulkanSDK.html">VulkanSDK</a></li><li><a href="WindowsXPSP3.html">WindowsXPSP3</a></li><li><a href="Xact.html">Xact</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#getScreenHeight">getScreenHeight</a></li><li><a href="global.html#getScreenWidth">getScreenWidth</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
