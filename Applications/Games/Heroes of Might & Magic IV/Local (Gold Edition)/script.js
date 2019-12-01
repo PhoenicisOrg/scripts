@@ -21,8 +21,8 @@ new LocalInstallerScript()
             .get();
         wine.run(patch);
         var dataDirectory = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "Ubisoft/Heroes of Might & Magic IV - Złota Edycja/Data";
-        var campaineditor = new Downloader()
-            .wizard(wizard)
+        var campainEditor = new Downloader()
+            .wizard(this._wizard)
             .url("https://equilibris.celestialheavens.com/downloads/equi.aop")
             .checksum("3a188a45017a1fd7cb38d6883428f6abc9b6e160")
             .to(dataDirectory)
