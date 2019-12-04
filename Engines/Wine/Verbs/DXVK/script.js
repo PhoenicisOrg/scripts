@@ -70,7 +70,7 @@ class DXVK {
         const setupFile = new Resource()
             .wizard(wizard)
             .url(
-                `https://github.com/doitsujin/dxvk/releases/download/v${this.dxvkVersion}/dxvk-${this.dxvkVersion}.tar.gz`
+                `https://github.com/doitsujin/dxvk/releases/download/${this.dxvkVersion}/dxvk-${this.dxvkVersion}.tar.gz`
             )
             .name(`dxvk-${this.dxvkVersion}.tar.gz`)
             .get();
