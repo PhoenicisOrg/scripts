@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "mfWorkaround",
-    "id"                         : "engines.wine.verbs.mfWorkaround",
+    "id"                         : "engines.wine.verbs.mfworkaround",
     "compatibleOperatingSystems" : [
         "LINUX"
     ],
