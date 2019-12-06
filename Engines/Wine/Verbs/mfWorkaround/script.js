@@ -36,11 +36,11 @@ class mfWorkaround {
         const system32directory = this.wine.system32directory();
         const system64directory = this.wine.system64directory();
 
-        //commented out because it's useless until z0z0z will use releases 
+        //commented out because it's useless until z0z0z will use releases
         /*if (typeof this.mfWorkaroundVersion !== "string") {
             const versions = getGithubReleases("Kron4ek", "FAudio-Builds", wizard);
             this.mfWorkaroundVersion = versions[0];
-        }*/ 
+        }*/
 
         const setupFile = new Resource()
             .wizard(wizard)
@@ -86,10 +86,9 @@ class mfWorkaround {
 
         /**
          * commented out because we dont have regsvr64 yet
-         * new Regsvr32(this.wine).withDll("colorcnv.dll").go();
-         * new Regsvr32(this.wine).withDll("msmpeg2adec.dll").go();
-         * new Regsvr32(this.wine).withDll("msmpeg2vdec.dll").go();
-         * 
+         * new Regsvr64(this.wine).withDll("colorcnv.dll").go();
+         * new Regsvr64(this.wine).withDll("msmpeg2adec.dll").go();
+         * new Regsvr64(this.wine).withDll("msmpeg2vdec.dll").go();
          */
     }
 
