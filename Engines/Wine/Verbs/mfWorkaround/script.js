@@ -6,7 +6,7 @@ const { ls, cp } = include("utils.functions.filesystem.files");
 
 const Optional = Java.type("java.util.Optional");
 const Regedit = include("engines.wine.plugins.regedit");
-
+const Regsvr32 = include("engines.wine.plugins.regsvr32");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 /**
