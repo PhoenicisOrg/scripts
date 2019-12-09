@@ -22,8 +22,8 @@ new OriginScript()
         var configFile = wine.prefixDirectory() + "/drive_c/dxvk.conf";
         touch(configFile);
         writeToFile(configFile, "dxgi.nvapiHack = False");
-        wine.overrideDLL()
-            .set("disabled", ["nvapi", "nvapi64"])
-            .do();
+        new OverrideDLL(wine)
+            .withMode("disabled", ["nvapi, nvapi64"])
+            .go();
     })
     .environment('{ "STAGING_SHARED_MEMORY": "0", "__GL_SHADER_DISK_CACHE": "1", "DXVK_CONFIG_FILE": "configFile"}')
