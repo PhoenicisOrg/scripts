@@ -6,7 +6,7 @@ const Extractor = include("utils.functions.filesystem.extract");
 const Resource = include("utils.functions.net.resource");
 const {touch, writeToFile} = include("utils.functions.filesystem.files");
 const D9VK = include("engines.wine.verbs.d9vk");
-
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 new OriginScript()
     .name("The Sims 2")
@@ -26,8 +26,8 @@ new OriginScript()
         touch(dxvkConfigFile);
         writeToFile(dxvkConfigFile, "dxgi.nvapiHack = False");
         new OverrideDLL(wine)
-        .withMode("disabled", ["nvapi, nvapi64"])
-        .go();
+            .withMode("disabled", ["nvapi, nvapi64"])
+            .go();
     })
     .postInstall(function (wine) {
         const username = System.getProperty("user.name");
