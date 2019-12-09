@@ -3,9 +3,7 @@ const vcrun2010 = include("engines.wine.verbs.vcrun2010");
 const vcrun2013 = include("engines.wine.verbs.vcrun2013");
 const D9VK = include("engines.wine.verbs.d9vk");
 const { touch, writeToFile } = include("utils.functions.filesystem.files");
-
-include("engines.wine.plugins.regedit");
-include("engines.wine.plugins.override_dll");
+const OverrideDLL = include("engines.wine.plugins.override_dll");
 
 new OriginScript()
     .name("The Sims 4")
@@ -25,7 +23,7 @@ new OriginScript()
         touch(configFile);
         writeToFile(configFile, "dxgi.nvapiHack = False");
         wine.overrideDLL()
-            .set("disabled", ["nvapi", "nvapi64", "OriginThinSetupInternal.exe"])
+            .set("disabled", ["nvapi", "nvapi64"])
             .do();
     })
     .environment('{ "STAGING_SHARED_MEMORY": "0", "__GL_SHADER_DISK_CACHE": "1", "DXVK_CONFIG_FILE": "configFile"}')
