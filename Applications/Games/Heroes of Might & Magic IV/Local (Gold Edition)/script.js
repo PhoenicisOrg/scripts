@@ -6,7 +6,7 @@ const Downloader = include("utils.functions.net.download");
 new LocalInstallerScript()
     .name("Heroes of Might & Magic IV")
     .editor("New World Computing, Inc.")
-    .applicationHomepage("http://www.spacecolonyhd.com/")
+    .applicationHomepage("")
     .author("Zemogiter")
     .category("Games")
     .wineDistribution("upstream")
