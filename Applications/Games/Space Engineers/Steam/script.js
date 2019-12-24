@@ -20,6 +20,7 @@ new SteamScript()
         new DXVK(wine).go();
         new OverrideDLL(wine)
             .withMode("native, builtin", ["msvcr120"])
+            .withMode("disabled", ["nvapi", "nvapi64"])
             .go();
         const dxvkConfigFile = wine.prefixDirectory() + "/drive_c/dxvk.conf";
         touch(dxvkConfigFile);
