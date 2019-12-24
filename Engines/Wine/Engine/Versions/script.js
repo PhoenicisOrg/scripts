@@ -4,9 +4,9 @@ const propertyReader = Bean("propertyReader");
 
 /**
  * Sorts an array of Wine versions
-     * @param {array} versions The versions array
-     * @returns {void}
-     */
+ * @param {array} versions The versions array
+ * @returns {void}
+ */
 module.sortVersions = function (versions) {
     versions.sort((a, b) =>
     {
