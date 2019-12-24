@@ -26,12 +26,12 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const {LATEST_STABLE_VERSION} = include("engines.wine.engine.versions");
+            <pre class="prettyprint source linenums"><code>const {getLatestStableVersion} = include("engines.wine.engine.versions");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 
 module.default = class QuickScript {
     constructor() {
-        this._wineVersion = LATEST_STABLE_VERSION;
+        this._wineVersion = getLatestStableVersion();
         this._wineArchitecture = "x86";
         this._wineDistribution = "upstream";
         this._wineUserSettings = false;

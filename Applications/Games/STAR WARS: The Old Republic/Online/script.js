@@ -1,6 +1,6 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
 const {writeToFile} = include("utils.functions.filesystem.files");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const {getLatestStagingVersion} = include("engines.wine.engine.versions");
 
 const D3DX9 = include("engines.wine.verbs.d3dx9");
 
@@ -9,7 +9,7 @@ new OnlineInstallerScript()
     .editor("BioWare")
     .applicationHomepage("http://www.swtor.com/")
     .author("ImperatorS79")
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion())
     .wineDistribution("staging") //minimum version to run it, see https://dev.wine-staging.com/patches/164/
     .url("https://swtor-a.akamaihd.net/installer/SWTOR_setup.exe")
     .checksum("c538935eff4ec90ce2e48dc7e515a8dec2f15f58")

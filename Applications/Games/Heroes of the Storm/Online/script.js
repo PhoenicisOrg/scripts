@@ -1,5 +1,5 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 const WindowsVersion = include("engines.wine.plugins.windows_version");
 const Vcrun2015 = include("engines.wine.verbs.vcrun2015");
@@ -14,7 +14,7 @@ new OnlineInstallerScript()
     .category("Games")
     .executable("Heroes of the Storm.exe")
     //The checksum is different each time you download
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion())
     .wineDistribution("staging")
     .preInstall(function (wine) {
         new WindowsVersion(wine).withWindowsVersion("winxp").go();

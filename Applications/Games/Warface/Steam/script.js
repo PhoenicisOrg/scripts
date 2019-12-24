@@ -1,5 +1,5 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const {getLatestStagingVersion} = include("engines.wine.engine.versions");
 
 const CSMT = include("engines.wine.plugins.csmt");
 
@@ -8,7 +8,7 @@ new SteamScript()
     .editor("Crytek")
     .author("ImperatorS79")
     .appId(291480)
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion())
     .wineDistribution("staging")
     .postInstall(function (wine /*, wizard*/) {
         new CSMT(wine).go();

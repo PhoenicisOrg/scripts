@@ -1,5 +1,5 @@
 const UplayScript = include("engines.wine.quick_script.uplay_script");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const {getLatestStagingVersion} = include("engines.wine.engine.versions");
 
 new UplayScript()
     .name("Rayman® Origins")
@@ -7,5 +7,5 @@ new UplayScript()
     .editor("UBIart Montpellier")
     .author("Plata")
     .appId(80)
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion())
     .wineDistribution("staging");

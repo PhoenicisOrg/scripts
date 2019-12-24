@@ -1,5 +1,5 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const {LATEST_DEVELOPMENT_VERSION} = include("engines.wine.engine.versions");
+const {getLatestDevelopmentVersion} = include("engines.wine.engine.versions");
 const Downloader = include("utils.functions.net.download");
 const {Extractor} = include("utils.functions.filesystem.extract");
 
@@ -11,7 +11,7 @@ new OnlineInstallerScript()
     .url("https://origin-a.akamaihd.net/Origin-Client-Download/origin/legacy/OriginThinSetup.exe")
     .category("Games")
     .executable("Origin.exe")
-    .wineVersion(LATEST_DEVELOPMENT_VERSION)
+    .wineVersion(getLatestDevelopmentVersion())
     .preInstall(function (wine, wizard) {
         wizard.message(
             tr(

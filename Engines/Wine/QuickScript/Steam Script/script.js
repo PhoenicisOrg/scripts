@@ -1,6 +1,7 @@
 const QuickScript = include("engines.wine.quick_script.quick_script");
 const Downloader = include("utils.functions.net.download");
 const Wine = include("engines.wine.engine.object");
+const {getLatestStableVersion} = include("engines.wine.engine.versions");
 const { cat, fileExists, writeToFile, createTempFile } = include("utils.functions.filesystem.files");
 
 const Luna = include("engines.wine.verbs.luna");
@@ -116,6 +117,8 @@ module.default = class SteamScript extends QuickScript {
         const setupWizard = SetupWizard(InstallationType.APPS, this._name, this.miniature());
 
         setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
+
+        this._wineVersion = getLatestStableVersion(setupWizard);
 
         const tempFile = createTempFile("exe");
 

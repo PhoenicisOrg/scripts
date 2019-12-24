@@ -1,5 +1,5 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-const {LATEST_DEVELOPMENT_VERSION} = include("engines.wine.engine.versions");
+const {getLatestDevelopmentVersion} = include("engines.wine.engine.versions");
 
 const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
 const Corefonts = include("engines.wine.verbs.corefonts");
@@ -10,7 +10,7 @@ new SteamScript()
     .editor("Claudiu Kiss, The Irregular Corporation")
     .author("Zemogiter")
     .applicationHomepage("http://www.pcbuildingsim.com/")
-    .wineVersion(LATEST_DEVELOPMENT_VERSION)
+    .wineVersion(getLatestDevelopmentVersion())
     .wineArchitecture("amd64")
     .appId(621060)
     .preInstall(function (wine, wizard) {

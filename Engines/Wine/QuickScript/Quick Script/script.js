@@ -1,9 +1,8 @@
-const {LATEST_STABLE_VERSION} = include("engines.wine.engine.versions");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 
 module.default = class QuickScript {
     constructor() {
-        this._wineVersion = LATEST_STABLE_VERSION;
+        //this._wineVersion = getLatestStableVersion(); // fetch later (need wizard)
         this._wineArchitecture = "x86";
         this._wineDistribution = "upstream";
         this._wineUserSettings = false;

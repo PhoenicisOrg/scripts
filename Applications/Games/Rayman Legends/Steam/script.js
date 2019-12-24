@@ -1,5 +1,5 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const {getLatestStagingVersion} = include("engines.wine.engine.versions");
 
 const Uplay = include("engines.wine.verbs.uplay");
 
@@ -8,7 +8,7 @@ new SteamScript()
     .editor("Ubisoft")
     .author("Plata")
     .appId(242550)
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion())
     .wineDistribution("staging")
     .postInstall(function (wine /*, wizard*/) {
         new Uplay(wine).go();

@@ -1,6 +1,6 @@
 const CustomInstallerScript = include("engines.wine.quick_script.custom_installer_script");
 
-const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 const { fileName, mkdir, writeToFile } = include("utils.functions.filesystem.files");
 const Resource = include("utils.functions.net.resource");
 
@@ -97,7 +97,7 @@ new CustomInstallerScript()
     })
     .category("Games")
     .wineDistribution("staging")
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion())
     .preInstall(function (wine) {
         new WindowsVersion(wine).withWindowsVersion("winxp").go();
 

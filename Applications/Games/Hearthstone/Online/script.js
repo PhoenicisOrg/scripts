@@ -1,5 +1,5 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 const Vcrun2015 = include("engines.wine.verbs.vcrun2015");
 const Corefonts = include("engines.wine.verbs.corefonts");
@@ -12,7 +12,7 @@ new OnlineInstallerScript()
     .url("https://eu.battle.net/download/getInstaller?os=win&installer=Hearthstone-Setup.exe")
     .category("Games")
     .executable("Battle.net.exe")
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion())
     .wineDistribution("staging")
     .preInstall(function (wine /*, wizard*/) {
         new Vcrun2015(wine).go();

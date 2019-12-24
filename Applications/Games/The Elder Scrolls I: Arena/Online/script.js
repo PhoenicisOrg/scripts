@@ -1,6 +1,6 @@
 const ZipScript = include("engines.wine.quick_script.zip_script");
 const { writeToFile } = include("utils.functions.filesystem.files");
-const { LATEST_DOS_SUPPORT_VERSION } = include("engines.wine.engine.versions");
+const { getLatestDosSupportVersion } = include("engines.wine.engine.versions");
 
 const Dosbox = include("engines.wine.plugins.dos_support");
 
@@ -12,7 +12,7 @@ new ZipScript()
     .url("http://static.elderscrolls.com/elderscrolls.com/assets/files/tes/extras/Arena106Setup.zip")
     .checksum("5e51d43f3e01820b18df36ec0019036f16796ad2")
     .category("Games")
-    .wineVersion(LATEST_DOS_SUPPORT_VERSION)
+    .wineVersion(getLatestDosSupportVersion())
     .wineDistribution("dos_support")
     .postInstall(function (wine) {
         wine.run(

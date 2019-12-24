@@ -1,6 +1,6 @@
 const QuickScript = include("engines.wine.quick_script.quick_script");
 const Wine = include("engines.wine.engine.object");
-const {LATEST_STABLE_VERSION} = include("engines.wine.engine.versions");
+const {getLatestStableVersion} = include("engines.wine.engine.versions");
 const {fileName} = include("utils.functions.filesystem.files");
 
 const Luna = include("engines.wine.verbs.luna");
@@ -23,6 +23,8 @@ module.default = class InstallerScript extends QuickScript {
         }
 
         setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
+
+        this._wineVersion = getLatestStableVersion(setupWizard);
 
         // get installation file from concrete InstallerScript implementation
         const installationCommand = this._installationCommand(setupWizard);
@@ -60,7 +62,7 @@ module.default = class InstallerScript extends QuickScript {
                 `${this._wineDistribution}-${operatingSystem}-${this._wineArchitecture}`
             );
             const shownVersions = versions.map(version => {
-                if (version == LATEST_STABLE_VERSION) {
+                if (version == this._wineVersion) {
                     return `${version} (recommended)`;
                 } else {
                     return version;
@@ -69,7 +71,7 @@ module.default = class InstallerScript extends QuickScript {
             const selectedVersion = setupWizard.menu(
                 tr("Please select the wine version."),
                 shownVersions,
-                LATEST_STABLE_VERSION + " (recommended)"
+                this._wineVersion + " (recommended)"
             );
 
             this._wineVersion = versions[selectedVersion.index];

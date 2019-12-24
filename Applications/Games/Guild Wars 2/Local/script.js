@@ -1,5 +1,5 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
-const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 const CSMT = include("engines.wine.plugins.csmt");
 const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
@@ -11,7 +11,7 @@ new LocalInstallerScript()
     .author("Plata")
     .category("Games")
     .executable("Gw2.exe")
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion())
     .wineDistribution("staging")
     .preInstall(function (wine) {
         // avoid that launcher freezes the complete system

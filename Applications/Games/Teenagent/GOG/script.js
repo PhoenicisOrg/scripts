@@ -1,5 +1,5 @@
 const GogScript = include("engines.wine.quick_script.gog_script");
-const {LATEST_DOS_SUPPORT_VERSION} = include("engines.wine.engine.versions");
+const {getLatestDosSupportVersion} = include("engines.wine.engine.versions");
 
 new GogScript()
     .name("Teenagent")
@@ -8,6 +8,6 @@ new GogScript()
     .author("Quentin PÂRIS")
     .gogSetupFileName("teenagent/en1installer0")
     .category("Games")
-    .wineVersion(LATEST_DOS_SUPPORT_VERSION)
+    .wineVersion(getLatestDosSupportVersion())
     .wineDistribution("dos_support")
     .executable("TEENAGNT.EXE");
