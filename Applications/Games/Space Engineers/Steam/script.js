@@ -10,7 +10,7 @@ new SteamScript()
     .editor("Keen Software House")
     .author("Zemogiter")
     .appId(244850)
-    .wineVersion("4.20")
+    .wineVersion("5.0-rc1")
     .wineDistribution("upstream")
     .wineArchitecture("amd64")
     .preInstall(function (wine) {
@@ -24,7 +24,7 @@ new SteamScript()
         const dxvkConfigFile = wine.prefixDirectory() + "/drive_c/dxvk.conf";
         touch(dxvkConfigFile);
         writeToFile(dxvkConfigFile, "dxgi.nvapiHack = False");
-        wizard.message(tr("You have to install libjpeg62 package or else the thumbnails in New Game menu will be dispalyed as magenta rectangles."));
+        wizard.message(tr("You may have to install libjpeg62 package if you see thumbnails in New Game menu dispalyed as magenta rectangles."));
         wizard.message(tr("Due to JIT compiler issues and the way this game uses multithreating, there are audio stutters. If you are on a Debian-based distribution you can try the libFAudio package from this PPA:\nhttps://launchpad.net/~cybermax-dexter/+archive/ubuntu/sdl2-backport"));
     })
     .executable("Steam.exe", ["-silent", "-applaunch", "244850", "-no-cef-sandbox", "-skipintro"])
