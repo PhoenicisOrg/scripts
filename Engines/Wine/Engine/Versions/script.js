@@ -16,7 +16,7 @@ module.sortVersions = function (versions) {
         // ensure that cases where not all version numbers (major, minor, patch) are set are handled correctly
         const maxVersionIdx = 2;
         let i;
-        for (i = 0; i < maxVersionIdx; i++) {
+        for (i = 0; i <= maxVersionIdx; i++) {
             if (typeof aVersionNumbers[i] === 'undefined') {
                 aVersionNumbers[i] = 0;
             }
