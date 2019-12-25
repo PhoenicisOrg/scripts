@@ -73,7 +73,7 @@ class D9VK {
 
         const selectedVersion = this.selectGithubVersion(wizard);
 
-        var setupFile = this.downloadGithubRelease(selectedVersion, wizard);
+        var setupFile = downloadGithubRelease(selectedVersion, wizard);
 
         new Extractor()
             .wizard(wizard)
