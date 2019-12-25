@@ -5,7 +5,7 @@ const { ls, cp, remove } = include("utils.functions.filesystem.files");
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
 const Optional = Java.type("java.util.Optional");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
-const { getGithubReleases } = include("utils.functions.net.githubreleases");
+const { fetchGithubReleases, downloadGithubRelease, extractGithubReleaseStrings } = include("utils.functions.net.githubreleases");
 
 /**
  * Verb to install D9VK
@@ -28,6 +28,16 @@ class D9VK {
         return this;
     }
 
+    selectGithubVersion(wizard) {
+        const versions = fetchGithubReleases("Joshua-Ashton", "d9vk", wizard);
+
+        if (!this.d9vkVersion || typeof this.d9vkVersion !== 'string') {
+            return versions[0];
+        } else {
+            return versions.find(version => version.name === this.d9vkVersion);
+        }
+    }
+
     go() {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
@@ -36,8 +46,7 @@ class D9VK {
 
         print("NOTE: Wine version should be greater or equal to 3.10");
 
-        if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
-        {
+        if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux") {
             const question = tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation.")
             const choices = [
                 tr("YES, continue with DXVK installation regardless"),
@@ -55,27 +64,16 @@ class D9VK {
                     // choice: "Exit D9VK Installer, but continue with the script"
                     return this;
                 default:
-                    // do nothing
+                // do nothing
             }
         }
-        else
-        {
+        else {
             wizard.message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else D9VK might not work correctly."));
         }
 
-        if (typeof this.d9vkVersion !== 'string')
-        {
-            const versions = getGithubReleases("Joshua-Ashton", "d9vk", wizard);
-            this.d9vkVersion = versions[0];
-        }
+        const selectedVersion = this.selectGithubVersion(wizard);
 
-        var setupFile = new Resource()
-            .wizard(wizard)
-            .url(
-                `https://github.com/Joshua-Ashton/d9vk/releases/download/${this.d9vkVersion}/d9vk-${this.d9vkVersion}.tar.gz`
-            )
-            .name(`d9vk-${this.d9vkVersion}.tar.gz`)
-            .get();
+        var setupFile = this.downloadGithubRelease(selectedVersion, wizard);
 
         new Extractor()
             .wizard(wizard)
@@ -83,7 +81,7 @@ class D9VK {
             .to(`${prefixDirectory}/TMP/`)
             .extract();
 
-        const d9vkTmpDir = `${prefixDirectory}/TMP/d9vk-${this.d9vkVersion}`;
+        const d9vkTmpDir = `${prefixDirectory}/TMP/d9vk-${selectedVersion.name}`;
 
         // copy 32 bits dll to system* and apply override
         ls(`${d9vkTmpDir}/x32`).forEach(file => {
@@ -115,8 +113,10 @@ class D9VK {
         wine.wizard(wizard);
         wine.prefix(container);
 
-        const versions = getGithubReleases("Joshua-Ashton", "d9vk", wizard);
-        const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
+        const versions = fetchGithubReleases("Joshua-Ashton", "d9vk", wizard);
+        const versionStrings = extractGithubReleaseStrings(versions);
+
+        const selectedVersion = wizard.menu(tr("Please select the version."), versionStrings, versionStrings[0]);
 
         // install selected version
         new D9VK(wine).withVersion(selectedVersion.text).go();

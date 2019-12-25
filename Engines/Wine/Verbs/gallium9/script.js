@@ -2,7 +2,7 @@ const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const { remove, lns } = include("utils.functions.filesystem.files");
-const { getGithubReleases } = include("utils.functions.net.githubreleases");
+const { fetchGithubReleases, downloadGithubRelease, extractGithubReleaseStrings } = include("utils.functions.net.githubreleases");
 
 const Optional = Java.type("java.util.Optional");
 
@@ -29,15 +29,22 @@ class Gallium9 {
         return this;
     }
 
+    selectGithubVersion(wizard) {
+        const versions = fetchGithubReleases("iXit", "wine-nine-standalone", wizard);
+
+        if (!this.gallium9Version || typeof this.gallium9Version !== 'string') {
+            return versions[0];
+        } else {
+            return versions.find(version => version.name === this.gallium9Version);
+        }
+    }
+
     go() {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const system32directory = this.wine.system32directory();
 
-        if (typeof this.gallium9Version !== "string") {
-            const versions = getGithubReleases("iXit", "wine-nine-standalone", wizard);
-            this.gallium9Version = versions[0];
-        }
+        const selectedVersion = this.selectGithubVersion(wizard);
 
         wizard.message(
             tr(
@@ -45,13 +52,7 @@ class Gallium9 {
             )
         );
 
-        const setupFile = new Resource()
-            .wizard(wizard)
-            .url(
-                `https://github.com/iXit/wine-nine-standalone/releases/download/${this.gallium9Version}/gallium-nine-standalone-${this.gallium9Version}.tar.gz`
-            )
-            .name(`gallium-nine-standalone-${this.gallium9Version}.tar.gz`)
-            .get();
+        const setupFile = downloadGithubRelease(selectedVersion, wizard);
 
         new Extractor()
             .wizard(wizard)
@@ -95,9 +96,10 @@ class Gallium9 {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "gallium9", Optional.empty());
 
-        const versions = getGithubReleases("iXit", "wine-nine-standalone", wizard);
+        const versions = fetchGithubReleases("iXit", "wine-nine-standalone", wizard);
+        const versionStrings = extractGithubReleaseStrings(versions);
 
-        const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
+        const selectedVersion = wizard.menu(tr("Please select the version."), versionStrings, versionStrings[0]);
 
         wine.prefix(container);
         wine.wizard(wizard);
