@@ -127,11 +127,11 @@ module.getLatestStableVersion = function (wizard) {
 }
 
 module.getLatestDevelopmentVersion = function (wizard) {
-    return getLatestVersion(wizard, "upstream-linux-x86", /^\d+\.\d(\.\d+)?$/);
+    return getLatestVersion(wizard, "upstream-linux-x86", /^\d+\.\d+(\.\d+)?$/);
 }
 
 module.getLatestStagingVersion = function (wizard) {
-    return getLatestVersion(wizard, "staging-linux-x86", /^\d+\.\d(\.\d+)?$/);
+    return getLatestVersion(wizard, "staging-linux-x86", /^\d+\.\d+(\.\d+)?$/);
 }
 
 module.getLatestDosSupportVersion = function (/*wizard*/) {
