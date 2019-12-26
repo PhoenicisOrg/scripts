@@ -13,7 +13,7 @@ new OnlineInstallerScript()
     .checksum("febee41863ed7b844ea683f0931b9e7b0c9ee064")
     .category("Games")
     .executable("Gw2.exe")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .preInstall(function (wine) {
         // avoid that launcher freezes the complete system

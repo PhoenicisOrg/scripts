@@ -9,6 +9,6 @@ new LocalInstallerScript()
     .installationArgs(["/q"])
     .category("Games")
     .executable("EpicGamesLauncher.exe", ["-SkipBuildPatchPrereq", "-OpenGL"])
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .wineArchitecture("amd64");

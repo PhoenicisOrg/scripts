@@ -8,7 +8,7 @@ new SteamScript()
     .editor("Crytek")
     .author("ImperatorS79")
     .appId(291480)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .postInstall(function (wine /*, wizard*/) {
         new CSMT(wine).go();

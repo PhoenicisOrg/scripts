@@ -10,7 +10,7 @@ new LocalInstallerScript()
     .category("Games")
     .installationArgs(["/q"])
     .wineDistribution("upstream")
-    .wineVersion(getLatestDevelopmentVersion())
+    .wineVersion(getLatestDevelopmentVersion)
     .executable("Space Colony.exe")
     .postInstall(function (wine /*wizard*/) {
         var patch = new Resource()

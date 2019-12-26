@@ -10,7 +10,7 @@ new SteamScript()
     .editor("Claudiu Kiss, The Irregular Corporation")
     .author("Zemogiter")
     .applicationHomepage("http://www.pcbuildingsim.com/")
-    .wineVersion(getLatestDevelopmentVersion())
+    .wineVersion(getLatestDevelopmentVersion)
     .wineArchitecture("amd64")
     .appId(621060)
     .preInstall(function (wine, wizard) {

@@ -1,7 +1,6 @@
 const QuickScript = include("engines.wine.quick_script.quick_script");
 const Downloader = include("utils.functions.net.download");
 const Wine = include("engines.wine.engine.object");
-const {getLatestStableVersion} = include("engines.wine.engine.versions");
 const {Extractor} = include("utils.functions.filesystem.extract");
 const {fileExists} = include("utils.functions.filesystem.files");
 
@@ -38,7 +37,7 @@ module.default = class ZipScript extends QuickScript {
 
         setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
-        this._wineVersion = getLatestStableVersion(setupWizard);
+        this._determineWineVersion(setupWizard);
 
         const wine = new Wine()
             .wizard(setupWizard)

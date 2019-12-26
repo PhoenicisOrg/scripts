@@ -7,5 +7,5 @@ new ZipScript()
     .applicationHomepage("https://hourglass.itch.io/hourglass")
     .author("Plata")
     .executable("Hourglass Gameplay Demo.exe")
-    .wineVersion(getLatestDevelopmentVersion())
+    .wineVersion(getLatestDevelopmentVersion)
     .wineArchitecture("amd64");

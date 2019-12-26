@@ -6,6 +6,6 @@ new SteamScript()
     .editor("The Astronauts")
     .author("Plata")
     .appId(400430)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .wineArchitecture("amd64");

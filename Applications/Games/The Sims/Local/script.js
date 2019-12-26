@@ -6,7 +6,7 @@ new LocalInstallerScript()
     .editor("Maxis")
     .applicationHomepage("http://www.thesims.com/")
     .wineDistribution("staging")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .author("Zemogiter")
     .category("Games")
     .executable("Sims.exe", ["-skip_intro"]);

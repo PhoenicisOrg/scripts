@@ -6,7 +6,7 @@ new LocalInstallerScript()
     .editor("Bethesda Softworks")
     .applicationHomepage("https://elderscrolls.bethesda.net/en/oblivion")
     .author("ImperatorS79")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .category("Games")
     .executable("Oblivion.exe");

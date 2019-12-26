@@ -7,5 +7,5 @@ new UplayScript()
     .editor("UBIart Montpellier")
     .author("Plata")
     .appId(80)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging");

@@ -7,7 +7,7 @@ new SteamScript()
     .name("Batman™: Arkham City")
     .editor("Rocksteady Studios")
     .author("ImperatorS79")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .appId(200260)
     .postInstall(function (wine/*, wizard*/) {

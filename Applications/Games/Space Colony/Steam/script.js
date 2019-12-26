@@ -10,7 +10,7 @@ new SteamScript()
     .editor("Firefly Studios")
     .author("Zemogiter")
     .wineDistribution("upstream")
-    .wineVersion(getLatestDevelopmentVersion())
+    .wineVersion(getLatestDevelopmentVersion)
     .appId(297920)
     .preInstall(function (wine) {
         new Vcrun2010(wine).go();

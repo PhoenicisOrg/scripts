@@ -11,7 +11,7 @@ new LocalInstallerScript()
     .author("Plata")
     .category("Games")
     .executable("Gw2.exe")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .preInstall(function (wine) {
         // avoid that launcher freezes the complete system

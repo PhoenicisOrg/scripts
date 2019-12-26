@@ -12,7 +12,7 @@ new OnlineInstallerScript()
     .url("https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UplayInstaller.exe")
     .category("Games")
     .executable("UbisoftGameLauncher.exe")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .preInstall(function (wine) {
         new Corefonts(wine).go();

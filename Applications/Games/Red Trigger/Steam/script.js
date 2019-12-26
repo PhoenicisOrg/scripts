@@ -6,5 +6,5 @@ new SteamScript()
     .editor("Maxime Vézina")
     .author("Plata")
     .appId(491130)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging");

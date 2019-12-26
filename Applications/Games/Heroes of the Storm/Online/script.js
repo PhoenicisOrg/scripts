@@ -14,7 +14,7 @@ new OnlineInstallerScript()
     .category("Games")
     .executable("Heroes of the Storm.exe")
     //The checksum is different each time you download
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .preInstall(function (wine) {
         new WindowsVersion(wine).withWindowsVersion("winxp").go();

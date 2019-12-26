@@ -6,6 +6,6 @@ new SteamScript()
     .editor("Interdimensional Games Inc")
     .author("Plata")
     .appId(726310)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .wineArchitecture("amd64");

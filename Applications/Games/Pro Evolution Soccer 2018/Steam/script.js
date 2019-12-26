@@ -6,6 +6,6 @@ new SteamScript()
     .editor("Konami Digital Entertainment Co., Ltd.")
     .author("Plata")
     .appId(592580)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .wineArchitecture("amd64");

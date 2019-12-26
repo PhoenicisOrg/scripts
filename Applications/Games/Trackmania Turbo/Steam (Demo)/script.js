@@ -8,7 +8,7 @@ new SteamScript()
     .editor("Nadeo")
     .author("Plata")
     .appId(456400)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .postInstall(function (wine /*, wizard*/) {
         new Uplay(wine).go();

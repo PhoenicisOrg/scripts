@@ -11,7 +11,7 @@ new SteamScript()
     .editor("Creative Assembly")
     .author("ImperatorS79")
     .appId(214950)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .postInstall(function (wine, wizard) {
         new D3DX9(wine).go();

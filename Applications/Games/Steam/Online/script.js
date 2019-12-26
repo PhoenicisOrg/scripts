@@ -11,7 +11,7 @@ new OnlineInstallerScript()
     .url("https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe")
     .checksum("4b1b85ec2499a4ce07c89609b256923a4fc479e5")
     .category("Games")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .preInstall(function (wine) {
         new Corefonts(wine).go();

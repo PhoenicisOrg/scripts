@@ -8,7 +8,7 @@ new SteamScript()
     .editor("Ubisoft Montreal")
     .author("Plata")
     .appId(242050)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .postInstall(function (wine /*, wizard*/) {
         // the automatically installed Uplay version does not update properly

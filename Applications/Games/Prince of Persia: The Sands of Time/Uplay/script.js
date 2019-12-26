@@ -7,5 +7,5 @@ new UplayScript()
     .editor("Kudosoft")
     .author("Plata")
     .appId(111)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging");

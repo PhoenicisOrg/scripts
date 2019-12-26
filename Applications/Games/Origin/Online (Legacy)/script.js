@@ -11,7 +11,7 @@ new OnlineInstallerScript()
     .url("https://origin-a.akamaihd.net/Origin-Client-Download/origin/legacy/OriginThinSetup.exe")
     .category("Games")
     .executable("Origin.exe")
-    .wineVersion(getLatestDevelopmentVersion())
+    .wineVersion(getLatestDevelopmentVersion)
     .preInstall(function (wine, wizard) {
         wizard.message(
             tr(

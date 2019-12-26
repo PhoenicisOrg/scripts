@@ -6,6 +6,6 @@ new SteamScript()
     .editor("Arkane Studios")
     .author("Plata")
     .appId(480490)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .wineArchitecture("amd64");

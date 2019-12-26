@@ -9,5 +9,5 @@ new OnlineInstallerScript()
     .url("https://www.dm.origin.com/download/OriginThinSetup.exe")
     .category("Games")
     .executable("Origin.exe")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging");

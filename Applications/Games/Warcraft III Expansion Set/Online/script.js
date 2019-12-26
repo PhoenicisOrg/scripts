@@ -14,7 +14,7 @@ new OnlineInstallerScript()
     // The checksum changes each time you download
     .category("Games")
     .executable("Warcraft III.exe")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .preInstall(function (wine) {
         new WindowsVersion(wine).withWindowsVersion("winxp").go();

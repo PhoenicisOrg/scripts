@@ -15,7 +15,7 @@ new OnlineInstallerScript()
     .installationArgs(["/S"])
     .category("Games")
     .executable("Spark.exe", ["http://live.theanubianwar.com/Release/Current/EarthEternal.car"])
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .preInstall(function (wine) {
         new WindowsVersion(wine).withWindowsVersion("winxp").go();

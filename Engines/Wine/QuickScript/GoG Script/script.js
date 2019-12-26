@@ -1,5 +1,4 @@
 const Wine = include("engines.wine.engine.object");
-const {getLatestStableVersion} = include("engines.wine.engine.versions");
 const QuickScript = include("engines.wine.quick_script.quick_script");
 const Downloader = include("utils.functions.net.download");
 const { createTempDir } = include("utils.functions.filesystem.files");
@@ -102,7 +101,7 @@ module.default = class GogScript extends QuickScript {
 
         setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
-        this._wineVersion = getLatestStableVersion(setupWizard);
+        this._determineWineVersion(setupWizard);
 
         this.loginToGog(setupWizard);
         const setupFile = this.download(setupWizard);

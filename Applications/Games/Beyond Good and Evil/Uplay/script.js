@@ -7,5 +7,5 @@ new UplayScript()
     .editor("Ubisoft")
     .author("Plata")
     .appId(232)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging");

@@ -12,7 +12,7 @@ new SteamScript()
     .editor("Paradox Interactive")
     .author("madoar")
     .appId(203630)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .preInstall(function (wine /*, wizard*/) {
         new Corefonts(wine).go();

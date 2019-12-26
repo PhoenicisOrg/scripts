@@ -8,7 +8,7 @@ new SteamScript()
     .name("Far Cry® 2")
     .editor("Ubisoft Montréal")
     .author("ImperatorS79")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .appId(19900)
     .preInstall(function (wine /*, wizard*/) {

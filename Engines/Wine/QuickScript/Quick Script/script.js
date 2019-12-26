@@ -1,8 +1,9 @@
+const {getLatestStableVersion} = include("engines.wine.engine.versions");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 
 module.default = class QuickScript {
     constructor() {
-        //this._wineVersion = getLatestStableVersion(); // fetch later (need wizard)
+        this._wineVersion = getLatestStableVersion;
         this._wineArchitecture = "x86";
         this._wineDistribution = "upstream";
         this._wineUserSettings = false;
@@ -132,6 +133,20 @@ module.default = class QuickScript {
     trustLevel(trustLevel) {
         this._trustLevel = trustLevel;
         return this;
+    }
+
+    /**
+     * determines which Wine version should be used
+     * required in case the version is computed by a function
+     * @param {wizard} wizard setup wizard (e.g. to show download progress of versions json)
+     * @returns {void}
+     */
+    _determineWineVersion(wizard) {
+        if (this._wineVersion && {}.toString.call(this._wineVersion) === '[object Function]') {
+            this._wineVersion = this._wineVersion(wizard);
+        } else {
+            this._wineVersion;
+        }
     }
 
     /**

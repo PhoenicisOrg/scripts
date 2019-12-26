@@ -8,7 +8,7 @@ new SteamScript()
     .name("Batman™: Arkham Asylum")
     .editor("Rocksteady Studios")
     .author("ImperatorS79")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .appId(35140)
     .postInstall(function (wine) {

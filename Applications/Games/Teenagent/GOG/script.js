@@ -8,6 +8,6 @@ new GogScript()
     .author("Quentin PÂRIS")
     .gogSetupFileName("teenagent/en1installer0")
     .category("Games")
-    .wineVersion(getLatestDosSupportVersion())
+    .wineVersion(getLatestDosSupportVersion)
     .wineDistribution("dos_support")
     .executable("TEENAGNT.EXE");

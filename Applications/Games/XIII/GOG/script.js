@@ -8,5 +8,5 @@ new GogScript()
     .author("Quentin PÂRIS")
     .gogSetupFileNames(["xiii/en1installer0", "xiii/en1installer1", "xiii/en1installer2"])
     .category("Games")
-    .wineVersion(getLatestStableVersion())
+    .wineVersion(getLatestStableVersion)
     .executable("xiii.exe");

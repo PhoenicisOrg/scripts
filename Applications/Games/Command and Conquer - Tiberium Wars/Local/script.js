@@ -12,7 +12,7 @@ new LocalInstallerScript()
     .author("qdii")
     .category("Games")
     .executable("CNC3.exe")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .preInstall(function (wine) {
         new WindowsVersion(wine).withWindowsVersion("winxp").go();

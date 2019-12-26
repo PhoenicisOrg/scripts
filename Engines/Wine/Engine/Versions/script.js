@@ -3,15 +3,28 @@ const Downloader = include("utils.functions.net.download");
 const propertyReader = Bean("propertyReader");
 
 /**
- * Sorts an array of Wine versions
- * @param {array} versions The versions array
+ * Sorts an array of Wine versions in place
+ * @param {array} versions The versions array (see packages in versions json)
  * @returns {void}
  */
-module.sortVersions = function (versions) {
+function sortVersions(versions) {
     versions.sort((a, b) =>
     {
-        const aVersionNumbers = Array.from(a.split('.')).map(item => Number(item));
-        const bVersionNumbers = Array.from(b.split('.')).map(item => Number(item));
+        // check version format
+        const versionRegExp = /^(\d+\.\d+(\.\d+)?)(.*)?$/;
+        if (!versionRegExp.test(a.version)) {
+            throw new Error(`invalid Wine version "${a.version}`);
+        }
+        if (!versionRegExp.test(b.version)) {
+            throw new Error(`invalid Wine version "${a.version}`);
+        }
+
+        // sort
+        const aVersionParts = a.version.match(versionRegExp);
+        const bVersionParts = b.version.match(versionRegExp);
+
+        const aVersionNumbers = Array.from(aVersionParts[1].split('.')).map(item => Number(item));
+        const bVersionNumbers = Array.from(bVersionParts[1].split('.')).map(item => Number(item));
 
         // ensure that cases where not all version numbers (major, minor, patch) are set are handled correctly
         const maxVersionIdx = 2;
@@ -25,24 +38,63 @@ module.sortVersions = function (versions) {
             }
         }
 
+        // ensure that cases where the description is not set are handled correctly
+        let aVersionDescription = aVersionParts[3];
+        if (typeof aVersionDescription === 'undefined') {
+            aVersionDescription = "";
+        }
+
+        let bVersionDescription = bVersionParts[3];
+        if (typeof bVersionDescription === 'undefined') {
+            bVersionDescription = "";
+        }
+
         // major
-        if (aVersionNumbers[0] == bVersionNumbers[0]) {
-            // minor
-            if (aVersionNumbers[1] == bVersionNumbers[1]) {
-                // patch
-                return aVersionNumbers[2] - bVersionNumbers[2];
-            } else {
-                return aVersionNumbers[1] - bVersionNumbers[1];
-            }
-        } else {
+        if (aVersionNumbers[0] != bVersionNumbers[0]) {
             return aVersionNumbers[0] - bVersionNumbers[0];
+        }
+        // minor
+        if (aVersionNumbers[1] != bVersionNumbers[1]) {
+            return aVersionNumbers[1] - bVersionNumbers[1];
+        }
+        // patch
+        if (aVersionNumbers[2] != bVersionNumbers[2]) {
+            return aVersionNumbers[2] - bVersionNumbers[2];
+        }
+        // description
+        if (aVersionDescription < bVersionDescription) {
+            return -1;
+        } else {
+            return 1;
         }
     }
     );
 }
 
 /**
- * Fetches the available Wine versions
+ * Fetches the latest available Wine version based on the category and version regex
+ * @param {wizard} wizard setup wizard to show the download progress of the versions json
+ * @param {string} category (e.g. "upstream-linux-x86")
+ * @param {string} regex regex the version must fulfill
+ * @returns {void}
+ */
+function getLatestVersion(wizard, category, regex) {
+    const versionsJson = module.getAvailableVersions(wizard);
+
+    const packages = versionsJson
+        .filter(distribution => distribution.name === category)
+        .flatMap(distribution => distribution.packages);
+
+    const regExp = new RegExp(regex);
+    const versions = packages
+        .filter(({version}) => regExp.test(version))
+        .flatMap(package => package.version);
+
+    return versions[versions.length-1];
+}
+
+/**
+ * Fetches the available Wine versions (sorted)
  * @param {wizard} wizard setup wizard to show the download progress
  * @returns {object} available Wine versions
  */
@@ -62,59 +114,24 @@ module.getAvailableVersions = function (wizard) {
         .onlyIfUpdateAvailable(true)
         .get();
 
-    return JSON.parse(cat(versionsFile));
+    const versionsJson = JSON.parse(cat(versionsFile));
+
+    versionsJson.forEach(distribution => sortVersions(distribution.packages));
+
+    return versionsJson;
 }
 
 
 module.getLatestStableVersion = function (wizard) {
-    const versionsJson = module.getAvailableVersions(wizard);
-
-    const packages = versionsJson
-        .filter(distribution => distribution.name === "upstream-linux-x86")
-        .flatMap(distribution => distribution.packages);
-
-    const regex = new RegExp('^\\d+\\.0(\\.\\d+)?$');
-    const stableVersions = packages
-        .filter(({version}) => regex.test(version))
-        .flatMap(package => package.version);
-
-    module.sortVersions(stableVersions);
-
-    return stableVersions[stableVersions.length-1];
+    return getLatestVersion(wizard, "upstream-linux-x86", /^\d+\.0(\.\d+)?$/);
 }
 
 module.getLatestDevelopmentVersion = function (wizard) {
-    const versionsJson = module.getAvailableVersions(wizard);
-
-    const packages = versionsJson
-        .filter(distribution => distribution.name === "upstream-linux-x86")
-        .flatMap(distribution => distribution.packages);
-
-    const regex = new RegExp('^\\d+\\.\\d(\\.\\d+)?$');
-    const develVersions = packages
-        .filter(({version}) => regex.test(version))
-        .flatMap(package => package.version);
-
-    module.sortVersions(develVersions);
-
-    return develVersions[develVersions.length-1];
+    return getLatestVersion(wizard, "upstream-linux-x86", /^\d+\.\d(\.\d+)?$/);
 }
 
 module.getLatestStagingVersion = function (wizard) {
-    const versionsJson = module.getAvailableVersions(wizard);
-
-    const packages = versionsJson
-        .filter(distribution => distribution.name === "staging-linux-x86")
-        .flatMap(distribution => distribution.packages);
-
-    const regex = new RegExp('^\\d+\\.\\d(\\.\\d+)?$');
-    const stagingVersions = packages
-        .filter(({version}) => regex.test(version))
-        .flatMap(package => package.version);
-
-    module.sortVersions(stagingVersions);
-
-    return stagingVersions[stagingVersions.length-1];
+    return getLatestVersion(wizard, "staging-linux-x86", /^\d+\.\d(\.\d+)?$/);
 }
 
 module.getLatestDosSupportVersion = function (/*wizard*/) {

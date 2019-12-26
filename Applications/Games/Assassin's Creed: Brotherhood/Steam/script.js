@@ -8,7 +8,7 @@ new SteamScript()
     .editor("Ubisoft")
     .author("Plata")
     .appId(48190)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .postInstall(function (wine /*, wizard*/) {
         new Uplay(wine).go();

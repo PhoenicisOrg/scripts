@@ -16,7 +16,7 @@ new OnlineInstallerScript()
     .checksum("faa29721de18a171561a3e4dfa243953ff98aa09")
     .executable("GalaxyClient.exe")
     .wineArchitecture("amd64")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .preInstall(function (wine /*, wizard*/) {
         new Corefonts(wine).go();

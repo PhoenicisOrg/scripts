@@ -31,7 +31,7 @@ const WineShortcut = include("engines.wine.shortcuts.wine");
 
 module.default = class QuickScript {
     constructor() {
-        this._wineVersion = getLatestStableVersion();
+        this._wineVersion = getLatestStableVersion;
         this._wineArchitecture = "x86";
         this._wineDistribution = "upstream";
         this._wineUserSettings = false;

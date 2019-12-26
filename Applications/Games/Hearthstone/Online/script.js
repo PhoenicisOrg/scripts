@@ -12,7 +12,7 @@ new OnlineInstallerScript()
     .url("https://eu.battle.net/download/getInstaller?os=win&installer=Hearthstone-Setup.exe")
     .category("Games")
     .executable("Battle.net.exe")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .preInstall(function (wine /*, wizard*/) {
         new Vcrun2015(wine).go();

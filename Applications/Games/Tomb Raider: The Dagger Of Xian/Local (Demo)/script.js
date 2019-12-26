@@ -8,5 +8,5 @@ new LocalInstallerScript()
     .author("Plata")
     .category("Games")
     .executable("TombRaiderDOX.exe")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging");

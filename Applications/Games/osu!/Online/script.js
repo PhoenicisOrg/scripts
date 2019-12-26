@@ -11,7 +11,7 @@ new OnlineInstallerScript()
     .author("ImperatorS79")
     .category("Games")
     .executable("osu!.exe")
-    .wineVersion(getLatestDevelopmentVersion())
+    .wineVersion(getLatestDevelopmentVersion)
     .url("https://m1.ppy.sh/r/osu!install.exe")
     .preInstall(function (wine /*, wizard*/) {
         //maybe needs cjkfonts or set sound driver to alsa

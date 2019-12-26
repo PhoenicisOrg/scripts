@@ -6,6 +6,6 @@ new SteamScript()
     .editor("Ivory Tower in collaboration with Ubisoft Reflections")
     .author("Plata")
     .appId(241560)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .wineArchitecture("amd64");

@@ -6,5 +6,5 @@ new SteamScript()
     .editor("Cryptic Studios")
     .author("ImperatorS79")
     .appId(9900)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging");

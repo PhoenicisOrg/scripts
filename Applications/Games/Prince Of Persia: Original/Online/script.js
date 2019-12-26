@@ -9,6 +9,6 @@ new ZipScript()
     .url("https://repository.playonlinux.com/divers/oldware/prince.zip")
     .checksum("6c4148233f840011715c351c399d35b0fc716ae7")
     .category("Games")
-    .wineVersion(getLatestDosSupportVersion())
+    .wineVersion(getLatestDosSupportVersion)
     .wineDistribution("dos_support")
     .executable("PRINCE.EXE");

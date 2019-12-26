@@ -12,7 +12,7 @@ new SteamScript()
     .author("Zemogiter")
     .applicationHomepage("https://unknownworlds.com/subnautica/")
     .wineDistribution("upstream")
-    .wineVersion(getLatestStableVersion())
+    .wineVersion(getLatestStableVersion)
     .wineArchitecture("amd64")
     .appId(264710)
     .preInstall(function (wine) {

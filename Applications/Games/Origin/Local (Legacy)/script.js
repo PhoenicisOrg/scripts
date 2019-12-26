@@ -10,7 +10,7 @@ new LocalInstallerScript()
     .author("Plata")
     .category("Games")
     .executable("Origin.exe")
-    .wineVersion(getLatestDevelopmentVersion())
+    .wineVersion(getLatestDevelopmentVersion)
     .preInstall(function (wine, wizard) {
         wizard.message(
             tr(

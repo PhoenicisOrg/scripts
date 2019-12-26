@@ -7,7 +7,7 @@ new SteamScript()
     .name("Batman™: Arkham Origins")
     .editor("WB Games Montreal, Splash Damage")
     .author("ImperatorS79")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .postInstall(function (wine/*, wizard*/) {
         new CSMT(wine).go();

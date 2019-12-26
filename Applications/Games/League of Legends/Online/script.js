@@ -97,7 +97,7 @@ new CustomInstallerScript()
     })
     .category("Games")
     .wineDistribution("staging")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .preInstall(function (wine) {
         new WindowsVersion(wine).withWindowsVersion("winxp").go();
 

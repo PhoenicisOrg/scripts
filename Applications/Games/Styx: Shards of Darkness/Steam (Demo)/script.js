@@ -6,6 +6,6 @@ new SteamScript()
     .editor("Cyanide Studio")
     .author("Plata")
     .appId(630880)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .wineArchitecture("amd64");

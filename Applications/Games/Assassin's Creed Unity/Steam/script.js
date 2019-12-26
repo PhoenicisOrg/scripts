@@ -6,6 +6,6 @@ new SteamScript()
     .editor("Ubisoft")
     .author("Plata")
     .appId(289650)
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .wineArchitecture("amd64");

@@ -5,6 +5,6 @@ new SteamScript()
     .name("The Elder Scrolls IV: Oblivion")
     .editor("Bethesda Game Studios")
     .author("ImperatorS79")
-    .wineVersion(getLatestStagingVersion())
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .appId(22330);
