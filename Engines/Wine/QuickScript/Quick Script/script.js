@@ -3,7 +3,7 @@ const WineShortcut = include("engines.wine.shortcuts.wine");
 
 module.default = class QuickScript {
     constructor() {
-        this._wineVersion = getLatestStableVersion;
+        this._wineVersionFunction = getLatestStableVersion;
         this._wineArchitecture = "x86";
         this._wineDistribution = "upstream";
         this._wineUserSettings = false;
@@ -90,7 +90,11 @@ module.default = class QuickScript {
     }
 
     wineVersion(wineVersion) {
-        this._wineVersion = wineVersion;
+        if (wineVersion && wineVersion instanceof Function) {
+            this._wineVersionFunction = wineVersion;
+        } else {
+            this._wineVersionFunction = function () { return wineVersion; };
+        }
         return this;
     }
 
@@ -142,11 +146,7 @@ module.default = class QuickScript {
      * @returns {void}
      */
     _determineWineVersion(wizard) {
-        if (this._wineVersion && {}.toString.call(this._wineVersion) === '[object Function]') {
-            this._wineVersion = this._wineVersion(wizard, this._wineArchitecture);
-        } else {
-            this._wineVersion;
-        }
+        this._wineVersion = this._wineVersionFunction(wizard, this._wineArchitecture);
     }
 
     /**
