@@ -87,7 +87,7 @@ function getLatestVersion(wizard, category, regex) {
     const regExp = new RegExp(regex);
     const versions = packages
         .filter(({version}) => regExp.test(version))
-        .flatMap(package => package.version);
+        .map(package => package.version);
 
     return versions[versions.length-1];
 }
