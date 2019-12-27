@@ -143,7 +143,7 @@ module.default = class QuickScript {
      */
     _determineWineVersion(wizard) {
         if (this._wineVersion && {}.toString.call(this._wineVersion) === '[object Function]') {
-            this._wineVersion = this._wineVersion(wizard);
+            this._wineVersion = this._wineVersion(wizard, this._wineArchitecture);
         } else {
             this._wineVersion;
         }

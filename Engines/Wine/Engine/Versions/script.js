@@ -28,8 +28,7 @@ function sortVersions(versions) {
 
         // ensure that cases where not all version numbers (major, minor, patch) are set are handled correctly
         const maxVersionIdx = 2;
-        let i;
-        for (i = 0; i <= maxVersionIdx; i++) {
+        for (let i = 0; i <= maxVersionIdx; i++) {
             if (typeof aVersionNumbers[i] === 'undefined') {
                 aVersionNumbers[i] = 0;
             }
@@ -75,7 +74,7 @@ function sortVersions(versions) {
  * Fetches the latest available Wine version based on the category and version regex
  * @param {wizard} wizard setup wizard to show the download progress of the versions json
  * @param {string} category (e.g. "upstream-linux-x86")
- * @param {string} regex regex the version must fulfill
+ * @param {RegExp} regex regex the version must fulfill
  * @returns {void}
  */
 function getLatestVersion(wizard, category, regex) {
@@ -122,18 +121,18 @@ module.getAvailableVersions = function (wizard) {
 }
 
 
-module.getLatestStableVersion = function (wizard) {
-    return getLatestVersion(wizard, "upstream-linux-x86", /^\d+\.0(\.\d+)?$/);
+module.getLatestStableVersion = function (wizard, architecture) {
+    return getLatestVersion(wizard, "upstream-linux-" + architecture, /^\d+\.0(\.\d+)?$/);
 }
 
-module.getLatestDevelopmentVersion = function (wizard) {
-    return getLatestVersion(wizard, "upstream-linux-x86", /^\d+\.\d+(\.\d+)?$/);
+module.getLatestDevelopmentVersion = function (wizard, architecture) {
+    return getLatestVersion(wizard, "upstream-linux-" + architecture, /^\d+\.\d+(\.\d+)?$/);
 }
 
-module.getLatestStagingVersion = function (wizard) {
-    return getLatestVersion(wizard, "staging-linux-x86", /^\d+\.\d+(\.\d+)?$/);
+module.getLatestStagingVersion = function (wizard, architecture) {
+    return getLatestVersion(wizard, "staging-linux-" + architecture, /^\d+\.\d+(\.\d+)?$/);
 }
 
-module.getLatestDosSupportVersion = function (/*wizard*/) {
+module.getLatestDosSupportVersion = function (/*wizard, architecture*/) {
     return "4.0";
 }
