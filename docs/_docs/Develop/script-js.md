@@ -287,7 +287,7 @@ setupWizard.presentation(application, "Editor", "http://applicationhomepage.com"
 
 const wine = new Wine()
     .wizard(setupWizard)
-    .prefix(application, "upstream", "x86", getLatestStableVersion(setupWizard));
+    .prefix(application, "upstream", "x86", getLatestStableVersion(setupWizard, "x86"));
 
 new Luna(wine).go();    
     
