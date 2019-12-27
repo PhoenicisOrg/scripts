@@ -1,7 +1,7 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 
 const WineShortcut = include("engines.wine.shortcuts.wine");
-const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 const OverrideDLL = include("engines.wine.plugins.override_dll");
 
@@ -9,7 +9,7 @@ new LocalInstallerScript()
     .name("Microsoft Office 2013")
     .editor("Microsoft")
     .applicationHomepage("https://products.office.com/fr-be/microsoft-office-2013")
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .author("ImperatorS79")
     .category("Office")

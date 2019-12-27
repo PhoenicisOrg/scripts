@@ -3,7 +3,7 @@ const PlainInstaller = include("utils.functions.apps.plain_installer");
 const Resource = include("utils.functions.net.resource");
 const { CabExtract } = include("utils.functions.filesystem.extract");
 const Wine = include("engines.wine.engine.object");
-const { LATEST_STABLE_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStableVersion } = include("engines.wine.engine.versions");
 const { remove } = include("utils.functions.filesystem.files");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 const AppResource = include("utils.functions.apps.resources");
@@ -31,7 +31,7 @@ new PlainInstaller().withScript(() => {
 
     var wine = new Wine()
         .wizard(setupWizard)
-        .prefix("InternetExplorer6", "upstream", "x86", LATEST_STABLE_VERSION)
+        .prefix("InternetExplorer6", "upstream", "x86", getLatestStableVersion(setupWizard))
         .create();
 
     new Msls31(wine).go();

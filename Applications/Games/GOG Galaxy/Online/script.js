@@ -1,5 +1,5 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 const { remove, lns } = include("utils.functions.filesystem.files");
 
 const Corefonts = include("engines.wine.verbs.corefonts");
@@ -16,7 +16,7 @@ new OnlineInstallerScript()
     .checksum("faa29721de18a171561a3e4dfa243953ff98aa09")
     .executable("GalaxyClient.exe")
     .wineArchitecture("amd64")
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .preInstall(function (wine /*, wizard*/) {
         new Corefonts(wine).go();
