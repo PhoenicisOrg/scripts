@@ -31,7 +31,7 @@ new PlainInstaller().withScript(() => {
 
     var wine = new Wine()
         .wizard(setupWizard)
-        .prefix("InternetExplorer6", "upstream", "x86", getLatestStableVersion(setupWizard))
+        .prefix("InternetExplorer6", "upstream", "x86", getLatestStableVersion(setupWizard, "x86"))
         .create();
 
     new Msls31(wine).go();
