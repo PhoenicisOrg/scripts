@@ -1,5 +1,5 @@
 const Downloader = include("utils.functions.net.download");
-const {createTempDir, remove, cat} = include("utils.functions.filesystem.files");
+const { createTempDir, remove, cat } = include("utils.functions.filesystem.files");
 
 /**
  * Get an array of tag corresponding to the releases in a git repository

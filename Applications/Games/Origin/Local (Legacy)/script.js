@@ -1,7 +1,7 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 const Downloader = include("utils.functions.net.download");
-const {Extractor} = include("utils.functions.filesystem.extract");
-const {getLatestDevelopmentVersion} = include("engines.wine.engine.versions");
+const { Extractor } = include("utils.functions.filesystem.extract");
+const { getLatestDevelopmentVersion } = include("engines.wine.engine.versions");
 
 new LocalInstallerScript()
     .name("Origin")

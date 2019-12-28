@@ -1,6 +1,6 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 const Resource = include("utils.functions.net.resource");
-const {getLatestDevelopmentVersion} = include("engines.wine.engine.versions");
+const { getLatestDevelopmentVersion } = include("engines.wine.engine.versions");
 
 new LocalInstallerScript()
     .name("Space Colony")

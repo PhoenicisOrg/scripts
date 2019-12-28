@@ -1,4 +1,4 @@
-const {Checksum} = include("utils.functions.filesystem.files");
+const { Checksum } = include("utils.functions.filesystem.files");
 
 const downloader = Bean("downloader");
 

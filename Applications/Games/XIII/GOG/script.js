@@ -1,5 +1,5 @@
 const GogScript = include("engines.wine.quick_script.gog_script");
-const {getLatestStableVersion} = include("engines.wine.engine.versions");
+const { getLatestStableVersion } = include("engines.wine.engine.versions");
 
 new GogScript()
     .name("XIII")

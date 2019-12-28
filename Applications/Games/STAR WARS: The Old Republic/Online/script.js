@@ -1,6 +1,6 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const {writeToFile} = include("utils.functions.filesystem.files");
-const {getLatestStagingVersion} = include("engines.wine.engine.versions");
+const { writeToFile } = include("utils.functions.filesystem.files");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 const D3DX9 = include("engines.wine.verbs.d3dx9");
 

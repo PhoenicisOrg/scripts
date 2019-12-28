@@ -1,6 +1,6 @@
 const QuickScript = include("engines.wine.quick_script.quick_script");
 const Wine = include("engines.wine.engine.object");
-const {fileName} = include("utils.functions.filesystem.files");
+const { fileName } = include("utils.functions.filesystem.files");
 
 const Luna = include("engines.wine.verbs.luna");
 

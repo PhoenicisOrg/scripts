@@ -1,4 +1,4 @@
-const {WINE_PREFIX_DIR} = include("engines.wine.engine.constants");
+const { WINE_PREFIX_DIR } = include("engines.wine.engine.constants");
 
 const ShortcutInfoDTOBuilderClass = Java.type("org.phoenicis.library.dto.ShortcutInfoDTO.Builder");
 const ShortcutDTOBuilderClass = Java.type("org.phoenicis.library.dto.ShortcutDTO.Builder");

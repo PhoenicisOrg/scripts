@@ -1,7 +1,7 @@
 const QuickScript = include("engines.wine.quick_script.quick_script");
 const Downloader = include("utils.functions.net.download");
 const Wine = include("engines.wine.engine.object");
-const {createTempFile} = include("utils.functions.filesystem.files");
+const { createTempFile } = include("utils.functions.filesystem.files");
 
 const Luna = include("engines.wine.verbs.luna");
 

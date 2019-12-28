@@ -1,5 +1,5 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
-const {getLatestStagingVersion} = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 new LocalInstallerScript()
     .name("Epic Games Launcher")

@@ -1,4 +1,4 @@
-const {cat, touch} = include("utils.functions.filesystem.files");
+const { cat, touch } = include("utils.functions.filesystem.files");
 const Downloader = include("utils.functions.net.download");
 const propertyReader = Bean("propertyReader");
 
@@ -86,7 +86,7 @@ function getLatestVersion(wizard, category, regex) {
 
     const regExp = new RegExp(regex);
     const versions = packages
-        .filter(({version}) => regExp.test(version))
+        .filter(({ version }) => regExp.test(version))
         .map(package => package.version);
 
     return versions[versions.length-1];

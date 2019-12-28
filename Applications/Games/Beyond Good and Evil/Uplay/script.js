@@ -1,5 +1,5 @@
 const UplayScript = include("engines.wine.quick_script.uplay_script");
-const {getLatestStagingVersion} = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 new UplayScript()
     .name("Beyond Good and Evil™")
