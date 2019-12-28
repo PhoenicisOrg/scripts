@@ -74,7 +74,7 @@ module.GitHubReleaseDownloader = class {
             .map(asset =>
                 new Resource()
                     .wizard(this.wizard)
-                    .url(asset.url)
+                    .url(asset.browser_download_url)
                     .name(asset.name)
                     .get()
             );
