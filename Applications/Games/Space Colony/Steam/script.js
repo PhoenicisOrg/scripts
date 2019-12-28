@@ -12,7 +12,7 @@ new SteamScript()
     .wineDistribution("upstream")
     .wineVersion(getLatestDevelopmentVersion)
     .appId(297920)
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         new Vcrun2010(wine).go();
         new DotNET40(wine).go();
         new D3DX9(wine).go();

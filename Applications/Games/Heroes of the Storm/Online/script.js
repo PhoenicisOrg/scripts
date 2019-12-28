@@ -16,7 +16,7 @@ new OnlineInstallerScript()
     //The checksum is different each time you download
     .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         new WindowsVersion(wine).withWindowsVersion("winxp").go();
 
         new Vcrun2015(wine).go();

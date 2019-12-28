@@ -17,7 +17,7 @@ new OnlineInstallerScript()
     .executable("Spark.exe", ["http://live.theanubianwar.com/Release/Current/EarthEternal.car"])
     .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         new WindowsVersion(wine).withWindowsVersion("winxp").go();
         new Corefonts(wine).go();
         new D3DX9(wine).go();

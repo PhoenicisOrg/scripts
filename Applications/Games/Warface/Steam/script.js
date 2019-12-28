@@ -10,6 +10,6 @@ new SteamScript()
     .appId(291480)
     .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
-    .postInstall(function (wine /*, wizard*/) {
+    .postInstall((wine /*, wizard*/) => {
         new CSMT(wine).go();
     });

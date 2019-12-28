@@ -14,7 +14,7 @@ new OnlineInstallerScript()
     .executable("UbisoftGameLauncher.exe")
     .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         new Corefonts(wine).go();
 
         new WindowsVersion(wine)

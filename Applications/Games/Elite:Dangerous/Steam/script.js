@@ -10,7 +10,7 @@ new SteamScript()
     .editor("Frontier Developments")
     .author("ImperatorS79")
     .wineArchitecture("amd64")
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall((wine /*, wizard*/) => {
         new DotNET45(wine).go();
         new Corefonts(wine).go();
         new Vcrun2015(wine).go();

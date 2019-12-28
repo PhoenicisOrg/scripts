@@ -10,6 +10,6 @@ new SteamScript()
     .wineArchitecture("amd64")
     .executable("Steam.exe", ["-silent", "-applaunch", 391920, "-nosplash", "-opengl4"])
     .gameOverlay(false)
-    .postInstall(function (wine) {
+    .postInstall((wine) => {
         new WindowsVersion(wine).withApplicationWindowsVersion("EtherOne-Win32-Shipping.exe", "win7").go();
     });

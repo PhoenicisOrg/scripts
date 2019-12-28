@@ -11,7 +11,7 @@ new SteamScript()
     .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .appId(35140)
-    .postInstall(function (wine) {
+    .postInstall((wine) => {
         new GLSL(wine).withMode("disabled").go();
         new CSMT(wine).go();
     });
