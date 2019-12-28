@@ -1,5 +1,5 @@
 const ZipScript = include("engines.wine.quick_script.zip_script");
-const {getLatestDevelopmentVersion} = include("engines.wine.engine.versions");
+const { getLatestDevelopmentVersion } = include("engines.wine.engine.versions");
 
 new ZipScript()
     .name("Hourglass (Demo)")

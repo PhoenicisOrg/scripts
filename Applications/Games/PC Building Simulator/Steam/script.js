@@ -1,5 +1,5 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-const {getLatestDevelopmentVersion} = include("engines.wine.engine.versions");
+const { getLatestDevelopmentVersion } = include("engines.wine.engine.versions");
 
 const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
 const Corefonts = include("engines.wine.verbs.corefonts");

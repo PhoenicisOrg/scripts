@@ -1,5 +1,5 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const {getLatestDevelopmentVersion} = include("engines.wine.engine.versions");
+const { getLatestDevelopmentVersion } = include("engines.wine.engine.versions");
 
 const DotNET45 = include("engines.wine.verbs.dotnet45");
 const Corefonts = include("engines.wine.verbs.corefonts");

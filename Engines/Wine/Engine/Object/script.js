@@ -1,5 +1,5 @@
 const WineEngine = include("engines.wine.engine.implementation");
-const {fileExists} = include("utils.functions.filesystem.files");
+const { fileExists } = include("utils.functions.filesystem.files");
 
 const configFactory = Bean("compatibleConfigFileFormatFactory");
 const operatingSystemFetcher = Bean("operatingSystemFetcher");

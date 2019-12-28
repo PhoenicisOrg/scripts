@@ -1,4 +1,4 @@
-const {getLatestStableVersion} = include("engines.wine.engine.versions");
+const { getLatestStableVersion } = include("engines.wine.engine.versions");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 
 module.default = class QuickScript {
