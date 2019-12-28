@@ -369,7 +369,7 @@ module.default = class WineEngine {
         let distribution = "";
 
         if (!fileExists(workingContainerDirectory)) {
-            throw tr('Wine prefix "{0}" does not exist', this.getWorkingContainer());
+            throw new tr('Wine prefix "{0}" does not exist', this.getWorkingContainer());
         }
 
         const containerConfiguration = configFactory.open(workingContainerDirectory + "/phoenicis.cfg");
