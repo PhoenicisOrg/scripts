@@ -14,7 +14,7 @@ new OnlineInstallerScript()
     .executable("Battle.net.exe")
     .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall((wine /*, wizard*/) => {
         new Vcrun2015(wine).go();
         new Corefonts(wine).go();
     });

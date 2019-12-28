@@ -28,6 +28,7 @@ rules:
   linebreak-style:
     - 2
     - unix
+  prefer-arrow-callback: 2
 
 globals:
   include: false

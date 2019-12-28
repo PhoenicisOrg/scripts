@@ -162,7 +162,7 @@ module.default = class WineShortcut {
         const myEnv = { WINEDEBUG: "-all" };
         if (typeof this._environment !== "undefined") {
             var envJSON = JSON.parse(this._environment);
-            Object.keys(envJSON).forEach(function (key) {
+            Object.keys(envJSON).forEach((key) => {
                 myEnv[key] = envJSON[key];
             });
         }

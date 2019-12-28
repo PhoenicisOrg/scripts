@@ -48,7 +48,7 @@ new PlainInstaller().withScript(() => {
     // delete existing IE, otherwise installer will abort with "newer IE installed"
     remove(wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Internet Explorer/iexplore.exe");
     ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"].forEach(
-        function (dll) {
+        (dll) => {
             remove(wine.prefixDirectory() + "/drive_c/windows/system32/" + dll + ".dll");
         }
     );

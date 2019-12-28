@@ -11,6 +11,6 @@ new SteamScript()
     .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .wineArchitecture("amd64")
-    .postInstall(function (wine /*, wizard*/) {
+    .postInstall((wine /*, wizard*/) => {
         new Uplay(wine).go();
     });

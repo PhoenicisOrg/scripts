@@ -11,7 +11,7 @@ new SteamScript()
     .applicationHomepage("https://rimworldgame.com/")
     .wineArchitecture("amd64")
     .appId(294100)
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         new Corefonts(wine).go();
         new Vcrun2017(wine).go();
         new D3DX9(wine).go();

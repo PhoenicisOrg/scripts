@@ -11,7 +11,7 @@ new SteamScript()
     .wineDistribution("staging")
     .wineArchitecture("amd64")
     .appId(454650)
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall((wine /*, wizard*/) => {
         new CSMT(wine).go();
         //might need dxfullsetup d3d11 and d3d_43 compiler, but test result is old (2.10)
     });

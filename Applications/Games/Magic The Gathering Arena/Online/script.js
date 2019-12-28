@@ -12,7 +12,7 @@ new OnlineInstallerScript()
     .category("Games")
     .wineDistribution("staging")
     .wineVersion(getLatestStagingVersion)
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         new DXVK(wine).go();
         new TakeFocus(wine).withMode("N").go();
     })

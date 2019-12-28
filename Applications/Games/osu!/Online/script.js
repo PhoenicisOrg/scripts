@@ -13,7 +13,7 @@ new OnlineInstallerScript()
     .executable("osu!.exe")
     .wineVersion(getLatestDevelopmentVersion)
     .url("https://m1.ppy.sh/r/osu!install.exe")
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall((wine /*, wizard*/) => {
         //maybe needs cjkfonts or set sound driver to alsa
         new Corefonts(wine).go();
         new DotNET45(wine).go();

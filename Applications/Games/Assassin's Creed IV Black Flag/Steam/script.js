@@ -10,7 +10,7 @@ new SteamScript()
     .appId(242050)
     .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
-    .postInstall(function (wine /*, wizard*/) {
+    .postInstall((wine /*, wizard*/) => {
         // the automatically installed Uplay version does not update properly
         new Uplay(wine).go();
     });

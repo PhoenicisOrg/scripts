@@ -9,7 +9,7 @@ new SteamScript()
     .author("ImperatorS79")
     .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
-    .postInstall(function (wine/*, wizard*/) {
+    .postInstall((wine/*, wizard*/) => {
         new CSMT(wine).go();
         //maybe needs xact
     })

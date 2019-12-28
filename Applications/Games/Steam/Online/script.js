@@ -13,7 +13,7 @@ new OnlineInstallerScript()
     .category("Games")
     .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         new Corefonts(wine).go();
     })
     .executable("Steam.exe", ["-no-cef-sandbox"]);

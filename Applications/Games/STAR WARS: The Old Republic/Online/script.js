@@ -15,11 +15,11 @@ new OnlineInstallerScript()
     .checksum("c538935eff4ec90ce2e48dc7e515a8dec2f15f58")
     .category("Games")
     .executable("launcher.exe")
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall((wine /*, wizard*/) => {
         //it seems it brings better performance
         new D3DX9(wine).go();
     })
-    .postInstall(function (wine /*, wizard*/) {
+    .postInstall((wine /*, wizard*/) => {
         //without that the launcher is unable to download the game
         var path =
 			wine.prefixDirectory() +
