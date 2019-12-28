@@ -1,7 +1,7 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 const Downloader = include("utils.functions.net.download");
 const {Extractor} = include("utils.functions.filesystem.extract");
-const {LATEST_DEVELOPMENT_VERSION} = include("engines.wine.engine.versions");
+const {getLatestDevelopmentVersion} = include("engines.wine.engine.versions");
 
 new LocalInstallerScript()
     .name("Origin")
@@ -10,7 +10,7 @@ new LocalInstallerScript()
     .author("Plata")
     .category("Games")
     .executable("Origin.exe")
-    .wineVersion(LATEST_DEVELOPMENT_VERSION)
+    .wineVersion(getLatestDevelopmentVersion)
     .preInstall(function (wine, wizard) {
         wizard.message(
             tr(

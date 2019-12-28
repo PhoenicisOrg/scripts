@@ -28,6 +28,8 @@ module.default = class OriginScript extends QuickScript {
 
         setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
+        this._determineWineVersion(setupWizard);
+
         const tempFile = createTempFile("exe");
 
         new Downloader()

@@ -1,5 +1,7 @@
 const CustomInstallerScript = include("engines.wine.quick_script.custom_installer_script");
-const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
+
 const Resource = include("utils.functions.net.resource");
 
 const Corefonts = include("engines.wine.verbs.corefonts");
@@ -81,7 +83,7 @@ new CustomInstallerScript()
     .executable("LeagueClient.exe")
     .category("Games")
     .wineDistribution("staging")
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion)
     .preInstall(function (wine) {
         new Corefonts(wine).go();
     });

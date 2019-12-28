@@ -2,7 +2,7 @@ const PlainInstaller = include("utils.functions.apps.plain_installer");
 
 const Resource = include("utils.functions.net.resource");
 const Wine = include("engines.wine.engine.object");
-const { LATEST_STABLE_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStableVersion } = include("engines.wine.engine.versions");
 const { remove } = include("utils.functions.filesystem.files");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 
@@ -21,7 +21,7 @@ new PlainInstaller().withScript(() => {
 
     var wine = new Wine()
         .wizard(setupWizard)
-        .prefix("InternetExplorer7", "upstream", "x86", LATEST_STABLE_VERSION)
+        .prefix("InternetExplorer7", "upstream", "x86", getLatestStableVersion(setupWizard, "x86"))
         .create();
 
     new Sandbox(wine).go();

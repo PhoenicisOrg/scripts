@@ -1,6 +1,6 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
 
-const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 const Vcrun2015 = include("engines.wine.verbs.vcrun2015");
 const Corefonts = include("engines.wine.verbs.corefonts");
@@ -16,7 +16,7 @@ new OnlineInstallerScript()
     .author("ImperatorS79, kreyren")
     .url("https://eu.battle.net/download/getInstaller?os=win&installer=Overwatch-Setup.exe")
     //The checksum is different each time you download
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .wineArchitecture("amd64")
     .category("Games")

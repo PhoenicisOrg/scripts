@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Github Releases",
+    "id"                         : "utils.functions.net.githubreleases",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}

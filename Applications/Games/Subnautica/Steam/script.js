@@ -1,5 +1,5 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-const { LATEST_STABLE_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStableVersion } = include("engines.wine.engine.versions");
 
 const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
 const Vcrun2013 = include("engines.wine.verbs.vcrun2013");
@@ -12,7 +12,7 @@ new SteamScript()
     .author("Zemogiter")
     .applicationHomepage("https://unknownworlds.com/subnautica/")
     .wineDistribution("upstream")
-    .wineVersion(LATEST_STABLE_VERSION)
+    .wineVersion(getLatestStableVersion)
     .wineArchitecture("amd64")
     .appId(264710)
     .preInstall(function (wine) {
@@ -33,7 +33,7 @@ new SteamScript()
 
         wizard.message(
             tr(
-                "Due to a potential confilct with Vulkan, shader mods break the game (the executable file works but no window is displayed)."
+                "Due to a potential conflict with Vulkan, shader mods break the game (the executable file works but no window is displayed)."
             )
         );
     })

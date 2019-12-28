@@ -6,7 +6,7 @@ const {WINE_PREFIX_DIR} = include("engines.wine.engine.constants");
 
 const configFactory = Bean("compatibleConfigFileFormatFactory");
 const exeAnalyser = Bean("exeAnalyser");
-const propertyReader = Bean("propertyReader")
+const propertyReader = Bean("propertyReader");
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
 
 const FileClass = Java.type("java.io.File");
@@ -23,6 +23,7 @@ module.default = class WineEngine {
         this._ldPath = propertyReader.getProperty("application.environment.ld");
         this._wineEnginesDirectory = propertyReader.getProperty("application.user.engines") + "/wine";
         this._winePrefixesDirectory = propertyReader.getProperty("application.user.containers") + "/" + WINE_PREFIX_DIR + "/";
+        this._useRuntime = (propertyReader.getProperty("application.environment.wineRuntime") !== "false");
         this._wineWebServiceUrl = propertyReader.getProperty("webservice.wine.url");
         this._wizard = null;
         this._workingContainer = "";
@@ -43,7 +44,9 @@ module.default = class WineEngine {
     }
 
     install(subCategory, version) {
-        this._installRuntime(this.getWizard());
+        if (this._useRuntime) {
+            this._installRuntime(this.getWizard());
+        }
 
         const [distribution, , architecture] = subCategory.split("-");
         const localDirectory = this.getLocalDirectory(subCategory, version);
@@ -444,23 +447,26 @@ module.default = class WineEngine {
             ldPath = userData.ldPath + ldPath;
         }
 
+        let runtimePath = "";
+        let runtimePath64 = "";
+        if (this._useRuntime) {
+            runtimePath = this._wineEnginesDirectory + "/runtime/lib/";
+            runtimePath64 = this._wineEnginesDirectory + "/runtime/lib64/";
+        }
+        const wineLibPath = this.getLocalDirectory(subCategory, version) + "/lib/";
+        const wineLibPath64 = this.getLocalDirectory(subCategory, version) + "/lib64/";
+
         if (architecture == "amd64") {
             ldPath =
-                this._wineEnginesDirectory +
-                "/runtime/lib64/:" +
-                this._wineEnginesDirectory +
-                "/runtime/lib/:" +
-                this.getLocalDirectory(subCategory, version) +
-                "/lib64/:" +
-                this.getLocalDirectory(subCategory, version) +
-                "/lib/:" +
+                runtimePath64 + ":" +
+                runtimePath + ":" +
+                wineLibPath64 + ":" +
+                wineLibPath + ":" +
                 ldPath;
         } else {
             ldPath =
-                this._wineEnginesDirectory +
-                "/runtime/lib/:" +
-                this.getLocalDirectory(subCategory, version) +
-                "/lib/:" +
+                runtimePath + ":" +
+                wineLibPath + ":" +
                 ldPath;
         }
         environment.put("LD_LIBRARY_PATH", ldPath);

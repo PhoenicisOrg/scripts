@@ -1,5 +1,5 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const {getLatestStagingVersion} = include("engines.wine.engine.versions");
 
 new OnlineInstallerScript()
     .name("Origin")
@@ -9,5 +9,5 @@ new OnlineInstallerScript()
     .url("https://www.dm.origin.com/download/OriginThinSetup.exe")
     .category("Games")
     .executable("Origin.exe")
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging");

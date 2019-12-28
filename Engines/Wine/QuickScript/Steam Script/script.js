@@ -117,6 +117,8 @@ module.default = class SteamScript extends QuickScript {
 
         setupWizard.presentation(this._name, this._editor, this._applicationHomepage, this._author);
 
+        this._determineWineVersion(setupWizard);
+
         const tempFile = createTempFile("exe");
 
         new Downloader()
@@ -141,12 +143,6 @@ module.default = class SteamScript extends QuickScript {
             )
         );
         wine.run(tempFile, [], null, false, true);
-
-        // Set windows environment for executable that needs it
-        new WindowsVersion(wine)
-            .withApplicationWindowsVersion("steam.exe", "winxp")
-            .withApplicationWindowsVersion("steamwebhelper.exe", "winxp")
-            .go();
 
         // Fix for Uplay games that are executed on steam
         new WindowsVersion(wine)
