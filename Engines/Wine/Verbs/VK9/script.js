@@ -4,7 +4,7 @@ const { Extractor } = include("utils.functions.filesystem.extract");
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
 const Optional = Java.type("java.util.Optional");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
-const { fetchGithubReleases, downloadGithubRelease, extractGithubReleaseStrings } = include("utils.functions.net.githubreleases");
+const { GitHubReleaseDownloader } = include("utils.functions.net.githubreleases");
 
 /**
  * Verb to install VK9
@@ -25,16 +25,6 @@ class VK9 {
         this.vk9Version = vk9Version;
 
         return this;
-    }
-
-    selectGithubVersion(wizard) {
-        const versions = fetchGithubReleases("disks86", "VK9", wizard);
-
-        if (!this.vk9Version || typeof this.vk9Version !== 'string') {
-            return versions[0];
-        } else {
-            return versions.find(version => version.name === this.vk9Version);
-        }
     }
 
     go() {
@@ -68,9 +58,15 @@ class VK9 {
         print("NOTE: wine version should be greater or equal to 3.5");
         print("NOTE: works from 0.28.0");
 
-        const selectedVersion = this.selectGithubVersion(wizard);
+        const githubDownloader = new GitHubReleaseDownloader("disks86", "VK9")
+            .withWizard(wizard)
+            .fetchReleases();
 
-        const setupFile32 = downloadGithubRelease(selectedVersion, wizard);
+        if (typeof this.vk9Version !== "string") {
+            this.vk9Version = githubDownloader.getLatestRelease();
+        }
+
+        const setupFile32 = githubDownloader.download(this.vk9Version, /(.+)-bin-x86-Release.zip/);
 
         new Extractor()
             .wizard(wizard)
@@ -78,18 +74,12 @@ class VK9 {
             .to(`${prefixDirectory}/TMP32/`)
             .extract();
 
-        cp(`${prefixDirectory}/TMP32/${selectedVersion.name}-bin-x86-Release/d3d9.dll`, system32directory);
+        cp(`${prefixDirectory}/TMP32/${this.vk9Version}-bin-x86-Release/d3d9.dll`, system32directory);
 
         remove(`${prefixDirectory}/TMP32/`);
 
         if (this.wine.architecture() === "amd64") {
-            const setupFile64 = new Resource()
-                .wizard(wizard)
-                .url(
-                    `https://github.com/disks86/VK9/releases/download/${selectedVersion.name}/${selectedVersion.name}-bin-x86_64-Release.zip`
-                )
-                .name(`${selectedVersion.name}-bin-x86_64-Realease.zip`)
-                .get();
+            const setupFile64 = githubDownloader.download(this.vk9Version, /(.+)-bin-x86_64-Release.zip/);
 
             new Extractor()
                 .wizard(wizard)
@@ -97,7 +87,7 @@ class VK9 {
                 .to(`${prefixDirectory}/TMP64/`)
                 .extract();
 
-            cp(`${prefixDirectory}/TMP64/${selectedVersion.name}-bin-x86_64-Release/d3d9.dll`, system64directory);
+            cp(`${prefixDirectory}/TMP64/${this.vk9Version}-bin-x86_64-Release/d3d9.dll`, system64directory);
 
             remove(`${prefixDirectory}/TMP64/`);
         }
@@ -112,10 +102,14 @@ class VK9 {
         wine.wizard(wizard);
         wine.prefix(container);
 
-        const versions = fetchGithubReleases("disks86", "VK9", wizard);
-        const versionStrings = extractGithubReleaseStrings(versions);
+        const githubDownloader = new GitHubReleaseDownloader("disks86", "VK9")
+            .withWizard(wizard)
+            .fetchReleases();
 
-        const selectedVersion = wizard.menu(tr("Please select the version."), versionStrings, versionStrings[0]);
+        const versions = githubDownloader.getReleases();
+        const latestVersion = githubDownloader.getLatestRelease();
+
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, latestVersion);
 
         // install selected version
         new VK9(wine).withVersion(selectedVersion.text).go();

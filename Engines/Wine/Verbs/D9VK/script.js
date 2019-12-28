@@ -5,7 +5,7 @@ const { ls, cp, remove } = include("utils.functions.filesystem.files");
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
 const Optional = Java.type("java.util.Optional");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
-const { fetchGithubReleases, downloadGithubRelease, extractGithubReleaseStrings } = include("utils.functions.net.githubreleases");
+const { GitHubReleaseDownloader } = include("utils.functions.net.githubreleases");
 
 /**
  * Verb to install D9VK
@@ -26,16 +26,6 @@ class D9VK {
         this.d9vkVersion = d9vkVersion;
 
         return this;
-    }
-
-    selectGithubVersion(wizard) {
-        const versions = fetchGithubReleases("Joshua-Ashton", "d9vk", wizard);
-
-        if (!this.d9vkVersion || typeof this.d9vkVersion !== 'string') {
-            return versions[0];
-        } else {
-            return versions.find(version => version.name === this.d9vkVersion);
-        }
     }
 
     go() {
@@ -71,9 +61,15 @@ class D9VK {
             wizard.message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else D9VK might not work correctly."));
         }
 
-        const selectedVersion = this.selectGithubVersion(wizard);
+        const githubDownloader = new GitHubReleaseDownloader("Joshua-Ashton", "d9vk")
+            .withWizard(wizard)
+            .fetchReleases();
 
-        var setupFile = downloadGithubRelease(selectedVersion, wizard);
+        if (typeof this.d9vkVersion !== 'string') {
+            this.d9vkVersion = githubDownloader.getLatestRelease();
+        }
+
+        const setupFile = githubDownloader.download(this.d9vkVersion);
 
         new Extractor()
             .wizard(wizard)
@@ -81,7 +77,8 @@ class D9VK {
             .to(`${prefixDirectory}/TMP/`)
             .extract();
 
-        const d9vkTmpDir = `${prefixDirectory}/TMP/d9vk-${selectedVersion.name}`;
+
+        const d9vkTmpDir = `${prefixDirectory}/TMP/d9vk-${this.d9vkVersion}`;
 
         // copy 32 bits dll to system* and apply override
         ls(`${d9vkTmpDir}/x32`).forEach(file => {
@@ -113,10 +110,14 @@ class D9VK {
         wine.wizard(wizard);
         wine.prefix(container);
 
-        const versions = fetchGithubReleases("Joshua-Ashton", "d9vk", wizard);
-        const versionStrings = extractGithubReleaseStrings(versions);
+        const githubDownloader = new GitHubReleaseDownloader("Joshua-Ashton", "d9vk")
+            .withWizard(wizard)
+            .fetchReleases();
 
-        const selectedVersion = wizard.menu(tr("Please select the version."), versionStrings, versionStrings[0]);
+        const versions = githubDownloader.getReleases();
+        const latestVersion = githubDownloader.getLatestRelease();
+
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, latestVersion);
 
         // install selected version
         new D9VK(wine).withVersion(selectedVersion.text).go();

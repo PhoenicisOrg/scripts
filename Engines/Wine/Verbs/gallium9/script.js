@@ -29,22 +29,10 @@ class Gallium9 {
         return this;
     }
 
-    selectGithubVersion(wizard) {
-        const versions = fetchGithubReleases("iXit", "wine-nine-standalone", wizard);
-
-        if (!this.gallium9Version || typeof this.gallium9Version !== 'string') {
-            return versions[0];
-        } else {
-            return versions.find(version => version.name === this.gallium9Version);
-        }
-    }
-
     go() {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const system32directory = this.wine.system32directory();
-
-        const selectedVersion = this.selectGithubVersion(wizard);
 
         wizard.message(
             tr(
@@ -52,7 +40,15 @@ class Gallium9 {
             )
         );
 
-        const setupFile = downloadGithubRelease(selectedVersion, wizard);
+        const githubDownloader = new GitHubReleaseDownloader("iXit", "wine-nine-standalone")
+            .withWizard(wizard)
+            .fetchReleases();
+
+        if (typeof this.gallium9Version !== "string") {
+            this.gallium9Version = githubDownloader.getLatestRelease();
+        }
+
+        const setupFile = githubDownloader.download(this.gallium9Version);
 
         new Extractor()
             .wizard(wizard)
@@ -96,10 +92,14 @@ class Gallium9 {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "gallium9", Optional.empty());
 
-        const versions = fetchGithubReleases("iXit", "wine-nine-standalone", wizard);
-        const versionStrings = extractGithubReleaseStrings(versions);
+        const githubDownloader = new GitHubReleaseDownloader("iXit", "wine-nine-standalone")
+            .withWizard(wizard)
+            .fetchReleases();
 
-        const selectedVersion = wizard.menu(tr("Please select the version."), versionStrings, versionStrings[0]);
+        const versions = githubDownloader.getReleases();
+        const latestVersion = githubDownloader.getLatestRelease();
+
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, latestVersion);
 
         wine.prefix(container);
         wine.wizard(wizard);
