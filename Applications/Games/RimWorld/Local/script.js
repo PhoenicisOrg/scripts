@@ -11,7 +11,7 @@ new LocalInstallerScript()
     .applicationHomepage("https://rimworldgame.com/")
     .wineArchitecture("amd64")
     .executable("RimWorld.exe")
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         new Vcrun2017(wine).go();
         new D3DX9(wine).go();
         new Corefonts(wine).go();

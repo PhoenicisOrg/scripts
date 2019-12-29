@@ -9,7 +9,7 @@ new LocalInstallerScript()
     .author("ImperatorS79")
     .category("Games")
     .executable("ravenshield.exe")
-    .postInstall(function (wine) {
+    .postInstall((wine) => {
         const wizard = wine.wizard();
 
         var regions = ["France", "England"];

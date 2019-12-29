@@ -1,12 +1,12 @@
-const {ls, mkdir, fileExists, cat, lns, remove, touch, createTempFile} = include("utils.functions.filesystem.files");
-const {Extractor} = include("utils.functions.filesystem.extract");
+const { ls, mkdir, fileExists, cat, lns, remove, touch, createTempFile } = include("utils.functions.filesystem.files");
+const { Extractor } = include("utils.functions.filesystem.extract");
 const Downloader = include("utils.functions.net.download");
 const Resource = include("utils.functions.net.resource");
-const {WINE_PREFIX_DIR} = include("engines.wine.engine.constants");
+const { WINE_PREFIX_DIR } = include("engines.wine.engine.constants");
 
 const configFactory = Bean("compatibleConfigFileFormatFactory");
 const exeAnalyser = Bean("exeAnalyser");
-const propertyReader = Bean("propertyReader")
+const propertyReader = Bean("propertyReader");
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
 
 const FileClass = Java.type("java.io.File");

@@ -233,13 +233,13 @@ Specific wine version:
     .wineVersion("1.9.23")
 ```
 
-You can also use variables for the latest wine version:
-* `LATEST_STABLE_VERSION` via `const { LATEST_STABLE_VERSION } = include("engines.wine.engine.versions");`
-* `LATEST_DEVELOPMENT_VERSION` via `const { LATEST_DEVELOPMENT_VERSION } = include("engines.wine.engine.versions");`
-* `LATEST_STAGING_VERSION` via `const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");`
-* `LATEST_DOS_SUPPORT_VERSION` via `const { LATEST_DOS_SUPPORT_VERSION } = include("engines.wine.engine.versions");`
+You can also use functions to fetch the latest Wine version:
+* `getLatestStableVersion` via `const { getLatestStableVersion } = include("engines.wine.engine.versions");`
+* `getLatestDevelopmentVersion` via `const { getLatestDevelopmentVersion } = include("engines.wine.engine.versions");`
+* `getLatestStagingVersion` via `const { getLatestStagingVersion } = include("engines.wine.engine.versions");`
+* `getLatestDosSupportVersion` via `const { getLatestDosSupportVersion } = include("engines.wine.engine.versions");`
 
-For the specific wine architecture ("x86" or "amd64"):
+For the specific Wine architecture ("x86" or "amd64"):
 
 ```javascript
     .wineArchitecture("x86")
@@ -277,7 +277,7 @@ The frame for a custom script looks like this:
 const Wine = include("engines.wine.engine.object");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 const Luna = include("engines.wine.verbs.luna");
-const {LATEST_STABLE_VERSION} = include("engines.wine.engine.versions");
+const {getLatestStableVersion} = include("engines.wine.engine.versions");
 
 const application = "application name"
 
@@ -287,7 +287,7 @@ setupWizard.presentation(application, "Editor", "http://applicationhomepage.com"
 
 const wine = new Wine()
     .wizard(setupWizard)
-    .prefix(application, "upstream", "x86", LATEST_STABLE_VERSION);
+    .prefix(application, "upstream", "x86", getLatestStableVersion(setupWizard, "x86"));
 
 new Luna(wine).go();    
     

@@ -1,6 +1,6 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 const Resource = include("utils.functions.net.resource");
-const {LATEST_DEVELOPMENT_VERSION} = include("engines.wine.engine.versions");
+const { getLatestDevelopmentVersion } = include("engines.wine.engine.versions");
 
 new LocalInstallerScript()
     .name("Space Colony")
@@ -10,7 +10,7 @@ new LocalInstallerScript()
     .category("Games")
     .installationArgs(["/q"])
     .wineDistribution("upstream")
-    .wineVersion(LATEST_DEVELOPMENT_VERSION)
+    .wineVersion(getLatestDevelopmentVersion)
     .executable("Space Colony.exe")
     .postInstall(function (wine /*wizard*/) {
         var patch = new Resource()

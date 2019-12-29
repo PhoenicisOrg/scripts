@@ -1,6 +1,6 @@
 const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
-const { cp } = include("utils.functions.filesystem.files");
+const { cp, fileExists, mkdir } = include("utils.functions.filesystem.files");
 const { CabExtract } = include("utils.functions.filesystem.extract");
 
 const Optional = Java.type("java.util.Optional");
@@ -19,6 +19,10 @@ class Tahoma {
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const fontDirectory = this.wine.fontDirectory();
+
+        if (!fileExists(fontDirectory)) {
+            mkdir(fontDirectory);
+        }
 
         const tahoma = new Resource()
             .wizard(wizard)

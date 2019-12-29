@@ -7,6 +7,6 @@ new SteamScript()
     .editor("Red Storm Entertainment")
     .author("ImperatorS79")
     .appId(19830)
-    .postInstall(function (wine) {
+    .postInstall((wine) => {
         new VirtualDesktop(wine).withDimensions(1280, 1024).go();
     });

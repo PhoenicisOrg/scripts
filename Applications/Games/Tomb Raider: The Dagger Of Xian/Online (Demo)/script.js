@@ -1,5 +1,5 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 new OnlineInstallerScript()
     .name("Tomb Raider: The Dagger Of Xian (Demo)")
@@ -10,5 +10,5 @@ new OnlineInstallerScript()
     .checksum("3d35b0a0ecd5cdf58ffb2f786158369befbd3f12")
     .category("Games")
     .executable("TombRaiderDOX.exe")
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging");

@@ -11,7 +11,7 @@ new UplayScript()
     .wineVersion("4.0-rc3")
     .wineDistribution("upstream")
     .appId(22)
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         new VirtualDesktop(wine).go();
         new Corefonts(wine).go();
     });

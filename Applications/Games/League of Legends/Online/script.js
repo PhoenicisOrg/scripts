@@ -1,6 +1,6 @@
 const CustomInstallerScript = include("engines.wine.quick_script.custom_installer_script");
 
-const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 const { fileName, mkdir, writeToFile } = include("utils.functions.filesystem.files");
 const Resource = include("utils.functions.net.resource");
 
@@ -16,7 +16,7 @@ new CustomInstallerScript()
     .editor("Riot Games")
     .applicationHomepage("http://leagueoflegends.com/")
     .author("Plata, feanor12, Thog")
-    .installationCommand(function (wizard) {
+    .installationCommand((wizard) => {
         // Select the region and download the setup file
         ////////////////////////////////////////////////
         var regions = [
@@ -97,8 +97,8 @@ new CustomInstallerScript()
     })
     .category("Games")
     .wineDistribution("staging")
-    .wineVersion(LATEST_STAGING_VERSION)
-    .preInstall(function (wine) {
+    .wineVersion(getLatestStagingVersion)
+    .preInstall((wine) => {
         new WindowsVersion(wine).withWindowsVersion("winxp").go();
 
         new D3DX9(wine).go();

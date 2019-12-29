@@ -1,7 +1,7 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const {LATEST_DEVELOPMENT_VERSION} = include("engines.wine.engine.versions");
+const { getLatestDevelopmentVersion } = include("engines.wine.engine.versions");
 const Downloader = include("utils.functions.net.download");
-const {Extractor} = include("utils.functions.filesystem.extract");
+const { Extractor } = include("utils.functions.filesystem.extract");
 
 new OnlineInstallerScript()
     .name("Origin")
@@ -11,15 +11,15 @@ new OnlineInstallerScript()
     .url("https://origin-a.akamaihd.net/Origin-Client-Download/origin/legacy/OriginThinSetup.exe")
     .category("Games")
     .executable("Origin.exe")
-    .wineVersion(LATEST_DEVELOPMENT_VERSION)
-    .preInstall(function (wine, wizard) {
+    .wineVersion(getLatestDevelopmentVersion)
+    .preInstall((wine, wizard) => {
         wizard.message(
             tr(
                 'When Origin launches, you will get an error message ("Your update could not be completed."). This is ok. Just close the popup.'
             )
         );
     })
-    .postInstall(function (wine, wizard) {
+    .postInstall((wine, wizard) => {
         var originDir = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Origin/";
 
         new Downloader()

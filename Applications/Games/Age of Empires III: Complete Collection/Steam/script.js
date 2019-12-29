@@ -9,7 +9,7 @@ new SteamScript()
     .editor("Microsoft Studios")
     .author("Quentin PARIS")
     .appId(105450)
-    .postInstall(function (wine) {
+    .postInstall((wine) => {
         new Mfc42(wine).go();
 
         new OverrideDLL(wine).withMode("native, builtin", ["pidgen"]).go();
