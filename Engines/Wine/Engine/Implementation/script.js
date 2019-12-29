@@ -362,25 +362,21 @@ module.default = class WineEngine {
     }
 
     run(executable, args, workingDir, captureOutput, wait, userData) {
-        let subCategory = "";
-        let version = "";
-        let architecture = "";
-        let workingContainerDirectory = this.getContainerDirectory(this.getWorkingContainer());
-        let distribution = "";
+        const workingContainerDirectory = this.getContainerDirectory(this.getWorkingContainer());
 
         if (!fileExists(workingContainerDirectory)) {
-            throw new tr('Wine prefix "{0}" does not exist', this.getWorkingContainer());
+            throw new Error(tr('Wine prefix "{0}" does not exist', this.getWorkingContainer()));
         }
 
         const containerConfiguration = configFactory.open(workingContainerDirectory + "/phoenicis.cfg");
 
-        distribution = containerConfiguration.readValue("wineDistribution", "upstream");
-        architecture = containerConfiguration.readValue("wineArchitecture", "x86");
+        const distribution = containerConfiguration.readValue("wineDistribution", "upstream");
+        const architecture = containerConfiguration.readValue("wineArchitecture", "x86");
 
         const operatingSystem = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
 
-        subCategory = distribution + "-" + operatingSystem + "-" + architecture;
-        version = containerConfiguration.readValue("wineVersion");
+        const subCategory = distribution + "-" + operatingSystem + "-" + architecture;
+        const version = containerConfiguration.readValue("wineVersion");
 
         this.install(subCategory, version);
 
