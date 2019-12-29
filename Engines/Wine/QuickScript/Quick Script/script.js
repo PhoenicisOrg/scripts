@@ -1,9 +1,9 @@
-const {LATEST_STABLE_VERSION} = include("engines.wine.engine.versions");
+const { getLatestStableVersion } = include("engines.wine.engine.versions");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 
 module.default = class QuickScript {
     constructor() {
-        this._wineVersion = LATEST_STABLE_VERSION;
+        this._wineVersionFunction = getLatestStableVersion;
         this._wineArchitecture = "x86";
         this._wineDistribution = "upstream";
         this._wineUserSettings = false;
@@ -56,6 +56,7 @@ module.default = class QuickScript {
     /**
      * get/set miniature (for the installation and the shortcut)
      * @param {URI} [miniature] path to the miniature file
+     * @returns {java.util.Optional} path to miniature (if used as getter), else QuickScript object
      */
     miniature(miniature) {
         // get
@@ -70,8 +71,9 @@ module.default = class QuickScript {
 
     /**
      * set executable
-     * @param executable executable without path (e.g. "Steam.exe")
-     * @param args use array (e.g. ["-applaunch", 409160])
+     * @param {string} executable executable without path (e.g. "Steam.exe")
+     * @param {array} args use array (e.g. ["-applaunch", 409160])
+     * @returns {QuickScript} QuickScript object
      */
     executable(executable, args) {
         this._executable = executable;
@@ -90,7 +92,11 @@ module.default = class QuickScript {
     }
 
     wineVersion(wineVersion) {
-        this._wineVersion = wineVersion;
+        if (wineVersion && wineVersion instanceof Function) {
+            this._wineVersionFunction = wineVersion;
+        } else {
+            this._wineVersionFunction = function () { return wineVersion; };
+        }
         return this;
     }
 
@@ -127,7 +133,7 @@ module.default = class QuickScript {
 
     /**
      * set trust level
-     * @param {string} trustlevel
+     * @param {string} trustLevel trust level
      * @returns {QuickScript} QuickScript object
      */
     trustLevel(trustLevel) {
@@ -136,8 +142,19 @@ module.default = class QuickScript {
     }
 
     /**
+     * determines which Wine version should be used
+     * required in case the version is computed by a function
+     * @param {wizard} wizard setup wizard (e.g. to show download progress of versions json)
+     * @returns {void}
+     */
+    _determineWineVersion(wizard) {
+        this._wineVersion = this._wineVersionFunction(wizard, this._wineArchitecture);
+    }
+
+    /**
      * creates shortcut
      * @param {string} [prefix] prefix name
+     * @returns {void}
      */
     _createShortcut(prefix) {
         const shortcut = new WineShortcut()

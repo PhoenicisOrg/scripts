@@ -9,7 +9,7 @@ new SteamScript()
     .editor("DICE")
     .author("Plata")
     .appId(17410)
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         new PhysX(wine).go();
 
         new Managed(wine).withManagedApplication("MirrorsEdge.exe", false).go();

@@ -11,7 +11,7 @@ new OnlineInstallerScript()
     .url("https://launch.daybreakgames.com/installer/DCUO_setup.exe")
     .category("Games")
     .executable("LaunchPad.exe")
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall((wine /*, wizard*/) => {
         new Vcrun2012(wine).go();
         new D3DX9(wine).go();
     });

@@ -2,6 +2,9 @@ const Downloader = include("utils.functions.net.download");
 const Resource = include("utils.functions.net.resource");
 const { createTempDir, remove, cat } = include("utils.functions.filesystem.files");
 
+/**
+ * A dedicated class used for accessing and downloading releases hosted on GitHub
+ */
 module.GitHubReleaseDownloader = class GitHubReleaseDownloader {
     /**
      * Constructor 
@@ -53,6 +56,11 @@ module.GitHubReleaseDownloader = class GitHubReleaseDownloader {
         return this.versions.map(version => version.tag_name);
     }
 
+    /**
+     * Fetches the tag belonging to the latest release for the given GitHub repository
+     * 
+     * @returns {string} The tag belonging to the latest release
+     */
     getLatestRelease() {
         return this.versions[0].tag_name;
     }

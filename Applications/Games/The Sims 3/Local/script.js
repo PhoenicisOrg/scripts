@@ -12,7 +12,7 @@ new LocalInstallerScript()
     .author("Zemogiter")
     .category("Games")
     .executable("Sims3Launcher.exe", ["xgamma -gamma 1"])
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         new Mfc42(wine).go();
         new Tahoma(wine).go();
         new Vcrun2010(wine).go();

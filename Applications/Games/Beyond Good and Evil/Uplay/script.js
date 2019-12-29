@@ -1,5 +1,5 @@
 const UplayScript = include("engines.wine.quick_script.uplay_script");
-const {LATEST_STAGING_VERSION} = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 new UplayScript()
     .name("Beyond Good and Evil™")
@@ -7,5 +7,5 @@ new UplayScript()
     .editor("Ubisoft")
     .author("Plata")
     .appId(232)
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging");

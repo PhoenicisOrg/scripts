@@ -6,6 +6,6 @@ new SteamScript()
     .editor("Toxic Games")
     .author("Plata")
     .appId(239430)
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall((wine /*, wizard*/) => {
         new DotNET40(wine).go();
     });

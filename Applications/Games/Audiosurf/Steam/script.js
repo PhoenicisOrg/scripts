@@ -9,7 +9,7 @@ new SteamScript()
     .editor("Dylan Fitterer")
     .author("Brainzyy")
     .appId(12900)
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall((wine /*, wizard*/) => {
         new QuickTime76(wine).go();
         new Corefonts(wine).go();
         new Tahoma(wine).go();

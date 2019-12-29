@@ -1,5 +1,6 @@
 const Wine = include("engines.wine.engine.object");
 const { Extractor } = include("utils.functions.filesystem.extract");
+const { cp, remove } = include("utils.functions.filesystem.files");
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
 const Optional = Java.type("java.util.Optional");
 const OverrideDLL = include("engines.wine.plugins.override_dll");

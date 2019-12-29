@@ -1,5 +1,5 @@
 const Downloader = include("utils.functions.net.download");
-const {mkdir, fileExists, Checksum} = include("utils.functions.filesystem.files");
+const { mkdir, fileExists, Checksum } = include("utils.functions.filesystem.files");
 
 const propertyReader = Bean("propertyReader");
 
