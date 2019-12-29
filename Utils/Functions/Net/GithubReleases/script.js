@@ -7,8 +7,8 @@ const { createTempDir, remove, cat } = include("utils.functions.filesystem.files
  */
 module.GitHubReleaseDownloader = class GitHubReleaseDownloader {
     /**
-     * Constructor 
-     * 
+     * Constructor
+     *
      * @param {string} repositoryOwner The owner of the GitHub repository
      * @param {string} repositoryName The name of the GitHub repository
      */
@@ -19,7 +19,7 @@ module.GitHubReleaseDownloader = class GitHubReleaseDownloader {
 
     /**
      * Sets the setup wizard
-     * 
+     *
      * @param {SetupWizard} wizard The setup wizard
      * @returns {GitHubReleaseDownloader} this
      */
@@ -31,6 +31,8 @@ module.GitHubReleaseDownloader = class GitHubReleaseDownloader {
 
     /**
      * Fetches the GitHub releases
+     * 
+     * @returns {void}
      */
     fetchReleases() {
         const tmpDir = createTempDir();
@@ -49,7 +51,7 @@ module.GitHubReleaseDownloader = class GitHubReleaseDownloader {
 
     /**
      * Fetches the tags belonging to the releases for the given GitHub repository
-     * 
+     *
      * @returns {string[]} An array containing the tags for the GitHub releases
      */
     getReleases() {
@@ -58,7 +60,7 @@ module.GitHubReleaseDownloader = class GitHubReleaseDownloader {
 
     /**
      * Fetches the tag belonging to the latest release for the given GitHub repository
-     * 
+     *
      * @returns {string} The tag belonging to the latest release
      */
     getLatestRelease() {
@@ -67,7 +69,7 @@ module.GitHubReleaseDownloader = class GitHubReleaseDownloader {
 
     /**
      * Downloads all assets that belong to the release with the given tag that match a given regex
-     * 
+     *
      * @param {string} tag The tag name of the release
      * @param {RegExp} assetRegex An optional regex describing the desired asset(s)
      * @returns {string[]} An array of paths leading to the downloaded files
