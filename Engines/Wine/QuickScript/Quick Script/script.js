@@ -56,6 +56,7 @@ module.default = class QuickScript {
     /**
      * get/set miniature (for the installation and the shortcut)
      * @param {URI} [miniature] path to the miniature file
+     * @returns {java.util.Optional} path to miniature (if used as getter), else QuickScript object
      */
     miniature(miniature) {
         // get
@@ -70,8 +71,9 @@ module.default = class QuickScript {
 
     /**
      * set executable
-     * @param executable executable without path (e.g. "Steam.exe")
-     * @param args use array (e.g. ["-applaunch", 409160])
+     * @param {string} executable executable without path (e.g. "Steam.exe")
+     * @param {array} args use array (e.g. ["-applaunch", 409160])
+     * @returns {QuickScript} QuickScript object
      */
     executable(executable, args) {
         this._executable = executable;
@@ -131,7 +133,7 @@ module.default = class QuickScript {
 
     /**
      * set trust level
-     * @param {string} trustlevel
+     * @param {string} trustLevel trust level
      * @returns {QuickScript} QuickScript object
      */
     trustLevel(trustLevel) {
@@ -152,6 +154,7 @@ module.default = class QuickScript {
     /**
      * creates shortcut
      * @param {string} [prefix] prefix name
+     * @returns {void}
      */
     _createShortcut(prefix) {
         const shortcut = new WineShortcut()
