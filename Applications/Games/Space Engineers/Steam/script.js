@@ -13,7 +13,7 @@ new SteamScript()
     .wineVersion("5.0-rc1")
     .wineDistribution("upstream")
     .wineArchitecture("amd64")
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         const wizard = wine.wizard();
         new dotnet472(wine).go();
         new vcrun2017(wine).go();
