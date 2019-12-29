@@ -61,8 +61,9 @@ class D9VK {
         }
 
         const githubDownloader = new GitHubReleaseDownloader("Joshua-Ashton", "d9vk")
-            .withWizard(wizard)
-            .fetchReleases();
+            .withWizard(wizard);
+
+        githubDownloader.fetchReleases();
 
         if (typeof this.d9vkVersion !== 'string') {
             this.d9vkVersion = githubDownloader.getLatestRelease();
@@ -110,8 +111,9 @@ class D9VK {
         wine.prefix(container);
 
         const githubDownloader = new GitHubReleaseDownloader("Joshua-Ashton", "d9vk")
-            .withWizard(wizard)
-            .fetchReleases();
+            .withWizard(wizard);
+
+        githubDownloader.fetchReleases();
 
         const versions = githubDownloader.getReleases();
         const latestVersion = githubDownloader.getLatestRelease();

@@ -38,8 +38,9 @@ class FAudio {
         }
 
         const githubDownloader = new GitHubReleaseDownloader("Kron4ek", "FAudio-Builds")
-            .withWizard(wizard)
-            .fetchReleases();
+            .withWizard(wizard);
+
+        githubDownloader.fetchReleases();
 
         if (typeof this.faudioVersion !== "string") {
             this.faudioVersion = githubDownloader.getLatestRelease();
@@ -72,8 +73,9 @@ class FAudio {
         wine.wizard(wizard);
 
         const githubDownloader = new GitHubReleaseDownloader("Kron4ek", "FAudio-Builds")
-            .withWizard(wizard)
-            .fetchReleases();
+            .withWizard(wizard);
+
+        githubDownloader.fetchReleases();
 
         const versions = githubDownloader.getReleases();
         const latestVersion = githubDownloader.getLatestRelease();

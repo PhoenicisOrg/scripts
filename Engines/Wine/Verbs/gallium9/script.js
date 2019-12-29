@@ -40,8 +40,9 @@ class Gallium9 {
         );
 
         const githubDownloader = new GitHubReleaseDownloader("iXit", "wine-nine-standalone")
-            .withWizard(wizard)
-            .fetchReleases();
+            .withWizard(wizard);
+
+        githubDownloader.fetchReleases();
 
         if (typeof this.gallium9Version !== "string") {
             this.gallium9Version = githubDownloader.getLatestRelease();
@@ -92,8 +93,9 @@ class Gallium9 {
         const wizard = SetupWizard(InstallationType.VERBS, "gallium9", Optional.empty());
 
         const githubDownloader = new GitHubReleaseDownloader("iXit", "wine-nine-standalone")
-            .withWizard(wizard)
-            .fetchReleases();
+            .withWizard(wizard);
+
+        githubDownloader.fetchReleases();
 
         const versions = githubDownloader.getReleases();
         const latestVersion = githubDownloader.getLatestRelease();

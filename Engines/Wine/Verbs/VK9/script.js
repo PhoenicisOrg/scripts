@@ -58,8 +58,9 @@ class VK9 {
         print("NOTE: works from 0.28.0");
 
         const githubDownloader = new GitHubReleaseDownloader("disks86", "VK9")
-            .withWizard(wizard)
-            .fetchReleases();
+            .withWizard(wizard);
+
+        githubDownloader.fetchReleases();
 
         if (typeof this.vk9Version !== "string") {
             this.vk9Version = githubDownloader.getLatestRelease();
@@ -102,8 +103,9 @@ class VK9 {
         wine.prefix(container);
 
         const githubDownloader = new GitHubReleaseDownloader("disks86", "VK9")
-            .withWizard(wizard)
-            .fetchReleases();
+            .withWizard(wizard);
+
+        githubDownloader.fetchReleases();
 
         const versions = githubDownloader.getReleases();
         const latestVersion = githubDownloader.getLatestRelease();
