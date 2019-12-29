@@ -75,9 +75,9 @@ class mfWorkaround {
                 }
             });
         }
-        const regeditFileContent = `REGEDIT4\n\n[HKEY_LOCAL_MACHINE\Software\Wine\LicenseInformation]\n"msmpeg2adec-AACDecoderV2AddInEnable"=dword:00000001\n"msmpeg2adec-AACDecoderV2InSKU"=dword:00000001\n"msmpeg2adec-DolbyDigitalDecoderV2AddInEnable"=dword:00000001\n"msmpeg2adec-DolbyDigitalDecoderV2InSKU"=dword:00000001\n"msmpeg2vdec-H264VideoDecoderV2AddInEnable"=dword:00000001\n"msmpeg2vdec-H264VideoDecoderV2InSKU"=dword:00000001\n"msmpeg2vdec-MPEG2VideoDecoderV2AddInEnable"=dword:00000001\n"msmpeg2vdec-MPEG2VideoDecoderV2InSKU"=dword:00000001\n\n[HKEY_CLASSES_ROOT\CLSID\{271C3902-6095-4c45-A22F-20091816EE9E}]\n@="MPEG4 Byte Stream Handler"\n\n[HKEY_CLASSES_ROOT\CLSID\{271C3902-6095-4c45-A22F-20091816EE9E}\InprocServer32]\n@="mf.dll"\n"ThreadingModel"="Both"\n\n[HKEY_CLASSES_ROOT\CLSID\{477EC299-1421-4bdd-971F-7CCB933F21AD}]\n@="File Scheme Handler"\n\n[HKEY_CLASSES_ROOT\CLSID\{477EC299-1421-4bdd-971F-7CCB933F21AD}\InprocServer32]\n@="mf.dll"\n"ThreadingModel"="Both"\n\n[HKEY_CLASSES_ROOT\CLSID\{48e2ed0f-98c2-4a37-bed5-166312ddd83f}]\n@="MFReadWrite Class Factory"\n\n[HKEY_CLASSES_ROOT\CLSID\{48e2ed0f-98c2-4a37-bed5-166312ddd83f}\InprocServer32]\n@="mfreadwrite.dll"\n"ThreadingModel"="Both"`;
 
-        new Regedit(this.wine).patch(regeditFileContent);
+        const regeditFile = `${prefixDirectory}/mfWorkaround/mf-install-master/mf.reg`;
+        new Regedit(this.wine).patch(regeditFile);
         //command for regedit64 will go here once implemented
 
         new Regsvr32(this.wine).withDll("colorcnv.dll").go();
@@ -99,7 +99,7 @@ class mfWorkaround {
         wine.prefix(container);
         wine.wizard(wizard);
 
-        //const versions = getGithubReleases("Kron4ek", "FAudio-Builds", wizard); commented out because it's useless until z0z0z will use releases
+        //const versions = getGithubReleases("z0z0z", "mf-install", wizard); commented out because it's useless until z0z0z will use releases
 
         //const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]); same as above
 
