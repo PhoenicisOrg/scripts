@@ -63,7 +63,7 @@ class DXVK {
         }
         const githubDownloader = new GitHubReleaseDownloader("doitsujin", "dxvk")
             .withWizard(wizard);
-        
+
         githubDownloader.fetchReleases();
 
         if (typeof this.dxvkVersion !== "string") {
