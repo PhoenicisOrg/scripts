@@ -4,6 +4,7 @@ const operatingSystemFetcher = Bean("operatingSystemFetcher");
 const Optional = Java.type("java.util.Optional");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
 const { GitHubReleaseDownloader } = include("utils.functions.net.githubreleases");
+const { cp, remove } = include("utils.functions.filesystem.files");
 
 /**
  * Verb to install VK9
