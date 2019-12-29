@@ -2,7 +2,7 @@ const Downloader = include("utils.functions.net.download");
 const Resource = include("utils.functions.net.resource");
 const { createTempDir, remove, cat } = include("utils.functions.filesystem.files");
 
-module.GitHubReleaseDownloader = class {
+module.GitHubReleaseDownloader = class GitHubReleaseDownloader {
     /**
      * Constructor 
      * 
@@ -10,8 +10,6 @@ module.GitHubReleaseDownloader = class {
      * @param {string} repositoryName The name of the GitHub repository
      */
     constructor(repositoryOwner, repositoryName) {
-        super();
-
         this.repositoryOwner = repositoryOwner;
         this.repositoryName = repositoryName;
     }

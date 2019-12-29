@@ -47,7 +47,7 @@ class Gallium9 {
             this.gallium9Version = githubDownloader.getLatestRelease();
         }
 
-        const setupFile = githubDownloader.download(this.gallium9Version);
+        const [setupFile] = githubDownloader.download(this.gallium9Version);
 
         new Extractor()
             .wizard(wizard)

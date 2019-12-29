@@ -45,7 +45,7 @@ class FAudio {
             this.faudioVersion = githubDownloader.getLatestRelease();
         }
 
-        const setupFile = githubDownloader.download(this.faudioVersion);
+        const [setupFile] = githubDownloader.download(this.faudioVersion);
 
         new Extractor()
             .wizard(wizard)

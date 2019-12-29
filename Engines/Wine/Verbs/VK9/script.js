@@ -65,7 +65,7 @@ class VK9 {
             this.vk9Version = githubDownloader.getLatestRelease();
         }
 
-        const setupFile32 = githubDownloader.download(this.vk9Version, /(.+)-bin-x86-Release.zip/);
+        const [setupFile32] = githubDownloader.download(this.vk9Version, /(.+)-bin-x86-Release.zip/);
 
         new Extractor()
             .wizard(wizard)
@@ -78,7 +78,7 @@ class VK9 {
         remove(`${prefixDirectory}/TMP32/`);
 
         if (this.wine.architecture() === "amd64") {
-            const setupFile64 = githubDownloader.download(this.vk9Version, /(.+)-bin-x86_64-Release.zip/);
+            const [setupFile64] = githubDownloader.download(this.vk9Version, /(.+)-bin-x86_64-Release.zip/);
 
             new Extractor()
                 .wizard(wizard)

@@ -68,7 +68,7 @@ class D9VK {
             this.d9vkVersion = githubDownloader.getLatestRelease();
         }
 
-        const setupFile = githubDownloader.download(this.d9vkVersion);
+        const [setupFile] = githubDownloader.download(this.d9vkVersion);
 
         new Extractor()
             .wizard(wizard)
