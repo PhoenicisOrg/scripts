@@ -13,9 +13,9 @@ new LocalInstallerScript()
     .wineVersion(LATEST_DEVELOPMENT_VERSION)
     .executable("H4mod.exe")
     .postInstall(function (wine) {
-        var dataDirectory = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "Ubisoft/Heroes of Might & Magic IV - Złota Edycja/Data";
+        const dataDirectory = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "Ubisoft/Heroes of Might & Magic IV - Złota Edycja/Data";
 
-        var patchForGameExecutable = new Resource()
+        const patchForGameExecutable = new Resource()
             .wizard(this._wizard)
             .url("https://equilibris.celestialheavens.com/downloads/heroes4_sfx.exe")
             .checksum("373df5403ada0d2bb9285862efeca00415cb0915")
@@ -23,13 +23,13 @@ new LocalInstallerScript()
             .get();
         wine.run(patchForGameExecutable);
 
-        var patchForCampainEdithor = new Resource()
+        const patchForCampaignEditor = new Resource()
             .wizard(this._wizard)
             .url("https://equilibris.celestialheavens.com/downloads/camp_ed_sfx.exe")
             .checksum("9d34c409a0358057b0c2d00b7d4c96ccd67c7214")
             .name("camp_ed_sfx.exe")
             .get();
-        wine.run(patchForCampainEdithor);
+        wine.run(patchForCampaignEditor);
 
         new Downloader()
             .wizard(this._wizard)
@@ -38,7 +38,7 @@ new LocalInstallerScript()
             .to(dataDirectory)
             .get();
 
-        var mod = new Resource()
+        const mod = new Resource()
             .wizard(this._wizard)
             .url("https://equilibris.celestialheavens.com/downloads/install_equilibris_v.3.51.exe")
             .checksum("3a188a45017a1fd7cb38d6883428f6abc9b6e160")
