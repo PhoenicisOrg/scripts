@@ -31,7 +31,7 @@ module.GitHubReleaseDownloader = class GitHubReleaseDownloader {
 
     /**
      * Fetches the GitHub releases
-     * 
+     *
      * @returns {void}
      */
     fetchReleases() {
