@@ -1,11 +1,10 @@
 const Wine = include("engines.wine.engine.object");
-const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const { ls, cp, cat, remove } = include("utils.functions.filesystem.files");
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
 const Optional = Java.type("java.util.Optional");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
-const { getGithubReleases } = include("utils.functions.net.githubreleases");
+const { GitHubReleaseDownloader } = include("utils.functions.net.githubreleases");
 
 /**
  * Verb to install DXVK
@@ -62,18 +61,16 @@ class DXVK {
         else {
             wizard.message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
         }
+        const githubDownloader = new GitHubReleaseDownloader("doitsujin", "dxvk")
+            .withWizard(wizard);
+        
+        githubDownloader.fetchReleases();
+
         if (typeof this.dxvkVersion !== "string") {
-            const versions = getGithubReleases("doitsujin", "dxvk", wizard);
-            this.dxvkVersion = versions[0];
+            this.dxvkVersion = githubDownloader.getLatestRelease();
         }
 
-        const [setupFile] = new Resource()
-            .wizard(wizard)
-            .url(
-                `https://github.com/doitsujin/dxvk/releases/download/${this.dxvkVersion}/dxvk-${this.dxvkVersion}.tar.gz`
-            )
-            .name(`dxvk-${this.dxvkVersion}.tar.gz`)
-            .get();
+        const [setupFile] = githubDownloader.download(this.dxvkVersion);
 
         new Extractor()
             .wizard(wizard)
@@ -112,8 +109,15 @@ class DXVK {
         wine.wizard(wizard);
         wine.prefix(container);
 
-        const versions = getGithubReleases("doitsujin", "dxvk", wizard);
-        const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
+        const githubDownloader = new GitHubReleaseDownloader("doitsujin", "dxvk")
+            .withWizard(wizard);
+
+        githubDownloader.fetchReleases();
+
+        const versions = githubDownloader.getReleases();
+        const latestVersion = githubDownloader.getLatestRelease();
+
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, latestVersion);
 
         // install selected version
         new DXVK(wine).withVersion(selectedVersion.text).go();
