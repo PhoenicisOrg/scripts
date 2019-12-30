@@ -59,10 +59,7 @@ class VK9 {
         print("NOTE: wine version should be greater or equal to 3.5");
         print("NOTE: works from 0.28.0");
 
-        const githubDownloader = new GitHubReleaseDownloader("disks86", "VK9")
-            .withWizard(wizard);
-
-        githubDownloader.fetchReleases();
+        const githubDownloader = new GitHubReleaseDownloader("disks86", "VK9", wizard);
 
         if (typeof this.vk9Version !== "string") {
             this.vk9Version = githubDownloader.getLatestRelease();
@@ -104,10 +101,7 @@ class VK9 {
         wine.wizard(wizard);
         wine.prefix(container);
 
-        const githubDownloader = new GitHubReleaseDownloader("disks86", "VK9")
-            .withWizard(wizard);
-
-        githubDownloader.fetchReleases();
+        const githubDownloader = new GitHubReleaseDownloader("disks86", "VK9", wizard);
 
         const versions = githubDownloader.getReleases();
         const latestVersion = githubDownloader.getLatestRelease();

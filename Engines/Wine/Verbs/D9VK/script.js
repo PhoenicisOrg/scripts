@@ -60,10 +60,7 @@ class D9VK {
             wizard.message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else D9VK might not work correctly."));
         }
 
-        const githubDownloader = new GitHubReleaseDownloader("Joshua-Ashton", "d9vk")
-            .withWizard(wizard);
-
-        githubDownloader.fetchReleases();
+        const githubDownloader = new GitHubReleaseDownloader("Joshua-Ashton", "d9vk", wizard);
 
         if (typeof this.d9vkVersion !== 'string') {
             this.d9vkVersion = githubDownloader.getLatestRelease();
@@ -110,10 +107,7 @@ class D9VK {
         wine.wizard(wizard);
         wine.prefix(container);
 
-        const githubDownloader = new GitHubReleaseDownloader("Joshua-Ashton", "d9vk")
-            .withWizard(wizard);
-
-        githubDownloader.fetchReleases();
+        const githubDownloader = new GitHubReleaseDownloader("Joshua-Ashton", "d9vk", wizard);
 
         const versions = githubDownloader.getReleases();
         const latestVersion = githubDownloader.getLatestRelease();

@@ -37,10 +37,7 @@ class FAudio {
             throw "FAudio does not support 32bit architecture.";
         }
 
-        const githubDownloader = new GitHubReleaseDownloader("Kron4ek", "FAudio-Builds")
-            .withWizard(wizard);
-
-        githubDownloader.fetchReleases();
+        const githubDownloader = new GitHubReleaseDownloader("Kron4ek", "FAudio-Builds", wizard);
 
         if (typeof this.faudioVersion !== "string") {
             this.faudioVersion = githubDownloader.getLatestRelease();
@@ -72,10 +69,7 @@ class FAudio {
         wine.prefix(container);
         wine.wizard(wizard);
 
-        const githubDownloader = new GitHubReleaseDownloader("Kron4ek", "FAudio-Builds")
-            .withWizard(wizard);
-
-        githubDownloader.fetchReleases();
+        const githubDownloader = new GitHubReleaseDownloader("Kron4ek", "FAudio-Builds", wizard);
 
         const versions = githubDownloader.getReleases();
         const latestVersion = githubDownloader.getLatestRelease();

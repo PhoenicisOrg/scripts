@@ -11,28 +11,20 @@ module.GitHubReleaseDownloader = class GitHubReleaseDownloader {
      *
      * @param {string} repositoryOwner The owner of the GitHub repository
      * @param {string} repositoryName The name of the GitHub repository
+     * @param {SetupWizard} wizard The setup wizard
      */
-    constructor(repositoryOwner, repositoryName) {
+    constructor(repositoryOwner, repositoryName, wizard) {
         this.repositoryOwner = repositoryOwner;
         this.repositoryName = repositoryName;
-    }
-
-    /**
-     * Sets the setup wizard
-     *
-     * @param {SetupWizard} wizard The setup wizard
-     * @returns {GitHubReleaseDownloader} this
-     */
-    withWizard(wizard) {
         this.wizard = wizard;
 
-        return this;
+        this.versions = this.fetchReleases();
     }
 
     /**
      * Fetches the GitHub releases
      *
-     * @returns {void}
+     * @returns {object[]} The downloaded versions json array
      */
     fetchReleases() {
         const tmpDir = createTempDir();
@@ -44,9 +36,11 @@ module.GitHubReleaseDownloader = class GitHubReleaseDownloader {
             .to(tmpDir + "/releases.json")
             .get();
 
-        this.versions = JSON.parse(cat(releasesFile));
+        const versions = JSON.parse(cat(releasesFile));
 
         remove(tmpDir);
+
+        return versions;
     }
 
     /**
