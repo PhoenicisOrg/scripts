@@ -1,8 +1,7 @@
 const Wine = include("engines.wine.engine.object");
-const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const { ls, cp } = include("utils.functions.filesystem.files");
-const { getGithubReleases } = include("utils.functions.net.githubreleases");
+const { GitHubReleaseDownloader } = include("utils.functions.net.githubreleases");
 
 const Optional = Java.type("java.util.Optional");
 
@@ -38,18 +37,13 @@ class FAudio {
             throw "FAudio does not support 32bit architecture.";
         }
 
+        const githubDownloader = new GitHubReleaseDownloader("Kron4ek", "FAudio-Builds", wizard);
+
         if (typeof this.faudioVersion !== "string") {
-            const versions = getGithubReleases("Kron4ek", "FAudio-Builds", wizard);
-            this.faudioVersion = versions[0];
+            this.faudioVersion = githubDownloader.getLatestRelease();
         }
 
-        const setupFile = new Resource()
-            .wizard(wizard)
-            .url(
-                `https://github.com/Kron4ek/FAudio-Builds/releases/download/${this.faudioVersion}/faudio-${this.faudioVersion}.tar.xz`
-            )
-            .name(`faudio-${this.faudioVersion}.tar.xz`)
-            .get();
+        const [setupFile] = githubDownloader.download(this.faudioVersion);
 
         new Extractor()
             .wizard(wizard)
@@ -75,9 +69,12 @@ class FAudio {
         wine.prefix(container);
         wine.wizard(wizard);
 
-        const versions = getGithubReleases("Kron4ek", "FAudio-Builds", wizard);
+        const githubDownloader = new GitHubReleaseDownloader("Kron4ek", "FAudio-Builds", wizard);
 
-        const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
+        const versions = githubDownloader.getReleases();
+        const latestVersion = githubDownloader.getLatestRelease();
+
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, latestVersion);
 
         // install selected version
         new FAudio(wine).withVersion(selectedVersion.text).go();
