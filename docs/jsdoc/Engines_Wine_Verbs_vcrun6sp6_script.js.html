@@ -63,7 +63,7 @@ class Vcrun6SP6 {
         remove(`${system32directory}/msvcrt.dll`);
         remove(`${system32directory}/oleaut32.dll`);
         remove(`${system32directory}/olepro32.dll`);
-        remove(`${system32directory}/stdole2.dll`);
+        remove(`${system32directory}/stdole2.tlb`);
 
         wizard.wait(tr("Please wait while {0} is installed...", "vcrun6sp6"));
 
