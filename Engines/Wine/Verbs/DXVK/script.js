@@ -78,7 +78,7 @@ class DXVK {
             .to(`${prefixDirectory}/TMP/`)
             .extract();
 
-        const dxvkTmpDir = `${prefixDirectory}/TMP/dxvk-${this.dxvkVersion}`;
+        const dxvkTmpDir = `${prefixDirectory}/TMP/dxvk-${this.dxvkVersion.substring(1)}`;
 
         //Copy 32 bits dll to system* and apply override
         ls(`${dxvkTmpDir}/x32`).forEach(file => {
