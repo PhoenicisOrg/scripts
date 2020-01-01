@@ -48,6 +48,12 @@ module.default = class QuickScript {
         this._miniature = java.util.Optional.empty();
         if (application) {
             this._miniature = application.getMainMiniature();
+
+            // category icon
+            const category = appsManager.getCategory([TYPE_ID, CATEGORY_ID]);
+            if (category != null) {
+                this._categoryIcon = category.getIcon();
+            }
         }
     }
 
@@ -197,6 +203,10 @@ module.default = class QuickScript {
 
         if (this.miniature().isPresent()) {
             shortcut.miniature(this.miniature().get())
+        }
+
+        if (this._categoryIcon) {
+            shortcut.categoryIcon(this._categoryIcon)
         }
 
         shortcut.create();
