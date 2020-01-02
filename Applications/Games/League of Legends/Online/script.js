@@ -78,7 +78,7 @@ new CustomInstallerScript()
             .name("League%20of%20Legends%20installer%20" + regionID + ".exe")
             .get();
 
-        return {command: setupFile};
+        return { command: setupFile };
     })
     .executable("LeagueClient.exe")
     .category("Games")
