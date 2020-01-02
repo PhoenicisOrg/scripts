@@ -1,4 +1,4 @@
-const {WINE_PREFIX_DIR} = include("engines.wine.engine.constants");
+const { WINE_PREFIX_DIR } = include("engines.wine.engine.constants");
 
 const ShortcutInfoDTOBuilderClass = Java.type("org.phoenicis.library.dto.ShortcutInfoDTO.Builder");
 const ShortcutDTOBuilderClass = Java.type("org.phoenicis.library.dto.ShortcutDTO.Builder");
@@ -118,6 +118,27 @@ module.default = class WineShortcut {
     }
 
     /**
+     * Sets the category icon for the shortcut
+     *
+     * @param {string[]|URI} icon An array which specifies the category of which the icon shall be used or URI of the icon
+     * @returns {WineShortcut} The WineShortcut object
+     */
+    categoryIcon(icon) {
+        if (Array.isArray(icon)) {
+            // category of icon given
+            const category = this._appsManager.getCategory(icon);
+            if (category != null) {
+                this._categoryIcon = category.getIcon();
+            }
+        } else {
+            // icon URI given
+            this._categoryIcon = icon;
+        }
+
+        return this;
+    }
+
+    /**
      * Sets the shortcut environment variables
      *
      * @param {string} environment The environment variables
@@ -162,7 +183,7 @@ module.default = class WineShortcut {
         const myEnv = { WINEDEBUG: "-all" };
         if (typeof this._environment !== "undefined") {
             var envJSON = JSON.parse(this._environment);
-            Object.keys(envJSON).forEach(function (key) {
+            Object.keys(envJSON).forEach((key) => {
                 myEnv[key] = envJSON[key];
             });
         }
@@ -191,6 +212,10 @@ module.default = class WineShortcut {
 
         if (this._miniature) {
             builder.withMiniature(this._miniature);
+        }
+
+        if (this._categoryIcon) {
+            builder.withCategoryIcon(this._categoryIcon);
         }
 
         this._shortcutManager.createShortcut(builder.build());

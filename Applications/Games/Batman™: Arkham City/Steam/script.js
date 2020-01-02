@@ -1,5 +1,5 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-const {getLatestStagingVersion} = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 const CSMT = include("engines.wine.plugins.csmt");
 
@@ -10,6 +10,6 @@ new SteamScript()
     .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .appId(200260)
-    .postInstall(function (wine/*, wizard*/) {
+    .postInstall((wine/*, wizard*/) => {
         new CSMT(wine).go();
     });

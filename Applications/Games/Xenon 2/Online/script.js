@@ -1,5 +1,5 @@
 const ZipScript = include("engines.wine.quick_script.zip_script");
-const {getLatestDosSupportVersion} = include("engines.wine.engine.versions");
+const { getLatestDosSupportVersion } = include("engines.wine.engine.versions");
 
 new ZipScript()
     .name("Xenon 2")

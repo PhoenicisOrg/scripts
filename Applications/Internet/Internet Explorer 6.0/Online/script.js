@@ -55,7 +55,7 @@ new PlainInstaller().withScript(() => {
         "browseui",
         "iseng",
         "inetcpl"
-    ].forEach(function (dll) {
+    ].forEach((dll) => {
         remove(wine.prefixDirectory() + "/drive_c/windows/system32/" + dll + ".dll");
     });
 

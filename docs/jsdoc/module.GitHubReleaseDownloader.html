@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Extractor</title>
+    <title>JSDoc: Class: GitHubReleaseDownloader</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Extractor</h1>
+    <h1 class="page-title">Class: GitHubReleaseDownloader</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Extractor<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>GitHubReleaseDownloader<span class="signature">(repositoryOwner, repositoryName, wizard)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Extractor class</div>
+            <div class="class-description">A dedicated class used for accessing and downloading releases hosted on GitHub</div>
         
     
 </header>
@@ -45,111 +45,7 @@
     
 
     
-    <h4 class="name" id="Extractor"><span class="type-signature"></span>new Extractor<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Utils_Functions_Filesystem_Extract_script.js.html">Utils/Functions/Filesystem/Extract/script.js</a>, <a href="Utils_Functions_Filesystem_Extract_script.js.html#line100">line 100</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="archive"><span class="type-signature"></span>archive<span class="signature">(archive)</span><span class="type-signature"> &rarr; {Extractor}</span></h4>
+    <h4 class="name" id="GitHubReleaseDownloader"><span class="type-signature"></span>new GitHubReleaseDownloader<span class="signature">(repositoryOwner, repositoryName, wizard)</span><span class="type-signature"></span></h4>
     
 
     
@@ -157,7 +53,7 @@
 
 
 <div class="description">
-    Sets the archive
+    Constructor
 </div>
 
 
@@ -193,7 +89,7 @@
 
         <tr>
             
-                <td class="name"><code>archive</code></td>
+                <td class="name"><code>repositoryOwner</code></td>
             
 
             <td class="type">
@@ -209,256 +105,14 @@
 
             
 
-            <td class="description last">The archive which shall be extracted</td>
+            <td class="description last">The owner of the GitHub repository</td>
         </tr>
 
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Utils_Functions_Filesystem_Extract_script.js.html">Utils/Functions/Filesystem/Extract/script.js</a>, <a href="Utils_Functions_Filesystem_Extract_script.js.html#line121">line 121</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The Extractor object
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Extractor</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="extract"><span class="type-signature"></span>extract<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Extracts the archive to the previously set destination
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Utils_Functions_Filesystem_Extract_script.js.html">Utils/Functions/Filesystem/Extract/script.js</a>, <a href="Utils_Functions_Filesystem_Extract_script.js.html#line153">line 153</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="message"><span class="type-signature"></span>message<span class="signature">(progressMessage)</span><span class="type-signature"> &rarr; {Extractor}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Sets the progress message text
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
     
 
         <tr>
             
-                <td class="name"><code>progressMessage</code></td>
+                <td class="name"><code>repositoryName</code></td>
             
 
             <td class="type">
@@ -474,304 +128,9 @@
 
             
 
-            <td class="description last">The progress message</td>
+            <td class="description last">The name of the GitHub repository</td>
         </tr>
 
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Utils_Functions_Filesystem_Extract_script.js.html">Utils/Functions/Filesystem/Extract/script.js</a>, <a href="Utils_Functions_Filesystem_Extract_script.js.html#line132">line 132</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The Extractor object
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Extractor</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="to"><span class="type-signature"></span>to<span class="signature">(destination)</span><span class="type-signature"> &rarr; {Extractor}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Sets the destination for the extracted archive content
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>destination</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The place where the archive shall be extracted</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Utils_Functions_Filesystem_Extract_script.js.html">Utils/Functions/Filesystem/Extract/script.js</a>, <a href="Utils_Functions_Filesystem_Extract_script.js.html#line143">line 143</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The Extractor object
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Extractor</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="wizard"><span class="type-signature"></span>wizard<span class="signature">(wizard)</span><span class="type-signature"> &rarr; {Extractor}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Sets the setup wizard
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
     
 
         <tr>
@@ -833,7 +192,187 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Utils_Functions_Filesystem_Extract_script.js.html">Utils/Functions/Filesystem/Extract/script.js</a>, <a href="Utils_Functions_Filesystem_Extract_script.js.html#line110">line 110</a>
+        <a href="Utils_Functions_Net_GithubReleases_script.js.html">Utils/Functions/Net/GithubReleases/script.js</a>, <a href="Utils_Functions_Net_GithubReleases_script.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="download"><span class="type-signature"></span>download<span class="signature">(tag, assetRegex)</span><span class="type-signature"> &rarr; {Array.&lt;string>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Downloads all assets that belong to the release with the given tag that match a given regex
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The tag name of the release</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>assetRegex</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">RegExp</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An optional regex describing the desired asset(s)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Utils_Functions_Net_GithubReleases_script.js.html">Utils/Functions/Net/GithubReleases/script.js</a>, <a href="Utils_Functions_Net_GithubReleases_script.js.html#line71">line 71</a>
     </li></ul></dd>
     
 
@@ -862,7 +401,7 @@
 
         
 <div class="param-desc">
-    The Extractor object
+    An array of paths leading to the downloaded files
 </div>
 
 
@@ -873,7 +412,337 @@
     </dt>
     <dd>
         
-<span class="param-type">Extractor</span>
+<span class="param-type">Array.&lt;string></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="fetchReleases"><span class="type-signature"></span>fetchReleases<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;object>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Fetches the GitHub releases
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Utils_Functions_Net_GithubReleases_script.js.html">Utils/Functions/Net/GithubReleases/script.js</a>, <a href="Utils_Functions_Net_GithubReleases_script.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The downloaded versions json array
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;object></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getLatestRelease"><span class="type-signature"></span>getLatestRelease<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Fetches the tag belonging to the latest release for the given GitHub repository
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Utils_Functions_Net_GithubReleases_script.js.html">Utils/Functions/Net/GithubReleases/script.js</a>, <a href="Utils_Functions_Net_GithubReleases_script.js.html#line60">line 60</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The tag belonging to the latest release
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getReleases"><span class="type-signature"></span>getReleases<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;string>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Fetches the tags belonging to the releases for the given GitHub repository
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Utils_Functions_Net_GithubReleases_script.js.html">Utils/Functions/Net/GithubReleases/script.js</a>, <a href="Utils_Functions_Net_GithubReleases_script.js.html#line51">line 51</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    An array containing the tags for the GitHub releases
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;string></span>
 
 
     </dd>

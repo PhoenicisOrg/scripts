@@ -1,5 +1,5 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-const {getLatestStagingVersion} = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 const Uplay = include("engines.wine.verbs.uplay");
 
@@ -11,6 +11,6 @@ new SteamScript()
     .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
     .wineArchitecture("amd64")
-    .postInstall(function (wine /*, wizard*/) {
+    .postInstall((wine /*, wizard*/) => {
         new Uplay(wine).go();
     });

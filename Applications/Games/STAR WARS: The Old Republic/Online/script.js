@@ -1,6 +1,6 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const {writeToFile} = include("utils.functions.filesystem.files");
-const {getLatestStagingVersion} = include("engines.wine.engine.versions");
+const { writeToFile } = include("utils.functions.filesystem.files");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 const D3DX9 = include("engines.wine.verbs.d3dx9");
 
@@ -15,11 +15,11 @@ new OnlineInstallerScript()
     .checksum("c538935eff4ec90ce2e48dc7e515a8dec2f15f58")
     .category("Games")
     .executable("launcher.exe")
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall((wine /*, wizard*/) => {
         //it seems it brings better performance
         new D3DX9(wine).go();
     })
-    .postInstall(function (wine /*, wizard*/) {
+    .postInstall((wine /*, wizard*/) => {
         //without that the launcher is unable to download the game
         var path =
 			wine.prefixDirectory() +

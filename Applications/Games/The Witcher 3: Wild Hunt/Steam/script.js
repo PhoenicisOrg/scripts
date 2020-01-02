@@ -11,7 +11,7 @@ new SteamScript()
     .wineDistribution("staging")
     .wineArchitecture("amd64")
     .appId(292030)
-    .preInstall(function (wine, wizard) {
+    .preInstall((wine, wizard) => {
         wizard.message(
             tr(
                 "Please ensure you have the latest drivers (415.25 minimum for NVIDIA and mesa 19 for AMD) or else this game will not work."

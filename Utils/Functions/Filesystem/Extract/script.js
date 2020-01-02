@@ -1,4 +1,4 @@
-const {mkdir} = include("utils.functions.filesystem.files");
+const { mkdir } = include("utils.functions.filesystem.files");
 
 const extractor = Bean("extractor");
 

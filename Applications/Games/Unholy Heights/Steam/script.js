@@ -1,5 +1,5 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-const {getLatestStagingVersion} = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 const DotNET40 = include("engines.wine.verbs.dotnet40");
 
@@ -10,6 +10,6 @@ new SteamScript()
     .appId(249330)
     .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall((wine /*, wizard*/) => {
         new DotNET40(wine).go();
     });

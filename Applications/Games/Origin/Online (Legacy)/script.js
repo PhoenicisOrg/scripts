@@ -1,7 +1,7 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
-const {getLatestDevelopmentVersion} = include("engines.wine.engine.versions");
+const { getLatestDevelopmentVersion } = include("engines.wine.engine.versions");
 const Downloader = include("utils.functions.net.download");
-const {Extractor} = include("utils.functions.filesystem.extract");
+const { Extractor } = include("utils.functions.filesystem.extract");
 
 new OnlineInstallerScript()
     .name("Origin")
@@ -12,14 +12,14 @@ new OnlineInstallerScript()
     .category("Games")
     .executable("Origin.exe")
     .wineVersion(getLatestDevelopmentVersion)
-    .preInstall(function (wine, wizard) {
+    .preInstall((wine, wizard) => {
         wizard.message(
             tr(
                 'When Origin launches, you will get an error message ("Your update could not be completed."). This is ok. Just close the popup.'
             )
         );
     })
-    .postInstall(function (wine, wizard) {
+    .postInstall((wine, wizard) => {
         var originDir = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Origin/";
 
         new Downloader()

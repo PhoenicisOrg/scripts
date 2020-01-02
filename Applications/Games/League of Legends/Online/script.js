@@ -13,7 +13,7 @@ new CustomInstallerScript()
     .editor("Riot Games")
     .applicationHomepage("http://leagueoflegends.com/")
     .author("Plata, feanor12, Thog, TheRuntimeIsNotWorkingRey, ImperatorS79, Zemogiter, Kreyren")
-    .installationCommand(function (wizard) {
+    .installationCommand((wizard) => {
         /// Select the region and download the setup file
         const regions = [
             "EU West",
@@ -84,6 +84,6 @@ new CustomInstallerScript()
     .category("Games")
     .wineDistribution("staging")
     .wineVersion(getLatestStagingVersion)
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         new Corefonts(wine).go();
     });

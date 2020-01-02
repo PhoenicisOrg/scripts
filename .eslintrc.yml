@@ -18,6 +18,9 @@ rules:
     - 2
     - {anonymous: always, named: never, asyncArrow: always}
   no-trailing-spaces: 2
+  object-curly-spacing:
+    - 2
+    - always
   indent:
     - 2
     - 4
@@ -28,6 +31,7 @@ rules:
   linebreak-style:
     - 2
     - unix
+  prefer-arrow-callback: 2
 
 globals:
   include: false

@@ -1,5 +1,5 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-const {getLatestStagingVersion} = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 const Uplay = include("engines.wine.verbs.uplay");
 
@@ -10,7 +10,7 @@ new SteamScript()
     .appId(242050)
     .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
-    .postInstall(function (wine /*, wizard*/) {
+    .postInstall((wine /*, wizard*/) => {
         // the automatically installed Uplay version does not update properly
         new Uplay(wine).go();
     });

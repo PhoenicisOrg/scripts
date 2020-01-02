@@ -12,7 +12,7 @@ new OnlineInstallerScript()
     // The checksum changes each time you download
     .category("Games")
     .executable("Battle.net.exe")
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall((wine /*, wizard*/) => {
         new Vcrun2015(wine).go();
         new Corefonts(wine).go();
     });

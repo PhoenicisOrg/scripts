@@ -14,7 +14,7 @@ new ZipScript()
     .category("Games")
     .wineVersion(getLatestDosSupportVersion)
     .wineDistribution("dos_support")
-    .postInstall(function (wine) {
+    .postInstall((wine) => {
         wine.run(
             wine.prefixDirectory() + "/drive_c/The Elder Scroll 1: Arena/Arena106.exe",
             [],

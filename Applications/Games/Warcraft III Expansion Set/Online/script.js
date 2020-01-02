@@ -16,7 +16,7 @@ new OnlineInstallerScript()
     .executable("Warcraft III.exe")
     .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         new WindowsVersion(wine).withWindowsVersion("winxp").go();
 
         new Corefonts(wine).go();
