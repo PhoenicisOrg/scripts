@@ -4,13 +4,14 @@ const vcrun2017 = include("engines.wine.verbs.vcrun2017");
 const DXVK = include("engines.wine.verbs.dxvk");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
 const { touch, writeToFile } = include("utils.functions.filesystem.files");
+const { getLatestDevelopmentVersion } = include("engines.wine.engine.versions");
 
 new SteamScript()
     .name("Space Engineers")
     .editor("Keen Software House")
     .author("Zemogiter")
     .appId(244850)
-    .wineVersion("5.0-rc1")
+    .wineVersion(getLatestDevelopmentVersion)
     .wineDistribution("upstream")
     .wineArchitecture("amd64")
     .preInstall((wine) => {
