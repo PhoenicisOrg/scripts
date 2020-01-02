@@ -13,7 +13,7 @@ const OverrideDLL = include("engines.wine.plugins.override_dll");
  * Verb to install Media Foundation workaround
  * see: https://github.com/z0z0z/mf-install
  */
-class mfWorkaround {
+class MFWorkaround {
     constructor(wine) {
         this.wine = wine;
     }
@@ -24,11 +24,6 @@ class mfWorkaround {
      * @param {string} mfWorkaroundVersion The version of mfWorkaround to downlaod
      * @returns {mfWorkaround} The mfWorkaround object
      */
-    withVersion(mfWorkaroundVersion) {
-        this.mfWorkaroundVersion = mfWorkaroundVersion;
-
-        return this;
-    }
 
     go() {
         const wizard = this.wine.wizard();
