@@ -99,10 +99,10 @@ class MFWorkaround {
         //const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]); same as above
 
         // install
-        new mfWorkaround(wine).go();
+        new MFWorkaround(wine).go();
 
         wizard.close();
     }
 }
 
-module.default = mfWorkaround;
+module.default = MFWorkaround;
