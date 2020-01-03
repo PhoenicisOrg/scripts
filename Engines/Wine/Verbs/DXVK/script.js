@@ -108,8 +108,7 @@ class DXVK {
         wine.wizard(wizard);
         wine.prefix(container);
 
-        const githubDownloader = new GitHubReleaseDownloader("doitsujin", "dxvk")
-            .withWizard(wizard);
+        const githubDownloader = new GitHubReleaseDownloader("doitsujin", "dxvk", wizard);
 
         githubDownloader.fetchReleases();
 
