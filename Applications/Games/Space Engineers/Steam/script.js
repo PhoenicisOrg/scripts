@@ -2,6 +2,7 @@ const SteamScript = include("engines.wine.quick_script.steam_script");
 const dotnet472 = include("engines.wine.verbs.dotnet472");
 const vcrun2017 = include("engines.wine.verbs.vcrun2017");
 const DXVK = include("engines.wine.verbs.dxvk");
+const xact = include("engines.wine.verbs.xact");
 const OverrideDLL = include("engines.wine.plugins.override_dll");
 const { touch, writeToFile } = include("utils.functions.filesystem.files");
 const { getLatestDevelopmentVersion } = include("engines.wine.engine.versions");
@@ -19,6 +20,7 @@ new SteamScript()
         new dotnet472(wine).go();
         new vcrun2017(wine).go();
         new DXVK(wine).go();
+        new xact(wine).go();
         new OverrideDLL(wine)
             .withMode("native, builtin", ["msvcr120"])
             .withMode("disabled", ["nvapi", "nvapi64"])
