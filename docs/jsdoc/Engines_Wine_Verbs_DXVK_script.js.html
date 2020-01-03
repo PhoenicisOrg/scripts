@@ -27,15 +27,12 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>const Wine = include("engines.wine.engine.object");
-const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const { ls, cp, cat, remove } = include("utils.functions.filesystem.files");
-
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
-
 const Optional = Java.type("java.util.Optional");
-
 const OverrideDLL = include("engines.wine.plugins.override_dll");
+const { GitHubReleaseDownloader } = include("utils.functions.net.githubreleases");
 
 /**
  * Verb to install DXVK
@@ -67,37 +64,38 @@ class DXVK {
 
         print("NOTE: wine version should be greater or equal to 3.10");
 
-        if (operatingSystemFetcher.fetchCurrentOperationSystem() != "Linux") {
-            wizard.message(
-                tr(
-                    "DXVK might not work correctly on macOS. This is depending on Metal api support and MoltenVK compatibility layer advancement"
-                )
-            );
-        } else {
-            wizard.message(
-                tr(
-                    "Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."
-                )
-            );
+        if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux")
+        {
+            const question = tr("DXVK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation.")
+            const choices = [
+                tr("YES, continue with DXVK installation regardless"),
+                tr("NO, quit script alltogether"),
+                tr("Exit DXVK Installer, but continue with the script")
+            ];
+
+            const answer = wizard.menu(question, choices);
+
+            switch (answer.index) {
+                case 1:
+                    // choice: "NO, quit script alltogether"
+                    throw new Error("User aborted the script.");
+                case 2:
+                    // choice: "Exit DXVK Installer, but continue with the script"
+                    return this;
+                default:
+                    // do nothing
+            }
         }
+        else {
+            wizard.message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else DXVK might not work correctly."));
+        }
+        const githubDownloader = new GitHubReleaseDownloader("doitsujin", "dxvk", wizard);
 
         if (typeof this.dxvkVersion !== "string") {
-            const releaseFile = new Resource()
-                .wizard(wizard)
-                .url("https://raw.githubusercontent.com/doitsujin/dxvk/master/RELEASE")
-                .name("RELEASE.txt")
-                .get();
-
-            this.dxvkVersion = cat(releaseFile).replaceAll("\\n", "");
+            this.dxvkVersion = githubDownloader.getLatestRelease();
         }
 
-        const setupFile = new Resource()
-            .wizard(wizard)
-            .url(
-                `https://github.com/doitsujin/dxvk/releases/download/v${this.dxvkVersion}/dxvk-${this.dxvkVersion}.tar.gz`
-            )
-            .name(`dxvk-${this.dxvkVersion}.tar.gz`)
-            .get();
+        const [setupFile] = githubDownloader.download(this.dxvkVersion);
 
         new Extractor()
             .wizard(wizard)
@@ -105,7 +103,7 @@ class DXVK {
             .to(`${prefixDirectory}/TMP/`)
             .extract();
 
-        const dxvkTmpDir = `${prefixDirectory}/TMP/dxvk-${this.dxvkVersion}`;
+        const dxvkTmpDir = `${prefixDirectory}/TMP/dxvk-${this.dxvkVersion.substring(1)}`;
 
         //Copy 32 bits dll to system* and apply override
         ls(`${dxvkTmpDir}/x32`).forEach(file => {
@@ -129,64 +127,17 @@ class DXVK {
 
         remove(`${prefixDirectory}/TMP/`);
     }
-
     static install(container) {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "DXVK", Optional.empty());
 
-        wine.prefix(container);
         wine.wizard(wizard);
+        wine.prefix(container);
 
-        // get latest release version
-        const releaseFile = new Resource()
-            .wizard(wizard)
-            .url("https://raw.githubusercontent.com/doitsujin/dxvk/master/RELEASE")
-            .name("RELEASE.txt")
-            .get();
+        const githubDownloader = new GitHubReleaseDownloader("doitsujin", "dxvk", wizard);
 
-        const latestVersion = cat(releaseFile).replaceAll("\\n", "");
-
-        // query desired version (default: latest release version)
-        const versions = [
-            "1.2.2",
-            "1.2.1",
-            "1.2",
-            "1.1.1",
-            "1.0.3",
-            "1.0.2",
-            "1.0.1",
-            "1.0",
-            "0.96",
-            "0.95",
-            "0.94",
-            "0.93",
-            "0.92",
-            "0.91",
-            "0.90",
-            "0.81",
-            "0.80",
-            "0.72",
-            "0.71",
-            "0.70",
-            "0.65",
-            "0.64",
-            "0.63",
-            "0.62",
-            "0.61",
-            "0.60",
-            "0.54",
-            "0.53",
-            "0.52",
-            "0.51",
-            "0.50",
-            "0.42",
-            "0.41",
-            "0.40",
-            "0.31",
-            "0.30",
-            "0.21",
-            "0.20"
-        ];
+        const versions = githubDownloader.getReleases();
+        const latestVersion = githubDownloader.getLatestRelease();
 
         const selectedVersion = wizard.menu(tr("Please select the version."), versions, latestVersion);
 
