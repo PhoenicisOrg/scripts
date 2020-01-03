@@ -2,7 +2,6 @@ const Wine = include("engines.wine.engine.object");
 const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const { ls, cp } = include("utils.functions.filesystem.files");
-//const { getGithubReleases } = include("utils.functions.net.githubreleases"); commented out because it's useless until z0z0z will use releases
 
 const Optional = Java.type("java.util.Optional");
 const Regedit = include("engines.wine.plugins.regedit");
@@ -18,24 +17,12 @@ class MFWorkaround {
         this.wine = wine;
     }
 
-    /**
-     * Sets the used mfWorkaround version
-     *
-     * @param {string} mfWorkaroundVersion The version of mfWorkaround to downlaod
-     * @returns {mfWorkaround} The mfWorkaround object
-     */
-
     go() {
+        // TODO: use GitHub releases if repository provides releases
         const wizard = this.wine.wizard();
         const prefixDirectory = this.wine.prefixDirectory();
         const system32directory = this.wine.system32directory();
         const system64directory = this.wine.system64directory();
-
-        //commented out because it's useless until z0z0z will use releases
-        /*if (typeof this.mfWorkaroundVersion !== "string") {
-            const versions = getGithubReleases("Kron4ek", "FAudio-Builds", wizard);
-            this.mfWorkaroundVersion = versions[0];
-        }*/
 
         const setupFile = new Resource()
             .wizard(wizard)
@@ -93,10 +80,6 @@ class MFWorkaround {
 
         wine.prefix(container);
         wine.wizard(wizard);
-
-        //const versions = getGithubReleases("z0z0z", "mf-install", wizard); commented out because it's useless until z0z0z will use releases
-
-        //const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]); same as above
 
         // install
         new MFWorkaround(wine).go();
