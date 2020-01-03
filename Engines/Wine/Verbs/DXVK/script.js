@@ -63,8 +63,6 @@ class DXVK {
         }
         const githubDownloader = new GitHubReleaseDownloader("doitsujin", "dxvk", wizard);
 
-        githubDownloader.fetchReleases();
-
         if (typeof this.dxvkVersion !== "string") {
             this.dxvkVersion = githubDownloader.getLatestRelease();
         }
@@ -109,8 +107,6 @@ class DXVK {
         wine.prefix(container);
 
         const githubDownloader = new GitHubReleaseDownloader("doitsujin", "dxvk", wizard);
-
-        githubDownloader.fetchReleases();
 
         const versions = githubDownloader.getReleases();
         const latestVersion = githubDownloader.getLatestRelease();
