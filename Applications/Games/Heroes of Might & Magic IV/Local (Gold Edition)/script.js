@@ -11,7 +11,7 @@ new LocalInstallerScript()
     .wineDistribution("upstream")
     .wineVersion(getLatestDevelopmentVersion)
     .executable("H4mod.exe")
-    .postInstall(function (wine) {
+    .postInstall((wine) => {
         const dataDirectory = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "Ubisoft/Heroes of Might & Magic IV - Złota Edycja/Data";
 
         const patchForGameExecutable = new Resource()
