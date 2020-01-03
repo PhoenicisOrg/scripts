@@ -30,4 +30,4 @@ new SteamScript()
         wizard.message(tr("Due to JIT compiler issues and the way this game uses multithreating, there are audio stutters. If you are on a Debian-based distribution you can try the libFAudio package from this PPA:\nhttps://launchpad.net/~cybermax-dexter/+archive/ubuntu/sdl2-backport"));
     })
     .executable("Steam.exe", ["-silent", "-applaunch", "244850", "-no-cef-sandbox", "-skipintro"])
-    .environment('{"DXVK_CONFIG_FILE": "configFile", "STAGING_SHARED_MEMORY": "0", "DXVK_HUD": "compiler", "PULSE_LATENCY_MSEC" = "60"}')
+    .environment('{"DXVK_CONFIG_FILE": "configFile", "STAGING_SHARED_MEMORY": "0", "DXVK_HUD": "compiler", "PULSE_LATENCY_MSEC": "60"}')
