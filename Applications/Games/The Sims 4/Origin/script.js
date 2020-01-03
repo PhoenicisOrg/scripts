@@ -21,7 +21,7 @@ new OriginScript()
         new vcrun2013(wine).go();
         new vcrun2015(wine).go();
         new D9VK(wine).go();
-        var configFile = wine.prefixDirectory() + "/drive_c/dxvk.conf";
+        const configFile = wine.prefixDirectory() + "/drive_c/dxvk.conf";
         touch(configFile);
         writeToFile(configFile, "dxgi.nvapiHack = False");
         new OverrideDLL(wine)
