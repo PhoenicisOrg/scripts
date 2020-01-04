@@ -72,7 +72,7 @@ new CustomInstallerScript()
                 url = baseUrl+"LA2.exe";
                 break;
         }
-        const setupFile = new Resource()
+        let setupFile = new Resource()
             .wizard(wizard)
             .url(url)
             .name("League%20of%20Legends%20installer%20" + regionID + ".exe")
