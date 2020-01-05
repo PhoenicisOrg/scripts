@@ -44,7 +44,7 @@ new LocalInstallerScript()
             .extract(["-F", "iv5setup.exe"]);
         wizard.message(
             tr(
-                "When installing Indeo codecs you must choose custom installation type. Then uncheck ownload DirectShow filter and Indeo 5 Netscape Browser Extension or else the installer will crash."
+                "When installing Indeo codecs you must choose custom installation type. Then uncheck download DirectShow filter and Indeo 5 Netscape Browser Extension or else the installer will crash."
             )
         );
         wine.run(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/iv5setup.exe");
