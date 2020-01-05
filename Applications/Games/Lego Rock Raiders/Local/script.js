@@ -29,7 +29,7 @@ new LocalInstallerScript()
                 "This game needs a copy protection patch to work. It may be illegal in your country to patch copy protection. You must patch the game yourself."
             )
         );
-        var zipLocation = wine.prefixDirectory() + "drive_c/RockRaidersCodec_490085.zip";
+        const zipLocation = wine.prefixDirectory() + "drive_c/RockRaidersCodec_490085.zip";
         new Downloader()
             .wizard(wizard)
             .url("http://rrubucket.s3.amazonaws.com/RockRaidersCodec_490085.zip")

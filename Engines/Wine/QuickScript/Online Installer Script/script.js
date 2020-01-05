@@ -35,8 +35,8 @@ module.default = class OnlineInstallerScript extends InstallerScript {
         }
 
         // get correct extension depending on URL
-        var extension = this._url.split('.').pop();
-        var installationFile = createTempFile(extension);
+        const extension = this._url.split('.').pop();
+        const installationFile = createTempFile(extension);
 
         new Downloader()
             .wizard(wizard)

@@ -28,7 +28,7 @@ new LocalInstallerScript()
         new OverrideDLL(wine).withMode("native, builtin", ["winhttp", "msvcrt40", "msvcr100", "crypt32"]).go();
     })
     .postInstall((wine) => {
-        var versionFile = wine.prefixDirectory() + "/drive_c/Ubisoft/Related Designs/ANNO 2070/update/version.txt";
+        const versionFile = wine.prefixDirectory() + "/drive_c/Ubisoft/Related Designs/ANNO 2070/update/version.txt";
         touch(versionFile);
         writeToFile(
             versionFile,
