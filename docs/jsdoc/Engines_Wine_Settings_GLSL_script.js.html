@@ -52,7 +52,7 @@ module.default = class GLSLSetting {
     getCurrentOption(container) {
         const wine = new Wine().prefix(container);
 
-        var currentValue = new Regedit(wine).fetchValue([
+        const currentValue = new Regedit(wine).fetchValue([
             "HKEY_CURRENT_USER",
             "Software",
             "Wine",

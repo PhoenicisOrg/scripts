@@ -38,18 +38,18 @@ module.default = class WineTerminalOpenerTool {
     }
 
     run(container) {
-        var wine = new Wine()
+        const wine = new Wine()
             .prefix(container);
 
-        var environment = [];
+        const environment = [];
 
         environment["WINEPREFIX"] = wine.prefixDirectory();
         environment["PATH"] = wine.binPath() + ":$PATH";
         environment["LD_LIBRARY_PATH"] = Bean("propertyReader").getProperty("application.environment.ld");
         environment["TERM"] = "xterm";
 
-        var wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines") + "/wine";
-        var winePath = wine.binPath().substring(0, wine.binPath().length - 5); //trim /bin/
+        const wineEnginesDirectory = Bean("propertyReader").getProperty("application.user.engines") + "/wine";
+        const winePath = wine.binPath().substring(0, wine.binPath().length - 5); //trim /bin/
 
         if (wine.architecture() == "amd64") {
             environment["LD_LIBRARY_PATH"] =
