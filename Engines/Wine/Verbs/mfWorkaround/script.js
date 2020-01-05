@@ -60,6 +60,8 @@ class MFWorkaround {
 
         const regeditFile = `${prefixDirectory}/mfWorkaround/mf-install-master/mf.reg`;
         new Regedit(this.wine).patch(regeditFile);
+        const regeditFile2 = `${prefixDirectory}/mfWorkaround/mf-install-master/wmf.reg`;
+        new Regedit(this.wine).patch(regeditFile2);
         //command for regedit64 will go here once implemented
 
         new Regsvr32(this.wine).withDll("colorcnv.dll").go();
