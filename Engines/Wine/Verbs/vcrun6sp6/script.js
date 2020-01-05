@@ -25,7 +25,7 @@ class Vcrun6SP6 {
             .name("Vs6sp6.exe")
             .get();
 
-        const setupDir = `${prefixDirectory}/drive_c/vcrun6sp6/`;    
+        const setupDir = `${prefixDirectory}/drive_c/vcrun6sp6/`;
         new CabExtract()
             .wizard(wizard)
             .archive(toBeCabExtracted)
