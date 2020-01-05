@@ -31,14 +31,14 @@ new LocalInstallerScript()
         );
         const zipLocation = wine.prefixDirectory() + "drive_c/RockRaidersCodec_490085.zip";
         const codecs = new Resource()
-            .wizard(wizard)
+            .wizard(wine.wizard())
             .url("http://rrubucket.s3.amazonaws.com/RockRaidersCodec_490085.zip")
             .checksum("991a343dc608c6a1914127a55f2e5b47")
             .algorithm("MD5")
             .name("RockRaidersCodec_490085.zip")
             .get();
         new Extractor()
-            .wizard(wizard)
+            .wizard(wine.wizard())
             .archive(codecs)
             .to(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/")
             .extract(["-F", "iv5setup.exe"]);
