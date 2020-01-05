@@ -1,11 +1,10 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
 const { writeToFile } = include("utils.functions.filesystem.files");
-
+const { getScreenWidth, getScreenHeight } = include("utils.functions.system.virtual_desktop");
 const SoundDriver = include("engines.wine.plugins.sound_driver");
 const WindowsVersion = include("engines.wine.plugins.windows_version");
 
 function fixIni(ini) {
-    const screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
     const content =
         "[Audio]\n" +
         "EnableMicrophone=0\n" +
@@ -17,10 +16,10 @@ function fixIni(ini) {
         "MaxOutputBufferSize=0\n" +
         "[Renderer.Win32]\n" +
         "ScreenWidth=" +
-        screenSize.width +
+        getScreenWidth() +
         "\n" +
         "ScreenHeight=" +
-        screenSize.height +
+        getScreenHeight() +
         "\n" +
         "MinScreenWidth=640\n" +
         "MinScreenHeight=480\n" +
