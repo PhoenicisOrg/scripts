@@ -14,7 +14,7 @@ new LocalInstallerScript()
     .executable("Space Colony.exe")
     .postInstall((wine) => {
         const patch = new Resource()
-            .wizard(wine.wizard)
+            .wizard(wine.wizard())
             .url("https://d1ztm8591kdhlc.cloudfront.net/hdpatches/Space_Colony_HD_Update.exe")
             .checksum("c821e5c7035b9b517823466f4cedadd3")
             .algorithm("MD5")
