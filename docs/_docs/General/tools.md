@@ -11,25 +11,26 @@ This pages describes these tools and how they can be run locally on your PC.
 
 ## ESLint
 Checks Javascript files, e.g. formatting and JSDoc validity.
+
 ### Installation
 ```
-sudo npm install -g eslint
+npm install
 ```
 
 ### Execution
 in the local git repository:
 ```
-eslint -c .eslintrc.yml --fix ./**/*.js
+npm run lint
 ```
 ## json-align
 Formats JSON files.
 ### Installation
 ```
-sudo npm install -g json-align
+npm install
 ```
 
 ### Execution
 in the local git repository:
 ```
-find . -name "*.json" -print0 | xargs -0 json-align -i
+npm run json-align
 ```
