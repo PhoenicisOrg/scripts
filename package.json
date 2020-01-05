@@ -1,7 +1,7 @@
 {
     "name"        : "phoenicis-scripts",
     "version"     : "1.0.0",
-    "description" : "A collection of Scripts for Phoenicis",
+    "description" : "A collection of scripts for Phoenicis",
     "directories" : {
         "doc" : "docs"
     },
