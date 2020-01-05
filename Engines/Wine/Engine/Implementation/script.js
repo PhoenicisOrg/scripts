@@ -423,7 +423,7 @@ module.default = class WineEngine {
             processBuilder.directory(new FileClass(driveC));
         }
 
-        var environment = processBuilder.environment();
+        const environment = processBuilder.environment();
         // disable winemenubuilder (we manage our own shortcuts)
         environment.put("WINEDLLOVERRIDES", "winemenubuilder.exe=d");
         environment.put("WINEPREFIX", workingContainerDirectory);

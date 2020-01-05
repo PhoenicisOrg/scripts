@@ -32,6 +32,10 @@ rules:
     - 2
     - unix
   prefer-arrow-callback: 2
+  no-var:
+    - 2
+  prefer-const:
+    - 2
 
 globals:
   include: false
