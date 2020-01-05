@@ -5,8 +5,8 @@ const SoundDriver = include("engines.wine.plugins.sound_driver");
 const WindowsVersion = include("engines.wine.plugins.windows_version");
 
 function fixIni(ini) {
-    var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-    var content =
+    const screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+    const content =
         "[Audio]\n" +
         "EnableMicrophone=0\n" +
         "LatencyBuffer=4\n" +

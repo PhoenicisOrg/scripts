@@ -19,7 +19,7 @@ new CustomInstallerScript()
     .installationCommand((wizard) => {
         // Select the region and download the setup file
         ////////////////////////////////////////////////
-        var regions = [
+        const regions = [
             "EU West",
             "Latin America North",
             "Latin America South",
@@ -31,9 +31,9 @@ new CustomInstallerScript()
             "North America",
             "Russia"
         ];
-        var selectedRegion = wizard.menu(tr("Select your region:"), regions);
-        var url, sha1;
-        var baseUrl = "https://riotgamespatcher-a.akamaihd.net/ShellInstaller/";
+        const selectedRegion = wizard.menu(tr("Select your region:"), regions);
+        let url, sha1;
+        const baseUrl = "https://riotgamespatcher-a.akamaihd.net/ShellInstaller/";
         switch (selectedRegion.text) {
             case "EU West":
                 url = baseUrl + "EUW/LeagueofLegends_EUW_Installer_2016_11_10.exe";
@@ -76,7 +76,7 @@ new CustomInstallerScript()
                 sha1 = "2d462decf629cab880386407598f9c5ea6db2ef5";
                 break;
         }
-        var setupFile = new Resource()
+        const setupFile = new Resource()
             .wizard(wizard)
             .url(url)
             .checksum(sha1)
@@ -103,8 +103,8 @@ new CustomInstallerScript()
 
         // Create run script to start the right exe
         /////////////////////////////////////////
-        var client = wine.prefixDirectory() + "drive_c/LoL/run.bat";
-        var batContent = "start C:\\LoL\\LeagueClient.exe";
+        const client = wine.prefixDirectory() + "drive_c/LoL/run.bat";
+        const batContent = "start C:\\LoL\\LeagueClient.exe";
         writeToFile(client, batContent);
     })
     .executable("run.bat");

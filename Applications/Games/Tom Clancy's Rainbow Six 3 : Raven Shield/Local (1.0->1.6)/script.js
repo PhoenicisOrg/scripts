@@ -12,10 +12,10 @@ new LocalInstallerScript()
     .postInstall((wine) => {
         const wizard = wine.wizard();
 
-        var regions = ["France", "England"];
-        var selectedRegion = wizard.menu(tr("Select your region for the patch (1.0 to 1.60)."), regions);
-        var exeName, url, sha1;
-        var originDirectory = wine.prefixDirectory() + "drive_c/users/Public/Documents/";
+        const regions = ["France", "England"];
+        const selectedRegion = wizard.menu(tr("Select your region for the patch (1.0 to 1.60)."), regions);
+        let exeName, url, sha1;
+        const originDirectory = wine.prefixDirectory() + "drive_c/users/Public/Documents/";
 
         switch (selectedRegion.text) {
             case "France":
