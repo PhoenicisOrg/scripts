@@ -5,6 +5,13 @@ branches:
 
 matrix:
   include:
+    - stage: Check ESLint
+      before_install: npm install -g eslint
+      script:
+        - eslint -c .eslintrc.yml ./**/*.js
+      after_failure:
+        - echo "Some files are not valid JavaScript"
+
     - stage: Check JSON format
       before_install: npm install -g json-align
       script:
