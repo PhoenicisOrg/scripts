@@ -4,17 +4,13 @@ on: pull_request
 
 jobs:
   eslint:
+    name: runner / eslint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: eslint
+        uses: reviewdog/action-eslint@v1
         with:
-          fetch-depth: 1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - run: npm ci --no-audit --prefer-offline
-      - uses: tinovyatkin/action-eslint@v1
-        with:
-          repo-token: ${{secrets.GITHUB_TOKEN}}
-          check-name: eslint # this is the check name from above 👆 where to post annotations
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
           
