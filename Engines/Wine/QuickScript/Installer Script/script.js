@@ -95,9 +95,9 @@ module.default = class InstallerScript extends QuickScript {
             );
         }
 
-        this._createShortcut(wine.prefix());
-
         this._postInstall(wine, setupWizard);
+
+        this._createShortcut(wine.prefix());
 
         // back to generic wait (might have been changed in postInstall)
         setupWizard.wait(tr("Please wait..."));
