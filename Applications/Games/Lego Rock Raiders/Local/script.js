@@ -15,7 +15,7 @@ new LocalInstallerScript()
     .executable("LegoRR.exe")
     .wineVersion("3.0.3")
     .wineDistribution("upstream")
-    .preInstall((wine) => {
+    .preInstall((wine, wizard) => {
         new Amstream(wine).go();
         new Quartz(wine).go();
         new Devenum(wine).go();
@@ -24,12 +24,12 @@ new LocalInstallerScript()
         wizard.message(tr("When the game ask to install DirectX Media click yes. Click no when it ask for DirectX 6."));
     })
     .postInstall((wine) => {
+        const wizard = wine.wizard();
         wizard.message(
             tr(
                 "This game needs a copy protection patch to work. It may be illegal in your country to patch copy protection. You must patch the game yourself."
             )
         );
-        const zipLocation = wine.prefixDirectory() + "drive_c/RockRaidersCodec_490085.zip";
         const codecs = new Resource()
             .wizard(wine.wizard())
             .url("http://rrubucket.s3.amazonaws.com/RockRaidersCodec_490085.zip")
