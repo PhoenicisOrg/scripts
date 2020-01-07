@@ -21,6 +21,7 @@ new LocalInstallerScript()
             .name("heroes4_sfx.exe")
             .get();
         wine.run(patchForGameExecutable, null, false, true);
+        wine.wait();
 
         const patchForCampaignEditor = new Resource()
             .wizard(wine.wizard())
@@ -29,6 +30,7 @@ new LocalInstallerScript()
             .name("camp_ed_sfx.exe")
             .get();
         wine.run(patchForCampaignEditor, null, false, true);
+        wine.wait();
 
         new Downloader()
             .wizard(wine.wizard())
@@ -44,4 +46,5 @@ new LocalInstallerScript()
             .name("install_equilibris_v.3.51.exe")
             .get();
         wine.run(mod, null, false, true);
+        wine.wait();
     });
