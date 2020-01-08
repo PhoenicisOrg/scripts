@@ -15,7 +15,8 @@ new LocalInstallerScript()
     .executable("LegoRR.exe")
     .wineVersion("3.0.3")
     .wineDistribution("upstream")
-    .preInstall((wine, wizard) => {
+    .preInstall((wine) => {
+        const wizard = wine.wizard();
         new Amstream(wine).go();
         new Quartz(wine).go();
         new Devenum(wine).go();
