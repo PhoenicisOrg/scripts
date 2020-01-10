@@ -38,4 +38,4 @@ new SteamScript()
         );
     })
     .gameOverlay(false)
-    .environment('{"DXVK_CONFIG_FILE": "configFile", "STAGING_SHARED_MEMORY": "0", "WINEESYNC": "1"}')
+    .environment('{"DXVK_CONFIG_FILE": "dxvkConfigFile", "STAGING_SHARED_MEMORY": "0", "WINEESYNC": "1"}')
