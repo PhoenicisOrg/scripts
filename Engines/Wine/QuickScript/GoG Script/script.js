@@ -112,7 +112,7 @@ module.default = class GogScript extends QuickScript {
             .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
             .create()
             .wait();
-        
+
         new Luna(wine).go();
 
         this._preInstall(wine, setupWizard);
