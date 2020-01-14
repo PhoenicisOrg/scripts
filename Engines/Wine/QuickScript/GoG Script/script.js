@@ -3,6 +3,7 @@ const QuickScript = include("engines.wine.quick_script.quick_script");
 const Downloader = include("utils.functions.net.download");
 const { createTempDir } = include("utils.functions.filesystem.files");
 
+const Luna = include("engines.wine.verbs.luna");
 const GDIPlus = include("engines.wine.verbs.gdiplus");
 
 module.default = class GogScript extends QuickScript {
@@ -111,6 +112,8 @@ module.default = class GogScript extends QuickScript {
             .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion)
             .create()
             .wait();
+
+        new Luna(wine).go();
 
         this._preInstall(wine, setupWizard);
 
