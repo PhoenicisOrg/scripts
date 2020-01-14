@@ -1,5 +1,5 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
-const Downloader = include("utils.functions.net.download");
+const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 
 const Amstream = include("engines.wine.verbs.amstream");
@@ -15,7 +15,8 @@ new LocalInstallerScript()
     .executable("LegoRR.exe")
     .wineVersion("3.0.3")
     .wineDistribution("upstream")
-    .preInstall((wine, wizard) => {
+    .preInstall((wine) => {
+        const wizard = wine.wizard();
         new Amstream(wine).go();
         new Quartz(wine).go();
         new Devenum(wine).go();
@@ -23,28 +24,27 @@ new LocalInstallerScript()
 
         wizard.message(tr("When the game ask to install DirectX Media click yes. Click no when it ask for DirectX 6."));
     })
-    .postInstall((wine, wizard) => {
+    .postInstall((wine) => {
+        const wizard = wine.wizard();
         wizard.message(
             tr(
                 "This game needs a copy protection patch to work. It may be illegal in your country to patch copy protection. You must patch the game yourself."
             )
         );
-        const zipLocation = wine.prefixDirectory() + "drive_c/RockRaidersCodec_490085.zip";
-        new Downloader()
+        const codecs = new Resource()
             .wizard(wizard)
             .url("http://rrubucket.s3.amazonaws.com/RockRaidersCodec_490085.zip")
-            .checksum("991a343dc608c6a1914127a55f2e5b47")
-            .algorithm("MD5")
-            .to(zipLocation)
+            .checksum("efabe957e6d6dff015dfc4ceb04f00466a895782")
+            .name("RockRaidersCodec_490085.zip")
             .get();
         new Extractor()
             .wizard(wizard)
-            .archive(wine.prefixDirectory() + "/drive_c/RockRaidersCodec_490085.zip")
+            .archive(codecs)
             .to(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/")
             .extract(["-F", "iv5setup.exe"]);
         wizard.message(
             tr(
-                "When installing Indeo codecs you must choose custom installation type. Then uncheck ownload DirectShow filter and Indeo 5 Netscape Browser Extension or else the installer will crash."
+                "When installing Indeo codecs you must choose custom installation type. Then uncheck download DirectShow filter and Indeo 5 Netscape Browser Extension or else the installer will crash."
             )
         );
         wine.run(wine.prefixDirectory() + "/drive_c/RockRaidersCodec/iv5setup.exe");
