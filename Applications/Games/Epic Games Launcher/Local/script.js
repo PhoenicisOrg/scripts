@@ -1,5 +1,7 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 const { getLatestStagingVersion } = include("engines.wine.engine.versions");
+const WindowsVersion = include("engines.wine.plugins.windows_version");
+const Corefonts = include("engines.wine.verbs.corefonts");
 
 new LocalInstallerScript()
     .name("Epic Games Launcher")
@@ -8,7 +10,9 @@ new LocalInstallerScript()
     .author("Plata")
     .installationArgs(["/q"])
     .category("Games")
-    .executable("EpicGamesLauncher.exe", ["-SkipBuildPatchPrereq", "-OpenGL"])
-    .wineVersion(getLatestStagingVersion)
-    .wineDistribution("staging")
-    .wineArchitecture("amd64");
+    .executable("EpicGamesLauncher.exe", ["-SkipBuildPatchPrereq"])
+    .wineArchitecture("amd64")
+    .preInstall((wine) => {
+        new Corefonts(wine).go();
+        new WindowsVersion(wine).withWindowsVersion("win7").go();
+    });
