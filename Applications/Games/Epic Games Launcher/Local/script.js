@@ -1,6 +1,5 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 const { getLatestStagingVersion } = include("engines.wine.engine.versions");
-const WindowsVersion = include("engines.wine.plugins.windows_version");
 const Corefonts = include("engines.wine.verbs.corefonts");
 
 new LocalInstallerScript()
@@ -14,5 +13,4 @@ new LocalInstallerScript()
     .wineArchitecture("amd64")
     .preInstall((wine) => {
         new Corefonts(wine).go();
-        new WindowsVersion(wine).withWindowsVersion("win7").go();
     });
