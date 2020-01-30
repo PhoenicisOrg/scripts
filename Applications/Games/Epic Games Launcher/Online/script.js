@@ -1,5 +1,6 @@
 const OnlineInstallerScript = include("engines.wine.quick_script.online_installer_script");
 const { getLatestStagingVersion } = include("engines.wine.engine.versions");
+const Corefonts = include("engines.wine.verbs.corefonts");
 
 new OnlineInstallerScript()
     .name("Epic Games Launcher")
@@ -7,12 +8,13 @@ new OnlineInstallerScript()
     .applicationHomepage("https://www.unrealengine.com/download")
     .author("Plata")
     .url(
-        "https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi"
+        "https://epicgames-download1.akamaized.net/Builds/UnrealEngineLauncher/Installers/Win32/EpicInstaller-10.7.0.msi?launcherfilename=EpicInstaller-10.7.0.msi"
     )
-    .checksum("d608bfb4eec073df9a76cfe58877dcc86364d428")
+    .checksum("1ebbfda01c5428c55cb46dac2d223c16ec4ee9b1")
     .installationArgs(["/q"])
     .category("Games")
-    .executable("EpicGamesLauncher.exe", ["-SkipBuildPatchPrereq", "-OpenGL"])
-    .wineVersion(getLatestStagingVersion)
-    .wineDistribution("staging")
-    .wineArchitecture("amd64");
+    .executable("EpicGamesLauncher.exe", ["-SkipBuildPatchPrereq"])
+    .wineArchitecture("amd64")
+    .preInstall((wine) => {
+        new Corefonts(wine).go();
+    });
