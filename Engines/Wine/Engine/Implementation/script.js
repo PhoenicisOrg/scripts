@@ -51,7 +51,8 @@ module.default = class WineEngine {
         const [distribution, , architecture] = subCategory.split("-");
         const localDirectory = this.getLocalDirectory(subCategory, version);
 
-        // if not installed
+        // if not installed129:13  error  Parsing error: Assigning to rvalue
+
         if (!this.isInstalled(subCategory, version)) {
             let ownWizard = false;
             let wizard = this.getWizard();
@@ -66,7 +67,8 @@ module.default = class WineEngine {
 
             const wineJson = JSON.parse(this.getAvailableVersions());
 
-            wineJson
+            wineJson129:13  error  Parsing error: Assigning to rvalue
+
                 .filter(distribution => distribution.name === subCategory)
                 .flatMap(distribution => distribution.packages)
                 .forEach(winePackage => {
@@ -126,7 +128,7 @@ module.default = class WineEngine {
         let namex86;
         let namex64;
         print ("runtimeJsonPath: " + runtimeJsonPath);
-        if (!fileExists(runtimeJsonPath) || getFileSize(runtimeJsonPath) = 0) {
+        if (!fileExists(runtimeJsonPath) || getFileSize(runtimeJsonPath) == 0) {
             mkdir(this._wineEnginesDirectory + "/runtime");
 
             runtimeJsonFile = new Downloader()
