@@ -51,7 +51,7 @@ module.default = class WineEngine {
         const [distribution, , architecture] = subCategory.split("-");
         const localDirectory = this.getLocalDirectory(subCategory, version);
 
-        // if not installed129:13  error  Parsing error: Assigning to rvalue
+        // if not installed
 
         if (!this.isInstalled(subCategory, version)) {
             let ownWizard = false;
