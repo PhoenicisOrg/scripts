@@ -125,6 +125,7 @@ module.default = class WineEngine {
         let downloadx64 = false;
         let namex86;
         let namex64;
+        print ("runtimeJsonPath: " + runtimeJsonPath);
         if (!fileExists(runtimeJsonPath)) {
             mkdir(this._wineEnginesDirectory + "/runtime");
 
@@ -156,8 +157,10 @@ module.default = class WineEngine {
             namex86 = maxVersionx86;
             namex64 = maxVersionx64;
         } else {
-            const oldRuntimeJsonFile = cat(this._wineEnginesDirectory + "/runtime.json");
+            const oldRuntimeJsonFile = cat(runtimeJsonPath);
+            print ("oldRuntimeJsonFile: " + oldRuntimeJsonFile);
             const oldRuntimeJson = JSON.parse(oldRuntimeJsonFile);
+            print ("oldRuntimeJson: " + oldRuntimeJson);
 
             runtimeJsonFile = new Downloader()
                 .wizard(setupWizard)
@@ -165,8 +168,10 @@ module.default = class WineEngine {
                 .url("https://phoenicis.playonlinux.com/index.php/runtime?os=linux")
                 .to(runtimeJsonPath)
                 .get();
+            print ("runtimeJsonFile: " + runtimeJsonFile);
 
             runtimeJson = JSON.parse(cat(runtimeJsonFile));
+            print ("runtimeJson: " + runtimeJson);
 
             let maxVersion2x86 = 0;
             let maxVersion2x64 = 0;
