@@ -67,7 +67,7 @@ module.default = class WineEngine {
 
             const wineJson = JSON.parse(this.getAvailableVersions());
 
-            wineJson129:13  error  Parsing error: Assigning to rvalue
+            wineJson
 
                 .filter(distribution => distribution.name === subCategory)
                 .flatMap(distribution => distribution.packages)
