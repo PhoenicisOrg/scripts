@@ -159,8 +159,8 @@ module.default = class WineEngine {
             namex86 = maxVersionx86;
             namex64 = maxVersionx64;
         } else {
-            print ("oldRuntimeJsonFile: " + oldRuntimeJsonFile);
-            print ("oldRuntimeJson: " + oldRuntimeJson);
+            const oldRuntimeJsonFile = cat(this._wineEnginesDirectory + "/runtime.json");
+            const oldRuntimeJson = JSON.parse(oldRuntimeJsonFile);
 
             runtimeJsonFile = new Downloader()
                 .wizard(setupWizard)
