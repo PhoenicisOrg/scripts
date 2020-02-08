@@ -52,7 +52,6 @@ module.default = class WineEngine {
         const localDirectory = this.getLocalDirectory(subCategory, version);
 
         // if not installed
-
         if (!this.isInstalled(subCategory, version)) {
             let ownWizard = false;
             let wizard = this.getWizard();
@@ -68,7 +67,6 @@ module.default = class WineEngine {
             const wineJson = JSON.parse(this.getAvailableVersions());
 
             wineJson
-
                 .filter(distribution => distribution.name === subCategory)
                 .flatMap(distribution => distribution.packages)
                 .forEach(winePackage => {
@@ -127,7 +125,6 @@ module.default = class WineEngine {
         let downloadx64 = false;
         let namex86;
         let namex64;
-        print ("runtimeJsonPath: " + runtimeJsonPath);
         if (!fileExists(runtimeJsonPath) || getFileSize(runtimeJsonPath) == 0) {
             mkdir(this._wineEnginesDirectory + "/runtime");
 
@@ -168,10 +165,8 @@ module.default = class WineEngine {
                 .url("https://phoenicis.playonlinux.com/index.php/runtime?os=linux")
                 .to(runtimeJsonPath)
                 .get();
-            print ("runtimeJsonFile: " + runtimeJsonFile);
 
             runtimeJson = JSON.parse(cat(runtimeJsonFile));
-            print ("runtimeJson: " + runtimeJson);
 
             let maxVersion2x86 = 0;
             let maxVersion2x64 = 0;
