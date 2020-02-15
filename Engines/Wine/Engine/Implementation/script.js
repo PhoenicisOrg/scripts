@@ -1,4 +1,4 @@
-const { ls, mkdir, fileExists, cat, lns, remove, touch, createTempFile } = include("utils.functions.filesystem.files");
+const { ls, mkdir, fileExists, cat, lns, remove, touch, createTempFile, getFileSize } = include("utils.functions.filesystem.files");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const Downloader = include("utils.functions.net.download");
 const Resource = include("utils.functions.net.resource");
@@ -125,7 +125,7 @@ module.default = class WineEngine {
         let downloadx64 = false;
         let namex86;
         let namex64;
-        if (!fileExists(runtimeJsonPath)) {
+        if (!fileExists(runtimeJsonPath) || getFileSize(runtimeJsonPath) == 0) {
             mkdir(this._wineEnginesDirectory + "/runtime");
 
             runtimeJsonFile = new Downloader()
