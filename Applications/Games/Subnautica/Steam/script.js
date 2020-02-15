@@ -41,5 +41,5 @@ new SteamScript()
     .environment((wine) => {
         const dxvkConfigFile = wine.prefixDirectory() + "/drive_c/dxvk.conf";
 
-        return  '{"DXVK_CONFIG_FILE": "${dxvkConfigFile}", "STAGING_SHARED_MEMORY": "0", "WINEESYNC": "1"}';
+        return  '{"DXVK_CONFIG_FILE"="${dxvkConfigFile}", "STAGING_SHARED_MEMORY"="0", "WINEESYNC"="1"}';
     })
