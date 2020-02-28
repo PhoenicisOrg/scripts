@@ -33,5 +33,5 @@ new LocalInstallerScript()
             .archive(originUpdate)
             .to(originDir)
             .extract();
-    
+
     });
