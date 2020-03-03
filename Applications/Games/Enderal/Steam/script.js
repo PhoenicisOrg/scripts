@@ -7,9 +7,9 @@ new SteamScript()
     .author("Plata")
     .appId(72850) // Skyrim appId
     .applicationHomepage("http://sureai.net/games/enderal/")
-    .postInstall(function (wine, wizard) {
+    .postInstall((wine, wizard) => {
         // the SteamScript has installed Skyrim, now install Enderal
-        var launcher =
+        const launcher =
 			wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Steam/steamapps/common/Skyrim/Enderal Launcher.exe";
         new Downloader()
             .wizard(wizard)

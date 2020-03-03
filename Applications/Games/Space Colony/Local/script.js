@@ -1,6 +1,6 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 const Resource = include("utils.functions.net.resource");
-const {LATEST_DEVELOPMENT_VERSION} = include("engines.wine.engine.versions");
+const { getLatestDevelopmentVersion } = include("engines.wine.engine.versions");
 
 new LocalInstallerScript()
     .name("Space Colony")
@@ -10,15 +10,15 @@ new LocalInstallerScript()
     .category("Games")
     .installationArgs(["/q"])
     .wineDistribution("upstream")
-    .wineVersion(LATEST_DEVELOPMENT_VERSION)
+    .wineVersion(getLatestDevelopmentVersion)
     .executable("Space Colony.exe")
-    .postInstall(function (wine /*wizard*/) {
-        var patch = new Resource()
-            .wizard(this._wizard)
+    .postInstall((wine) => {
+        const patch = new Resource()
+            .wizard(wine.wizard())
             .url("https://d1ztm8591kdhlc.cloudfront.net/hdpatches/Space_Colony_HD_Update.exe")
             .checksum("c821e5c7035b9b517823466f4cedadd3")
             .algorithm("MD5")
             .name("Space_Colony_HD_Update.exe")
             .get();
-        wine.run(patch);
+        wine.run(patch, null, false, true);
     });

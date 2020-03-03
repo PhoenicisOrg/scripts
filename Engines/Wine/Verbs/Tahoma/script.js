@@ -35,7 +35,7 @@ class Tahoma {
             .wizard(wizard)
             .archive(tahoma)
             .to(`${prefixDirectory}/drive_c/tahoma/`)
-            .extract(["-L", "-F", "tahoma*.tff"]);
+            .extract(["-L", "-F", "tahoma*.ttf"]);
 
         cp(`${prefixDirectory}/drive_c/tahoma/tahoma.ttf`, fontDirectory);
         cp(`${prefixDirectory}/drive_c/tahoma/tahomabd.ttf`, fontDirectory);

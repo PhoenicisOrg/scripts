@@ -1,12 +1,11 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
 const { writeToFile } = include("utils.functions.filesystem.files");
-
+const { getScreenWidth, getScreenHeight } = include("utils.functions.system.virtual_desktop");
 const SoundDriver = include("engines.wine.plugins.sound_driver");
 const WindowsVersion = include("engines.wine.plugins.windows_version");
 
 function fixIni(ini) {
-    var screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-    var content =
+    const content =
         "[Audio]\n" +
         "EnableMicrophone=1\n" +
         "ExclusiveMode=0\n" +
@@ -20,10 +19,10 @@ function fixIni(ini) {
         "[Renderer.Win32]\n" +
         "ShowGamepadUI=0\n" +
         "ScreenWidth=" +
-        screenSize.width +
+        getScreenWidth() +
         "\n" +
         "ScreenHeight=" +
-        screenSize.height +
+        getScreenHeight() +
         "\n" +
         "Fullscreen=2\n" +
         "VisualQuality=1\n" +
@@ -47,7 +46,7 @@ new SteamScript()
     .editor("Ubisoft - San Francisco")
     .author("Plata")
     .appId(221680)
-    .postInstall(function (wine) {
+    .postInstall((wine) => {
         new SoundDriver(wine).withDriver("alsa").go();
 
         new WindowsVersion(wine).withApplicationWindowsVersion("Rocksmith2014.exe", "win7").go();

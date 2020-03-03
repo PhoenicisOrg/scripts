@@ -40,8 +40,8 @@ class Luna {
     }
 
     static install(container) {
-        var wine = new Wine();
-        var wizard = SetupWizard(InstallationType.VERBS, "luna", Optional.empty());
+        const wine = new Wine();
+        const wizard = SetupWizard(InstallationType.VERBS, "luna", Optional.empty());
 
         wine.prefix(container);
         wine.wizard(wizard);

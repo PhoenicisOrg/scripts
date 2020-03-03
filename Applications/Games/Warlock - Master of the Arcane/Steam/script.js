@@ -1,5 +1,5 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 const Corefonts = include("engines.wine.verbs.corefonts");
 const D3DX9 = include("engines.wine.verbs.d3dx9");
@@ -12,9 +12,9 @@ new SteamScript()
     .editor("Paradox Interactive")
     .author("madoar")
     .appId(203630)
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall((wine /*, wizard*/) => {
         new Corefonts(wine).go();
         new D3DX9(wine).go();
         new Tahoma(wine).go();

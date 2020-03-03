@@ -14,7 +14,7 @@ new LocalInstallerScript()
     .author("Plata")
     .category("Office")
     .executable("pica.exe")
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall((wine /*, wizard*/) => {
         new Vcrun2017(wine).go();
 
         new NativeApplication(wine).withExtension("pdf").go();

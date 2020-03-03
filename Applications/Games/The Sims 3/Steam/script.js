@@ -13,7 +13,7 @@ new SteamScript()
     .wineDistribution("upstream")
     .wineVersion("4.0-rc2")
     .appId(47890)
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall((wine /*, wizard*/) => {
         new DotNET20(wine).go();
         new Mfc42(wine).go();
         new Tahoma(wine).go();

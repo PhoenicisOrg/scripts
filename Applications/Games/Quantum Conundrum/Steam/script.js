@@ -7,6 +7,6 @@ new SteamScript()
     .editor("Square Enix")
     .author("Plata")
     .appId(200010)
-    .preInstall(function (wine /*, wizard*/) {
+    .preInstall((wine /*, wizard*/) => {
         new Vcrun2008(wine).go();
     });

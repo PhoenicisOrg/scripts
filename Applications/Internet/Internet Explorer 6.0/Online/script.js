@@ -3,7 +3,7 @@ const PlainInstaller = include("utils.functions.apps.plain_installer");
 const Resource = include("utils.functions.net.resource");
 const { CabExtract } = include("utils.functions.filesystem.extract");
 const Wine = include("engines.wine.engine.object");
-const { LATEST_STABLE_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStableVersion } = include("engines.wine.engine.versions");
 const { remove } = include("utils.functions.filesystem.files");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 const AppResource = include("utils.functions.apps.resources");
@@ -16,22 +16,22 @@ const Regsvr32 = include("engines.wine.plugins.regsvr32");
 const WindowsVersion = include("engines.wine.plugins.windows_version");
 
 new PlainInstaller().withScript(() => {
-    var appsManager = Bean("repositoryManager");
-    var application = appsManager.getApplication([TYPE_ID, CATEGORY_ID, APPLICATION_ID]);
-    var setupWizard = SetupWizard(InstallationType.APPS, "Internet Explorer 6.0", application.getMainMiniature());
+    const appsManager = Bean("repositoryManager");
+    const application = appsManager.getApplication([TYPE_ID, CATEGORY_ID, APPLICATION_ID]);
+    const setupWizard = SetupWizard(InstallationType.APPS, "Internet Explorer 6.0", application.getMainMiniature());
 
     setupWizard.presentation("Internet Explorer 6.0", "Microsoft", "http://www.microsoft.com", "Quentin PÂRIS");
 
-    var setupFile = new Resource()
+    const setupFile = new Resource()
         .wizard(setupWizard)
         .url("http://files.playonlinux.com/ie/6.0/ie60.exe")
         .checksum("8e483db28ff01a7cabd39147ab6c59753ea1f533")
         .name("ie60.exe")
         .get();
 
-    var wine = new Wine()
+    const wine = new Wine()
         .wizard(setupWizard)
-        .prefix("InternetExplorer6", "upstream", "x86", LATEST_STABLE_VERSION)
+        .prefix("InternetExplorer6", "upstream", "x86", getLatestStableVersion(setupWizard, "x86"))
         .create();
 
     new Msls31(wine).go();
@@ -55,7 +55,7 @@ new PlainInstaller().withScript(() => {
         "browseui",
         "iseng",
         "inetcpl"
-    ].forEach(function (dll) {
+    ].forEach((dll) => {
         remove(wine.prefixDirectory() + "/drive_c/windows/system32/" + dll + ".dll");
     });
 
@@ -89,7 +89,7 @@ new PlainInstaller().withScript(() => {
         ])
         .go();
 
-    var librariesToRegister = [
+    const librariesToRegister = [
         "actxprxy.dll",
         "browseui.dll",
         "browsewm.dll",
@@ -144,8 +144,8 @@ new PlainInstaller().withScript(() => {
         "wshom.ocx"
     ];
 
-    var progressBar = setupWizard.progressBar(tr("Please wait..."));
-    var i = 1;
+    const progressBar = setupWizard.progressBar(tr("Please wait..."));
+    let i = 1;
     librariesToRegister.forEach(dll => {
         progressBar.setProgressPercentage((i * 100) / librariesToRegister.length);
         progressBar.setText(tr("Installing {0}...", dll));

@@ -2,7 +2,7 @@ const PlainInstaller = include("utils.functions.apps.plain_installer");
 
 const Resource = include("utils.functions.net.resource");
 const Wine = include("engines.wine.engine.object");
-const { LATEST_STABLE_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStableVersion } = include("engines.wine.engine.versions");
 const { remove } = include("utils.functions.filesystem.files");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 
@@ -13,15 +13,15 @@ const Regsvr32 = include("engines.wine.plugins.regsvr32");
 const WindowsVersion = include("engines.wine.plugins.windows_version");
 
 new PlainInstaller().withScript(() => {
-    var appsManager = Bean("repositoryManager");
-    var application = appsManager.getApplication([TYPE_ID, CATEGORY_ID, APPLICATION_ID]);
-    var setupWizard = SetupWizard(InstallationType.APPS, "Internet Explorer 7.0", application.getMainMiniature());
+    const appsManager = Bean("repositoryManager");
+    const application = appsManager.getApplication([TYPE_ID, CATEGORY_ID, APPLICATION_ID]);
+    const setupWizard = SetupWizard(InstallationType.APPS, "Internet Explorer 7.0", application.getMainMiniature());
 
     setupWizard.presentation("Internet Explorer 7.0", "Microsoft", "http://www.microsoft.com", "Quentin PÂRIS");
 
-    var wine = new Wine()
+    const wine = new Wine()
         .wizard(setupWizard)
-        .prefix("InternetExplorer7", "upstream", "x86", LATEST_STABLE_VERSION)
+        .prefix("InternetExplorer7", "upstream", "x86", getLatestStableVersion(setupWizard, "x86"))
         .create();
 
     new Sandbox(wine).go();
@@ -48,12 +48,12 @@ new PlainInstaller().withScript(() => {
     // delete existing IE, otherwise installer will abort with "newer IE installed"
     remove(wine.prefixDirectory() + "/drive_c/" + wine.programFiles() + "/Internet Explorer/iexplore.exe");
     ["itircl", "itss", "jscript", "mlang", "mshtml", "msimtf", "shdoclc", "shdocvw", "shlwapi", "urlmon"].forEach(
-        function (dll) {
+        (dll) => {
             remove(wine.prefixDirectory() + "/drive_c/windows/system32/" + dll + ".dll");
         }
     );
 
-    var languages = [
+    const languages = [
         "Arabic",
         "Chinese (Simplified)",
         "Chinese (Traditional, Taiwan)",
@@ -79,10 +79,10 @@ new PlainInstaller().withScript(() => {
         "Swedish",
         "Turkish"
     ];
-    var selectedLanguage = setupWizard.menu(tr("Which language version would you like to install?"), languages);
-    var setupLanguage = languages[selectedLanguage.index];
+    const selectedLanguage = setupWizard.menu(tr("Which language version would you like to install?"), languages);
+    const setupLanguage = languages[selectedLanguage.index];
 
-    var ie7link, ie7installer, ie7md5;
+    let ie7link, ie7installer, ie7md5;
 
     switch (setupLanguage) {
         case "English":
@@ -231,7 +231,7 @@ new PlainInstaller().withScript(() => {
             break;
     }
 
-    var setupFile = new Resource()
+    const setupFile = new Resource()
         .wizard(setupWizard)
         .url(ie7link)
         .checksum(ie7md5)
@@ -247,7 +247,7 @@ new PlainInstaller().withScript(() => {
 
     wine.wait();
 
-    var librairiesToRegister = [
+    const librairiesToRegister = [
         "actxprxy.dll",
         "browseui.dll",
         "browsewm.dll",
@@ -302,8 +302,8 @@ new PlainInstaller().withScript(() => {
         "wshom.ocx"
     ];
 
-    var progressBar = setupWizard.progressBar("Please wait...");
-    var i = 1;
+    const progressBar = setupWizard.progressBar("Please wait...");
+    let i = 1;
     librairiesToRegister.forEach(dll => {
         progressBar.setProgressPercentage((i * 100) / librairiesToRegister.length);
         progressBar.setText(tr("Installing {0}...", dll));

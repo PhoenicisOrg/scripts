@@ -1,5 +1,5 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-const { LATEST_STABLE_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStableVersion } = include("engines.wine.engine.versions");
 
 const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
 const Vcrun2013 = include("engines.wine.verbs.vcrun2013");
@@ -12,10 +12,10 @@ new SteamScript()
     .author("Zemogiter")
     .applicationHomepage("https://unknownworlds.com/subnautica/")
     .wineDistribution("upstream")
-    .wineVersion(LATEST_STABLE_VERSION)
+    .wineVersion(getLatestStableVersion)
     .wineArchitecture("amd64")
     .appId(264710)
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         const wizard = wine.wizard();
 
         wizard.message(
@@ -28,7 +28,7 @@ new SteamScript()
 
         new VirtualDesktop(wine).go();
     })
-    .postInstall(function (wine) {
+    .postInstall((wine) => {
         const wizard = wine.wizard();
 
         wizard.message(

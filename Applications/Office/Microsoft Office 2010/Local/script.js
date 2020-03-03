@@ -10,7 +10,7 @@ new LocalInstallerScript()
     .author("ImperatorS79")
     .category("Office")
     // exe set with WineShorcut
-    .postInstall(function (wine) {
+    .postInstall((wine) => {
         new OverrideDLL(wine).withMode("native, builtin", ["riched20"]).go();
 
         new WineShortcut()

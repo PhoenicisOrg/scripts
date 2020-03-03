@@ -1,6 +1,6 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
 
-const { LATEST_STAGING_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStagingVersion } = include("engines.wine.engine.versions");
 
 const CSMT = include("engines.wine.plugins.csmt");
 const WindowsVersion = include("engines.wine.plugins.windows_version");
@@ -12,9 +12,9 @@ new LocalInstallerScript()
     .author("qdii")
     .category("Games")
     .executable("CNC3.exe")
-    .wineVersion(LATEST_STAGING_VERSION)
+    .wineVersion(getLatestStagingVersion)
     .wineDistribution("staging")
-    .preInstall(function (wine) {
+    .preInstall((wine) => {
         new WindowsVersion(wine).withWindowsVersion("winxp").go();
 
         new D3DX9(wine).go();

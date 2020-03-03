@@ -1,5 +1,5 @@
 const SteamScript = include("engines.wine.quick_script.steam_script");
-const { LATEST_STABLE_VERSION } = include("engines.wine.engine.versions");
+const { getLatestStableVersion } = include("engines.wine.engine.versions");
 
 const VirtualDesktop = include("engines.wine.plugins.virtual_desktop");
 const Vcrun2013 = include("engines.wine.verbs.vcrun2013");
@@ -12,10 +12,10 @@ new SteamScript()
     .author("Zemogiter")
     .applicationHomepage("https://unknownworlds.com/subnautica/")
     .wineDistribution("upstream")
-    .wineVersion(LATEST_STABLE_VERSION)
+    .wineVersion(getLatestStableVersion)
     .wineArchitecture("amd64")
     .appId(848450)
-    .preInstall(function (wine, wizard) {
+    .preInstall((wine, wizard) => {
         wizard.message(
             tr("You can make the game smoother by using this: https://github.com/lutris/lutris/wiki/How-to:-Esync")
         );

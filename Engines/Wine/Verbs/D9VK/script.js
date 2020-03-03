@@ -1,13 +1,10 @@
 const Wine = include("engines.wine.engine.object");
-const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const { ls, cp, remove } = include("utils.functions.filesystem.files");
-
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
-
 const Optional = Java.type("java.util.Optional");
-
 const OverrideDLL = include("engines.wine.plugins.override_dll");
+const { GitHubReleaseDownloader } = include("utils.functions.net.githubreleases");
 
 /**
  * Verb to install D9VK
@@ -38,37 +35,45 @@ class D9VK {
 
         print("NOTE: Wine version should be greater or equal to 3.10");
 
-        if (operatingSystemFetcher.fetchCurrentOperationSystem() != "Linux") {
-            wizard.message(
-                tr(
-                    "D9VK might not work correctly on macOS. This is depending on Metal api support and MoltenVK compatibility layer advancement"
-                )
-            );
-        } else {
-            wizard.message(
-                tr(
-                    "Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else D9VK might not work correctly."
-                )
-            );
+        if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() !== "Linux") {
+            const question = tr("D9VK is currently unsupported on non-Linux operating systems due to MoltenVK implementation being incomplete. Select how do you want to approach this situation.")
+            const choices = [
+                tr("YES, continue with DXVK installation regardless"),
+                tr("NO, quit script alltogether"),
+                tr("Exit D9VK Installer, but continue with the script")
+            ];
+
+            const answer = wizard.menu(question, choices);
+
+            switch (answer.index) {
+                case 1:
+                    // choice: "NO, quit script alltogether"
+                    throw new Error("User aborted the script.");
+                case 2:
+                    // choice: "Exit D9VK Installer, but continue with the script"
+                    return this;
+                default:
+                // do nothing
+            }
+        }
+        else {
+            wizard.message(tr("Please ensure you have the latest drivers (418.30 minimum for NVIDIA and mesa 19 for AMD) or else D9VK might not work correctly."));
         }
 
-        if (typeof this.d9vkVersion !== "string") {
-            this.d9vkVersion = "0.12";
+        const githubDownloader = new GitHubReleaseDownloader("Joshua-Ashton", "d9vk", wizard);
+
+        if (typeof this.d9vkVersion !== 'string') {
+            this.d9vkVersion = githubDownloader.getLatestRelease();
         }
 
-        var setupFile = new Resource()
-            .wizard(wizard)
-            .url(
-                `https://github.com/Joshua-Ashton/d9vk/releases/download/${this.d9vkVersion}/d9vk-${this.d9vkVersion}.tar.gz`
-            )
-            .name(`d9vk-${this.d9vkVersion}.tar.gz`)
-            .get();
+        const [setupFile] = githubDownloader.download(this.d9vkVersion);
 
         new Extractor()
             .wizard(wizard)
             .archive(setupFile)
             .to(`${prefixDirectory}/TMP/`)
             .extract();
+
 
         const d9vkTmpDir = `${prefixDirectory}/TMP/d9vk-${this.d9vkVersion}`;
 
@@ -99,11 +104,15 @@ class D9VK {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "D9VK", Optional.empty());
 
-        const versions = ["0.12", "0.11", "0.10"];
-        const selectedVersion = wizard.menu(tr("Please select the version."), versions, "0.12");
-
-        wine.prefix(container);
         wine.wizard(wizard);
+        wine.prefix(container);
+
+        const githubDownloader = new GitHubReleaseDownloader("Joshua-Ashton", "d9vk", wizard);
+
+        const versions = githubDownloader.getReleases();
+        const latestVersion = githubDownloader.getLatestRelease();
+
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, latestVersion);
 
         // install selected version
         new D9VK(wine).withVersion(selectedVersion.text).go();
