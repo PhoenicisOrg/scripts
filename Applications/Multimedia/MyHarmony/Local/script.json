@@ -7,6 +7,6 @@
     "testingOperatingSystems" : [
         "LINUX"
     ],
-    "free"                    : true,
-    "requiresPatch"           : false
+    "free"          : true,
+    "requiresPatch" : false
 }
