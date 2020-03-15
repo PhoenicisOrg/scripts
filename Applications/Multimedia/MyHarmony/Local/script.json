@@ -1,0 +1,12 @@
+{
+    "scriptName"                 : "Local",
+    "id"                         : "applications.multimedia.myharmony.local",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "LINUX"
+    ],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
