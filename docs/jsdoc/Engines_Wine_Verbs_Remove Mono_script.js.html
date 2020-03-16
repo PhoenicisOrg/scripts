@@ -44,7 +44,6 @@ class RemoveMono {
     go() {
         const wizard = this.wine.wizard();
         const system32directory = this.wine.system32directory();
-        const system64directory = this.wine.system64directory();
 
         if (this.wine.uninstall("Mono")) {
             wizard.wait(tr("Please wait..."));
@@ -62,6 +61,7 @@ class RemoveMono {
             remove(`${system32directory}/mscoree.dll`);
 
             if (this.wine.architecture() == "amd64") {
+                const system64directory = this.wine.system64directory();
                 remove(`${system64directory}/mscoree.dll`);
             }
         }
