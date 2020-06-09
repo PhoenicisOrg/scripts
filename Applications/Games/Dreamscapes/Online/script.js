@@ -9,7 +9,7 @@ new OnlineInstallerScript()
     .applicationHomepage("https://gametop.com")
     .author("Starcommander")
     .url("https://cdn.gametop.com/free-games-download/Dreamscapes-The-Sandman.exe")
-    // Todo: checksum()
+    .checksum("ec3b9e2e8175ceca946f1f285542643a2a686c50")
     .category("Games")
     .executable("Dreamscapes_TheSandman.exe")
     .preInstall((wine /*, wizard*/) => {
