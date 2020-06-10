@@ -2,6 +2,7 @@
     "scriptName"                 : "Online",
     "id"                         : "applications.games.dreamscapes",
     "compatibleOperatingSystems" : [
+        "MACOSX",
         "LINUX"
     ],
     "testingOperatingSystems" : [],
