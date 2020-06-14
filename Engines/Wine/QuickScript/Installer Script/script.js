@@ -32,7 +32,7 @@ module.default = class InstallerScript extends QuickScript {
 
         // let user select wine settings if desired
         if (this._wineUserSettings) {
-            if (operatingSystemFetcher.fetchCurrentOperationSystem() == "Mac OS X") {
+            if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() == "Mac OS X") {
                 const architectures = ["x86", "amd64", "x86on64"];
                 const selectedArchitecture = setupWizard.menu(
                     tr("Please select the wine architecture."),
