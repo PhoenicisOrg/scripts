@@ -32,14 +32,26 @@ module.default = class InstallerScript extends QuickScript {
 
         // let user select wine settings if desired
         if (this._wineUserSettings) {
-            const architectures = ["x86", "amd64"];
-            const selectedArchitecture = setupWizard.menu(
-                tr("Please select the wine architecture."),
-                ["x86 (recommended)", "amd64"],
-                "x86 (recommended)"
-            );
+            if (operatingSystemFetcher.fetchCurrentOperationSystem().getFullName() == "Mac OS X") {
+                const architectures = ["x86", "amd64", "x86on64"];
+                const selectedArchitecture = setupWizard.menu(
+                    tr("Please select the wine architecture."),
+                    ["x86 (recommended)", "amd64", "x86 on amd64 (beta)"],
+                    "x86 (recommended)"
+                );
 
-            this._wineArchitecture = architectures[selectedArchitecture.index];
+                this._wineArchitecture = architectures[selectedArchitecture.index];
+            } else {
+                const architectures = ["x86", "amd64"];
+                const selectedArchitecture = setupWizard.menu(
+                    tr("Please select the wine architecture."),
+                    ["x86 (recommended)", "amd64"],
+                    "x86 (recommended)"
+                );
+
+                this._wineArchitecture = architectures[selectedArchitecture.index];
+            }
+
 
             const distributions = wine.availableDistributions(this._wineArchitecture);
             const shownDistributions = distributions.map(distribution => {
