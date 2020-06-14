@@ -409,7 +409,8 @@ module.default = class WineEngine {
             }
         }
 
-        const wineBinary = this.getLocalDirectory(subCategory, version) + "/bin/wine";
+        const wineExecutable = architecture == "x86on64" ? "wine32on64" : "wine"
+        const wineBinary = this.getLocalDirectory(subCategory, version) + "/bin/" + wineExecutable;
         const command = [wineBinary, executable].concat(args);
         const processBuilder = new ProcessBuilderClass(Java.to(command, Java.type("java.lang.String[]")));
 
