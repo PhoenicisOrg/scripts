@@ -5,7 +5,7 @@ const Corefonts = include("engines.wine.verbs.corefonts");
 new LocalInstallerScript()
     .name("Epic Games Launcher")
     .editor("Epic Games")
-    .applicationHomepage("https://www.unrealengine.com/download")
+    .applicationHomepage("https://www.epicgames.com/store/en-US/download")
     .author("Plata")
     .installationArgs(["/q"])
     .category("Games")
