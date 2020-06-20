@@ -1,11 +1,11 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "applications.games.dreamscapes2",
+    "id"                         : "applications.games.dreamscapes_2",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
     ],
     "testingOperatingSystems" : [],
-    "free"                    : false,
+    "free"                    : true,
     "requiresPatch"           : false
 }

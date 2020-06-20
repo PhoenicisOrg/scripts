@@ -3,7 +3,7 @@ const OnlineInstallerScript = include("engines.wine.quick_script.online_installe
 const Vcrun2015 = include("engines.wine.verbs.vcrun2015");
 
 new OnlineInstallerScript()
-    .name("Dreamscapes2")
+    .name("Dreamscapes 2")
     .editor("GameTop-ShamanGames")
     .applicationHomepage("https://gametop.com")
     .author("Starcommander")
