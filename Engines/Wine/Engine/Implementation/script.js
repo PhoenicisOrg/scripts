@@ -1,4 +1,4 @@
-const { ls, mkdir, fileExists, cat, lns, remove, touch, createTempFile, getFileSize } = include("utils.functions.filesystem.files");
+const { ls, mkdir, fileExists, cat, lns, remove, touch, createTempFile, getFileSize} = include("utils.functions.filesystem.files");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const Downloader = include("utils.functions.net.download");
 const Resource = include("utils.functions.net.resource");
