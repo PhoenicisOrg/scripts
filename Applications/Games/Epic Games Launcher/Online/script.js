@@ -8,9 +8,9 @@ new OnlineInstallerScript()
     .applicationHomepage("https://www.unrealengine.com/download")
     .author("Plata")
     .url(
-        "https://epicgames-download1.akamaized.net/Builds/UnrealEngineLauncher/Installers/Win32/EpicInstaller-10.7.0.msi?launcherfilename=EpicInstaller-10.7.0.msi"
+        "https://epicgames-download1.akamaized.net/Builds/UnrealEngineLauncher/Installers/Win32/EpicInstaller-10.15.2.msi?launcherfilename=EpicInstaller-10.15.2.msi"
     )
-    .checksum("1ebbfda01c5428c55cb46dac2d223c16ec4ee9b1")
+    .checksum("6734c5c990715816021351b0bd0a7527e7a226fa")
     .installationArgs(["/q"])
     .category("Games")
     .executable("EpicGamesLauncher.exe", ["-SkipBuildPatchPrereq"])
