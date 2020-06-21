@@ -1,6 +1,6 @@
 {
     "scriptName"                 : "Online",
-    "id"                         : "applications.games.dreamscapes",
+    "id"                         : "applications.games.namariel_legends_iron_lord.online",
     "compatibleOperatingSystems" : [
         "MACOSX",
         "LINUX"
