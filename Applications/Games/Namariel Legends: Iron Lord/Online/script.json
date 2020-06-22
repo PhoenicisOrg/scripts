@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Online",
+    "id"                         : "applications.games.namariel_legends_iron_lord.online",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
