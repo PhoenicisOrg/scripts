@@ -16,4 +16,4 @@ new OnlineInstallerScript()
     .preInstall((wine) => {
         new Corefonts(wine).go();
     })
-    .executable("Steam.exe", ["-no-cef-sandbox"]);
+    .executable("steam.exe", ["-no-cef-sandbox"]);

@@ -14,7 +14,7 @@ module.default = class SteamScript extends QuickScript {
     constructor() {
         super();
 
-        this._executable = "Steam.exe";
+        this._executable = "steam.exe";
         this._category = "Games";
         this._gameOverlay = true;
     }
@@ -151,7 +151,7 @@ module.default = class SteamScript extends QuickScript {
             .go();
 
         // ensure that Steam is running (user might have unchecked "run Steam after installation finished")
-        wine.runInsidePrefix(`${wine.programFiles()}/Steam/Steam.exe`, ["steam://nav/games"], false);
+        wine.runInsidePrefix(`${wine.programFiles()}/Steam/steam.exe`, ["steam://nav/games"], false);
 
         // wait until config.vdf exists
         while (!fileExists(this.configVdf(wine))) {
@@ -171,7 +171,7 @@ module.default = class SteamScript extends QuickScript {
         // back to generic wait (might have been changed in preInstall)
         setupWizard.wait(tr("Please wait..."));
 
-        wine.runInsidePrefix(`${wine.programFiles()}/Steam/Steam.exe`, [`steam://install/${this._appId}`], false);
+        wine.runInsidePrefix(`${wine.programFiles()}/Steam/steam.exe`, [`steam://install/${this._appId}`], false);
 
         setupWizard.wait(tr("Please wait until Steam has finished the download..."));
 
@@ -186,7 +186,7 @@ module.default = class SteamScript extends QuickScript {
         }
 
         // close Steam
-        wine.runInsidePrefix(`${wine.programFiles()}/Steam/Steam.exe`, "-shutdown", true);
+        wine.runInsidePrefix(`${wine.programFiles()}/Steam/steam.exe`, "-shutdown", true);
 
         // back to generic wait
         setupWizard.wait(tr("Please wait..."));
