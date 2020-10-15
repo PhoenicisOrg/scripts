@@ -46,7 +46,7 @@ new SteamScript()
 
         wizard.message(
             tr(
-                "You have to install libjpeg62 and libjpeg62-dev or else the thumbnails in New Game menu will be dispalyed as magenta rectangles."
+                "You have to install libjpeg62 and libjpeg62-dev or else the thumbnails in New Game menu will be displayed as magenta rectangles."
             )
         );
         wizard.message(
