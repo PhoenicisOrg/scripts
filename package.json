@@ -1,29 +1,29 @@
 {
-    "name"        : "phoenicis-scripts",
-    "version"     : "1.0.0",
-    "description" : "A collection of scripts for Phoenicis",
-    "directories" : {
-        "doc" : "docs"
+    "name": "phoenicis-scripts",
+    "version": "1.0.0",
+    "description": "A collection of scripts for Phoenicis",
+    "directories": {
+        "doc": "docs"
     },
-    "scripts" : {
-        "lint"       : "eslint -c .eslintrc.yml ./**/*.js",
-        "json-align" : "find . -name \"*.json\" -print0 | xargs -0 json-align -i"
+    "scripts": {
+        "lint": "eslint -c .eslintrc.yml ./**/*.js",
+        "json-align": "find . -name \"*.json\" ! -name \"package.json\" ! -name \"package-lock.json\" -print0 | xargs -0 json-align -i"
     },
-    "repository" : {
-        "type" : "git",
-        "url"  : "git+https://github.com/PhoenicisOrg/scripts.git"
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/PhoenicisOrg/scripts.git"
     },
-    "keywords" : [
+    "keywords": [
         "phoenicis",
         "wine"
     ],
-    "license" : "LPGPL-3.0",
-    "bugs"    : {
-        "url" : "https://github.com/PhoenicisOrg/scripts/issues"
+    "license": "LPGPL-3.0",
+    "bugs": {
+        "url": "https://github.com/PhoenicisOrg/scripts/issues"
     },
-    "homepage"        : "https://github.com/PhoenicisOrg/scripts",
-    "devDependencies" : {
-        "eslint"     : "^6.8.0",
-        "json-align" : "^0.1.0"
+    "homepage": "https://github.com/PhoenicisOrg/scripts",
+    "devDependencies": {
+        "eslint": "^6.8.0",
+        "json-align": "^0.1.0"
     }
 }
