@@ -6,9 +6,9 @@ branches:
 matrix:
   include:
     - stage: Check JSON format
-      before_install: npm install -g json-align
+      before_install: npm install
       script:
-        - find . -name "*.json" -print0 | xargs -0 json-align -i
+        - npm run json-align
         - git diff
         - diffs=$(git diff --name-only | wc -l); if [ $diffs != 0 ]; then exit 1; fi
       after_failure:
