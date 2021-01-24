@@ -45,7 +45,7 @@ new SteamScript()
             )
         );
     })
-    .executable("Steam.exe", ["-silent", "-applaunch", "244850", "-no-cef-sandbox", "-skipintro"]);
+    .executable("Steam.exe", ["-silent", "-applaunch", "244850", "-no-cef-sandbox", "-skipintro"])
     .environment((wine) => {
         const dxvkConfigFile = wine.prefixDirectory() + "/drive_c/dxvk.conf";
         return '{"DXVK_CONFIG_FILE": "dxvkConfigFile", "STAGING_SHARED_MEMORY": "0", "DXVK_HUD": "compiler", "PULSE_LATENCY_MSEC": "60", "WINEESYNC": "1"}';
