@@ -12,13 +12,13 @@ new LocalInstallerScript()
     .wineDistribution("upstream")
     .wineVersion(getLatestDevelopmentVersion)
     .executable("Space Colony.exe")
-    .postInstall(function (wine /*wizard*/) {
-        var patch = new Resource()
-            .wizard(this._wizard)
+    .postInstall((wine) => {
+        const patch = new Resource()
+            .wizard(wine.wizard())
             .url("https://d1ztm8591kdhlc.cloudfront.net/hdpatches/Space_Colony_HD_Update.exe")
             .checksum("c821e5c7035b9b517823466f4cedadd3")
             .algorithm("MD5")
             .name("Space_Colony_HD_Update.exe")
             .get();
-        wine.run(patch);
+        wine.run(patch, null, false, true);
     });

@@ -25,20 +25,22 @@ class Vcrun6SP6 {
             .name("Vs6sp6.exe")
             .get();
 
-        const setupFile = new CabExtract()
+        const setupDir = `${prefixDirectory}/drive_c/vcrun6sp6/`;
+        new CabExtract()
             .wizard(wizard)
             .archive(toBeCabExtracted)
-            .to(`${prefixDirectory}/drive_c/vcrun6sp6/`)
+            .to(setupDir)
             .extract(["-L", "-F", "vcredist.exe"]);
 
         remove(`${system32directory}/comcat.dll`);
         remove(`${system32directory}/msvcrt.dll`);
         remove(`${system32directory}/oleaut32.dll`);
         remove(`${system32directory}/olepro32.dll`);
-        remove(`${system32directory}/stdole2.dll`);
+        remove(`${system32directory}/stdole2.tlb`);
 
         wizard.wait(tr("Please wait while {0} is installed...", "vcrun6sp6"));
 
+        const setupFile = setupDir + "vcredist.exe";
         this.wine.run(setupFile, "/q", null, false, true);
     }
 

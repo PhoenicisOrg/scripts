@@ -1,4 +1,4 @@
-const { ls, mkdir, fileExists, cat, lns, remove, touch, createTempFile } = include("utils.functions.filesystem.files");
+const { ls, mkdir, fileExists, cat, lns, remove, touch, createTempFile, getFileSize } = include("utils.functions.filesystem.files");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const Downloader = include("utils.functions.net.download");
 const Resource = include("utils.functions.net.resource");
@@ -125,11 +125,11 @@ module.default = class WineEngine {
         let downloadx64 = false;
         let namex86;
         let namex64;
-        if (!fileExists(runtimeJsonPath)) {
+        if (!fileExists(runtimeJsonPath) || getFileSize(runtimeJsonPath) == 0) {
             mkdir(this._wineEnginesDirectory + "/runtime");
 
             runtimeJsonFile = new Downloader()
-                .wizard(this._wizard)
+                .wizard(setupWizard)
                 .message(tr("Downloading runtime json..."))
                 .url("https://phoenicis.playonlinux.com/index.php/runtime?os=linux")
                 .to(runtimeJsonPath)
@@ -160,7 +160,7 @@ module.default = class WineEngine {
             const oldRuntimeJson = JSON.parse(oldRuntimeJsonFile);
 
             runtimeJsonFile = new Downloader()
-                .wizard(this._wizard)
+                .wizard(setupWizard)
                 .message(tr("Downloading runtime json..."))
                 .url("https://phoenicis.playonlinux.com/index.php/runtime?os=linux")
                 .to(runtimeJsonPath)
@@ -362,29 +362,23 @@ module.default = class WineEngine {
     }
 
     run(executable, args, workingDir, captureOutput, wait, userData) {
-        let subCategory = "";
-        let version = "";
-        let architecture = "";
-        let workingContainerDirectory = this.getContainerDirectory(this.getWorkingContainer());
-        let distribution = "";
+        const workingContainerDirectory = this.getContainerDirectory(this.getWorkingContainer());
 
-        if (fileExists(workingContainerDirectory)) {
-            const containerConfiguration = configFactory.open(workingContainerDirectory + "/phoenicis.cfg");
-
-            distribution = containerConfiguration.readValue("wineDistribution", "upstream");
-            architecture = containerConfiguration.readValue("wineArchitecture", "x86");
-
-            const operatingSystem = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
-
-            subCategory = distribution + "-" + operatingSystem + "-" + architecture;
-            version = containerConfiguration.readValue("wineVersion");
-
-            this.install(subCategory, version);
-        } else {
-            print('Wine prefix "' + this.getWorkingContainer() + '" does not exist!');
-
-            return "";
+        if (!fileExists(workingContainerDirectory)) {
+            throw new Error(tr('Wine prefix "{0}" does not exist', this.getWorkingContainer()));
         }
+
+        const containerConfiguration = configFactory.open(workingContainerDirectory + "/phoenicis.cfg");
+
+        const distribution = containerConfiguration.readValue("wineDistribution", "upstream");
+        const architecture = containerConfiguration.readValue("wineArchitecture", "x86");
+
+        const operatingSystem = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage();
+
+        const subCategory = distribution + "-" + operatingSystem + "-" + architecture;
+        const version = containerConfiguration.readValue("wineVersion");
+
+        this.install(subCategory, version);
 
         if (!args) {
             args = [];
@@ -415,9 +409,8 @@ module.default = class WineEngine {
             }
         }
 
-        this.install(subCategory, version);
-
-        const wineBinary = this.getLocalDirectory(subCategory, version) + "/bin/wine";
+        const wineExecutable = architecture == "x86on64" ? "wine32on64" : "wine"
+        const wineBinary = this.getLocalDirectory(subCategory, version) + "/bin/" + wineExecutable;
         const command = [wineBinary, executable].concat(args);
         const processBuilder = new ProcessBuilderClass(Java.to(command, Java.type("java.lang.String[]")));
 
@@ -431,7 +424,7 @@ module.default = class WineEngine {
             processBuilder.directory(new FileClass(driveC));
         }
 
-        var environment = processBuilder.environment();
+        const environment = processBuilder.environment();
         // disable winemenubuilder (we manage our own shortcuts)
         environment.put("WINEDLLOVERRIDES", "winemenubuilder.exe=d");
         environment.put("WINEPREFIX", workingContainerDirectory);

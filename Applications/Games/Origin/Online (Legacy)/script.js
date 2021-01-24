@@ -20,7 +20,7 @@ new OnlineInstallerScript()
         );
     })
     .postInstall((wine, wizard) => {
-        var originDir = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Origin/";
+        const originDir = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Origin/";
 
         new Downloader()
             .wizard(wizard)

@@ -34,6 +34,18 @@ new SteamScript()
     .executable("Steam.exe", ["-silent", "-applaunch", "244850", "-no-cef-sandbox", "-skipintro"])
     .environment((wine) => {
         const dxvkConfigFile = wine.prefixDirectory() + "/drive_c/dxvk.conf";
-
         return '{"DXVK_CONFIG_FILE": "dxvkConfigFile", "STAGING_SHARED_MEMORY": "0", "DXVK_HUD": "compiler", "PULSE_LATENCY_MSEC": "60", "WINEESYNC": "1"}';
+  
+        const wizard = wine.wizard();
+
+        wizard.message(
+            tr(
+                "You have to install libjpeg62 and libjpeg62-dev or else the thumbnails in New Game menu will be displayed as magenta rectangles."
+            )
+        );
+        wizard.message(
+            tr(
+                "Due to JIT compiler issues and the way this game uses multithreading, there are audio stutters. This script will attempt to minimize them but you might also have to enter the alsoft-conf command in terminal and set sample depth to 32bit float and period size to 2048."
+            )
+        );
     })

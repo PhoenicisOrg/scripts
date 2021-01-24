@@ -1,8 +1,7 @@
 const Wine = include("engines.wine.engine.object");
-const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const { remove, lns } = include("utils.functions.filesystem.files");
-const { getGithubReleases } = include("utils.functions.net.githubreleases");
+const { GitHubReleaseDownloader } = include("utils.functions.net.githubreleases");
 
 const Optional = Java.type("java.util.Optional");
 
@@ -34,24 +33,19 @@ class Gallium9 {
         const prefixDirectory = this.wine.prefixDirectory();
         const system32directory = this.wine.system32directory();
 
-        if (typeof this.gallium9Version !== "string") {
-            const versions = getGithubReleases("iXit", "wine-nine-standalone", wizard);
-            this.gallium9Version = versions[0];
-        }
-
         wizard.message(
             tr(
                 "Using Gallium 9 requires to have a driver supporting the Gallium 9 state tracker, as well as d3dapater9.so installed (ex: libd3d9adapter-mesa package). Please be sure it is installed (both 32 and 64 bits)."
             )
         );
 
-        const setupFile = new Resource()
-            .wizard(wizard)
-            .url(
-                `https://github.com/iXit/wine-nine-standalone/releases/download/${this.gallium9Version}/gallium-nine-standalone-${this.gallium9Version}.tar.gz`
-            )
-            .name(`gallium-nine-standalone-${this.gallium9Version}.tar.gz`)
-            .get();
+        const githubDownloader = new GitHubReleaseDownloader("iXit", "wine-nine-standalone", wizard);
+
+        if (typeof this.gallium9Version !== "string") {
+            this.gallium9Version = githubDownloader.getLatestRelease();
+        }
+
+        const [setupFile] = githubDownloader.download(this.gallium9Version);
 
         new Extractor()
             .wizard(wizard)
@@ -95,9 +89,12 @@ class Gallium9 {
         const wine = new Wine();
         const wizard = SetupWizard(InstallationType.VERBS, "gallium9", Optional.empty());
 
-        const versions = getGithubReleases("iXit", "wine-nine-standalone", wizard);
+        const githubDownloader = new GitHubReleaseDownloader("iXit", "wine-nine-standalone", wizard);
 
-        const selectedVersion = wizard.menu(tr("Please select the version."), versions, versions[0]);
+        const versions = githubDownloader.getReleases();
+        const latestVersion = githubDownloader.getLatestRelease();
+
+        const selectedVersion = wizard.menu(tr("Please select the version."), versions, latestVersion);
 
         wine.prefix(container);
         wine.wizard(wizard);

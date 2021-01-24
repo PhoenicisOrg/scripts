@@ -33,8 +33,8 @@ module.default = class Wine {
 
     /**
      *
-     * @param {SetupWizard} [wizard]
-     * @returns {SetupWizard|Wine}
+     * @param {SetupWizard} [wizard] setup wizard
+     * @returns {SetupWizard|Wine} if used as getter, setup wizard else Wine object
      */
     wizard(wizard) {
         // get
@@ -48,8 +48,8 @@ module.default = class Wine {
     }
 
     /**
-     * @param {String} [path]
-     * @returns {String}
+     * @param {String} [path] path for "-w" option
+     * @returns {String} output
      */
     winepath(path) {
         return this.run("winepath", ["-w", path], this.prefixDirectory(), true, true);
@@ -57,11 +57,11 @@ module.default = class Wine {
 
     /**
      *
-     * @param {string} [prefix]
-     * @param {string} [distribution]
-     * @param {string} [architecture]
-     * @param {string} [version]
-     * @returns {string|Wine}
+     * @param {string} [prefix] Wine prefix
+     * @param {string} [distribution] Wine distribution
+     * @param {string} [architecture] Wine architecture
+     * @param {string} [version] Wine version
+     * @returns {string|Wine} if used as getter, Wine prefix else Wine object
      */
     prefix(prefix, distribution, architecture, version) {
         // get
@@ -85,7 +85,7 @@ module.default = class Wine {
 
     /**
      * returns prefix directory
-     * @returns {string}
+     * @returns {string} Wine prefix directory
      */
     prefixDirectory() {
         return this._implementation.getContainerDirectory(this._implementation.getWorkingContainer());
@@ -120,9 +120,10 @@ module.default = class Wine {
 
     /**
      *
-     * @param {string} executable
-     * @param {array} [args = []]
-     * @param {boolean} [wait=false]
+     * @param {string} executable path of the executable
+     * @param {array} [args = []] command line arguments
+     * @param {boolean} [wait=false] true, if method shall wait until execution has finished
+     * @returns {string} output
      */
     runInsidePrefix(executable, args, wait) {
         if (!args) {
@@ -140,13 +141,13 @@ module.default = class Wine {
 
     /**
      *
-     * @param {string} executable
-     * @param {array} [args = []]
-     * @param {string} [workingDirectory = working container]
-     * @param {boolean} [captureOutput=false]
-     * @param {boolean} [wait=false]
-     * @param {map} [userData=empty]
-     * @returns {String} output
+     * @param {string} executable path of the executable
+     * @param {array} [args = []] command line arguments
+     * @param {string} [workingDirectory = working container] working directory
+     * @param {boolean} [captureOutput=false] whether or not the output of the executable shall be captured
+     * @param {boolean} [wait=false] true, if method shall wait until execution has finished
+     * @param {map} [userData=empty] user data
+     * @returns {string} output
      */
     run(executable, args, workingDirectory, captureOutput, wait, userData) {
         if (!args) {
@@ -173,12 +174,12 @@ module.default = class Wine {
 
     /**
      * uninstall application
-     * @param {string} name of the application which shall be uninstalled
+     * @param {string} application name of the application which shall be uninstalled
      * @returns {bool} true if an application has been uninstalled, false otherwise
      */
     uninstall(application) {
         const list = this.run("uninstaller", ["--list"], this.prefixDirectory(), true, true);
-        const appEscaped = application.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+        const appEscaped = application.replace(/[-[\]/{}()*+?.^$|]/g, "\\$&");
         const re = new RegExp("(.*)\\|\\|\\|.*" + appEscaped);
         const uuid = list.match(re);
         if (uuid) {
@@ -196,7 +197,7 @@ module.default = class Wine {
     /**
      * runs "wineboot"
      *
-     * @returns {Wine} The Wine object
+     * @returns {Wine} Wine object
      */
     create() {
         this.run("wineboot", [], this.prefixDirectory(), false, true);
@@ -226,7 +227,8 @@ module.default = class Wine {
 
     /**
      * executes wineserver in current prefix
-     * @param {string} wineserver parameter
+     * @param {string} parameter parameters
+     * @returns {void}
      */
     wineServer(parameter) {
         const workingContainerDirectory = this.prefixDirectory();
@@ -263,7 +265,7 @@ module.default = class Wine {
 
     /**
      * wait until wineserver finishes
-     * @returns {Wine}
+     * @returns {Wine} Wine object
      */
     wait() {
         this.wineServer("-w");
@@ -273,7 +275,7 @@ module.default = class Wine {
 
     /**
      * kill wine server
-     * @returns {Wine}
+     * @returns {Wine} Wine object
      */
     kill() {
         this.wineServer("-k");
@@ -283,8 +285,8 @@ module.default = class Wine {
 
     /**
      *
-     * @param {string} [architecture = current architecture]
-     * @returns {string[]}
+     * @param {string} [architectureName = current architecture] Wine architecture
+     * @returns {string[]} available versions
      */
     availableDistributions(architectureName) {
         const architecture = architectureName || this._architecture;
@@ -300,8 +302,8 @@ module.default = class Wine {
 
     /**
      *
-     * @param {string} [distribution name = current distribution]
-     * @returns {string[]}
+     * @param {string} [distributionName = current distribution] name of the Wine distribution
+     * @returns {string[]} available versions
      */
     availableVersions(distributionName) {
         const fullDistributionName = distributionName || this._fetchFullDistributionName();

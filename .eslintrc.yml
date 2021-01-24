@@ -6,6 +6,10 @@ env:
   nashorn: true
   es6: true
 
+settings:
+  json/ignore-files:
+    - "**/*"
+
 rules:
   valid-jsdoc: 2
   comma-spacing:
@@ -32,6 +36,10 @@ rules:
     - 2
     - unix
   prefer-arrow-callback: 2
+  no-var:
+    - 2
+  prefer-const:
+    - 2
 
 globals:
   include: false

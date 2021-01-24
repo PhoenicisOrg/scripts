@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Online",
+    "id"                         : "applications.games.fall_of_the_new_age.online",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
