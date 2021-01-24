@@ -20,17 +20,16 @@ new SteamScript()
         new DotNET472(wine).go();
         new Vcrun2017(wine).go();
         new DXVK(wine).go();
+        new xact(wine).go();
 
         new OverrideDLL(wine)
             .withMode("native, builtin", ["msvcr120"])
             .withMode("disabled", ["nvapi", "nvapi64"])
             .go();
-            
+
         const dxvkConfigFile = wine.prefixDirectory() + "/drive_c/dxvk.conf";
         touch(dxvkConfigFile);
         writeToFile(dxvkConfigFile, "dxgi.nvapiHack = False");
-        wizard.message(tr("You may have to install libjpeg62 package if you see thumbnails in New Game menu dispalyed as magenta rectangles."));
-        wizard.message(tr("Due to JIT compiler issues and the way this game uses multithreating, there are audio stutters. If you are on a Debian-based distribution you can try the libFAudio package from this PPA:\nhttps://launchpad.net/~cybermax-dexter/+archive/ubuntu/sdl2-backport"));
 
         const wizard = wine.wizard();
 
