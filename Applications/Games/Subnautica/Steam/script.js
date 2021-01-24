@@ -30,7 +30,6 @@ new SteamScript()
     })
     .postInstall((wine) => {
         const wizard = wine.wizard();
-
         wizard.message(
             tr(
                 "Due to a potential conflict with Vulkan, shader mods may break the game (the executable file works but no window is displayed)."
