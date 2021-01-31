@@ -1,0 +1,25 @@
+name: Update translations
+on: push
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: sudo apt-get install -y python-jsonschema python-pil gettext
+
+      - name: Run scripts
+        run: |
+          python ./validate.py
+          python i18n/update_translations.py
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v6
+        with:
+          author_name: PhoenicisBot
+          author_email: git@phoenicis.org
+          message: 'Update translations'
+          add: 'i18n/Messages.properties'
