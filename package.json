@@ -6,7 +6,7 @@
         "doc": "docs"
     },
     "scripts": {
-        "lint": "eslint -c .eslintrc.yml ./**/*.js",
+        "lint": "eslint --fix -c .eslintrc.yml ./**/*.js",
         "json-align": "find . -name \"*.json\" ! -name \"package.json\" ! -name \"package-lock.json\" -print0 | xargs -0 json-align -i"
     },
     "repository": {
