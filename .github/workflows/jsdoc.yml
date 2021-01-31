@@ -1,4 +1,4 @@
-name: Update translations
+name: Update JSDoc
 on: push
 
 jobs:
@@ -8,7 +8,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Install dependencies
+      - name: Create JSDoc
         uses: andstor/jsdoc-action@v1
         with:
           source_dir: .
