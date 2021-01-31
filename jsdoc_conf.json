@@ -6,7 +6,9 @@
     "plugins"      : [],
     "recurseDepth" : 10,
     "source"       : {
-        "exclude": ["docs"],
+        "exclude" : [
+            "docs"
+        ],
         "includePattern" : ".+\\.js(doc|x)?$",
         "excludePattern" : "(^|\\/|\\\\)_"
     },
