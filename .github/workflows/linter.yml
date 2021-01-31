@@ -1,4 +1,4 @@
-name: Lint .java files
+name: Lint .js and .json files
 on: push
 
 jobs:
