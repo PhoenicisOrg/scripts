@@ -1365,6 +1365,207 @@
     
 
     
+    <h4 class="name" id="getLatestVersion"><span class="type-signature"></span>getLatestVersion<span class="signature">(wizard, category, regex)</span><span class="type-signature"> &rarr; {void}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Fetches the latest available Wine version based on the category and version regex
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>wizard</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">wizard</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">setup wizard to show the download progress of the versions json</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>category</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">(e.g. "upstream-linux-x86")</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>regex</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">RegExp</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">regex the version must fulfill</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Engines_Wine_Engine_Versions_script.js.html">Engines/Wine/Engine/Versions/script.js</a>, <a href="Engines_Wine_Engine_Versions_script.js.html#line80">line 80</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="getScreenHeight"><span class="type-signature"></span>getScreenHeight<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span></h4>
     
 
@@ -2232,6 +2433,161 @@
     
 
     
+    <h4 class="name" id="sortVersions"><span class="type-signature"></span>sortVersions<span class="signature">(versions)</span><span class="type-signature"> &rarr; {void}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sorts an array of Wine versions in place
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>versions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The versions array (see packages in versions json)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Engines_Wine_Engine_Versions_script.js.html">Engines/Wine/Engine/Versions/script.js</a>, <a href="Engines_Wine_Engine_Versions_script.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="touch"><span class="type-signature"></span>touch<span class="signature">(filePath)</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
@@ -2575,13 +2931,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdobeAir.html">AdobeAir</a></li><li><a href="Amstream.html">Amstream</a></li><li><a href="Atmlib.html">Atmlib</a></li><li><a href="Corefonts.html">Corefonts</a></li><li><a href="Crypt32.html">Crypt32</a></li><li><a href="D3drm.html">D3drm</a></li><li><a href="D3DX9.html">D3DX9</a></li><li><a href="D3DX10.html">D3DX10</a></li><li><a href="D3DX11.html">D3DX11</a></li><li><a href="D9VK.html">D9VK</a></li><li><a href="Devenum.html">Devenum</a></li><li><a href="DotNET20.html">DotNET20</a></li><li><a href="DotNET20SP2.html">DotNET20SP2</a></li><li><a href="DotNET40.html">DotNET40</a></li><li><a href="DotNET45.html">DotNET45</a></li><li><a href="DotNET46.html">DotNET46</a></li><li><a href="DotNET452.html">DotNET452</a></li><li><a href="DotNET461.html">DotNET461</a></li><li><a href="DotNET462.html">DotNET462</a></li><li><a href="DotNET472.html">DotNET472</a></li><li><a href="DXVK.html">DXVK</a></li><li><a href="FAudio.html">FAudio</a></li><li><a href="Gallium9.html">Gallium9</a></li><li><a href="GDIPlus.html">GDIPlus</a></li><li><a href="GDIPlusWinXP.html">GDIPlusWinXP</a></li><li><a href="Luna.html">Luna</a></li><li><a href="Mfc42.html">Mfc42</a></li><li><a href="module.CabExtract.html">CabExtract</a></li><li><a href="module.Checksum.html">Checksum</a></li><li><a href="module.default.html">default</a></li><li><a href="module.Extractor.html">Extractor</a></li><li><a href="module.GitHubReleaseDownloader.html">GitHubReleaseDownloader</a></li><li><a href="Msls31.html">Msls31</a></li><li><a href="Mspatcha.html">Mspatcha</a></li><li><a href="Msxml3.html">Msxml3</a></li><li><a href="Msxml6.html">Msxml6</a></li><li><a href="PhysX.html">PhysX</a></li><li><a href="Quartz.html">Quartz</a></li><li><a href="QuickTime76.html">QuickTime76</a></li><li><a href="RemoveMono.html">RemoveMono</a></li><li><a href="Sandbox.html">Sandbox</a></li><li><a href="Secur32.html">Secur32</a></li><li><a href="Tahoma.html">Tahoma</a></li><li><a href="Uplay.html">Uplay</a></li><li><a href="Vcrun6SP6.html">Vcrun6SP6</a></li><li><a href="Vcrun2003.html">Vcrun2003</a></li><li><a href="Vcrun2005.html">Vcrun2005</a></li><li><a href="Vcrun2008.html">Vcrun2008</a></li><li><a href="Vcrun2010.html">Vcrun2010</a></li><li><a href="Vcrun2012.html">Vcrun2012</a></li><li><a href="Vcrun2013.html">Vcrun2013</a></li><li><a href="Vcrun2015.html">Vcrun2015</a></li><li><a href="Vcrun2017.html">Vcrun2017</a></li><li><a href="VK9.html">VK9</a></li><li><a href="VulkanSDK.html">VulkanSDK</a></li><li><a href="WindowsXPSP3.html">WindowsXPSP3</a></li><li><a href="Xact.html">Xact</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#getScreenHeight">getScreenHeight</a></li><li><a href="global.html#getScreenWidth">getScreenWidth</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdobeAir.html">AdobeAir</a></li><li><a href="Amstream.html">Amstream</a></li><li><a href="Atmlib.html">Atmlib</a></li><li><a href="Corefonts.html">Corefonts</a></li><li><a href="Crypt32.html">Crypt32</a></li><li><a href="D3drm.html">D3drm</a></li><li><a href="D3DX9.html">D3DX9</a></li><li><a href="D3DX10.html">D3DX10</a></li><li><a href="D3DX11.html">D3DX11</a></li><li><a href="D9VK.html">D9VK</a></li><li><a href="Devenum.html">Devenum</a></li><li><a href="DotNET20.html">DotNET20</a></li><li><a href="DotNET20SP2.html">DotNET20SP2</a></li><li><a href="DotNET40.html">DotNET40</a></li><li><a href="DotNET45.html">DotNET45</a></li><li><a href="DotNET46.html">DotNET46</a></li><li><a href="DotNET452.html">DotNET452</a></li><li><a href="DotNET461.html">DotNET461</a></li><li><a href="DotNET462.html">DotNET462</a></li><li><a href="DotNET472.html">DotNET472</a></li><li><a href="DXVK.html">DXVK</a></li><li><a href="FAudio.html">FAudio</a></li><li><a href="Gallium9.html">Gallium9</a></li><li><a href="GDIPlus.html">GDIPlus</a></li><li><a href="GDIPlusWinXP.html">GDIPlusWinXP</a></li><li><a href="Luna.html">Luna</a></li><li><a href="Mfc42.html">Mfc42</a></li><li><a href="module.CabExtract.html">CabExtract</a></li><li><a href="module.Checksum.html">Checksum</a></li><li><a href="module.default.html">default</a></li><li><a href="module.Extractor.html">Extractor</a></li><li><a href="module.GitHubReleaseDownloader.html">GitHubReleaseDownloader</a></li><li><a href="Msls31.html">Msls31</a></li><li><a href="Mspatcha.html">Mspatcha</a></li><li><a href="Msxml3.html">Msxml3</a></li><li><a href="Msxml6.html">Msxml6</a></li><li><a href="PhysX.html">PhysX</a></li><li><a href="Quartz.html">Quartz</a></li><li><a href="QuickTime76.html">QuickTime76</a></li><li><a href="RemoveMono.html">RemoveMono</a></li><li><a href="Sandbox.html">Sandbox</a></li><li><a href="Secur32.html">Secur32</a></li><li><a href="Tahoma.html">Tahoma</a></li><li><a href="Uplay.html">Uplay</a></li><li><a href="Vcrun6SP6.html">Vcrun6SP6</a></li><li><a href="Vcrun2003.html">Vcrun2003</a></li><li><a href="Vcrun2005.html">Vcrun2005</a></li><li><a href="Vcrun2008.html">Vcrun2008</a></li><li><a href="Vcrun2010.html">Vcrun2010</a></li><li><a href="Vcrun2012.html">Vcrun2012</a></li><li><a href="Vcrun2013.html">Vcrun2013</a></li><li><a href="Vcrun2015.html">Vcrun2015</a></li><li><a href="Vcrun2017.html">Vcrun2017</a></li><li><a href="VK9.html">VK9</a></li><li><a href="VulkanSDK.html">VulkanSDK</a></li><li><a href="WindowsXPSP3.html">WindowsXPSP3</a></li><li><a href="Xact.html">Xact</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cat">cat</a></li><li><a href="global.html#chmod">chmod</a></li><li><a href="global.html#cp">cp</a></li><li><a href="global.html#createTempDir">createTempDir</a></li><li><a href="global.html#createTempFile">createTempFile</a></li><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#getFileSize">getFileSize</a></li><li><a href="global.html#getLatestVersion">getLatestVersion</a></li><li><a href="global.html#getScreenHeight">getScreenHeight</a></li><li><a href="global.html#getScreenWidth">getScreenWidth</a></li><li><a href="global.html#lns">lns</a></li><li><a href="global.html#ls">ls</a></li><li><a href="global.html#mkdir">mkdir</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#sortVersions">sortVersions</a></li><li><a href="global.html#touch">touch</a></li><li><a href="global.html#writeToFile">writeToFile</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a>
 </footer>
 
 <script> prettyPrint(); </script>
