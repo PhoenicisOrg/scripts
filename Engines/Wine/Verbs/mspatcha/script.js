@@ -23,7 +23,7 @@ class Mspatcha {
         const setupFile = new Resource()
             .wizard(wizard)
             .url(
-                "https://ftp.gnome.org/mirror/archive/ftp.sunet.se/pub/security/vendor/microsoft/win2000/Service_Packs/usa/W2KSP4_EN.EXE"
+                "https://web.archive.org/web/20160129053851if_/http://download.microsoft.com/download/E/6/A/E6A04295-D2A8-40D0-A0C5-241BFECD095E/W2KSP4_EN.EXE"
             )
             .checksum("fadea6d94a014b039839fecc6e6a11c20afa4fa8")
             .name("W2ksp4_EN.exe")
