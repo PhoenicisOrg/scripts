@@ -2,7 +2,8 @@ name: Lint .js and .json files
 on: push
 
 jobs:
-  run:
+  linter:
+    name: Linter
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
