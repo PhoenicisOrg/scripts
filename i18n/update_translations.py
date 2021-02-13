@@ -25,7 +25,7 @@ for root, dir_names, file_names in os.walk(cwd):
 data = {}
 for file_name in json_file_names:
     with open(file_name) as f:
-        data[file_name] = json.loads(f.read().decode("utf-8-sig"))
+        data[file_name] = json.loads(f.read())
 
 # get messages which shall be translated
 for key, value in data.iteritems():
@@ -57,7 +57,7 @@ for key, value in data.iteritems():
             # no empty strings
             if message:
                 translated_message = u'tr("{0}")\n'.format(message)
-                out_file.write(translated_message.encode('utf-8'))
+                out_file.write(translated_message)
 
 # load all .js files (including generated)
 js_file_names = []
