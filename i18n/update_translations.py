@@ -28,7 +28,7 @@ for file_name in json_file_names:
         data[file_name] = json.loads(f.read())
 
 # get messages which shall be translated
-for key, value in data.iteritems():
+for key, value in data.items():
     messages = []
     basename = os.path.basename(key)
     if basename == 'script.json':
