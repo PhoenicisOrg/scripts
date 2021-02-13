@@ -2,7 +2,8 @@ name: Update JSDoc
 on: push
 
 jobs:
-  run:
+  jsdoc:
+    name: JSDoc
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
