@@ -3,7 +3,7 @@ on: push
 
 jobs:
   jsdoc:
-    name: JS Doc
+    name: JSDoc
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
