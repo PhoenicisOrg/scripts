@@ -4,7 +4,7 @@ on: push
 jobs:
   translations:
     name: Update translations
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
