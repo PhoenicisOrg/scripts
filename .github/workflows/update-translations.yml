@@ -4,13 +4,13 @@ on: push
 jobs:
   translations:
     name: Update translations
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: sudo apt-get install -y python-jsonschema python-pil gettext
+        run: sudo apt-get install -y python3-jsonschema python-pil gettext
 
       - name: Run scripts
         run: |
