@@ -37,7 +37,7 @@ for type_dir in type_dirs:
     type_json_file = type_dir + '/type.json'
     try:
         with open(type_json_file) as f:
-            type_json = json.loads(f.read().decode("utf-8-sig"))
+            type_json = json.loads(f.read())
             jsonschema.validate(type_json, type_schema)
     except ValueError as value_error:
         print("invalid type.json {}: {}".format(type_json_file, value_error))
@@ -68,7 +68,7 @@ for category_dir in category_dirs:
     category_json_file = category_dir + '/category.json'
     try:
         with open(category_json_file) as f:
-            category_json = json.loads(f.read().decode("utf-8-sig"))
+            category_json = json.loads(f.read())
             jsonschema.validate(category_json, category_schema)
     except ValueError as value_error:
         print("invalid category.json {}: {}".format(category_json_file, value_error))
@@ -99,7 +99,7 @@ for application_dir in application_dirs:
     application_json_file = application_dir + '/application.json'
     try:
         with open(application_json_file) as f:
-            application_json = json.loads(f.read().decode("utf-8-sig"))
+            application_json = json.loads(f.read())
             jsonschema.validate(application_json, application_schema)
     except ValueError as value_error:
         print("invalid application.json {}: {}".format(application_json_file, value_error))
@@ -149,7 +149,7 @@ for script_dir in script_dirs:
     script_json_file = script_dir + '/script.json'
     try:
         with open(script_json_file) as f:
-            script_json = json.loads(f.read().decode("utf-8-sig"))
+            script_json = json.loads(f.read())
             jsonschema.validate(script_json, script_schema)
             # check that testingOperatingSystems is a subset of compatibleOperatingSystems
             if not set(script_json['testingOperatingSystems']) <= set(script_json['compatibleOperatingSystems']):
