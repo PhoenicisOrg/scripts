@@ -40,10 +40,10 @@ for type_dir in type_dirs:
             type_json = json.loads(f.read().decode("utf-8-sig"))
             jsonschema.validate(type_json, type_schema)
     except ValueError as value_error:
-        print "invalid type.json {}: {}".format(type_json_file, value_error)
+        print("invalid type.json {}: {}".format(type_json_file, value_error))
         is_valid = False
     except jsonschema.exceptions.ValidationError as validation_error:
-        print "invalid type.json {}: {}".format(type_json_file, validation_error)
+        print("invalid type.json {}: {}".format(type_json_file, validation_error))
         is_valid = False
 
 # get category directories
@@ -71,10 +71,10 @@ for category_dir in category_dirs:
             category_json = json.loads(f.read().decode("utf-8-sig"))
             jsonschema.validate(category_json, category_schema)
     except ValueError as value_error:
-        print "invalid category.json {}: {}".format(category_json_file, value_error)
+        print("invalid category.json {}: {}".format(category_json_file, value_error))
         is_valid = False
     except jsonschema.exceptions.ValidationError as validation_error:
-        print "invalid category.json {}: {}".format(category_json_file, validation_error)
+        print("invalid category.json {}: {}".format(category_json_file, validation_error))
         is_valid = False
 
 # get application directories
@@ -102,10 +102,10 @@ for application_dir in application_dirs:
             application_json = json.loads(f.read().decode("utf-8-sig"))
             jsonschema.validate(application_json, application_schema)
     except ValueError as value_error:
-        print "invalid application.json {}: {}".format(application_json_file, value_error)
+        print("invalid application.json {}: {}".format(application_json_file, value_error))
         is_valid = False
     except jsonschema.exceptions.ValidationError as validation_error:
-        print "invalid application.json {}: {}".format(application_json_file, validation_error)
+        print("invalid application.json {}: {}".format(application_json_file, validation_error))
         is_valid = False
 
 # get script directories
@@ -119,8 +119,8 @@ for application_dir in application_dirs:
     if script_dirs_for_app:
         script_dirs.extend(script_dirs_for_app)
     else:
-        print "application {} must contain at least one script directory with 'script.js' and 'script.json'".format(
-            application_dir)
+        print("application {} must contain at least one script directory with 'script.js' and 'script.json'".format(
+            application_dir))
         is_valid = False
 
 # validate script.json
@@ -153,13 +153,13 @@ for script_dir in script_dirs:
             jsonschema.validate(script_json, script_schema)
             # check that testingOperatingSystems is a subset of compatibleOperatingSystems
             if not set(script_json['testingOperatingSystems']) <= set(script_json['compatibleOperatingSystems']):
-                print "{}: testingOperatingSystems must be a subset of compatibleOperatingSystems".format(script_json_file)
+                print("{}: testingOperatingSystems must be a subset of compatibleOperatingSystems".format(script_json_file))
                 is_valid = False
     except ValueError as value_error:
-        print "invalid script.json {}: {}".format(script_json_file, value_error)
+        print("invalid script.json {}: {}".format(script_json_file, value_error))
         is_valid = False
     except jsonschema.exceptions.ValidationError as validation_error:
-        print "invalid script.json {}: {}".format(script_json_file, validation_error)
+        print("invalid script.json {}: {}".format(script_json_file, validation_error))
         is_valid = False
 
 # check miniature
@@ -171,10 +171,10 @@ for application_dir in application_dirs:
             image = Image.open(main_miniature_file)
             width, height = image.size
             if width != 400 or height != 300:
-                print "main.png {} must be 400x300px".format(main_miniature_file)
+                print("main.png {} must be 400x300px".format(main_miniature_file))
                 is_valid = False
         else:
-            print "missing main.png: {}".format(main_miniature_file)
+            print("missing main.png: {}".format(main_miniature_file))
             is_valid = False
 
 sys.exit(0 if is_valid else 1)
