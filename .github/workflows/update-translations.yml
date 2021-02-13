@@ -2,7 +2,8 @@ name: Update translations
 on: push
 
 jobs:
-  run:
+  translations:
+    name: Update translations
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
