@@ -1,5 +1,4 @@
 name: PR Review
-
 on: pull_request
 
 jobs:
