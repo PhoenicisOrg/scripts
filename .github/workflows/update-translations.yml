@@ -13,9 +13,7 @@ jobs:
         run: sudo apt-get install -y python3-jsonschema python3-pil gettext
 
       - name: Run scripts
-        run: |
-          python ./validate.py
-          python i18n/update_translations.py
+        run: python i18n/update_translations.py
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v6
