@@ -2,6 +2,18 @@ name: PR Review
 on: pull_request
 
 jobs:
+  validate:
+    name: Validate apps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: sudo apt-get install -y python3-jsonschema python3-pil gettext
+
+      - name: Run scripts
+        run: python ./validate.py
   eslint:
     name: ESLint
     runs-on: ubuntu-latest
