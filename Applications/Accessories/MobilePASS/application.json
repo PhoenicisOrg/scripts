@@ -1,0 +1,5 @@
+{
+    "name"        : "SafeNet MobilePASS",
+    "id"          : "applications.accessories.mobilepass",
+    "description" : "Two factor authorization"
+}

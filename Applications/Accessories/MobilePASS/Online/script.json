@@ -1,0 +1,10 @@
+{
+    "scriptName"                 : "Online",
+    "id"                         : "applications.accessories.mobilepass.online",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : true,
+    "requiresPatch"           : false
+}
