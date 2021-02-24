@@ -1,5 +1,8 @@
 name: Update JSDoc
-on: pull_request
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   jsdoc:
@@ -8,6 +11,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.JSDOC_UPDATE }}
 
       - name: Create JSDoc
         uses: andstor/jsdoc-action@v1
