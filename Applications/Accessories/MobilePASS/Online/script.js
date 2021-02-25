@@ -7,8 +7,6 @@ const Wine = include("engines.wine.engine.object");
 const { getLatestStableVersion } = include("engines.wine.engine.versions");
 const WineShortcut = include("engines.wine.shortcuts.wine");
 
-const WindowsVersion = include("engines.wine.plugins.windows_version");
-
 new PlainInstaller().withScript(() => {
     const appsManager = Bean("repositoryManager");
     const application = appsManager.getApplication([
