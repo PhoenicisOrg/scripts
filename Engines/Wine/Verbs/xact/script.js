@@ -77,7 +77,7 @@ class Xact {
             .url(
                 "http://download.microsoft.com/download/8/4/A/84A35BF1-DAFE-4AE8-82AF-AD2AE20B6B14/directx_Jun2010_redist.exe"
             )
-            .checksum("f8f1217f666bf2f6863631a7d5e5fb3a8d1542df")
+            .checksum("7e5d2e5e1a13fbc47f990cc55cbdb428cd12f759")
             .name("directx_Jun2010_redist.exe")
             .get();
 
