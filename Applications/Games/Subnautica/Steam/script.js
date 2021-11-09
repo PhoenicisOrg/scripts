@@ -19,7 +19,7 @@ new SteamScript()
         const wizard = wine.wizard();
 
         wizard.message(
-            tr("You can make the game smoother by using this: https://github.com/lutris/lutris/wiki/How-to:-Esync")
+            tr("You can make the game smoother by using this: https://github.com/lutris/docs/blob/master/HowToEsync.md")
         );
 
         new Vcrun2013(wine).go();
