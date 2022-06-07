@@ -163,8 +163,8 @@ new ZipScript()
     .editor("Editor")                               // editor of the application
     .applicationHomepage("http://www.someurl.com")  // application homepage
     .author("Forename Surname")                     // author of this script (you)
-    .url("http://url_to_exe")                       // where the .zip can be downloaded
-    .checksum("exe_checksum")                       // sha1sum of the zip
+    .url("http://url_to_zip")                       // where the .zip can be downloaded
+    .checksum("zip_checksum")                       // sha1sum of the zip
     .category("Category")                           // category
     .executable("Application.exe");                 // exe name (for the shortcut)
 ```
