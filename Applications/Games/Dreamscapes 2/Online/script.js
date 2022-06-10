@@ -8,7 +8,7 @@ new OnlineInstallerScript()
     .applicationHomepage("https://gametop.com")
     .author("Starcommander")
     .url("https://cdn.gametop.com/free-games-download/Dreamscapes-2.exe")
-    .checksum("b3dbf3373390b937cadc17653abebd55")
+    .checksum("67eddd599d63141e4df4e85e795fa2fd3259f0c4")
     .category("Games")
     .executable("game.exe")
     .preInstall((wine /*, wizard*/) => {
