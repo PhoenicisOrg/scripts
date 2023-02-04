@@ -1,11 +1,12 @@
 const { getLatestStableVersion } = include("engines.wine.engine.versions");
 const WineShortcut = include("engines.wine.shortcuts.wine");
+const operatingSystemFetcher = Bean("operatingSystemFetcher");
 
 module.default = class QuickScript {
     constructor() {
         this._wineVersionFunction = getLatestStableVersion;
-        this._wineArchitecture = "x86";
-        this._wineDistribution = "upstream";
+        this._wineArchitecture = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin" ? "x86on64" : "x86";
+        this._wineDistribution = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin" ?  "cx" : "upstream";
         this._wineUserSettings = false;
 
         this._type = "Applications";

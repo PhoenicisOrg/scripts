@@ -5,7 +5,6 @@ const { createTempFile } = include("utils.functions.filesystem.files");
 module.default = class OnlineInstallerScript extends InstallerScript {
     constructor() {
         super();
-        this._wineUserSettings = true;
         this._installationArgs = [];
     }
 

@@ -1,6 +1,7 @@
 const { cat, touch } = include("utils.functions.filesystem.files");
 const Downloader = include("utils.functions.net.download");
 const propertyReader = Bean("propertyReader");
+const operatingSystemFetcher = Bean("operatingSystemFetcher");
 
 /**
  * Sorts an array of Wine versions in place
@@ -122,15 +123,24 @@ module.getAvailableVersions = function (wizard) {
 
 
 module.getLatestStableVersion = function (wizard, architecture) {
-    return getLatestVersion(wizard, "upstream-linux-" + architecture, /^\d+\.0(\.\d+)?$/);
+    const os = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage()
+    const arch = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin" ? "x86on64" : "x86";
+    const distribution = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin" ?  "cx" : "upstream";
+    return getLatestVersion(wizard, `${distribution}-${os}-${arch}`, /^\d+\.0(\.\d+)?$/);
 }
 
 module.getLatestDevelopmentVersion = function (wizard, architecture) {
-    return getLatestVersion(wizard, "upstream-linux-" + architecture, /^\d+\.\d+(\.\d+)?$/);
+    const os = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage()
+    const arch = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin" ? "x86on64" : "x86";
+    const distribution = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin" ?  "cx" : "upstream";
+    return getLatestVersion(wizard, `${distribution}-${os}-${arch}`, /^\d+\.0(\.\d+)?$/);
 }
 
 module.getLatestStagingVersion = function (wizard, architecture) {
-    return getLatestVersion(wizard, "staging-linux-" + architecture, /^\d+\.\d+(\.\d+)?$/);
+    const os = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage()
+    const arch = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin" ? "x86on64" : "x86";
+    const distribution = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin" ?  "cx" : "staging";
+    return getLatestVersion(wizard, `${distribution}-${os}-${arch}`, /^\d+\.0(\.\d+)?$/);
 }
 
 module.getLatestDosSupportVersion = function (/*wizard, architecture*/) {
