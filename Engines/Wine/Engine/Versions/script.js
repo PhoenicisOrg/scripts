@@ -123,24 +123,16 @@ module.getAvailableVersions = function (wizard) {
 
 
 module.getLatestStableVersion = function (wizard, architecture) {
-    const os = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage()
-    const arch = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin" ? "x86on64" : "x86";
-    const distribution = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin" ?  "cx" : "upstream";
-    return getLatestVersion(wizard, `${distribution}-${os}-${arch}`, /^\d+\.0(\.\d+)?$/);
+    return getLatestVersion(wizard, `${this._wineDistribution}-${this._winePackage}-${architecture}`, /^\d+\.0(\.\d+)?$/);
 }
 
 module.getLatestDevelopmentVersion = function (wizard, architecture) {
-    const os = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage()
-    const arch = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin" ? "x86on64" : "x86";
-    const distribution = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin" ?  "cx" : "upstream";
-    return getLatestVersion(wizard, `${distribution}-${os}-${arch}`, /^\d+\.0(\.\d+)?$/);
+    return getLatestVersion(wizard, `${this._wineDistribution}-${this._winePackage}-${architecture}`, /^\d+\.0(\.\d+)?$/);
 }
 
 module.getLatestStagingVersion = function (wizard, architecture) {
-    const os = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage()
-    const arch = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin" ? "x86on64" : "x86";
-    const distribution = operatingSystemFetcher.fetchCurrentOperationSystem().getWinePackage() === "darwin" ?  "cx" : "staging";
-    return getLatestVersion(wizard, `${distribution}-${os}-${arch}`, /^\d+\.0(\.\d+)?$/);
+    const distribution = this._winePackage === "darwin" ?  "cx" : "staging";
+    return getLatestVersion(wizard, `${distribution}-${this._winePackage}-${architecture}`, /^\d+\.0(\.\d+)?$/);
 }
 
 module.getLatestDosSupportVersion = function (/*wizard, architecture*/) {
