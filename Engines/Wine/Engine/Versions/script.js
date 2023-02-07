@@ -1,7 +1,6 @@
 const { cat, touch } = include("utils.functions.filesystem.files");
 const Downloader = include("utils.functions.net.download");
 const propertyReader = Bean("propertyReader");
-const operatingSystemFetcher = Bean("operatingSystemFetcher");
 
 /**
  * Sorts an array of Wine versions in place
