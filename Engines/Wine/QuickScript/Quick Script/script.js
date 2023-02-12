@@ -156,7 +156,7 @@ module.default = class QuickScript {
      * @returns {void}
      */
     _determineWineVersion(wizard) {
-        this._wineVersion = this._wineVersionFunction(wizard, this._wineArchitecture);
+        this._wineVersion = this._wineVersionFunction(wizard, this._wineDistribution, this._winePackage, this._wineArchitecture);
     }
 
     /**

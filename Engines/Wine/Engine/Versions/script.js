@@ -1,4 +1,4 @@
-const { cat, touch } = include("utils.functions.filesystem.files");
+const {cat, touch} = include("utils.functions.filesystem.files");
 const Downloader = include("utils.functions.net.download");
 const propertyReader = Bean("propertyReader");
 
@@ -8,65 +8,64 @@ const propertyReader = Bean("propertyReader");
  * @returns {void}
  */
 function sortVersions(versions) {
-    versions.sort((a, b) =>
-    {
-        // check version format
-        const versionRegExp = /^(\d+\.\d+(\.\d+)?)(.*)?$/;
-        if (!versionRegExp.test(a.version)) {
-            throw new Error(`invalid Wine version "${a.version}`);
-        }
-        if (!versionRegExp.test(b.version)) {
-            throw new Error(`invalid Wine version "${a.version}`);
-        }
-
-        // sort
-        const aVersionParts = a.version.match(versionRegExp);
-        const bVersionParts = b.version.match(versionRegExp);
-
-        const aVersionNumbers = Array.from(aVersionParts[1].split('.')).map(item => Number(item));
-        const bVersionNumbers = Array.from(bVersionParts[1].split('.')).map(item => Number(item));
-
-        // ensure that cases where not all version numbers (major, minor, patch) are set are handled correctly
-        const maxVersionIdx = 2;
-        for (let i = 0; i <= maxVersionIdx; i++) {
-            if (typeof aVersionNumbers[i] === 'undefined') {
-                aVersionNumbers[i] = 0;
+    versions.sort((a, b) => {
+            // check version format
+            const versionRegExp = /^(\d+\.\d+(\.\d+)?)(.*)?$/;
+            if (!versionRegExp.test(a.version)) {
+                throw new Error(`invalid Wine version "${a.version}`);
             }
-            if (typeof bVersionNumbers[i] === 'undefined') {
-                bVersionNumbers[i] = 0;
+            if (!versionRegExp.test(b.version)) {
+                throw new Error(`invalid Wine version "${a.version}`);
+            }
+
+            // sort
+            const aVersionParts = a.version.match(versionRegExp);
+            const bVersionParts = b.version.match(versionRegExp);
+
+            const aVersionNumbers = Array.from(aVersionParts[1].split('.')).map(item => Number(item));
+            const bVersionNumbers = Array.from(bVersionParts[1].split('.')).map(item => Number(item));
+
+            // ensure that cases where not all version numbers (major, minor, patch) are set are handled correctly
+            const maxVersionIdx = 2;
+            for (let i = 0; i <= maxVersionIdx; i++) {
+                if (typeof aVersionNumbers[i] === 'undefined') {
+                    aVersionNumbers[i] = 0;
+                }
+                if (typeof bVersionNumbers[i] === 'undefined') {
+                    bVersionNumbers[i] = 0;
+                }
+            }
+
+            // ensure that cases where the description is not set are handled correctly
+            let aVersionDescription = aVersionParts[3];
+            if (typeof aVersionDescription === 'undefined') {
+                aVersionDescription = "";
+            }
+
+            let bVersionDescription = bVersionParts[3];
+            if (typeof bVersionDescription === 'undefined') {
+                bVersionDescription = "";
+            }
+
+            // major
+            if (aVersionNumbers[0] != bVersionNumbers[0]) {
+                return aVersionNumbers[0] - bVersionNumbers[0];
+            }
+            // minor
+            if (aVersionNumbers[1] != bVersionNumbers[1]) {
+                return aVersionNumbers[1] - bVersionNumbers[1];
+            }
+            // patch
+            if (aVersionNumbers[2] != bVersionNumbers[2]) {
+                return aVersionNumbers[2] - bVersionNumbers[2];
+            }
+            // description
+            if (aVersionDescription < bVersionDescription) {
+                return -1;
+            } else {
+                return 1;
             }
         }
-
-        // ensure that cases where the description is not set are handled correctly
-        let aVersionDescription = aVersionParts[3];
-        if (typeof aVersionDescription === 'undefined') {
-            aVersionDescription = "";
-        }
-
-        let bVersionDescription = bVersionParts[3];
-        if (typeof bVersionDescription === 'undefined') {
-            bVersionDescription = "";
-        }
-
-        // major
-        if (aVersionNumbers[0] != bVersionNumbers[0]) {
-            return aVersionNumbers[0] - bVersionNumbers[0];
-        }
-        // minor
-        if (aVersionNumbers[1] != bVersionNumbers[1]) {
-            return aVersionNumbers[1] - bVersionNumbers[1];
-        }
-        // patch
-        if (aVersionNumbers[2] != bVersionNumbers[2]) {
-            return aVersionNumbers[2] - bVersionNumbers[2];
-        }
-        // description
-        if (aVersionDescription < bVersionDescription) {
-            return -1;
-        } else {
-            return 1;
-        }
-    }
     );
 }
 
@@ -86,10 +85,10 @@ function getLatestVersion(wizard, category, regex) {
 
     const regExp = new RegExp(regex);
     const versions = packages
-        .filter(({ version }) => regExp.test(version))
+        .filter(({version}) => regExp.test(version))
         .map(packageData => packageData.version);
 
-    return versions[versions.length-1];
+    return versions[versions.length - 1];
 }
 
 /**
@@ -120,9 +119,12 @@ module.getAvailableVersions = function (wizard) {
     return versionsJson;
 }
 
-
 module.getLatestStableVersion = function (wizard, architecture) {
-    return getLatestVersion(wizard, `${this._wineDistribution}-${this._winePackage}-${architecture}`, /^\d+\.0(\.\d+)?$/);
+    return getLatestStableVersion(wizard, this._wineDistribution, this._winePackage, architecture);
+}
+
+module.getLatestStableVersion = function (wizard, distribution, winePackage, architecture) {
+    return getLatestVersion(wizard, `${distribution}-${winePackage}-${architecture}`, /^\d+\.0(\.\d+)?$/);
 }
 
 module.getLatestDevelopmentVersion = function (wizard, architecture) {
@@ -130,7 +132,7 @@ module.getLatestDevelopmentVersion = function (wizard, architecture) {
 }
 
 module.getLatestStagingVersion = function (wizard, architecture) {
-    const distribution = this._winePackage === "darwin" ?  "cx" : "staging";
+    const distribution = this._winePackage === "darwin" ? "cx" : "staging";
     return getLatestVersion(wizard, `${distribution}-${this._winePackage}-${architecture}`, /^\d+\.0(\.\d+)?$/);
 }
 
