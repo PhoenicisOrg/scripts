@@ -6,6 +6,6 @@ new OnlineInstallerScript()
     .applicationHomepage("https://notepad-plus-plus.org/")
     .author("Quentin PÂRIS")
     .url("https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.5/npp.8.5.Installer.x64.exe")
-    .checksum("071a81782d88810b0084bd2162c67cf0ff3ad13f")
+    .checksum("0a129db9a19b021b4a83cf267ebb2eb8c3b8241b")
     .category("Development")
     .executable("Notepad++.exe");
