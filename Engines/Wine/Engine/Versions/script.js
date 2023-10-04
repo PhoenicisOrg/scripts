@@ -8,8 +8,7 @@ const propertyReader = Bean("propertyReader");
  * @returns {void}
  */
 function sortVersions(versions) {
-    versions.sort((a, b) =>
-    {
+    versions.sort((a, b) => {
         // check version format
         const versionRegExp = /^(\d+\.\d+(\.\d+)?)(.*)?$/;
         if (!versionRegExp.test(a.version)) {
@@ -88,8 +87,10 @@ function getLatestVersion(wizard, category, regex) {
     const versions = packages
         .filter(({ version }) => regExp.test(version))
         .map(packageData => packageData.version);
-
-    return versions[versions.length-1];
+    if (versions.length === 0) {
+        throw new Error('No valid versions for category ' + category);
+    }
+    return versions[versions.length - 1];
 }
 
 /**
@@ -121,16 +122,21 @@ module.getAvailableVersions = function (wizard) {
 }
 
 
-module.getLatestStableVersion = function (wizard, architecture) {
-    return getLatestVersion(wizard, "upstream-linux-" + architecture, /^\d+\.0(\.\d+)?$/);
+
+module.getLatestStableVersion = function (wizard, distribution, _package, architecture) {
+    const wineDistribution = distribution != null ? distribution : this._wineDistribution;
+    const winePackage = _package != null ? _package : this._winePackage;
+    const wineArchitecture = architecture != null ? architecture : this._wineArchitecture;
+    return getLatestVersion(wizard, `${wineDistribution}-${winePackage}-${wineArchitecture}`, /^\d+\.0(\.\d+)?$/);
 }
 
-module.getLatestDevelopmentVersion = function (wizard, architecture) {
-    return getLatestVersion(wizard, "upstream-linux-" + architecture, /^\d+\.\d+(\.\d+)?$/);
+module.getLatestDevelopmentVersion = function (wizard) {
+    return getLatestVersion(wizard, `${this._wineDistribution}-${this._winePackage}-${this._wineArchitecture}`, /^\d+\.0(\.\d+)?$/);
 }
 
-module.getLatestStagingVersion = function (wizard, architecture) {
-    return getLatestVersion(wizard, "staging-linux-" + architecture, /^\d+\.\d+(\.\d+)?$/);
+module.getLatestStagingVersion = function (wizard) {
+    const wineDistribution = this._winePackage === "darwin" ? "cx" : "staging";
+    return getLatestVersion(wizard, `${wineDistribution}-${this._winePackage}-${this._wineArchitecture}`, /^\d+\.0(\.\d+)?$/);
 }
 
 module.getLatestDosSupportVersion = function (/*wizard, architecture*/) {
