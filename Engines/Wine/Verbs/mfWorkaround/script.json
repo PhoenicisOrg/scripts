@@ -1,0 +1,12 @@
+{
+    "scriptName"                 : "mfWorkaround",
+    "id"                         : "engines.wine.verbs.mfworkaround",
+    "compatibleOperatingSystems" : [
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "LINUX"
+    ],
+    "free"          : true,
+    "requiresPatch" : false
+}
