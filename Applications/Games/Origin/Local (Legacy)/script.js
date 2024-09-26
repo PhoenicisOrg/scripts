@@ -1,5 +1,5 @@
 const LocalInstallerScript = include("engines.wine.quick_script.local_installer_script");
-const Downloader = include("utils.functions.net.download");
+const Resource = include("utils.functions.net.resource");
 const { Extractor } = include("utils.functions.filesystem.extract");
 const { getLatestDevelopmentVersion } = include("engines.wine.engine.versions");
 
@@ -21,16 +21,17 @@ new LocalInstallerScript()
     .postInstall((wine, wizard) => {
         const originDir = wine.prefixDirectory() + "drive_c/" + wine.programFiles() + "/Origin/";
 
-        new Downloader()
+        const originUpdate= new Resource()
             .wizard(wizard)
             .url("https://origin-a.akamaihd.net/Origin-Client-Download/origin/live/OriginUpdate_9_12_0_34172.zip")
             .checksum("c4a2a742f966efa0114bf8025699007ebbda4d8f")
-            .to(originDir + "OriginUpdate_9_12_0_34172.zip")
+            .name("OriginUpdate_9_12_0_34172.zip")
             .get();
 
         new Extractor()
             .wizard(wizard)
-            .archive(originDir + "OriginUpdate_9_12_0_34172.zip")
+            .archive(originUpdate)
             .to(originDir)
             .extract();
+
     });
