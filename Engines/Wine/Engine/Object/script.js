@@ -1,5 +1,5 @@
 const WineEngine = include("engines.wine.engine.implementation");
-const { fileExists } = include("utils.functions.filesystem.files");
+const { fileExists} = include("utils.functions.filesystem.files");
 
 const configFactory = Bean("compatibleConfigFileFormatFactory");
 const operatingSystemFetcher = Bean("operatingSystemFetcher");
@@ -13,7 +13,7 @@ const ProcessBuilderClass = Java.type("java.lang.ProcessBuilder");
 // eslint-disable-next-line no-unused-vars
 module.default = class Wine {
     constructor() {
-        this._implementation = new WineEngine();
+                 this._implementation = new WineEngine();
     }
 
     /**
@@ -22,7 +22,7 @@ module.default = class Wine {
      */
     architecture() {
         if (fileExists(this.prefixDirectory())) {
-            const containerConfiguration = configFactory.open(this.prefixDirectory() + "/phoenicis.cfg");
+            //const containerConfiguration = configFactory.open(this.prefixDirectory() + "/phoenicis.cfg");
             const architecture = containerConfiguration.readValue("wineArchitecture", "x86");
 
             return architecture;
@@ -49,7 +49,6 @@ module.default = class Wine {
 
     /**
      * @param {String} [path] path for "-w" option
-     * @returns {String} output
      */
     winepath(path) {
         return this.run("winepath", ["-w", path], this.prefixDirectory(), true, true);
