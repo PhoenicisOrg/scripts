@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Local",
+    "id"                         : "applications.games.the_sims_4.local",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}
