@@ -114,12 +114,12 @@ for application_dir in application_dirs:
     script_dirs_for_app = []
     for script in next(os.walk(application_dir))[1]:
         if os.path.isfile(application_dir + '/' + script + '/script.json') \
-                and os.path.isfile(application_dir + '/' + script + '/script.js'):
+                or os.path.isfile(application_dir + '/' + script + '/script.js'):
             script_dirs_for_app.append(application_dir + '/' + script)
     if script_dirs_for_app:
         script_dirs.extend(script_dirs_for_app)
     else:
-        print("application {} must contain at least one script directory with 'script.js' and 'script.json'".format(
+        print("application {} must contain at least one script directory with 'script.js' or 'script.json'".format(
             application_dir))
         is_valid = False
 
@@ -147,6 +147,9 @@ script_schema = {
 
 for script_dir in script_dirs:
     script_json_file = script_dir + '/script.json'
+    if not os.path.isfile(script_json_file):
+        continue
+
     try:
         with open(script_json_file) as f:
             script_json = json.loads(f.read())
