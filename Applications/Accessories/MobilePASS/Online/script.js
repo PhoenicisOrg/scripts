@@ -31,8 +31,8 @@ new PlainInstaller().withScript(() => {
 
     new Downloader()
         .wizard(setupWizard)
-        .url("https://fdsext.gemalto.com/filesSN/Index/79cca6a24fcc41c48a6dc31162a9ee7e?sid=6aded7501b842c50f12064606e4bcbaf.exe")
-        .checksum("b804feb434dd7fbed5f73508279f2362b3d1badd")
+        .url("https://raw.githubusercontent.com/ahmedmoselhi/wine_applications/refs/heads/main/SafeNet%20MobilePASS_8_4_6.msi")
+        .checksum("9d5a5ac56e1393ea5ce567b9c0e19dae2ef945d3")
         .to(tempFile)
         .get();
 

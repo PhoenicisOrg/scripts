@@ -1,0 +1,51 @@
+script	url	sha1sum
+Applications/Accessories/7-zip/Online/script.js	https://www.7-zip.org/a/7z2600.exe	d730e5629122f7cdc1cf78f5667e75e1ffb05672
+Applications/Accessories/ImgBurn/Online/script.js	http://download.imgburn.com/SetupImgBurn_2.5.8.0.exe	6a3d20796e1fcd4169d5d339af6e491dcea3367c
+Applications/Accessories/MobilePASS/Online/script.js	https://raw.githubusercontent.com/ahmedmoselhi/wine_applications/refs/heads/main/SafeNet%20MobilePASS_8_4_6.msi	9d5a5ac56e1393ea5ce567b9c0e19dae2ef945d3
+Applications/Accessories/Soundplant/Online/script.js	https://soundplant.org/downloads/Soundplant59_Win_setup.exe	0d54ed651b43776efe1e46542903456ec6e14d2e
+Applications/Development/Enterprise Architect/Online (Trial)/script.js	https://www.sparxsystems.com/bin/easetup.msi	67fb5e17da890a17dbb11d9daee8616709cda2ca
+Applications/Development/Notepad++/Online/script.js	https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.9.2/npp.8.9.2.Installer.x64.exe	5aca07500f99a8afee0e98c5265803607c4c749b
+Applications/Games/Crayon Physics/Online/script.js	http://www.kloonigames.com/download/crayon.zip	4561230bb4a6c7cd1188884a01f2adbf733c5233
+Applications/Games/DC Universe Online/Online/script.js	https://launch.daybreakgames.com/installer/DCUO_setup.exe	
+Applications/Games/Dreamscapes/Online/script.js	https://cdn.gametop.com/free-games-download/Dreamscapes-The-Sandman.exe	a8f202256998b1dfd259f7caaf87d4f7b3e12279
+Applications/Games/Dreamscapes 2/Online/script.js	https://cdn.gametop.com/free-games-download/Dreamscapes-2.exe	67eddd599d63141e4df4e85e795fa2fd3259f0c4
+Applications/Games/Druid Soccer/Online/script.js	http://www.kloonigames.com/download.php?file=druid.zip	75751e71dca60fb94d8d39b5f210384c435e4918
+Applications/Games/Earth Eternal - Valkal's Shadow/Online/script.js	http://www.theanubianwar.com/sites/default/files/downloads/EarthEternal_Valkals_Shadow_Setup.exe	
+Applications/Games/Enderal/Steam/script.js		7aefb75f933764f9de394ba40d712775961ba137
+Applications/Games/Epic Games Launcher/Online/script.js		6734c5c990715816021351b0bd0a7527e7a226fa
+Applications/Games/Fall Of The New Age/Online/script.js	https://cdn.gametop.com/free-games-download/Fall-of-the-New-Age.exe	7cfcddde5e7a21dc1badce54ec29201c23012143
+Applications/Games/GOG Galaxy/Online/script.js	https://content-system.gog.com/open_link/download?path=/open/galaxy/client/setup_galaxy_1.2.51.30.exe	faa29721de18a171561a3e4dfa243953ff98aa09
+Applications/Games/Guild Wars 2/Online/script.js	https://s3.amazonaws.com/gw2cdn/client/branches/Gw2Setup.exe	febee41863ed7b844ea683f0931b9e7b0c9ee064
+Applications/Games/Hearthstone/Online/script.js	https://eu.battle.net/download/getInstaller?os=win&installer=Hearthstone-Setup.exe	
+Applications/Games/Heroes of the Storm/Online/script.js	https://eu.battle.net/download/getInstaller?os=win&installer=Heroes-of-the-Storm-Setup.exe	
+Applications/Games/Icy Tower/v1.5/script.js	http://www.icytower.cz/download/icytower15_install.exe	
+Applications/Games/Lego Rock Raiders/Local/script.js	http://rrubucket.s3.amazonaws.com/RockRaidersCodec_490085.zip	efabe957e6d6dff015dfc4ceb04f00466a895782
+Applications/Games/Magic The Gathering Arena/Online/script.js	https://mtgarena.downloads.wizards.com/Live/Windows32/MTGAInstaller.exe	
+Applications/Games/Namariel Legends: Iron Lord/Online/script.js	https://cdn.gametop.com/free-games-download/Namariel-Legends-Iron-Lord.exe	c2c07aa8c8169b9da7f20e355bba460b6e7e356f
+Applications/Games/Origin/Local (Legacy)/script.js	https://origin-a.akamaihd.net/Origin-Client-Download/origin/live/OriginUpdate_9_12_0_34172.zip	c4a2a742f966efa0114bf8025699007ebbda4d8f
+Applications/Games/Origin/Online/script.js	https://www.dm.origin.com/download/OriginThinSetup.exe	
+Applications/Games/Origin/Online (Legacy)/script.js	https://origin-a.akamaihd.net/Origin-Client-Download/origin/legacy/OriginThinSetup.exe	c4a2a742f966efa0114bf8025699007ebbda4d8f
+Applications/Games/Origin/Online (Legacy)/script.js	https://origin-a.akamaihd.net/Origin-Client-Download/origin/live/OriginUpdate_9_12_0_34172.zip	
+Applications/Games/Overwatch/Online/script.js	https://eu.battle.net/download/getInstaller?os=win&installer=Overwatch-Setup.exe	
+Applications/Games/Prehistorik/Online/script.js	https://repository.playonlinux.com/divers/oldware/historik.zip	62a21d0dfcd68ae61646e1bc5b1c4a03b3e1091f
+Applications/Games/Prince Of Persia: Original/Online/script.js	https://repository.playonlinux.com/divers/oldware/prince.zip	6c4148233f840011715c351c399d35b0fc716ae7
+Applications/Games/Road Rash/Online/script.js	http://www.bestoldgames.net/download/bgames/road-rash.zip	82f99038b86bbd267c64f2d34f30b3209bbe4daa
+Applications/Games/STAR WARS - Empire at War - Gold Pack/Local/script.js	http://static.dolimg.com/mh_netstorage/lucasfilm/patches/pc/EAW_RAM_MPLobby_update.exe	63233107fab4c58413df04ce1d07fe65e7145329
+Applications/Games/STAR WARS Battlefront II/Local/script.js	http://static.dolimg.com/mh_netstorage/lucasfilm/patches/pc/BFIIUpdateInt1_1.exe	60eaddfaba1bc71fe8bbbb560f8da229748cfaa8
+Applications/Games/STAR WARS: The Old Republic/Online/script.js	https://swtor-a.akamaihd.net/installer/SWTOR_setup.exe	c538935eff4ec90ce2e48dc7e515a8dec2f15f58
+Applications/Games/Space Colony/Local/script.js	https://d1ztm8591kdhlc.cloudfront.net/hdpatches/Space_Colony_HD_Update.exe	
+Applications/Games/Star Craft II/Online/script.js	https://eu.battle.net/download/getInstaller?os=win&installer=StarCraft-II-Setup.exe	
+Applications/Games/Steam/Online/script.js	https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe	1e5598f2de49fed2e81f3dd8630c7346a2b89487
+Applications/Games/The Elder Scrolls I: Arena/Online/script.js	http://static.elderscrolls.com/elderscrolls.com/assets/files/tes/extras/Arena106Setup.zip	5e51d43f3e01820b18df36ec0019036f16796ad2
+Applications/Games/Tomb Raider: The Dagger Of Xian/Online (Demo)/script.js	http://tr.soja.pw/setup-x86-TombRaider-DOX-Demo.exe	3d35b0a0ecd5cdf58ffb2f786158369befbd3f12
+Applications/Games/Uplay/Online/script.js	https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UplayInstaller.exe	
+Applications/Games/Warcraft III Expansion Set/Online/script.js	https://www.battle.net/download/getInstaller?os=win&installer=Warcraft-III-Setup.exe	
+Applications/Games/Xenon 2/Online/script.js	https://repository.playonlinux.com/divers/oldware/Xenon2.zip	9b61e88cad02f663e76fe40a379319a4956546c2
+Applications/Games/osu!/Online/script.js	https://m1.ppy.sh/r/osu!install.exe	
+Applications/Graphics/Microsoft Paint/Online/script.js		a22c4e367ef9d2cd23f0a8ae8d9ebff5bc1e8a0b
+Applications/Graphics/Photofiltre/Online/script.js	http://photofiltre.free.fr/utils/pf-setup-en-653.exe	6ec14d421bf639e1a5a8c128217b94fcee780696
+Applications/Internet/Internet Explorer 6.0/Online/script.js	http://files.playonlinux.com/ie/6.0/ie60.exe	8e483db28ff01a7cabd39147ab6c59753ea1f533
+Applications/Internet/TeamSpeak 6/v6.0.0-beta3.4/script.js	https://files.teamspeak-services.com/pre_releases/client/6.0.0-beta3.4/teamspeak-client.msi	a52f65be8fdd627c0194772815553a59bb8c2cb2
+Applications/Internet/mIRC/v7.83/script.js	https://www.mirc.com/downloads/mirc/49/mirc783.exe	a54122ce586dded7f19e0e8c73a1aa05469be49b
+Applications/Multimedia/Mp3tag/Online/script.js	https://download.mp3tag.de/mp3tagv297setup.exe	4bcd421c57da51c274e84edc6b962ead2a03d226
+Applications/Office/Adobe Acrobat Reader DC/Online/script.js	https://ardownload2.adobe.com/pub/adobe/reader/win/11.x/11.0.10/en_US/AdbeRdr11010_en_US.exe	98b2b838e6c4663fefdfd341dfdc596b1eff355c

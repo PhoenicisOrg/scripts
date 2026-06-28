@@ -7,18 +7,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
 
       - name: Install dependencies
-        run: sudo apt-get install -y python3-jsonschema python3-pil
+        run: python3 -m pip install --upgrade pip jsonschema pillow
 
       - name: Run scripts
-        run: python ./validate.py
+        run: python3 ./validate.py
   eslint:
     name: ESLint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - name: Run eslint
         uses: reviewdog/action-eslint@v1
         with:
