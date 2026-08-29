@@ -1,0 +1,21 @@
+name: Compress images
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '**.jpg'
+      - '**.jpeg'
+      - '**.png'
+
+jobs:
+  compress:
+    name: Compress images
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Compress images
+        uses: calibreapp/image-actions@main
+        with:
+          githubToken: ${{ secrets.IMAGE_COMPRESS }}
