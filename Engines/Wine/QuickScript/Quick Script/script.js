@@ -132,8 +132,12 @@ module.default = class QuickScript {
      * @param {string} environment variables
      * @returns {QuickScript} QuickScript object
      */
-    environment(environment) {
-        this._environment = environment;
+    environment(environmentFunc) {
+        if (environmentFunc && environmentFunc instanceof Function) {
+            this._environmentFunc= environmentFunc;
+        } else {
+            throw new Error(tr("The argument of environment() should be a function !"));
+        }
         return this;
     }
 
