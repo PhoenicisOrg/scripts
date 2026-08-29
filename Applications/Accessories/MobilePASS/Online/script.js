@@ -42,7 +42,7 @@ new PlainInstaller().withScript(() => {
             "MobilePass",
             "upstream",
             "x86",
-            getLatestStableVersion(setupWizard, "x86")
+            getLatestStableVersion(setupWizard, null, null, "x86")
         )
         .create();
 

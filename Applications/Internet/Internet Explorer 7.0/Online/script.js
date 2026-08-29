@@ -21,7 +21,7 @@ new PlainInstaller().withScript(() => {
 
     const wine = new Wine()
         .wizard(setupWizard)
-        .prefix("InternetExplorer7", "upstream", "x86", getLatestStableVersion(setupWizard, "x86"))
+        .prefix("InternetExplorer7", "upstream", "x86", getLatestStableVersion(setupWizard, null, null, "x86"))
         .create();
 
     new Sandbox(wine).go();
