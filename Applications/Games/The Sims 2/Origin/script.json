@@ -1,0 +1,14 @@
+{
+    "scriptName"                 : "Origin (Ultimate Collection)",
+    "id"                         : "applications.games.the_sims_2.origin",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "free"          : false,
+    "requiresPatch" : false
+}
