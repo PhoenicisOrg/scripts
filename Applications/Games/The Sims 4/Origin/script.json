@@ -1,0 +1,11 @@
+{
+    "scriptName"                 : "Origin",
+    "id"                         : "applications.games.the_sims_4.origin",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [],
+    "free"                    : false,
+    "requiresPatch"           : false
+}
