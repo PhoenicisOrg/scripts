@@ -132,6 +132,8 @@ module.default = class SteamScript extends QuickScript {
             .wizard(setupWizard)
             .prefix(this._name, this._wineDistribution, this._wineArchitecture, this._wineVersion);
 
+        this._environment = this._environmentFunc(wine);
+
         new Luna(wine).go();
         new Corefonts(wine).go();
 
