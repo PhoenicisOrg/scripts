@@ -1,0 +1,14 @@
+{
+    "scriptName"                 : "Zip",
+    "id"                         : "applications.graphics.photoshop.zip",
+    "compatibleOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "testingOperatingSystems" : [
+        "MACOSX",
+        "LINUX"
+    ],
+    "free"          : false,
+    "requiresPatch" : false
+}
